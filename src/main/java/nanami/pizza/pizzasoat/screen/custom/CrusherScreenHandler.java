@@ -1,6 +1,8 @@
 package nanami.pizza.pizzasoat.screen.custom;
 
 import nanami.pizza.pizzasoat.block.entity.custom.CrusherBlockEntity;
+import nanami.pizza.pizzasoat.recipe.CrusherRecipeInput;
+import nanami.pizza.pizzasoat.recipe.ModRecipes;
 import nanami.pizza.pizzasoat.screen.ModScreenHandlers;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,12 +30,16 @@ public class CrusherScreenHandler extends ScreenHandler {
         checkSize((Inventory) blockEntity, 3);
         this.inventory = (Inventory) blockEntity;
         this.propertyDelegate = arrayPropertyDelegate;
-        addProperties(propertyDelegate);
-        this.blockEntity = ((CrusherBlockEntity) blockEntity);
+        this.blockEntity = (CrusherBlockEntity) blockEntity;
 
         this.addSlot(new Slot(inventory, 0, 56, 17));
         this.addSlot(new Slot(inventory, 1, 56, 53));
-        this.addSlot(new Slot(inventory, 2, 116, 35));
+        this.addSlot(new Slot(inventory, 2, 116, 35) {
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return false; //Makes output slot read-only
+            }
+        });
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -50,19 +56,18 @@ public class CrusherScreenHandler extends ScreenHandler {
     }
 
     public int getScaledArrowProgress() {
-        int progress = this.propertyDelegate.get(0);
-        int maxProgress = this.propertyDelegate.get(1);
+        int progress = propertyDelegate.get(0);
+        int maxProgress = propertyDelegate.get(1);
         int arrowPixelSize = 24;
 
-        return maxProgress != 0 && progress != 0 ? progress * arrowPixelSize / maxProgress : 0;
+        return maxProgress > 0 && progress > 0 ? (progress * arrowPixelSize) / maxProgress : 0;
     }
 
     public int getScaledFuelProgress() {
-        int fuelTime = this.propertyDelegate.get(2);
-        int maxFuelTime = this.propertyDelegate.get(3);
-        int crushingPixelSize = 18;
-
-        return maxFuelTime != 2 && fuelTime != 2 ? fuelTime * crushingPixelSize / maxFuelTime : 2;
+        int fuelTime = propertyDelegate.get(2);
+        int maxFuelTime = propertyDelegate.get(3);
+        int crushingPixelSize = 20;
+        return maxFuelTime > 0 && fuelTime > 0 ? (fuelTime * crushingPixelSize) / maxFuelTime : 0;
     }
 
     @Override
@@ -72,12 +77,23 @@ public class CrusherScreenHandler extends ScreenHandler {
         if (slot != null && slot.hasStack()) {
             ItemStack originalStack = slot.getStack();
             newStack = originalStack.copy();
-            if (invSlot < this.inventory.size()) {
-                if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
+            if (invSlot < inventory.size()) {
+                if (!insertItem(originalStack, inventory.size(), slots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
-                return ItemStack.EMPTY;
+            } else {
+                if (blockEntity.getFuelTime(originalStack) > 0) {
+                    if (!insertItem(originalStack, 1, 2, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (blockEntity.getWorld().getRecipeManager().getFirstMatch(ModRecipes.CRUSHER_TYPE,
+                        new CrusherRecipeInput(originalStack), blockEntity.getWorld()).isPresent()) {
+                    if (!insertItem(originalStack, 0, 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else {
+                    return ItemStack.EMPTY;
+                }
             }
 
             if (originalStack.isEmpty()) {
@@ -91,7 +107,7 @@ public class CrusherScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return this.inventory.canPlayerUse(player);
+        return inventory.canPlayerUse(player);
     }
 
     private void addPlayerInventory(PlayerInventory playerInventory) {
@@ -106,5 +122,9 @@ public class CrusherScreenHandler extends ScreenHandler {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
+    }
+
+    public PropertyDelegate getPropertyDelegate() {
+        return propertyDelegate;
     }
 }

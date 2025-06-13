@@ -1,10 +1,8 @@
 package nanami.pizza.pizzasoat.screen.custom;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import nanami.pizza.pizzasoat.PizzasOAT;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -19,21 +17,18 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
 
     public CrusherScreen(CrusherScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        backgroundWidth = 176;
+        backgroundHeight = 166;
     }
 
     @Override
     protected void init() {
         super.init();
-        //gets rid of title and inventory title, change later!
-        titleY = 1000;
-        playerInventoryTitleY = 1000;
+        titleX = 67;
     }
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, GUI_TEXTURE);
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
@@ -44,17 +39,17 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
-        if(handler.isCrafting()) {
+        if(handler.getPropertyDelegate().get(0) > 0 && handler.isCrafting()) {
             context.drawTexture(ARROW_TEXTURE, x + 79, y + 35, 0, 0,
                     handler.getScaledArrowProgress(), 16, 24, 16);
         }
     }
 
     private void renderProgressCrushing(DrawContext context, int x, int y) {
-        if (handler.isCrafting()) {
+        if (handler.isBurning()) {
             int progress = handler.getScaledFuelProgress();
-            context.drawTexture(CRUSHING_TEXTURE, x + 56, y + 34 + (18 - progress), 0,
-                    18 - progress, 16, progress, 16, 18);
+            context.drawTexture(CRUSHING_TEXTURE, x + 56, y + 53 - progress, 0,
+                    20 - progress, 16, progress, 16, 20);
         }
     }
 
