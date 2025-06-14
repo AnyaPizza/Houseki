@@ -137,5 +137,7 @@
   "itemgroup.pizzasoat.pizzasitems": "Pizza's Items",
   "itemgroup.pizzasoat.pizzasblocks": "Pizza's Blocks",
 
-  "gui.pizzasoat.crusher": "Crusher"
+  "gui.pizzasoat.crusher": "Crusher",
+
+  "emi.category.pizzasoat.crusher": "Crusher"
 }

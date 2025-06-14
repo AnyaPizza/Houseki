@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "nanami.pizza.pizzasoat.mixin",
+	"package": "anya.pizza.pizzasoat.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin"
