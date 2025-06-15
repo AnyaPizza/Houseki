@@ -38,6 +38,9 @@ BAUXITE:
 2. Maybe use granite and darken it for texture. Maybe...
 3. Make the Bauxite block crushable to turn it into Bauxite item which then gets smelted to Aluminum
 
+ALUMINUM:
+1. Make Aluminum Glass Panes
+
 NEPHRITE:
 1. Make the ore out of Limestone and spawn it in Limestone.
 2. Create Armor and Tools for it making it a darker green.

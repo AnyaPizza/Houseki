@@ -18,21 +18,22 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
     public CrusherScreen(CrusherScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
         backgroundWidth = 176;
-        backgroundHeight = 166;
+        backgroundHeight = 176;
     }
 
     @Override
     protected void init() {
         super.init();
-        titleX = 67;
+        titleX = 104;
+        titleY = -4;
     }
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2;
+        int y = (height - backgroundHeight) / 2 - 10;
 
-        context.drawTexture(GUI_TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        context.drawTexture(GUI_TEXTURE, x, y, 0, 0, 176, 176);
         renderProgressArrow(context, x, y);
         renderProgressCrushing(context, x, y);
 
@@ -40,7 +41,7 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if(handler.getPropertyDelegate().get(0) > 0 && handler.isCrafting()) {
-            context.drawTexture(ARROW_TEXTURE, x + 79, y + 35, 0, 0,
+            context.drawTexture(ARROW_TEXTURE, x + 79, y + 39, 0, 0,
                     handler.getScaledArrowProgress(), 16, 24, 16);
         }
     }
@@ -48,8 +49,8 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
     private void renderProgressCrushing(DrawContext context, int x, int y) {
         if (handler.isBurning()) {
             int progress = handler.getScaledFuelProgress();
-            context.drawTexture(CRUSHING_TEXTURE, x + 56, y + 53 - progress, 0,
-                    20 - progress, 16, progress, 16, 20);
+            context.drawTexture(CRUSHING_TEXTURE, x + 5, y + 69 - progress, 0,
+                    20 - progress, 6, progress, 6, 20);
         }
     }
 
