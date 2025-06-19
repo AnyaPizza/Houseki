@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-18T14:10:20.7290709	Pizza's Ores And Things/Recipes
+// 1.21.1	2025-06-18T19:40:48.8679763	Pizza's Ores And Things/Recipes
 de5067b365fbb234d303d882ec002457c55d6571 data\pizzasoat\recipe\limestone_bricks.json
 cc18495f266def042a72496426ee123a947fb8ee data\pizzasoat\advancement\recipes\combat\rainbow_pyrite_helmet.json
 ea6ef2833be95698ba8a1c0d93f0c0332c0928de data\pizzasoat\advancement\recipes\misc\tungsten_from_blasting_pure_tungsten.json
@@ -234,8 +234,8 @@ ecbc688aa10190919d40917dfae6654eee33e2a1 data\pizzasoat\advancement\recipes\buil
 1eb13ce0da353fda47396675de41abf650fd96d6 data\pizzasoat\recipe\jade_pickaxe.json
 5ba322d9bb3ffe5f4d1c95f723899d3a88d2d462 data\pizzasoat\recipe\sulfur_from_blasting_sulfur_ore.json
 4d5ccaabbd31289b50855a0747be0a4107cb2f3c data\pizzasoat\advancement\recipes\misc\nephrite_from_blasting_nephrite_ore.json
-e3206b0e749e59503ceb77f6d38ab31707d844ad data\pizzasoat\recipe\limestone_slab_from_limestone_stonecutting.json
 8d231d7f523fe2a89a699fd818227be3516cd16a data\pizzasoat\advancement\recipes\building_blocks\polished_limestone.json
+e3206b0e749e59503ceb77f6d38ab31707d844ad data\pizzasoat\recipe\limestone_slab_from_limestone_stonecutting.json
 69b0e4027da3d0db9a507f23b7dfbc6672276dbf data\pizzasoat\recipe\limestone_slab.json
 feed3c675d0ee82d1f3344c37aca87a7a77d746b data\pizzasoat\recipe\block_of_platinum.json
 c1c3262822daedacd352d6df91e4aaa66fd3316f data\pizzasoat\recipe\aluminum_from_blasting_bauxite.json
