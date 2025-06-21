@@ -1,6 +1,3 @@
-Make wolf armor for all ores that have armors
-Maybe make deepslate version of Trona
-
 SLATE:
 1. Make bricks, stairs, slabs, and walls for it
 2. 4 on Moh Scale
@@ -34,6 +31,7 @@ SCHEELITE:
 TRONA, SODIUM CARBONATE AND PURE TUNGSTEN:
 1. Comment out all the code for it. Useless for now.
 2. If re-implemented then change Trona texture.
+3. Maybe make deepslate version of Trona
 
 TUNGSTEN:
 1. Look into adding Poison effect to sword.
