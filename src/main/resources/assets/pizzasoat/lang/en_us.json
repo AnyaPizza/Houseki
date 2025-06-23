@@ -17,6 +17,7 @@
   "item.pizzasoat.platinum": "Platinum",
   "item.pizzasoat.sulfur": "Sulfur",
   "item.pizzasoat.crude_iron": "Crude Iron",
+  "item.pizzasoat.steel": "Steel",
 
   "item.pizzasoat.pinku_upgrade_smithing_template": "Smithing Template",
 
@@ -54,6 +55,11 @@
   "block.pizzasoat.block_of_sulfur": "Block of Sulfur",
   "block.pizzasoat.blackstone_sulfur_ore": "Blackstone Sulfur Ore",
   "block.pizzasoat.sulfur_ore": "Sulfur Ore",
+  "block.pizzasoat.block_of_steel": "Block of Steel",
+  "block.pizzasoat.steel_rail": "Steel Rail",
+  "block.pizzasoat.steel_powered_rail": "Steel Powered Rail",
+  "block.pizzasoat.steel_activator_rail": "Steel Activator Rail",
+  "block.pizzasoat.steel_detector_rail": "Steel Detector Rail",
 
   "block.pizzasoat.limestone_stairs": "Limestone Stairs",
   "block.pizzasoat.limestone_slab": "Limestone Slab",
@@ -112,6 +118,11 @@
   "item.pizzasoat.platinum_shovel": "Platinum Shovel",
   "item.pizzasoat.platinum_sword": "Platinum Sword",
   "item.pizzasoat.platinum_hoe": "Platinum Hoe",
+  "item.pizzasoat.steel_pickaxe": "Steel Pickaxe",
+  "item.pizzasoat.steel_axe": "Steel Axe",
+  "item.pizzasoat.steel_shovel": "Steel Shovel",
+  "item.pizzasoat.steel_sword": "Steel Sword",
+  "item.pizzasoat.steel_hoe": "Steel Hoe",
 
   "item.pizzasoat.pinku_helmet": "Pinku Helmet",
   "item.pizzasoat.pinku_chestplate": "Pinku Chestplate",
@@ -141,6 +152,10 @@
   "item.pizzasoat.jade_chestplate": "Jade Chestplate",
   "item.pizzasoat.jade_leggings": "Jade Leggings",
   "item.pizzasoat.jade_boots": "Jade Boots",
+  "item.pizzasoat.steel_helmet": "Steel Helmet",
+  "item.pizzasoat.steel_chestplate": "Steel Chestplate",
+  "item.pizzasoat.steel_leggings": "Steel Leggings",
+  "item.pizzasoat.steel_boots": "Steel Boots",
 
   "item.pizzasoat.pinku_horse_armor": "Pinku Horse Armor",
   "item.pizzasoat.rainbow_pyrite_horse_armor": "Rainbow Pyrite Horse Armor",
@@ -148,6 +163,7 @@
   "item.pizzasoat.aluminum_horse_armor": "Aluminum Horse Armor",
   "item.pizzasoat.sapphire_horse_armor": "Sapphire Horse Armor",
   "item.pizzasoat.platinum_horse_armor": "Platinum Horse Armor",
+  "item.pizzasoat.steel_horse_armor": "Steel Horse Armor",
 
   "item.pizzasoat.smithing_template.pinku_upgrade.applies_to": "Netherite Equipment",
   "item.pizzasoat.smithing_template.pinku_upgrade.ingredients": "Pinku",

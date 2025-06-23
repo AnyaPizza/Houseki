@@ -21,7 +21,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ALUMINUM)
                 .add(ModItems.SAPPHIRE)
                 .add(ModItems.JADE)
-                .add(ModItems.PLATINUM);
+                .add(ModItems.PLATINUM)
+                .add(ModItems.STEEL);
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.PINKU_HELMET)
@@ -51,7 +52,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PLATINUM_HELMET)
                 .add(ModItems.PLATINUM_CHESTPLATE)
                 .add(ModItems.PLATINUM_LEGGINGS)
-                .add(ModItems.PLATINUM_BOOTS);
+                .add(ModItems.PLATINUM_BOOTS)
+                .add(ModItems.STEEL_HELMET)
+                .add(ModItems.STEEL_CHESTPLATE)
+                .add(ModItems.STEEL_LEGGINGS)
+                .add(ModItems.STEEL_BOOTS);
 
         getOrCreateTagBuilder(ItemTags.AXES)
                 .add(ModItems.PINKU_AXE)
@@ -60,7 +65,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ALUMINUM_AXE)
                 .add(ModItems.SAPPHIRE_AXE)
                 .add(ModItems.JADE_AXE)
-                .add(ModItems.PLATINUM_AXE);
+                .add(ModItems.PLATINUM_AXE)
+                .add(ModItems.STEEL_AXE);
 
         getOrCreateTagBuilder(ItemTags.HOES)
                 .add(ModItems.PINKU_HOE)
@@ -69,7 +75,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ALUMINUM_HOE)
                 .add(ModItems.SAPPHIRE_HOE)
                 .add(ModItems.JADE_HOE)
-                .add(ModItems.PLATINUM_HOE);
+                .add(ModItems.PLATINUM_HOE)
+                .add(ModItems.STEEL_HOE);
 
         getOrCreateTagBuilder(ItemTags.SHOVELS)
                 .add(ModItems.PINKU_SHOVEL)
@@ -78,7 +85,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ALUMINUM_SHOVEL)
                 .add(ModItems.SAPPHIRE_SHOVEL)
                 .add(ModItems.JADE_SHOVEL)
-                .add(ModItems.PLATINUM_SHOVEL);
+                .add(ModItems.PLATINUM_SHOVEL)
+                .add(ModItems.STEEL_SHOVEL);
 
         getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ModItems.PINKU_SWORD)
@@ -87,7 +95,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ALUMINUM_SWORD)
                 .add(ModItems.SAPPHIRE_SWORD)
                 .add(ModItems.JADE_SWORD)
-                .add(ModItems.PLATINUM_SWORD);
+                .add(ModItems.PLATINUM_SWORD)
+                .add(ModItems.STEEL_SWORD);
 
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ModItems.PINKU_PICKAXE)
@@ -96,7 +105,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ALUMINUM_PICKAXE)
                 .add(ModItems.SAPPHIRE_PICKAXE)
                 .add(ModItems.JADE_PICKAXE)
-                .add(ModItems.PLATINUM_PICKAXE);
+                .add(ModItems.PLATINUM_PICKAXE)
+                .add(ModItems.STEEL_PICKAXE);
 
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-21T08:42:01.9323647	Pizza's Ores And Things/Block Loot Tables
+// 1.21.1	2025-06-22T23:00:35.3688958	Pizza's Ores And Things/Block Loot Tables
 916dfecbf89f464bf170974b83e0d7ac4e238838 data\pizzasoat\loot_table\blocks\nephrite_ore.json
 470a790bdbbaccfdbdf5800fd84e0d16e27de0c5 data\pizzasoat\loot_table\blocks\sulfur_ore.json
 8ac258f6d1364190c2e068a7597ff3df7905e039 data\pizzasoat\loot_table\blocks\deepslate_bauxite_ore.json
@@ -8,6 +8,7 @@
 e3bc8fc539dd48700d8324a91b244a08a8bbbb8f data\pizzasoat\loot_table\blocks\limestone_stairs.json
 32c00c803805e4c31dc5beaf9f7a64395783ea96 data\pizzasoat\loot_table\blocks\limestone_brick_stairs.json
 a8ab9522c205bb24606a5e118db355805247e173 data\pizzasoat\loot_table\blocks\polished_slate_stairs.json
+b776d68aa9c9e643214f5dda79ced8539e81dfc3 data\pizzasoat\loot_table\blocks\block_of_steel.json
 a74f9ef0a2ad69209687d6bfef1070d54ab8e3f3 data\pizzasoat\loot_table\blocks\rainbow_pyrite_ore.json
 fe9c3df19496de18c87cb74767661502cc0cc1cf data\pizzasoat\loot_table\blocks\deepslate_platinum_ore.json
 723c57789d4fe5d51f1d6a26564f029612b136bb data\pizzasoat\loot_table\blocks\platinum_ore.json
@@ -28,8 +29,8 @@ a7b208f8450b479d3bc8b43f56d1f005ed926711 data\pizzasoat\loot_table\blocks\wolfra
 71806a9170d95f84714575b5bd93db31215cc282 data\pizzasoat\loot_table\blocks\slate.json
 06bbb5ac1808c373429c93dff72ee6e40b58ad1f data\pizzasoat\loot_table\blocks\deepslate_nephrite_ore.json
 b0e989ab557cf613ae3ed7fb2d877dc34d6305a3 data\pizzasoat\loot_table\blocks\block_of_pinku.json
-e6fdb101c5cb5b4e74f39b1c66f26a7f0a75341f data\pizzasoat\loot_table\blocks\limestone_bricks.json
 6bb70fb8e0c12baa608176b7b6354c18d1e12f18 data\pizzasoat\loot_table\blocks\limestone_brick_slab.json
+e6fdb101c5cb5b4e74f39b1c66f26a7f0a75341f data\pizzasoat\loot_table\blocks\limestone_bricks.json
 37eda475f1cafa3a45d32577d41c77ffe1bfcee1 data\pizzasoat\loot_table\blocks\slate_slab.json
 f76c29ce4ae4faa592db88fbeef1b8aec3b9ac42 data\pizzasoat\loot_table\blocks\block_of_sapphire.json
 9dce4084162604a85a5d8507a7147d5562cb4ad4 data\pizzasoat\loot_table\blocks\block_of_aluminum.json

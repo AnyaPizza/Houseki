@@ -101,15 +101,20 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.CRUDE_IRON).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))));
 
+                        //.with(ItemEntry.builder(ModBlocks.STEEL_RAIL).weight(1)
+                         //       .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))));
+
                 tableBuilder.pool(poolBuilder.build());
             }
 
             if (ANCIENT_CITY_ID.equals(key.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(UniformLootNumberProvider.create(2f, 5f))
-                        //.conditionally(RandomChanceLootCondition.builder(0.2f)) //1 = 100% chance item will be in loot table
-                        //.apply(SetDamageLootFunction.builder(UniformLootNumberProvider.create(0.1f, 0.9f))) // 10%-90% Durability
-                        //.apply(new EnchantWithLevelsLootFunction.Builder(UniformLootNumberProvider.create(30.0F, 50.0F)))
+                        /**
+                         *  .conditionally(RandomChanceLootCondition.builder(0.2f)) //1 = 100% chance item will be in loot table
+                         *  .apply(SetDamageLootFunction.builder(UniformLootNumberProvider.create(0.1f, 0.9f))) // 10%-90% Durability
+                         *  .apply(new EnchantWithLevelsLootFunction.Builder(UniformLootNumberProvider.create(30.0F, 50.0F)))
+                         **/
                         .with(ItemEntry.builder(Items.AIR).weight(75)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
 
@@ -179,6 +184,9 @@ public class ModLootTableModifiers {
 
                         .with(ItemEntry.builder(ModItems.TUNGSTEN).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
+
+                        .with(ItemEntry.builder(ModItems.STEEL).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
 
                         .with(ItemEntry.builder(ModItems.PINKU_HORSE_ARMOR).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
@@ -432,7 +440,10 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
 
                         .with(ItemEntry.builder(ModItems.PLATINUM_HORSE_ARMOR).weight(1)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.STEEL).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))));
 
                 tableBuilder.pool(poolBuilder.build());
             }
@@ -628,6 +639,9 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
 
+                        .with(ItemEntry.builder(ModItems.STEEL).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
+
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
@@ -642,6 +656,9 @@ public class ModLootTableModifiers {
 
                         .with(ItemEntry.builder(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE).weight(2)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.STEEL).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
 
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD).weight(2)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));

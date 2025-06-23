@@ -17,7 +17,7 @@ import net.minecraft.world.BlockView;
 public class ModBlocks {
     //Adds Block
     public static final Block BLOCK_OF_PINKU = registerBlock("block_of_pinku",
-            new Block(AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK).resistance(1000f).requiresTool()));
+            new Block(AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK).resistance(1000).requiresTool()));
 
     public static final Block BLOCK_OF_RAINBOW_PYRITE = registerBlock("block_of_rainbow_pyrite",
             new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool()));
@@ -29,7 +29,7 @@ public class ModBlocks {
             new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool().strength(30, 500)));
 
     public static final Block ALUMINUM_GLASS = registerBlock("aluminum_glass",
-            new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.GLASS).requiresTool().strength(2.0f, 1000.0f).nonOpaque()) {
+            new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.GLASS).requiresTool().strength(2, 1000).nonOpaque()) {
                 @Override
                 public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
                     return super.getCameraCollisionShape(state, world, pos, context);
@@ -72,21 +72,26 @@ public class ModBlocks {
     public static final Block CHISELED_SLATE = registerBlock("chiseled_slate",
             new Block(AbstractBlock.Settings.copy(Blocks.CHISELED_STONE_BRICKS).requiresTool()));
 
+    public static final Block BLOCK_OF_STEEL = registerBlock("block_of_steel",
+            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).strength(4.5f, 5.5f).requiresTool()));
+
+
+
     //Adds Ore
     public static final Block PINKU_ORE = registerBlock("pinku_ore",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_ORE).sounds(BlockSoundGroup.NETHERITE).strength(15f, 9f).luminance(s -> 1).requiresTool())); //10 Moh Scale
+            new Block(AbstractBlock.Settings.copy(Blocks.IRON_ORE).sounds(BlockSoundGroup.NETHERITE).strength(15, 9).luminance(s -> 1).requiresTool())); //10 Moh Scale
 
     public static final Block RAINBOW_PYRITE_ORE = registerBlock("rainbow_pyrite_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copy(Blocks.STONE).strength(4.8f, 7.2f).requiresTool())); //6 Moh Scale
 
     public static final Block WOLFRAMITE_ORE = registerBlock("wolframite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.GRANITE).strength(3f, 4f).requiresTool())); //4.5 Moh Scale
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.GRANITE).strength(3, 4).requiresTool())); //4.5 Moh Scale
 
     public static final Block SCHEELITE_ORE = registerBlock("scheelite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.NETHERRACK).strength(3f, 4f).requiresTool())); //4.5 Moh Scale
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.NETHERRACK).strength(3, 4).requiresTool())); //4.5 Moh Scale
 
     public static final Block TRONA_ORE = registerBlock("trona_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(2f, 3f).requiresTool())); //2.5 Moh Scale
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(2, 3).requiresTool())); //2.5 Moh Scale
 
     public static final Block BAUXITE_ORE = registerBlock("bauxite_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(1.5f, 2.5f).requiresTool())); //2 Moh Scale
@@ -95,25 +100,25 @@ public class ModBlocks {
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(3.5f, 2.5f).requiresTool()));
 
     public static final Block DEEPSLATE_SAPPHIRE_ORE = registerBlock("deepslate_sapphire_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(10f, 8f).requiresTool()));
+            new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(10, 8).requiresTool()));
 
     public static final Block SAPPHIRE_ORE = registerBlock("sapphire_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), AbstractBlock.Settings.copy(Blocks.STONE).strength(9f, 7f).requiresTool())); //9 Moh Scale
+            new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), AbstractBlock.Settings.copy(Blocks.STONE).strength(9, 7).requiresTool())); //9 Moh Scale
 
     public static final Block NEPHRITE_ORE = registerBlock("nephrite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(4f, 6f).requiresTool())); //6.5 Moh Scale
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(4, 6).requiresTool())); //6.5 Moh Scale
 
     public static final Block DEEPSLATE_NEPHRITE_ORE = registerBlock("deepslate_nephrite_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(4.5f, 6.5f).requiresTool()));
 
     public static final Block PLATINUM_ORE = registerBlock("platinum_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(3f, 4f).requiresTool())); //4.5 Moh Scale
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(3, 4).requiresTool())); //4.5 Moh Scale
 
     public static final Block DEEPSLATE_PLATINUM_ORE = registerBlock("deepslate_platinum_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(4f, 5f).requiresTool()));
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(4, 5).requiresTool()));
 
     public static final Block SULFUR_ORE = registerBlock("sulfur_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.NETHERRACK).strength(1f, 2f).requiresTool())); //Moh scale 1.5
+            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.NETHERRACK).strength(1, 2).requiresTool())); //Moh scale 1.5
 
     public static final Block BLACKSTONE_SULFUR_ORE = registerBlock("blackstone_sulfur_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.BLACKSTONE).strength(1.5f, 2.5f).requiresTool()));
@@ -171,6 +176,19 @@ public class ModBlocks {
     public static final Block CRUSHER = registerBlock("crusher",
             new CrusherBlock(AbstractBlock.Settings.copy(Blocks.BLAST_FURNACE).nonOpaque().requiresTool()));
 
+    //Rails
+    /*public static final Block STEEL_RAIL = registerBlock("steel_rail",
+            new RailBlock(AbstractRailBlock.Settings.copy(Blocks.RAIL).nonOpaque()));
+
+    public static final Block STEEL_POWERED_RAIL = registerBlock("steel_powered_rail",
+            new PoweredRailBlock(AbstractRailBlock.Settings.copy(Blocks.POWERED_RAIL).nonOpaque()));
+
+    public static final Block STEEL_ACTIVATOR_RAIL = registerBlock("steel_activator_rail",
+            new PoweredRailBlock(AbstractRailBlock.Settings.copy(Blocks.ACTIVATOR_RAIL).nonOpaque()));
+
+    public static final Block STEEL_DETECTOR_RAIL = registerBlock("steel_detector_rail",
+            new DetectorRailBlock(AbstractRailBlock.Settings.copy(Blocks.DETECTOR_RAIL).nonOpaque()));
+*/
 
 
 

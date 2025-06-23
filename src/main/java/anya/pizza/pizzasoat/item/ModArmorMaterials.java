@@ -19,7 +19,7 @@ public class ModArmorMaterials {
     public static final RegistryEntry<ArmorMaterial> PINKU_MATERIAL = registerArmorMaterial("pinku",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.HELMET, 6);
-                        map.put(ArmorItem.Type.CHESTPLATE,11);
+                        map.put(ArmorItem.Type.CHESTPLATE, 11);
                         map.put(ArmorItem.Type.LEGGINGS, 9);
                         map.put(ArmorItem.Type.BOOTS, 6);
                         map.put(ArmorItem.Type.BODY, 14);
@@ -29,7 +29,7 @@ public class ModArmorMaterials {
     public static final RegistryEntry<ArmorMaterial> RAINBOW_MATERIAL = registerArmorMaterial("rainbow_pyrite",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 3);
-                map.put(ArmorItem.Type.CHESTPLATE,8);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
                 map.put(ArmorItem.Type.LEGGINGS, 6);
                 map.put(ArmorItem.Type.BOOTS, 3);
                 map.put(ArmorItem.Type.BODY, 11);
@@ -39,7 +39,7 @@ public class ModArmorMaterials {
     public static final RegistryEntry<ArmorMaterial> TUNGSTEN_MATERIAL = registerArmorMaterial("tungsten",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE,9);
+                map.put(ArmorItem.Type.CHESTPLATE, 9);
                 map.put(ArmorItem.Type.LEGGINGS, 7);
                 map.put(ArmorItem.Type.BOOTS, 4);
                 map.put(ArmorItem.Type.BODY, 12);
@@ -49,7 +49,7 @@ public class ModArmorMaterials {
     public static final RegistryEntry<ArmorMaterial> ALUMINUM_MATERIAL = registerArmorMaterial("aluminum",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 3);
-                map.put(ArmorItem.Type.CHESTPLATE,8);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
                 map.put(ArmorItem.Type.LEGGINGS, 6);
                 map.put(ArmorItem.Type.BOOTS, 3);
                 map.put(ArmorItem.Type.BODY, 10);
@@ -59,7 +59,7 @@ public class ModArmorMaterials {
     public static final RegistryEntry<ArmorMaterial> SAPPHIRE_MATERIAL = registerArmorMaterial("sapphire",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 5);
-                map.put(ArmorItem.Type.CHESTPLATE,10);
+                map.put(ArmorItem.Type.CHESTPLATE, 10);
                 map.put(ArmorItem.Type.LEGGINGS, 8);
                 map.put(ArmorItem.Type.BOOTS, 5);
                 map.put(ArmorItem.Type.BODY, 13);
@@ -79,12 +79,22 @@ public class ModArmorMaterials {
     public static final RegistryEntry<ArmorMaterial> PLATINUM_MATERIAL = registerArmorMaterial("platinum",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE,9);
+                map.put(ArmorItem.Type.CHESTPLATE, 9);
                 map.put(ArmorItem.Type.LEGGINGS, 7);
                 map.put(ArmorItem.Type.BOOTS, 4);
                 map.put(ArmorItem.Type.BODY, 12);
             }), 15, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, () -> Ingredient.ofItems(ModItems.PLATINUM),
                     List.of(new ArmorMaterial.Layer(Identifier.of(PizzasOAT.MOD_ID, "platinum"))), 4, 0.2f));
+
+    public static final RegistryEntry<ArmorMaterial> STEEL_MATERIAL = registerArmorMaterial("steel",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                map.put(ArmorItem.Type.HELMET, 4);
+                map.put(ArmorItem.Type.CHESTPLATE, 9);
+                map.put(ArmorItem.Type.LEGGINGS, 7);
+                map.put(ArmorItem.Type.BOOTS, 4);
+                map.put(ArmorItem.Type.BODY, 11);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(ModItems.STEEL),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(PizzasOAT.MOD_ID, "steel"))), 3.5f, 0.2f));
 
 
     public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material) {

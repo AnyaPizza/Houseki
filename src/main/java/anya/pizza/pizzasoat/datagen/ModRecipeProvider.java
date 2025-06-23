@@ -40,6 +40,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         List<ItemConvertible> PLATINUM_SMELTABLES = List.of(ModBlocks.PLATINUM_ORE, ModBlocks.DEEPSLATE_PLATINUM_ORE);
         List<ItemConvertible> SULFUR_SMELTABLES = List.of(ModBlocks.SULFUR_ORE, ModBlocks.BLACKSTONE_SULFUR_ORE);
         List<ItemConvertible> CRUDE_IRON_SMELTABLES = List.of(Items.IRON_INGOT);
+        List<ItemConvertible> STEEL_SMELTABLES = List.of(ModItems.CRUDE_IRON);
 
         //Creates recipes for blocks to make a block of something and back to 9 items
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.PINKU, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_PINKU);
@@ -50,6 +51,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.JADE, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_JADE);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.PLATINUM, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_PLATINUM);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.SULFUR, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_SULFUR);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
 
 
         //Smelting Recipes
@@ -109,7 +111,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerBlasting(exporter, SULFUR_SMELTABLES, RecipeCategory.MISC, ModItems.SULFUR,
                 0.5f, 100, "sulfur");
         offerBlasting(exporter, CRUDE_IRON_SMELTABLES, RecipeCategory.MISC, ModItems.CRUDE_IRON,
-        0.5f, 100, "crude_iron");
+                0.5f, 100, "crude_iron");
+        offerBlasting(exporter, STEEL_SMELTABLES, RecipeCategory.MISC, ModItems.STEEL,
+                0.5f, 120, "steel");
 
         //Stonecutting Recipes
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_LIMESTONE, ModBlocks.LIMESTONE, 1);
@@ -210,6 +214,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ModGenRecipes.offerShovelRecipe(exporter, ModItems.PLATINUM_SHOVEL, ModItems.PLATINUM);
         ModGenRecipes.offerSwordRecipe(exporter, ModItems.PLATINUM_SWORD, ModItems.PLATINUM);
         ModGenRecipes.offerHoeRecipe(exporter, ModItems.PLATINUM_HOE, ModItems.PLATINUM);
+        ModGenRecipes.offerPickaxeRecipe(exporter, ModItems.STEEL_PICKAXE, ModItems.STEEL);
+        ModGenRecipes.offerAxeRecipe(exporter, ModItems.STEEL_AXE, ModItems.STEEL);
+        ModGenRecipes.offerShovelRecipe(exporter, ModItems.STEEL_SHOVEL, ModItems.STEEL);
+        ModGenRecipes.offerSwordRecipe(exporter, ModItems.STEEL_SWORD, ModItems.STEEL);
+        ModGenRecipes.offerHoeRecipe(exporter, ModItems.STEEL_HOE, ModItems.STEEL);
 
 
         //Armor Recipes
@@ -241,6 +250,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ModGenRecipes.offerChestplateRecipe(exporter, ModItems.PLATINUM_CHESTPLATE, ModItems.PLATINUM);
         ModGenRecipes.offerLeggingsRecipe(exporter, ModItems.PLATINUM_LEGGINGS, ModItems.PLATINUM);
         ModGenRecipes.offerBootsRecipe(exporter, ModItems.PLATINUM_BOOTS, ModItems.PLATINUM);
+        ModGenRecipes.offerHelmetRecipe(exporter, ModItems.STEEL_HELMET, ModItems.STEEL);
+        ModGenRecipes.offerChestplateRecipe(exporter, ModItems.STEEL_CHESTPLATE, ModItems.STEEL);
+        ModGenRecipes.offerLeggingsRecipe(exporter, ModItems.STEEL_LEGGINGS, ModItems.STEEL);
+        ModGenRecipes.offerBootsRecipe(exporter, ModItems.STEEL_BOOTS, ModItems.STEEL);
+
+
 
         //Random
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ALUMINUM_GLASS,1)
@@ -282,7 +297,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .offerTo(exporter);
 
-
         /*ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CRUSHER, 1)
                 .pattern("###")
                 .pattern("X X")
@@ -292,6 +306,55 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CAST_STEEL), conditionsFromItem(Items.CAST_STEEL))
                 .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
                 .offerTo(exporter);
-*/
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.STEEL_RAIL, 16)
+                .pattern("X X")
+                .pattern("X#X")
+                .pattern("X X")
+                .input('X', ModItems.STEEL)
+                .input('#', Items.STICK)
+                .criterion(hasItem(ModItems.STEEL), conditionsFromItem(ModItems.STEEL))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.STEEL_POWERED_RAIL, 6)
+                .pattern("X X")
+                .pattern("G#G")
+                .pattern("XRX")
+                .input('X', ModItems.STEEL)
+                .input('#', Items.STICK)
+                .input('G', Items.GOLD_INGOT)
+                .input('R', Items.REDSTONE)
+                .criterion(hasItem(ModItems.STEEL), conditionsFromItem(ModItems.STEEL))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.STEEL_DETECTOR_RAIL, 6)
+                .pattern("X X")
+                .pattern("X#X")
+                .pattern("XRX")
+                .input('X', ModItems.STEEL)
+                .input('#', Items.STONE_PRESSURE_PLATE)
+                .input('R', Items.REDSTONE)
+                .criterion(hasItem(ModItems.STEEL), conditionsFromItem(ModItems.STEEL))
+                .criterion(hasItem(Items.STONE_PRESSURE_PLATE), conditionsFromItem(Items.STONE_PRESSURE_PLATE))
+                .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.STEEL_ACTIVATOR_RAIL, 6)
+                .pattern("X#X")
+                .pattern("XRX")
+                .pattern("X#X")
+                .input('X', ModItems.STEEL)
+                .input('#', Items.STICK)
+                .input('R', Items.REDSTONE_TORCH)
+                .criterion(hasItem(ModItems.STEEL), conditionsFromItem(ModItems.STEEL))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(Items.REDSTONE_TORCH), conditionsFromItem(Items.REDSTONE_TORCH))
+                .offerTo(exporter);
+
+         */
     }
 }

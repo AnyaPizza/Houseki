@@ -1,5 +1,4 @@
 STEEL:
-1. Make a recipe to smelt Iron Ingots in a Blast Furnace and turn them into Crude Iron.
 2. Smelt Crude Iron in the Blast furnace to make Steel.
 3. Make rail variants for steel. Maybe make them faster than iron.
 4. Make tools and armor for it.
@@ -8,7 +7,7 @@ STEEL:
 CAST STEEL:
 1. Made from smelting Steel
 2. The Crusher should be made from Cast Steel.
-3. Give Netherite properties where it doesn't burn in lava.
+3. Give Strength effect to armor
 4. 5 Moh Scale.
 5. Make tools and armor from it.
 
@@ -32,6 +31,7 @@ TRONA, SODIUM CARBONATE AND PURE TUNGSTEN:
 TUNGSTEN:
 1. Look into adding Poison effect to sword.
 2. Maybe add drills that are made using Tungsten.
+3. Give Netherite properties where it doesn't burn in lava.
 
 BAUXITE:
 1. Make Bauxite into a rock. Copy of Terracotta. Remove the ore variant.
@@ -64,6 +64,7 @@ PLATINUM:
 2. Make copper crushable to make platinum. Maybe make a system to drop other stuff and platinum to be rarer or have it crushed
 to platinum nuggets that can be made into platinum ingots.
 3. Make the Ore crushable into Native Platinum and then smelt Native Platinum into Platinum ingots.
+4. Figure out an armor effect for the armor
 
 SULFER:
 1. Redo block texture.
