@@ -4,11 +4,11 @@ import anya.pizza.pizzasoat.block.ModBlocks;
 import anya.pizza.pizzasoat.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
-import net.minecraft.data.client.TexturedModel;
+import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.util.Identifier;
+
+import java.util.Optional;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -53,6 +53,15 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_SULFUR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_STEEL);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_CAST_STEEL);
+
+        blockStateModelGenerator.registerSingleton(
+                ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE,
+                new TextureMap()
+                        .put(TextureKey.BOTTOM, Identifier.of("pizzasoat", "block/sandstone_rainbow_pyrite_ore_bottom"))
+                        .put(TextureKey.TOP, Identifier.of("pizzasoat", "block/sandstone_rainbow_pyrite_ore_top"))
+                        .put(TextureKey.SIDE, Identifier.of("pizzasoat", "block/sandstone_rainbow_pyrite_ore")),
+                Models.CUBE_BOTTOM_TOP
+        );
 
         blockStateModelGenerator.registerCooker(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE);
 
@@ -193,5 +202,11 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.STEEL_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.CAST_STEEL_HORSE_ARMOR, Models.GENERATED);
 
+
+        itemModelGenerator.register(
+                ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE.asItem(),
+                new Model(Optional.of(Identifier.of("pizzasoat", "block/sandstone_rainbow_pyrite_ore")),
+                        Optional.empty())
+        );
     }
 }

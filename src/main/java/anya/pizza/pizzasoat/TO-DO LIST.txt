@@ -1,5 +1,4 @@
 RAINBOW PYRITE:
-1. Make a Sandstone variant.
 2. Maybe make it spawnable next to Bauxite as well/Make a Bauxite variant of it that spawn in Bauxite
 
 WOLFRAMITE:
@@ -27,6 +26,7 @@ BAUXITE:
 
 ALUMINUM:
 1. Make Aluminum Glass Panes
+2. Maybe make colored versions of the glass and panes
 
 NEPHRITE:
 1. Make the ore out of Limestone and spawn it in Limestone.

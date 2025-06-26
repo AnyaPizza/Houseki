@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-24T21:30:57.4442903	Pizza's Ores And Things/World Gen
+// 1.21.1	2025-06-25T23:27:42.0314595	Pizza's Ores And Things/World Gen
 52e1db7781008f80b58c1a53fd6f93393fb33ac5 data\pizzasoat\worldgen\placed_feature\bauxite_ore_placed.json
 2ebfb197b094e36675b780afb1a2bf62e4508f18 data\pizzasoat\worldgen\configured_feature\ore_slate.json
 cf80a0325a246757589b8e0055ae5c6b808c03f5 data\pizzasoat\worldgen\placed_feature\ore_limestone_placed.json
@@ -10,6 +10,7 @@ ff7aec759599856c81ef117b6f6fa16476483598 data\pizzasoat\worldgen\configured_feat
 f67b39b0aba7d979229d3c3c24791cfbfd2800a0 data\pizzasoat\worldgen\configured_feature\sapphire_ore.json
 1bd1acffe75e31239e7c1da1d47e21127cc0c5cf data\pizzasoat\worldgen\configured_feature\platinum_ore.json
 58b60908d7a3382da193dfb6ebc60646f48256ab data\pizzasoat\worldgen\configured_feature\bauxite_ore.json
+ebf3bd3f77c20aea73a73b1c94446056c27d657c data\pizzasoat\worldgen\placed_feature\sandstone_rainbow_pyrite_ore_placed.json
 fb90a209c8128b4a2fa75c0ca57d2c76b4c2ac3c data\pizzasoat\worldgen\configured_feature\nephrite_ore.json
 c4a435519c2b28cf0aaa2299875e88dd7f8f6f7d data\pizzasoat\worldgen\placed_feature\rainbow_pyrite_ore_placed.json
 d7e6a5caa7d7872385b760d5b86c3219495459ba data\pizzasoat\worldgen\configured_feature\sulfur_ore.json
@@ -24,4 +25,5 @@ ab0e23456310bade484c927e2a963f1143c78b81 data\pizzasoat\worldgen\configured_feat
 153d62a79233b165674aefb831ae2cdad37c3b7c data\pizzasoat\worldgen\configured_feature\ore_limestone.json
 df146d4a272c84d139d5807f75cdc366477117c9 data\pizzasoat\worldgen\placed_feature\sulfur_ore_placed.json
 3ead3b090979211cfad6d0f5c65ed0751d560c49 data\pizzasoat\worldgen\configured_feature\wolframite_ore.json
+21a82b6234f5e3edb87754a8a8f4a00a10ca0b19 data\pizzasoat\worldgen\configured_feature\sandstone_rainbow_pyrite_ore.json
 9f69f636333aa167fc6f2e5eca71e0fc501b31df data\pizzasoat\worldgen\placed_feature\scheelite_ore_placed.json

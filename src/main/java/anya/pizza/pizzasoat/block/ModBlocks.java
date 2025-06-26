@@ -87,6 +87,9 @@ public class ModBlocks {
     public static final Block RAINBOW_PYRITE_ORE = registerBlock("rainbow_pyrite_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copy(Blocks.STONE).strength(4.8f, 7.2f).requiresTool())); //6 Moh Scale
 
+    public static final Block SANDSTONE_RAINBOW_PYRITE_ORE = registerBlock("sandstone_rainbow_pyrite_ore",
+            new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copy(Blocks.SANDSTONE).strength(4.8f, 7.2f).requiresTool()));
+
     public static final Block WOLFRAMITE_ORE = registerBlock("wolframite_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.GRANITE).strength(3, 4).requiresTool())); //4.5 Moh Scale
 

@@ -1,11 +1,11 @@
-// 1.21.1	2025-06-24T21:30:57.4421637	Pizza's Ores And Things/Tags for minecraft:block
-5f4a60417bd016dceb4189223039d17366baeb9f data\minecraft\tags\block\mineable\pickaxe.json
+// 1.21.1	2025-06-25T23:27:42.0294602	Pizza's Ores And Things/Tags for minecraft:block
+3b66b784f6d61ca89391fc99ac3d27c5cdf2624e data\minecraft\tags\block\mineable\pickaxe.json
 66ed13870ea30c133afecf037bad0eb0a06fd529 data\minecraft\tags\block\needs_diamond_tool.json
-975b90d4ce98fd59b087f8cc8eeda5702715a670 data\minecraft\tags\block\slabs.json
-0ac8394f29c248ec01ff2305c93457123f925904 data\minecraft\tags\block\walls.json
 20735d56988e7447b08981a7ac4c4cdc7a102dd5 data\minecraft\tags\block\beacon_base_blocks.json
+0ac8394f29c248ec01ff2305c93457123f925904 data\minecraft\tags\block\walls.json
+975b90d4ce98fd59b087f8cc8eeda5702715a670 data\minecraft\tags\block\slabs.json
 3ee0bc4f49917150d0edbde7979b2d4e53311a46 data\minecraft\tags\block\dragon_immune.json
-9f3842d2aa184968d711b1aec07112b2fd6b245b data\minecraft\tags\block\needs_iron_tool.json
+3ac805f5fd602abbe244ae38846c50d48a006074 data\minecraft\tags\block\needs_iron_tool.json
 7bd34959b6826e3e293347002d05891d2a284659 data\minecraft\tags\block\wither_immune.json
 32009dacba0a23a72781b67bdb2c2d6906ebfacc data\minecraft\tags\block\needs_stone_tool.json
 8e07e5eef1b5408f93dc8f2de74e0a5dcad75529 data\minecraft\tags\block\stairs.json

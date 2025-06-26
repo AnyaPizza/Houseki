@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "group": "rainbow_pyrite",
+  "ingredient": {
+    "item": "pizzasoat:sandstone_rainbow_pyrite_ore"
+  },
+  "result": {
+    "id": "pizzasoat:rainbow_pyrite"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "pizzasoat:block/sandstone_rainbow_pyrite_ore_bottom",
+    "side": "pizzasoat:block/sandstone_rainbow_pyrite_ore",
+    "top": "pizzasoat:block/sandstone_rainbow_pyrite_ore_top"
+  }
+}
