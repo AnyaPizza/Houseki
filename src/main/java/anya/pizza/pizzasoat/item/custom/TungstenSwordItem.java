@@ -15,7 +15,7 @@ public class TungstenSwordItem extends SwordItem {
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!target.hasStatusEffect(StatusEffects.POISON)) {//checks if target has the effect already
-            if (attacker.getRandom().nextFloat() < 1f) {//50% chance to give effect
+            if (attacker.getRandom().nextFloat() < 0.4f) {//40% chance to give effect
                 target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 60, 0, false, true), attacker);
             }
         }

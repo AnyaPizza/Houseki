@@ -6,8 +6,6 @@ Drills:
 3. Maybe make electrical components to craft one.
 
 TUNGSTEN:
-1. Test to see if tungsten sword effects playersa
-2. Maybe add drills that are made using Tungsten.
 3. Give Netherite properties where it doesn't burn in lava.
 
 BAUXITE:
@@ -52,3 +50,5 @@ SULFER:
 TRONA, SODIUM CARBONATE AND PURE TUNGSTEN:
 2. If re-implemented then change Trona texture.
 3. Maybe make a deepslate version of Trona
+
+Create achievements for getting the armor sets.
