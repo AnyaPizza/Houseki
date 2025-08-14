@@ -1,8 +1,8 @@
-// 1.21.1	2025-06-28T00:51:04.7653396	Pizza's Ores And Things/Tags for minecraft:item
-dcc01c63137bf526ccda547a0cddf33f11c2b20b data\minecraft\tags\item\beacon_payment_items.json
-d78a6f3424d81283f0fa16d44feedfcd78aaf3a2 data\minecraft\tags\item\swords.json
-d37051e9fbee44fe2f48ccbdd1c7a115b7b60717 data\minecraft\tags\item\axes.json
-d4aa5890e47d8ae81b32b28b68bea8b0ba4592bb data\minecraft\tags\item\hoes.json
-3cf5c743434600f2254d8301fb18c297460aec0a data\minecraft\tags\item\pickaxes.json
+// 1.21.1	2025-08-10T10:25:05.5545786	Pizza's Ores And Things/Tags for minecraft:item
 13bb11feab05bae0f645788ef8bc736f201af87a data\minecraft\tags\item\trimmable_armor.json
+3cf5c743434600f2254d8301fb18c297460aec0a data\minecraft\tags\item\pickaxes.json
 97dcca8624a5e0512e0c90db52632bb3a7632721 data\minecraft\tags\item\shovels.json
+dcc01c63137bf526ccda547a0cddf33f11c2b20b data\minecraft\tags\item\beacon_payment_items.json
+d37051e9fbee44fe2f48ccbdd1c7a115b7b60717 data\minecraft\tags\item\axes.json
+d78a6f3424d81283f0fa16d44feedfcd78aaf3a2 data\minecraft\tags\item\swords.json
+d4aa5890e47d8ae81b32b28b68bea8b0ba4592bb data\minecraft\tags\item\hoes.json

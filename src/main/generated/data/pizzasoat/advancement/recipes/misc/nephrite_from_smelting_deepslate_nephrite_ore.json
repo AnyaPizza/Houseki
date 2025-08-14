@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:nephrite_from_smelting_deepslate_nephrite_ore"
+        "recipe": "pizzasoat:nephrite_from_smelting_deepslate_nephrite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:nephrite_from_smelting_deepslate_nephrite_ore"
+      "pizzasoat:nephrite_from_smelting_deepslate_nephrite_ore"
     ]
   }
 }

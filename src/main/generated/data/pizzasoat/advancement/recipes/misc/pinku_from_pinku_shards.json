@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pinku_from_pinku_shards"
+        "recipe": "pizzasoat:pinku_from_pinku_shards"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -37,7 +37,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pinku_from_pinku_shards"
+      "pizzasoat:pinku_from_pinku_shards"
     ]
   }
 }

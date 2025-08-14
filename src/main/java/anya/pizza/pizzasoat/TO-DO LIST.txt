@@ -1,7 +1,12 @@
 Investigate needs netherite error
 
+Drills:
+1. Made with Tungsten
+2. Research a little of what goes into making a drill.
+3. Maybe make electrical components to craft one.
+
 TUNGSTEN:
-1. Test to see if tungesten sword effects players
+1. Test to see if tungsten sword effects playersa
 2. Maybe add drills that are made using Tungsten.
 3. Give Netherite properties where it doesn't burn in lava.
 

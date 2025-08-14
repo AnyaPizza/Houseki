@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cast_steel"
+        "recipe": "pizzasoat:cast_steel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cast_steel"
+      "pizzasoat:cast_steel"
     ]
   }
 }

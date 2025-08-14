@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:sulfur_from_blasting_blackstone_sulfur_ore"
+        "recipe": "pizzasoat:sulfur_from_blasting_blackstone_sulfur_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:sulfur_from_blasting_blackstone_sulfur_ore"
+      "pizzasoat:sulfur_from_blasting_blackstone_sulfur_ore"
     ]
   }
 }

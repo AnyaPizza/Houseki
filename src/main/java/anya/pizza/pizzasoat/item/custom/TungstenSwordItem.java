@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 
-//delete this lone
 public class TungstenSwordItem extends SwordItem {
     public TungstenSwordItem(ToolMaterial material, Settings settings) {
         super(material, settings);
