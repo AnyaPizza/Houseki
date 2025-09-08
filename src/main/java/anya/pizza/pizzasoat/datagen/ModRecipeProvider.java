@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -17,6 +18,7 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static anya.pizza.pizzasoat.util.ModGenRecipes.offerDrillUpgradeRecipe;
 import static anya.pizza.pizzasoat.util.ModGenRecipes.offerPinkuUpgradeRecipe;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -192,6 +194,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ModGenRecipes.offerShovelRecipe(exporter, ModItems.TUNGSTEN_SHOVEL, ModItems.TUNGSTEN);
         ModGenRecipes.offerSwordRecipe(exporter, ModItems.TUNGSTEN_SWORD, ModItems.TUNGSTEN);
         ModGenRecipes.offerHoeRecipe(exporter, ModItems.TUNGSTEN_HOE, ModItems.TUNGSTEN);
+        offerDrillUpgradeRecipe(exporter, ModItems.SIMPLE_DRILL_HEAD, RecipeCategory.TOOLS, ModItems.ENHANCED_DRILL_HEAD);
+        offerDrillUpgradeRecipe(exporter, ModItems.ENHANCED_DRILL_HEAD, RecipeCategory.TOOLS, ModItems.ADVANCED_DRILL_HEAD);
+        offerDrillUpgradeRecipe(exporter, ModItems.ADVANCED_DRILL_HEAD, RecipeCategory.TOOLS, ModItems.PREMIUM_DRILL_HEAD);
         ModGenRecipes.offerPickaxeRecipe(exporter, ModItems.ALUMINUM_PICKAXE, ModItems.ALUMINUM);
         ModGenRecipes.offerAxeRecipe(exporter, ModItems.ALUMINUM_AXE, ModItems.ALUMINUM);
         ModGenRecipes.offerShovelRecipe(exporter, ModItems.ALUMINUM_SHOVEL, ModItems.ALUMINUM);
@@ -222,6 +227,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ModGenRecipes.offerShovelRecipe(exporter, ModItems.CAST_STEEL_SHOVEL, ModItems.CAST_STEEL);
         ModGenRecipes.offerSwordRecipe(exporter, ModItems.CAST_STEEL_SWORD, ModItems.CAST_STEEL);
         ModGenRecipes.offerHoeRecipe(exporter, ModItems.CAST_STEEL_HOE, ModItems.CAST_STEEL);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.SIMPLE_TUNGSTEN_DRILL, 1)
+                .input(ModItems.TUNGSTEN_DRILL_BIT)
+                .input(ModItems.SIMPLE_DRILL_HEAD)
+                .criterion(hasItem(ModItems.TUNGSTEN_DRILL_BIT), conditionsFromItem(ModItems.TUNGSTEN_DRILL_BIT))
+                .criterion(hasItem(ModItems.SIMPLE_DRILL_HEAD), conditionsFromItem(ModItems.SIMPLE_DRILL_HEAD))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.ENHANCED_TUNGSTEN_DRILL, 1)
+                .input(ModItems.TUNGSTEN_DRILL_BIT)
+                .input(ModItems.ENHANCED_DRILL_HEAD)
+                .criterion(hasItem(ModItems.TUNGSTEN_DRILL_BIT), conditionsFromItem(ModItems.TUNGSTEN_DRILL_BIT))
+                .criterion(hasItem(ModItems.ENHANCED_DRILL_HEAD), conditionsFromItem(ModItems.ENHANCED_DRILL_HEAD))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.ADVANCED_TUNGSTEN_DRILL, 1)
+                .input(ModItems.TUNGSTEN_DRILL_BIT)
+                .input(ModItems.ADVANCED_DRILL_HEAD)
+                .criterion(hasItem(ModItems.TUNGSTEN_DRILL_BIT), conditionsFromItem(ModItems.TUNGSTEN_DRILL_BIT))
+                .criterion(hasItem(ModItems.ADVANCED_DRILL_HEAD), conditionsFromItem(ModItems.ADVANCED_DRILL_HEAD))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.PREMIUM_TUNGSTEN_DRILL, 1)
+                .input(ModItems.TUNGSTEN_DRILL_BIT)
+                .input(ModItems.PREMIUM_DRILL_HEAD)
+                .criterion(hasItem(ModItems.TUNGSTEN_DRILL_BIT), conditionsFromItem(ModItems.TUNGSTEN_DRILL_BIT))
+                .criterion(hasItem(ModItems.PREMIUM_DRILL_HEAD), conditionsFromItem(ModItems.PREMIUM_DRILL_HEAD))
+                .offerTo(exporter);
 
 
         //Armor Recipes
@@ -312,6 +345,40 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('X', Items.IRON_INGOT)
                 .criterion(hasItem(ModItems.CAST_STEEL), conditionsFromItem(ModItems.CAST_STEEL))
                 .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.TUNGSTEN_DRILL_BIT, 1)
+                .pattern("   ")
+                .pattern(" # ")
+                .pattern("#X#")
+                .input('#', ModItems.TUNGSTEN)
+                .input('X', ModBlocks.BLOCK_OF_TUNGSTEN)
+                .criterion(hasItem(ModItems.TUNGSTEN), conditionsFromItem(ModItems.TUNGSTEN))
+                .criterion(hasItem(ModBlocks.BLOCK_OF_TUNGSTEN), conditionsFromItem(ModBlocks.BLOCK_OF_TUNGSTEN))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SIMPLE_DRILL_HEAD, 1)
+                .pattern(" X ")
+                .pattern("#R#")
+                .pattern("###")
+                .input('X', ModItems.CAST_STEEL)
+                .input('#', ModBlocks.BLOCK_OF_CAST_STEEL)
+                .input('R', Items.REDSTONE)
+                .criterion(hasItem(ModItems.CAST_STEEL), conditionsFromItem(ModItems.CAST_STEEL))
+                .criterion(hasItem(ModBlocks.BLOCK_OF_CAST_STEEL), conditionsFromItem(ModBlocks.BLOCK_OF_CAST_STEEL))
+                .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE, 2)
+                .pattern("#X#")
+                .pattern("#U#")
+                .pattern("###")
+                .input('#', ModItems.CAST_STEEL)
+                .input('X', ModBlocks.BLOCK_OF_CAST_STEEL)
+                .input('U', ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE)
+                .criterion(hasItem(ModItems.CAST_STEEL), conditionsFromItem(ModItems.CAST_STEEL))
+                .criterion(hasItem(ModBlocks.BLOCK_OF_CAST_STEEL), conditionsFromItem(ModBlocks.BLOCK_OF_CAST_STEEL))
+                .criterion(hasItem(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE))
                 .offerTo(exporter);
     }
 }

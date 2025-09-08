@@ -1,6 +1,7 @@
 package anya.pizza.pizzasoat.item;
 
 import anya.pizza.pizzasoat.PizzasOAT;
+import anya.pizza.pizzasoat.item.custom.DrillTemplateItem;
 import anya.pizza.pizzasoat.item.custom.ModArmorItem;
 import anya.pizza.pizzasoat.item.custom.PinkuTemplateItem;
 import anya.pizza.pizzasoat.item.custom.TungstenSwordItem;
@@ -33,8 +34,14 @@ public class ModItems {
     public static final Item CRUDE_IRON = registerItem("crude_iron", new Item(new Item.Settings()));
     public static final Item STEEL = registerItem("steel", new Item(new Item.Settings()));
     public static final Item CAST_STEEL = registerItem("cast_steel", new Item(new Item.Settings()));
+    public static final Item TUNGSTEN_DRILL_BIT = registerItem("tungsten_drill_bit", new Item(new Item.Settings()));
+    public static final Item SIMPLE_DRILL_HEAD = registerItem("simple_drill_head", new Item(new Item.Settings()));
+    public static final Item ENHANCED_DRILL_HEAD = registerItem("enhanced_drill_head", new Item(new Item.Settings()));
+    public static final Item ADVANCED_DRILL_HEAD = registerItem("advanced_drill_head", new Item(new Item.Settings()));
+    public static final Item PREMIUM_DRILL_HEAD = registerItem("premium_drill_head", new Item(new Item.Settings()));
 
     public static final Item PINKU_UPGRADE_SMITHING_TEMPLATE = registerItem("pinku_upgrade_smithing_template", PinkuTemplateItem.createPinkuUpgrade());
+    public static final Item DRILL_UPGRADE_SMITHING_TEMPLATE = registerItem("drill_upgrade_smithing_template", DrillTemplateItem.createDrillUpgrade());
 
     //Tools
     public static final Item PINKU_PICKAXE = registerItem("pinku_pickaxe",
@@ -69,6 +76,15 @@ public class ModItems {
             new TungstenSwordItem(ModToolMaterials.TUNGSTEN, new Item.Settings().fireproof().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN, 2, 1.7f))));
     public static final Item TUNGSTEN_HOE = registerItem("tungsten_hoe",
             new HoeItem(ModToolMaterials.TUNGSTEN, new Item.Settings().fireproof().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN, -4, 4.1f))));
+
+    public static final Item SIMPLE_TUNGSTEN_DRILL = registerItem("simple_tungsten_drill",
+            new PickaxeItem(ModToolMaterials.TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN_DRILL, 2, 1.9f))));
+    public static final Item ENHANCED_TUNGSTEN_DRILL = registerItem("enhanced_tungsten_drill",
+            new PickaxeItem(ModToolMaterials.TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN_DRILL, 2.5f, 2.3f))));
+    public static final Item ADVANCED_TUNGSTEN_DRILL = registerItem("advanced_tungsten_drill",
+            new PickaxeItem(ModToolMaterials.TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN_DRILL, 3, 2.9f))));
+    public static final Item PREMIUM_TUNGSTEN_DRILL = registerItem("premium_tungsten_drill",
+            new PickaxeItem(ModToolMaterials.TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN_DRILL, 3.5f, 3.5f))));
 
     public static final Item ALUMINUM_PICKAXE = registerItem("aluminum_pickaxe",
             new PickaxeItem(ModToolMaterials.ALUMINUM, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.ALUMINUM, 0, 1.3f))));

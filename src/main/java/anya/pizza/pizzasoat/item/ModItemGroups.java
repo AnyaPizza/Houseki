@@ -137,6 +137,17 @@ public class ModItemGroups {
                         entries.add(ModItems.CRUDE_IRON);
                         entries.add(ModItems.STEEL);
                         entries.add(ModItems.CAST_STEEL);
+                        entries.add(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE);
+
+                        entries.add(ModItems.TUNGSTEN_DRILL_BIT);
+                        entries.add(ModItems.SIMPLE_DRILL_HEAD);
+                        entries.add(ModItems.ENHANCED_DRILL_HEAD);
+                        entries.add(ModItems.ADVANCED_DRILL_HEAD);
+                        entries.add(ModItems.PREMIUM_DRILL_HEAD);
+                        entries.add(ModItems.SIMPLE_TUNGSTEN_DRILL);
+                        entries.add(ModItems.ENHANCED_TUNGSTEN_DRILL);
+                        entries.add(ModItems.ADVANCED_TUNGSTEN_DRILL);
+                        entries.add(ModItems.PREMIUM_TUNGSTEN_DRILL);
 
                     }).build());
 

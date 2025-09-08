@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "pizzasoat:tungsten_drill_bit"
+    },
+    {
+      "item": "pizzasoat:advanced_drill_head"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "pizzasoat:advanced_tungsten_drill"
+  }
+}

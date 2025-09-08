@@ -107,8 +107,14 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CRUDE_IRON, Models.GENERATED);
         itemModelGenerator.register(ModItems.STEEL, Models.GENERATED);
         itemModelGenerator.register(ModItems.CAST_STEEL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.TUNGSTEN_DRILL_BIT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SIMPLE_DRILL_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ENHANCED_DRILL_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ADVANCED_DRILL_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PREMIUM_DRILL_HEAD, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.PINKU_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.PINKU_AXE, Models.HANDHELD);
@@ -125,6 +131,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.TUNGSTEN_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.TUNGSTEN_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItems.TUNGSTEN_HOE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SIMPLE_TUNGSTEN_DRILL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ENHANCED_TUNGSTEN_DRILL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ADVANCED_TUNGSTEN_DRILL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.PREMIUM_TUNGSTEN_DRILL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.ALUMINUM_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.ALUMINUM_AXE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.ALUMINUM_SHOVEL, Models.HANDHELD);

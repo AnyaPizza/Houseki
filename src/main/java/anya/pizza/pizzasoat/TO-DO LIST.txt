@@ -1,9 +1,8 @@
 Investigate needs netherite error
+Need to figure out how to upgrade drill heads while bit is on without losing durability and stuff
 
 Drills:
-1. Made with Tungsten, cast steel(maybe blocks), maybe some Redstone.
-2. Maybe look into other metals that are used for drills and makes them too.
-3. Maybe make a 3d model for it but prob not.
+1. Maybe look into other metals that are used for drills and makes them too.
 
 TUNGSTEN:
 3. Give Tungsten Block Netherite properties where it doesn't burn in lava.

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "pizzasoat:tungsten"
+    },
+    "X": {
+      "item": "pizzasoat:block_of_tungsten"
+    }
+  },
+  "pattern": [
+    "   ",
+    " # ",
+    "#X#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pizzasoat:tungsten_drill_bit"
+  }
+}

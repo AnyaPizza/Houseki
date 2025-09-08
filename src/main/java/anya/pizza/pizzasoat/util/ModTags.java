@@ -15,6 +15,8 @@ public class ModTags {
         public static final TagKey<Block> INCORRECT_FOR_RAINBOW_PYRITE_TOOL = createTag("incorrect_for_rainbow_pyrite_tool");
         public static final TagKey<Block> NEEDS_TUNGSTEN_TOOL = createTag("needs_tungsten_tool");
         public static final TagKey<Block> INCORRECT_FOR_TUNGSTEN_TOOL = createTag("incorrect_for_tungsten_tool");
+        public static final TagKey<Block> NEEDS_TUNGSTEN_DRILL_TOOL = createTag("needs_tungsten_drill_tool");
+        public static final TagKey<Block> INCORRECT_FOR_TUNGSTEN_DRILL_TOOL = createTag("incorrect_for_tungsten_drill_tool");
         public static final TagKey<Block> NEEDS_ALUMINUM_TOOL = createTag("needs_aluminum_tool");
         public static final TagKey<Block> INCORRECT_FOR_ALUMINUM_TOOL = createTag("incorrect_for_aluminum_tool");
         public static final TagKey<Block> NEEDS_SAPPHIRE_TOOL = createTag("needs_sapphire_tool");

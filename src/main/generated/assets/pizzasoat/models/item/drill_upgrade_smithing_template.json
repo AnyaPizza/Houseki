@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "pizzasoat:item/drill_upgrade_smithing_template"
+  }
+}

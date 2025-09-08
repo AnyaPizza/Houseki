@@ -13,6 +13,7 @@ public enum ModToolMaterials implements ToolMaterial {
     PINKU(ModTags.Blocks.INCORRECT_FOR_PINKU_TOOL, 2580, 10, 5, 16, () -> Ingredient.ofItems(ModItems.PINKU)),
     RAINBOW_PYRITE(ModTags.Blocks.INCORRECT_FOR_RAINBOW_PYRITE_TOOL, 2000, 8, 4, 12, () -> Ingredient.ofItems(ModItems.RAINBOW_PYRITE)),
     TUNGSTEN(ModTags.Blocks.INCORRECT_FOR_TUNGSTEN_TOOL, 3000, 9, 4.5f, 15, () -> Ingredient.ofItems(ModItems.TUNGSTEN)),
+    TUNGSTEN_DRILL(ModTags.Blocks.INCORRECT_FOR_TUNGSTEN_DRILL_TOOL, 5000, 45, 4.5f, 15, () -> Ingredient.ofItems(ModItems.TUNGSTEN)),
     ALUMINUM(ModTags.Blocks.INCORRECT_FOR_ALUMINUM_TOOL, 1500, 7.5f, 3, 11, () -> Ingredient.ofItems(ModItems.ALUMINUM)),
     SAPPHIRE(ModTags.Blocks.INCORRECT_FOR_SAPPHIRE_TOOL, 3000, 9, 5, 12, () -> Ingredient.ofItems(ModItems.SAPPHIRE)),
     JADE(ModTags.Blocks.INCORRECT_FOR_JADE_TOOL, 2000, 8, 4, 12, () -> Ingredient.ofItems(ModItems.JADE)),

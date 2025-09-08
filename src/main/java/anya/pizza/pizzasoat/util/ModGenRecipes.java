@@ -1,5 +1,6 @@
 package anya.pizza.pizzasoat.util;
 
+import anya.pizza.pizzasoat.block.ModBlocks;
 import anya.pizza.pizzasoat.item.ModItems;
 import anya.pizza.pizzasoat.recipe.CrusherRecipe;
 import anya.pizza.pizzasoat.recipe.ModRecipes;
@@ -21,10 +22,16 @@ import static net.minecraft.data.server.recipe.RecipeProvider.*;
 
 public class ModGenRecipes {
 
-    //Pinku Smithing Template
+    //Smithing Templates
     public static void offerPinkuUpgradeRecipe(RecipeExporter exporter, Item input, RecipeCategory category, Item result) {
         SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE), Ingredient.ofItems(input), Ingredient.ofItems(ModItems.PINKU), category, result)
                 .criterion("has_pinku", conditionsFromItem(ModItems.PINKU))
+                .offerTo(exporter, getItemPath(result) + "_smithing");
+    }
+
+    public static void offerDrillUpgradeRecipe(RecipeExporter exporter, Item input, RecipeCategory category, Item result) {
+        SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE), Ingredient.ofItems(input), Ingredient.ofItems(ModBlocks.BLOCK_OF_CAST_STEEL), category, result)
+                .criterion("has_block_of_cast_steel", conditionsFromItem(ModBlocks.BLOCK_OF_CAST_STEEL))
                 .offerTo(exporter, getItemPath(result) + "_smithing");
     }
 

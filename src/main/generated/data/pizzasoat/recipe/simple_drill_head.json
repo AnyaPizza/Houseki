@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "pizzasoat:block_of_cast_steel"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "X": {
+      "item": "pizzasoat:cast_steel"
+    }
+  },
+  "pattern": [
+    " X ",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pizzasoat:simple_drill_head"
+  }
+}

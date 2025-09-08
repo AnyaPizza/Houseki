@@ -190,6 +190,12 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
 
                         .with(ItemEntry.builder(ModItems.PINKU_HORSE_ARMOR).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.ENHANCED_DRILL_HEAD).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
                 tableBuilder.pool(poolBuilder.build());
@@ -201,6 +207,8 @@ public class ModLootTableModifiers {
                         .conditionally(RandomChanceLootCondition.builder(0.05f))
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD))
                         .with(ItemEntry.builder(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE))
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE))
+                        .with(ItemEntry.builder(ModItems.SIMPLE_DRILL_HEAD))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder);
             }
@@ -210,6 +218,7 @@ public class ModLootTableModifiers {
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.05f))
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD))
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder);
             }
@@ -299,7 +308,13 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(6.0f, 10.0f))))
 
                         .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE).weight(1)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 4.0f))));
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 4.0f))))
+
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.ENHANCED_DRILL_HEAD).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
                 tableBuilder.pool(poolBuilder.build());
 
@@ -370,6 +385,8 @@ public class ModLootTableModifiers {
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.05f))
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD))
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE))
+                        .with(ItemEntry.builder(ModItems.SIMPLE_DRILL_HEAD))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder);
             }
@@ -447,7 +464,13 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
 
                         .with(ItemEntry.builder(ModItems.CAST_STEEL).weight(1)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))));
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
+
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.ENHANCED_DRILL_HEAD).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
                 tableBuilder.pool(poolBuilder.build());
             }
@@ -552,6 +575,9 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
 
                         .with(ItemEntry.builder(ModItems.ALUMINUM_PICKAXE).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
                 tableBuilder.pool(poolBuilder.build());
@@ -629,6 +655,9 @@ public class ModLootTableModifiers {
                                 .apply(new EnchantWithLevelsLootFunction.Builder(UniformLootNumberProvider.create(10.0F, 20.0F)))
 
                         .with(ItemEntry.builder(ModBlocks.BLOCK_OF_SAPPHIRE).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
                 tableBuilder.pool(poolBuilder.build());
@@ -650,6 +679,12 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
 
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
+
+                        .with(ItemEntry.builder(ModItems.ENHANCED_DRILL_HEAD).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
                 tableBuilder.pool(poolBuilder.build());
@@ -671,6 +706,12 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
 
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD).weight(2)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
+
+                        .with(ItemEntry.builder(ModItems.ENHANCED_DRILL_HEAD).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
                 tableBuilder.pool(poolBuilder.build());
@@ -848,6 +889,9 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
 
                         .with(ItemEntry.builder(ModItems.PLATINUM_CHESTPLATE).weight(5)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+
+                        .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
 
                 tableBuilder.pool(poolBuilder.build());

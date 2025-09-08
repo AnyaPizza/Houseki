@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "pizzasoat:item/simple_tungsten_drill"
+  }
+}
