@@ -31,7 +31,7 @@ public class ModItems {
     public static final Item CRUDE_IRON = registerItem("crude_iron", new Item(new Item.Settings()));
     public static final Item STEEL = registerItem("steel", new Item(new Item.Settings()));
     public static final Item CAST_STEEL = registerItem("cast_steel", new Item(new Item.Settings()));
-    public static final Item TUNGSTEN_DRILL_BIT = registerItem("tungsten_drill_bit", new Item(new Item.Settings()));
+    public static final Item TUNGSTEN_DRILL_BIT = registerItem("tungsten_drill_bit", new Item(new Item.Settings().fireproof()));
     public static final Item SIMPLE_DRILL_HEAD = registerItem("simple_drill_head", new Item(new Item.Settings()));
     public static final Item ENHANCED_DRILL_HEAD = registerItem("enhanced_drill_head", new Item(new Item.Settings()));
     public static final Item ADVANCED_DRILL_HEAD = registerItem("advanced_drill_head", new Item(new Item.Settings()));

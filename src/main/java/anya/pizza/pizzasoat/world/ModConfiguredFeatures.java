@@ -62,7 +62,6 @@ public class ModConfiguredFeatures {
 
         List<OreFeatureConfig.Target> overworldBauxiteOre =
                 List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.BAUXITE.getDefaultState()));
-                        //, OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_BAUXITE_ORE.getDefaultState()));
 
         List<OreFeatureConfig.Target> overworldSapphireOres =
                 List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.SAPPHIRE_ORE.getDefaultState()),

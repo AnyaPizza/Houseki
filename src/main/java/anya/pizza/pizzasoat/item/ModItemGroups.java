@@ -172,7 +172,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLOCK_OF_TUNGSTEN);
 
                         entries.add(ModBlocks.BAUXITE);
-                        //entries.add(ModBlocks.DEEPSLATE_BAUXITE_ORE);
 
                         entries.add(ModBlocks.BLOCK_OF_ALUMINUM);
                         entries.add(ModBlocks.ALUMINUM_GLASS);

@@ -1,6 +1,7 @@
 package anya.pizza.pizzasoat.datagen;
 
 import anya.pizza.pizzasoat.item.ModItems;
+import anya.pizza.pizzasoat.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -117,6 +118,23 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PLATINUM_PICKAXE)
                 .add(ModItems.STEEL_PICKAXE)
                 .add(ModItems.CAST_STEEL_PICKAXE);
+
+        getOrCreateTagBuilder(ModTags.Items.DRILLS)
+                .add(ModItems.SIMPLE_DRILL_HEAD)
+                .add(ModItems.SIMPLE_TUNGSTEN_DRILL)
+                .add(ModItems.ENHANCED_DRILL_HEAD)
+                .add(ModItems.ENHANCED_TUNGSTEN_DRILL)
+                .add(ModItems.ADVANCED_DRILL_HEAD)
+                .add(ModItems.ADVANCED_TUNGSTEN_DRILL)
+                .add(ModItems.PREMIUM_DRILL_HEAD)
+                .add(ModItems.PREMIUM_TUNGSTEN_DRILL);
+
+        getOrCreateTagBuilder(ModTags.Items.DRILL_BITS)
+                .add(ModItems.TUNGSTEN_DRILL_BIT);
+
+        getOrCreateTagBuilder(ModTags.Items.SMITHING_TEMPLATES)
+                .add(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE)
+                .add(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE);
 
     }
 }

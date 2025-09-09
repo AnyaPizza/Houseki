@@ -180,6 +180,10 @@
   "item.pizzasoat.steel_horse_armor": "Steel Horse Armor",
   "item.pizzasoat.cast_steel_horse_armor": "Cast Steel Horse Armor",
 
+  "tag.item.pizzasoat.drills": "Drills",
+  "tag.item.pizzasoat.drill_bits": "Drill Bits",
+  "tag.item.pizzasoat.smithing_templates": "Smithing Templates",
+
   "item.pizzasoat.smithing_template.pinku_upgrade.applies_to": "Netherite Equipment",
   "item.pizzasoat.smithing_template.pinku_upgrade.ingredients": "Pinku",
   "item.pizzasoat.smithing_template.pinku_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",

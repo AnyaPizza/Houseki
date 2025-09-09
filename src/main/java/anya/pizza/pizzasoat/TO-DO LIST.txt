@@ -45,3 +45,5 @@ TRONA, SODIUM CARBONATE AND PURE TUNGSTEN:
 3. Maybe make a deepslate version of Trona
 
 Create achievements for getting the armor sets.
+
+Maybe add more tags.

@@ -26,7 +26,6 @@ public class ModModelProvider extends FabricModelProvider {
         //blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.TRONA_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_TUNGSTEN);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BAUXITE);
-        //blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_BAUXITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ALUMINUM_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_ALUMINUM);
         blockStateModelGenerator.registerDoor(ModBlocks.ALUMINUM_DOOR);

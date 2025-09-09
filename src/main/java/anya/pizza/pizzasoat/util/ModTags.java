@@ -3,6 +3,7 @@ package anya.pizza.pizzasoat.util;
 
 import anya.pizza.pizzasoat.PizzasOAT;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -38,8 +39,19 @@ public class ModTags {
 
         public static final TagKey<Block> PREMIUM_DRILL_MINEABLE = createTag("premium_mineable");
 
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(PizzasOAT.MOD_ID, name));
+        }
+    }
+
+    public static class Items {
+        public static final TagKey<Item> DRILLS = createTag("drills");
+        public static final TagKey<Item> DRILL_BITS = createTag("drill_bits");
+        public static final TagKey<Item> SMITHING_TEMPLATES = createTag("smithing_templates");
+
+        private static TagKey<Item> createTag(String name) {
+            return TagKey.of(RegistryKeys.ITEM, Identifier.of(PizzasOAT.MOD_ID, name));
         }
     }
 }

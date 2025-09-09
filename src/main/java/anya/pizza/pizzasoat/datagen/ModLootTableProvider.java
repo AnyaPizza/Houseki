@@ -79,9 +79,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         //addDrop(ModBlocks.TRONA_ORE, AverageOreDrops(ModBlocks.TRONA_ORE, ModItems.TRONA));
 
-        //addDrop(ModBlocks.BAUXITE_ORE, AverageOreDrops(ModBlocks.BAUXITE_ORE, ModItems.BAUXITE));
-        //addDrop(ModBlocks.DEEPSLATE_BAUXITE_ORE, AverageOreDrops(ModBlocks.BAUXITE_ORE, ModItems.BAUXITE));
-
         addDropWithSilkTouch(ModBlocks.ALUMINUM_GLASS);
 
         addDrop(ModBlocks.SAPPHIRE_ORE, SingleItemOreDrops(ModBlocks.SAPPHIRE_ORE, ModItems.SAPPHIRE));

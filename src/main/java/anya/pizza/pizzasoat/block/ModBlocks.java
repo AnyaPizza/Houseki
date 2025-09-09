@@ -101,12 +101,6 @@ public class ModBlocks {
     //public static final Block TRONA_ORE = registerBlock("trona_ore",
     //        new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(2, 3).requiresTool())); //2.5 Moh Scale
 
-    //public static final Block BAUXITE_ORE = registerBlock("bauxite_ore",
-    //        new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(1.5f, 2.5f).requiresTool())); //2 Moh Scale
-
-    //public static final Block DEEPSLATE_BAUXITE_ORE = registerBlock("deepslate_bauxite_ore",
-    //        new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(3.5f, 2.5f).requiresTool()));
-
     public static final Block DEEPSLATE_SAPPHIRE_ORE = registerBlock("deepslate_sapphire_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(10, 8).requiresTool()));
 
