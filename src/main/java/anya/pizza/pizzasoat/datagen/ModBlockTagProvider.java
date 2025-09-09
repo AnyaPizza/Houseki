@@ -1,6 +1,7 @@
 package anya.pizza.pizzasoat.datagen;
 
 import anya.pizza.pizzasoat.block.ModBlocks;
+import anya.pizza.pizzasoat.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -152,5 +153,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SLATE_SLAB)
                 .add(ModBlocks.POLISHED_SLATE_SLAB)
                 .add(ModBlocks.SLATE_TILE_SLAB);
+
+        getOrCreateTagBuilder(ModTags.Blocks.PREMIUM_DRILL_MINEABLE)
+                .forceAddTag(BlockTags.PICKAXE_MINEABLE)
+                .forceAddTag(BlockTags.SHOVEL_MINEABLE)
+                .forceAddTag(BlockTags.AXE_MINEABLE);
     }
 }

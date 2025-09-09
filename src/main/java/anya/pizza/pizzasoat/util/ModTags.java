@@ -16,7 +16,13 @@ public class ModTags {
         public static final TagKey<Block> NEEDS_TUNGSTEN_TOOL = createTag("needs_tungsten_tool");
         public static final TagKey<Block> INCORRECT_FOR_TUNGSTEN_TOOL = createTag("incorrect_for_tungsten_tool");
         public static final TagKey<Block> NEEDS_TUNGSTEN_DRILL_TOOL = createTag("needs_tungsten_drill_tool");
-        public static final TagKey<Block> INCORRECT_FOR_TUNGSTEN_DRILL_TOOL = createTag("incorrect_for_tungsten_drill_tool");
+        public static final TagKey<Block> INCORRECT_FOR_DRILL_TOOL = createTag("incorrect_for_drill_tool");
+        public static final TagKey<Block> NEEDS_ENHANCED_DRILL_TOOL = createTag("needs_enhanced_drill_tool");
+        public static final TagKey<Block> INCORRECT_FOR_ENHANCED_DRILL_TOOL = createTag("incorrect_for_enhanced_drill_tool");
+        public static final TagKey<Block> NEEDS_ADVANCED_TUNGSTEN_DRILL_TOOL = createTag("needs_advanced_tungsten_drill_tool");
+        public static final TagKey<Block> INCORRECT_FOR_ADVANCED_DRILL_TOOL = createTag("incorrect_for_advanced_drill_tool");
+        public static final TagKey<Block> NEEDS_PREMIUM_DRILL_TOOL = createTag("needs_premium_drill_tool");
+        public static final TagKey<Block> INCORRECT_FOR_PREMIUM_DRILL_TOOL = createTag("incorrect_for_premium_drill_tool");
         public static final TagKey<Block> NEEDS_ALUMINUM_TOOL = createTag("needs_aluminum_tool");
         public static final TagKey<Block> INCORRECT_FOR_ALUMINUM_TOOL = createTag("incorrect_for_aluminum_tool");
         public static final TagKey<Block> NEEDS_SAPPHIRE_TOOL = createTag("needs_sapphire_tool");
@@ -29,6 +35,8 @@ public class ModTags {
         public static final TagKey<Block> INCORRECT_FOR_STEEL_TOOL = createTag("incorrect_for_steel_tool");
         public static final TagKey<Block> NEEDS_CAST_STEEL_TOOL = createTag("needs_cast_steel_tool");
         public static final TagKey<Block> INCORRECT_FOR_CAST_STEEL_TOOL = createTag("incorrect_for_cast_steel_tool");
+
+        public static final TagKey<Block> PREMIUM_DRILL_MINEABLE = createTag("premium_mineable");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(PizzasOAT.MOD_ID, name));

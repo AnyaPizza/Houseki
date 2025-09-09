@@ -1,10 +1,7 @@
 package anya.pizza.pizzasoat.item;
 
 import anya.pizza.pizzasoat.PizzasOAT;
-import anya.pizza.pizzasoat.item.custom.DrillTemplateItem;
-import anya.pizza.pizzasoat.item.custom.ModArmorItem;
-import anya.pizza.pizzasoat.item.custom.PinkuTemplateItem;
-import anya.pizza.pizzasoat.item.custom.TungstenSwordItem;
+import anya.pizza.pizzasoat.item.custom.*;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -80,11 +77,11 @@ public class ModItems {
     public static final Item SIMPLE_TUNGSTEN_DRILL = registerItem("simple_tungsten_drill",
             new PickaxeItem(ModToolMaterials.TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN_DRILL, 2, 1.9f))));
     public static final Item ENHANCED_TUNGSTEN_DRILL = registerItem("enhanced_tungsten_drill",
-            new PickaxeItem(ModToolMaterials.TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN_DRILL, 2.5f, 2.3f))));
+            new EnhancedTungstenDrillItem(ModToolMaterials.ENHANCED_TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.ENHANCED_TUNGSTEN_DRILL, 2.5f, 2.3f))));
     public static final Item ADVANCED_TUNGSTEN_DRILL = registerItem("advanced_tungsten_drill",
-            new PickaxeItem(ModToolMaterials.TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN_DRILL, 3, 2.9f))));
+            new AdvancedTungstenDrillItem(ModToolMaterials.ADVANCED_TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.ADVANCED_TUNGSTEN_DRILL, 3, 2.9f))));
     public static final Item PREMIUM_TUNGSTEN_DRILL = registerItem("premium_tungsten_drill",
-            new PickaxeItem(ModToolMaterials.TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.TUNGSTEN_DRILL, 3.5f, 3.5f))));
+            new PremiumTungstenDrillItem(ModToolMaterials.PREMIUM_TUNGSTEN_DRILL, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.PREMIUM_TUNGSTEN_DRILL, 3.5f, 3.5f))));
 
     public static final Item ALUMINUM_PICKAXE = registerItem("aluminum_pickaxe",
             new PickaxeItem(ModToolMaterials.ALUMINUM, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.ALUMINUM, 0, 1.3f))));
