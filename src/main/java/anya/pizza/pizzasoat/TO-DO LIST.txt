@@ -1,5 +1,4 @@
 Investigate needs netherite error
-Need to figure out how to upgrade drill heads while bit is on without losing durability and stuff
 
 Drills:
 1. Maybe look into other metals that are used for drills and makes them too.
