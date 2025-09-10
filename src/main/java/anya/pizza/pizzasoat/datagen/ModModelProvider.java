@@ -111,6 +111,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ENHANCED_DRILL_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.ADVANCED_DRILL_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.PREMIUM_DRILL_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DIAMOND_DRILL_BIT, Models.GENERATED);
+
 
         itemModelGenerator.register(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
@@ -164,6 +166,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CAST_STEEL_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.CAST_STEEL_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItems.CAST_STEEL_HOE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SIMPLE_DIAMOND_DRILL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ENHANCED_DIAMOND_DRILL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ADVANCED_DIAMOND_DRILL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.PREMIUM_DIAMOND_DRILL, Models.HANDHELD);
 
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_HELMET));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_CHESTPLATE));

@@ -5,9 +5,9 @@ import anya.pizza.pizzasoat.block.entity.ModBlockEntities;
 import anya.pizza.pizzasoat.item.ModItemGroups;
 import anya.pizza.pizzasoat.item.ModItems;
 import anya.pizza.pizzasoat.screen.ModScreenHandlers;
-import anya.pizza.pizzasoat.util.ATDUsageEvent;
-import anya.pizza.pizzasoat.util.ETDUsageEvent;
-import anya.pizza.pizzasoat.util.PTDUsageEvent;
+import anya.pizza.pizzasoat.util.ADUsageEvent;
+import anya.pizza.pizzasoat.util.EDUsageEvent;
+import anya.pizza.pizzasoat.util.PDUsageEvent;
 import anya.pizza.pizzasoat.util.ModLootTableModifiers;
 import anya.pizza.pizzasoat.world.gen.ModWorldGeneration;
 import anya.pizza.pizzasoat.recipe.ModRecipes;
@@ -37,8 +37,8 @@ public class PizzasOAT implements ModInitializer {
 		FuelRegistry.INSTANCE.add(ModItems.SULFUR, 1600);
 		FuelRegistry.INSTANCE.add(ModBlocks.BLOCK_OF_SULFUR, 16000);
 
-		PlayerBlockBreakEvents.BEFORE.register(new ETDUsageEvent());
-		PlayerBlockBreakEvents.BEFORE.register(new ATDUsageEvent());
-		PlayerBlockBreakEvents.BEFORE.register(new PTDUsageEvent());
+		PlayerBlockBreakEvents.BEFORE.register(new EDUsageEvent());
+		PlayerBlockBreakEvents.BEFORE.register(new ADUsageEvent());
+		PlayerBlockBreakEvents.BEFORE.register(new PDUsageEvent());
 	}
 }

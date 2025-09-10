@@ -1,11 +1,11 @@
-// 1.21.1	2025-09-09T18:34:19.5660829	Pizza's Ores And Things/Tags for minecraft:item
+// 1.21.1	2025-09-09T22:30:48.4428364	Pizza's Ores And Things/Tags for minecraft:item
 dcc01c63137bf526ccda547a0cddf33f11c2b20b data\minecraft\tags\item\beacon_payment_items.json
 d78a6f3424d81283f0fa16d44feedfcd78aaf3a2 data\minecraft\tags\item\swords.json
 d37051e9fbee44fe2f48ccbdd1c7a115b7b60717 data\minecraft\tags\item\axes.json
-e46d4881e84bb2ecb52b38ef5aa2e6248e2a5faf data\pizzasoat\tags\item\drills.json
+44600b8781d7f1a29fca6417c1f92fd94c3bf716 data\pizzasoat\tags\item\drills.json
 d4aa5890e47d8ae81b32b28b68bea8b0ba4592bb data\minecraft\tags\item\hoes.json
 3cf5c743434600f2254d8301fb18c297460aec0a data\minecraft\tags\item\pickaxes.json
-587051041559563761afacb8a0cb722a698c58a5 data\pizzasoat\tags\item\drill_bits.json
+1d60397c1b57cb0ccfae8e3dfe69b85893157195 data\pizzasoat\tags\item\drill_bits.json
 13bb11feab05bae0f645788ef8bc736f201af87a data\minecraft\tags\item\trimmable_armor.json
 7498253ff46442612b20d98c872ad876c8b0d04b data\pizzasoat\tags\item\smithing_templates.json
 97dcca8624a5e0512e0c90db52632bb3a7632721 data\minecraft\tags\item\shovels.json

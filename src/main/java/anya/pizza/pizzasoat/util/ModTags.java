@@ -16,11 +16,11 @@ public class ModTags {
         public static final TagKey<Block> INCORRECT_FOR_RAINBOW_PYRITE_TOOL = createTag("incorrect_for_rainbow_pyrite_tool");
         public static final TagKey<Block> NEEDS_TUNGSTEN_TOOL = createTag("needs_tungsten_tool");
         public static final TagKey<Block> INCORRECT_FOR_TUNGSTEN_TOOL = createTag("incorrect_for_tungsten_tool");
-        public static final TagKey<Block> NEEDS_TUNGSTEN_DRILL_TOOL = createTag("needs_tungsten_drill_tool");
+        public static final TagKey<Block> NEEDS_DRILL_TOOL = createTag("needs_drill_tool");
         public static final TagKey<Block> INCORRECT_FOR_DRILL_TOOL = createTag("incorrect_for_drill_tool");
         public static final TagKey<Block> NEEDS_ENHANCED_DRILL_TOOL = createTag("needs_enhanced_drill_tool");
         public static final TagKey<Block> INCORRECT_FOR_ENHANCED_DRILL_TOOL = createTag("incorrect_for_enhanced_drill_tool");
-        public static final TagKey<Block> NEEDS_ADVANCED_TUNGSTEN_DRILL_TOOL = createTag("needs_advanced_tungsten_drill_tool");
+        public static final TagKey<Block> NEEDS_ADVANCED_DRILL_TOOL = createTag("needs_advanced_drill_tool");
         public static final TagKey<Block> INCORRECT_FOR_ADVANCED_DRILL_TOOL = createTag("incorrect_for_advanced_drill_tool");
         public static final TagKey<Block> NEEDS_PREMIUM_DRILL_TOOL = createTag("needs_premium_drill_tool");
         public static final TagKey<Block> INCORRECT_FOR_PREMIUM_DRILL_TOOL = createTag("incorrect_for_premium_drill_tool");

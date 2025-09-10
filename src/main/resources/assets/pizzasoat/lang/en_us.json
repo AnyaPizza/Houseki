@@ -17,6 +17,7 @@
   "item.pizzasoat.steel": "Steel",
   "item.pizzasoat.cast_steel": "Cast Steel",
   "item.pizzasoat.tungsten_drill_bit": "Tungsten Drill Bit",
+  "item.pizzasoat.diamond_drill_bit": "Diamond Drill Bit",
   "item.pizzasoat.simple_drill_head": "Simple Drill Head",
   "item.pizzasoat.enhanced_drill_head": "Enhanced Drill Head",
   "item.pizzasoat.advanced_drill_head": "Advanced Drill Head",
@@ -133,6 +134,10 @@
   "item.pizzasoat.cast_steel_shovel": "Cast Steel Shovel",
   "item.pizzasoat.cast_steel_sword": "Cast Steel Sword",
   "item.pizzasoat.cast_steel_hoe": "Cast Steel Hoe",
+  "item.pizzasoat.simple_diamond_drill": "Simple Diamond Drill",
+  "item.pizzasoat.enhanced_diamond_drill": "Enhanced Diamond Drill",
+  "item.pizzasoat.advanced_diamond_drill": "Advanced Diamond Drill",
+  "item.pizzasoat.premium_diamond_drill": "Premium Diamond Drill",
 
   "item.pizzasoat.pinku_helmet": "Pinku Helmet",
   "item.pizzasoat.pinku_chestplate": "Pinku Chestplate",

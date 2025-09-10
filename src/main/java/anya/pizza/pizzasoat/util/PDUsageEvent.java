@@ -1,6 +1,6 @@
 package anya.pizza.pizzasoat.util;
 
-import anya.pizza.pizzasoat.item.custom.EnhancedTungstenDrillItem;
+import anya.pizza.pizzasoat.item.custom.PremiumDrillItem;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ETDUsageEvent implements PlayerBlockBreakEvents.Before{
+public class PDUsageEvent implements PlayerBlockBreakEvents.Before{
     private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
 
     @Override
@@ -22,13 +22,13 @@ public class ETDUsageEvent implements PlayerBlockBreakEvents.Before{
 
         ItemStack mainHandItem = player.getMainHandStack();
 
-        if (mainHandItem.getItem() instanceof EnhancedTungstenDrillItem etd && player instanceof ServerPlayerEntity serverPlayer) {
+        if (mainHandItem.getItem() instanceof PremiumDrillItem pd && player instanceof ServerPlayerEntity serverPlayer) {
             if (HARVESTED_BLOCKS.contains(pos)) {
                 return true;
             }
 
-            for (BlockPos position : EnhancedTungstenDrillItem.getBlocksToBeDestroyed(1, pos, serverPlayer)) { //range 1 is 3x3, 2 5x5, 3 7x7, 4 9x9, etc
-                if (pos == position || !etd.isCorrectForDrops(mainHandItem, world.getBlockState(position))) {
+            for (BlockPos position : PremiumDrillItem.getBlocksToBeDestroyed(2, pos, serverPlayer)) { //range 1 is 3x3, 2 5x5, 3 7x7, 4 9x9, etc
+                if (pos == position || !pd.isCorrectForDrops(mainHandItem, world.getBlockState(position))) {
                     continue;
                 }
 

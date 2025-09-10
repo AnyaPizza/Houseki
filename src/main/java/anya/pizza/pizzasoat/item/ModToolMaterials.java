@@ -3,6 +3,8 @@ package anya.pizza.pizzasoat.item;
 import com.google.common.base.Suppliers;
 import anya.pizza.pizzasoat.util.ModTags;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.TagKey;
@@ -17,6 +19,10 @@ public enum ModToolMaterials implements ToolMaterial {
     ENHANCED_TUNGSTEN_DRILL(ModTags.Blocks.INCORRECT_FOR_ENHANCED_DRILL_TOOL, 7000, 35, 4.5f, 15, () -> Ingredient.ofItems(ModItems.TUNGSTEN)),
     ADVANCED_TUNGSTEN_DRILL(ModTags.Blocks.INCORRECT_FOR_ADVANCED_DRILL_TOOL, 9000, 45, 4.5f, 15, () -> Ingredient.ofItems(ModItems.TUNGSTEN)),
     PREMIUM_TUNGSTEN_DRILL(ModTags.Blocks.INCORRECT_FOR_PREMIUM_DRILL_TOOL, 11000, 60, 4.5f, 15, () -> Ingredient.ofItems(ModItems.TUNGSTEN)),
+    DIAMOND_DRILL(ModTags.Blocks.INCORRECT_FOR_DRILL_TOOL, 2000, 20, 3, 10, () -> Ingredient.ofItems(Items.DIAMOND)),
+    ENHANCED_DIAMOND_DRILL(ModTags.Blocks.INCORRECT_FOR_ENHANCED_DRILL_TOOL, 2500, 24, 3, 10, () -> Ingredient.ofItems(Items.DIAMOND)),
+    ADVANCED_DIAMOND_DRILL(ModTags.Blocks.INCORRECT_FOR_ADVANCED_DRILL_TOOL, 3000, 28, 3.5f, 10, () -> Ingredient.ofItems(Items.DIAMOND)),
+    PREMIUM_DIAMOND_DRILL(ModTags.Blocks.INCORRECT_FOR_PREMIUM_DRILL_TOOL, 4000, 35, 3.5f, 10, () -> Ingredient.ofItems(Items.DIAMOND)),
     ALUMINUM(ModTags.Blocks.INCORRECT_FOR_ALUMINUM_TOOL, 1500, 7.5f, 3, 11, () -> Ingredient.ofItems(ModItems.ALUMINUM)),
     SAPPHIRE(ModTags.Blocks.INCORRECT_FOR_SAPPHIRE_TOOL, 3000, 9, 5, 12, () -> Ingredient.ofItems(ModItems.SAPPHIRE)),
     JADE(ModTags.Blocks.INCORRECT_FOR_JADE_TOOL, 2000, 8, 4, 12, () -> Ingredient.ofItems(ModItems.JADE)),

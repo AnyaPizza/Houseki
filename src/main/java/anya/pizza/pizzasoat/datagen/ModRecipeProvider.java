@@ -191,6 +191,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDrillUpgradeRecipe(exporter, ModItems.ENHANCED_TUNGSTEN_DRILL, RecipeCategory.TOOLS, ModItems.ADVANCED_TUNGSTEN_DRILL);
         offerDrillUpgradeRecipe(exporter, ModItems.ADVANCED_DRILL_HEAD, RecipeCategory.TOOLS, ModItems.PREMIUM_DRILL_HEAD);
         offerDrillUpgradeRecipe(exporter, ModItems.ADVANCED_TUNGSTEN_DRILL, RecipeCategory.TOOLS, ModItems.PREMIUM_TUNGSTEN_DRILL);
+        offerDrillUpgradeRecipe(exporter, ModItems.SIMPLE_DIAMOND_DRILL, RecipeCategory.TOOLS, ModItems.ENHANCED_DIAMOND_DRILL);
+        offerDrillUpgradeRecipe(exporter, ModItems.ENHANCED_DIAMOND_DRILL, RecipeCategory.TOOLS, ModItems.ADVANCED_DIAMOND_DRILL);
+        offerDrillUpgradeRecipe(exporter, ModItems.ADVANCED_DIAMOND_DRILL, RecipeCategory.TOOLS, ModItems.PREMIUM_DIAMOND_DRILL);
+
 
         //Tool Recipes
         ModGenRecipes.offerPickaxeRecipe(exporter, ModItems.RAINBOW_PYRITE_PICKAXE, ModItems.RAINBOW_PYRITE);
@@ -369,6 +373,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.CAST_STEEL), conditionsFromItem(ModItems.CAST_STEEL))
                 .criterion(hasItem(ModBlocks.BLOCK_OF_CAST_STEEL), conditionsFromItem(ModBlocks.BLOCK_OF_CAST_STEEL))
                 .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DIAMOND_DRILL_BIT, 1)
+                .pattern("   ")
+                .pattern(" # ")
+                .pattern("###")
+                .input('#', Blocks.DIAMOND_BLOCK)
+                .criterion(hasItem(Blocks.DIAMOND_BLOCK), conditionsFromItem(Blocks.DIAMOND_BLOCK))
                 .offerTo(exporter);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE, 2)

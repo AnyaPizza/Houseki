@@ -3,7 +3,6 @@ package anya.pizza.pizzasoat.item.custom;
 import anya.pizza.pizzasoat.util.ModTags;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -13,8 +12,8 @@ import net.minecraft.util.math.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PremiumTungstenDrillItem extends MiningToolItem {
-    public PremiumTungstenDrillItem(ToolMaterial material, Settings settings) {
+public class PremiumDrillItem extends MiningToolItem {
+    public PremiumDrillItem(ToolMaterial material, Settings settings) {
         super(material, ModTags.Blocks.PREMIUM_DRILL_MINEABLE, settings);
     }
 

@@ -12,8 +12,8 @@ import net.minecraft.util.math.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnhancedTungstenDrillItem extends MiningToolItem {
-    public EnhancedTungstenDrillItem(ToolMaterial material, Settings settings) {
+public class AdvancedDrillItem extends MiningToolItem {
+    public AdvancedDrillItem(ToolMaterial material, Settings settings) {
         super(material, BlockTags.PICKAXE_MINEABLE, settings);
     }
 

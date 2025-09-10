@@ -127,10 +127,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ADVANCED_DRILL_HEAD)
                 .add(ModItems.ADVANCED_TUNGSTEN_DRILL)
                 .add(ModItems.PREMIUM_DRILL_HEAD)
-                .add(ModItems.PREMIUM_TUNGSTEN_DRILL);
+                .add(ModItems.PREMIUM_TUNGSTEN_DRILL)
+                .add(ModItems.SIMPLE_DIAMOND_DRILL)
+                .add(ModItems.ENHANCED_DIAMOND_DRILL)
+                .add(ModItems.ADVANCED_DIAMOND_DRILL)
+                .add(ModItems.PREMIUM_DIAMOND_DRILL);
 
         getOrCreateTagBuilder(ModTags.Items.DRILL_BITS)
-                .add(ModItems.TUNGSTEN_DRILL_BIT);
+                .add(ModItems.TUNGSTEN_DRILL_BIT)
+                .add(ModItems.DIAMOND_DRILL_BIT);
 
         getOrCreateTagBuilder(ModTags.Items.SMITHING_TEMPLATES)
                 .add(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE)
