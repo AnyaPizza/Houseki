@@ -1,6 +1,3 @@
-TUNGSTEN:
-3. Give Tungsten Block Netherite properties where it doesn't burn in lava.
-
 RAINBOW PYRITE:
 2. Make a Bauxite variant of it that spawns in Bauxite.
 

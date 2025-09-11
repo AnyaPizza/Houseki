@@ -1,9 +1,11 @@
 package anya.pizza.pizzasoat.item;
 
 import anya.pizza.pizzasoat.PizzasOAT;
+import anya.pizza.pizzasoat.block.ModBlocks;
 import anya.pizza.pizzasoat.item.custom.*;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -37,6 +39,7 @@ public class ModItems {
     public static final Item ADVANCED_DRILL_HEAD = registerItem("advanced_drill_head", new Item(new Item.Settings()));
     public static final Item PREMIUM_DRILL_HEAD = registerItem("premium_drill_head", new Item(new Item.Settings()));
     public static final Item DIAMOND_DRILL_BIT = registerItem("diamond_drill_bit", new Item(new Item.Settings()));
+    public static final Item BLOCK_OF_TUNGSTEN = registerItem("block_of_tungsten", new BlockItem(ModBlocks.BLOCK_OF_TUNGSTEN, new Item.Settings().fireproof()));
 
     public static final Item PINKU_UPGRADE_SMITHING_TEMPLATE = registerItem("pinku_upgrade_smithing_template", PinkuTemplateItem.createPinkuUpgrade());
     public static final Item DRILL_UPGRADE_SMITHING_TEMPLATE = registerItem("drill_upgrade_smithing_template", DrillTemplateItem.createDrillUpgrade());
