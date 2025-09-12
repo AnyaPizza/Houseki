@@ -182,6 +182,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.BLOCK_OF_ALUMINUM);
                         entries.add(ModBlocks.ALUMINUM_GLASS);
+                        entries.add(ModBlocks.ALUMINUM_GLASS_PANE);
                         entries.add(ModBlocks.ALUMINUM_DOOR);
                         entries.add(ModBlocks.ALUMINUM_TRAPDOOR);
 

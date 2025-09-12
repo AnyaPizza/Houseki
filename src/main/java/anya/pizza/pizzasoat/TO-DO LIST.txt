@@ -1,7 +1,3 @@
-ALUMINUM:
-1. Make Aluminum Glass Panes.
-2. Maybe make colored versions of the glass and panes
-
 NEPHRITE:
 1. Make the ore out of Limestone and spawn it in Limestone.
 2. Create Armor and Tools for it, making it a darker green.

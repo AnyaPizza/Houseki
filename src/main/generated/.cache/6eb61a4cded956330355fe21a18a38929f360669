@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-12T02:33:36.1293429	Pizza's Ores And Things/Recipes
+// 1.21.1	2025-09-12T04:43:01.5383892	Pizza's Ores And Things/Recipes
 9f2938287497cec0e020ed72d11a6f0282915121 data\pizzasoat\advancement\recipes\misc\aluminum_from_smelting_crushed_bauxite.json
 cc18495f266def042a72496426ee123a947fb8ee data\pizzasoat\advancement\recipes\combat\rainbow_pyrite_helmet.json
 5e02d28b1520331c0dcee6bd240216811c696255 data\pizzasoat\advancement\recipes\building_blocks\polished_slate_stairs_from_slate_stonecutting.json
@@ -45,6 +45,7 @@ ec51cc00fe33756d97b92f2edf0959bc34dca9c2 data\pizzasoat\recipe\cast_steel_pickax
 98ffc04bf8a1c36e50d1f0a5ceb514d7957da952 data\pizzasoat\recipe\pinku_boots_smithing.json
 d64cd7a8dbe305d2af2ff903b8ab4e2521c889a1 data\pizzasoat\recipe\pinku_from_pinku_shards.json
 28f45ac444e46049eca237c43c708d0029fe4d31 data\pizzasoat\recipe\sapphire_from_blasting_deepslate_sapphire_ore.json
+1ae36438ab8b80b46604fad806554f9e3c944ac3 data\pizzasoat\advancement\recipes\decorations\aluminum_glass_pane.json
 ec53dcbabbeeac55c3ed402030c2a3947ffbd1b2 data\pizzasoat\recipe\nephrite_from_smelting_deepslate_nephrite_ore.json
 9fc8645506eb75465a072af2369675cac8e2251a data\pizzasoat\recipe\pinku_sword_smithing.json
 8ad1e8698db86ddce92916b768b18d018fcc3c48 data\pizzasoat\advancement\recipes\misc\scheelite_from_blasting_scheelite_ore.json
@@ -313,6 +314,7 @@ d57502d460ca6c1d46b3d8bea1bfd3de167b42d0 data\pizzasoat\advancement\recipes\misc
 116f0196763a3f2b91bb895d181f3bdd1aee4a39 data\pizzasoat\recipe\tungsten.json
 13bf4593ff3f0d1d6b350554fb52d83899a838cd data\pizzasoat\advancement\recipes\misc\pinku_shard_from_smelting_pinku_ore.json
 78c716d373f836e2407f1818664238c578cff81e data\pizzasoat\advancement\recipes\combat\cast_steel_chestplate.json
+4af3a08da971c0dd795b5488c8fe36567b296bf9 data\pizzasoat\recipe\aluminum_glass_pane.json
 f57c1ca51b2cc44c9717b3469ffdc94d9088fbf4 data\pizzasoat\advancement\recipes\building_blocks\polished_slate_stairs.json
 19275ea60bf4b855968060fa9d908f399edcf788 data\pizzasoat\recipe\cast_steel_leggings.json
 7e66cb517a12a5e1380f155ff519903b3788d68e data\pizzasoat\recipe\steel_shovel.json

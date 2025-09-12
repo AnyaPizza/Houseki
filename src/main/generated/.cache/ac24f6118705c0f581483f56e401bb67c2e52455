@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-12T02:33:36.1248343	Pizza's Ores And Things/Model Definitions
+// 1.21.1	2025-09-12T04:43:01.5343892	Pizza's Ores And Things/Model Definitions
 9ca66029386a5e68144504c6c3c0f234f795f733 assets\pizzasoat\models\item\aluminum_boots_iron_trim.json
 8fb709c046870b1d84b61111299cc54285b03529 assets\pizzasoat\models\item\steel_boots_amethyst_trim.json
 08129eb63c7b3397a0f8ff01d4f8ae9063b340f7 assets\pizzasoat\models\item\jade_leggings_emerald_trim.json
@@ -149,8 +149,8 @@ f6c636291ce746d83f299c7c21f6be139452b6d0 assets\pizzasoat\models\item\sapphire_c
 c7e314eb8406d88f4a4adf65ed7420d4cb164564 assets\pizzasoat\models\block\blackstone_sulfur_ore.json
 15666f477b848d8ce3883aeffc9349dc7b20db05 assets\pizzasoat\models\item\tungsten_leggings_copper_trim.json
 d0de79532e65f3c8153f994cd23ff165de00728b assets\pizzasoat\models\item\platinum_boots_lapis_trim.json
-992fa48bfa8a54850f96d37b1f3ef7cf59beec59 assets\pizzasoat\blockstates\block_of_pinku.json
 d7c20b8231173dfd1679e7c28b03e509d0fcf7d3 assets\pizzasoat\blockstates\block_of_platinum.json
+992fa48bfa8a54850f96d37b1f3ef7cf59beec59 assets\pizzasoat\blockstates\block_of_pinku.json
 3907c8f918066a3e0453cb269deb9b048590896f assets\pizzasoat\models\item\platinum_boots_diamond_trim.json
 a27093531ff853220968e3496d8aa33588b9a3b6 assets\pizzasoat\models\item\rainbow_pyrite_helmet_netherite_trim.json
 ef23cfee028032f45c3c89930536e915d9b2b005 assets\pizzasoat\models\block\slate_tile_stairs_outer.json
@@ -244,8 +244,8 @@ befb63dacb387655c5fcec7d60e7a5062809ab64 assets\pizzasoat\models\item\cast_steel
 38186950dc951c3babaf41ebf0d125f7b5483673 assets\pizzasoat\models\item\platinum_chestplate_lapis_trim.json
 452ff9d95f878d2b5b999122db4a34005f7bb1e6 assets\pizzasoat\blockstates\block_of_rainbow_pyrite.json
 d4052e759eeb8fec64a2dc64d35b4dde68826bea assets\pizzasoat\models\item\sapphire.json
-f2ed8255d2ffe73ff586755af223c32c2066b6fa assets\pizzasoat\models\item\jade_chestplate_gold_trim.json
 45bc00489ac2b45df6675701d0163310f0ed6038 assets\pizzasoat\models\item\cast_steel_helmet_copper_trim.json
+f2ed8255d2ffe73ff586755af223c32c2066b6fa assets\pizzasoat\models\item\jade_chestplate_gold_trim.json
 eca6190112c5e7553c2c14f9d15ec1b925176bec assets\pizzasoat\blockstates\polished_limestone_stairs.json
 457ddc4853f3de432b9a810dcaccc376cae61d62 assets\pizzasoat\blockstates\limestone_wall.json
 e398baa9e6219ff39033f60da386e50d1f19784d assets\pizzasoat\models\item\polished_slate.json

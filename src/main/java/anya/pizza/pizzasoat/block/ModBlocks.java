@@ -3,6 +3,7 @@ package anya.pizza.pizzasoat.block;
 import anya.pizza.pizzasoat.PizzasOAT;
 import anya.pizza.pizzasoat.block.custom.CrusherBlock;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -29,7 +30,15 @@ public class ModBlocks {
             new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool().strength(30, 500)));
 
     public static final Block ALUMINUM_GLASS = registerBlock("aluminum_glass",
-            new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.GLASS).requiresTool().strength(2, 1000).nonOpaque()) {
+            new TransparentBlock(AbstractBlock.Settings.copy(Blocks.GLASS).requiresTool().strength(2, 1000).nonOpaque()) {
+                @Override
+                public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+                    return super.getCameraCollisionShape(state, world, pos, context);
+                }
+            });
+
+    public static final Block ALUMINUM_GLASS_PANE = registerBlock("aluminum_glass_pane",
+            new PaneBlock(AbstractBlock.Settings.copy(Blocks.GLASS_PANE).requiresTool().strength(2, 1000).nonOpaque()) {
                 @Override
                 public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
                     return super.getCameraCollisionShape(state, world, pos, context);

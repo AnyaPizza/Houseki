@@ -31,6 +31,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BAUXITE)
                 .add(ModBlocks.BLOCK_OF_ALUMINUM)
                 .add(ModBlocks.ALUMINUM_GLASS)
+                .add(ModBlocks.ALUMINUM_GLASS_PANE)
                 .add(ModBlocks.ALUMINUM_DOOR)
                 .add(ModBlocks.ALUMINUM_TRAPDOOR)
                 .add(ModBlocks.BLOCK_OF_SAPPHIRE)
@@ -96,6 +97,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLOCK_OF_TUNGSTEN)
                 .add(ModBlocks.BLOCK_OF_ALUMINUM)
                 .add(ModBlocks.ALUMINUM_GLASS)
+                .add(ModBlocks.ALUMINUM_GLASS_PANE)
                 .add(ModBlocks.NEPHRITE_ORE)
                 .add(ModBlocks.DEEPSLATE_NEPHRITE_ORE)
                 .add(ModBlocks.BLOCK_OF_JADE)
@@ -124,11 +126,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_SAPPHIRE)
-                .add(ModBlocks.ALUMINUM_GLASS);
+                .add(ModBlocks.ALUMINUM_GLASS)
+                .add(ModBlocks.ALUMINUM_GLASS_PANE);
 
         getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
-                .add(ModBlocks.ALUMINUM_GLASS);
+                .add(ModBlocks.ALUMINUM_GLASS)
+                .add(ModBlocks.ALUMINUM_GLASS_PANE);
 
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.LIMESTONE_WALL)
