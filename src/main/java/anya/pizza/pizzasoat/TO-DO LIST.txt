@@ -1,6 +1,3 @@
-SULFER:
-1. Redo block texture.
-
 Create achievements for getting the armor sets.
 
 Maybe add more tags.
