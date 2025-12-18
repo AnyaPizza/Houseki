@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "pizzasoat:tungsten"
-    },
-    "X": {
-      "item": "pizzasoat:block_of_tungsten"
-    }
+    "#": "pizzasoat:tungsten",
+    "X": "pizzasoat:block_of_tungsten_item"
   },
   "pattern": [
     "   ",

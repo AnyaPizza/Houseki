@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:sand"
-    },
-    "X": {
-      "item": "pizzasoat:sulfur"
-    }
+    "#": "minecraft:sand",
+    "X": "pizzasoat:sulfur"
   },
   "pattern": [
     "X#X",

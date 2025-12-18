@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.5,
   "group": "wolframite",
-  "ingredient": {
-    "item": "pizzasoat:wolframite_ore"
-  },
+  "ingredient": "pizzasoat:wolframite_ore",
   "result": {
     "id": "pizzasoat:wolframite"
   }

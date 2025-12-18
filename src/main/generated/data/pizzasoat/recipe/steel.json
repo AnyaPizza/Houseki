@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "pizzasoat:block_of_steel"
-    }
+    "pizzasoat:block_of_steel"
   ],
   "result": {
     "count": 9,

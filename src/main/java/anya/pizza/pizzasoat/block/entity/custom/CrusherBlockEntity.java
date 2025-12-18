@@ -24,6 +24,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -233,7 +234,8 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     }*/
 
     private Optional<RecipeEntry<CrusherRecipe>> getCurrentRecipe() {
-        return this.getWorld().getRecipeManager().getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.get(INPUT_SLOT)), this.getWorld());
+        return ((ServerWorld) this.getWorld()).getRecipeManager()
+                .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.get(INPUT_SLOT)), this.getWorld());
 
     }
 
@@ -245,8 +247,8 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
-        if (slot == INPUT_SLOT) return world.getRecipeManager().getFirstMatch(
-                ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(stack), world).isPresent();
+        if (slot == INPUT_SLOT) ((ServerWorld) this.getWorld()).getRecipeManager()
+                .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(stack), world).isPresent();
         return false;
     }
 

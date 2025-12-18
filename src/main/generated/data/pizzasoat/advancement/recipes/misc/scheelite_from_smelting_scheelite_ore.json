@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pizzasoat:scheelite_from_smelting_scheelite_ore"
+        "recipe": "minecraft:scheelite_from_smelting_scheelite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "pizzasoat:scheelite_from_smelting_scheelite_ore"
+      "minecraft:scheelite_from_smelting_scheelite_ore"
     ]
   }
 }

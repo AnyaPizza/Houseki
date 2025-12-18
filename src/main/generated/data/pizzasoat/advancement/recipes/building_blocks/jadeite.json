@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pizzasoat:jadeite"
+        "recipe": "minecraft:jadeite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "pizzasoat:jadeite"
+      "minecraft:jadeite"
     ]
   }
 }

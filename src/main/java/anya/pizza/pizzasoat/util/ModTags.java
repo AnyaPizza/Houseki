@@ -51,6 +51,19 @@ public class ModTags {
         public static final TagKey<Item> DRILLS = createTag("drills");
         public static final TagKey<Item> DRILL_BITS = createTag("drill_bits");
         public static final TagKey<Item> SMITHING_TEMPLATES = createTag("smithing_templates");
+        public static final TagKey<Item> PINKU_REPAIR = createTag("pinku_repair");
+        public static final TagKey<Item> RAINBOW_REPAIR = createTag("rainbow_repair");
+        public static final TagKey<Item> TUNGSTEN_REPAIR = createTag("tungsten_repair");
+        public static final TagKey<Item> ALUMINUM_REPAIR = createTag("aluminum_repair");
+        public static final TagKey<Item> SAPPHIRE_REPAIR = createTag("sapphire_repair");
+        public static final TagKey<Item> NEPHRITE_REPAIR = createTag("nephrite_repair");
+        public static final TagKey<Item> JADEITE_REPAIR = createTag("jadeite_repair");
+        public static final TagKey<Item> PLATINUM_REPAIR = createTag("platinum_repair");
+        public static final TagKey<Item> STEEL_REPAIR = createTag("steel_repair");
+        public static final TagKey<Item> CAST_STEEL_REPAIR = createTag("cast_steel_repair");
+        public static final TagKey<Item> DIAMOND_REPAIR = createTag("diamond_repair");
+
+        public static final TagKey<Item> PINKU_SMITH = createTag("pinku_smith");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of(PizzasOAT.MOD_ID, name));

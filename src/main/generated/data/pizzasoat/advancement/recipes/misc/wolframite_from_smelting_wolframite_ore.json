@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pizzasoat:wolframite_from_smelting_wolframite_ore"
+        "recipe": "minecraft:wolframite_from_smelting_wolframite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "pizzasoat:wolframite_from_smelting_wolframite_ore"
+      "minecraft:wolframite_from_smelting_wolframite_ore"
     ]
   }
 }

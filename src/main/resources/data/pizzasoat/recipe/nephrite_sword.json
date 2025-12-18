@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "pizzasoat:nephrite",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " # ",
+    " # ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "pizzasoat:nephrite_sword"
+  }
+}

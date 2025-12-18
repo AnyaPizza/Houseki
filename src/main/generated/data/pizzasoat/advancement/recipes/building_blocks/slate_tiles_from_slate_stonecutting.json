@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pizzasoat:slate_tiles_from_slate_stonecutting"
+        "recipe": "minecraft:slate_tiles_from_slate_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "pizzasoat:slate_tiles_from_slate_stonecutting"
+      "minecraft:slate_tiles_from_slate_stonecutting"
     ]
   }
 }

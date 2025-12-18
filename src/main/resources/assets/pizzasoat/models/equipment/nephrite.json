@@ -1,0 +1,24 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "pizzasoat:nephrite"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "pizzasoat:nephrite"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "pizzasoat:nephrite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "pizzasoat:nephrite"
+      }
+    ]
+  }
+}

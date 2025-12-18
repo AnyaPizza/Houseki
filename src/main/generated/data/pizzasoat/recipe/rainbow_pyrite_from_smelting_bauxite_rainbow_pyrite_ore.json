@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.5,
   "group": "rainbow_pyrite",
-  "ingredient": {
-    "item": "pizzasoat:bauxite_rainbow_pyrite_ore"
-  },
+  "ingredient": "pizzasoat:bauxite_rainbow_pyrite_ore",
   "result": {
     "id": "pizzasoat:rainbow_pyrite"
   }

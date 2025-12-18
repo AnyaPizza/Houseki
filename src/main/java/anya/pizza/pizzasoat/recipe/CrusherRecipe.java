@@ -7,10 +7,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.*;
+import net.minecraft.recipe.book.RecipeBookCategories;
+import net.minecraft.recipe.book.RecipeBookCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
@@ -18,7 +17,7 @@ import net.minecraft.world.World;
 public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime) implements Recipe<CrusherRecipeInput> {
     public static final int DEFAULT_CRUSHING_TIME = 200;
 
-    @Override
+
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> list = DefaultedList.of();
         list.add(this.inputItem);
@@ -39,30 +38,34 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         return output.copy();
     }
 
-    @Override
-    public boolean fits(int width, int height) {
-        return true;
-    }
-
-    @Override
     public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
         return output;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<? extends Recipe<CrusherRecipeInput>> getSerializer() {
         return ModRecipes.CRUSHER_SERIALIZER;
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {
         return ModRecipes.CRUSHER_TYPE;
+    }
+
+    @Override
+    public IngredientPlacement getIngredientPlacement() {
+        return IngredientPlacement.forSingleSlot(inputItem);
+    }
+
+    @Override
+    public RecipeBookCategory getRecipeBookCategory() {
+        return RecipeBookCategories.CRAFTING_MISC;
     }
 
 
     public static class Serializer implements RecipeSerializer<CrusherRecipe> {
         public static final MapCodec<CrusherRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
+                Ingredient.CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
                 ItemStack.CODEC.fieldOf("result").forGetter(CrusherRecipe::output),
                 Codec.INT.optionalFieldOf("crushingTime",DEFAULT_CRUSHING_TIME).forGetter(CrusherRecipe::crushingTime)
         ).apply(inst, CrusherRecipe::new));

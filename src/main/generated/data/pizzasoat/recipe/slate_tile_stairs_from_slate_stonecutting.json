@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "pizzasoat:slate"
-  },
+  "ingredient": "pizzasoat:slate",
   "result": {
     "count": 1,
     "id": "pizzasoat:slate_tile_stairs"

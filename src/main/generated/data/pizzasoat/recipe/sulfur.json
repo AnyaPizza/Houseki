@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "pizzasoat:block_of_sulfur"
-    }
+    "pizzasoat:block_of_sulfur"
   ],
   "result": {
     "count": 9,

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "pizzasoat:pinku",
+  "base": "minecraft:netherite_sword",
+  "result": {
+    "count": 1,
+    "id": "pizzasoat:pinku_sword"
+  },
+  "template": "pizzasoat:pinku_upgrade_smithing_template"
+}

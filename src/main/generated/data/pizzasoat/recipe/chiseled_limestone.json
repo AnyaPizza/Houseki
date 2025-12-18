@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "pizzasoat:limestone_slab"
-    }
+    "#": "pizzasoat:limestone_slab"
   },
   "pattern": [
     "#",

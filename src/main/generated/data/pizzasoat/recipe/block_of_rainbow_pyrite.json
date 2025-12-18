@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "pizzasoat:rainbow_pyrite"
-    }
+    "#": "pizzasoat:rainbow_pyrite"
   },
   "pattern": [
     "###",

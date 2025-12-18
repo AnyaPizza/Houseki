@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "pizzasoat:pinku_shard"
-    },
-    "X": {
-      "item": "minecraft:amethyst_shard"
-    }
+    "#": "pizzasoat:pinku_shard",
+    "X": "minecraft:amethyst_shard"
   },
   "pattern": [
     " # ",

@@ -3,6 +3,7 @@ package anya.pizza.pizzasoat.screen.custom;
 import anya.pizza.pizzasoat.PizzasOAT;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -34,7 +35,7 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2; //- 10;
 
-        context.drawTexture(GUI_TEXTURE, x, y, 0, 0, 176, 176);
+        context.drawTexture(RenderLayer::getGuiTextured, GUI_TEXTURE, x, y, 0, 0, 176, 176, 256, 256);
         renderProgressArrow(context, x, y);
         renderProgressCrushing(context, x, y);
 
@@ -42,7 +43,7 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if(handler.getPropertyDelegate().get(0) > 0 && handler.isCrafting()) {
-            context.drawTexture(ARROW_TEXTURE, x + 79, y + 39, 0, 0,
+            context.drawTexture(RenderLayer::getGuiTextured, ARROW_TEXTURE, x + 79, y + 39, 0, 0,
                     handler.getScaledArrowProgress(), 16, 24, 16);
         }
     }
@@ -50,7 +51,7 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
     private void renderProgressCrushing(DrawContext context, int x, int y) {
         if (handler.isBurning()) {
             int progress = handler.getScaledFuelProgress();
-            context.drawTexture(CRUSHING_TEXTURE, x + 5, y + 69 - progress, 0,
+            context.drawTexture(RenderLayer::getGuiTextured, CRUSHING_TEXTURE, x + 5, y + 69 - progress, 0,
                     20 - progress, 6, progress, 6, 20);
         }
     }

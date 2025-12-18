@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.5,
   "group": "platinum",
-  "ingredient": {
-    "item": "pizzasoat:platinum_ore"
-  },
+  "ingredient": "pizzasoat:platinum_ore",
   "result": {
     "id": "pizzasoat:platinum"
   }

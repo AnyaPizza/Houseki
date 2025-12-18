@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "pizzasoat:limestone"
-  },
+  "ingredient": "pizzasoat:limestone",
   "result": {
     "count": 1,
     "id": "pizzasoat:chiseled_limestone"

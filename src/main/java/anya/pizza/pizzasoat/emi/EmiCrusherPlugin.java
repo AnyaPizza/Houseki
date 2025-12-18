@@ -1,3 +1,4 @@
+/*
 package anya.pizza.pizzasoat.emi;
 
 import anya.pizza.pizzasoat.PizzasOAT;
@@ -32,3 +33,4 @@ public class EmiCrusherPlugin implements EmiPlugin {
         });
     }
 }
+*/

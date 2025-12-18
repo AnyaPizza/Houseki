@@ -1,8 +1,6 @@
 {
   "type": "pizzasoat:crushing",
-  "ingredient": {
-    "item": "pizzasoat:bauxite"
-  },
+  "ingredient": "pizzasoat:bauxite",
   "result": {
     "id": "pizzasoat:crushed_bauxite"
   },

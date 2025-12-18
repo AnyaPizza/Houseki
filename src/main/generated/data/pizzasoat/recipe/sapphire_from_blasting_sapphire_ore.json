@@ -4,9 +4,7 @@
   "cookingtime": 150,
   "experience": 0.5,
   "group": "sapphire",
-  "ingredient": {
-    "item": "pizzasoat:sapphire_ore"
-  },
+  "ingredient": "pizzasoat:sapphire_ore",
   "result": {
     "id": "pizzasoat:sapphire"
   }

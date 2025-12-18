@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "pizzasoat:polished_slate"
-    }
+    "#": "pizzasoat:polished_slate"
   },
   "pattern": [
     "###",

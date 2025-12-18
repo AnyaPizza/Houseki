@@ -1,8 +1,6 @@
 {
   "type": "pizzasoat:crushing",
-  "ingredient": {
-    "item": "minecraft:copper_ingot"
-  },
+  "ingredient": "minecraft:copper_ingot",
   "result": {
     "id": "pizzasoat:platinum_nugget"
   },

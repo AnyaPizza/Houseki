@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "pizzasoat:aluminum"
-    },
-    "X": {
-      "item": "minecraft:glass"
-    }
+    "#": "pizzasoat:aluminum",
+    "X": "minecraft:glass"
   },
   "pattern": [
     "###",

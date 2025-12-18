@@ -4,9 +4,7 @@
   "cookingtime": 120,
   "experience": 0.5,
   "group": "cast_steel",
-  "ingredient": {
-    "item": "pizzasoat:steel"
-  },
+  "ingredient": "pizzasoat:steel",
   "result": {
     "id": "pizzasoat:cast_steel"
   }

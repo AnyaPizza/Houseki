@@ -20,7 +20,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
@@ -31,7 +31,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class CrusherBlock extends BlockWithEntity {
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = Properties.LIT;
     public static final MapCodec<CrusherBlock> CODEC = createCodec(CrusherBlock::new);
 
@@ -87,7 +87,7 @@ public class CrusherBlock extends BlockWithEntity {
     }
 
     @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             NamedScreenHandlerFactory screenHandlerFactory = ((CrusherBlockEntity) world.getBlockEntity(pos));
 
@@ -96,7 +96,7 @@ public class CrusherBlock extends BlockWithEntity {
             }
         }
 
-        return ItemActionResult.SUCCESS;
+        return ActionResult.SUCCESS;
     }
 
     @Nullable

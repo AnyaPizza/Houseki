@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "stained_glass_pane",
   "key": {
-    "#": {
-      "item": "pizzasoat:aluminum_glass"
-    }
+    "#": "pizzasoat:aluminum_glass"
   },
   "pattern": [
     "###",

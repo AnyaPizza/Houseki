@@ -1,8 +1,6 @@
 {
   "type": "pizzasoat:crushing",
-  "ingredient": {
-    "item": "pizzasoat:platinum_ore"
-  },
+  "ingredient": "pizzasoat:platinum_ore",
   "result": {
     "id": "pizzasoat:platinum"
   },

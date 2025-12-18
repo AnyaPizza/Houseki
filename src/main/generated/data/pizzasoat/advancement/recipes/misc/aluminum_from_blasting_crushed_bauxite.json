@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pizzasoat:aluminum_from_blasting_crushed_bauxite"
+        "recipe": "minecraft:aluminum_from_blasting_crushed_bauxite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "pizzasoat:aluminum_from_blasting_crushed_bauxite"
+      "minecraft:aluminum_from_blasting_crushed_bauxite"
     ]
   }
 }

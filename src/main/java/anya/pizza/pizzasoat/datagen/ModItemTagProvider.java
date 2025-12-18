@@ -4,6 +4,7 @@ import anya.pizza.pizzasoat.item.ModItems;
 import anya.pizza.pizzasoat.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
@@ -197,5 +198,28 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PLATINUM_HELMET)
                 .add(ModItems.STEEL_HELMET)
                 .add(ModItems.CAST_STEEL_HELMET);
+
+        getOrCreateTagBuilder(ModTags.Items.PINKU_REPAIR)
+                .add(ModItems.PINKU);
+        getOrCreateTagBuilder(ModTags.Items.RAINBOW_REPAIR)
+                .add(ModItems.RAINBOW_PYRITE);
+        getOrCreateTagBuilder(ModTags.Items.TUNGSTEN_REPAIR)
+                .add(ModItems.TUNGSTEN);
+        getOrCreateTagBuilder(ModTags.Items.ALUMINUM_REPAIR)
+                .add(ModItems.ALUMINUM);
+        getOrCreateTagBuilder(ModTags.Items.SAPPHIRE_REPAIR)
+                .add(ModItems.SAPPHIRE);
+        getOrCreateTagBuilder(ModTags.Items.NEPHRITE_REPAIR)
+                .add(ModItems.NEPHRITE);
+        getOrCreateTagBuilder(ModTags.Items.JADEITE_REPAIR)
+                .add(ModItems.JADEITE);
+        getOrCreateTagBuilder(ModTags.Items.PLATINUM_REPAIR)
+                .add(ModItems.PLATINUM);
+        getOrCreateTagBuilder(ModTags.Items.STEEL_REPAIR)
+                .add(ModItems.STEEL);
+        getOrCreateTagBuilder(ModTags.Items.CAST_STEEL_REPAIR)
+                .add(ModItems.CAST_STEEL);
+        getOrCreateTagBuilder(ModTags.Items.DIAMOND_REPAIR)
+                .add(Items.DIAMOND);
     }
 }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pizzasoat:sapphire_from_smelting_sapphire_ore"
+        "recipe": "minecraft:sapphire_from_smelting_sapphire_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "pizzasoat:sapphire_from_smelting_sapphire_ore"
+      "minecraft:sapphire_from_smelting_sapphire_ore"
     ]
   }
 }

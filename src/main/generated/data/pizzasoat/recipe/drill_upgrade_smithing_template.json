@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "pizzasoat:cast_steel"
-    },
-    "U": {
-      "item": "pizzasoat:drill_upgrade_smithing_template"
-    },
-    "X": {
-      "item": "pizzasoat:block_of_cast_steel"
-    }
+    "#": "pizzasoat:cast_steel",
+    "U": "pizzasoat:drill_upgrade_smithing_template",
+    "X": "pizzasoat:block_of_cast_steel"
   },
   "pattern": [
     "#X#",

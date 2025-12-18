@@ -4,9 +4,7 @@
   "cookingtime": 250,
   "experience": 0.5,
   "group": "jadeite",
-  "ingredient": {
-    "item": "pizzasoat:jadeite_ore"
-  },
+  "ingredient": "pizzasoat:jadeite_ore",
   "result": {
     "id": "pizzasoat:jadeite"
   }

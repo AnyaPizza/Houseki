@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdvancedDrillItem extends MiningToolItem {
-    public AdvancedDrillItem(ToolMaterial material, Settings settings) {
-        super(material, BlockTags.PICKAXE_MINEABLE, settings);
+    public AdvancedDrillItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, BlockTags.PICKAXE_MINEABLE, attackDamage, attackSpeed, settings);
     }
 
     public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos intitalBlockPos, ServerPlayerEntity player) {

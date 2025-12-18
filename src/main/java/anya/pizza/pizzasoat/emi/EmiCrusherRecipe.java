@@ -1,3 +1,4 @@
+/*
 package anya.pizza.pizzasoat.emi;
 
 import anya.pizza.pizzasoat.recipe.CrusherRecipe;
@@ -69,3 +70,4 @@ public class EmiCrusherRecipe implements EmiRecipe {
     }
 }
 
+*/

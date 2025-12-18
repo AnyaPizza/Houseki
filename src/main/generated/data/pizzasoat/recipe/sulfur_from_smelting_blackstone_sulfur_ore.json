@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.5,
   "group": "sulfur",
-  "ingredient": {
-    "item": "pizzasoat:blackstone_sulfur_ore"
-  },
+  "ingredient": "pizzasoat:blackstone_sulfur_ore",
   "result": {
     "id": "pizzasoat:sulfur"
   }

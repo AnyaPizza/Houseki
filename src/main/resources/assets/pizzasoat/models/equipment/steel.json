@@ -1,0 +1,24 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "pizzasoat:steel"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "pizzasoat:steel"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "pizzasoat:steel"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "pizzasoat:steel"
+      }
+    ]
+  }
+}

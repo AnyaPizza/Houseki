@@ -23,8 +23,8 @@
   "item.pizzasoat.advanced_drill_head": "Advanced Drill Head",
   "item.pizzasoat.premium_drill_head": "Premium Drill Head",
 
-  "item.pizzasoat.pinku_upgrade_smithing_template": "Smithing Template",
-  "item.pizzasoat.drill_upgrade_smithing_template": "Smithing Template",
+  "item.pizzasoat.pinku_upgrade_smithing_template": "Pinku Upgrade",
+  "item.pizzasoat.drill_upgrade_smithing_template": "Drill Upgrade",
 
   "block.pizzasoat.block_of_pinku": "Block of Pinku",
   "block.pizzasoat.pinku_ore": "Pinku Ore",
@@ -37,6 +37,7 @@
   "block.pizzasoat.deepslate_scheelite_ore": "Deepslate Scheelite Ore",
   "block.pizzasoat.crusher": "Crusher",
   "block.pizzasoat.block_of_tungsten": "Block of Tungsten",
+  "block.pizzasoat.block_of_tungsten_item": "Block of Tungsten",
   "block.pizzasoat.bauxite": "Bauxite",
   "block.pizzasoat.aluminum_glass": "Aluminum Glass",
   "block.pizzasoat.aluminum_glass_pane": "Aluminum Glass Pane",

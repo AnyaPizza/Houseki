@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "pizzasoat:block_of_cast_steel"
-    },
-    "R": {
-      "item": "minecraft:redstone"
-    },
-    "X": {
-      "item": "pizzasoat:cast_steel"
-    }
+    "#": "pizzasoat:block_of_cast_steel",
+    "R": "minecraft:redstone",
+    "X": "pizzasoat:cast_steel"
   },
   "pattern": [
     " X ",

@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.5,
   "group": "nephrite",
-  "ingredient": {
-    "item": "pizzasoat:nephrite_ore"
-  },
+  "ingredient": "pizzasoat:nephrite_ore",
   "result": {
     "id": "pizzasoat:nephrite"
   }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "pizzasoat:block_of_aluminum"
-    }
+    "pizzasoat:block_of_aluminum"
   ],
   "result": {
     "count": 9,

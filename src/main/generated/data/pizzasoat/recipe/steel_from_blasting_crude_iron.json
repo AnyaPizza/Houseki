@@ -4,9 +4,7 @@
   "cookingtime": 120,
   "experience": 0.5,
   "group": "steel",
-  "ingredient": {
-    "item": "pizzasoat:crude_iron"
-  },
+  "ingredient": "pizzasoat:crude_iron",
   "result": {
     "id": "pizzasoat:steel"
   }

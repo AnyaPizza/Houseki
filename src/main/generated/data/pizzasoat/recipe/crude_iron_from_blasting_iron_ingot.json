@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.5,
   "group": "crude_iron",
-  "ingredient": {
-    "item": "minecraft:iron_ingot"
-  },
+  "ingredient": "minecraft:iron_ingot",
   "result": {
     "id": "pizzasoat:crude_iron"
   }

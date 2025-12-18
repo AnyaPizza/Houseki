@@ -8,8 +8,8 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 
 public class TungstenSwordItem extends SwordItem {
-    public TungstenSwordItem(ToolMaterial material, Settings settings) {
-        super(material, settings);
+    public TungstenSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
 
     @Override

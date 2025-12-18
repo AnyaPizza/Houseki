@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pizzasoat:steel_from_blasting_crude_iron"
+        "recipe": "minecraft:steel_from_blasting_crude_iron"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "pizzasoat:steel_from_blasting_crude_iron"
+      "minecraft:steel_from_blasting_crude_iron"
     ]
   }
 }

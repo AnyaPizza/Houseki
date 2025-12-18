@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "pizzasoat:slate_tiles"
-    }
+    "#": "pizzasoat:slate_tiles"
   },
   "pattern": [
     "###"

@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.5,
   "group": "aluminum",
-  "ingredient": {
-    "item": "pizzasoat:crushed_bauxite"
-  },
+  "ingredient": "pizzasoat:crushed_bauxite",
   "result": {
     "id": "pizzasoat:aluminum"
   }
