@@ -15,16 +15,16 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
 import net.minecraft.text.Text;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
@@ -115,25 +115,24 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.writeNbt(nbt, registryLookup);
-        Inventories.writeNbt(nbt, inventory, registryLookup);
-        nbt.putInt("progress", progress);
-        nbt.putInt("max_progress", maxProgress);
-        nbt.putInt("fuel_time", fuelTime);
-        nbt.putInt("max_fuel_time", maxFuelTime);
+    protected void writeData(WriteView view) {
+        super.writeData(view);
+        Inventories.writeData(view, inventory);
+        view.putInt("progress", progress);
+        view.putInt("max_progress", maxProgress);
+        view.putInt("fuel_time", fuelTime);
+        view.putInt("max_fuel_time", maxFuelTime);
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-        Inventories.readNbt(nbt, inventory, registryLookup);
-        progress = nbt.getInt("progress").get();
-        maxProgress = nbt.getInt("max_progress").get();
-        fuelTime = nbt.getInt("fuel_time").get();
-        maxFuelTime = nbt.getInt("max_fuel_time").get();
+    protected void readData(ReadView view) {
+        super.readData(view);
+        Inventories.readData(view, inventory);
+        progress = view.getInt("progress", 0);
+        maxProgress = view.getInt("max_progress", 0);
+        fuelTime = view.getInt("fuel_time", 0);
+        maxFuelTime = view.getInt("max_fuel_time", 0);
     }
-
 
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) return;
@@ -172,20 +171,12 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
         if (canCraftNow) {
             progress++;
-            //world.setBlockState(pos, state.with(CrusherBlock.LIT, true));
             dirty = true;
             if (progress >= maxProgress) {
                 craftItem();
                 progress = 0;
             }
-        } /*else {
-            world.setBlockState(pos, state.with(CrusherBlock.LIT, false));
-            if (fuelTime <= 0 && progress > 0) {
-                progress = 0;
-                dirty = true;
-            }
-        }*/
-
+        }
         if (dirty) markDirty(world, pos, state);
     }
 
@@ -218,27 +209,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             outputSlot.increment(result.getCount());
         }
     }
-
-    /*private void resetProgress() {
-        this.progress = 0;
-    }
-
-    private void craftItem() {
-        Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
-        if (recipe.isEmpty()) return;
-
-        this.removeStack(INPUT_SLOT, 1);
-        this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().value().output().getItem(),
-                this.getStack(OUTPUT_SLOT).getCount() + recipe.get().value().output().getCount()));
-    }
-
-    private boolean hasCraftingFinished() {
-        return this.progress >= this.maxProgress;
-    }
-
-    private void increaseCraftingProgress() {
-        this.progress++;
-    }*/
 
     private Optional<RecipeEntry<CrusherRecipe>> getCurrentRecipe() {
         return ((ServerWorld) this.getWorld()).getRecipeManager()

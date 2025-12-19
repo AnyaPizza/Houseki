@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:platinum_from_blasting_platinum_ore"
+        "recipe": "pizzasoat:platinum_from_blasting_platinum_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:platinum_from_blasting_platinum_ore"
+      "pizzasoat:platinum_from_blasting_platinum_ore"
     ]
   }
 }

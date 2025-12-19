@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:crude_iron_from_blasting_iron_ingot"
+        "recipe": "pizzasoat:crude_iron_from_blasting_iron_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:crude_iron_from_blasting_iron_ingot"
+      "pizzasoat:crude_iron_from_blasting_iron_ingot"
     ]
   }
 }

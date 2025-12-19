@@ -17,7 +17,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
+        valueLookupBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
                 .add(ModItems.PINKU)
                 .add(ModItems.TUNGSTEN)
                 .add(ModItems.ALUMINUM)
@@ -27,7 +27,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL)
                 .add(ModItems.CAST_STEEL);
 
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+        valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.PINKU_HELMET)
                 .add(ModItems.PINKU_CHESTPLATE)
                 .add(ModItems.PINKU_LEGGINGS)
@@ -69,7 +69,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.CAST_STEEL_LEGGINGS)
                 .add(ModItems.CAST_STEEL_BOOTS);
 
-        getOrCreateTagBuilder(ItemTags.AXES)
+        valueLookupBuilder(ItemTags.AXES)
                 .add(ModItems.PINKU_AXE)
                 .add(ModItems.RAINBOW_PYRITE_AXE)
                 .add(ModItems.TUNGSTEN_AXE)
@@ -81,7 +81,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_AXE)
                 .add(ModItems.CAST_STEEL_AXE);
 
-        getOrCreateTagBuilder(ItemTags.HOES)
+        valueLookupBuilder(ItemTags.HOES)
                 .add(ModItems.PINKU_HOE)
                 .add(ModItems.RAINBOW_PYRITE_HOE)
                 .add(ModItems.TUNGSTEN_HOE)
@@ -93,7 +93,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_HOE)
                 .add(ModItems.CAST_STEEL_HOE);
 
-        getOrCreateTagBuilder(ItemTags.SHOVELS)
+        valueLookupBuilder(ItemTags.SHOVELS)
                 .add(ModItems.PINKU_SHOVEL)
                 .add(ModItems.RAINBOW_PYRITE_SHOVEL)
                 .add(ModItems.TUNGSTEN_SHOVEL)
@@ -105,7 +105,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_SHOVEL)
                 .add(ModItems.CAST_STEEL_SHOVEL);
 
-        getOrCreateTagBuilder(ItemTags.SWORDS)
+        valueLookupBuilder(ItemTags.SWORDS)
                 .add(ModItems.PINKU_SWORD)
                 .add(ModItems.RAINBOW_PYRITE_SWORD)
                 .add(ModItems.TUNGSTEN_SWORD)
@@ -117,7 +117,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_SWORD)
                 .add(ModItems.CAST_STEEL_SWORD);
 
-        getOrCreateTagBuilder(ItemTags.PICKAXES)
+        valueLookupBuilder(ItemTags.PICKAXES)
                 .add(ModItems.PINKU_PICKAXE)
                 .add(ModItems.RAINBOW_PYRITE_PICKAXE)
                 .add(ModItems.TUNGSTEN_PICKAXE)
@@ -129,7 +129,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_PICKAXE)
                 .add(ModItems.CAST_STEEL_PICKAXE);
 
-        getOrCreateTagBuilder(ModTags.Items.DRILLS)
+        valueLookupBuilder(ModTags.Items.DRILLS)
                 .add(ModItems.SIMPLE_DRILL_HEAD)
                 .add(ModItems.SIMPLE_TUNGSTEN_DRILL)
                 .add(ModItems.ENHANCED_DRILL_HEAD)
@@ -143,15 +143,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ADVANCED_DIAMOND_DRILL)
                 .add(ModItems.PREMIUM_DIAMOND_DRILL);
 
-        getOrCreateTagBuilder(ModTags.Items.DRILL_BITS)
+        valueLookupBuilder(ModTags.Items.DRILL_BITS)
                 .add(ModItems.TUNGSTEN_DRILL_BIT)
                 .add(ModItems.DIAMOND_DRILL_BIT);
 
-        getOrCreateTagBuilder(ModTags.Items.SMITHING_TEMPLATES)
+        valueLookupBuilder(ModTags.Items.SMITHING_TEMPLATES)
                 .add(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE)
                 .add(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE);
 
-        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+        valueLookupBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModItems.PINKU_BOOTS)
                 .add(ModItems.RAINBOW_PYRITE_BOOTS)
                 .add(ModItems.TUNGSTEN_BOOTS)
@@ -163,7 +163,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_BOOTS)
                 .add(ModItems.CAST_STEEL_BOOTS);
 
-        getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+        valueLookupBuilder(ItemTags.LEG_ARMOR)
                 .add(ModItems.PINKU_LEGGINGS)
                 .add(ModItems.RAINBOW_PYRITE_LEGGINGS)
                 .add(ModItems.TUNGSTEN_LEGGINGS)
@@ -175,7 +175,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_LEGGINGS)
                 .add(ModItems.CAST_STEEL_LEGGINGS);
 
-        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+        valueLookupBuilder(ItemTags.CHEST_ARMOR)
                 .add(ModItems.PINKU_CHESTPLATE)
                 .add(ModItems.RAINBOW_PYRITE_CHESTPLATE)
                 .add(ModItems.TUNGSTEN_CHESTPLATE)
@@ -187,7 +187,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_CHESTPLATE)
                 .add(ModItems.CAST_STEEL_CHESTPLATE);
 
-        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+        valueLookupBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModItems.PINKU_HELMET)
                 .add(ModItems.RAINBOW_PYRITE_HELMET)
                 .add(ModItems.TUNGSTEN_HELMET)
@@ -199,27 +199,27 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_HELMET)
                 .add(ModItems.CAST_STEEL_HELMET);
 
-        getOrCreateTagBuilder(ModTags.Items.PINKU_REPAIR)
+        valueLookupBuilder(ModTags.Items.PINKU_REPAIR)
                 .add(ModItems.PINKU);
-        getOrCreateTagBuilder(ModTags.Items.RAINBOW_REPAIR)
+        valueLookupBuilder(ModTags.Items.RAINBOW_REPAIR)
                 .add(ModItems.RAINBOW_PYRITE);
-        getOrCreateTagBuilder(ModTags.Items.TUNGSTEN_REPAIR)
+        valueLookupBuilder(ModTags.Items.TUNGSTEN_REPAIR)
                 .add(ModItems.TUNGSTEN);
-        getOrCreateTagBuilder(ModTags.Items.ALUMINUM_REPAIR)
+        valueLookupBuilder(ModTags.Items.ALUMINUM_REPAIR)
                 .add(ModItems.ALUMINUM);
-        getOrCreateTagBuilder(ModTags.Items.SAPPHIRE_REPAIR)
+        valueLookupBuilder(ModTags.Items.SAPPHIRE_REPAIR)
                 .add(ModItems.SAPPHIRE);
-        getOrCreateTagBuilder(ModTags.Items.NEPHRITE_REPAIR)
+        valueLookupBuilder(ModTags.Items.NEPHRITE_REPAIR)
                 .add(ModItems.NEPHRITE);
-        getOrCreateTagBuilder(ModTags.Items.JADEITE_REPAIR)
+        valueLookupBuilder(ModTags.Items.JADEITE_REPAIR)
                 .add(ModItems.JADEITE);
-        getOrCreateTagBuilder(ModTags.Items.PLATINUM_REPAIR)
+        valueLookupBuilder(ModTags.Items.PLATINUM_REPAIR)
                 .add(ModItems.PLATINUM);
-        getOrCreateTagBuilder(ModTags.Items.STEEL_REPAIR)
+        valueLookupBuilder(ModTags.Items.STEEL_REPAIR)
                 .add(ModItems.STEEL);
-        getOrCreateTagBuilder(ModTags.Items.CAST_STEEL_REPAIR)
+        valueLookupBuilder(ModTags.Items.CAST_STEEL_REPAIR)
                 .add(ModItems.CAST_STEEL);
-        getOrCreateTagBuilder(ModTags.Items.DIAMOND_REPAIR)
+        valueLookupBuilder(ModTags.Items.DIAMOND_REPAIR)
                 .add(Items.DIAMOND);
     }
 }

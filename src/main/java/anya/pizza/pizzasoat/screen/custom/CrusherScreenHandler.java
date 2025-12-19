@@ -71,41 +71,6 @@ public class CrusherScreenHandler extends ScreenHandler {
         return maxFuelTime > 0 && fuelTime > 0 ? (fuelTime * crushingPixelSize) / maxFuelTime : 0;
     }
 
-    /*@Override
-    public ItemStack quickMove(PlayerEntity player, int invSlot) {
-        ItemStack newStack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(invSlot);
-        if (slot != null && slot.hasStack()) {
-            ItemStack originalStack = slot.getStack();
-            newStack = originalStack.copy();
-            if (invSlot < inventory.size()) {
-                if (!insertItem(originalStack, inventory.size(), slots.size(), true)) {
-                    return ItemStack.EMPTY;
-                }
-            } else {
-                if (blockEntity.getFuelTime(originalStack) > 0) {
-                    if (!insertItem(originalStack, 1, 2, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (blockEntity.getWorld().getRecipeManager().getFirstMatch(ModRecipes.CRUSHER_TYPE,
-                        new CrusherRecipeInput(originalStack), blockEntity.getWorld()).isPresent()) {
-                    if (!insertItem(originalStack, 0, 1, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else {
-                    return ItemStack.EMPTY;
-                }
-            }
-
-            if (originalStack.isEmpty()) {
-                slot.setStack(ItemStack.EMPTY);
-            } else {
-                slot.markDirty();
-            }
-        }
-        return newStack;
-    }*/
-
     @Override
     public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack movedStack = ItemStack.EMPTY;

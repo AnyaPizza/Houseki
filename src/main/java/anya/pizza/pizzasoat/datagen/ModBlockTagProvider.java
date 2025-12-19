@@ -16,7 +16,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_RAINBOW_PYRITE)
                 .add(ModBlocks.PINKU_ORE)
@@ -73,7 +73,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLOCK_OF_STEEL)
                 .add(ModBlocks.BLOCK_OF_CAST_STEEL);
 
-        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+        valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.BAUXITE)
                 .add(ModBlocks.SULFUR_ORE)
                 .add(ModBlocks.BLACKSTONE_SULFUR_ORE)
@@ -82,7 +82,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.ALUMINUM_TRAPDOOR)
                 .add(ModBlocks.CRUSHER);
 
-        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+        valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_RAINBOW_PYRITE)
                 .add(ModBlocks.BLOCK_OF_SAPPHIRE)
@@ -104,12 +104,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLOCK_OF_STEEL)
                 .add(ModBlocks.BLOCK_OF_CAST_STEEL);
 
-        getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
+        valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.PINKU_ORE)
                 .add(ModBlocks.SAPPHIRE_ORE)
                 .add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE);
 
-        getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
+        valueLookupBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_RAINBOW_PYRITE)
                 .add(ModBlocks.BLOCK_OF_TUNGSTEN)
@@ -120,18 +120,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLOCK_OF_STEEL)
                 .add(ModBlocks.BLOCK_OF_CAST_STEEL);
 
-        getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE)
+        valueLookupBuilder(BlockTags.WITHER_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_SAPPHIRE)
                 .add(ModBlocks.ALUMINUM_GLASS)
                 .add(ModBlocks.ALUMINUM_GLASS_PANE);
 
-        getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE)
+        valueLookupBuilder(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.ALUMINUM_GLASS)
                 .add(ModBlocks.ALUMINUM_GLASS_PANE);
 
-        getOrCreateTagBuilder(BlockTags.WALLS)
+        valueLookupBuilder(BlockTags.WALLS)
                 .add(ModBlocks.LIMESTONE_WALL)
                 .add(ModBlocks.LIMESTONE_BRICK_WALL)
                 .add(ModBlocks.POLISHED_LIMESTONE_WALL)
@@ -139,7 +139,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SLATE_TILE_WALL)
                 .add(ModBlocks.POLISHED_SLATE_WALL);
 
-        getOrCreateTagBuilder(BlockTags.STAIRS)
+        valueLookupBuilder(BlockTags.STAIRS)
                 .add(ModBlocks.LIMESTONE_STAIRS)
                 .add(ModBlocks.POLISHED_LIMESTONE_STAIRS)
                 .add(ModBlocks.LIMESTONE_BRICK_STAIRS)
@@ -147,7 +147,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.POLISHED_SLATE_STAIRS)
                 .add(ModBlocks.SLATE_TILE_STAIRS);
 
-        getOrCreateTagBuilder(BlockTags.SLABS)
+        valueLookupBuilder(BlockTags.SLABS)
                 .add(ModBlocks.LIMESTONE_SLAB)
                 .add(ModBlocks.POLISHED_LIMESTONE_SLAB)
                 .add(ModBlocks.LIMESTONE_BRICK_SLAB)
@@ -155,9 +155,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.POLISHED_SLATE_SLAB)
                 .add(ModBlocks.SLATE_TILE_SLAB);
 
-        getOrCreateTagBuilder(ModTags.Blocks.PREMIUM_DRILL_MINEABLE)
-                .forceAddTag(BlockTags.PICKAXE_MINEABLE)
-                .forceAddTag(BlockTags.SHOVEL_MINEABLE)
-                .forceAddTag(BlockTags.AXE_MINEABLE);
+        valueLookupBuilder(ModTags.Blocks.PREMIUM_DRILL_MINEABLE)
+                .addTag(BlockTags.PICKAXE_MINEABLE)
+                .addTag(BlockTags.SHOVEL_MINEABLE)
+                .addTag(BlockTags.AXE_MINEABLE);
     }
 }
