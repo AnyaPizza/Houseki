@@ -1,7 +1,7 @@
 package anya.pizza.pizzasoat.item.custom;
 
 import anya.pizza.pizzasoat.PizzasOAT;
-import net.minecraft.item.Item;
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SmithingTemplateItem;
 import net.minecraft.item.tooltip.TooltipType;
@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class PinkuTemplateItem extends SmithingTemplateItem {
     private static final Formatting DESCRIPTION_FORMATTING = Formatting.LIGHT_PURPLE;
@@ -60,12 +61,12 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
-        tooltip.add(PINKU_UPGRADE_TEXT);
-        tooltip.add(ScreenTexts.EMPTY);
-        tooltip.add(PINKU_UPGRADE_APPLIES_TO_TEXT);
-        tooltip.add(PINKU_UPGRADE_INGREDIENTS_TEXT);
+    public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
+        super.appendTooltip(stack, context, displayComponent, textConsumer, type);
+        textConsumer.accept(PINKU_UPGRADE_TEXT);
+        textConsumer.accept(ScreenTexts.EMPTY);
+        textConsumer.accept(PINKU_UPGRADE_APPLIES_TO_TEXT);
+        textConsumer.accept(PINKU_UPGRADE_INGREDIENTS_TEXT);
     }
 
     private static List<Identifier> getNetheriteUpgradeEmptyBaseSlotTextures() {

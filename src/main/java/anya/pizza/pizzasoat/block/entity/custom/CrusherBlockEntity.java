@@ -26,6 +26,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -108,6 +109,12 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     }
 
     @Override
+    public void onBlockReplaced(BlockPos pos, BlockState oldState) {
+        ItemScatterer.spawn(world, pos, (this));
+        super.onBlockReplaced(pos, oldState);
+    }
+
+    @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
         Inventories.writeNbt(nbt, inventory, registryLookup);
@@ -121,10 +128,10 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
         Inventories.readNbt(nbt, inventory, registryLookup);
-        progress = nbt.getInt("progress");
-        maxProgress = nbt.getInt("max_progress");
-        fuelTime = nbt.getInt("fuel_time");
-        maxFuelTime = nbt.getInt("max_fuel_time");
+        progress = nbt.getInt("progress").get();
+        maxProgress = nbt.getInt("max_progress").get();
+        fuelTime = nbt.getInt("fuel_time").get();
+        maxFuelTime = nbt.getInt("max_fuel_time").get();
     }
 
 

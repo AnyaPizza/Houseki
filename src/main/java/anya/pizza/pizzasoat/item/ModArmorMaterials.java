@@ -17,7 +17,7 @@ import java.util.EnumMap;
 public class ModArmorMaterials {
     static RegistryKey<? extends Registry<EquipmentAsset>> REGISTRY_KEY = RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset"));
     public static final RegistryKey<EquipmentAsset> PINKU_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(PizzasOAT.MOD_ID, "pinku"));
-    public static final RegistryKey<EquipmentAsset> RAINBOW_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(PizzasOAT.MOD_ID, "rainbow"));
+    public static final RegistryKey<EquipmentAsset> RAINBOW_PYRITE_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(PizzasOAT.MOD_ID, "rainbow_pyrite"));
     public static final RegistryKey<EquipmentAsset> TUNGSTEN_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(PizzasOAT.MOD_ID, "tungsten"));
     public static final RegistryKey<EquipmentAsset> ALUMINUM_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(PizzasOAT.MOD_ID, "aluminum"));
     public static final RegistryKey<EquipmentAsset> SAPPHIRE_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(PizzasOAT.MOD_ID, "sapphire"));
@@ -41,7 +41,7 @@ public class ModArmorMaterials {
         map.put(EquipmentType.LEGGINGS, 6);
         map.put(EquipmentType.BOOTS, 3);
         map.put(EquipmentType.BODY, 11);
-    }), 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f, 0.1f, ModTags.Items.RAINBOW_REPAIR, RAINBOW_KEY);
+    }), 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f, 0.1f, ModTags.Items.RAINBOW_REPAIR, RAINBOW_PYRITE_KEY);
 
     public static final ArmorMaterial TUNGSTEN_MATERIAL = new ArmorMaterial(3000, Util.make(new EnumMap<>(EquipmentType.class), map -> {
         map.put(EquipmentType.HELMET, 4);
