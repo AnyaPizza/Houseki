@@ -242,7 +242,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
-        return pos.isWithinDistance(player.getPos(), 4.5);
+        return pos.isWithinDistance(pos, 4.5);
     }
 
     @Override

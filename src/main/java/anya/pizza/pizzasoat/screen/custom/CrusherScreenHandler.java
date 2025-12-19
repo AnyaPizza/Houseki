@@ -22,7 +22,7 @@ public class CrusherScreenHandler extends ScreenHandler {
     public final CrusherBlockEntity blockEntity;
 
     public CrusherScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(pos), new ArrayPropertyDelegate(5));
+        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(5));
     }
 
     public CrusherScreenHandler(int syncId, PlayerInventory playerInventory,
