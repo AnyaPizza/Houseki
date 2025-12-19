@@ -1,15 +1,7 @@
 package anya.pizza.pizzasoat.item;
 
-import com.google.common.base.Suppliers;
 import anya.pizza.pizzasoat.util.ModTags;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.tag.TagKey;
-
-import java.util.function.Supplier;
 
 public class ModToolMaterials {
     public static ToolMaterial PINKU = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_PINKU_TOOL, 2580, 10, 5, 16, ModTags.Items.PINKU_REPAIR);

@@ -37,7 +37,6 @@
   "block.pizzasoat.deepslate_scheelite_ore": "Deepslate Scheelite Ore",
   "block.pizzasoat.crusher": "Crusher",
   "block.pizzasoat.block_of_tungsten": "Block of Tungsten",
-  "block.pizzasoat.block_of_tungsten_item": "Block of Tungsten",
   "block.pizzasoat.bauxite": "Bauxite",
   "block.pizzasoat.aluminum_glass": "Aluminum Glass",
   "block.pizzasoat.aluminum_glass_pane": "Aluminum Glass Pane",
@@ -86,6 +85,8 @@
 
   "block.pizzasoat.aluminum_door": "Aluminum Door",
   "block.pizzasoat.aluminum_trapdoor": "Aluminum Trapdoor",
+
+  "item.pizzasoat.block_of_tungsten_item": "Block of Tungsten",
 
   "item.pizzasoat.pinku_pickaxe": "Pinku Pickaxe",
   "item.pizzasoat.pinku_axe": "Pinku Axe",

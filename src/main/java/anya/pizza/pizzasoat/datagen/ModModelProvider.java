@@ -1,13 +1,11 @@
 package anya.pizza.pizzasoat.datagen;
 
-import anya.pizza.pizzasoat.PizzasOAT;
 import anya.pizza.pizzasoat.block.ModBlocks;
 import anya.pizza.pizzasoat.item.ModArmorMaterials;
 import anya.pizza.pizzasoat.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.data.client.*;
-import net.minecraft.entity.EquipmentSlot;
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.client.data.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.util.Identifier;
 
@@ -29,7 +27,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SCHEELITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_TUNGSTEN);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BAUXITE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ALUMINUM_GLASS);
+        blockStateModelGenerator.registerGlassAndPane(ModBlocks.ALUMINUM_GLASS, ModBlocks.ALUMINUM_GLASS_PANE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_ALUMINUM);
         blockStateModelGenerator.registerDoor(ModBlocks.ALUMINUM_DOOR);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.ALUMINUM_TRAPDOOR);
@@ -55,15 +53,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_SULFUR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_STEEL);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_CAST_STEEL);
-
-        blockStateModelGenerator.registerSingleton(
-                ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE,
-                new TextureMap()
-                        .put(TextureKey.BOTTOM, Identifier.of("pizzasoat", "block/sandstone_rainbow_pyrite_ore_bottom"))
-                        .put(TextureKey.TOP, Identifier.of("pizzasoat", "block/sandstone_rainbow_pyrite_ore_top"))
-                        .put(TextureKey.SIDE, Identifier.of("pizzasoat", "block/sandstone_rainbow_pyrite_ore")),
-                Models.CUBE_BOTTOM_TOP
-        );
 
         blockStateModelGenerator.registerCooker(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE);
 
@@ -112,7 +101,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ADVANCED_DRILL_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.PREMIUM_DRILL_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.DIAMOND_DRILL_BIT, Models.GENERATED);
-
 
         itemModelGenerator.register(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
@@ -176,86 +164,46 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ADVANCED_DIAMOND_DRILL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.PREMIUM_DIAMOND_DRILL, Models.HANDHELD);
 
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_HELMET), Identifier.of(PizzasOAT.MOD_ID, "pinku"),
-                ModArmorMaterials.PINKU, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "pinku"),
-                ModArmorMaterials.PINKU, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "pinku"),
-                ModArmorMaterials.PINKU, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "pinku"),
-                ModArmorMaterials.PINKU, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.RAINBOW_PYRITE_HELMET), Identifier.of(PizzasOAT.MOD_ID, "rainbow"),
-                ModArmorMaterials.RAINBOW, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.RAINBOW_PYRITE_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "rainbow"),
-                ModArmorMaterials.RAINBOW, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.RAINBOW_PYRITE_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "rainbow"),
-                ModArmorMaterials.RAINBOW, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.RAINBOW_PYRITE_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "rainbow"),
-                ModArmorMaterials.RAINBOW, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.TUNGSTEN_HELMET), Identifier.of(PizzasOAT.MOD_ID, "tungsten"),
-                ModArmorMaterials.TUNGSTEN, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.TUNGSTEN_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "tungsten"),
-                ModArmorMaterials.TUNGSTEN, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.TUNGSTEN_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "tungsten"),
-                ModArmorMaterials.TUNGSTEN, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.TUNGSTEN_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "tungsten"),
-                ModArmorMaterials.TUNGSTEN, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.ALUMINUM_HELMET), Identifier.of(PizzasOAT.MOD_ID, "aluminum"),
-                ModArmorMaterials.ALUMINUM, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.ALUMINUM_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "aluminum"),
-                ModArmorMaterials.ALUMINUM, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.ALUMINUM_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "aluminum"),
-                ModArmorMaterials.ALUMINUM, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.ALUMINUM_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "aluminum"),
-                ModArmorMaterials.ALUMINUM, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.SAPPHIRE_HELMET), Identifier.of(PizzasOAT.MOD_ID, "sapphire"),
-                ModArmorMaterials.SAPPHIRE, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.SAPPHIRE_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "sapphire"),
-                ModArmorMaterials.SAPPHIRE, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.SAPPHIRE_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "sapphire"),
-                ModArmorMaterials.SAPPHIRE, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.SAPPHIRE_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "sapphire"),
-                ModArmorMaterials.SAPPHIRE, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.NEPHRITE_HELMET), Identifier.of(PizzasOAT.MOD_ID, "nephrite"),
-                ModArmorMaterials.NEPHRITE, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.NEPHRITE_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "nephrite"),
-                ModArmorMaterials.NEPHRITE, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.NEPHRITE_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "nephrite"),
-                ModArmorMaterials.NEPHRITE, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.NEPHRITE_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "nephrite"),
-                ModArmorMaterials.NEPHRITE, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.JADEITE_HELMET), Identifier.of(PizzasOAT.MOD_ID, "jadeite"),
-                ModArmorMaterials.JADEITE, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.JADEITE_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "jadeite"),
-                ModArmorMaterials.JADEITE, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.JADEITE_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "jadeite"),
-                ModArmorMaterials.JADEITE, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.JADEITE_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "jadeite"),
-                ModArmorMaterials.JADEITE, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PLATINUM_HELMET), Identifier.of(PizzasOAT.MOD_ID, "platinum"),
-                ModArmorMaterials.PLATINUM, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PLATINUM_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "platinum"),
-                ModArmorMaterials.PLATINUM, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PLATINUM_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "platinum"),
-                ModArmorMaterials.PLATINUM, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PLATINUM_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "platinum"),
-                ModArmorMaterials.PLATINUM, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.STEEL_HELMET), Identifier.of(PizzasOAT.MOD_ID, "steel"),
-                ModArmorMaterials.STEEL, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.STEEL_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "steel"),
-                ModArmorMaterials.STEEL, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.STEEL_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "steel"),
-                ModArmorMaterials.STEEL, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.STEEL_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "steel"),
-                ModArmorMaterials.STEEL, EquipmentSlot.FEET);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CAST_STEEL_HELMET), Identifier.of(PizzasOAT.MOD_ID, "cast_steel"),
-                ModArmorMaterials.CAST_STEEL, EquipmentSlot.HEAD);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CAST_STEEL_CHESTPLATE), Identifier.of(PizzasOAT.MOD_ID, "cast_steel"),
-                ModArmorMaterials.CAST_STEEL, EquipmentSlot.CHEST);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CAST_STEEL_LEGGINGS), Identifier.of(PizzasOAT.MOD_ID, "cast_steel"),
-                ModArmorMaterials.CAST_STEEL, EquipmentSlot.LEGS);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CAST_STEEL_BOOTS), Identifier.of(PizzasOAT.MOD_ID, "cast_steel"),
-                ModArmorMaterials.CAST_STEEL, EquipmentSlot.FEET);
+        itemModelGenerator.registerArmor(ModItems.PINKU_HELMET, ModArmorMaterials.PINKU_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.PINKU_CHESTPLATE, ModArmorMaterials.PINKU_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.PINKU_LEGGINGS, ModArmorMaterials.PINKU_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.PINKU_BOOTS, ModArmorMaterials.PINKU_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.RAINBOW_PYRITE_HELMET, ModArmorMaterials.RAINBOW_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.RAINBOW_PYRITE_CHESTPLATE, ModArmorMaterials.RAINBOW_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.RAINBOW_PYRITE_LEGGINGS,  ModArmorMaterials.RAINBOW_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.RAINBOW_PYRITE_BOOTS, ModArmorMaterials.RAINBOW_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.TUNGSTEN_HELMET, ModArmorMaterials.TUNGSTEN_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.TUNGSTEN_CHESTPLATE, ModArmorMaterials.TUNGSTEN_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.TUNGSTEN_LEGGINGS,  ModArmorMaterials.TUNGSTEN_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.TUNGSTEN_BOOTS, ModArmorMaterials.TUNGSTEN_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.ALUMINUM_HELMET, ModArmorMaterials.ALUMINUM_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.ALUMINUM_CHESTPLATE, ModArmorMaterials.ALUMINUM_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.ALUMINUM_LEGGINGS,  ModArmorMaterials.ALUMINUM_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.ALUMINUM_BOOTS, ModArmorMaterials.ALUMINUM_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.SAPPHIRE_HELMET, ModArmorMaterials.SAPPHIRE_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.SAPPHIRE_CHESTPLATE, ModArmorMaterials.SAPPHIRE_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.SAPPHIRE_LEGGINGS,  ModArmorMaterials.SAPPHIRE_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.SAPPHIRE_BOOTS, ModArmorMaterials.SAPPHIRE_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.NEPHRITE_HELMET, ModArmorMaterials.NEPHRITE_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.NEPHRITE_CHESTPLATE, ModArmorMaterials.NEPHRITE_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.NEPHRITE_LEGGINGS,  ModArmorMaterials.NEPHRITE_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.NEPHRITE_BOOTS, ModArmorMaterials.NEPHRITE_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.JADEITE_HELMET, ModArmorMaterials.JADEITE_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.JADEITE_CHESTPLATE, ModArmorMaterials.JADEITE_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.JADEITE_LEGGINGS,  ModArmorMaterials.JADEITE_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.JADEITE_BOOTS, ModArmorMaterials.JADEITE_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.PLATINUM_HELMET, ModArmorMaterials.PLATINUM_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.PLATINUM_CHESTPLATE, ModArmorMaterials.PLATINUM_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.PLATINUM_LEGGINGS,  ModArmorMaterials.PLATINUM_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.PLATINUM_BOOTS, ModArmorMaterials.PLATINUM_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.STEEL_HELMET, ModArmorMaterials.STEEL_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.STEEL_CHESTPLATE, ModArmorMaterials.STEEL_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.STEEL_LEGGINGS,  ModArmorMaterials.STEEL_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.STEEL_BOOTS, ModArmorMaterials.STEEL_KEY, "boots", false);
+        itemModelGenerator.registerArmor(ModItems.CAST_STEEL_HELMET, ModArmorMaterials.CAST_STEEL_KEY, "helment", false);
+        itemModelGenerator.registerArmor(ModItems.CAST_STEEL_CHESTPLATE, ModArmorMaterials.CAST_STEEL_KEY, "chestplate", false);
+        itemModelGenerator.registerArmor(ModItems.CAST_STEEL_LEGGINGS,  ModArmorMaterials.CAST_STEEL_KEY, "leggings", false);
+        itemModelGenerator.registerArmor(ModItems.CAST_STEEL_BOOTS, ModArmorMaterials.CAST_STEEL_KEY, "boots", false);
 
         itemModelGenerator.register(ModItems.PINKU_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAINBOW_PYRITE_HORSE_ARMOR, Models.GENERATED);
@@ -267,12 +215,5 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CAST_STEEL_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.NEPHRITE_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.JADEITE_HORSE_ARMOR, Models.GENERATED);
-
-
-        itemModelGenerator.register(
-                ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE.asItem(),
-                new Model(Optional.of(Identifier.of("pizzasoat", "block/sandstone_rainbow_pyrite_ore")),
-                        Optional.empty())
-        );
     }
 }

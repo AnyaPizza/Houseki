@@ -2,7 +2,7 @@
 package anya.pizza.pizzasoat.util;
 
 import net.minecraft.advancement.AdvancementCriterion;
-import net.minecraft.data.server.recipe.*;
+import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
@@ -10,7 +10,6 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryEntryLookup;
 
 
-import static net.minecraft.data.server.recipe.RecipeGenerator.hasItem;
 
 public class ModGenRecipes {
     protected final RecipeExporter exporter;
