@@ -1,4 +1,4 @@
-package anya.pizza.pizzasoat.emi;
+package anya.pizza.pizzasoat.compat.emi;
 
 import anya.pizza.pizzasoat.recipe.CrusherRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
@@ -6,7 +6,6 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
-import dev.emi.emi.api.widget.SlotWidget;
 import dev.emi.emi.api.widget.WidgetHolder;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.text.Text;
@@ -65,7 +64,6 @@ public class EmiCrusherRecipe implements EmiRecipe {
                 List.of(TooltipComponent.of(Text.translatable("emi.cooking.time", crushingTime / 20f).asOrderedText())));
         widgets.addTexture(EmiTexture.EMPTY_FLAME, 1, 24);
         widgets.addAnimatedTexture(EmiTexture.FULL_FLAME, 1, 24, 4000, false, true, true);
-        //widgets.addText(Text.translatable("emi.cooking.experience", recipe.getExperience()), 26, 28, -1, true);
     }
 }
 

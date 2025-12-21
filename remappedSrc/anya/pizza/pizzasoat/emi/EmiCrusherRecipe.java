@@ -1,4 +1,4 @@
-package anya.pizza.pizzasoat.emi;
+package anya.pizza.pizzasoat.compat.emi;
 
 import anya.pizza.pizzasoat.recipe.CrusherRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;

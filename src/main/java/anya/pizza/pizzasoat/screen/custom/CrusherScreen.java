@@ -32,7 +32,7 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2; //- 10;
+        int y = (height - backgroundHeight) / 2;
 
         context.drawTexture(GUI_TEXTURE, x, y, 0, 0, 176, 176);
         renderProgressArrow(context, x, y);

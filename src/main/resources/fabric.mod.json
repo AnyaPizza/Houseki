@@ -25,7 +25,10 @@
 			"anya.pizza.pizzasoat.PizzasOATClient"
 		],
 		"emi": [
-			"anya.pizza.pizzasoat.emi.EmiCrusherPlugin"
+			"anya.pizza.pizzasoat.compat.emi.EmiCrusherPlugin"
+		],
+		"rei_client": [
+			"anya.pizza.pizzasoat.compat.rei.PizzasOATREIClient"
 		]
 	},
 	"mixins": [
@@ -34,8 +37,7 @@
 		"fabricloader": ">=0.16.5",
 		"minecraft": "~1.21.1",
 		"java": ">=21",
-		"fabric-api": "*",
-		"emi": ">=1.1.22"
+		"fabric-api": "*"
 	},
 	"suggests": {
 		"emi": ">=1.1.22+1.21.1"
