@@ -41,7 +41,6 @@ public class ModTags {
 
         public static final TagKey<Block> PREMIUM_DRILL_MINEABLE = createTag("premium_mineable");
 
-
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(PizzasOAT.MOD_ID, name));
         }
