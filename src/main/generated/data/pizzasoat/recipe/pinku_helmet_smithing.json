@@ -3,7 +3,6 @@
   "addition": "pizzasoat:pinku",
   "base": "minecraft:netherite_helmet",
   "result": {
-    "count": 1,
     "id": "pizzasoat:pinku_helmet"
   },
   "template": "pizzasoat:pinku_upgrade_smithing_template"

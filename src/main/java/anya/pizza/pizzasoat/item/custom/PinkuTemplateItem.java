@@ -27,6 +27,7 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
         super(appliesToText, ingredientsText, baseSlotDescriptionText, additionsSlotDescriptionText, emptyBaseSlotTextures, emptyAdditionsSlotTextures, settings);
     }
 
+    private static final Identifier EMPTY_PINKU_SLOT = Identifier.ofVanilla("textures/gui/spirtes/container/slot/pinku");
     private static final Identifier EMPTY_ARMOR_SLOT_HELMET_TEXTURE = Identifier.ofVanilla("item/empty_armor_slot_helmet");
     private static final Identifier EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE = Identifier.ofVanilla("item/empty_armor_slot_chestplate");
     private static final Identifier EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE = Identifier.ofVanilla("item/empty_armor_slot_leggings");
@@ -45,7 +46,7 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
                 PINKU_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
                 PINKU_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
                 getNetheriteUpgradeEmptyBaseSlotTextures(),
-                getNetheriteUpgradeEmptyAdditionsSlotTextures(),
+                getPinkuUpgradeEmptyAdditionsSlotTextures(),
                 settings
         );
     }
@@ -73,7 +74,7 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
         );
     }
 
-    private static List<Identifier> getNetheriteUpgradeEmptyAdditionsSlotTextures() {
-        return List.of(EMPTY_SLOT_INGOT_TEXTURE);
+    private static List<Identifier> getPinkuUpgradeEmptyAdditionsSlotTextures() {
+        return List.of(EMPTY_PINKU_SLOT);
     }
 }

@@ -19,6 +19,8 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static anya.pizza.pizzasoat.util.ModGenRecipes.offerPinkuUpgradeRecipe;
+
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
@@ -43,6 +45,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemConvertible> STEEL_SMELTABLES = List.of(ModItems.CRUDE_IRON);
                 List<ItemConvertible> CAST_STEEL_SMELTABLES = List.of(ModItems.STEEL);
 
+                offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.PINKU_HELMET);
 
                 //Creates recipes for blocks to make a block of something and back to 9 items
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.PINKU, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_PINKU);
