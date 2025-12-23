@@ -62,6 +62,7 @@ public class ModTags {
         public static final TagKey<Item> STEEL_REPAIR = createTag("steel_repair");
         public static final TagKey<Item> CAST_STEEL_REPAIR = createTag("cast_steel_repair");
         public static final TagKey<Item> DIAMOND_REPAIR = createTag("diamond_repair");
+        public static final TagKey<Item> ARMOR = createTag("armor");
 
         public static final TagKey<Item> PINKU_SMITH = createTag("pinku_smith");
 
