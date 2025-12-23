@@ -13,22 +13,11 @@ import java.util.List;
 public class PinkuTemplateItem extends SmithingTemplateItem {
     private static final Formatting DESCRIPTION_FORMATTING = Formatting.LIGHT_PURPLE;
     private static final Formatting TITLE_FORMATTING = Formatting.DARK_PURPLE;
-    private static final Text PINKU_UPGRADE_TEXT = Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(PizzasOAT.MOD_ID,"pinku_upgrade")))
-            .formatted(TITLE_FORMATTING);
-    private static final Text PINKU_UPGRADE_APPLIES_TO_TEXT = Text.translatable(
-                    Util.createTranslationKey("item", Identifier.of(PizzasOAT.MOD_ID, "smithing_template.pinku_upgrade.applies_to"))
-            )
-            .formatted(DESCRIPTION_FORMATTING);
-    private static final Text PINKU_UPGRADE_INGREDIENTS_TEXT = Text.translatable(
-                    Util.createTranslationKey("item", Identifier.of(PizzasOAT.MOD_ID,"smithing_template.pinku_upgrade.ingredients"))
-            )
-            .formatted(DESCRIPTION_FORMATTING);
-    private static final Text PINKU_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Text.translatable(
-            Util.createTranslationKey("item", Identifier.of(PizzasOAT.MOD_ID,"smithing_template.pinku_upgrade.base_slot_description"))
-    );
-    private static final Text PINKU_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Text.translatable(
-            Util.createTranslationKey("item", Identifier.of(PizzasOAT.MOD_ID,"smithing_template.pinku_upgrade.additions_slot_description"))
-    );
+    private static final Text PINKU_UPGRADE_TEXT = Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(PizzasOAT.MOD_ID,"pinku_upgrade"))).formatted(TITLE_FORMATTING);
+    private static final Text PINKU_UPGRADE_APPLIES_TO_TEXT = Text.translatable(Util.createTranslationKey("item", Identifier.of(PizzasOAT.MOD_ID, "smithing_template.pinku_upgrade.applies_to"))).formatted(DESCRIPTION_FORMATTING);
+    private static final Text PINKU_UPGRADE_INGREDIENTS_TEXT = Text.translatable(Util.createTranslationKey("item", Identifier.of(PizzasOAT.MOD_ID,"smithing_template.pinku_upgrade.ingredients"))).formatted(DESCRIPTION_FORMATTING);
+    private static final Text PINKU_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Text.translatable(Util.createTranslationKey("item", Identifier.of(PizzasOAT.MOD_ID,"smithing_template.pinku_upgrade.base_slot_description")));
+    private static final Text PINKU_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Text.translatable(Util.createTranslationKey("item", Identifier.of(PizzasOAT.MOD_ID,"smithing_template.pinku_upgrade.additions_slot_description")));
 
     public PinkuTemplateItem(Text appliesToText, Text ingredientsText, Text titleText, Text baseSlotDescriptionText, Text additionsSlotDescriptionText, List<Identifier> emptyBaseSlotTextures, List<Identifier> emptyAdditionsSlotTextures, FeatureFlag... requiredFeatures) {
         super(appliesToText, ingredientsText, titleText, baseSlotDescriptionText, additionsSlotDescriptionText, emptyBaseSlotTextures, emptyAdditionsSlotTextures, requiredFeatures);
