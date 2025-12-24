@@ -1,4 +1,4 @@
-// 1.21.3	2025-12-23T18:41:40.8481981	Pizza's Ores And Things/Model Definitions
+// 1.21.3	2025-12-23T20:50:32.5048283	Pizza's Ores And Things/Model Definitions
 9ca66029386a5e68144504c6c3c0f234f795f733 assets\pizzasoat\models\item\aluminum_boots_iron_trim.json
 8fb709c046870b1d84b61111299cc54285b03529 assets\pizzasoat\models\item\steel_boots_amethyst_trim.json
 612adb42f6df7c2bc37adec635eb9af2f0fa142a assets\pizzasoat\models\item\jadeite_boots_iron_trim.json
@@ -692,9 +692,9 @@ bdd641eee2557fdfd57dfb138bacb3c189b6b3b2 assets\pizzasoat\models\block\slate_sta
 df61190f9097fb0188baca216bab7d352f55aec9 assets\pizzasoat\models\item\cast_steel_sword.json
 d4ec4deecc9cd8ff825a95124799cb1b2ab91ba4 assets\pizzasoat\models\item\pinku_boots.json
 7bf4265e2ecbdcb4d4bd685a1952904339b7870b assets\pizzasoat\models\item\slate_slab.json
-d7ef38d6c1645002647d4a92c8c2a93468250fcd assets\pizzasoat\models\item\pinku_boots_gold_trim.json
-7def3a12f6b92041a90bc6f866cbb8187e601956 assets\pizzasoat\models\item\platinum_leggings.json
 ad982fe0c1765435041ebc3fde3642373fff0133 assets\pizzasoat\models\item\aluminum_boots_lapis_trim.json
+7def3a12f6b92041a90bc6f866cbb8187e601956 assets\pizzasoat\models\item\platinum_leggings.json
+d7ef38d6c1645002647d4a92c8c2a93468250fcd assets\pizzasoat\models\item\pinku_boots_gold_trim.json
 f807578fe6f9743a02f2131d8909915ae2dc8d1f assets\pizzasoat\models\item\rainbow_pyrite_chestplate_netherite_trim.json
 744bd7dc56de0342c1661b40aac182b144574379 assets\pizzasoat\models\item\sapphire_helmet_quartz_trim.json
 84221bfa7288c63a60a675082a1c352676cb61e0 assets\pizzasoat\models\item\tungsten_chestplate_quartz_trim.json

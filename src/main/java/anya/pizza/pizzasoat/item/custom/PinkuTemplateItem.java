@@ -36,7 +36,7 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
     private static final Identifier EMPTY_SLOT_SWORD_TEXTURE = Identifier.ofVanilla("item/empty_slot_sword");
     private static final Identifier EMPTY_SLOT_SHOVEL_TEXTURE = Identifier.ofVanilla("item/empty_slot_shovel");
     private static final Identifier EMPTY_SLOT_PICKAXE_TEXTURE = Identifier.ofVanilla("item/empty_slot_pickaxe");
-    private static final Identifier EMPTY_SLOT_INGOT_TEXTURE = Identifier.ofVanilla("item/empty_slot_ingot");
+    private static final Identifier EMPTY_SLOT_PINKU_TEXTURE = Identifier.of(PizzasOAT.MOD_ID, "item/pinku_slot");
 
     public static SmithingTemplateItem createPinkuUpgrade(Settings settings) {
         return new SmithingTemplateItem(
@@ -44,8 +44,8 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
                 PINKU_UPGRADE_INGREDIENTS_TEXT,
                 PINKU_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
                 PINKU_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
-                getNetheriteUpgradeEmptyBaseSlotTextures(),
-                getNetheriteUpgradeEmptyAdditionsSlotTextures(),
+                getPinkuUpgradeEmptyBaseSlotTextures(),
+                getPinkuUpgradeEmptyAdditionsSlotTextures(),
                 settings
         );
     }
@@ -59,7 +59,7 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
         tooltip.add(PINKU_UPGRADE_INGREDIENTS_TEXT);
     }
 
-    private static List<Identifier> getNetheriteUpgradeEmptyBaseSlotTextures() {
+    private static List<Identifier> getPinkuUpgradeEmptyBaseSlotTextures() {
         return List.of(
                 EMPTY_ARMOR_SLOT_HELMET_TEXTURE,
                 EMPTY_SLOT_SWORD_TEXTURE,
@@ -73,7 +73,7 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
         );
     }
 
-    private static List<Identifier> getNetheriteUpgradeEmptyAdditionsSlotTextures() {
-        return List.of(EMPTY_SLOT_INGOT_TEXTURE);
+    private static List<Identifier> getPinkuUpgradeEmptyAdditionsSlotTextures() {
+        return List.of(EMPTY_SLOT_PINKU_TEXTURE);
     }
 }

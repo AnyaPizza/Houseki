@@ -1,9 +1,9 @@
-// 1.21.3	2025-12-23T18:41:40.8522162	Pizza's Ores And Things/Tags for minecraft:block
+// 1.21.3	2025-12-23T20:50:32.5099492	Pizza's Ores And Things/Tags for minecraft:block
 1aab7cdac8a2b4e8dd528178ef77401536925304 data\minecraft\tags\block\mineable\pickaxe.json
-6aa931cadc1854244c6dc58fd827519a7a07c270 data\minecraft\tags\block\beacon_base_blocks.json
 66ed13870ea30c133afecf037bad0eb0a06fd529 data\minecraft\tags\block\needs_diamond_tool.json
-0ac8394f29c248ec01ff2305c93457123f925904 data\minecraft\tags\block\walls.json
 975b90d4ce98fd59b087f8cc8eeda5702715a670 data\minecraft\tags\block\slabs.json
+0ac8394f29c248ec01ff2305c93457123f925904 data\minecraft\tags\block\walls.json
+6aa931cadc1854244c6dc58fd827519a7a07c270 data\minecraft\tags\block\beacon_base_blocks.json
 7422cd69abfd1c83e49806816adb8ee12e942acc data\minecraft\tags\block\dragon_immune.json
 08593b0a4d140d22c78cdc2b820928c950ba8a59 data\minecraft\tags\block\needs_iron_tool.json
 64ba52a0503fe733de3f3907b7f157cb0821a8e3 data\pizzasoat\tags\block\premium_mineable.json
