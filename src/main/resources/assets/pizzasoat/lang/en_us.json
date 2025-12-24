@@ -217,12 +217,12 @@
 
   "item.pizzasoat.smithing_template.pinku_upgrade.applies_to": "Netherite Equipment",
   "item.pizzasoat.smithing_template.pinku_upgrade.ingredients": "Pinku",
-  "item.pizzasoat.smithing_template.pinku_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",
+  "item.pizzasoat.smithing_template.pinku_upgrade.base_slot_description": "Add Netherite armor, weapon, or tool",
   "item.pizzasoat.smithing_template.pinku_upgrade.additions_slot_description": "Add Pinku",
   "upgrade.pizzasoat.pinku_upgrade": "Pinku Upgrade",
   "item.pizzasoat.smithing_template.drill_upgrade.applies_to": "Drills",
   "item.pizzasoat.smithing_template.drill_upgrade.ingredients": "Drill",
-  "item.pizzasoat.smithing_template.drill_upgrade.base_slot_description": "Add a simple, enhanced, or advanced drill",
+  "item.pizzasoat.smithing_template.drill_upgrade.base_slot_description": "Add a Simple, Enhanced, or Advanced Drill or Drill Head",
   "item.pizzasoat.smithing_template.drill_upgrade.additions_slot_description": "Add Block of Cast Steel",
   "upgrade.pizzasoat.drill_upgrade": "Drill Upgrade",
 
