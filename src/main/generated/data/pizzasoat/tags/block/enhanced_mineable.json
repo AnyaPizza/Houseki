@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#minecraft:mineable/pickaxe",
+    {
+      "id": "#minecraft:mineable/shovel",
+      "required": false
+    }
+  ]
+}

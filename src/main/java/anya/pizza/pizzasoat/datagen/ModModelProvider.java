@@ -21,7 +21,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_RAINBOW_PYRITE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SCHEELITE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_TUNGSTEN);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_TUNGSTEN_B);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BAUXITE);
         blockStateModelGenerator.registerGlassAndPane(ModBlocks.ALUMINUM_GLASS, ModBlocks.ALUMINUM_GLASS_PANE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_ALUMINUM);
@@ -48,7 +48,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SULFUR_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_SULFUR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_STEEL);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_CAST_STEEL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_CAST_STEEL_B);
 
         blockStateModelGenerator.registerCooker(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE);
 

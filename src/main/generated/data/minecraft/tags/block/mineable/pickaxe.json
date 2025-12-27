@@ -9,7 +9,7 @@
     "pizzasoat:wolframite_ore",
     "pizzasoat:scheelite_ore",
     "pizzasoat:crusher",
-    "pizzasoat:block_of_tungsten",
+    "pizzasoat:block_of_tungsten_b",
     "pizzasoat:bauxite",
     "pizzasoat:block_of_aluminum",
     "pizzasoat:aluminum_glass",
@@ -54,6 +54,6 @@
     "pizzasoat:blackstone_sulfur_ore",
     "pizzasoat:sulfur_ore",
     "pizzasoat:block_of_steel",
-    "pizzasoat:block_of_cast_steel"
+    "pizzasoat:block_of_cast_steel_b"
   ]
 }

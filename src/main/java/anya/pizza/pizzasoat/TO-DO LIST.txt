@@ -1,0 +1,2 @@
+Fix datagen for smithing templates in other vers
+Fix limestone, slate, and aluminum doors recipes in other vers

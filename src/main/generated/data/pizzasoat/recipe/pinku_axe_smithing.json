@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "pizzasoat:pinku",
+  "base": "minecraft:netherite_axe",
+  "result": {
+    "id": "pizzasoat:pinku_axe"
+  },
+  "template": "pizzasoat:pinku_upgrade_smithing_template"
+}

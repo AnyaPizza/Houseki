@@ -47,7 +47,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxProgress = CrusherRecipe.DEFAULT_CRUSHING_TIME;
     private int fuelTime = 0;
     private int maxFuelTime = 0;
-    private int lastValidFuelTime = 0;
+    private final int lastValidFuelTime = 0;
     private boolean isCrafting = false;
     private ItemStack lastInput = ItemStack.EMPTY; //Cache input to detect changes
 

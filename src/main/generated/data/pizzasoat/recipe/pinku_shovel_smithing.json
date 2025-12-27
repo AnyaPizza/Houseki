@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "pizzasoat:pinku",
+  "base": "minecraft:netherite_shovel",
+  "result": {
+    "id": "pizzasoat:pinku_shovel"
+  },
+  "template": "pizzasoat:pinku_upgrade_smithing_template"
+}

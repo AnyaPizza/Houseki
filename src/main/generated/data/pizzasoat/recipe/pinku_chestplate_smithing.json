@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "pizzasoat:pinku",
+  "base": "minecraft:netherite_chestplate",
+  "result": {
+    "id": "pizzasoat:pinku_chestplate"
+  },
+  "template": "pizzasoat:pinku_upgrade_smithing_template"
+}
