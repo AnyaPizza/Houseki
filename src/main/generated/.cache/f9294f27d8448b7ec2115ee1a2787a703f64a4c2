@@ -1,9 +1,10 @@
-// 1.21.3	2025-12-23T20:50:32.5018276	Pizza's Ores And Things/Tags for minecraft:item
+// 1.21.3	2025-12-27T19:41:34.9417051	Pizza's Ores And Things/Tags for minecraft:item
 2a812c1e721b65075d30ea67b15657978dadd195 data\pizzasoat\tags\item\armor.json
 72c4c4fbd8e6f390d2a08f4e70153cc108df489d data\pizzasoat\tags\item\tungsten_repair.json
 77ae6b83b1d7914a2721361e3bb6cf24e478e863 data\minecraft\tags\item\pickaxes.json
 7498253ff46442612b20d98c872ad876c8b0d04b data\pizzasoat\tags\item\smithing_templates.json
 04069f4b558d6d24854c0bc99aa66636a6fc7909 data\pizzasoat\tags\item\aluminum_repair.json
+88e67fba908b258ed9b003bb8eb944e42adbdd18 data\pizzasoat\tags\item\mob_armors.json
 f66fc31d5406a38d74dc799fed93fc8702185de5 data\minecraft\tags\item\chest_armor.json
 d979e01b7ba140b08e88fdf9d2d18825d0261bcd data\pizzasoat\tags\item\nephrite_repair.json
 f0d8fa7a88017108b984bac847a50a06dd8a9c26 data\pizzasoat\tags\item\rainbow_repair.json

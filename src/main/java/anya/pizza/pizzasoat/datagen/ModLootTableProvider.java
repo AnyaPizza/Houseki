@@ -31,7 +31,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.BLOCK_OF_RAINBOW_PYRITE);
         addDrop(ModBlocks.PINKU_ORE);
         addDrop(ModBlocks.CRUSHER);
-        addDrop(ModBlocks.BLOCK_OF_TUNGSTEN);
+        addDrop(ModBlocks.BLOCK_OF_TUNGSTEN_B);
         addDrop(ModBlocks.BLOCK_OF_ALUMINUM);
         addDrop(ModBlocks.ALUMINUM_TRAPDOOR);
         addDrop(ModBlocks.ALUMINUM_DOOR, doorDrops(ModBlocks.ALUMINUM_DOOR));
@@ -66,7 +66,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SLATE_TILE_SLAB, slabDrops(ModBlocks.SLATE_TILE_SLAB));
         addDrop(ModBlocks.BLOCK_OF_SULFUR);
         addDrop(ModBlocks.BLOCK_OF_STEEL);
-        addDrop(ModBlocks.BLOCK_OF_CAST_STEEL);
+        addDrop(ModBlocks.BLOCK_OF_CAST_STEEL_B);
         addDrop(ModBlocks.BAUXITE);
         addDrop(ModBlocks.PLATINUM_ORE);
         addDrop(ModBlocks.DEEPSLATE_PLATINUM_ORE);

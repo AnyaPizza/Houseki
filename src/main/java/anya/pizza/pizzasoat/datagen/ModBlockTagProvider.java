@@ -26,7 +26,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WOLFRAMITE_ORE)
                 .add(ModBlocks.SCHEELITE_ORE)
                 .add(ModBlocks.CRUSHER)
-                .add(ModBlocks.BLOCK_OF_TUNGSTEN)
+                .add(ModBlocks.BLOCK_OF_TUNGSTEN_B)
                 .add(ModBlocks.BAUXITE)
                 .add(ModBlocks.BLOCK_OF_ALUMINUM)
                 .add(ModBlocks.ALUMINUM_GLASS)
@@ -71,7 +71,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLACKSTONE_SULFUR_ORE)
                 .add(ModBlocks.SULFUR_ORE)
                 .add(ModBlocks.BLOCK_OF_STEEL)
-                .add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                .add(ModBlocks.BLOCK_OF_CAST_STEEL_B);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.BAUXITE)
@@ -91,7 +91,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE)
                 .add(ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE)
                 .add(ModBlocks.SCHEELITE_ORE)
-                .add(ModBlocks.BLOCK_OF_TUNGSTEN)
+                .add(ModBlocks.BLOCK_OF_TUNGSTEN_B)
                 .add(ModBlocks.BLOCK_OF_ALUMINUM)
                 .add(ModBlocks.ALUMINUM_GLASS)
                 .add(ModBlocks.ALUMINUM_GLASS_PANE)
@@ -102,7 +102,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.PLATINUM_ORE)
                 .add(ModBlocks.DEEPSLATE_PLATINUM_ORE)
                 .add(ModBlocks.BLOCK_OF_STEEL)
-                .add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                .add(ModBlocks.BLOCK_OF_CAST_STEEL_B);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.PINKU_ORE)
@@ -112,13 +112,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_RAINBOW_PYRITE)
-                .add(ModBlocks.BLOCK_OF_TUNGSTEN)
+                .add(ModBlocks.BLOCK_OF_TUNGSTEN_B)
                 .add(ModBlocks.BLOCK_OF_ALUMINUM)
                 .add(ModBlocks.BLOCK_OF_SAPPHIRE)
                 .add(ModBlocks.BLOCK_OF_JADEITE)
                 .add(ModBlocks.BLOCK_OF_PLATINUM)
                 .add(ModBlocks.BLOCK_OF_STEEL)
-                .add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                .add(ModBlocks.BLOCK_OF_CAST_STEEL_B);
 
         getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
@@ -156,8 +156,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SLATE_TILE_SLAB);
 
         getOrCreateTagBuilder(ModTags.Blocks.PREMIUM_DRILL_MINEABLE)
-                .forceAddTag(BlockTags.PICKAXE_MINEABLE)
+                .addTag(BlockTags.PICKAXE_MINEABLE)
                 .forceAddTag(BlockTags.SHOVEL_MINEABLE)
                 .forceAddTag(BlockTags.AXE_MINEABLE);
+
+        getOrCreateTagBuilder(ModTags.Blocks.ENHANCED_DRILL_MINEABLE)
+                .addTag(BlockTags.PICKAXE_MINEABLE)
+                .forceAddTag(BlockTags.SHOVEL_MINEABLE);
     }
 }
