@@ -1,7 +1,7 @@
-// 1.21.3	2025-12-27T19:41:34.9502405	Pizza's Ores And Things/World Gen
+// 1.21.3	2025-12-27T20:20:53.0850051	Pizza's Ores And Things/World Gen
 2ebfb197b094e36675b780afb1a2bf62e4508f18 data\pizzasoat\worldgen\configured_feature\ore_slate.json
-f092e3d82edac11b29eb64cfcd6a7015fedc2b3d data\pizzasoat\worldgen\placed_feature\ore_limestone_placed.json
 16bdf8db58bb9b44f3594eed5749b521401fd652 data\pizzasoat\worldgen\placed_feature\ore_bauxite_placed.json
+f092e3d82edac11b29eb64cfcd6a7015fedc2b3d data\pizzasoat\worldgen\placed_feature\ore_limestone_placed.json
 2097b33634467bbe774f3e33b3fe377e278c970e data\pizzasoat\worldgen\placed_feature\sapphire_ore_placed.json
 74f6ca694bd2e9b872395bfd5753fe5d9a32a8e2 data\pizzasoat\worldgen\placed_feature\platinum_ore_placed.json
 ff7aec759599856c81ef117b6f6fa16476483598 data\pizzasoat\worldgen\configured_feature\scheelite_ore.json

@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeGenerator;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
@@ -244,6 +245,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input(ModItems.TUNGSTEN_DRILL_BIT)
                         .input(ModItems.PREMIUM_DRILL_HEAD)
                         .criterion(hasItem(ModItems.TUNGSTEN_DRILL_BIT), conditionsFromItem(ModItems.TUNGSTEN_DRILL_BIT))
+                        .criterion(hasItem(ModItems.PREMIUM_DRILL_HEAD), conditionsFromItem(ModItems.PREMIUM_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.SIMPLE_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.SIMPLE_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.SIMPLE_DRILL_HEAD), conditionsFromItem(ModItems.SIMPLE_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.ENHANCED_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.ENHANCED_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.ENHANCED_DRILL_HEAD), conditionsFromItem(ModItems.ENHANCED_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.ADVANCED_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.ADVANCED_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.ADVANCED_DRILL_HEAD), conditionsFromItem(ModItems.ADVANCED_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.PREMIUM_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.PREMIUM_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
                         .criterion(hasItem(ModItems.PREMIUM_DRILL_HEAD), conditionsFromItem(ModItems.PREMIUM_DRILL_HEAD))
                         .offerTo(exporter);
 
