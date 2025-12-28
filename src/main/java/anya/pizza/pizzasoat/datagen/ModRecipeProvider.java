@@ -78,7 +78,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL_B);
 
-
                 //Smelting Recipes
                 offerSmelting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM, 0.5f, 200, "aluminum");
                 offerSmelting(PINKU_SMELTABLES, RecipeCategory.MISC, ModItems.PINKU_SHARD, 0.5f, 250, "pinku");
@@ -90,7 +89,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerSmelting(JADEITE_SMELTABLES, RecipeCategory.MISC, ModItems.JADEITE, 0.5f, 250, "jadeite");
                 offerSmelting(PLATINUM_SMELTABLES, RecipeCategory.MISC, ModItems.PLATINUM, 0.5f, 200, "platinum");
                 offerSmelting(SULFUR_SMELTABLES, RecipeCategory.MISC, ModItems.SULFUR, 0.5f, 200, "sulfur");
-
 
                 //Blasting Recipes
                 offerBlasting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM, 0.5f, 100, "aluminum");
@@ -246,6 +244,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input(ModItems.TUNGSTEN_DRILL_BIT)
                         .input(ModItems.PREMIUM_DRILL_HEAD)
                         .criterion(hasItem(ModItems.TUNGSTEN_DRILL_BIT), conditionsFromItem(ModItems.TUNGSTEN_DRILL_BIT))
+                        .criterion(hasItem(ModItems.PREMIUM_DRILL_HEAD), conditionsFromItem(ModItems.PREMIUM_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.SIMPLE_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.SIMPLE_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.SIMPLE_DRILL_HEAD), conditionsFromItem(ModItems.SIMPLE_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.ENHANCED_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.ENHANCED_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.ENHANCED_DRILL_HEAD), conditionsFromItem(ModItems.ENHANCED_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.ADVANCED_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.ADVANCED_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.ADVANCED_DRILL_HEAD), conditionsFromItem(ModItems.ADVANCED_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.PREMIUM_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.PREMIUM_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
                         .criterion(hasItem(ModItems.PREMIUM_DRILL_HEAD), conditionsFromItem(ModItems.PREMIUM_DRILL_HEAD))
                         .offerTo(exporter);
 
