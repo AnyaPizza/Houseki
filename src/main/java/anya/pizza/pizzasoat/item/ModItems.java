@@ -41,7 +41,9 @@ public class ModItems {
     public static final Item ADVANCED_DRILL_HEAD = registerItem("advanced_drill_head", Item::new);
     public static final Item PREMIUM_DRILL_HEAD = registerItem("premium_drill_head", Item::new);
     public static final Item DIAMOND_DRILL_BIT = registerItem("diamond_drill_bit", Item::new);
-    public static final Item BLOCK_OF_TUNGSTEN_ITEM = registerItem("block_of_tungsten_item", setting -> new BlockItem(ModBlocks.BLOCK_OF_TUNGSTEN, setting.fireproof()));
+
+    public static final Item BLOCK_OF_TUNGSTEN = registerItem("block_of_tungsten", setting -> new BlockItem(ModBlocks.BLOCK_OF_TUNGSTEN_B, setting.fireproof()));
+    public static final Item BLOCK_OF_CAST_STEEL = registerItem("block_of_cast_steel", setting -> new BlockItem(ModBlocks.BLOCK_OF_CAST_STEEL_B, setting)); //For Smithing Templates Crafting
 
     public static final Item PINKU_UPGRADE_SMITHING_TEMPLATE = registerItem("pinku_upgrade_smithing_template", PinkuTemplateItem::createPinkuUpgrade);
     public static final Item DRILL_UPGRADE_SMITHING_TEMPLATE = registerItem("drill_upgrade_smithing_template", DrillTemplateItem::createDrillUpgrade);

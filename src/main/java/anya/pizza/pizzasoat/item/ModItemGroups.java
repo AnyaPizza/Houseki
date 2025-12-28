@@ -183,7 +183,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.SCHEELITE_ORE);
 
-                        entries.add(ModBlocks.BLOCK_OF_TUNGSTEN);
+                        entries.add(ModBlocks.BLOCK_OF_TUNGSTEN_B);
 
                         entries.add(ModBlocks.BAUXITE);
 
@@ -240,7 +240,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLOCK_OF_SULFUR);
 
                         entries.add(ModBlocks.BLOCK_OF_STEEL);
-                        entries.add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                        entries.add(ModBlocks.BLOCK_OF_CAST_STEEL_B);
                     }).build());
 
 

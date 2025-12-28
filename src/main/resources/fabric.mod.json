@@ -33,7 +33,5 @@
 		"java": ">=21",
 		"fabric-api": "*"
 	},
-	"suggests": {
-		"emi": ">=1.1.22+1.21.1"
-	}
+	"suggests": {}
 }

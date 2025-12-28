@@ -1,12 +1,13 @@
 // 1.21.4	-999999999-01-01T00:00:00	Pizza's Ores And Things/Tags for minecraft:block
-6aa931cadc1854244c6dc58fd827519a7a07c270 data/minecraft/tags/block/beacon_base_blocks.json
+02f5d037a2bfe9c6b004b14c17559149be888ae8 data/minecraft/tags/block/beacon_base_blocks.json
 7422cd69abfd1c83e49806816adb8ee12e942acc data/minecraft/tags/block/dragon_immune.json
-1aab7cdac8a2b4e8dd528178ef77401536925304 data/minecraft/tags/block/mineable/pickaxe.json
+c891298bad0009a7b386a4b044d12678b51b98c4 data/minecraft/tags/block/mineable/pickaxe.json
 66ed13870ea30c133afecf037bad0eb0a06fd529 data/minecraft/tags/block/needs_diamond_tool.json
-08593b0a4d140d22c78cdc2b820928c950ba8a59 data/minecraft/tags/block/needs_iron_tool.json
+4fbdc9ad2c3fea56f29ef4942d2b84fbe203a028 data/minecraft/tags/block/needs_iron_tool.json
 19501027c57e9b45edc10679512a2f1fdf678ef5 data/minecraft/tags/block/needs_stone_tool.json
 975b90d4ce98fd59b087f8cc8eeda5702715a670 data/minecraft/tags/block/slabs.json
 8e07e5eef1b5408f93dc8f2de74e0a5dcad75529 data/minecraft/tags/block/stairs.json
 0ac8394f29c248ec01ff2305c93457123f925904 data/minecraft/tags/block/walls.json
 25e48f3eac72def7eae2ccebbb5331aa5b6c9442 data/minecraft/tags/block/wither_immune.json
+c2f6fb7224bd1e2fdb87249751113c4d66dbc21f data/pizzasoat/tags/block/enhanced_mineable.json
 64ba52a0503fe733de3f3907b7f157cb0821a8e3 data/pizzasoat/tags/block/premium_mineable.json

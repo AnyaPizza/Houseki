@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_block_of_tungsten_item": {
+    "has_block_of_tungsten": {
       "conditions": {
         "items": [
           {
-            "items": "pizzasoat:block_of_tungsten_item"
+            "items": "pizzasoat:block_of_tungsten"
           }
         ]
       },
@@ -32,7 +32,7 @@
     [
       "has_the_recipe",
       "has_tungsten",
-      "has_block_of_tungsten_item"
+      "has_block_of_tungsten"
     ]
   ],
   "rewards": {

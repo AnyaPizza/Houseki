@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_of_cast_steel": {
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:enhanced_diamond_drill_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_block_of_cast_steel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:enhanced_diamond_drill_smithing"
+    ]
+  }
+}

@@ -15,48 +15,27 @@ import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.util.Identifier;
 
 public class ModLootTableModifiers {
-    private static final Identifier ABANDONED_MINESHAFT_ID =
-            Identifier.of("minecraft", "chests/abandoned_mineshaft");
-    private static final Identifier ANCIENT_CITY_ID =
-            Identifier.of("minecraft", "chests/ancient_city");
-    private static final Identifier BASTION_TREASURE_ID =
-            Identifier.of("minecraft", "chests/bastion_treasure");
-    private static final Identifier BURIED_TREASURE_ID =
-            Identifier.of("minecraft", "chest/buried_treasure");
-    private static final Identifier DESERT_PYRAMID_ID =
-            Identifier.of("minecraft", "chests/desert/pyramid");
-    private static final Identifier END_CITY_TREASURE_ID =
-            Identifier.of("minecraft", "chests/end_city_treasure");
-    private static final Identifier JUNGLE_TEMPLE_ID =
-            Identifier.of("minecraft", "chests/jungle_temple");
-    private static final Identifier PILLAGER_OUTPOST_ID =
-            Identifier.of("minecraft", "chests/pillager_outpost");
-    private static final Identifier SHIPWRECK_TREASURE_ID =
-            Identifier.of("minecraft", "chests/shipwreck_treasure");
-    private static final Identifier STRONGHOLD_CORRIDOR_ID =
-            Identifier.of("minecraft", "chests/stronghold_corridor");
-    private static final Identifier TRIAL_REWARD_COMMON_ID =
-            Identifier.of("minecraft", "chests/trial_chambers/reward_common");
-    private static final Identifier TRIAL_REWARD_OMINOUS_COMMON_ID =
-            Identifier.of("minecraft", "chests/trial_chambers/reward_ominous_common");
-    private static final Identifier TRIAL_REWARD_RARE_ID =
-            Identifier.of("minecraft", "chests/trial_chambers/reward_rare");
-    private static final Identifier TRIAL_REWARD_OMINOUS_RARE_ID =
-            Identifier.of("minecraft", "chests/trial_chambers/reward_ominous_rare");
-    private static final Identifier TRIAL_REWARD_UNIQUE_ID =
-            Identifier.of("minecraft", "chests/trial_chambers/reward_unique");
-    private static final Identifier TRIAL_REWARD_OMINOUS_UNIQUE_ID =
-            Identifier.of("minecraft", "chests/trial_chambers/reward_unique");
-    private static final Identifier VILLAGE_MASON_ID =
-            Identifier.of("minecraft", "chests/village/village_mason");
-    private static final Identifier VILLAGE_TOOLSMITH_ID =
-            Identifier.of("minecraft", "chests/village/village_toolsmith");
-    private static final Identifier VILLAGE_WEAPONSMITH_ID =
-            Identifier.of("minecraft", "chests/village/village_weaponsmith");
-    private static final Identifier WOODLAND_MANSION_ID =
-            Identifier.of("minecraft", "chests/woodland_mansion");
-    private static final Identifier WARDEN_ID =
-            Identifier.of("minecraft", "entities/warden");
+    private static final Identifier ABANDONED_MINESHAFT_ID = Identifier.of("minecraft", "chests/abandoned_mineshaft");
+    private static final Identifier ANCIENT_CITY_ID = Identifier.of("minecraft", "chests/ancient_city");
+    private static final Identifier BASTION_TREASURE_ID = Identifier.of("minecraft", "chests/bastion_treasure");
+    private static final Identifier BURIED_TREASURE_ID = Identifier.of("minecraft", "chests/buried_treasure");
+    private static final Identifier DESERT_PYRAMID_ID = Identifier.of("minecraft", "chests/desert/pyramid");
+    private static final Identifier END_CITY_TREASURE_ID = Identifier.of("minecraft", "chests/end_city_treasure");
+    private static final Identifier JUNGLE_TEMPLE_ID = Identifier.of("minecraft", "chests/jungle_temple");
+    private static final Identifier PILLAGER_OUTPOST_ID = Identifier.of("minecraft", "chests/pillager_outpost");
+    private static final Identifier SHIPWRECK_TREASURE_ID = Identifier.of("minecraft", "chests/shipwreck_treasure");
+    private static final Identifier STRONGHOLD_CORRIDOR_ID = Identifier.of("minecraft", "chests/stronghold_corridor");
+    private static final Identifier TRIAL_REWARD_COMMON_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_common");
+    private static final Identifier TRIAL_REWARD_OMINOUS_COMMON_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_ominous_common");
+    private static final Identifier TRIAL_REWARD_RARE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_rare");
+    private static final Identifier TRIAL_REWARD_OMINOUS_RARE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_ominous_rare");
+    private static final Identifier TRIAL_REWARD_UNIQUE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_unique");
+    private static final Identifier TRIAL_REWARD_OMINOUS_UNIQUE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_unique");
+    private static final Identifier VILLAGE_MASON_ID = Identifier.of("minecraft", "chests/village/village_mason");
+    private static final Identifier VILLAGE_TOOLSMITH_ID = Identifier.of("minecraft", "chests/village/village_toolsmith");
+    private static final Identifier VILLAGE_WEAPONSMITH_ID = Identifier.of("minecraft", "chests/village/village_weaponsmith");
+    private static final Identifier WOODLAND_MANSION_ID = Identifier.of("minecraft", "chests/woodland_mansion");
+    private static final Identifier WARDEN_ID = Identifier.of("minecraft", "entities/warden");
 
 
 

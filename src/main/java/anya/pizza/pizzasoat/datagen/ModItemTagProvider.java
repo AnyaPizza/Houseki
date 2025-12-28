@@ -4,15 +4,10 @@ import anya.pizza.pizzasoat.item.ModItems;
 import anya.pizza.pizzasoat.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.data.tag.ValueLookupTagProvider;
 import net.minecraft.item.Items;
-import net.minecraft.item.equipment.trim.ArmorTrimMaterial;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
 
-import java.util.Comparator;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
@@ -203,6 +198,18 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PLATINUM_HELMET)
                 .add(ModItems.STEEL_HELMET)
                 .add(ModItems.CAST_STEEL_HELMET);
+
+        getOrCreateTagBuilder(ModTags.Items.MOB_ARMORS)
+                .add(ModItems.PINKU_HORSE_ARMOR)
+                .add(ModItems.RAINBOW_PYRITE_HORSE_ARMOR)
+                .add(ModItems.TUNGSTEN_HORSE_ARMOR)
+                .add(ModItems.ALUMINUM_HORSE_ARMOR)
+                .add(ModItems.SAPPHIRE_HORSE_ARMOR)
+                .add(ModItems.NEPHRITE_HORSE_ARMOR)
+                .add(ModItems.JADEITE_HORSE_ARMOR)
+                .add(ModItems.PLATINUM_HORSE_ARMOR)
+                .add(ModItems.STEEL_HORSE_ARMOR)
+                .add(ModItems.CAST_STEEL_HORSE_ARMOR);
 
         getOrCreateTagBuilder(ModTags.Items.PINKU_REPAIR)
                 .add(ModItems.PINKU);

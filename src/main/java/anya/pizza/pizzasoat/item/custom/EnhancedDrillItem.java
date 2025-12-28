@@ -1,5 +1,6 @@
 package anya.pizza.pizzasoat.item.custom;
 
+import anya.pizza.pizzasoat.util.ModTags;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class EnhancedDrillItem extends MiningToolItem {
     public EnhancedDrillItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-        super(material, BlockTags.PICKAXE_MINEABLE, attackDamage, attackSpeed, settings);
+        super(material, ModTags.Blocks.ENHANCED_DRILL_MINEABLE, attackDamage, attackSpeed, settings);
     }
 
     public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos intitalBlockPos, ServerPlayerEntity player) {
