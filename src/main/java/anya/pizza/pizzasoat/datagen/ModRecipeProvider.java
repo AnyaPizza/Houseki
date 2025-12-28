@@ -257,7 +257,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 //Stair Recipes
                 createStairsRecipe(ModBlocks.LIMESTONE_STAIRS, Ingredient.ofItem(ModBlocks.LIMESTONE)).criterion(hasItem(ModBlocks.LIMESTONE), conditionsFromItem(ModBlocks.LIMESTONE)).offerTo(exporter);
                 createStairsRecipe(ModBlocks.LIMESTONE_BRICK_STAIRS, Ingredient.ofItem(ModBlocks.LIMESTONE_BRICKS)).criterion(hasItem(ModBlocks.LIMESTONE_BRICKS), conditionsFromItem(ModBlocks.LIMESTONE_BRICKS)).offerTo(exporter);
-                createStairsRecipe(ModBlocks.POLISHED_LIMESTONE_STAIRS, Ingredient.ofItem(ModBlocks.POLISHED_LIMESTONE)).criterion(hasItem(ModBlocks.POLISHED_LIMESTONE), conditionsFromItem(ModBlocks.POLISHED_LIMESTONE)).offerTo(exporter);;
+                createStairsRecipe(ModBlocks.POLISHED_LIMESTONE_STAIRS, Ingredient.ofItem(ModBlocks.POLISHED_LIMESTONE)).criterion(hasItem(ModBlocks.POLISHED_LIMESTONE), conditionsFromItem(ModBlocks.POLISHED_LIMESTONE)).offerTo(exporter);
                 createStairsRecipe(ModBlocks.SLATE_STAIRS, Ingredient.ofItem(ModBlocks.SLATE)).criterion(hasItem(ModBlocks.SLATE), conditionsFromItem(ModBlocks.SLATE)).offerTo(exporter);
                 createStairsRecipe(ModBlocks.SLATE_TILE_STAIRS, Ingredient.ofItem(ModBlocks.SLATE_TILES)).criterion(hasItem(ModBlocks.SLATE_TILES), conditionsFromItem(ModBlocks.SLATE_TILES)).offerTo(exporter);
                 createStairsRecipe(ModBlocks.POLISHED_SLATE_STAIRS, Ingredient.ofItem(ModBlocks.POLISHED_SLATE)).criterion(hasItem(ModBlocks.POLISHED_SLATE), conditionsFromItem(ModBlocks.POLISHED_SLATE)).offerTo(exporter);
