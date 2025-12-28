@@ -247,6 +247,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .criterion(hasItem(ModItems.PREMIUM_DRILL_HEAD), conditionsFromItem(ModItems.PREMIUM_DRILL_HEAD))
                         .offerTo(exporter);
 
+                createShapeless(RecipeCategory.TOOLS, ModItems.SIMPLE_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.SIMPLE_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.SIMPLE_DRILL_HEAD), conditionsFromItem(ModItems.SIMPLE_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.ENHANCED_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.ENHANCED_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.ENHANCED_DRILL_HEAD), conditionsFromItem(ModItems.ENHANCED_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.ADVANCED_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.ADVANCED_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.ADVANCED_DRILL_HEAD), conditionsFromItem(ModItems.ADVANCED_DRILL_HEAD))
+                        .offerTo(exporter);
+
+                createShapeless(RecipeCategory.TOOLS, ModItems.PREMIUM_DIAMOND_DRILL, 1)
+                        .input(ModItems.DIAMOND_DRILL_BIT)
+                        .input(ModItems.PREMIUM_DRILL_HEAD)
+                        .criterion(hasItem(ModItems.DIAMOND_DRILL_BIT), conditionsFromItem(ModItems.DIAMOND_DRILL_BIT))
+                        .criterion(hasItem(ModItems.PREMIUM_DRILL_HEAD), conditionsFromItem(ModItems.PREMIUM_DRILL_HEAD))
+                        .offerTo(exporter);
+
 
                 //Armor Recipes
                 offerHelmetRecipe(exporter, ModItems.RAINBOW_PYRITE_HELMET, ModItems.RAINBOW_PYRITE);

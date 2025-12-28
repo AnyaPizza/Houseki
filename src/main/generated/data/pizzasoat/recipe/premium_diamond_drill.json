@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "pizzasoat:diamond_drill_bit",
+    "pizzasoat:premium_drill_head"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pizzasoat:premium_diamond_drill"
+  }
+}
