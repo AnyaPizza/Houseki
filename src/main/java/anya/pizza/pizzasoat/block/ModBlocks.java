@@ -11,6 +11,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -28,7 +29,7 @@ public class ModBlocks {
             properties -> new Block(properties.mapColor(MapColor.PINK).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(5, 1000).sounds(BlockSoundGroup.METAL)));
 
     public static final Block BLOCK_OF_RAINBOW_PYRITE = registerBlock("block_of_rainbow_pyrite",
-            properties -> new Block(properties.mapColor(MapColor.PINK).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(5, 1000).sounds(BlockSoundGroup.METAL)));
+            properties -> new Block(properties.mapColor(MapColor.LIGHT_BLUE).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(5, 6).sounds(BlockSoundGroup.METAL)));
 
     public static final Block BLOCK_OF_TUNGSTEN_B = registerBlock("block_of_tungsten_b",
             properties -> new Block(properties.mapColor(MapColor.LIGHT_BLUE_GRAY).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(10, 1000).sounds(BlockSoundGroup.METAL)));
