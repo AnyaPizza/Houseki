@@ -183,7 +183,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.SCHEELITE_ORE);
 
-                        entries.add(ModBlocks.BLOCK_OF_TUNGSTEN);
+                        entries.add(ModItems.BLOCK_OF_TUNGSTEN);
 
                         entries.add(ModBlocks.BAUXITE);
 

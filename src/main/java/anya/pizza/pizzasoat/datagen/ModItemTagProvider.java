@@ -198,6 +198,18 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STEEL_HELMET)
                 .add(ModItems.CAST_STEEL_HELMET);
 
+        getOrCreateTagBuilder(ModTags.Items.MOB_ARMORS)
+                .add(ModItems.PINKU_HORSE_ARMOR)
+                .add(ModItems.RAINBOW_PYRITE_HORSE_ARMOR)
+                .add(ModItems.TUNGSTEN_HORSE_ARMOR)
+                .add(ModItems.ALUMINUM_HORSE_ARMOR)
+                .add(ModItems.SAPPHIRE_HORSE_ARMOR)
+                .add(ModItems.NEPHRITE_HORSE_ARMOR)
+                .add(ModItems.JADEITE_HORSE_ARMOR)
+                .add(ModItems.PLATINUM_HORSE_ARMOR)
+                .add(ModItems.STEEL_HORSE_ARMOR)
+                .add(ModItems.CAST_STEEL_HORSE_ARMOR);
+
         getOrCreateTagBuilder(ModTags.Items.ARMOR)
                 .add(ModItems.PINKU_HELMET)
                 .add(ModItems.RAINBOW_PYRITE_HELMET)

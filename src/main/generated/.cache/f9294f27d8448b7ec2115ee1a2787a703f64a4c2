@@ -1,10 +1,11 @@
-// 1.21.1	2025-12-23T18:45:41.3429332	Pizza's Ores And Things/Tags for minecraft:item
+// 1.21.1	2025-12-27T20:15:49.560547	Pizza's Ores And Things/Tags for minecraft:item
 a5609364ba7d327ce590a91059877800880391ed data\minecraft\tags\item\head_armor.json
 2a812c1e721b65075d30ea67b15657978dadd195 data\pizzasoat\tags\item\armor.json
 629a4918f64c9b3bf9bf0c1cc23f0d16f1aedea7 data\minecraft\tags\item\axes.json
 5345c2f6ffe6e9936e539b9fb31eedf32df038a2 data\minecraft\tags\item\foot_armor.json
 77ae6b83b1d7914a2721361e3bb6cf24e478e863 data\minecraft\tags\item\pickaxes.json
 7498253ff46442612b20d98c872ad876c8b0d04b data\pizzasoat\tags\item\smithing_templates.json
+88e67fba908b258ed9b003bb8eb944e42adbdd18 data\pizzasoat\tags\item\mob_armors.json
 90eec05938d958c979d199b67a89c0c5f6eeeb45 data\minecraft\tags\item\beacon_payment_items.json
 f66fc31d5406a38d74dc799fed93fc8702185de5 data\minecraft\tags\item\chest_armor.json
 4c7c4a8088105b9a7fc12a2bf48de961fafbc2d0 data\minecraft\tags\item\swords.json

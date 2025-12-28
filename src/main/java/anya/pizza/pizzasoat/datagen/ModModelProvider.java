@@ -24,7 +24,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_RAINBOW_PYRITE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SCHEELITE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_TUNGSTEN);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_TUNGSTEN_B);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BAUXITE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ALUMINUM_GLASS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_ALUMINUM);
@@ -109,7 +109,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ADVANCED_DRILL_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.PREMIUM_DRILL_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.DIAMOND_DRILL_BIT, Models.GENERATED);
-
 
         itemModelGenerator.register(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);

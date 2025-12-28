@@ -40,6 +40,7 @@ public class ModTags {
         public static final TagKey<Block> INCORRECT_FOR_CAST_STEEL_TOOL = createTag("incorrect_for_cast_steel_tool");
 
         public static final TagKey<Block> PREMIUM_DRILL_MINEABLE = createTag("premium_mineable");
+        public static final TagKey<Block> ENHANCED_DRILL_MINEABLE = createTag("enhanced_mineable");
 
 
         private static TagKey<Block> createTag(String name) {
@@ -53,6 +54,7 @@ public class ModTags {
         public static final TagKey<Item> SMITHING_TEMPLATES = createTag("smithing_templates");
 
         public static final TagKey<Item> ARMOR = createTag("armor");
+        public static final TagKey<Item> MOB_ARMORS = createTag("mob_armors");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of(PizzasOAT.MOD_ID, name));

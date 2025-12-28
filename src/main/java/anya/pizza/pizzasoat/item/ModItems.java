@@ -35,7 +35,8 @@ public class ModItems {
     public static final Item ADVANCED_DRILL_HEAD = registerItem("advanced_drill_head", new Item(new Item.Settings()));
     public static final Item PREMIUM_DRILL_HEAD = registerItem("premium_drill_head", new Item(new Item.Settings()));
     public static final Item DIAMOND_DRILL_BIT = registerItem("diamond_drill_bit", new Item(new Item.Settings()));
-    public static final Item BLOCK_OF_TUNGSTEN = registerItem("block_of_tungsten", new BlockItem(ModBlocks.BLOCK_OF_TUNGSTEN, new Item.Settings().fireproof()));
+
+    public static final Item BLOCK_OF_TUNGSTEN = registerItem("block_of_tungsten", new BlockItem(ModBlocks.BLOCK_OF_TUNGSTEN_B, new Item.Settings().fireproof()));
 
     public static final Item PINKU_UPGRADE_SMITHING_TEMPLATE = registerItem("pinku_upgrade_smithing_template", PinkuTemplateItem.createPinkuUpgrade());
     public static final Item DRILL_UPGRADE_SMITHING_TEMPLATE = registerItem("drill_upgrade_smithing_template", DrillTemplateItem.createDrillUpgrade());

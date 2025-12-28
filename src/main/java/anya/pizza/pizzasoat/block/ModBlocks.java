@@ -22,11 +22,11 @@ public class ModBlocks {
     public static final Block BLOCK_OF_RAINBOW_PYRITE = registerBlock("block_of_rainbow_pyrite",
             new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool()));
 
-    public static final Block BLOCK_OF_TUNGSTEN = registerBlock("block_of_tungsten",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool().strength(40, 1000)));
+    public static final Block BLOCK_OF_TUNGSTEN_B = registerBlock("block_of_tungsten_b",
+            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool().strength(10, 1000)));
 
     public static final Block BLOCK_OF_ALUMINUM = registerBlock("block_of_aluminum",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool().strength(30, 500)));
+            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool().strength(8, 500)));
 
     public static final Block ALUMINUM_GLASS = registerBlock("aluminum_glass",
             new TransparentBlock(AbstractBlock.Settings.copy(Blocks.GLASS).requiresTool().strength(2, 1000).nonOpaque()) {
@@ -45,7 +45,7 @@ public class ModBlocks {
             });
 
     public static final Block BLOCK_OF_SAPPHIRE = registerBlock("block_of_sapphire",
-            new Block(AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK).requiresTool().strength(45, 500)));
+            new Block(AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK).requiresTool().strength(9, 500)));
 
     public static final Block BLOCK_OF_JADEITE = registerBlock("block_of_jadeite",
             new Block(AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).requiresTool()));

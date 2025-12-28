@@ -45,7 +45,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxProgress = CrusherRecipe.DEFAULT_CRUSHING_TIME;
     private int fuelTime = 0;
     private int maxFuelTime = 0;
-    private int lastValidFuelTime = 0;
+    private final int lastValidFuelTime = 0;
     private boolean isCrafting = false;
     private ItemStack lastInput = ItemStack.EMPTY; //Cache input to detect changes
 
@@ -164,20 +164,12 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
         if (canCraftNow) {
             progress++;
-            //world.setBlockState(pos, state.with(CrusherBlock.LIT, true));
             dirty = true;
             if (progress >= maxProgress) {
                 craftItem();
                 progress = 0;
             }
-        } /*else {
-            world.setBlockState(pos, state.with(CrusherBlock.LIT, false));
-            if (fuelTime <= 0 && progress > 0) {
-                progress = 0;
-                dirty = true;
-            }
-        }*/
-
+        }
         if (dirty) markDirty(world, pos, state);
     }
 
@@ -210,27 +202,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             outputSlot.increment(result.getCount());
         }
     }
-
-    /*private void resetProgress() {
-        this.progress = 0;
-    }
-
-    private void craftItem() {
-        Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
-        if (recipe.isEmpty()) return;
-
-        this.removeStack(INPUT_SLOT, 1);
-        this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().value().output().getItem(),
-                this.getStack(OUTPUT_SLOT).getCount() + recipe.get().value().output().getCount()));
-    }
-
-    private boolean hasCraftingFinished() {
-        return this.progress >= this.maxProgress;
-    }
-
-    private void increaseCraftingProgress() {
-        this.progress++;
-    }*/
 
     private Optional<RecipeEntry<CrusherRecipe>> getCurrentRecipe() {
         return this.getWorld().getRecipeManager().getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.get(INPUT_SLOT)), this.getWorld());
