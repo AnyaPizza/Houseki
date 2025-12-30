@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smithing_transform",
-  "addition": "pizzasoat:pinku",
-  "base": "minecraft:netherite_nautilus_armor",
-  "result": {
-    "id": "pizzasoat:pinku_nautilus_armor"
-  },
-  "template": "pizzasoat:pinku_upgrade_smithing_template"
-}

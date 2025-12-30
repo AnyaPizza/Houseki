@@ -1,8 +1,8 @@
-package anya.pizza.pizzasoat;
+package anya.pizza.houseki;
 
-import anya.pizza.pizzasoat.datagen.*;
-import anya.pizza.pizzasoat.world.ModConfiguredFeatures;
-import anya.pizza.pizzasoat.world.ModPlacedFeatures;
+import anya.pizza.houseki.datagen.*;
+import anya.pizza.houseki.world.ModConfiguredFeatures;
+import anya.pizza.houseki.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;

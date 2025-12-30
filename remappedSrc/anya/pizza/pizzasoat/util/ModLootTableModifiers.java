@@ -1,7 +1,7 @@
-package anya.pizza.pizzasoat.util;
+package anya.pizza.houseki.util;
 
-import anya.pizza.pizzasoat.block.ModBlocks;
-import anya.pizza.pizzasoat.item.ModItems;
+import anya.pizza.houseki.block.ModBlocks;
+import anya.pizza.houseki.item.ModItems;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;

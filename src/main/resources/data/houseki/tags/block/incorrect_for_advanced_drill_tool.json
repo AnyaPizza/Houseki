@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#minecraft:incorrect_for_diamond_tool"
+  ],
+  "remove": [
+    "#houseki:needs_advanced_drill_tool"
+  ]
+}

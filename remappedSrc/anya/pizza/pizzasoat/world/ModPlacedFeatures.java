@@ -1,6 +1,6 @@
-package anya.pizza.pizzasoat.world;
+package anya.pizza.houseki.world;
 
-import anya.pizza.pizzasoat.PizzasOAT;
+import anya.pizza.houseki.PizzasOAT;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;

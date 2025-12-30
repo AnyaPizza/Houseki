@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smithing_transform",
-  "addition": "pizzasoat:pinku",
-  "base": "minecraft:netherite_boots",
-  "result": {
-    "id": "pizzasoat:pinku_boots"
-  },
-  "template": "pizzasoat:pinku_upgrade_smithing_template"
-}

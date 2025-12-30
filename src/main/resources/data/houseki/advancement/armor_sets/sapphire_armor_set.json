@@ -1,0 +1,55 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.sapphire_armor_set.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.sapphire_armor_set.description"
+    },
+    "icon": {
+      "id": "houseki:sapphire_chestplate"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "sapphire_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:sapphire_helmet"
+            ]
+          },
+          {
+            "items": [
+              "houseki:sapphire_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "houseki:sapphire_leggings"
+            ]
+          },
+          {
+            "items": [
+              "houseki:sapphire_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sapphire_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

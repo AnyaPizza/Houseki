@@ -1,4 +1,4 @@
-package anya.pizza.pizzasoat.recipe;
+package anya.pizza.houseki.recipe;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.input.RecipeInput;

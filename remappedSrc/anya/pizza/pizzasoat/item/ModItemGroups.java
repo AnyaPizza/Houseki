@@ -1,7 +1,7 @@
-package anya.pizza.pizzasoat.item;
+package anya.pizza.houseki.item;
 
-import anya.pizza.pizzasoat.PizzasOAT;
-import anya.pizza.pizzasoat.block.ModBlocks;
+import anya.pizza.houseki.PizzasOAT;
+import anya.pizza.houseki.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;

@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "translate": "advancements.armor_sets.root.title"
+    },
+    "description": {
+      "translate": "advancements.armor_sets.root.description"
+    },
+    "icon": {
+      "id": "houseki:pinku"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "houseki:textures/block/block_of_pinku.png"
+  },
+  "criteria": {
+    "pick_up_pizzas_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "houseki:armor"
+          }
+        ]
+      }
+    }
+  }
+}

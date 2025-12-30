@@ -1,8 +1,8 @@
-package anya.pizza.pizzasoat.block.custom;
+package anya.pizza.houseki.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import anya.pizza.pizzasoat.block.entity.ModBlockEntities;
-import anya.pizza.pizzasoat.block.entity.custom.CrusherBlockEntity;
+import anya.pizza.houseki.block.entity.ModBlockEntities;
+import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;

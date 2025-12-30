@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smithing_transform",
-  "addition": "pizzasoat:pinku",
-  "base": "minecraft:netherite_hoe",
-  "result": {
-    "id": "pizzasoat:pinku_hoe"
-  },
-  "template": "pizzasoat:pinku_upgrade_smithing_template"
-}

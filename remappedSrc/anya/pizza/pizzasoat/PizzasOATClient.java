@@ -1,8 +1,8 @@
-package anya.pizza.pizzasoat;
+package anya.pizza.houseki;
 
-import anya.pizza.pizzasoat.block.ModBlocks;
-import anya.pizza.pizzasoat.screen.ModScreenHandlers;
-import anya.pizza.pizzasoat.screen.custom.CrusherScreen;
+import anya.pizza.houseki.block.ModBlocks;
+import anya.pizza.houseki.screen.ModScreenHandlers;
+import anya.pizza.houseki.screen.custom.CrusherScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;

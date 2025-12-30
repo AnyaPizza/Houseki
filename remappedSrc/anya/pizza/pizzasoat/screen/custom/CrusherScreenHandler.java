@@ -1,9 +1,9 @@
-package anya.pizza.pizzasoat.screen.custom;
+package anya.pizza.houseki.screen.custom;
 
-import anya.pizza.pizzasoat.block.entity.custom.CrusherBlockEntity;
-import anya.pizza.pizzasoat.recipe.CrusherRecipeInput;
-import anya.pizza.pizzasoat.recipe.ModRecipes;
-import anya.pizza.pizzasoat.screen.ModScreenHandlers;
+import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
+import anya.pizza.houseki.recipe.CrusherRecipeInput;
+import anya.pizza.houseki.recipe.ModRecipes;
+import anya.pizza.houseki.screen.ModScreenHandlers;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

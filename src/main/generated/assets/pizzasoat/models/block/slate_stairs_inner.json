@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "pizzasoat:block/slate",
-    "side": "pizzasoat:block/slate",
-    "top": "pizzasoat:block/slate"
-  }
-}

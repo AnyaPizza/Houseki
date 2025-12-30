@@ -1,7 +1,7 @@
-package anya.pizza.pizzasoat.block;
+package anya.pizza.houseki.block;
 
-import anya.pizza.pizzasoat.PizzasOAT;
-import anya.pizza.pizzasoat.block.custom.CrusherBlock;
+import anya.pizza.houseki.PizzasOAT;
+import anya.pizza.houseki.block.custom.CrusherBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;

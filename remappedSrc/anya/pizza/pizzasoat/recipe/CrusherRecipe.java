@@ -1,4 +1,4 @@
-package anya.pizza.pizzasoat.recipe;
+package anya.pizza.houseki.recipe;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
