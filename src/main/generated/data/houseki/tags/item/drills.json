@@ -1,0 +1,16 @@
+{
+  "values": [
+    "houseki:simple_drill_head",
+    "houseki:simple_tungsten_drill",
+    "houseki:enhanced_drill_head",
+    "houseki:enhanced_tungsten_drill",
+    "houseki:advanced_drill_head",
+    "houseki:advanced_tungsten_drill",
+    "houseki:premium_drill_head",
+    "houseki:premium_tungsten_drill",
+    "houseki:simple_diamond_drill",
+    "houseki:enhanced_diamond_drill",
+    "houseki:advanced_diamond_drill",
+    "houseki:premium_diamond_drill"
+  ]
+}

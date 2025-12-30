@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right",
+  "textures": {
+    "bottom": "houseki:block/aluminum_door_bottom",
+    "top": "houseki:block/aluminum_door_top"
+  }
+}

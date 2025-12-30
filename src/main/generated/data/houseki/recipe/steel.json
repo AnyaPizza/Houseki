@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "houseki:block_of_steel"
+  ],
+  "result": {
+    "count": 9,
+    "id": "houseki:steel"
+  }
+}

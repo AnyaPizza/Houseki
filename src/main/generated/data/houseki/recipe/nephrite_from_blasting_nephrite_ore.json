@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.5,
+  "group": "nephrite",
+  "ingredient": "houseki:nephrite_ore",
+  "result": {
+    "id": "houseki:nephrite"
+  }
+}

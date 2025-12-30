@@ -100,7 +100,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     @Override
     public Text getDisplayName() {
-        return Text.translatable("gui.pizzasoat.crusher");
+        return Text.translatable("gui.houseki.crusher");
     }
 
     @Nullable

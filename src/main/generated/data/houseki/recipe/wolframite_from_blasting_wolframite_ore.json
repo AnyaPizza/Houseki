@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.5,
+  "group": "wolframite",
+  "ingredient": "houseki:wolframite_ore",
+  "result": {
+    "id": "houseki:wolframite"
+  }
+}

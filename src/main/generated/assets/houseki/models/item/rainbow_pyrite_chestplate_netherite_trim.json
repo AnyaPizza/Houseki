@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "houseki:item/rainbow_pyrite_chestplate",
+    "layer1": "minecraft:trims/items/chestplate_trim_netherite"
+  }
+}

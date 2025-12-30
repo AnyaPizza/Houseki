@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.5,
+  "group": "pinku",
+  "ingredient": "houseki:pinku_ore",
+  "result": {
+    "id": "houseki:pinku_shard"
+  }
+}
