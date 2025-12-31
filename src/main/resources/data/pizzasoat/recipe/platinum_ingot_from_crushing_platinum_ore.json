@@ -1,8 +1,0 @@
-{
-  "type": "pizzasoat:crushing",
-  "ingredient": "pizzasoat:platinum_ore",
-  "result": {
-    "id": "pizzasoat:platinum"
-  },
-  "crushingTime": 250
-}

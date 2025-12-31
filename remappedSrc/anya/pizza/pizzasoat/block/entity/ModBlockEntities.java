@@ -1,8 +1,8 @@
-package anya.pizza.pizzasoat.block.entity;
+package anya.pizza.houseki.block.entity;
 
-import anya.pizza.pizzasoat.PizzasOAT;
-import anya.pizza.pizzasoat.block.ModBlocks;
-import anya.pizza.pizzasoat.block.entity.custom.CrusherBlockEntity;
+import anya.pizza.houseki.PizzasOAT;
+import anya.pizza.houseki.block.ModBlocks;
+import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

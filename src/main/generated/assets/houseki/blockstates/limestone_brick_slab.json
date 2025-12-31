@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "houseki:block/limestone_brick_slab"
+    },
+    "type=double": {
+      "model": "houseki:block/limestone_bricks"
+    },
+    "type=top": {
+      "model": "houseki:block/limestone_brick_slab_top"
+    }
+  }
+}

@@ -1,14 +1,14 @@
 {
   "values": [
-    "pizzasoat:pinku_pickaxe",
-    "pizzasoat:rainbow_pyrite_pickaxe",
-    "pizzasoat:tungsten_pickaxe",
-    "pizzasoat:aluminum_pickaxe",
-    "pizzasoat:sapphire_pickaxe",
-    "pizzasoat:nephrite_pickaxe",
-    "pizzasoat:jadeite_pickaxe",
-    "pizzasoat:platinum_pickaxe",
-    "pizzasoat:steel_pickaxe",
-    "pizzasoat:cast_steel_pickaxe"
+    "houseki:pinku_pickaxe",
+    "houseki:rainbow_pyrite_pickaxe",
+    "houseki:tungsten_pickaxe",
+    "houseki:aluminum_pickaxe",
+    "houseki:sapphire_pickaxe",
+    "houseki:nephrite_pickaxe",
+    "houseki:jadeite_pickaxe",
+    "houseki:platinum_pickaxe",
+    "houseki:steel_pickaxe",
+    "houseki:cast_steel_pickaxe"
   ]
 }

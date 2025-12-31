@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:wolframite_from_smelting_wolframite_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wolframite_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:wolframite_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wolframite_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:wolframite_from_smelting_wolframite_ore"
+    ]
+  }
+}

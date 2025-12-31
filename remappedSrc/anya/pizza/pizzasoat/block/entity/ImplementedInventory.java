@@ -1,4 +1,4 @@
-package anya.pizza.pizzasoat.block.entity;
+package anya.pizza.houseki.block.entity;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;

@@ -1,14 +1,14 @@
 {
   "values": [
-    "pizzasoat:pinku_helmet",
-    "pizzasoat:rainbow_pyrite_helmet",
-    "pizzasoat:tungsten_helmet",
-    "pizzasoat:aluminum_helmet",
-    "pizzasoat:sapphire_helmet",
-    "pizzasoat:nephrite_helmet",
-    "pizzasoat:jadeite_helmet",
-    "pizzasoat:platinum_helmet",
-    "pizzasoat:steel_helmet",
-    "pizzasoat:cast_steel_helmet"
+    "houseki:pinku_helmet",
+    "houseki:rainbow_pyrite_helmet",
+    "houseki:tungsten_helmet",
+    "houseki:aluminum_helmet",
+    "houseki:sapphire_helmet",
+    "houseki:nephrite_helmet",
+    "houseki:jadeite_helmet",
+    "houseki:platinum_helmet",
+    "houseki:steel_helmet",
+    "houseki:cast_steel_helmet"
   ]
 }

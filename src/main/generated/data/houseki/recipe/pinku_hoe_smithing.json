@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "houseki:pinku",
+  "base": "minecraft:netherite_hoe",
+  "result": {
+    "id": "houseki:pinku_hoe"
+  },
+  "template": "houseki:pinku_upgrade_smithing_template"
+}

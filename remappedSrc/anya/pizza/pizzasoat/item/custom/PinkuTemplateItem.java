@@ -1,6 +1,6 @@
-package anya.pizza.pizzasoat.item.custom;
+package anya.pizza.houseki.item.custom;
 
-import anya.pizza.pizzasoat.PizzasOAT;
+import anya.pizza.houseki.PizzasOAT;
 import net.minecraft.item.SmithingTemplateItem;
 import net.minecraft.resource.featuretoggle.FeatureFlag;
 import net.minecraft.text.Text;

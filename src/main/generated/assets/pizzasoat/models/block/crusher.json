@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "pizzasoat:block/crusher_front",
-    "side": "pizzasoat:block/crusher_side",
-    "top": "pizzasoat:block/crusher_top"
-  }
-}

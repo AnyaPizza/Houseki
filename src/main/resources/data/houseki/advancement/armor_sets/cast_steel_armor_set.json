@@ -1,0 +1,55 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.cast_steel_armor_set.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.cast_steel_armor_set.description"
+    },
+    "icon": {
+      "id": "houseki:cast_steel_chestplate"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cast_steel_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:cast_steel_helmet"
+            ]
+          },
+          {
+            "items": [
+              "houseki:cast_steel_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "houseki:cast_steel_leggings"
+            ]
+          },
+          {
+            "items": [
+              "houseki:cast_steel_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cast_steel_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

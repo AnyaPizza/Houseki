@@ -1,11 +1,11 @@
 {
   "values": [
-    "pizzasoat:bauxite",
-    "pizzasoat:sulfur_ore",
-    "pizzasoat:blackstone_sulfur_ore",
-    "pizzasoat:block_of_sulfur",
-    "pizzasoat:aluminum_door",
-    "pizzasoat:aluminum_trapdoor",
-    "pizzasoat:crusher"
+    "houseki:bauxite",
+    "houseki:sulfur_ore",
+    "houseki:blackstone_sulfur_ore",
+    "houseki:block_of_sulfur",
+    "houseki:aluminum_door",
+    "houseki:aluminum_trapdoor",
+    "houseki:crusher"
   ]
 }

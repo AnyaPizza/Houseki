@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 250,
+  "experience": 0.5,
+  "group": "sapphire",
+  "ingredient": "houseki:sapphire_ore",
+  "result": {
+    "id": "houseki:sapphire"
+  }
+}

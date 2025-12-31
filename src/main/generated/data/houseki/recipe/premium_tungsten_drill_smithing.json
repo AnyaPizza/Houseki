@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "houseki:block_of_cast_steel",
+  "base": "houseki:advanced_tungsten_drill",
+  "result": {
+    "id": "houseki:premium_tungsten_drill"
+  },
+  "template": "houseki:drill_upgrade_smithing_template"
+}

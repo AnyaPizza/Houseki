@@ -1,6 +1,6 @@
-package anya.pizza.pizzasoat.item;
+package anya.pizza.houseki.item;
 
-import anya.pizza.pizzasoat.PizzasOAT;
+import anya.pizza.houseki.PizzasOAT;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;

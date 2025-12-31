@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nephrite_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:nephrite_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:nephrite_from_blasting_nephrite_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nephrite_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:nephrite_from_blasting_nephrite_ore"
+    ]
+  }
+}

@@ -1,9 +1,9 @@
-package anya.pizza.pizzasoat.item;
+package anya.pizza.houseki.item;
 
-import anya.pizza.pizzasoat.PizzasOAT;
-import anya.pizza.pizzasoat.item.custom.ModArmorItem;
-import anya.pizza.pizzasoat.item.custom.PinkuTemplateItem;
-import anya.pizza.pizzasoat.item.custom.TungstenSwordItem;
+import anya.pizza.houseki.PizzasOAT;
+import anya.pizza.houseki.item.custom.ModArmorItem;
+import anya.pizza.houseki.item.custom.PinkuTemplateItem;
+import anya.pizza.houseki.item.custom.TungstenSwordItem;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;

@@ -1,8 +1,8 @@
-package anya.pizza.pizzasoat.datagen;
+package anya.pizza.houseki.datagen;
 
-import anya.pizza.pizzasoat.block.ModBlocks;
-import anya.pizza.pizzasoat.item.ModItems;
-import anya.pizza.pizzasoat.util.ModGenRecipes;
+import anya.pizza.houseki.block.ModBlocks;
+import anya.pizza.houseki.item.ModItems;
+import anya.pizza.houseki.util.ModGenRecipes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static anya.pizza.pizzasoat.util.ModGenRecipes.offerPinkuUpgradeRecipe;
+import static anya.pizza.houseki.util.ModGenRecipes.offerPinkuUpgradeRecipe;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {

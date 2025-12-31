@@ -1,8 +1,0 @@
-{
-  "type": "pizzasoat:crushing",
-  "ingredient": "pizzasoat:bauxite",
-  "result": {
-    "id": "pizzasoat:crushed_bauxite"
-  },
-  "crushingTime": 250
-}

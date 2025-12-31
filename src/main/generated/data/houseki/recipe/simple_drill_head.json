@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "houseki:block_of_cast_steel",
+    "R": "minecraft:redstone",
+    "X": "houseki:cast_steel"
+  },
+  "pattern": [
+    " X ",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:simple_drill_head"
+  }
+}

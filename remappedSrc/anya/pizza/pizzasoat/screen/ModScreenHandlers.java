@@ -1,7 +1,7 @@
-package anya.pizza.pizzasoat.screen;
+package anya.pizza.houseki.screen;
 
-import anya.pizza.pizzasoat.PizzasOAT;
-import anya.pizza.pizzasoat.screen.custom.CrusherScreenHandler;
+import anya.pizza.houseki.PizzasOAT;
+import anya.pizza.houseki.screen.custom.CrusherScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

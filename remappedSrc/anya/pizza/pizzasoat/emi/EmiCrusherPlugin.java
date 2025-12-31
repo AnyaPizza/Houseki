@@ -1,14 +1,14 @@
-package anya.pizza.pizzasoat.emi;
+package anya.pizza.houseki.emi;
 
-import anya.pizza.pizzasoat.PizzasOAT;
-import anya.pizza.pizzasoat.recipe.CrusherRecipe;
-import anya.pizza.pizzasoat.recipe.ModRecipes;
+import anya.pizza.houseki.PizzasOAT;
+import anya.pizza.houseki.recipe.CrusherRecipe;
+import anya.pizza.houseki.recipe.ModRecipes;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
-import anya.pizza.pizzasoat.block.ModBlocks;
+import anya.pizza.houseki.block.ModBlocks;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.util.Identifier;
 

@@ -1,0 +1,55 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.tungsten_armor_set.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.tungsten_armor_set.description"
+    },
+    "icon": {
+      "id": "houseki:tungsten_chestplate"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "tungsten_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:tungsten_helmet"
+            ]
+          },
+          {
+            "items": [
+              "houseki:tungsten_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "houseki:tungsten_leggings"
+            ]
+          },
+          {
+            "items": [
+              "houseki:tungsten_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tungsten_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "houseki:block_of_cast_steel",
+  "base": "houseki:enhanced_drill_head",
+  "result": {
+    "id": "houseki:advanced_drill_head"
+  },
+  "template": "houseki:drill_upgrade_smithing_template"
+}

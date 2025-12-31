@@ -1,6 +1,6 @@
-package anya.pizza.pizzasoat.screen.custom;
+package anya.pizza.houseki.screen.custom;
 
-import anya.pizza.pizzasoat.PizzasOAT;
+import anya.pizza.houseki.PizzasOAT;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;

@@ -1,7 +1,7 @@
-package anya.pizza.pizzasoat.item.custom;
+package anya.pizza.houseki.item.custom;
 
 import com.google.common.collect.ImmutableMap;
-import anya.pizza.pizzasoat.item.ModArmorMaterials;
+import anya.pizza.houseki.item.ModArmorMaterials;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;

@@ -1,4 +1,4 @@
-package anya.pizza.pizzasoat.datagen;
+package anya.pizza.houseki.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;

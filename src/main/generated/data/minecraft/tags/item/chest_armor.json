@@ -1,14 +1,14 @@
 {
   "values": [
-    "pizzasoat:pinku_chestplate",
-    "pizzasoat:rainbow_pyrite_chestplate",
-    "pizzasoat:tungsten_chestplate",
-    "pizzasoat:aluminum_chestplate",
-    "pizzasoat:sapphire_chestplate",
-    "pizzasoat:nephrite_chestplate",
-    "pizzasoat:jadeite_chestplate",
-    "pizzasoat:platinum_chestplate",
-    "pizzasoat:steel_chestplate",
-    "pizzasoat:cast_steel_chestplate"
+    "houseki:pinku_chestplate",
+    "houseki:rainbow_pyrite_chestplate",
+    "houseki:tungsten_chestplate",
+    "houseki:aluminum_chestplate",
+    "houseki:sapphire_chestplate",
+    "houseki:nephrite_chestplate",
+    "houseki:jadeite_chestplate",
+    "houseki:platinum_chestplate",
+    "houseki:steel_chestplate",
+    "houseki:cast_steel_chestplate"
   ]
 }

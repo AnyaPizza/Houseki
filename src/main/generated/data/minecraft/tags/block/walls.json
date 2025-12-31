@@ -1,10 +1,10 @@
 {
   "values": [
-    "pizzasoat:limestone_wall",
-    "pizzasoat:limestone_brick_wall",
-    "pizzasoat:polished_limestone_wall",
-    "pizzasoat:slate_wall",
-    "pizzasoat:slate_tile_wall",
-    "pizzasoat:polished_slate_wall"
+    "houseki:limestone_wall",
+    "houseki:limestone_brick_wall",
+    "houseki:polished_limestone_wall",
+    "houseki:slate_wall",
+    "houseki:slate_tile_wall",
+    "houseki:polished_slate_wall"
   ]
 }

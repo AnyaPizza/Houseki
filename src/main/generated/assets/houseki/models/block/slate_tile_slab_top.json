@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "houseki:block/slate_tiles",
+    "side": "houseki:block/slate_tiles",
+    "top": "houseki:block/slate_tiles"
+  }
+}

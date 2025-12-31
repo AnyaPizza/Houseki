@@ -1,7 +1,7 @@
-package anya.pizza.pizzasoat.util;
+package anya.pizza.houseki.util;
 
 
-import anya.pizza.pizzasoat.PizzasOAT;
+import anya.pizza.houseki.PizzasOAT;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;

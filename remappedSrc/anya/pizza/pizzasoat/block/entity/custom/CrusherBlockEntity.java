@@ -1,12 +1,12 @@
-package anya.pizza.pizzasoat.block.entity.custom;
+package anya.pizza.houseki.block.entity.custom;
 
-import anya.pizza.pizzasoat.block.custom.CrusherBlock;
-import anya.pizza.pizzasoat.block.entity.ImplementedInventory;
-import anya.pizza.pizzasoat.block.entity.ModBlockEntities;
-import anya.pizza.pizzasoat.recipe.CrusherRecipe;
-import anya.pizza.pizzasoat.recipe.CrusherRecipeInput;
-import anya.pizza.pizzasoat.recipe.ModRecipes;
-import anya.pizza.pizzasoat.screen.custom.CrusherScreenHandler;
+import anya.pizza.houseki.block.custom.CrusherBlock;
+import anya.pizza.houseki.block.entity.ImplementedInventory;
+import anya.pizza.houseki.block.entity.ModBlockEntities;
+import anya.pizza.houseki.recipe.CrusherRecipe;
+import anya.pizza.houseki.recipe.CrusherRecipeInput;
+import anya.pizza.houseki.recipe.ModRecipes;
+import anya.pizza.houseki.screen.custom.CrusherScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
