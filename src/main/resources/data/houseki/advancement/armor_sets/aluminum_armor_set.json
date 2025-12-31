@@ -1,0 +1,55 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.aluminum_armor_set.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.aluminum_armor_set.description"
+    },
+    "icon": {
+      "id": "houseki:aluminum_chestplate"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "aluminum_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:aluminum_helmet"
+            ]
+          },
+          {
+            "items": [
+              "houseki:aluminum_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "houseki:aluminum_leggings"
+            ]
+          },
+          {
+            "items": [
+              "houseki:aluminum_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "aluminum_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

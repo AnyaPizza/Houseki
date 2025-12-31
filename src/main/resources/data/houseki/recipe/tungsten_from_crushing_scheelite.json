@@ -1,0 +1,8 @@
+{
+  "type": "houseki:crushing",
+  "ingredient": "houseki:scheelite",
+  "result": {
+    "id": "houseki:tungsten"
+  },
+  "crushingTime": 250
+}

@@ -1,0 +1,24 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "houseki:cast_steel"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "houseki:cast_steel"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "houseki:cast_steel"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "houseki:cast_steel"
+      }
+    ]
+  }
+}

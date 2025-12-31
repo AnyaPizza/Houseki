@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "houseki:slate",
+  "result": {
+    "count": 1,
+    "id": "houseki:slate_stairs"
+  }
+}

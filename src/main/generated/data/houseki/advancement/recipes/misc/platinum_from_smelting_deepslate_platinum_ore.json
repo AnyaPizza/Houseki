@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deepslate_platinum_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:deepslate_platinum_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:platinum_from_smelting_deepslate_platinum_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_deepslate_platinum_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:platinum_from_smelting_deepslate_platinum_ore"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "houseki:aluminum"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "houseki:aluminum"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "houseki:aluminum"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "houseki:aluminum"
+      }
+    ]
+  }
+}

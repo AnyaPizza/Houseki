@@ -1,7 +1,7 @@
-package anya.pizza.pizzasoat.item;
+package anya.pizza.houseki.item;
 
 import com.google.common.base.Suppliers;
-import anya.pizza.pizzasoat.util.ModTags;
+import anya.pizza.houseki.util.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;

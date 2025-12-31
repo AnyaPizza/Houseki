@@ -1,13 +1,13 @@
-package anya.pizza.pizzasoat;
+package anya.pizza.houseki;
 
-import anya.pizza.pizzasoat.block.ModBlocks;
-import anya.pizza.pizzasoat.block.entity.ModBlockEntities;
-import anya.pizza.pizzasoat.item.ModItemGroups;
-import anya.pizza.pizzasoat.item.ModItems;
-import anya.pizza.pizzasoat.screen.ModScreenHandlers;
-import anya.pizza.pizzasoat.util.ModLootTableModifiers;
-import anya.pizza.pizzasoat.world.gen.ModWorldGeneration;
-import anya.pizza.pizzasoat.recipe.ModRecipes;
+import anya.pizza.houseki.block.ModBlocks;
+import anya.pizza.houseki.block.entity.ModBlockEntities;
+import anya.pizza.houseki.item.ModItemGroups;
+import anya.pizza.houseki.item.ModItems;
+import anya.pizza.houseki.screen.ModScreenHandlers;
+import anya.pizza.houseki.util.ModLootTableModifiers;
+import anya.pizza.houseki.world.gen.ModWorldGeneration;
+import anya.pizza.houseki.recipe.ModRecipes;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.registry.FuelRegistry;

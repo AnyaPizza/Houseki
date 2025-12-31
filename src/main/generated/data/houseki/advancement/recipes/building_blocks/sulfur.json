@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_of_sulfur": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:block_of_sulfur"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:sulfur"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_block_of_sulfur"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:sulfur"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+// 1.21.10	-999999999-01-01T00:00:00	Houseki Ores And Things/Tags for minecraft:block
+23caf7f61e4b2f6fa59b168a7ee49539eb44acf1 data/houseki/tags/block/enhanced_mineable.json
+80ad3ac92e1280a2f60b25a83d2a16751740cc33 data/houseki/tags/block/premium_mineable.json
+e5019acbdb6e98772dd499964d3ad69356f0bcc5 data/minecraft/tags/block/beacon_base_blocks.json
+318b5ff53b23a2fd9abc3c47df27bc2754c73bd4 data/minecraft/tags/block/dragon_immune.json
+4c3adc918567491c9bf6245f0b40dc1356a95395 data/minecraft/tags/block/mineable/pickaxe.json
+61d7df78bcfa3e13ade529a582628c3e98874534 data/minecraft/tags/block/needs_diamond_tool.json
+3e25ddabf34aa54c15b122fff6a9a159606271b7 data/minecraft/tags/block/needs_iron_tool.json
+a6d6f07f3f67922463680566c209895a384217e0 data/minecraft/tags/block/needs_stone_tool.json
+4bef11ab83e59ceac264840bbd5887acf361aa5f data/minecraft/tags/block/slabs.json
+ddad2cc2ddb25ca2aca83cf30800498d87462f2a data/minecraft/tags/block/stairs.json
+c00dcbb8bc9bf174790936ec490fc471de01049b data/minecraft/tags/block/walls.json
+7e85b4b4f7a2701ec132b9ed6b32f6980b6d4ef2 data/minecraft/tags/block/wither_immune.json

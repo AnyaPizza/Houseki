@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_of_rainbow_pyrite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:block_of_rainbow_pyrite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:rainbow_pyrite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_block_of_rainbow_pyrite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:rainbow_pyrite"
+    ]
+  }
+}

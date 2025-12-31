@@ -1,14 +1,14 @@
 {
   "values": [
-    "pizzasoat:pinku_shovel",
-    "pizzasoat:rainbow_pyrite_shovel",
-    "pizzasoat:tungsten_shovel",
-    "pizzasoat:aluminum_shovel",
-    "pizzasoat:sapphire_shovel",
-    "pizzasoat:nephrite_shovel",
-    "pizzasoat:jadeite_shovel",
-    "pizzasoat:platinum_shovel",
-    "pizzasoat:steel_shovel",
-    "pizzasoat:cast_steel_shovel"
+    "houseki:pinku_shovel",
+    "houseki:rainbow_pyrite_shovel",
+    "houseki:tungsten_shovel",
+    "houseki:aluminum_shovel",
+    "houseki:sapphire_shovel",
+    "houseki:nephrite_shovel",
+    "houseki:jadeite_shovel",
+    "houseki:platinum_shovel",
+    "houseki:steel_shovel",
+    "houseki:cast_steel_shovel"
   ]
 }

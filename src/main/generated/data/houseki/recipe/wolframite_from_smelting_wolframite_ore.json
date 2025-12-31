@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "group": "wolframite",
+  "ingredient": "houseki:wolframite_ore",
+  "result": {
+    "id": "houseki:wolframite"
+  }
+}

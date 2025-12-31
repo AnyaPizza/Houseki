@@ -1,0 +1,55 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.jadeite_armor_set.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.jadeite_armor_set.description"
+    },
+    "icon": {
+      "id": "houseki:jadeite_chestplate"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "jadeite_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:jadeite_helmet"
+            ]
+          },
+          {
+            "items": [
+              "houseki:jadeite_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "houseki:jadeite_leggings"
+            ]
+          },
+          {
+            "items": [
+              "houseki:jadeite_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "jadeite_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

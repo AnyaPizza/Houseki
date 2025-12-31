@@ -1,28 +1,28 @@
 {
 	"schemaVersion": 1,
-	"id": "pizzasoat",
+	"id": "houseki",
 	"version": "1.0.5-1.21.10",
-	"name": "Pizza's Ores And Things",
-	"description": "A mod adding new ores and things that try to keep to their real life counterparts.",
+	"name": "Houseki Ores And Things",
+	"description": "A mod adding new ores and things that try to keep to their real-life counterparts.",
 	"authors": [
 		"AnyaPizza"
 	],
 	"contact": {
-		"homepage": "",
-		"sources": "https://github.com/"
+		"issues": "https://github.com/AnyaPizza/Houseki/issues",
+		"sources": "https://github.com/AnyaPizza/Houseki"
 	},
 	"license": "MIT",
-	"icon": "assets/pizzasoat/icon.png",
+	"icon": "assets/houseki/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"anya.pizza.pizzasoat.PizzasOAT"
+			"anya.pizza.houseki.Houseki"
 		],
 		"fabric-datagen": [
-			"anya.pizza.pizzasoat.PizzasOATDataGenerator"
+			"anya.pizza.houseki.HousekiDataGenerator"
 		],
 		"client": [
-			"anya.pizza.pizzasoat.PizzasOATClient"
+			"anya.pizza.houseki.HousekiClient"
 		]
 	},
 	"mixins": [

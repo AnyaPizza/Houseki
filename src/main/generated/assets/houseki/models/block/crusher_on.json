@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "houseki:block/crusher_front_on",
+    "side": "houseki:block/crusher_side",
+    "top": "houseki:block/crusher_top"
+  }
+}

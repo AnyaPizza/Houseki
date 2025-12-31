@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.5,
+  "group": "sapphire",
+  "ingredient": "houseki:sapphire_ore",
+  "result": {
+    "id": "houseki:sapphire"
+  }
+}

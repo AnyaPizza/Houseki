@@ -1,7 +1,7 @@
-package anya.pizza.pizzasoat.world;
+package anya.pizza.houseki.world;
 
-import anya.pizza.pizzasoat.PizzasOAT;
-import anya.pizza.pizzasoat.block.ModBlocks;
+import anya.pizza.houseki.PizzasOAT;
+import anya.pizza.houseki.block.ModBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;

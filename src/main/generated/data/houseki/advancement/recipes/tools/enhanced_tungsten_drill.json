@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_enhanced_drill_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:enhanced_drill_head"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:enhanced_tungsten_drill"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tungsten_drill_bit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:tungsten_drill_bit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tungsten_drill_bit",
+      "has_enhanced_drill_head"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:enhanced_tungsten_drill"
+    ]
+  }
+}

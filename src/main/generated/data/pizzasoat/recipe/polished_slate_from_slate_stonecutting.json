@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "pizzasoat:slate",
-  "result": {
-    "count": 1,
-    "id": "pizzasoat:polished_slate"
-  }
-}

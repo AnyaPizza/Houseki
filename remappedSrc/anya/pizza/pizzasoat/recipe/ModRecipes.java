@@ -1,6 +1,6 @@
-package anya.pizza.pizzasoat.recipe;
+package anya.pizza.houseki.recipe;
 
-import anya.pizza.pizzasoat.PizzasOAT;
+import anya.pizza.houseki.PizzasOAT;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;

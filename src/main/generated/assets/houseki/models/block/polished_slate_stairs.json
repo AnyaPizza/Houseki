@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "houseki:block/polished_slate",
+    "side": "houseki:block/polished_slate",
+    "top": "houseki:block/polished_slate"
+  }
+}

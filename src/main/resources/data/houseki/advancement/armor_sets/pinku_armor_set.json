@@ -1,0 +1,55 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.pinku_armor_set.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.pinku_armor_set.description"
+    },
+    "icon": {
+      "id": "houseki:pinku_chestplate"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "pinku_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:pinku_helmet"
+            ]
+          },
+          {
+            "items": [
+              "houseki:pinku_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "houseki:pinku_leggings"
+            ]
+          },
+          {
+            "items": [
+              "houseki:pinku_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pinku_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

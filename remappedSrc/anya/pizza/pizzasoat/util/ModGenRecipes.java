@@ -1,8 +1,8 @@
-package anya.pizza.pizzasoat.util;
+package anya.pizza.houseki.util;
 
-import anya.pizza.pizzasoat.item.ModItems;
-import anya.pizza.pizzasoat.recipe.CrusherRecipe;
-import anya.pizza.pizzasoat.recipe.ModRecipes;
+import anya.pizza.houseki.item.ModItems;
+import anya.pizza.houseki.recipe.CrusherRecipe;
+import anya.pizza.houseki.recipe.ModRecipes;
 import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;

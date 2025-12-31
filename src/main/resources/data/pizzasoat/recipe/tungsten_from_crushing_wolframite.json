@@ -1,8 +1,0 @@
-{
-  "type": "pizzasoat:crushing",
-  "ingredient": "pizzasoat:wolframite",
-  "result": {
-    "id": "pizzasoat:tungsten"
-  },
-  "crushingTime": 250
-}

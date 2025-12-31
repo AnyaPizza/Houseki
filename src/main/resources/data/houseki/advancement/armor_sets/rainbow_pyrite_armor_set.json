@@ -1,0 +1,55 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.rainbow_pyrite_armor_set.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.rainbow_pyrite_armor_set.description"
+    },
+    "icon": {
+      "id": "houseki:rainbow_pyrite_chestplate"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "rainbow_pyrite_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:rainbow_pyrite_helmet"
+            ]
+          },
+          {
+            "items": [
+              "houseki:rainbow_pyrite_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "houseki:rainbow_pyrite_leggings"
+            ]
+          },
+          {
+            "items": [
+              "houseki:rainbow_pyrite_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "rainbow_pyrite_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

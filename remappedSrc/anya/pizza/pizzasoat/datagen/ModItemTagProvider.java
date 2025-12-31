@@ -1,6 +1,6 @@
-package anya.pizza.pizzasoat.datagen;
+package anya.pizza.houseki.datagen;
 
-import anya.pizza.pizzasoat.item.ModItems;
+import anya.pizza.houseki.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;

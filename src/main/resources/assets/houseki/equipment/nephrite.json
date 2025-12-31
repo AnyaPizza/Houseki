@@ -1,0 +1,24 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "houseki:nephrite"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "houseki:nephrite"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "houseki:nephrite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "houseki:nephrite"
+      }
+    ]
+  }
+}

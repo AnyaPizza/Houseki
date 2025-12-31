@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "pizzasoat:limestone",
-  "result": {
-    "count": 1,
-    "id": "pizzasoat:polished_limestone_stairs"
-  }
-}
