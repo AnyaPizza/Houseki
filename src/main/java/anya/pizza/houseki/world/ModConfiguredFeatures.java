@@ -37,7 +37,6 @@ public class ModConfiguredFeatures {
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
-        RuleTest netherReplaceables = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
         RuleTest endReplaceables = new BlockMatchRuleTest(Blocks.END_STONE);
         RuleTest graniteReplaceables = new BlockMatchRuleTest(Blocks.GRANITE);
         RuleTest coalOreReplaceables = new BlockMatchRuleTest(Blocks.COAL_ORE);
@@ -48,6 +47,7 @@ public class ModConfiguredFeatures {
         RuleTest bauxiteReplaceables = new BlockMatchRuleTest(ModBlocks.BAUXITE);
         RuleTest limestoneReplaceables = new BlockMatchRuleTest(ModBlocks.LIMESTONE);
         RuleTest slateReplaceables = new BlockMatchRuleTest(ModBlocks.SLATE);
+        RuleTest netherrackReplaceables = new BlockMatchRuleTest(Blocks.NETHERRACK);
 
         List<OreFeatureConfig.Target> endPinkuOres = List.of(OreFeatureConfig.createTarget(endReplaceables, ModBlocks.PINKU_ORE.getDefaultState()));
 
@@ -57,7 +57,7 @@ public class ModConfiguredFeatures {
 
         List<OreFeatureConfig.Target> overworldWolframiteOres = List.of(OreFeatureConfig.createTarget(graniteReplaceables, ModBlocks.WOLFRAMITE_ORE.getDefaultState()));
 
-        List<OreFeatureConfig.Target> netherScheeliteOres = List.of(OreFeatureConfig.createTarget(netherReplaceables, ModBlocks.SCHEELITE_ORE.getDefaultState()));
+        List<OreFeatureConfig.Target> netherScheeliteOres = List.of(OreFeatureConfig.createTarget(netherrackReplaceables, ModBlocks.SCHEELITE_ORE.getDefaultState()));
 
         List<OreFeatureConfig.Target> overworldBauxiteOre = List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.BAUXITE.getDefaultState()));
 
@@ -71,7 +71,7 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> overworldPlatinumOres = List.of(OreFeatureConfig.createTarget(copperReplaceables, ModBlocks.PLATINUM_ORE.getDefaultState()),
                         OreFeatureConfig.createTarget(deepCopperReplaceables, ModBlocks.DEEPSLATE_PLATINUM_ORE.getDefaultState()));
 
-        List<OreFeatureConfig.Target> netherSulfurOres = List.of(OreFeatureConfig.createTarget(netherReplaceables,ModBlocks.SULFUR_ORE.getDefaultState()));
+        List<OreFeatureConfig.Target> netherSulfurOres = List.of(OreFeatureConfig.createTarget(netherrackReplaceables,ModBlocks.SULFUR_ORE.getDefaultState()));
         List<OreFeatureConfig.Target> blackstoneSulfurOres = List.of(OreFeatureConfig.createTarget(blackstoneReplaceables,ModBlocks.BLACKSTONE_SULFUR_ORE.getDefaultState()));
 
 
