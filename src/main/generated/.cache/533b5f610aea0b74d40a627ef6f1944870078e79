@@ -1,4 +1,4 @@
-// 1.21.3	2025-12-30T21:01:56.4194428	Houseki/Houseki Recipes
+// 1.21.3	2026-01-09T21:37:26.7658662	Houseki/Houseki Recipes
 d52b0cfa50d7fdeea98d986faaf55d459467ee2d data\houseki\recipe\wolframite_from_blasting_wolframite_ore.json
 5c400cd9a69d3b53cb1d5f92c15b94df9ffdc1fc data\houseki\advancement\recipes\building_blocks\limestone_brick_stairs_from_limestone_stonecutting.json
 b06d2bb2b740fae2cd84db498e359295b20daf09 data\houseki\advancement\recipes\building_blocks\limestone_stairs_from_limestone_stonecutting.json
@@ -73,6 +73,7 @@ e7995b644bb217d5108dc0900196b67d1107d25f data\houseki\advancement\recipes\misc\s
 b1476a311bcc4f383e5d7a0028a9f87acd0401b6 data\houseki\recipe\aluminum_axe.json
 f18ec8a430685f157c90b98e16abb5e7ab20782c data\houseki\recipe\sapphire_shovel.json
 c11b09e5cd52a763b12af43181814a08a2808ee1 data\houseki\advancement\recipes\tools\steel_pickaxe.json
+1459df65bf5fc1f391ef3ee18b59505bd6e32735 data\houseki\recipe\platinum_nugget.json
 b0a8eb4934c8f14f8e0c1bd2db70113d0e1e565d data\houseki\advancement\recipes\misc\sulfur_from_smelting_blackstone_sulfur_ore.json
 361d4e44b2305e9dede8ea753972e277a18c1b27 data\houseki\recipe\slate_tile_stairs.json
 f77e66ebe8b2189bfa2cb825d6ba608385d498f1 data\houseki\advancement\recipes\combat\rainbow_pyrite_leggings.json
@@ -207,6 +208,7 @@ ae23f23edeff9f5ed5efde45542657ada0a2befb data\houseki\advancement\recipes\buildi
 737a0f284b2be23e893db7975992196a57aede20 data\houseki\recipe\pinku_hoe_smithing.json
 f54e4feb2d89b01e30bf8d82c0e1a537512d0d61 data\houseki\advancement\recipes\combat\jadeite_chestplate.json
 82e6e3e9c5e8d2df8b847c14ba02159ae1b741ba data\houseki\recipe\steel.json
+e78b411d82a4a4dd63ef4cb75c98154565cc895b data\houseki\advancement\recipes\misc\platinum_nugget.json
 32e661e45d502a37b337e836e1f8e9c98a350e83 data\houseki\recipe\block_of_tungsten.json
 769392f76252837375d51310884fa043ee45032d data\houseki\advancement\recipes\tools\tungsten_pickaxe.json
 d19be08203e59b55476b36c5fc2a95892d6248a5 data\houseki\advancement\recipes\misc\sulfur_from_smelting_sulfur_ore.json

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "houseki:platinum"
+  ],
+  "result": {
+    "count": 9,
+    "id": "houseki:platinum_nugget"
+  }
+}
