@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-30T21:25:20.6598732	Houseki/Recipes
+// 1.21.1	2026-01-09T21:42:52.5060428	Houseki/Recipes
 e2e8ba165376662de63a34bcb8ea4b753ac7a877 data\houseki\recipe\wolframite_from_blasting_wolframite_ore.json
 7e1f52c893830058f6ca4fc4500df72fbe9c36ca data\houseki\advancement\recipes\building_blocks\limestone_brick_stairs_from_limestone_stonecutting.json
 832c6353274c517c008178c24f2e95411b8f5468 data\houseki\advancement\recipes\building_blocks\limestone_stairs_from_limestone_stonecutting.json
@@ -74,6 +74,7 @@ e8008f7a75a7ee3ce0e8ef50ac8bdecd26aa4e7c data\houseki\recipe\platinum_leggings.j
 2e409734c4006131a23fcdb0bde6c1906af47dcf data\houseki\recipe\aluminum_axe.json
 16be1643865e74aa4097fb33d4b23659fea5b8f4 data\houseki\recipe\sapphire_shovel.json
 a32343d8fc29e2a6f6f52ae09823dbdb72ad71ab data\houseki\advancement\recipes\tools\steel_pickaxe.json
+e73509a1b7feb6991087795ffee68eb8e9b1d234 data\houseki\recipe\platinum_nugget.json
 85697833c5d08f396bf9cf649a4ec2228fd1e39a data\houseki\advancement\recipes\misc\sulfur_from_smelting_blackstone_sulfur_ore.json
 dfd8958d8c79e31dd1fda54d7c3e1eb7878c7e14 data\houseki\recipe\slate_tile_stairs.json
 ba95c3e17f3ed8420067f4faaf905bbdd7790673 data\houseki\advancement\recipes\combat\rainbow_pyrite_leggings.json
@@ -208,6 +209,7 @@ be02d55b9ae79cc99eedc32928f8185f201de804 data\houseki\recipe\limestone_stairs_fr
 53250aad661659d663cedf7f6623c287ddac020d data\houseki\recipe\pinku_hoe_smithing.json
 93ec4ac69638ad951079e77f0f4a466231b3d56e data\houseki\advancement\recipes\combat\jadeite_chestplate.json
 d577851ce9c5e4d8c5610b861342d06c33c72d60 data\houseki\recipe\steel.json
+e78b411d82a4a4dd63ef4cb75c98154565cc895b data\houseki\advancement\recipes\misc\platinum_nugget.json
 69b85851775ec662a5d80e9f39a8ac1309fb5707 data\houseki\recipe\block_of_tungsten.json
 2002a19cfbbfe722afb2134f07dbff7cf6bcc7cb data\houseki\advancement\recipes\tools\tungsten_pickaxe.json
 8573716b1155f0aa2941dcd5dd9a1a44cc1d7e91 data\houseki\advancement\recipes\misc\sulfur_from_smelting_sulfur_ore.json

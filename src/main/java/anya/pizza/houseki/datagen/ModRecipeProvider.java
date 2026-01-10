@@ -393,6 +393,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Blocks.DIAMOND_BLOCK), conditionsFromItem(Blocks.DIAMOND_BLOCK))
                 .offerTo(exporter);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PLATINUM_NUGGET, 9)
+                .input(ModItems.PLATINUM)
+                .criterion(hasItem(ModItems.PLATINUM), conditionsFromItem(ModItems.PLATINUM))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE, 2)
                 .pattern("#X#")
                 .pattern("#U#")
