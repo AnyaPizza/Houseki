@@ -380,11 +380,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("###")
                         .input('#', Blocks.DIAMOND_BLOCK).criterion(hasItem(Blocks.DIAMOND_BLOCK), conditionsFromItem(Blocks.DIAMOND_BLOCK)).offerTo(exporter);
 
-                createShaped(RecipeCategory.MISC, ModItems.PLATINUM, 1)
-                        .pattern("###")
-                        .pattern("###")
-                        .pattern("###")
-                        .input('#', ModItems.PLATINUM_NUGGET).criterion(hasItem(ModItems.PLATINUM_NUGGET), conditionsFromItem(ModItems.PLATINUM)).offerTo(exporter);
+                createShapeless(RecipeCategory.MISC, ModItems.PLATINUM_NUGGET, 9)
+                        .input(ModItems.PLATINUM)
+                        .criterion(hasItem(ModItems.PLATINUM), conditionsFromItem(ModItems.PLATINUM))
+                        .offerTo(exporter);
 
                 //Smithing Template Dupe Recipe
                 createShaped(RecipeCategory.MISC, ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE, 2)
