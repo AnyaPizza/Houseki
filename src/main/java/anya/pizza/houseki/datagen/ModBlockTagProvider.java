@@ -37,6 +37,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SAPPHIRE_ORE)
                 .add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE)
                 .add(ModBlocks.NEPHRITE_ORE)
+                .add(ModBlocks.JADEITE_ORE)
                 .add(ModBlocks.BLOCK_OF_JADEITE)
                 .add(ModBlocks.BLOCK_OF_PLATINUM)
                 .add(ModBlocks.PLATINUM_ORE)
