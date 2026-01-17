@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-09T21:42:52.4990428	Houseki/Model Definitions
+// 1.21.1	2026-01-17T18:23:49.3375662	Houseki/Model Definitions
 392a72e3d0ca4e0d98a19ea2e261c59505efcb55 assets\houseki\models\item\platinum_chestplate_emerald_trim.json
 e0b63a612e1cb382c70a88b85fadf33548668399 assets\houseki\models\item\steel_helmet_copper_trim.json
 96e2ae44c472ecfbc3a35b772c28a86be0a7cc7c assets\houseki\models\item\sapphire_chestplate_quartz_trim.json
@@ -685,8 +685,8 @@ c9b2745804b549d7db143508629135a6269d0601 assets\houseki\models\item\sapphire_che
 7272116eac6460211263aaf0609ddae7f1c9eec5 assets\houseki\models\block\polished_slate_stairs_inner.json
 d0f876291e799a74a09f255bbf77e7198be34356 assets\houseki\blockstates\wolframite_ore.json
 d4eb81b616eaac6e7aaf82983cee28923beae563 assets\houseki\models\item\sapphire_horse_armor.json
-9530fc3d4e6b026ca9ebd30c746dde5cf9f0d5fb assets\houseki\blockstates\block_of_pinku.json
 3b4edc827ea321d4ee6674f448d41dc02b95ba08 assets\houseki\blockstates\platinum_ore.json
+9530fc3d4e6b026ca9ebd30c746dde5cf9f0d5fb assets\houseki\blockstates\block_of_pinku.json
 ed9839a1b810a1659abc2b3a5bd4473f009454ba assets\houseki\models\block\block_of_pinku.json
 f8090ce2a0a96753352864499c7629e8d3a1cf4e assets\houseki\models\item\polished_slate_wall.json
 2d218d576e46d6d3b175824842844a6d222b102d assets\houseki\models\item\pinku_shovel.json

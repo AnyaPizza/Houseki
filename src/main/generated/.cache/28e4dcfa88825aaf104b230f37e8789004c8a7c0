@@ -1,9 +1,9 @@
-// 1.21.1	2026-01-09T21:42:52.5060428	Houseki/Tags for minecraft:block
+// 1.21.1	2026-01-17T18:23:49.3470885	Houseki/Tags for minecraft:block
 ddad2cc2ddb25ca2aca83cf30800498d87462f2a data\minecraft\tags\block\stairs.json
 61d7df78bcfa3e13ade529a582628c3e98874534 data\minecraft\tags\block\needs_diamond_tool.json
 c2f6fb7224bd1e2fdb87249751113c4d66dbc21f data\houseki\tags\block\enhanced_mineable.json
 4bef11ab83e59ceac264840bbd5887acf361aa5f data\minecraft\tags\block\slabs.json
-0f80ab9e29f2ec09c0c7dbdafccc55435a976243 data\minecraft\tags\block\mineable\pickaxe.json
+bc1225f5003894c205dd44b9ad63b2c755a3c4e3 data\minecraft\tags\block\mineable\pickaxe.json
 7dab8b093f03a4e5d85c4c22c9ccda4ab7a434c1 data\minecraft\tags\block\beacon_base_blocks.json
 7e85b4b4f7a2701ec132b9ed6b32f6980b6d4ef2 data\minecraft\tags\block\wither_immune.json
 64ba52a0503fe733de3f3907b7f157cb0821a8e3 data\houseki\tags\block\premium_mineable.json

@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-09T21:42:52.5050427	Houseki/World Gen
+// 1.21.1	2026-01-17T18:23:49.346089	Houseki/World Gen
 5b71b29cfe067bd8d50832ec8c3a90e9c8976944 data\houseki\worldgen\configured_feature\blackstone_sulfur_ore.json
 7e8d0f9b3dd1db432561c625fb80b9dd275a42e2 data\houseki\worldgen\configured_feature\scheelite_ore.json
 418fbd23a142db8b7d7716eae11df5b1c61d36a0 data\houseki\worldgen\configured_feature\rainbow_pyrite_ore.json
@@ -15,8 +15,8 @@ e806907d6a23d822631c87f2bca91a2f4f6aaee8 data\houseki\worldgen\placed_feature\wo
 a87c2ba8da8c584e8ba397e05d1d66d5d022d89e data\houseki\worldgen\placed_feature\ore_bauxite_placed.json
 725c563eae120b54f383978a42c05ecadfc90630 data\houseki\worldgen\configured_feature\sandstone_rainbow_pyrite_ore.json
 be08abf40429840396e22bbf4139e88709b6ea47 data\houseki\worldgen\placed_feature\rainbow_pyrite_ore_placed.json
-b1d5aff858cdf68dc03b021d538fddc14315179d data\houseki\worldgen\placed_feature\nephrite_ore_placed.json
 a955c5e98e15ed23e6dc84a77743c1d0848050b0 data\houseki\worldgen\placed_feature\sulfur_ore_placed.json
+b1d5aff858cdf68dc03b021d538fddc14315179d data\houseki\worldgen\placed_feature\nephrite_ore_placed.json
 0d9b354d7a56cdf32d1b4858dd43ca97eccb1d8f data\houseki\worldgen\configured_feature\sapphire_ore.json
 d02a2ffe7dfa033941de3aa81577de43605c57ba data\houseki\worldgen\placed_feature\ore_slate_placed.json
 bdcf8afd0cf9b4018ec092f5ecf8c9edd9b2cb0e data\houseki\worldgen\placed_feature\jadeite_ore_placed.json
