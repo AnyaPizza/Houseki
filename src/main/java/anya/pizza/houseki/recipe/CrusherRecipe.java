@@ -28,11 +28,22 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
 
     // 2. Secondary Constructor (For DataGen/Old Recipes)
     // This allows you to call: new CrusherRecipe(input, output, time)
-    // It will automatically fill the Optional with empty.
+    /**
+     * Constructs a CrusherRecipe with the specified input, output, and crushing time, and with no auxiliary output.
+     *
+     * @param inputItem    the ingredient consumed by the recipe
+     * @param output       the primary result produced by the recipe
+     * @param crushingTime the time required to perform the crushing (in ticks)
+     */
     public CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime) {
         this(inputItem, output, crushingTime, Optional.empty());
     }
 
+    /**
+     * Gets the recipe's ingredient list.
+     *
+     * @return a DefaultedList containing the single input ingredient for this recipe
+     */
     @Override
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> list = DefaultedList.of();
@@ -95,6 +106,11 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
                 PacketCodecs.optional(ItemStack.OPTIONAL_PACKET_CODEC), CrusherRecipe::auxiliaryOutput, 
                 CrusherRecipe::new);
 
+        /**
+         * Returns the map-based codec for serializing and deserializing CrusherRecipe instances.
+         *
+         * @return the MapCodec that encodes and decodes CrusherRecipe objects
+         */
         @Override
         public MapCodec<CrusherRecipe> codec() {
             return CODEC;

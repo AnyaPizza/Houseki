@@ -180,6 +180,13 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
                 .orElse(CrusherRecipe.DEFAULT_CRUSHING_TIME);
     }
 
+    /**
+     * Determines whether the crusher can perform a craft with the current input.
+     *
+     * Checks for a matching CrusherRecipe and verifies that the recipe's primary output and optional auxiliary output can be inserted into the output and auxiliary output slots respectively.
+     *
+     * @return `true` if a matching recipe exists and both outputs can be inserted into their target slots, `false` otherwise.
+     */
     private boolean canCraft() {
         Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return false;
@@ -191,6 +198,14 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         return canInsertIntoSlot(OUTPUT_SLOT, output) && canInsertIntoSlot(AUXILIARY_OUTPUT_SLOT, auxiliary);
     }
 
+    /**
+     * Determine whether the given ItemStack can be placed into the specified inventory slot
+     * without violating item compatibility or stack size limits.
+     *
+     * @param slot  index of the target slot in the block entity's inventory
+     * @param stack the ItemStack intended for insertion; an empty stack is considered insertable
+     * @return      `true` if the slot can accept the stack (slot empty or same item/component and total count does not exceed the slot's max), `false` otherwise
+     */
     private boolean canInsertIntoSlot(int slot, ItemStack stack) {
         if (stack.isEmpty()) return true;
         ItemStack slotStack = inventory.get(slot);
@@ -199,6 +214,12 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             && slotStack.getCount() + stack.getCount() <= maxCount;
     }
 
+    /**
+     * Executes the currently matched crusher recipe: adds the recipe's main output to the output slot,
+     * adds the optional auxiliary output to the auxiliary output slot if present, and consumes one input.
+     *
+     * If no matching recipe is available, no changes are made.
+     */
     private void craftItem() {
         Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return;
@@ -216,6 +237,15 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         inventory.get(INPUT_SLOT).decrement(1);
     }
 
+    /**
+     * Inserts the provided ItemStack into the specified inventory slot, merging with the existing stack if present.
+     *
+     * If `result` is empty this method has no effect. If the target slot is empty the `result` is placed there;
+     * otherwise the existing stack's count is increased by `result.getCount()`.
+     *
+     * @param slot   the index of the target inventory slot
+     * @param result the ItemStack to insert or merge into the slot
+     */
     private void insertOrIncrement(int slot, ItemStack result) {
         if (result.isEmpty()) return;
         ItemStack slotStack = inventory.get(slot);
@@ -231,11 +261,25 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     }
 
+    /**
+     * Provide the indices of inventory slots that are accessible from the specified side.
+     *
+     * @param side the block face from which access is attempted
+     * @return an array of slot indices; for {@link Direction#DOWN} returns {OUTPUT_SLOT, AUXILIARY_OUTPUT_SLOT}, otherwise returns {INPUT_SLOT, FUEL_SLOT}
+     */
     @Override
     public int[] getAvailableSlots(Direction side) {
         return side == Direction.DOWN ? new int[]{OUTPUT_SLOT, AUXILIARY_OUTPUT_SLOT} : new int[]{INPUT_SLOT, FUEL_SLOT};
     }
 
+    /**
+     * Determines whether the given ItemStack may be inserted into the specified inventory slot from the provided side.
+     *
+     * @param slot  the target inventory slot index
+     * @param stack the ItemStack to insert
+     * @param side  the side from which insertion is attempted; may be null for non-sided access
+     * @return `true` if insertion is allowed: fuel slot accepts items that provide fuel time, input slot accepts items that match a Crusher recipe; `false` otherwise.
+     */
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
@@ -244,11 +288,24 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         return false;
     }
 
+    /**
+     * Determines whether items may be extracted from the given slot from the specified side.
+     *
+     * @param slot the slot index being accessed
+     * @param stack the stack being extracted
+     * @param side the side of the block from which extraction is attempted
+     * @return `true` if the slot is the primary output slot or the auxiliary output slot, `false` otherwise
+     */
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction side) {
         return slot == OUTPUT_SLOT || slot == AUXILIARY_OUTPUT_SLOT;
     }
 
+    /**
+     * Create a network packet containing this block entity's update data for the client.
+     *
+     * @return the update packet for synchronizing this block entity to clients, or {@code null} if no update is required
+     */
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {

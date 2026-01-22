@@ -24,6 +24,14 @@ public class CrusherScreenHandler extends ScreenHandler {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(pos), new ArrayPropertyDelegate(5));
     }
 
+    /**
+     * Creates a Crusher screen handler, initializes the crusher and player inventories, and attaches the provided property delegate for GUI state syncing.
+     *
+     * @param syncId               window sync id assigned by the client/server
+     * @param playerInventory      the player's inventory to populate player slots and hotbar
+     * @param blockEntity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a CrusherBlockEntity
+     * @param arrayPropertyDelegate the PropertyDelegate used to synchronize progress, fuel, and related GUI properties
+     */
     public CrusherScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.CRUSHER_SCREEN_HANDLER, syncId);
         checkSize((Inventory) blockEntity, 4);
