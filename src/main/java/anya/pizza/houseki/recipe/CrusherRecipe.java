@@ -1,5 +1,7 @@
 package anya.pizza.houseki.recipe;
 
+import java.util.Optional;
+
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -15,7 +17,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime) implements Recipe<CrusherRecipeInput> {
+public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime, Optional<ItemStack> auxiliaryOutput) implements Recipe<CrusherRecipeInput> {
     public static final int DEFAULT_CRUSHING_TIME = 200;
 
     @Override
@@ -49,6 +51,11 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         return output;
     }
 
+    // 2. Getter for the secondary slot
+    public Optional<ItemStack> getAuxiliaryOutput() {
+        return auxiliaryOutput;
+    }
+
     @Override
     public RecipeSerializer<?> getSerializer() {
         return ModRecipes.CRUSHER_SERIALIZER;
@@ -62,16 +69,23 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
 
     public static class Serializer implements RecipeSerializer<CrusherRecipe> {
         public static final MapCodec<CrusherRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(CrusherRecipe::output),
-                Codec.INT.optionalFieldOf("crushingTime",DEFAULT_CRUSHING_TIME).forGetter(CrusherRecipe::crushingTime)
-        ).apply(inst, CrusherRecipe::new));
+            Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
+            ItemStack.CODEC.fieldOf("result").forGetter(CrusherRecipe::output),
+            Codec.INT.optionalFieldOf("crushingTime", DEFAULT_CRUSHING_TIME).forGetter(CrusherRecipe::crushingTime),
+            // Optional auxiliary output is now the 4th parameter
+            ItemStack.CODEC.optionalFieldOf("auxiliary_result", ItemStack.EMPTY)
+                .xmap(Optional::of, opt -> opt.orElse(ItemStack.EMPTY))
+                .forGetter(CrusherRecipe::auxiliaryOutput)
+            ).apply(inst, CrusherRecipe::new));
+
         public static final PacketCodec<RegistryByteBuf, CrusherRecipe> STREAM_CODEC =
-                PacketCodec.tuple(
-                        Ingredient.PACKET_CODEC, CrusherRecipe::inputItem,
-                        ItemStack.PACKET_CODEC, CrusherRecipe::output,
-                        PacketCodecs.INTEGER, CrusherRecipe::crushingTime,
-                        CrusherRecipe::new);
+            PacketCodec.tuple(
+                Ingredient.PACKET_CODEC, CrusherRecipe::inputItem,
+                ItemStack.PACKET_CODEC, CrusherRecipe::output,
+                PacketCodecs.INTEGER, CrusherRecipe::crushingTime,
+                // Optional auxiliary output is now the 4th parameter
+                PacketCodecs.optional(ItemStack.PACKET_CODEC), CrusherRecipe::auxiliaryOutput,
+                CrusherRecipe::new);
 
         @Override
         public MapCodec<CrusherRecipe> codec() {

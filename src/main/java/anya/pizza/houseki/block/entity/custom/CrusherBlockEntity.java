@@ -34,11 +34,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPos>, ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
     private static final int FUEL_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;
+    private static final int AUXILARY_OUTPUT_SLOT = 3;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -183,23 +184,44 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return false;
 
-        ItemStack output = recipe.get().value().getResult(null);
-        ItemStack outputSlot = inventory.get(OUTPUT_SLOT);
-        return (outputSlot.isEmpty() || outputSlot.isOf(output.getItem()))
-                && outputSlot.getCount() + output.getCount() <= outputSlot.getMaxCount();
+        CrusherRecipe crusherRecipe = recipe.get().value();
+        ItemStack output = crusherRecipe.getResult(null);
+        ItemStack auxiliary = crusherRecipe.getAuxiliaryOutput().orElse(ItemStack.EMPTY);
+
+        return canInsertIntoSlot(OUTPUT_SLOT, output) && canInsertIntoSlot(AUXILARY_OUTPUT_SLOT, auxiliary);
+    }
+
+    private boolean canInsertIntoSlot(int slot, ItemStack stack) {
+        if (stack.isEmpty()) return true;
+        ItemStack slotStack = inventory.get(slot);
+        return (slotStack.isEmpty() || ItemStack.areItemsAndComponentsEqual(slotStack, stack))
+                && slotStack.getCount() + stack.getCount() <= slotStack.getMaxCount();
     }
 
     private void craftItem() {
         Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return;
 
+        CrusherRecipe crusherRecipe = recipe.get().value();
+
+        // Handle Main Output
+        insertOrIncrement(OUTPUT_SLOT, crusherRecipe.output().copy());
+        
+        // Handle Auxiliary Output
+        crusherRecipe.getAuxiliaryOutput().ifPresent(stack -> {
+            insertOrIncrement(AUXILARY_OUTPUT_SLOT, stack.copy());
+        });
+
         inventory.get(INPUT_SLOT).decrement(1);
-        ItemStack outputSlot = inventory.get(OUTPUT_SLOT);
-        ItemStack result = recipe.get().value().output().copy();
-        if (outputSlot.isEmpty()) {
-            inventory.set(OUTPUT_SLOT, result);
+    }
+
+    private void insertOrIncrement(int slot, ItemStack result) {
+        if (result.isEmpty()) return;
+        ItemStack slotStack = inventory.get(slot);
+        if (slotStack.isEmpty()) {
+            inventory.set(slot, result);
         } else {
-            outputSlot.increment(result.getCount());
+            slotStack.increment(result.getCount());
         }
     }
 
@@ -223,7 +245,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction side) {
-        return slot == OUTPUT_SLOT;
+        return slot == OUTPUT_SLOT || slot == AUXILARY_OUTPUT_SLOT;
     }
 
     @Nullable

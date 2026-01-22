@@ -38,6 +38,12 @@ public class CrusherScreenHandler extends ScreenHandler {
                 return false; //Makes output slot read-only
             }
         });
+        this.addSlot(new Slot(inventory, 3, 130, 30) {
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return false; //Makes output slot read-only
+            }
+        });
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
