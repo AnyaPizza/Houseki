@@ -194,8 +194,9 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private boolean canInsertIntoSlot(int slot, ItemStack stack) {
         if (stack.isEmpty()) return true;
         ItemStack slotStack = inventory.get(slot);
+        int maxCount = slotStack.isEmpty() ? stack.getMaxCount() : slotStack.getMaxCount();
         return (slotStack.isEmpty() || ItemStack.areItemsAndComponentsEqual(slotStack, stack))
-                && slotStack.getCount() + stack.getCount() <= slotStack.getMaxCount();
+            && slotStack.getCount() + stack.getCount() <= maxCount;
     }
 
     private void craftItem() {
