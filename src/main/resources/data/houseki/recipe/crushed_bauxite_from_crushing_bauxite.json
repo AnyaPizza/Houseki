@@ -6,5 +6,9 @@
   "result": {
     "id": "houseki:crushed_bauxite"
   },
+  "auxiliary_result": {
+    "id": "minecraft:iron_nugget",
+    "count": 1
+  },
   "crushingTime": 250
 }
