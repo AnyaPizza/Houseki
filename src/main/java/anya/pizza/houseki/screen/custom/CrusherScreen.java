@@ -21,7 +21,7 @@ public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
     @Override
     protected void init() {
         super.init();
-        titleX = 104;
+        titleX = 114;
         titleY = -4;
         backgroundHeight = 196;
     }
