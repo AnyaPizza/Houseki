@@ -1,123 +1,109 @@
 package anya.pizza.houseki.item;
 
 import anya.pizza.houseki.Houseki;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
+import anya.pizza.houseki.util.ModTags;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentAsset;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
 import java.util.EnumMap;
-import java.util.List;
-import java.util.function.Supplier;
 
 public class ModArmorMaterials {
-    public static final RegistryEntry<ArmorMaterial> PINKU_MATERIAL = registerArmorMaterial("pinku",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                        map.put(ArmorItem.Type.HELMET, 6);
-                        map.put(ArmorItem.Type.CHESTPLATE, 11);
-                        map.put(ArmorItem.Type.LEGGINGS, 9);
-                        map.put(ArmorItem.Type.BOOTS, 6);
-                        map.put(ArmorItem.Type.BODY, 14);
-            }), 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> Ingredient.ofItems(ModItems.PINKU),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "pinku"))), 5, 0.3f));
+    static RegistryKey<? extends Registry<EquipmentAsset>> REGISTRY_KEY = RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset"));
+    public static final RegistryKey<EquipmentAsset> PINKU_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "pinku"));
+    public static final RegistryKey<EquipmentAsset> RAINBOW_PYRITE_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "rainbow_pyrite"));
+    public static final RegistryKey<EquipmentAsset> TUNGSTEN_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "tungsten"));
+    public static final RegistryKey<EquipmentAsset> ALUMINUM_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "aluminum"));
+    public static final RegistryKey<EquipmentAsset> SAPPHIRE_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "sapphire"));
+    public static final RegistryKey<EquipmentAsset> NEPHRITE_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "nephrite"));
+    public static final RegistryKey<EquipmentAsset> JADEITE_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "jadeite"));
+    public static final RegistryKey<EquipmentAsset> PLATINUM_KEY =RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "platinum"));
+    public static final RegistryKey<EquipmentAsset> STEEL_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "steel"));
+    public static final RegistryKey<EquipmentAsset> CAST_STEEL_KEY = RegistryKey.of(REGISTRY_KEY, Identifier.of(Houseki.MOD_ID, "cast_steel"));
 
-    public static final RegistryEntry<ArmorMaterial> RAINBOW_MATERIAL = registerArmorMaterial("rainbow_pyrite",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 3);
-                map.put(ArmorItem.Type.CHESTPLATE, 8);
-                map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.BODY, 11);
-            }), 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(ModItems.RAINBOW_PYRITE),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "rainbow_pyrite"))), 2.5f, 0.1f));
+    public static final ArmorMaterial PINKU_MATERIAL = new ArmorMaterial(2580, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 6);
+        map.put(EquipmentType.CHESTPLATE, 11);
+        map.put(EquipmentType.LEGGINGS, 9);
+        map.put(EquipmentType.BOOTS, 6);
+        map.put(EquipmentType.BODY, 14);
+    }), 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5, 0.3f, ModTags.Items.PINKU_REPAIR, PINKU_KEY);
 
-    public static final RegistryEntry<ArmorMaterial> TUNGSTEN_MATERIAL = registerArmorMaterial("tungsten",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 9);
-                map.put(ArmorItem.Type.LEGGINGS, 7);
-                map.put(ArmorItem.Type.BOOTS, 4);
-                map.put(ArmorItem.Type.BODY, 12);
-            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(ModItems.TUNGSTEN),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "tungsten"))), 4, 0.2f));
+    public static final ArmorMaterial RAINBOW_MATERIAL = new ArmorMaterial(2000, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 3);
+        map.put(EquipmentType.CHESTPLATE, 8);
+        map.put(EquipmentType.LEGGINGS, 6);
+        map.put(EquipmentType.BOOTS, 3);
+        map.put(EquipmentType.BODY, 11);
+    }), 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f, 0.1f, ModTags.Items.RAINBOW_REPAIR, RAINBOW_PYRITE_KEY);
 
-    public static final RegistryEntry<ArmorMaterial> ALUMINUM_MATERIAL = registerArmorMaterial("aluminum",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 3);
-                map.put(ArmorItem.Type.CHESTPLATE, 8);
-                map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.BODY, 10);
-            }), 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(ModItems.ALUMINUM),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "aluminum"))), 2.5f, 0.1f));
+    public static final ArmorMaterial TUNGSTEN_MATERIAL = new ArmorMaterial(3000, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 4);
+        map.put(EquipmentType.CHESTPLATE, 9);
+        map.put(EquipmentType.LEGGINGS, 7);
+        map.put(EquipmentType.BOOTS, 4);
+        map.put(EquipmentType.BODY, 12);
+    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4, 0.2f, ModTags.Items.TUNGSTEN_REPAIR, TUNGSTEN_KEY);
 
-    public static final RegistryEntry<ArmorMaterial> SAPPHIRE_MATERIAL = registerArmorMaterial("sapphire",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 5);
-                map.put(ArmorItem.Type.CHESTPLATE, 10);
-                map.put(ArmorItem.Type.LEGGINGS, 8);
-                map.put(ArmorItem.Type.BOOTS, 5);
-                map.put(ArmorItem.Type.BODY, 13);
-            }), 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItems.SAPPHIRE),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "sapphire"))), 4.5f, 0.3f));
+    public static final ArmorMaterial ALUMINUM_MATERIAL = new ArmorMaterial(1500, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 3);
+        map.put(EquipmentType.CHESTPLATE, 8);
+        map.put(EquipmentType.LEGGINGS, 6);
+        map.put(EquipmentType.BOOTS, 3);
+        map.put(EquipmentType.BODY, 10);
+    }), 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f, 0.1f, ModTags.Items.ALUMINUM_REPAIR, ALUMINUM_KEY);
 
-    public static final RegistryEntry<ArmorMaterial> NEPHRITE_MATERIAL = registerArmorMaterial("nephrite",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 3);
-                map.put(ArmorItem.Type.CHESTPLATE, 9);
-                map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.BOOTS, 5);
-                map.put(ArmorItem.Type.BODY, 11);
-            }), 11, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItems.NEPHRITE),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "nephrite"))), 3.5f, 0.3f));
+    public static final ArmorMaterial SAPPHIRE_MATERIAL = new ArmorMaterial(3000, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 5);
+        map.put(EquipmentType.CHESTPLATE, 10);
+        map.put(EquipmentType.LEGGINGS, 8);
+        map.put(EquipmentType.BOOTS, 5);
+        map.put(EquipmentType.BODY, 13);
+    }), 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 4.5f, 0.3f, ModTags.Items.SAPPHIRE_REPAIR, SAPPHIRE_KEY);
 
-    public static final RegistryEntry<ArmorMaterial> JADEITE_MATERIAL = registerArmorMaterial("jadeite",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 10);
-                map.put(ArmorItem.Type.LEGGINGS, 7);
-                map.put(ArmorItem.Type.BOOTS, 6);
-                map.put(ArmorItem.Type.BODY, 12);
-            }), 11, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItems.JADEITE),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "jadeite"))), 4, 0.4f));
+    public static final ArmorMaterial NEPHRITE_MATERIAL = new ArmorMaterial(2000, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 3);
+        map.put(EquipmentType.CHESTPLATE, 9);
+        map.put(EquipmentType.LEGGINGS, 6);
+        map.put(EquipmentType.BOOTS, 5);
+        map.put(EquipmentType.BODY, 11);
+    }), 11, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.5f, 0.3f, ModTags.Items.NEPHRITE_REPAIR, NEPHRITE_KEY);
 
-    public static final RegistryEntry<ArmorMaterial> PLATINUM_MATERIAL = registerArmorMaterial("platinum",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 9);
-                map.put(ArmorItem.Type.LEGGINGS, 7);
-                map.put(ArmorItem.Type.BOOTS, 4);
-                map.put(ArmorItem.Type.BODY, 12);
-            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, () -> Ingredient.ofItems(ModItems.PLATINUM),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "platinum"))), 4, 0.2f));
+    public static final ArmorMaterial JADEITE_MATERIAL = new ArmorMaterial(2500, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 4);
+        map.put(EquipmentType.CHESTPLATE, 10);
+        map.put(EquipmentType.LEGGINGS, 7);
+        map.put(EquipmentType.BOOTS, 6);
+        map.put(EquipmentType.BODY, 12);
+    }), 11, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 4, 0.4f, ModTags.Items.JADEITE_REPAIR, JADEITE_KEY);
 
-    public static final RegistryEntry<ArmorMaterial> STEEL_MATERIAL = registerArmorMaterial("steel",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 9);
-                map.put(ArmorItem.Type.LEGGINGS, 7);
-                map.put(ArmorItem.Type.BOOTS, 4);
-                map.put(ArmorItem.Type.BODY, 11);
-            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(ModItems.STEEL),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "steel"))), 3.5f, 0.2f));
+    public static final ArmorMaterial PLATINUM_MATERIAL = new ArmorMaterial(3000, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 4);
+        map.put(EquipmentType.CHESTPLATE, 9);
+        map.put(EquipmentType.LEGGINGS, 7);
+        map.put(EquipmentType.BOOTS, 4);
+        map.put(EquipmentType.BODY, 12);
+    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 4, 0.2f, ModTags.Items.PLATINUM_REPAIR, PLATINUM_KEY);
 
-    public static final RegistryEntry<ArmorMaterial> CAST_STEEL_MATERIAL = registerArmorMaterial("cast_steel",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 9);
-                map.put(ArmorItem.Type.LEGGINGS, 7);
-                map.put(ArmorItem.Type.BOOTS, 4);
-                map.put(ArmorItem.Type.BODY, 12);
-            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(ModItems.CAST_STEEL),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Houseki.MOD_ID, "cast_steel"))), 4.5f, 0.3f));
+    public static final ArmorMaterial STEEL_MATERIAL = new ArmorMaterial(2500, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 4);
+        map.put(EquipmentType.CHESTPLATE, 9);
+        map.put(EquipmentType.LEGGINGS, 7);
+        map.put(EquipmentType.BOOTS, 4);
+        map.put(EquipmentType.BODY, 11);
+    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5f, 0.2f, ModTags.Items.STEEL_REPAIR, STEEL_KEY);
 
+    public static final ArmorMaterial CAST_STEEL_MATERIAL = new ArmorMaterial(3000, Util.make(new EnumMap<>(EquipmentType.class), map -> {
+        map.put(EquipmentType.HELMET, 4);
+        map.put(EquipmentType.CHESTPLATE, 9);
+        map.put(EquipmentType.LEGGINGS, 7);
+        map.put(EquipmentType.BOOTS, 4);
+        map.put(EquipmentType.BODY, 12);
+    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4.5f, 0.3f, ModTags.Items.CAST_STEEL_REPAIR, CAST_STEEL_KEY);
 
-    public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material) {
-        return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(Houseki.MOD_ID, name), material.get());
-    }
 }

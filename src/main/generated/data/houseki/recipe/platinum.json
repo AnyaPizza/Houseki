@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "houseki:block_of_platinum"
-    }
+    "houseki:block_of_platinum"
   ],
   "result": {
     "count": 9,

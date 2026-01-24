@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "houseki:block_of_cast_steel"
-    },
-    "R": {
-      "item": "minecraft:redstone"
-    },
-    "X": {
-      "item": "houseki:cast_steel"
-    }
+    "#": "houseki:block_of_cast_steel",
+    "R": "minecraft:redstone",
+    "X": "houseki:cast_steel"
   },
   "pattern": [
     " X ",

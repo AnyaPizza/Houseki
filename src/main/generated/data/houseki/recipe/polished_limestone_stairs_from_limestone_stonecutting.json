@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "houseki:limestone"
-  },
+  "ingredient": "houseki:limestone",
   "result": {
     "count": 1,
     "id": "houseki:polished_limestone_stairs"

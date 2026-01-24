@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "houseki:tungsten"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "#": "houseki:tungsten",
+    "S": "minecraft:stick"
   },
   "pattern": [
     " # ",

@@ -1,0 +1,29 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "houseki:jadeite"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "houseki:jadeite"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "houseki:jadeite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "houseki:jadeite"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "houseki:jadeite"
+      }
+    ]
+  }
+}

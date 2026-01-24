@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "houseki:cast_steel"
-    }
+    "#": "houseki:cast_steel"
   },
   "pattern": [
     "###",

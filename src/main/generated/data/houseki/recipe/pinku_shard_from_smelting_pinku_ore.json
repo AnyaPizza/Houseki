@@ -4,9 +4,7 @@
   "cookingtime": 250,
   "experience": 0.5,
   "group": "pinku",
-  "ingredient": {
-    "item": "houseki:pinku_ore"
-  },
+  "ingredient": "houseki:pinku_ore",
   "result": {
     "id": "houseki:pinku_shard"
   }

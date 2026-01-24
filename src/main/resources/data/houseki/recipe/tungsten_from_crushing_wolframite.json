@@ -1,8 +1,6 @@
 {
   "type": "houseki:crushing",
-  "ingredient": {
-    "item": "houseki:wolframite"
-  },
+  "ingredient": "houseki:wolframite",
   "result": {
     "id": "houseki:tungsten"
   },

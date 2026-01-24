@@ -15,21 +15,24 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
 import net.minecraft.text.Text;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
@@ -92,7 +95,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     }
 
     @Override
-    public BlockPos getScreenOpeningData(ServerPlayerEntity serverPlayerEntity) {
+    public BlockPos getScreenOpeningData(@NonNull ServerPlayerEntity serverPlayerEntity) {
         return this.pos;
     }
 
@@ -108,31 +111,36 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.writeNbt(nbt, registryLookup);
-        Inventories.writeNbt(nbt, inventory, registryLookup);
-        nbt.putInt("progress", progress);
-        nbt.putInt("max_progress", maxProgress);
-        nbt.putInt("fuel_time", fuelTime);
-        nbt.putInt("max_fuel_time", maxFuelTime);
+    public void onBlockReplaced(BlockPos pos, BlockState oldState) {
+        ItemScatterer.spawn(world, pos, (this));
+        super.onBlockReplaced(pos, oldState);
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-        Inventories.readNbt(nbt, inventory, registryLookup);
-        progress = nbt.getInt("progress");
-        maxProgress = nbt.getInt("max_progress");
-        fuelTime = nbt.getInt("fuel_time");
-        maxFuelTime = nbt.getInt("max_fuel_time");
+    protected void writeData(WriteView view) {
+        super.writeData(view);
+        Inventories.writeData(view, inventory);
+        view.putInt("progress", progress);
+        view.putInt("max_progress", maxProgress);
+        view.putInt("fuel_time", fuelTime);
+        view.putInt("max_fuel_time", maxFuelTime);
     }
 
+    @Override
+    protected void readData(ReadView view) {
+        super.readData(view);
+        Inventories.readData(view, inventory);
+        progress = view.getInt("progress", 0);
+        maxProgress = view.getInt("max_progress", 0);
+        fuelTime = view.getInt("fuel_time", 0);
+        maxFuelTime = view.getInt("max_fuel_time", 0);
+    }
 
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) return;
 
         boolean dirty = false;
-        ItemStack input = inventory.get(INPUT_SLOT);
+        ItemStack input = inventory.getFirst();
 
         if(!ItemStack.areItemsAndComponentsEqual(input, lastInput)) {
             lastInput = input.copy();
@@ -180,13 +188,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
                 .orElse(CrusherRecipe.DEFAULT_CRUSHING_TIME);
     }
 
-    /**
-     * Determines whether the crusher can perform a craft with the current input.
-     *
-     * Checks for a matching CrusherRecipe and verifies that the recipe's primary output and optional auxiliary output can be inserted into the output and auxiliary output slots respectively.
-     *
-     * @return `true` if a matching recipe exists and both outputs can be inserted into their target slots, `false` otherwise.
-     */
     private boolean canCraft() {
         Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return false;
@@ -228,7 +229,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
         // Handle Main Output
         insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy());
-        
+
         // Handle Auxiliary Output
         crusherRecipe.auxiliaryOutput().ifPresent(stack -> {
             insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy());
@@ -257,7 +258,8 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     }
 
     private Optional<RecipeEntry<CrusherRecipe>> getCurrentRecipe() {
-        return this.getWorld().getRecipeManager().getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.get(INPUT_SLOT)), this.getWorld());
+        return ((ServerWorld) this.getWorld()).getRecipeManager()
+                .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), this.getWorld());
 
     }
 
@@ -283,8 +285,8 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
-        if (slot == INPUT_SLOT) return world.getRecipeManager().getFirstMatch(
-                ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(stack), world).isPresent();
+        if (slot == INPUT_SLOT) ((ServerWorld) this.getWorld()).getRecipeManager()
+                .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(stack), world).isPresent();
         return false;
     }
 
@@ -301,11 +303,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         return slot == OUTPUT_SLOT || slot == AUXILIARY_OUTPUT_SLOT;
     }
 
-    /**
-     * Create a network packet containing this block entity's update data for the client.
-     *
-     * @return the update packet for synchronizing this block entity to clients, or {@code null} if no update is required
-     */
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
@@ -314,7 +311,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
-        return pos.isWithinDistance(player.getPos(), 4.5);
+        return pos.isWithinDistance(pos, 4.5);
     }
 
     @Override

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "houseki:rainbow_pyrite"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "#": "houseki:rainbow_pyrite",
+    "S": "minecraft:stick"
   },
   "pattern": [
     "###",

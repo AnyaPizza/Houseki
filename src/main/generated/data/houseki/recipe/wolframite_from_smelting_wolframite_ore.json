@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.5,
   "group": "wolframite",
-  "ingredient": {
-    "item": "houseki:wolframite_ore"
-  },
+  "ingredient": "houseki:wolframite_ore",
   "result": {
     "id": "houseki:wolframite"
   }

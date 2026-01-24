@@ -14,7 +14,7 @@ import anya.pizza.houseki.recipe.ModRecipes;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,8 +34,12 @@ public class Houseki implements ModInitializer {
 
 		ModWorldGeneration.generateModWorldGeneration();
 
-		FuelRegistry.INSTANCE.add(ModItems.SULFUR, 1600);
-		FuelRegistry.INSTANCE.add(ModBlocks.BLOCK_OF_SULFUR, 16000);
+		FuelRegistryEvents.BUILD.register((builder, context) -> {
+			builder.add(ModItems.SULFUR, 1600);
+		});
+		FuelRegistryEvents.BUILD.register((builder, context) -> {
+			builder.add(ModBlocks.BLOCK_OF_SULFUR, 16000);
+		});
 
 		PlayerBlockBreakEvents.BEFORE.register(new EDUsageEvent());
 		PlayerBlockBreakEvents.BEFORE.register(new ADUsageEvent());

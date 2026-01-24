@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "houseki:slate"
-  },
+  "ingredient": "houseki:slate",
   "result": {
     "count": 1,
     "id": "houseki:slate_wall"

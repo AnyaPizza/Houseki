@@ -1,16 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "houseki:pinku"
-  },
-  "base": {
-    "item": "minecraft:netherite_pickaxe"
-  },
+  "addition": "houseki:pinku",
+  "base": "minecraft:netherite_pickaxe",
   "result": {
-    "count": 1,
     "id": "houseki:pinku_pickaxe"
   },
-  "template": {
-    "item": "houseki:pinku_upgrade_smithing_template"
-  }
+  "template": "houseki:pinku_upgrade_smithing_template"
 }

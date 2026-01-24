@@ -1,7 +1,0 @@
-{
-  "parent": "block/template_glass_pane_side",
-  "textures": {
-    "edge": "houseki:block/aluminum_glass_pane_top",
-    "pane": "houseki:block/aluminum_glass"
-  }
-}

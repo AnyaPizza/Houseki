@@ -4,9 +4,7 @@
   "cookingtime": 150,
   "experience": 0.5,
   "group": "jadeite",
-  "ingredient": {
-    "item": "houseki:jadeite_ore"
-  },
+  "ingredient": "houseki:jadeite_ore",
   "result": {
     "id": "houseki:jadeite"
   }

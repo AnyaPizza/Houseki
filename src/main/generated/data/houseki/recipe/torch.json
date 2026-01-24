@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "X": {
-      "item": "houseki:sulfur"
-    }
+    "#": "minecraft:stick",
+    "X": "houseki:sulfur"
   },
   "pattern": [
     "X",

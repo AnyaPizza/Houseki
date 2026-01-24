@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "houseki:block_of_sulfur"
-    }
+    "houseki:block_of_sulfur"
   ],
   "result": {
     "count": 9,

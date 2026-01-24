@@ -1,0 +1,29 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "houseki:rainbow_pyrite"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "houseki:rainbow_pyrite"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "houseki:rainbow_pyrite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "houseki:rainbow_pyrite"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "houseki:rainbow_pyrite"
+      }
+    ]
+  }
+}

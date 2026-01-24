@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.5,
   "group": "platinum",
-  "ingredient": {
-    "item": "houseki:deepslate_platinum_ore"
-  },
+  "ingredient": "houseki:deepslate_platinum_ore",
   "result": {
     "id": "houseki:platinum"
   }

@@ -4,9 +4,7 @@
   "cookingtime": 120,
   "experience": 0.5,
   "group": "steel",
-  "ingredient": {
-    "item": "houseki:crude_iron"
-  },
+  "ingredient": "houseki:crude_iron",
   "result": {
     "id": "houseki:steel"
   }

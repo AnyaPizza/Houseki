@@ -4,9 +4,7 @@
   "cookingtime": 150,
   "experience": 0.5,
   "group": "sapphire",
-  "ingredient": {
-    "item": "houseki:deepslate_sapphire_ore"
-  },
+  "ingredient": "houseki:deepslate_sapphire_ore",
   "result": {
     "id": "houseki:sapphire"
   }

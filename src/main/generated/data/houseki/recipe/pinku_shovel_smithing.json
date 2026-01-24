@@ -1,16 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "houseki:pinku"
-  },
-  "base": {
-    "item": "minecraft:netherite_shovel"
-  },
+  "addition": "houseki:pinku",
+  "base": "minecraft:netherite_shovel",
   "result": {
-    "count": 1,
     "id": "houseki:pinku_shovel"
   },
-  "template": {
-    "item": "houseki:pinku_upgrade_smithing_template"
-  }
+  "template": "houseki:pinku_upgrade_smithing_template"
 }

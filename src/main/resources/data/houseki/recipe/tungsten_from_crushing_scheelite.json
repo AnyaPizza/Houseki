@@ -1,8 +1,6 @@
 {
   "type": "houseki:crushing",
-  "ingredient": {
-    "item": "houseki:scheelite"
-  },
+  "ingredient": "houseki:scheelite",
   "result": {
     "id": "houseki:tungsten"
   },

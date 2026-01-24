@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "houseki:crushed_bauxite"
-    }
+    "#": "houseki:crushed_bauxite"
   },
   "pattern": [
     "##",

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "houseki:cast_steel"
-    },
-    "X": {
-      "item": "minecraft:iron_ingot"
-    }
+    "#": "houseki:cast_steel",
+    "X": "minecraft:iron_ingot"
   },
   "pattern": [
     "###",

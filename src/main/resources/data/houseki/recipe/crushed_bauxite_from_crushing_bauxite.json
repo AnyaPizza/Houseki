@@ -1,14 +1,11 @@
 {
   "type": "houseki:crushing",
-  "ingredient": {
-    "item": "houseki:bauxite"
-  },
+  "ingredient": "houseki:bauxite",
   "result": {
     "id": "houseki:crushed_bauxite"
   },
   "auxiliary_result": {
-    "id": "minecraft:iron_nugget",
-    "count": 1
+    "id": "minecraft:iron_nugget"
   },
   "crushingTime": 250
 }

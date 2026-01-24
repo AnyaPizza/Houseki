@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    {
-      "item": "houseki:tungsten_drill_bit"
-    },
-    {
-      "item": "houseki:premium_drill_head"
-    }
+    "houseki:tungsten_drill_bit",
+    "houseki:premium_drill_head"
   ],
   "result": {
     "count": 1,

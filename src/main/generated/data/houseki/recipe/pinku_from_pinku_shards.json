@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "houseki:pinku_shard"
-    },
-    "X": {
-      "item": "minecraft:amethyst_shard"
-    }
+    "#": "houseki:pinku_shard",
+    "X": "minecraft:amethyst_shard"
   },
   "pattern": [
     " # ",

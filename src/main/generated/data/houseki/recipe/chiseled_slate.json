@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "houseki:slate_slab"
-    }
+    "#": "houseki:slate_slab"
   },
   "pattern": [
     "#",

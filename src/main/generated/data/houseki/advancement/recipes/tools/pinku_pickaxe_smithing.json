@@ -2,13 +2,6 @@
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_pinku": {
-      "conditions": {
-        "items": [
-          {
-            "items": "houseki:pinku"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     },
     "has_the_recipe": {

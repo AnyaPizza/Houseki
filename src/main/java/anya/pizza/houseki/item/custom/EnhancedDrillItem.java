@@ -1,7 +1,7 @@
 package anya.pizza.houseki.item.custom;
 
 import anya.pizza.houseki.util.ModTags;
-import net.minecraft.item.MiningToolItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.hit.BlockHitResult;
@@ -12,9 +12,9 @@ import net.minecraft.util.math.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnhancedDrillItem extends MiningToolItem {
-    public EnhancedDrillItem(ToolMaterial material, Settings settings) {
-        super(material, ModTags.Blocks.ENHANCED_DRILL_MINEABLE, settings);
+public class EnhancedDrillItem extends Item {
+    public EnhancedDrillItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(settings.tool(material, ModTags.Blocks.ENHANCED_DRILL_MINEABLE, attackDamage, attackSpeed, 3));
     }
 
     public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos intitalBlockPos, ServerPlayerEntity player) {
@@ -30,7 +30,6 @@ public class EnhancedDrillItem extends MiningToolItem {
                     }
                 }
             }
-
             if (blockHit.getSide() == Direction.NORTH || blockHit.getSide() == Direction.SOUTH) {
                 for (int x = -range; x <= range; x++) {
                     for (int y = -range; y <= range; y++) {
@@ -38,7 +37,6 @@ public class EnhancedDrillItem extends MiningToolItem {
                     }
                 }
             }
-
             if (blockHit.getSide() == Direction.EAST || blockHit.getSide() == Direction.WEST) {
                 for (int x = -range; x <= range; x++) {
                     for (int y = -range; y <= range; y++) {
@@ -47,7 +45,6 @@ public class EnhancedDrillItem extends MiningToolItem {
                 }
             }
         }
-
         return positions;
     }
 }

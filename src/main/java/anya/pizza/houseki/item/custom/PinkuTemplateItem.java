@@ -1,14 +1,18 @@
 package anya.pizza.houseki.item.custom;
 
 import anya.pizza.houseki.Houseki;
+import net.minecraft.component.type.TooltipDisplayComponent;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.SmithingTemplateItem;
-import net.minecraft.resource.featuretoggle.FeatureFlag;
+import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class PinkuTemplateItem extends SmithingTemplateItem {
     private static final Formatting DESCRIPTION_FORMATTING = Formatting.LIGHT_PURPLE;
@@ -19,31 +23,40 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
     private static final Text PINKU_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Text.translatable(Util.createTranslationKey("item", Identifier.of(Houseki.MOD_ID,"smithing_template.pinku_upgrade.base_slot_description")));
     private static final Text PINKU_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Text.translatable(Util.createTranslationKey("item", Identifier.of(Houseki.MOD_ID,"smithing_template.pinku_upgrade.additions_slot_description")));
 
-    public PinkuTemplateItem(Text appliesToText, Text ingredientsText, Text titleText, Text baseSlotDescriptionText, Text additionsSlotDescriptionText, List<Identifier> emptyBaseSlotTextures, List<Identifier> emptyAdditionsSlotTextures, FeatureFlag... requiredFeatures) {
-        super(appliesToText, ingredientsText, titleText, baseSlotDescriptionText, additionsSlotDescriptionText, emptyBaseSlotTextures, emptyAdditionsSlotTextures, requiredFeatures);
+    public PinkuTemplateItem(Text appliesToText, Text ingredientsText, Text baseSlotDescriptionText, Text additionsSlotDescriptionText, List<Identifier> emptyBaseSlotTextures, List<Identifier> emptyAdditionsSlotTextures, Settings settings) {
+        super(appliesToText, ingredientsText, baseSlotDescriptionText, additionsSlotDescriptionText, emptyBaseSlotTextures, emptyAdditionsSlotTextures, settings);
     }
 
-    private static final Identifier EMPTY_ARMOR_SLOT_HELMET_TEXTURE = Identifier.ofVanilla("item/empty_armor_slot_helmet");
-    private static final Identifier EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE = Identifier.ofVanilla("item/empty_armor_slot_chestplate");
-    private static final Identifier EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE = Identifier.ofVanilla("item/empty_armor_slot_leggings");
-    private static final Identifier EMPTY_ARMOR_SLOT_BOOTS_TEXTURE = Identifier.ofVanilla("item/empty_armor_slot_boots");
-    private static final Identifier EMPTY_SLOT_HOE_TEXTURE = Identifier.ofVanilla("item/empty_slot_hoe");
-    private static final Identifier EMPTY_SLOT_AXE_TEXTURE = Identifier.ofVanilla("item/empty_slot_axe");
-    private static final Identifier EMPTY_SLOT_SWORD_TEXTURE = Identifier.ofVanilla("item/empty_slot_sword");
-    private static final Identifier EMPTY_SLOT_SHOVEL_TEXTURE = Identifier.ofVanilla("item/empty_slot_shovel");
-    private static final Identifier EMPTY_SLOT_PICKAXE_TEXTURE = Identifier.ofVanilla("item/empty_slot_pickaxe");
-    private static final Identifier EMPTY_SLOT_PINKU_TEXTURE = Identifier.of(Houseki.MOD_ID, "item/pinku_slot");
+    private static final Identifier EMPTY_ARMOR_SLOT_HELMET_TEXTURE = Identifier.ofVanilla("container/slot/helmet");
+    private static final Identifier EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE = Identifier.ofVanilla("container/slot/chestplate");
+    private static final Identifier EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE = Identifier.ofVanilla("container/slot/leggings");
+    private static final Identifier EMPTY_ARMOR_SLOT_BOOTS_TEXTURE = Identifier.ofVanilla("container/slot/boots");
+    private static final Identifier EMPTY_SLOT_HOE_TEXTURE = Identifier.ofVanilla("container/slot/hoe");
+    private static final Identifier EMPTY_SLOT_AXE_TEXTURE = Identifier.ofVanilla("container/slot/axe");
+    private static final Identifier EMPTY_SLOT_SWORD_TEXTURE = Identifier.ofVanilla("container/slot/sword");
+    private static final Identifier EMPTY_SLOT_SHOVEL_TEXTURE = Identifier.ofVanilla("container/slot/shovel");
+    private static final Identifier EMPTY_SLOT_PICKAXE_TEXTURE = Identifier.ofVanilla("container/slot/pickaxe");
+    private static final Identifier EMPTY_SLOT_PINKU_TEXTURE = Identifier.of(Houseki.MOD_ID, "container/slot/pinku_slot");
 
-    public static SmithingTemplateItem createPinkuUpgrade() {
+    public static SmithingTemplateItem createPinkuUpgrade(Settings settings) {
         return new SmithingTemplateItem(
                 PINKU_UPGRADE_APPLIES_TO_TEXT,
                 PINKU_UPGRADE_INGREDIENTS_TEXT,
-                PINKU_UPGRADE_TEXT,
                 PINKU_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
                 PINKU_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
                 getPinkuUpgradeEmptyBaseSlotTextures(),
-                getPinkuUpgradeEmptyAdditionsSlotTextures()
+                getPinkuUpgradeEmptyAdditionsSlotTextures(),
+                settings
         );
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
+        super.appendTooltip(stack, context, displayComponent, textConsumer, type);
+        textConsumer.accept(PINKU_UPGRADE_TEXT);
+        textConsumer.accept(ScreenTexts.EMPTY);
+        textConsumer.accept(PINKU_UPGRADE_APPLIES_TO_TEXT);
+        textConsumer.accept(PINKU_UPGRADE_INGREDIENTS_TEXT);
     }
 
     private static List<Identifier> getPinkuUpgradeEmptyBaseSlotTextures() {

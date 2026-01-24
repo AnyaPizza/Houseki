@@ -1,0 +1,29 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "houseki:pinku"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "houseki:pinku"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "houseki:pinku"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "houseki:pinku"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "houseki:pinku"
+      }
+    ]
+  }
+}

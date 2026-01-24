@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "houseki:block_of_pinku"
-    }
+    "houseki:block_of_pinku"
   ],
   "result": {
     "count": 9,

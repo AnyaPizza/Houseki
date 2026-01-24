@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.5,
   "group": "scheelite",
-  "ingredient": {
-    "item": "houseki:scheelite_ore"
-  },
+  "ingredient": "houseki:scheelite_ore",
   "result": {
     "id": "houseki:scheelite"
   }

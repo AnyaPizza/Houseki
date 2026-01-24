@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "houseki:slate_tiles"
-    }
+    "S": "houseki:slate_tiles"
   },
   "pattern": [
     "SS",

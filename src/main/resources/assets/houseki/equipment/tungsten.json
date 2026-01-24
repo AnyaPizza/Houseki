@@ -1,0 +1,29 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "houseki:tungsten"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "houseki:tungsten"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "houseki:tungsten"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "houseki:tungsten"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "houseki:tungsten"
+      }
+    ]
+  }
+}

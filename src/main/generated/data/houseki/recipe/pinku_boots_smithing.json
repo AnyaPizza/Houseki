@@ -1,16 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "houseki:pinku"
-  },
-  "base": {
-    "item": "minecraft:netherite_boots"
-  },
+  "addition": "houseki:pinku",
+  "base": "minecraft:netherite_boots",
   "result": {
-    "count": 1,
     "id": "houseki:pinku_boots"
   },
-  "template": {
-    "item": "houseki:pinku_upgrade_smithing_template"
-  }
+  "template": "houseki:pinku_upgrade_smithing_template"
 }

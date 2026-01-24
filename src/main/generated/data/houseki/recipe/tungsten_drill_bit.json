@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "houseki:tungsten"
-    },
-    "X": {
-      "item": "houseki:block_of_tungsten"
-    }
+    "#": "houseki:tungsten",
+    "X": "houseki:block_of_tungsten"
   },
   "pattern": [
     "   ",

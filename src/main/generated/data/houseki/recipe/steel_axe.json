@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "houseki:steel"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "#": "houseki:steel",
+    "S": "minecraft:stick"
   },
   "pattern": [
     "## ",

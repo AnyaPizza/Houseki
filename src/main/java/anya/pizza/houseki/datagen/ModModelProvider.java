@@ -1,14 +1,11 @@
 package anya.pizza.houseki.datagen;
 
 import anya.pizza.houseki.block.ModBlocks;
+import anya.pizza.houseki.item.ModArmorMaterials;
 import anya.pizza.houseki.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.data.client.*;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.util.Identifier;
-
-import java.util.Optional;
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.client.data.*;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -26,7 +23,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SCHEELITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_TUNGSTEN_B);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BAUXITE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ALUMINUM_GLASS);
+        blockStateModelGenerator.registerGlassAndPane(ModBlocks.ALUMINUM_GLASS, ModBlocks.ALUMINUM_GLASS_PANE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_ALUMINUM);
         blockStateModelGenerator.registerDoor(ModBlocks.ALUMINUM_DOOR);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.ALUMINUM_TRAPDOOR);
@@ -51,16 +48,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SULFUR_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_SULFUR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_STEEL);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_CAST_STEEL);
-
-        blockStateModelGenerator.registerSingleton(
-                ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE,
-                new TextureMap()
-                        .put(TextureKey.BOTTOM, Identifier.of("houseki", "block/sandstone_rainbow_pyrite_ore_bottom"))
-                        .put(TextureKey.TOP, Identifier.of("houseki", "block/sandstone_rainbow_pyrite_ore_top"))
-                        .put(TextureKey.SIDE, Identifier.of("houseki", "block/sandstone_rainbow_pyrite_ore")),
-                Models.CUBE_BOTTOM_TOP
-        );
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_CAST_STEEL_B);
 
         blockStateModelGenerator.registerCooker(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE);
 
@@ -172,46 +160,46 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ADVANCED_DIAMOND_DRILL, Models.HANDHELD);
         itemModelGenerator.register(ModItems.PREMIUM_DIAMOND_DRILL, Models.HANDHELD);
 
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINKU_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.RAINBOW_PYRITE_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.RAINBOW_PYRITE_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.RAINBOW_PYRITE_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.RAINBOW_PYRITE_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.TUNGSTEN_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.TUNGSTEN_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.TUNGSTEN_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.TUNGSTEN_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.ALUMINUM_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.ALUMINUM_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.ALUMINUM_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.ALUMINUM_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.SAPPHIRE_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.SAPPHIRE_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.SAPPHIRE_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.SAPPHIRE_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.NEPHRITE_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.NEPHRITE_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.NEPHRITE_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.NEPHRITE_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.JADEITE_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.JADEITE_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.JADEITE_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.JADEITE_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PLATINUM_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PLATINUM_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PLATINUM_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PLATINUM_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.STEEL_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.STEEL_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.STEEL_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.STEEL_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CAST_STEEL_HELMET));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CAST_STEEL_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CAST_STEEL_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CAST_STEEL_BOOTS));
+        itemModelGenerator.registerArmor(ModItems.PINKU_HELMET, ModArmorMaterials.PINKU_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.PINKU_CHESTPLATE, ModArmorMaterials.PINKU_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.PINKU_LEGGINGS, ModArmorMaterials.PINKU_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.PINKU_BOOTS, ModArmorMaterials.PINKU_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.RAINBOW_PYRITE_HELMET, ModArmorMaterials.RAINBOW_PYRITE_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.RAINBOW_PYRITE_CHESTPLATE, ModArmorMaterials.RAINBOW_PYRITE_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.RAINBOW_PYRITE_LEGGINGS,  ModArmorMaterials.RAINBOW_PYRITE_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.RAINBOW_PYRITE_BOOTS, ModArmorMaterials.RAINBOW_PYRITE_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.TUNGSTEN_HELMET, ModArmorMaterials.TUNGSTEN_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.TUNGSTEN_CHESTPLATE, ModArmorMaterials.TUNGSTEN_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.TUNGSTEN_LEGGINGS,  ModArmorMaterials.TUNGSTEN_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.TUNGSTEN_BOOTS, ModArmorMaterials.TUNGSTEN_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.ALUMINUM_HELMET, ModArmorMaterials.ALUMINUM_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.ALUMINUM_CHESTPLATE, ModArmorMaterials.ALUMINUM_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.ALUMINUM_LEGGINGS,  ModArmorMaterials.ALUMINUM_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.ALUMINUM_BOOTS, ModArmorMaterials.ALUMINUM_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.SAPPHIRE_HELMET, ModArmorMaterials.SAPPHIRE_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.SAPPHIRE_CHESTPLATE, ModArmorMaterials.SAPPHIRE_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.SAPPHIRE_LEGGINGS,  ModArmorMaterials.SAPPHIRE_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.SAPPHIRE_BOOTS, ModArmorMaterials.SAPPHIRE_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.NEPHRITE_HELMET, ModArmorMaterials.NEPHRITE_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.NEPHRITE_CHESTPLATE, ModArmorMaterials.NEPHRITE_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.NEPHRITE_LEGGINGS,  ModArmorMaterials.NEPHRITE_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.NEPHRITE_BOOTS, ModArmorMaterials.NEPHRITE_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.JADEITE_HELMET, ModArmorMaterials.JADEITE_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.JADEITE_CHESTPLATE, ModArmorMaterials.JADEITE_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.JADEITE_LEGGINGS,  ModArmorMaterials.JADEITE_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.JADEITE_BOOTS, ModArmorMaterials.JADEITE_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.PLATINUM_HELMET, ModArmorMaterials.PLATINUM_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.PLATINUM_CHESTPLATE, ModArmorMaterials.PLATINUM_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.PLATINUM_LEGGINGS,  ModArmorMaterials.PLATINUM_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.PLATINUM_BOOTS, ModArmorMaterials.PLATINUM_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.STEEL_HELMET, ModArmorMaterials.STEEL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.STEEL_CHESTPLATE, ModArmorMaterials.STEEL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.STEEL_LEGGINGS,  ModArmorMaterials.STEEL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.STEEL_BOOTS, ModArmorMaterials.STEEL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.CAST_STEEL_HELMET, ModArmorMaterials.CAST_STEEL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.CAST_STEEL_CHESTPLATE, ModArmorMaterials.CAST_STEEL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.CAST_STEEL_LEGGINGS,  ModArmorMaterials.CAST_STEEL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(ModItems.CAST_STEEL_BOOTS, ModArmorMaterials.CAST_STEEL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
 
         itemModelGenerator.register(ModItems.PINKU_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAINBOW_PYRITE_HORSE_ARMOR, Models.GENERATED);
@@ -224,11 +212,15 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.NEPHRITE_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.JADEITE_HORSE_ARMOR, Models.GENERATED);
 
-
-        itemModelGenerator.register(
-                ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE.asItem(),
-                new Model(Optional.of(Identifier.of("houseki", "block/sandstone_rainbow_pyrite_ore")),
-                        Optional.empty())
-        );
+        itemModelGenerator.register(ModItems.PINKU_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RAINBOW_PYRITE_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.TUNGSTEN_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ALUMINUM_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SAPPHIRE_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PLATINUM_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STEEL_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CAST_STEEL_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.NEPHRITE_NAUTILUS_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.JADEITE_NAUTILUS_ARMOR, Models.GENERATED);
     }
 }

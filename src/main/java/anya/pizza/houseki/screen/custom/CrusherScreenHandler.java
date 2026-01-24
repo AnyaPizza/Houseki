@@ -13,6 +13,7 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 
 public class CrusherScreenHandler extends ScreenHandler {
@@ -21,7 +22,7 @@ public class CrusherScreenHandler extends ScreenHandler {
     public final CrusherBlockEntity blockEntity;
 
     public CrusherScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(pos), new ArrayPropertyDelegate(5));
+        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(5));
     }
 
     /**
@@ -97,9 +98,16 @@ public class CrusherScreenHandler extends ScreenHandler {
                     if (!insertItem(originalStack, 1, 2, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (blockEntity.getWorld().getRecipeManager().getFirstMatch(ModRecipes.CRUSHER_TYPE,
-                        new CrusherRecipeInput(originalStack), blockEntity.getWorld()).isPresent()) {
-                    if (!insertItem(originalStack, 0, 1, false)) {
+                } else if (blockEntity.getWorld() instanceof ServerWorld serverWorld) {
+                    CrusherRecipeInput recipeInput = new CrusherRecipeInput(originalStack);
+                    boolean hasCrusherRecipe = serverWorld.getRecipeManager()
+                            .getFirstMatch(ModRecipes.CRUSHER_TYPE, recipeInput, serverWorld)
+                            .isPresent();
+                    if (hasCrusherRecipe) {
+                        if (!insertItem(originalStack, 0, 1, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else {
                         return ItemStack.EMPTY;
                     }
                 } else {

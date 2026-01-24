@@ -3,10 +3,14 @@ package anya.pizza.houseki.block;
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.custom.CrusherBlock;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -14,22 +18,27 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
+import java.util.function.Function;
+
+import static net.minecraft.block.Blocks.createLightLevelFromLitBlockState;
+
 public class ModBlocks {
     //Adds Block
     public static final Block BLOCK_OF_PINKU = registerBlock("block_of_pinku",
-            new Block(AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK).resistance(1000).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.PINK).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(5, 1000).sounds(BlockSoundGroup.METAL)));
 
     public static final Block BLOCK_OF_RAINBOW_PYRITE = registerBlock("block_of_rainbow_pyrite",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.LIGHT_BLUE).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(5, 6).sounds(BlockSoundGroup.METAL)));
 
     public static final Block BLOCK_OF_TUNGSTEN_B = registerBlock("block_of_tungsten_b",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool().strength(10, 1000)));
+            properties -> new Block(properties.mapColor(MapColor.LIGHT_BLUE_GRAY).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(10, 1000).sounds(BlockSoundGroup.METAL)));
 
     public static final Block BLOCK_OF_ALUMINUM = registerBlock("block_of_aluminum",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool().strength(8, 500)));
+            properties -> new Block(properties.mapColor(MapColor.WHITE).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(8, 500).sounds(BlockSoundGroup.METAL)));
 
     public static final Block ALUMINUM_GLASS = registerBlock("aluminum_glass",
-            new TransparentBlock(AbstractBlock.Settings.copy(Blocks.GLASS).requiresTool().strength(2, 1000).nonOpaque()) {
+            properties -> new TransparentBlock(properties.instrument(NoteBlockInstrument.HAT).strength(2, 1000).sounds(BlockSoundGroup.GLASS)
+                    .nonOpaque().allowsSpawning(Blocks::never).solidBlock(Blocks::never).suffocates(Blocks::never).blockVision(Blocks::never)) {
                 @Override
                 public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
                     return super.getCameraCollisionShape(state, world, pos, context);
@@ -37,7 +46,7 @@ public class ModBlocks {
             });
 
     public static final Block ALUMINUM_GLASS_PANE = registerBlock("aluminum_glass_pane",
-            new PaneBlock(AbstractBlock.Settings.copy(Blocks.GLASS_PANE).requiresTool().strength(2, 1000).nonOpaque()) {
+            properties -> new PaneBlock(properties.instrument(NoteBlockInstrument.HAT).strength(2, 1000).sounds(BlockSoundGroup.GLASS).nonOpaque()) {
                 @Override
                 public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
                     return super.getCameraCollisionShape(state, world, pos, context);
@@ -45,157 +54,173 @@ public class ModBlocks {
             });
 
     public static final Block BLOCK_OF_SAPPHIRE = registerBlock("block_of_sapphire",
-            new Block(AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK).requiresTool().strength(9, 500)));
+            properties -> new Block(properties.mapColor(MapColor.BLUE).requiresTool().strength(9, 500).sounds(BlockSoundGroup.NETHERITE)));
 
     public static final Block BLOCK_OF_JADEITE = registerBlock("block_of_jadeite",
-            new Block(AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.PALE_GREEN).requiresTool().strength(5, 6).sounds(BlockSoundGroup.METAL)));
 
     public static final Block BLOCK_OF_PLATINUM = registerBlock("block_of_platinum",
-            new Block(AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresTool().strength(5, 6).sounds(BlockSoundGroup.METAL)));
 
     public static final Block LIMESTONE = registerBlock("limestone",
-            new Block(AbstractBlock.Settings.copy(Blocks.STONE).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6)));
 
     public static final Block LIMESTONE_BRICKS = registerBlock("limestone_bricks",
-            new Block(AbstractBlock.Settings.copy(Blocks.STONE_BRICKS).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6)));
 
     public static final Block POLISHED_LIMESTONE = registerBlock("polished_limestone",
-            new Block(AbstractBlock.Settings.copy(Blocks.POLISHED_ANDESITE).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6)));
 
     public static final Block CHISELED_LIMESTONE = registerBlock("chiseled_limestone",
-            new Block(AbstractBlock.Settings.copy(Blocks.CHISELED_STONE_BRICKS).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6)));
 
     public static final Block BLOCK_OF_SULFUR = registerBlock("block_of_sulfur",
-            new Block(AbstractBlock.Settings.copy(Blocks.COAL_BLOCK).requiresTool().luminance(s -> 7)));
+            properties -> new Block(properties.mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(5, 6).luminance(s -> 7)));
 
     public static final Block SLATE = registerBlock("slate",
-            new Block(AbstractBlock.Settings.copy(Blocks.STONE).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6)));
 
     public static final Block SLATE_TILES = registerBlock("slate_tiles",
-            new Block(AbstractBlock.Settings.copy(Blocks.STONE_BRICKS).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6)));
 
     public static final Block POLISHED_SLATE = registerBlock("polished_slate",
-            new Block(AbstractBlock.Settings.copy(Blocks.POLISHED_ANDESITE).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6)));
 
     public static final Block CHISELED_SLATE = registerBlock("chiseled_slate",
-            new Block(AbstractBlock.Settings.copy(Blocks.CHISELED_STONE_BRICKS).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6)));
 
     public static final Block BLOCK_OF_STEEL = registerBlock("block_of_steel",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).strength(4.5f, 5.5f).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.LIGHT_BLUE_GRAY).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(4.5F, 5.5F).sounds(BlockSoundGroup.METAL)));
 
-    public static final Block BLOCK_OF_CAST_STEEL = registerBlock("block_of_cast_steel",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).strength(5.5f, 6.5f).requiresTool()));
+    public static final Block BLOCK_OF_CAST_STEEL_B = registerBlock("block_of_cast_steel_b",
+            properties -> new Block(properties.mapColor(MapColor.LIGHT_BLUE_GRAY).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(5.5F, 6.5F).sounds(BlockSoundGroup.METAL)));
 
     public static final Block BAUXITE = registerBlock("bauxite",
-            new Block(AbstractBlock.Settings.copy(Blocks.TERRACOTTA).requiresTool()));
+            properties -> new Block(properties.mapColor(MapColor.BROWN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)));
 
 
     //Adds Ore
     public static final Block PINKU_ORE = registerBlock("pinku_ore",
-            new Block(AbstractBlock.Settings.copy(Blocks.IRON_ORE).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.NETHERITE).strength(15, 9).luminance(s -> 1).requiresTool())); //10 Moh Scale
-
+            properties -> new Block(properties
+                    .mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().sounds(BlockSoundGroup.NETHERITE).strength(15, 9).luminance(s -> 1)));
+                        //10 Moh Scale
     public static final Block RAINBOW_PYRITE_ORE = registerBlock("rainbow_pyrite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copy(Blocks.STONE).strength(4, 7).requiresTool())); //6 Moh Scale
-
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), properties
+                    .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(4, 7)));
+                        //6 Moh Scale
     public static final Block SANDSTONE_RAINBOW_PYRITE_ORE = registerBlock("sandstone_rainbow_pyrite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copy(Blocks.SANDSTONE).strength(4.8f, 7.2f).requiresTool()));
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), properties
+                    .mapColor(MapColor.PALE_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(4.8F, 7.2F)));
 
     public static final Block BAUXITE_RAINBOW_PYRITE_ORE = registerBlock("bauxite_rainbow_pyrite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.copy(ModBlocks.BAUXITE).strength(4.8f, 7.2f).requiresTool()));
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), properties
+                    .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(4.8F, 7.2F)));
 
     public static final Block WOLFRAMITE_ORE = registerBlock("wolframite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.GRANITE).strength(3, 4).requiresTool())); //4.5 Moh Scale
-
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.DIRT_BROWN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3, 4)));
+                        //4.5 Moh Scale
     public static final Block SCHEELITE_ORE = registerBlock("scheelite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.NETHERRACK).strength(3, 4).requiresTool())); //4.5 Moh Scale
-
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.DARK_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3, 4).sounds(BlockSoundGroup.NETHERRACK)));
+                        //4.5 Moh Scale
     public static final Block DEEPSLATE_SAPPHIRE_ORE = registerBlock("deepslate_sapphire_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(10, 8).requiresTool()));
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), properties
+                    .mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(10, 8).sounds(BlockSoundGroup.DEEPSLATE)));
 
     public static final Block SAPPHIRE_ORE = registerBlock("sapphire_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), AbstractBlock.Settings.copy(Blocks.STONE).strength(9, 7).requiresTool())); //9 Moh Scale
-
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(5, 8), properties
+                    .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(9, 7)));
+                        //9 Moh Scale
     public static final Block NEPHRITE_ORE = registerBlock("nephrite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(4.5f, 6.5f).requiresTool())); //6.5 Moh Scale
-
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(4.5F, 6.5F)));
+                        //6.5 Moh Scale
     public static final Block JADEITE_ORE = registerBlock("jadeite_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(5, 7).requiresTool())); //7 Moh Scale
-
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(5, 7)));
+                        //7 Moh Scale
     public static final Block PLATINUM_ORE = registerBlock("platinum_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.STONE).strength(3, 4).requiresTool())); //4.5 Moh Scale
-
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3, 4)));
+                        //4.5 Moh Scale
     public static final Block DEEPSLATE_PLATINUM_ORE = registerBlock("deepslate_platinum_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(4, 5).requiresTool()));
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3, 4).sounds(BlockSoundGroup.DEEPSLATE)));
 
     public static final Block SULFUR_ORE = registerBlock("sulfur_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.NETHERRACK).strength(1, 2).requiresTool())); //Moh scale 1.5
-
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.DARK_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1, 2).sounds(BlockSoundGroup.NETHERRACK)));
+                        //Moh scale 1.5
     public static final Block BLACKSTONE_SULFUR_ORE = registerBlock("blackstone_sulfur_ore",
-            new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.BLACKSTONE).strength(1.5f, 2.5f).requiresTool()));
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 2.5F)));
 
     //Stairs
     public static final Block LIMESTONE_STAIRS = registerBlock("limestone_stairs",
-            new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),AbstractBlock.Settings.copy(Blocks.STONE_STAIRS).requiresTool()));
+            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block POLISHED_LIMESTONE_STAIRS = registerBlock("polished_limestone_stairs",
-            new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),AbstractBlock.Settings.copy(Blocks.POLISHED_ANDESITE_STAIRS).requiresTool()));
+            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block LIMESTONE_BRICK_STAIRS = registerBlock("limestone_brick_stairs",
-            new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),AbstractBlock.Settings.copy(Blocks.BRICK_STAIRS).requiresTool()));
+            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block SLATE_STAIRS = registerBlock("slate_stairs",
-            new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),AbstractBlock.Settings.copy(Blocks.STONE_STAIRS).requiresTool()));
+            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block POLISHED_SLATE_STAIRS = registerBlock("polished_slate_stairs",
-            new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),AbstractBlock.Settings.copy(Blocks.POLISHED_ANDESITE_STAIRS).requiresTool()));
+            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block SLATE_TILE_STAIRS = registerBlock("slate_tile_stairs",
-            new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),AbstractBlock.Settings.copy(Blocks.BRICK_STAIRS).requiresTool()));
+            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
 
     //Slabs
     public static final Block LIMESTONE_SLAB = registerBlock("limestone_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_SLAB).requiresTool()));
+            properties -> new SlabBlock(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block POLISHED_LIMESTONE_SLAB = registerBlock("polished_limestone_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(Blocks.POLISHED_ANDESITE_SLAB).requiresTool()));
+            properties -> new SlabBlock(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block LIMESTONE_BRICK_SLAB = registerBlock("limestone_brick_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(Blocks.BRICK_SLAB).requiresTool()));
+            properties -> new SlabBlock(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block SLATE_SLAB = registerBlock("slate_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_SLAB).requiresTool()));
+            properties -> new SlabBlock(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block POLISHED_SLATE_SLAB = registerBlock("polished_slate_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(Blocks.POLISHED_ANDESITE_SLAB).requiresTool()));
+            properties -> new SlabBlock(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block SLATE_TILE_SLAB = registerBlock("slate_tile_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(Blocks.BRICK_SLAB).requiresTool()));
+            properties -> new SlabBlock(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
 
     //Walls
     public static final Block LIMESTONE_WALL = registerBlock("limestone_wall",
-            new WallBlock(AbstractBlock.Settings.copy(Blocks.ANDESITE_WALL).requiresTool()));
+            properties -> new WallBlock(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6).solid()));
     public static final Block POLISHED_LIMESTONE_WALL = registerBlock("polished_limestone_wall",
-            new WallBlock(AbstractBlock.Settings.copy(Blocks.POLISHED_BLACKSTONE_WALL).requiresTool()));
+            properties -> new WallBlock(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6).solid()));
     public static final Block LIMESTONE_BRICK_WALL = registerBlock("limestone_brick_wall",
-            new WallBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_WALL).requiresTool()));
+            properties -> new WallBlock(properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6).solid()));
     public static final Block SLATE_WALL = registerBlock("slate_wall",
-            new WallBlock(AbstractBlock.Settings.copy(Blocks.ANDESITE_WALL).requiresTool()));
+            properties -> new WallBlock(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6).solid()));
     public static final Block POLISHED_SLATE_WALL = registerBlock("polished_slate_wall",
-            new WallBlock(AbstractBlock.Settings.copy(Blocks.POLISHED_BLACKSTONE_WALL).requiresTool()));
+            properties -> new WallBlock(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6).solid()));
     public static final Block SLATE_TILE_WALL = registerBlock("slate_tile_wall",
-            new WallBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_WALL).requiresTool()));
+            properties -> new WallBlock(properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6).solid()));
 
     //Doors
     public static final Block ALUMINUM_DOOR = registerBlock("aluminum_door",
-            new DoorBlock(BlockSetType.IRON, AbstractBlock.Settings.copy(Blocks.IRON_DOOR).requiresTool().nonOpaque()));
-
+            properties -> new DoorBlock(BlockSetType.IRON, properties.mapColor(MapColor.WHITE).requiresTool().strength(5).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
     public static final Block ALUMINUM_TRAPDOOR = registerBlock("aluminum_trapdoor",
-            new TrapdoorBlock(BlockSetType.IRON, AbstractBlock.Settings.copy(Blocks.IRON_TRAPDOOR).requiresTool().nonOpaque()));
+            properties -> new TrapdoorBlock(BlockSetType.IRON, properties.mapColor(MapColor.WHITE).requiresTool().strength(5).nonOpaque().allowsSpawning(Blocks::never)));
 
     //Entity Blocks
     public static final Block CRUSHER = registerBlock("crusher",
-            new CrusherBlock(AbstractBlock.Settings.copy(Blocks.BLAST_FURNACE).nonOpaque().requiresTool()));
+            properties -> new CrusherBlock(properties
+                    .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F).luminance(createLightLevelFromLitBlockState(13))));
 
 
 
-    private static Block registerBlock(String name, Block block) {
-        registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, Identifier.of(Houseki.MOD_ID, name), block);
+    private static Block registerBlock(String name, Function<AbstractBlock.Settings, Block> function) {
+        Block toRegister = function.apply(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Houseki.MOD_ID, name))));
+        registerBlockItem(name, toRegister);
+        return Registry.register(Registries.BLOCK, Identifier.of(Houseki.MOD_ID, name), toRegister);
     }
 
     private static void registerBlockItem(String name, Block block) {
         Registry.register(Registries.ITEM, Identifier.of(Houseki.MOD_ID, name),
-                new BlockItem(block, new Item.Settings()));
+                new BlockItem(block, new Item.Settings().useBlockPrefixedTranslationKey()
+                        .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Houseki.MOD_ID, name)))));
     }
 
     public static void registerModBlocks() {

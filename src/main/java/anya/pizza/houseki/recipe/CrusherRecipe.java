@@ -1,5 +1,6 @@
 package anya.pizza.houseki.recipe;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.mojang.serialization.Codec;
@@ -9,10 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.*;
+import net.minecraft.recipe.book.RecipeBookCategories;
+import net.minecraft.recipe.book.RecipeBookCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
@@ -21,7 +21,7 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
     public static final int DEFAULT_CRUSHING_TIME = 200;
 
     public CrusherRecipe {
-        if (auxiliaryOutput == null) {
+        if (auxiliaryOutput.isEmpty()) {
             auxiliaryOutput = Optional.empty();
         }
     }
@@ -39,7 +39,6 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         this(inputItem, output, crushingTime, Optional.empty());
     }
 
-    @Override
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> list = DefaultedList.of();
         list.add(this.inputItem);
@@ -60,29 +59,34 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         return output.copy();
     }
 
-    @Override
-    public boolean fits(int width, int height) {
-        return true;
-    }
-
-    @Override
-    public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
+    public ItemStack getResult(RegistryWrapper.WrapperLookup ignoredRegistriesLookup) {
         return output;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<? extends Recipe<CrusherRecipeInput>> getSerializer() {
         return ModRecipes.CRUSHER_SERIALIZER;
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {
         return ModRecipes.CRUSHER_TYPE;
+    }
+
+    //No idea if this is right but it works?
+    @Override
+    public IngredientPlacement getIngredientPlacement() {
+        return IngredientPlacement.forMultipleSlots(List.of());
+    }
+
+    @Override
+    public RecipeBookCategory getRecipeBookCategory() {
+        return null;
     }
 
     public static class Serializer implements RecipeSerializer<CrusherRecipe> {
         public static final MapCodec<CrusherRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-            Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
+            Ingredient.CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
             ItemStack.CODEC.fieldOf("result").forGetter(CrusherRecipe::output),
             Codec.INT.optionalFieldOf("crushingTime", DEFAULT_CRUSHING_TIME).forGetter(CrusherRecipe::crushingTime),
             // Optional auxiliary output is now the 4th parameter
@@ -96,7 +100,7 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
                 Ingredient.PACKET_CODEC, CrusherRecipe::inputItem,
                 ItemStack.PACKET_CODEC, CrusherRecipe::output,
                 PacketCodecs.INTEGER, CrusherRecipe::crushingTime,
-                PacketCodecs.optional(ItemStack.OPTIONAL_PACKET_CODEC), CrusherRecipe::auxiliaryOutput, 
+                PacketCodecs.optional(ItemStack.OPTIONAL_PACKET_CODEC), CrusherRecipe::auxiliaryOutput,
                 CrusherRecipe::new);
 
         @Override

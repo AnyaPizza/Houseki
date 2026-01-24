@@ -127,15 +127,26 @@ public class ModItemGroups {
                         entries.add(ModItems.NEPHRITE_HORSE_ARMOR);
 
                         entries.add(ModItems.JADEITE_HORSE_ARMOR);
+                        entries.add(ModItems.PINKU_NAUTILUS_ARMOR);
+                        entries.add(ModItems.RAINBOW_PYRITE_NAUTILUS_ARMOR);
+                        entries.add(ModItems.TUNGSTEN_NAUTILUS_ARMOR);
+                        entries.add(ModItems.ALUMINUM_NAUTILUS_ARMOR);
+                        entries.add(ModItems.SAPPHIRE_NAUTILUS_ARMOR);
+                        entries.add(ModItems.PLATINUM_NAUTILUS_ARMOR);
+                        entries.add(ModItems.STEEL_NAUTILUS_ARMOR);
+                        entries.add(ModItems.CAST_STEEL_NAUTILUS_ARMOR);
+
+                        entries.add(ModItems.NEPHRITE_NAUTILUS_ARMOR);
+                        entries.add(ModItems.JADEITE_NAUTILUS_ARMOR);
                         entries.add(ModItems.PINKU);
                         entries.add(ModItems.PINKU_SHARD);
                         entries.add(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE);
                         entries.add(ModItems.RAINBOW_PYRITE);
                         entries.add(ModItems.WOLFRAMITE);
                         entries.add(ModItems.SCHEELITE);
+
                         entries.add(ModItems.TUNGSTEN);
                         entries.add(ModItems.CRUSHED_BAUXITE);
-
                         entries.add(ModItems.ALUMINUM);
                         entries.add(ModItems.SAPPHIRE);
                         entries.add(ModItems.NEPHRITE);
@@ -143,9 +154,9 @@ public class ModItemGroups {
                         entries.add(ModItems.PLATINUM);
                         entries.add(ModItems.PLATINUM_NUGGET);
                         entries.add(ModItems.SULFUR);
+
                         entries.add(ModItems.CRUDE_IRON);
                         entries.add(ModItems.STEEL);
-
                         entries.add(ModItems.CAST_STEEL);
                         entries.add(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE);
                         entries.add(ModItems.TUNGSTEN_DRILL_BIT);
@@ -153,9 +164,9 @@ public class ModItemGroups {
                         entries.add(ModItems.SIMPLE_DRILL_HEAD);
                         entries.add(ModItems.ENHANCED_DRILL_HEAD);
                         entries.add(ModItems.ADVANCED_DRILL_HEAD);
+
                         entries.add(ModItems.PREMIUM_DRILL_HEAD);
                         entries.add(ModItems.SIMPLE_TUNGSTEN_DRILL);
-
                         entries.add(ModItems.ENHANCED_TUNGSTEN_DRILL);
                         entries.add(ModItems.ADVANCED_TUNGSTEN_DRILL);
                         entries.add(ModItems.PREMIUM_TUNGSTEN_DRILL);
@@ -183,7 +194,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.SCHEELITE_ORE);
 
-                        entries.add(ModItems.BLOCK_OF_TUNGSTEN);
+                        entries.add(ModBlocks.BLOCK_OF_TUNGSTEN_B);
 
                         entries.add(ModBlocks.BAUXITE);
 
@@ -240,7 +251,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLOCK_OF_SULFUR);
 
                         entries.add(ModBlocks.BLOCK_OF_STEEL);
-                        entries.add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                        entries.add(ModBlocks.BLOCK_OF_CAST_STEEL_B);
                     }).build());
 
 

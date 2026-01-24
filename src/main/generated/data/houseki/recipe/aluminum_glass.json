@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "houseki:aluminum"
-    },
-    "X": {
-      "item": "minecraft:glass"
-    }
+    "#": "houseki:aluminum",
+    "X": "minecraft:glass"
   },
   "pattern": [
     "###",

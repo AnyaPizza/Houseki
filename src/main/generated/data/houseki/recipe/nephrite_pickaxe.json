@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "houseki:nephrite"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "#": "houseki:nephrite",
+    "S": "minecraft:stick"
   },
   "pattern": [
     "###",

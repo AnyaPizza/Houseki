@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "houseki:pinku",
+  "base": "minecraft:netherite_nautilus_armor",
+  "result": {
+    "id": "houseki:pinku_nautilus_armor"
+  },
+  "template": "houseki:pinku_upgrade_smithing_template"
+}

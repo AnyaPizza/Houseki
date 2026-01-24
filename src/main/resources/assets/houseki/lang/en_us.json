@@ -61,7 +61,6 @@
   "block.houseki.blackstone_sulfur_ore": "Blackstone Sulfur Ore",
   "block.houseki.sulfur_ore": "Sulfur Ore",
   "block.houseki.block_of_steel": "Block of Steel",
-  "block.houseki.block_of_cast_steel": "Block of Cast Steel",
 
   "block.houseki.limestone_stairs": "Limestone Stairs",
   "block.houseki.limestone_slab": "Limestone Slab",
@@ -86,9 +85,9 @@
   "block.houseki.aluminum_trapdoor": "Aluminum Trapdoor",
 
   "block.houseki.block_of_tungsten_b": "Block of Tungsten",
+  "block.houseki.block_of_cast_steel_b": "Block of Cast Steel",
+  "item.houseki.block_of_cast_steel": "Block of Cast Steel",
   "item.houseki.block_of_tungsten": "Block of Tungsten",
-
-  "item.houseki.block_of_tungsten_item": "Block of Tungsten",
 
   "item.houseki.pinku_pickaxe": "Pinku Pickaxe",
   "item.houseki.pinku_axe": "Pinku Axe",
@@ -201,9 +200,31 @@
   "item.houseki.nephrite_horse_armor": "Nephrite Horse Armor",
   "item.houseki.jadeite_horse_armor": "Jadeite Horse Armor",
 
+  "item.houseki.pinku_nautilus_armor": "Pinku Nautilus Armor",
+  "item.houseki.rainbow_pyrite_nautilus_armor": "Rainbow Pyrite Nautilus Armor",
+  "item.houseki.tungsten_nautilus_armor": "Tungsten Nautilus Armor",
+  "item.houseki.aluminum_nautilus_armor": "Aluminum Nautilus Armor",
+  "item.houseki.sapphire_nautilus_armor": "Sapphire Nautilus Armor",
+  "item.houseki.platinum_nautilus_armor": "Platinum Nautilus Armor",
+  "item.houseki.steel_nautilus_armor": "Steel Nautilus Armor",
+  "item.houseki.cast_steel_nautilus_armor": "Cast Steel Nautilus Armor",
+  "item.houseki.nephrite_nautilus_armor": "Nephrite Nautilus Armor",
+  "item.houseki.jadeite_nautilus_armor": "Jadeite Nautilus Armor",
+
   "tag.item.houseki.drills": "Drills",
   "tag.item.houseki.drill_bits": "Drill Bits",
   "tag.item.houseki.smithing_templates": "Smithing Templates",
+  "tag.item.houseki.pinku_repair": "Pinku Repairable",
+  "tag.item.houseki.rainbow_repair": "Rainbow Pyrite Repairable",
+  "tag.item.houseki.tungsten_repair": "Tungsten Repairable",
+  "tag.item.houseki.aluminum_repair": "Aluminum Repairable",
+  "tag.item.houseki.sapphire_repair": "Sapphire Repairable",
+  "tag.item.houseki.nephrite_repair": "Nephrite Repairable",
+  "tag.item.houseki.jadeite_repair": "Jadeite Repairable",
+  "tag.item.houseki.platinum_repair": "Platinum Repairable",
+  "tag.item.houseki.steel_repair": "Steel Repairable",
+  "tag.item.houseki.cast_steel_repair": "Cast Steel Repairable",
+  "tag.item.houseki.diamond_repair": "Diamond Repairable",
   "tag.item.houseki.armor": "Houseki Armor",
 
   "item.houseki.smithing_template.pinku_upgrade.applies_to": "Netherite Equipment",
@@ -221,8 +242,6 @@
   "itemgroup.houseki.housekiblocks": "Houseki Blocks",
 
   "gui.houseki.crusher": "Crusher",
-
-  "emi.category.houseki.crusher": "Crusher",
 
   "advancements.armor_sets.root.title": "Houseki Armor Sets",
   "advancements.armor_sets.root.description": "A set of advancements for collecting armor sets in the mod",

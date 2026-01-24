@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.5,
   "group": "rainbow_pyrite",
-  "ingredient": {
-    "item": "houseki:rainbow_pyrite_ore"
-  },
+  "ingredient": "houseki:rainbow_pyrite_ore",
   "result": {
     "id": "houseki:rainbow_pyrite"
   }
