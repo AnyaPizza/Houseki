@@ -1,0 +1,13 @@
+{
+  "type": "houseki:crushing",
+  "auxiliary_result": {
+    "count": 1,
+    "id": "minecraft:calcite"
+  },
+  "crushingTime": 100,
+  "ingredient": "minecraft:sandstone",
+  "result": {
+    "count": 1,
+    "id": "minecraft:sand"
+  }
+}
