@@ -17,12 +17,12 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime, Optional<ItemStack> auxOutput) implements Recipe<CrusherRecipeInput> {
+public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime, Optional<ItemStack> auxiliaryOutput) implements Recipe<CrusherRecipeInput> {
     public static final int DEFAULT_CRUSHING_TIME = 200;
 
     public CrusherRecipe {
-        if (auxOutput.isEmpty()) {
-            auxOutput = Optional.empty();
+        if (auxiliaryOutput.isEmpty()) {
+            auxiliaryOutput = Optional.empty();
         }
     }
 
@@ -92,7 +92,7 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
             // Optional auxiliary output is now the 4th parameter
             ItemStack.CODEC.optionalFieldOf("auxiliary_result", ItemStack.EMPTY)
                 .xmap(Optional::of, opt -> opt.orElse(ItemStack.EMPTY))
-                .forGetter(CrusherRecipe::auxOutput)
+                .forGetter(CrusherRecipe::auxiliaryOutput)
             ).apply(inst, CrusherRecipe::new));
 
         public static final PacketCodec<RegistryByteBuf, CrusherRecipe> STREAM_CODEC =
@@ -100,7 +100,7 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
                 Ingredient.PACKET_CODEC, CrusherRecipe::inputItem,
                 ItemStack.PACKET_CODEC, CrusherRecipe::output,
                 PacketCodecs.INTEGER, CrusherRecipe::crushingTime,
-                PacketCodecs.optional(ItemStack.OPTIONAL_PACKET_CODEC), CrusherRecipe::auxOutput,
+                PacketCodecs.optional(ItemStack.OPTIONAL_PACKET_CODEC), CrusherRecipe::auxiliaryOutput,
                 CrusherRecipe::new);
 
         @Override
