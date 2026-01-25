@@ -1,4 +1,3 @@
-
 package anya.pizza.houseki.util;
 
 import anya.pizza.houseki.item.ModItems;

@@ -1,0 +1,9 @@
+{
+  "type": "houseki:crushing",
+  "crushingTime": 100,
+  "ingredient": "minecraft:stone",
+  "result": {
+    "count": 1,
+    "id": "minecraft:gravel"
+  }
+}
