@@ -43,7 +43,7 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
     /**
      * Provides the ingredients required for this recipe.
      *
-     * @return a DefaultedList of two Ingredients: first the recipe's input item, then an Ingredient of iron ingots
+     * `@return` a DefaultedList containing the recipe's input item
      */
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> list = DefaultedList.ofSize(1);
