@@ -30,16 +30,21 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
     // 2. Secondary Constructor (For DataGen/Old Recipes)
     // This allows you to call: new CrusherRecipe(input, output, time)
     /**
-     * Constructs a CrusherRecipe with the specified input, output, and crushing time, and with no auxiliary output.
+     * Creates a CrusherRecipe for the given input, primary output, and crushing time with no auxiliary output and an auxiliary chance of 1.0.
      *
      * @param inputItem    the ingredient consumed by the recipe
      * @param output       the primary result produced by the recipe
-     * @param crushingTime the time required to perform the crushing (in ticks)
+     * @param crushingTime the time required to perform the crushing, in ticks
      */
     public CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime) {
         this(inputItem, output, crushingTime, Optional.empty(), 1);
     }
 
+    /**
+     * Provides the ingredients required for this recipe.
+     *
+     * @return a DefaultedList of two Ingredients: first the recipe's input item, then an Ingredient of iron ingots
+     */
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> list = DefaultedList.ofSize(2);
         list.add(this.inputItem);
@@ -107,11 +112,21 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
                 PacketCodecs.DOUBLE, CrusherRecipe::auxiliaryChance,
                 CrusherRecipe::new);
 
+        /**
+         * MapCodec used to serialize and deserialize CrusherRecipe instances.
+         *
+         * @return the codec that encodes and decodes the recipe's fields
+         */
         @Override
         public MapCodec<CrusherRecipe> codec() {
             return CODEC;
         }
 
+        /**
+         * The packet codec used to serialize and deserialize CrusherRecipe instances to and from RegistryByteBuf.
+         *
+         * @return the PacketCodec that encodes and decodes CrusherRecipe objects for network transmission via RegistryByteBuf
+         */
         @Override
         public PacketCodec<RegistryByteBuf, CrusherRecipe> packetCodec() {
             return STREAM_CODEC;

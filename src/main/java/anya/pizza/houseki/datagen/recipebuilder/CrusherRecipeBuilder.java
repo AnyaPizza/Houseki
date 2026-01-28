@@ -38,16 +38,36 @@ public class CrusherRecipeBuilder implements CraftingRecipeJsonBuilder {
         return new CrusherRecipeBuilder(input, output, crushingTime);
     }
 
+    /**
+     * Set the optional auxiliary output produced by the crusher.
+     *
+     * @param stack the ItemStack to use as the auxiliary (secondary) output
+     * @return      this builder instance for method chaining
+     */
     public CrusherRecipeBuilder auxiliary(ItemStack stack) {
         this.auxiliaryOutput = Optional.of(stack);
         return this;
     }
 
+    /**
+     * Set the chance for producing the auxiliary output in the built recipe.
+     *
+     * @param chance the chance value used to determine auxiliary output occurrence
+     * @return this builder instance
+     */
     public CrusherRecipeBuilder chance(int chance) {
         this.auxiliaryChance = chance;
         return this;
     }
 
+    /**
+     * Builds the recipe's advancement (including stored criteria and rewards), constructs a
+     * CrusherRecipe with the configured input, output, crushing time, optional auxiliary output,
+     * and auxiliary chance, and submits both to the provided RecipeExporter under the given key.
+     *
+     * @param exporter  the exporter that will receive the recipe and associated advancement
+     * @param recipeKey the registry key under which the recipe will be exported
+     */
     public void offerTo(RecipeExporter exporter, RegistryKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.getAdvancementBuilder()
                 .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeKey))
