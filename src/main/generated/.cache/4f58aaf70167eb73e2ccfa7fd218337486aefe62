@@ -1,10 +1,10 @@
-// 1.21.3	2026-01-24T21:13:57.9904669	Houseki/Tags for minecraft:item
+// 1.21.3	2026-01-28T19:26:40.0615783	Houseki/Tags for minecraft:item
 44eb4cde884f125456f6f4ca88ca281efcfd7e6a data\minecraft\tags\item\beacon_payment_items.json
 0abf6bc4fd1bbd922e4392a26f9f70a2435220e0 data\minecraft\tags\item\pickaxes.json
 73bdd176eb33f5f1e50e46700e0a9b6c0ecfdde5 data\houseki\tags\item\mob_armors.json
 123d7ede088174cc86c0999ea8c62416a061bd1a data\minecraft\tags\item\leg_armor.json
-d15b1dee26ffaae8288abd329b7ef871d2256066 data\minecraft\tags\item\axes.json
 d3a08548693c01798d7cf7f35284d9e55fc2de6f data\houseki\tags\item\pinku_repair.json
+d15b1dee26ffaae8288abd329b7ef871d2256066 data\minecraft\tags\item\axes.json
 e3b8ced28931d9fafd5a38581581db6f0624962c data\minecraft\tags\item\hoes.json
 4a1d458e1169df560146525809f13f20bece6f41 data\houseki\tags\item\drills.json
 951a13aaad7fc49196355557da57962ad5e81e0a data\houseki\tags\item\smithing_templates.json

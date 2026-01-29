@@ -24,9 +24,10 @@ public class CrusherRecipeBuilder implements CraftingRecipeJsonBuilder {
     private final ItemStack output;
     private final int crushingTime;
     private Optional<ItemStack> auxiliaryOutput = Optional.empty();
+    private double auxiliaryChance = 1;
     private final Map<String, AdvancementCriterion<?>> criteria = new LinkedHashMap<>();
     @Nullable
-    private String group;
+    public String group;
 
     public CrusherRecipeBuilder(Ingredient input, ItemStack output, int crushingTime) {
         this.input = input;
@@ -43,6 +44,11 @@ public class CrusherRecipeBuilder implements CraftingRecipeJsonBuilder {
         return this;
     }
 
+    public CrusherRecipeBuilder chance(double chance) {
+        this.auxiliaryChance = chance;
+        return this;
+    }
+
     public void offerTo(RecipeExporter exporter, RegistryKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.getAdvancementBuilder()
                 .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeKey))
@@ -51,7 +57,7 @@ public class CrusherRecipeBuilder implements CraftingRecipeJsonBuilder {
         this.criteria.forEach(advancement::criterion);
 
         // Create an instance of your recipe record
-        CrusherRecipe recipe = new CrusherRecipe(input, output, crushingTime, auxiliaryOutput);
+        CrusherRecipe recipe = new CrusherRecipe(input, output, crushingTime, auxiliaryOutput, auxiliaryChance);
 
         // Export it using the built-in exporter
         exporter.accept(recipeKey, recipe, null);

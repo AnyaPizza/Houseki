@@ -128,7 +128,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         maxFuelTime = nbt.getInt("max_fuel_time");
     }
 
-
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) return;
 
@@ -209,10 +208,13 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     }
 
     /**
-     * Executes the currently matched crusher recipe: adds the recipe's main output to the output slot,
-     * adds the optional auxiliary output to the auxiliary output slot if present, and consumes one input.
+     * Apply the currently matched crusher recipe: produce the recipe's main output, optionally produce
+     * the auxiliary output based on its chance, and consume one input item.
      *
-     * If no matching recipe is available, no changes are made.
+     * If no matching recipe is available, the method makes no changes. The main output is always
+     * inserted (or stacked) into the main output slot; the auxiliary output is inserted only if the
+     * recipe provides one and its configured chance succeeds. One item is removed from the input slot
+     * when a recipe is applied.
      */
     private void craftItem() {
         Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
@@ -221,27 +223,29 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         CrusherRecipe crusherRecipe = recipe.get().value();
 
         // Handle Main Output
-        insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy());
+        insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy(), 1.0);
 
         // Handle Auxiliary Output
         crusherRecipe.auxiliaryOutput().ifPresent(stack -> {
-            insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy());
+            insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy(), crusherRecipe.auxiliaryChance());
         });
 
         inventory.get(INPUT_SLOT).decrement(1);
     }
 
     /**
-     * Inserts the provided ItemStack into the specified inventory slot, merging with the existing stack if present.
-     *
-     * If `result` is empty this method has no effect. If the target slot is empty the `result` is placed there;
-     * otherwise the existing stack's count is increased by `result.getCount()`.
-     *
-     * @param slot   the index of the target inventory slot
-     * @param result the ItemStack to insert or merge into the slot
-     */
-    private void insertOrIncrement(int slot, ItemStack result) {
-        if (result.isEmpty()) return;
+         * Conditionally insert or merge an ItemStack into the given inventory slot.
+         *
+         * If `result` is empty nothing is changed. When the probabilistic check against `chance` succeeds,
+         * the method places `result` into the slot if it is empty, or increases the existing stack's count by
+         * `result.getCount()` if the slot already contains the same item.
+         *
+         * @param slot   the index of the target inventory slot
+         * @param result the ItemStack to insert or merge into the slot
+         * @param chance a probability in the range [0, 1] that the insertion will occur
+         */
+    private void insertOrIncrement(int slot, ItemStack result, double chance) {
+        if (result.isEmpty() || Math.random() > chance) return;
         ItemStack slotStack = inventory.get(slot);
         if (slotStack.isEmpty()) {
             inventory.set(slot, result);
