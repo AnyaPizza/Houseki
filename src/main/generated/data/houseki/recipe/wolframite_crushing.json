@@ -1,5 +1,6 @@
 {
   "type": "houseki:crushing",
+  "auxiliary_chance": 0.5,
   "auxiliary_result": {
     "count": 1,
     "id": "minecraft:quartz"

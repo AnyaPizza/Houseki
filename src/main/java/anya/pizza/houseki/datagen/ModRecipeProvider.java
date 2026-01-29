@@ -48,13 +48,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemConvertible> CAST_STEEL_SMELTABLES = List.of(ModItems.STEEL);
 
                 //Crushing recipes with auxiliary output
-                CrusherRecipeBuilder.create(Ingredient.ofItems(ModBlocks.BAUXITE), new ItemStack(ModItems.CRUSHED_BAUXITE), 250)
+                CrusherRecipeBuilder.create(Ingredient.ofItems(ModBlocks.BAUXITE), new ItemStack(ModItems.CRUSHED_BAUXITE), 250).chance(0.5)
                         .auxiliary(new ItemStack(Items.CLAY)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "bauxite_crushing")));
 
-                CrusherRecipeBuilder.create(Ingredient.ofItems(Items.SANDSTONE), new ItemStack(Items.SAND), 100)
+                CrusherRecipeBuilder.create(Ingredient.ofItems(Items.SANDSTONE), new ItemStack(Items.SAND), 100).chance(0.2)
                         .auxiliary(new ItemStack(Items.CALCITE)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "sandstone_crushing")));
 
-                CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.WOLFRAMITE), new ItemStack(ModItems.TUNGSTEN), 250)
+                CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.WOLFRAMITE), new ItemStack(ModItems.TUNGSTEN), 250).chance(0.5)
                         .auxiliary(new ItemStack(Items.QUARTZ)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "wolframite_crushing")));
 
                 // Crushing recipes WITHOUT an auxiliary output (it will default to Optional.empty())

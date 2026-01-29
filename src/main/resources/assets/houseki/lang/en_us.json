@@ -202,6 +202,8 @@
 
   "tag.item.houseki.drills": "Drills",
   "tag.item.houseki.drill_bits": "Drill Bits",
+  "tag.item.houseki.premium_drill_mineable": "Premium Drill Mineable",
+  "tag.item.houseki.enhanced_drill_mineable": "Enhanced Drill Mineable",
   "tag.item.houseki.smithing_templates": "Smithing Templates",
   "tag.item.houseki.pinku_repair": "Pinku Repairable",
   "tag.item.houseki.rainbow_repair": "Rainbow Pyrite Repairable",
@@ -215,6 +217,7 @@
   "tag.item.houseki.cast_steel_repair": "Cast Steel Repairable",
   "tag.item.houseki.diamond_repair": "Diamond Repairable",
   "tag.item.houseki.armor": "Houseki Armor",
+  "tag.item.houseki.mob_armors": "Mob Armors",
 
   "item.houseki.smithing_template.pinku_upgrade.applies_to": "Netherite Equipment",
   "item.houseki.smithing_template.pinku_upgrade.ingredients": "Pinku",
