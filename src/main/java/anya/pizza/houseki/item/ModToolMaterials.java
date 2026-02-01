@@ -1,7 +1,7 @@
 package anya.pizza.houseki.item;
 
 import anya.pizza.houseki.util.ModTags;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.world.item.ToolMaterial;
 
 public class ModToolMaterials {
     public static ToolMaterial PINKU = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_PINKU_TOOL, 2580, 10, 5, 16, ModTags.Items.PINKU_REPAIR);

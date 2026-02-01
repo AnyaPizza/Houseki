@@ -2,27 +2,27 @@ package anya.pizza.houseki.screen.custom;
 
 import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import anya.pizza.houseki.recipe.CrusherRecipeInput;
-import anya.pizza.houseki.recipe.ModRecipes;
+import anya.pizza.houseki.recipe.ModTypes;
 import anya.pizza.houseki.screen.ModScreenHandlers;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.ArrayPropertyDelegate;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.inventory.SimpleContainerData;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.BlockPos;
 
-public class CrusherScreenHandler extends ScreenHandler {
-    private final Inventory inventory;
-    private final PropertyDelegate propertyDelegate;
+public class CrusherScreenHandler extends AbstractContainerMenu {
+    private final Container inventory;
+    private final ContainerData propertyDelegate;
     public final CrusherBlockEntity blockEntity;
 
-    public CrusherScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(5));
+    public CrusherScreenHandler(int syncId, Inventory inventory, BlockPos pos) {
+        this(syncId, inventory, inventory.player.level().getBlockEntity(pos), new SimpleContainerData(5));
     }
 
     /**
@@ -33,30 +33,30 @@ public class CrusherScreenHandler extends ScreenHandler {
      * @param blockEntity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a CrusherBlockEntity
      * @param arrayPropertyDelegate the PropertyDelegate used to synchronize progress, fuel, and related GUI properties
      */
-    public CrusherScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
+    public CrusherScreenHandler(int syncId, Inventory playerInventory, BlockEntity blockEntity, ContainerData arrayPropertyDelegate) {
         super(ModScreenHandlers.CRUSHER_SCREEN_HANDLER, syncId);
-        checkSize((Inventory) blockEntity, 4);
-        this.inventory = (Inventory) blockEntity;
+        checkContainerSize((Container) blockEntity, 4);
+        this.inventory = (Container) blockEntity;
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = (CrusherBlockEntity) blockEntity;
         this.addSlot(new Slot(inventory, 0, 35, -5)); //Input Slot
         this.addSlot(new Slot(inventory, 1, 13, 41)); //Fuel Slot
         this.addSlot(new Slot(inventory, 2, 115, 30) { //Output Slot
             @Override
-            public boolean canInsert(ItemStack stack) {
+            public boolean mayPlace(ItemStack stack) {
                 return false;
             }
         });
         this.addSlot(new Slot(inventory, 3, 137, 30) { //Auxiliary Slot
             @Override
-            public boolean canInsert(ItemStack stack) {
+            public boolean mayPlace(ItemStack stack) {
                 return false; //Makes output slot read-only
             }
         });
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
-        addProperties(arrayPropertyDelegate);
+        addDataSlots(arrayPropertyDelegate);
     }
 
     public boolean isBurning() {
@@ -83,28 +83,28 @@ public class CrusherScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack quickMove(PlayerEntity player, int invSlot) {
+    public ItemStack quickMoveStack(Player player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
-        if (slot != null && slot.hasStack()) {
-            ItemStack originalStack = slot.getStack();
+        if (slot != null && slot.hasItem()) {
+            ItemStack originalStack = slot.getItem();
             newStack = originalStack.copy();
-            if (invSlot < inventory.size()) {
-                if (!insertItem(originalStack, inventory.size(), slots.size(), true)) {
+            if (invSlot < inventory.getContainerSize()) {
+                if (!moveItemStackTo(originalStack, inventory.getContainerSize(), slots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
             } else {
                 if (blockEntity.getFuelTime(originalStack) > 0) {
-                    if (!insertItem(originalStack, 1, 2, false)) {
+                    if (!moveItemStackTo(originalStack, 1, 2, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (blockEntity.getWorld() instanceof ServerWorld serverWorld) {
+                } else if (blockEntity.getLevel() instanceof ServerLevel serverWorld) {
                     CrusherRecipeInput recipeInput = new CrusherRecipeInput(originalStack);
-                    boolean hasCrusherRecipe = serverWorld.getRecipeManager()
-                            .getFirstMatch(ModRecipes.CRUSHER_TYPE, recipeInput, serverWorld)
+                    boolean hasCrusherRecipe = serverWorld.recipeAccess()
+                            .getRecipeFor(ModTypes.CRUSHER_TYPE, recipeInput, serverWorld)
                             .isPresent();
                     if (hasCrusherRecipe) {
-                        if (!insertItem(originalStack, 0, 1, false)) {
+                        if (!moveItemStackTo(originalStack, 0, 1, false)) {
                             return ItemStack.EMPTY;
                         }
                     } else {
@@ -115,20 +115,20 @@ public class CrusherScreenHandler extends ScreenHandler {
                 }
             }
             if (originalStack.isEmpty()) {
-                slot.setStack(ItemStack.EMPTY);
+                slot.setByPlayer(ItemStack.EMPTY);
             } else {
-                slot.markDirty();
+                slot.setChanged();
             }
         }
         return newStack;
     }
 
     @Override
-    public boolean canUse(PlayerEntity player) {
-        return inventory.canPlayerUse(player);
+    public boolean stillValid(Player player) {
+        return inventory.stillValid(player);
     }
 
-    private void addPlayerInventory(PlayerInventory playerInventory) {
+    private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
                 this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
@@ -136,13 +136,13 @@ public class CrusherScreenHandler extends ScreenHandler {
         }
     }
 
-    private void addPlayerHotbar(PlayerInventory playerInventory) {
+    private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
 
-    public PropertyDelegate getPropertyDelegate() {
+    public ContainerData getPropertyDelegate() {
         return propertyDelegate;
     }
 }

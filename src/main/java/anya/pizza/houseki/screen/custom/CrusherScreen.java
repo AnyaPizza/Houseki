@@ -1,61 +1,61 @@
 package anya.pizza.houseki.screen.custom;
 
 import anya.pizza.houseki.Houseki;
-import net.minecraft.client.gl.RenderPipelines;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 
-public class CrusherScreen extends HandledScreen<CrusherScreenHandler> {
-    private static final Identifier GUI_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/crusher/crusher_gui.png");
-    private static final Identifier ARROW_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/crusher/crush_progress.png");
-    private static final Identifier CRUSHING_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/crusher/crushing_progress.png");
+public class CrusherScreen extends AbstractContainerScreen<CrusherScreenHandler> {
+    private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "textures/gui/crusher/crusher_gui.png");
+    private static final Identifier ARROW_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "textures/gui/crusher/crush_progress.png");
+    private static final Identifier CRUSHING_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "textures/gui/crusher/crushing_progress.png");
 
-    public CrusherScreen(CrusherScreenHandler handler, PlayerInventory inventory, Text title) {
+    public CrusherScreen(CrusherScreenHandler handler, Inventory inventory, Component title/*, int imageWidth, int imageHeight*/) {
         super(handler, inventory, title);
-        backgroundWidth = 176;
-        backgroundHeight = 176;
+        //imageWidth = 176;
+        //imageHeight = 176;
     }
 
     @Override
     protected void init() {
         super.init();
-        titleX = 114;
-        titleY = -4;
-        backgroundHeight = 196;
+        titleLabelX = 114;
+        titleLabelY = -4;
+        //imageHeight = 196;
     }
 
     @Override
-    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2;
+    protected void renderBg(GuiGraphics context, float delta, int mouseX, int mouseY) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
 
-        context.drawTexture(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, 176, 176, 256, 256);
+        context.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, 176, 176, 256, 256);
         renderProgressArrow(context, x, y);
         renderProgressCrushing(context, x, y);
     }
 
-    private void renderProgressArrow(DrawContext context, int x, int y) {
-        if(handler.getPropertyDelegate().get(0) > 0 && handler.isCrafting()) {
-            context.drawTexture(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE, x + 79, y + 39, 0, 0,
-                    handler.getScaledArrowProgress(), 16, 24, 16);
+    private void renderProgressArrow(GuiGraphics context, int x, int y) {
+        if(menu.getPropertyDelegate().get(0) > 0 && menu.isCrafting()) {
+            context.blit(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE, x + 79, y + 39, 0, 0,
+                    menu.getScaledArrowProgress(), 16, 24, 16);
         }
     }
 
-    private void renderProgressCrushing(DrawContext context, int x, int y) {
-        if (handler.isBurning()) {
-            int progress = handler.getScaledFuelProgress();
-            context.drawTexture(RenderPipelines.GUI_TEXTURED, CRUSHING_TEXTURE, x + 5, y + 69 - progress, 0,
+    private void renderProgressCrushing(GuiGraphics context, int x, int y) {
+        if (menu.isBurning()) {
+            int progress = menu.getScaledFuelProgress();
+            context.blit(RenderPipelines.GUI_TEXTURED, CRUSHING_TEXTURE, x + 5, y + 69 - progress, 0,
                     20 - progress, 6, progress, 6, 20);
         }
     }
 
     @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+    public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
         renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
-        drawMouseoverTooltip(context, mouseX, mouseY);
+        renderTooltip(context, mouseX, mouseY);
     }
 }

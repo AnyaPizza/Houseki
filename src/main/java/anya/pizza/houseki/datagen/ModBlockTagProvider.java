@@ -2,22 +2,22 @@ package anya.pizza.houseki.datagen;
 
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.util.ModTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockTags;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
-    public ModBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
+    public ModBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @Override
-    protected void configure(RegistryWrapper.@NonNull WrapperLookup wrapperLookup) {
-        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
+    protected void addTags(HolderLookup.@NonNull Provider wrapperLookup) {
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_RAINBOW_PYRITE)
                 .add(ModBlocks.PINKU_ORE)
@@ -158,12 +158,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SLATE_TILE_SLAB);
 
         valueLookupBuilder(ModTags.Blocks.PREMIUM_DRILL_MINEABLE)
-                .addTag(BlockTags.PICKAXE_MINEABLE)
-                .addOptionalTag(BlockTags.SHOVEL_MINEABLE)
-                .addOptionalTag(BlockTags.AXE_MINEABLE);
+                .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addOptionalTag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .addOptionalTag(BlockTags.MINEABLE_WITH_AXE);
 
         valueLookupBuilder(ModTags.Blocks.ENHANCED_DRILL_MINEABLE)
-                .addTag(BlockTags.PICKAXE_MINEABLE)
-                .addOptionalTag(BlockTags.SHOVEL_MINEABLE);
+                .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addOptionalTag(BlockTags.MINEABLE_WITH_SHOVEL);
     }
 }

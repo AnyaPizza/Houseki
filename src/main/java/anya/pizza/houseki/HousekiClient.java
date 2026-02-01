@@ -4,20 +4,20 @@ import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.screen.ModScreenHandlers;
 import anya.pizza.houseki.screen.custom.CrusherScreen;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
-import net.minecraft.client.gui.screen.ingame.HandledScreens;
-import net.minecraft.client.render.BlockRenderLayer;
+import net.fabricmc.fabric.api.client.rendering.v1.ChunkSectionLayerMap;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 
 public class HousekiClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        HandledScreens.register(ModScreenHandlers.CRUSHER_SCREEN_HANDLER, CrusherScreen::new);
+        MenuScreens.register(ModScreenHandlers.CRUSHER_SCREEN_HANDLER, CrusherScreen::new);
 
-        BlockRenderLayerMap.putBlock(ModBlocks.ALUMINUM_GLASS, BlockRenderLayer.TRANSLUCENT);
-        BlockRenderLayerMap.putBlock(ModBlocks.ALUMINUM_GLASS_PANE, BlockRenderLayer.TRANSLUCENT);
-        BlockRenderLayerMap.putBlock(ModBlocks.ALUMINUM_DOOR, BlockRenderLayer.CUTOUT);
-        BlockRenderLayerMap.putBlock(ModBlocks.ALUMINUM_TRAPDOOR, BlockRenderLayer.CUTOUT);
+        ChunkSectionLayerMap.putBlock(ModBlocks.ALUMINUM_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        ChunkSectionLayerMap.putBlock(ModBlocks.ALUMINUM_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        ChunkSectionLayerMap.putBlock(ModBlocks.ALUMINUM_DOOR, ChunkSectionLayer.CUTOUT);
+        ChunkSectionLayerMap.putBlock(ModBlocks.ALUMINUM_TRAPDOOR, ChunkSectionLayer.CUTOUT);
 
     }
 }

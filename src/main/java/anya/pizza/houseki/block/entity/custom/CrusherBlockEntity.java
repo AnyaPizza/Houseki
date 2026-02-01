@@ -5,46 +5,47 @@ import anya.pizza.houseki.block.entity.ImplementedInventory;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.recipe.CrusherRecipe;
 import anya.pizza.houseki.recipe.CrusherRecipeInput;
-import anya.pizza.houseki.recipe.ModRecipes;
+import anya.pizza.houseki.recipe.ModSerializer;
+import anya.pizza.houseki.recipe.ModTypes;
 import anya.pizza.houseki.screen.custom.CrusherScreenHandler;
-import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventories;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.storage.ReadView;
-import net.minecraft.storage.WriteView;
-import net.minecraft.text.Text;
-import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
+import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.Containers;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
-public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPos>, ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
+public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedInventory {
+    private final NonNullList<ItemStack> inventory = NonNullList.withSize(4, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
     private static final int FUEL_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;
     private static final int AUXILIARY_OUTPUT_SLOT = 3;
 
-    protected final PropertyDelegate propertyDelegate;
+    protected final ContainerData propertyDelegate;
     private int progress = 0;
     private int maxProgress = CrusherRecipe.DEFAULT_CRUSHING_TIME;
     private int fuelTime = 0;
@@ -55,7 +56,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     public CrusherBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CRUSHER_BE, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
+        this.propertyDelegate = new ContainerData() {
             @Override
             public int get(int index) {
                 return switch (index) {
@@ -79,47 +80,48 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             }
 
             @Override
-            public int size() {
+            public int getCount() {
                 return 5;
             }
         };
     }
 
     public int getFuelTime(ItemStack fuel) {
-        return fuel.isOf(Items.IRON_INGOT) ? 1600 : 0;
+        return fuel.is(Items.IRON_INGOT) ? 1600 : 0;
     }
 
     @Override
-    public DefaultedList<ItemStack> getItems() {
+    public NonNullList<ItemStack> getItems() {
         return inventory;
     }
 
     @Override
-    public BlockPos getScreenOpeningData(@NonNull ServerPlayerEntity serverPlayerEntity) {
-        return this.pos;
+    public BlockPos getScreenOpeningData(@NonNull ServerPlayer serverPlayerEntity) {
+        return this.worldPosition;
     }
 
     @Override
-    public Text getDisplayName() {
-        return Text.translatable("gui.houseki.crusher");
+    public @NonNull Component getDisplayName() {
+        return Component.translatable("gui.houseki.crusher");
     }
 
     @Nullable
     @Override
-    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int syncId, @NonNull Inventory playerInventory, @NonNull Player player) {
         return new CrusherScreenHandler(syncId, playerInventory, this, propertyDelegate);
     }
 
     @Override
-    public void onBlockReplaced(BlockPos pos, BlockState oldState) {
-        ItemScatterer.spawn(world, pos, (this));
-        super.onBlockReplaced(pos, oldState);
+    public void preRemoveSideEffects(@NonNull BlockPos pos, @NonNull BlockState oldState) {
+        assert level != null;
+        Containers.dropContents(level, pos, (this));
+        super.preRemoveSideEffects(pos, oldState);
     }
 
     @Override
-    protected void writeData(WriteView view) {
-        super.writeData(view);
-        Inventories.writeData(view, inventory);
+    protected void saveAdditional(@NonNull ValueOutput view) {
+        super.saveAdditional(view);
+        ContainerHelper.saveAllItems(view, inventory);
         view.putInt("progress", progress);
         view.putInt("max_progress", maxProgress);
         view.putInt("fuel_time", fuelTime);
@@ -127,22 +129,22 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     }
 
     @Override
-    protected void readData(ReadView view) {
-        super.readData(view);
-        Inventories.readData(view, inventory);
-        progress = view.getInt("progress", 0);
-        maxProgress = view.getInt("max_progress", 0);
-        fuelTime = view.getInt("fuel_time", 0);
-        maxFuelTime = view.getInt("max_fuel_time", 0);
+    protected void loadAdditional(@NonNull ValueInput view) {
+        super.loadAdditional(view);
+        ContainerHelper.loadAllItems(view, inventory);
+        progress = view.getIntOr("progress", 0);
+        maxProgress = view.getIntOr("max_progress", 0);
+        fuelTime = view.getIntOr("fuel_time", 0);
+        maxFuelTime = view.getIntOr("max_fuel_time", 0);
     }
 
-    public void tick(World world, BlockPos pos, BlockState state) {
-        if (world.isClient()) return;
+    public void tick(Level world, BlockPos pos, BlockState state) {
+        if (world.isClientSide()) return;
 
         boolean dirty = false;
         ItemStack input = inventory.getFirst();
 
-        if(!ItemStack.areItemsAndComponentsEqual(input, lastInput)) {
+        if(!ItemStack.isSameItemSameComponents(input, lastInput)) {
             lastInput = input.copy();
             updateMaxProgress(world);
             if (progress > 0 && !canCraft()) {
@@ -160,7 +162,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             int fuelVal = getFuelTime(fuelStack);
             if (fuelVal > 0) {
                 fuelTime = maxFuelTime = fuelVal;
-                fuelStack.decrement(1);
+                fuelStack.shrink(1);
                 dirty = true;
             }
         }
@@ -169,7 +171,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         boolean canCraftNow = fuelTime > 0 && canCraft();
         isCrafting = canCraftNow || (fuelTime > 0 && progress > 0);
 
-        world.setBlockState(pos, state.with(CrusherBlock.LIT, fuelTime > 0));
+        world.setBlockAndUpdate(pos, state.setValue(CrusherBlock.LIT, fuelTime > 0));
 
         if (canCraftNow) {
             progress++;
@@ -179,17 +181,17 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
                 progress = 0;
             }
         }
-        if (dirty) markDirty(world, pos, state);
+        if (dirty) setChanged(world, pos, state);
     }
 
-    private void updateMaxProgress(World world) {
-        Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
+    private void updateMaxProgress(Level world) {
+        Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         maxProgress = recipe.map(entry -> entry.value().crushingTime())
                 .orElse(CrusherRecipe.DEFAULT_CRUSHING_TIME);
     }
 
     private boolean canCraft() {
-        Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
+        Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return false;
 
         CrusherRecipe crusherRecipe = recipe.get().value();
@@ -210,8 +212,8 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private boolean canInsertIntoSlot(int slot, ItemStack stack) {
         if (stack.isEmpty()) return true;
         ItemStack slotStack = inventory.get(slot);
-        int maxCount = slotStack.isEmpty() ? stack.getMaxCount() : slotStack.getMaxCount();
-        return (slotStack.isEmpty() || ItemStack.areItemsAndComponentsEqual(slotStack, stack))
+        int maxCount = slotStack.isEmpty() ? stack.getMaxStackSize() : slotStack.getMaxStackSize();
+        return (slotStack.isEmpty() || ItemStack.isSameItemSameComponents(slotStack, stack))
             && slotStack.getCount() + stack.getCount() <= maxCount;
     }
 
@@ -225,7 +227,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
      * when a recipe is applied.
      */
     private void craftItem() {
-        Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
+        Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return;
 
         CrusherRecipe crusherRecipe = recipe.get().value();
@@ -238,7 +240,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy(), crusherRecipe.auxiliaryChance());
         });
 
-        inventory.get(INPUT_SLOT).decrement(1);
+        inventory.get(INPUT_SLOT).shrink(1);
     }
 
     /**
@@ -258,48 +260,53 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         if (slotStack.isEmpty()) {
             inventory.set(slot, result);
         } else {
-            slotStack.increment(result.getCount());
+            slotStack.grow(result.getCount());
         }
     }
 
-    private Optional<RecipeEntry<CrusherRecipe>> getCurrentRecipe() {
-        return ((ServerWorld) this.getWorld()).getRecipeManager()
-                .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), this.getWorld());
+    private Optional<RecipeHolder<CrusherRecipe>> getCurrentRecipe() {
+        assert this.getLevel() != null;
+        return ((ServerLevel) this.getLevel()).recipeAccess()
+                .getRecipeFor(ModTypes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), this.getLevel());
 
     }
 
     @Override
-    public int[] getAvailableSlots(Direction side) {
+    public int @NonNull [] getSlotsForFace(@NonNull Direction side) {
         return side == Direction.DOWN ? new int[]{OUTPUT_SLOT, AUXILIARY_OUTPUT_SLOT} : new int[]{INPUT_SLOT, FUEL_SLOT};
     }
 
     @Override
-    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
+    public boolean canPlaceItemThroughFace(int slot, @NonNull ItemStack stack, @Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
-        if (slot == INPUT_SLOT) ((ServerWorld) this.getWorld()).getRecipeManager()
-                .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(stack), world).isPresent();
+        if (slot == INPUT_SLOT) {
+            assert this.getLevel() != null;
+            assert level != null;
+            ((ServerLevel) this.getLevel()).recipeAccess()
+                    .getRecipeFor(ModTypes.CRUSHER_TYPE, new CrusherRecipeInput(stack), level).isPresent();
+        }
         return false;
     }
 
     @Override
-    public boolean canExtract(int slot, ItemStack stack, Direction side) {
+    public boolean canTakeItemThroughFace(int slot, @NonNull ItemStack stack, @NonNull Direction side) {
         return slot == OUTPUT_SLOT || slot == AUXILIARY_OUTPUT_SLOT;
     }
 
     @Nullable
     @Override
-    public Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override
-    public boolean canPlayerUse(PlayerEntity player) {
-        return pos.isWithinDistance(pos, 4.5);
+    public boolean stillValid(@NonNull Player player) {
+        return worldPosition.closerThan(worldPosition, 4.5);
     }
 
     @Override
-    public void clear() {
+    public void clearContent() {
         inventory.clear();
-        markDirty();
+        setChanged();
     }
 }
