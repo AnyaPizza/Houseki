@@ -9,6 +9,13 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 
 public class HousekiClient implements ClientModInitializer {
+    /**
+     * Initializes client-side resources by registering screens and configuring block render layers.
+     *
+     * Registers the Crusher GUI for its screen handler and maps render layers:
+     * - ALUMINUM_GLASS and ALUMINUM_GLASS_PANE -> translucent
+     * - ALUMINUM_DOOR and ALUMINUM_TRAPDOOR -> cutout
+     */
     @Override
     public void onInitializeClient() {
 

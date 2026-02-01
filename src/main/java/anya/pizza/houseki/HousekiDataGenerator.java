@@ -9,6 +9,14 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 
 public class HousekiDataGenerator implements DataGeneratorEntrypoint {
+	/**
+	 * Create a data pack from the given FabricDataGenerator and register the mod's data providers.
+	 *
+	 * The method creates a new pack and adds providers responsible for block and item tags,
+	 * loot tables, models, recipes, and registry data so those assets are generated for the mod.
+	 *
+	 * @param fabricDataGenerator the FabricDataGenerator used to create the pack and register providers
+	 */
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
@@ -21,6 +29,11 @@ public class HousekiDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModRegistryDataGenerator::new);
 	}
 
+	/**
+	 * Registers bootstrap suppliers for configured and placed world-generation features into the given registry builder.
+	 *
+	 * @param registryBuilder the registry set builder to receive the configured-feature and placed-feature bootstraps
+	 */
 	@Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);

@@ -12,10 +12,24 @@ import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TexturedModel;
 
 public class ModModelProvider extends FabricModelProvider {
+    /**
+     * Creates a ModModelProvider backed by the given pack output.
+     *
+     * @param output the FabricPackOutput to write generated model and asset files to
+     */
     public ModModelProvider(FabricPackOutput output) {
         super(output);
     }
 
+    /**
+     * Generates block state and model definitions for this mod's blocks.
+     *
+     * Registers cube models for ores and storage blocks, glass panes, doors, trapdoors,
+     * an orientable furnace (crusher), and family-derived stairs, slabs, and walls
+     * for limestone and slate block families.
+     *
+     * @param blockStateModelGenerator the model generator used to create block models and families
+     */
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
         blockStateModelGenerator.createTrivialCube(ModBlocks.PINKU_ORE);
@@ -76,6 +90,11 @@ public class ModModelProvider extends FabricModelProvider {
         polishedSlatePool.wall(ModBlocks.POLISHED_SLATE_WALL);
     }
 
+    /**
+     * Registers item model templates for all mod items (flat, handheld, trimmable, horse, and nautilus variants).
+     *
+     * @param itemModelGenerator generator used to create item models and trim variants
+     */
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         itemModelGenerator.generateFlatItem(ModItems.RAINBOW_PYRITE, ModelTemplates.FLAT_ITEM);

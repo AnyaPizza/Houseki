@@ -200,11 +200,23 @@ public class ModItems {
 
 
 
+    /**
+     * Register an item under the mod's namespace and return the registered instance.
+     *
+     * @param name the item's path name within the mod namespace
+     * @param function a factory that creates the Item when provided an Item.Properties preconfigured with the item's registry key
+     * @return the registered Item instance
+     */
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name),
                 function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name)))));
     }
 
+    /**
+     * Adds the mod's ingredient and material items to the Ingredients creative-mode tab.
+     *
+     * @param entries the creative tab output used to accept items into the Ingredients tab
+     */
     private static void customIngredients(FabricCreativeModeTabOutput entries) {
         entries.accept(PINKU);
         entries.accept(PINKU_SHARD);
@@ -225,6 +237,11 @@ public class ModItems {
         entries.accept(CAST_STEEL);
     }
 
+    /**
+     * Initializes mod item registration and sets up Creative Mode ingredients tab customization.
+     *
+     * Registers a callback that adds this mod's ingredient items to the INGREDIENTS creative tab and emits a startup log message.
+     */
     public static void registerModItems() {
         Houseki.LOGGER.info("Registering ModItems for " + Houseki.MOD_ID);
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(ModItems::customIngredients);

@@ -14,6 +14,11 @@ public class ModScreenHandlers {
             Registry.register(BuiltInRegistries.MENU, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "crusher_screen_handler"),
                     new ExtendedMenuProvider<>(CrusherScreenHandler::new, BlockPos.STREAM_CODEC));
 
+    /**
+     * Registers the mod's screen handler types.
+     *
+     * <p>Currently this method emits an informational log entry indicating registration for the mod ID.</p>
+     */
     public static void registerScreenHandlers() {
         Houseki.LOGGER.info("Registering Screen Handlers for " + Houseki.MOD_ID);
     }

@@ -26,10 +26,23 @@ import java.util.concurrent.CompletableFuture;
 import static anya.pizza.houseki.util.ModGenRecipes.*;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
+    /**
+     * Creates a ModRecipeProvider configured to generate this mod's recipe data.
+     *
+     * @param output           the data output target used to write generated recipe files
+     * @param registriesFuture a future providing access to registry lookups required during recipe generation
+     */
     public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
+    /**
+     * Creates a RecipeProvider that defines and registers all data-generation recipes for the mod.
+     *
+     * @param wrapperLookup a provider for registry lookups required by recipe generation
+     * @param recipeExporter the output target used to save generated recipes
+     * @return a RecipeProvider instance that implements the recipe-building logic
+     */
     @Override
     protected @NonNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider wrapperLookup, @NonNull RecipeOutput recipeExporter) {
         return new RecipeProvider(wrapperLookup, recipeExporter) {
@@ -434,6 +447,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         };
     }
 
+    /**
+     * Provides the display name for this recipe data provider.
+     *
+     * @return the provider name "Houseki Recipes"
+     */
     @Override
     public @NonNull String getName() {
         return "Houseki Recipes";

@@ -37,6 +37,14 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_BAUXITE_KEY = registerKey("ore_bauxite");
 
 
+    /**
+     * Registers the mod's configured ore generation features into the provided bootstrap context.
+     *
+     * Defines block replacement rules and corresponding OreConfiguration target lists for each ore,
+     * then registers those configured features with their cluster sizes.
+     *
+     * @param context the bootstrap context into which configured ore features will be registered
+     */
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -103,10 +111,24 @@ public class ModConfiguredFeatures {
         register(context, ORE_BAUXITE_KEY, Feature.ORE, new OreConfiguration(overworldBauxiteOre, 64));
     }
 
+    /**
+     * Creates a ResourceKey for a configured feature in this mod's namespace.
+     *
+     * @param name the path portion of the feature identifier (the name inside the mod namespace)
+     * @return the ResourceKey for the configured feature identified by the mod namespace and the given name
+     */
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name));
     }
 
+    /**
+     * Registers a configured feature into the given bootstrap context under the provided resource key.
+     *
+     * @param context the bootstrap context to register the configured feature into
+     * @param key the resource key identifying the configured feature
+     * @param feature the feature to configure
+     * @param configuration the feature's configuration
+     */
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }

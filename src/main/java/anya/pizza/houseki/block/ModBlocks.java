@@ -54,6 +54,15 @@ public class ModBlocks {
     public static final Block ALUMINUM_GLASS = registerBlock("aluminum_glass",
             properties -> new TransparentBlock(properties.instrument(NoteBlockInstrument.HAT).strength(2, 1000).sound(SoundType.GLASS)
                     .noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)) {
+                /**
+                 * Provides the block's visual shape used for camera and visual collision checks.
+                 *
+                 * @param state   the block state
+                 * @param world   the world context
+                 * @param pos     the block position
+                 * @param context the collision context
+                 * @return the `VoxelShape` representing the block's visual shape
+                 */
                 @Override
                 public @NonNull VoxelShape getVisualShape(@NonNull BlockState state, @NonNull BlockGetter world, @NonNull BlockPos pos, @NonNull CollisionContext context) {
                     return super.getVisualShape(state, world, pos, context);
@@ -62,6 +71,15 @@ public class ModBlocks {
 
     public static final Block ALUMINUM_GLASS_PANE = registerBlock("aluminum_glass_pane",
             properties -> new IronBarsBlock(properties.instrument(NoteBlockInstrument.HAT).strength(2, 1000).sound(SoundType.GLASS).noOcclusion()) {
+                /**
+                 * Provides the block's visual shape used for camera and visual collision checks.
+                 *
+                 * @param state   the block state
+                 * @param world   the world context
+                 * @param pos     the block position
+                 * @param context the collision context
+                 * @return the `VoxelShape` representing the block's visual shape
+                 */
                 @Override
                 public @NonNull VoxelShape getVisualShape(@NonNull BlockState state, @NonNull BlockGetter world, @NonNull BlockPos pos, @NonNull CollisionContext context) {
                     return super.getVisualShape(state, world, pos, context);
@@ -226,18 +244,37 @@ public class ModBlocks {
 
 
 
+    /**
+     * Creates and registers a block and its corresponding BlockItem under this mod's namespace.
+     *
+     * @param name     the block's registry path (appended to the mod ID to form its Identifier)
+     * @param function a function that receives a fresh BlockBehaviour.Properties (preconfigured with the block Identifier)
+     *                 and returns the Block instance to register
+     * @return         the Block instance registered in the block registry
+     */
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name))));
         registerBlockItem(name, toRegister);
         return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name), toRegister);
     }
 
+    /**
+     * Registers a BlockItem for the given block in the mod's item registry using the provided name.
+     *
+     * @param name  the path portion of the item's identifier (the mod namespace is applied automatically)
+     * @param block the block to expose as an item
+     */
     private static void registerBlockItem(String name, Block block) {
         Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name),
                 new BlockItem(block, new net.minecraft.world.item.Item.Properties().useBlockDescriptionPrefix()
                         .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name)))));
     }
 
+    /**
+     * Emits an informational log entry indicating that the mod's blocks have been registered.
+     *
+     * <p>Actual block instances are created and registered during class initialization; this method only records the registration event.</p>
+     */
     public static void registerModBlocks() {
         Houseki.LOGGER.info("Registering ModBlocks for " + Houseki.MOD_ID);
     }

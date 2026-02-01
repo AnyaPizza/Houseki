@@ -17,6 +17,16 @@ import java.util.Set;
 public class EDUsageEvent implements PlayerBlockBreakEvents.Before{
     private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
 
+    /**
+     * Handles enhanced drill multi-block harvesting before a block break is processed.
+     *
+     * When the player is on the server and is holding an EnhancedDrillItem, this triggers the drill's
+     * multi-block destruction behavior (e.g., a 3x3 harvest) while preventing re-entrant processing
+     * of already-harvested positions.
+     *
+     * @param blockEntity the block entity at the target position, or {@code null} if none
+     * @return `true` (normal block break processing should proceed)
+     */
     @Override
     public boolean beforeBlockBreak(Level world, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity) {
 

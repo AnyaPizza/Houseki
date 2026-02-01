@@ -24,6 +24,17 @@ public class DrillTemplateItem extends SmithingTemplateItem {
     private static final Component DRILL_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Component.translatable(Util.makeDescriptionId("item", Identifier.fromNamespaceAndPath(Houseki.MOD_ID,"smithing_template.drill_upgrade.base_slot_description")));
     private static final Component DRILL_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Component.translatable(Util.makeDescriptionId("item", Identifier.fromNamespaceAndPath(Houseki.MOD_ID,"smithing_template.drill_upgrade.additions_slot_description")));
 
+    /**
+     * Creates a DrillTemplateItem configured with the text components, empty-slot textures, and item properties used by the drill upgrade template.
+     *
+     * @param appliesToText               component describing what the upgrade applies to
+     * @param ingredientsText             component describing the upgrade's required ingredients
+     * @param baseSlotDescriptionText     component describing the base slot
+     * @param additionsSlotDescriptionText component describing the additions slot
+     * @param emptyBaseSlotTextures       identifiers for the empty textures used by the base slot
+     * @param emptyAdditionsSlotTextures  identifiers for the empty textures used by the additions slot
+     * @param settings                    item properties for this template
+     */
     public DrillTemplateItem(Component appliesToText, Component ingredientsText, Component baseSlotDescriptionText, Component additionsSlotDescriptionText, List<Identifier> emptyBaseSlotTextures, List<Identifier> emptyAdditionsSlotTextures, Properties settings) {
         super(appliesToText, ingredientsText, baseSlotDescriptionText, additionsSlotDescriptionText, emptyBaseSlotTextures, emptyAdditionsSlotTextures, settings);
     }
@@ -32,6 +43,12 @@ public class DrillTemplateItem extends SmithingTemplateItem {
     private static final Identifier EMPTY_SLOT_DRILLBIT_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "container/slot/drillbit_slot");
     private static final Identifier EMPTY_SLOT_CSTEEL_BLOCK_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "container/slot/csteel_block_slot");
 
+    /**
+     * Creates a smithing template item configured for the drill upgrade.
+     *
+     * @param settings properties to apply to the created smithing template item
+     * @return a SmithingTemplateItem preconfigured with drill-upgrade text components and slot textures
+     */
     public static SmithingTemplateItem createDrillUpgrade(Properties settings) {
         return new SmithingTemplateItem(
                 DRILL_UPGRADE_APPLIES_TO_TEXT,
@@ -44,6 +61,15 @@ public class DrillTemplateItem extends SmithingTemplateItem {
         );
     }
 
+    /**
+     * Adds drill-upgrade-specific tooltip lines: a title, an empty line, an "applies to" description, and an ingredients description.
+     *
+     * @param stack the item stack being hovered
+     * @param context the tooltip context
+     * @param displayComponent tooltip display helper used for rendering decisions
+     * @param textConsumer consumer that will receive the tooltip components
+     * @param type flags controlling which tooltip lines are shown
+     */
     @Override
     public void appendHoverText(@NonNull ItemStack stack, @NonNull TooltipContext context, @NonNull TooltipDisplay displayComponent, @NonNull Consumer<Component> textConsumer, @NonNull TooltipFlag type) {
         super.appendHoverText(stack, context, displayComponent, textConsumer, type);

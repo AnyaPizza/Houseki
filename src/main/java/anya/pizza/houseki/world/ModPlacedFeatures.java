@@ -35,6 +35,15 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_BAUXITE_PLACED_KEY = registerKey("ore_bauxite_placed");
 
 
+    /**
+     * Registers all mod placed features into the provided bootstrap context.
+     *
+     * <p>Associates configured features for the mod's ores and world features with their placement
+     * modifiers (vein counts and vertical placement ranges) and registers the resulting placed
+     * features in the given context.</p>
+     *
+     * @param context the bootstrap context used to register PlacedFeature entries
+     */
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -80,15 +89,37 @@ public class ModPlacedFeatures {
                 ModOrePlacement.modifiersWithCount(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
     }
 
+    /**
+     * Create a ResourceKey for a placed feature using this mod's namespace and the provided name.
+     *
+     * @param name the path portion of the feature identifier (resource name)
+     * @return the ResourceKey for the placed feature using the mod's namespace and the given name
+     */
     public static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name));
     }
 
+    /**
+     * Registers a placed feature in the given bootstrap context.
+     *
+     * @param context       the bootstrap context to register the placed feature into
+     * @param key           the resource key under which the placed feature will be registered
+     * @param configuration the configured feature to place
+     * @param modifiers     the placement modifiers that control how the feature is placed
+     */
     public static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,
                                 List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }
 
+    /**
+     * Registers a placed feature using a varargs list of placement modifiers.
+     *
+     * @param context the bootstrap context to register the placed feature in
+     * @param key the resource key for the placed feature
+     * @param configuration the configured feature to place
+     * @param modifiers placement modifiers that control where and how the feature is placed
+     */
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key,
                                                                                           Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
         register(context, key, configuration, List.of(modifiers));

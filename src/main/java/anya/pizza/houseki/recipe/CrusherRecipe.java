@@ -40,12 +40,24 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         this(inputItem, output, crushingTime, Optional.empty(), DEFAULT_AUXILIARY_CHANCE);
     }
 
+    /**
+     * Lists the ingredients required by this recipe.
+     *
+     * @return a NonNullList containing the single input Ingredient for this recipe
+     */
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.createWithCapacity(1);
         list.add(this.inputItem);
         return list;
     }
 
+    /**
+     * Checks whether this recipe matches the provided crusher input within the given world context.
+     *
+     * @param input the crusher input whose first slot item will be tested against this recipe's ingredient
+     * @param world the level in which the match is being evaluated; client-side checks always fail
+     * @return `true` if the recipe's ingredient matches the input's first item and the world is server-side, `false` otherwise
+     */
     @Override
     public boolean matches(CrusherRecipeInput input, Level world) {
         if (world.isClientSide()) {
@@ -58,49 +70,97 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
     public static class Type implements RecipeType<CrusherRecipe> {
         public static final Type INSTANCE = new Type();
 
-        private Type() {}
+        /**
+ * Prevents external instantiation to enforce the singleton nature of this type.
+ */
+private Type() {}
 
+        /**
+         * The fully-qualified recipe type identifier for the crusher.
+         *
+         * @return the identifier string in the format "houseki:crushing"
+         */
         @Override
         public String toString() {
             return Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "crushing").toString();
         }
     }
 
+    /**
+     * Indicates whether this recipe should display a toast notification when executed.
+     *
+     * @return `true` if a notification toast should be shown for this recipe, `false` otherwise.
+     */
     @Override
     public boolean showNotification() {
         return true;
     }
 
+    /**
+     * The recipe group identifier used to group similar recipes in the recipe book.
+     *
+     * @return the group identifier string, or an empty string if the recipe has no group
+     */
     @Override
     public String group() {
         return group();
     }
 
+    /**
+     * Produces the recipe's primary result for the given input.
+     *
+     * @return a new ItemStack equal to the recipe's primary output
+     */
     @Override
     public ItemStack assemble(CrusherRecipeInput input) {
         return output.copy();
     }
 
+    /**
+     * Provide the primary output of this recipe.
+     *
+     * @param ignoredRegistriesLookup unused registry provider retained for API compatibility
+     * @return the primary resulting ItemStack
+     */
     public ItemStack getResult(HolderLookup.Provider ignoredRegistriesLookup) {
         return output;
     }
 
+    /**
+     * Retrieves the serializer used to read and write crusher recipes.
+     *
+     * @return the registered RecipeSerializer for crusher recipes
+     */
     @Override
     public RecipeSerializer<? extends Recipe<CrusherRecipeInput>> getSerializer() {
         return ModSerializer.CRUSHER_SERIALIZER;
     }
 
+    /**
+     * The recipe type for crusher recipes.
+     *
+     * @return the registered {@link RecipeType} instance representing crusher recipes
+     */
     @Override
     public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {
         return ModTypes.CRUSHER_TYPE;
     }
 
-    //No idea if this is right but it works?
+    /**
+     * Specifies that this recipe does not support placing its ingredient into a crafting slot.
+     *
+     * @return `PlacementInfo.NOT_PLACEABLE` indicating the ingredient cannot be placed into a slot
+     */
     @Override
     public PlacementInfo placementInfo() {
         return PlacementInfo.NOT_PLACEABLE;
     }
 
+    /**
+     * Indicates which recipe book category this recipe belongs to.
+     *
+     * @return the recipe book category to display this recipe under, or `null` if the recipe should not appear in the recipe book
+     */
     @Override
     public RecipeBookCategory recipeBookCategory() {
         return null;
@@ -130,11 +190,21 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
                 ByteBufCodecs.DOUBLE, CrusherRecipe::auxiliaryChance,
                 CrusherRecipe::new);
 
+        /**
+         * Provides the MapCodec used to serialize and deserialize CrusherRecipe instances.
+         *
+         * @return the MapCodec for encoding and decoding {@code CrusherRecipe}
+         */
         @Override
         public MapCodec<CrusherRecipe> codec() {
             return CODEC;
         }
 
+        /**
+         * Provides the StreamCodec used for encoding and decoding CrusherRecipe instances to and from network buffers.
+         *
+         * @return the StreamCodec that encodes and decodes {@link CrusherRecipe} instances with {@link RegistryFriendlyByteBuf}
+         */
         @Override
         public StreamCodec<RegistryFriendlyByteBuf, CrusherRecipe> streamCodec() {
             return STREAM_CODEC;

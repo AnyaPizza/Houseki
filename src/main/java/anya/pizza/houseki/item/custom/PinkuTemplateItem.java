@@ -23,6 +23,17 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
     private static final Component PINKU_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Component.translatable(Util.makeDescriptionId("item", Identifier.fromNamespaceAndPath(Houseki.MOD_ID,"smithing_template.pinku_upgrade.base_slot_description")));
     private static final Component PINKU_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Component.translatable(Util.makeDescriptionId("item", Identifier.fromNamespaceAndPath(Houseki.MOD_ID,"smithing_template.pinku_upgrade.additions_slot_description")));
 
+    /**
+     * Creates a PinkuTemplateItem configured with its tooltip text, permitted empty-slot textures, and item properties.
+     *
+     * @param appliesToText               component describing what the upgrade applies to (shown in the tooltip)
+     * @param ingredientsText             component describing the upgrade ingredients (shown in the tooltip)
+     * @param baseSlotDescriptionText     component describing the base slot (shown in the tooltip)
+     * @param additionsSlotDescriptionText component describing the additions slot (shown in the tooltip)
+     * @param emptyBaseSlotTextures       list of texture identifiers allowed for empty base slots
+     * @param emptyAdditionsSlotTextures  list of texture identifiers allowed for empty additions slots
+     * @param settings                    item properties used to create the template item
+     */
     public PinkuTemplateItem(Component appliesToText, Component ingredientsText, Component baseSlotDescriptionText, Component additionsSlotDescriptionText, List<Identifier> emptyBaseSlotTextures, List<Identifier> emptyAdditionsSlotTextures, Properties settings) {
         super(appliesToText, ingredientsText, baseSlotDescriptionText, additionsSlotDescriptionText, emptyBaseSlotTextures, emptyAdditionsSlotTextures, settings);
     }
@@ -38,6 +49,12 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
     private static final Identifier EMPTY_SLOT_PICKAXE_TEXTURE = Identifier.withDefaultNamespace("container/slot/pickaxe");
     private static final Identifier EMPTY_SLOT_PINKU_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "container/slot/pinku_slot");
 
+    /**
+     * Create a SmithingTemplateItem configured for the Pinku upgrade.
+     *
+     * @param settings item properties used to construct the template
+     * @return the SmithingTemplateItem instance configured with Pinku texts and empty slot textures
+     */
     public static SmithingTemplateItem createPinkuUpgrade(Properties settings) {
         return new SmithingTemplateItem(
                 PINKU_UPGRADE_APPLIES_TO_TEXT,
@@ -50,6 +67,11 @@ public class PinkuTemplateItem extends SmithingTemplateItem {
         );
     }
 
+    /**
+     * Appends the Pinku upgrade title and descriptive lines to the item's tooltip after the base tooltip.
+     *
+     * @param textConsumer consumer that accepts tooltip components to be displayed
+     */
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay displayComponent, Consumer<Component> textConsumer, TooltipFlag type) {
         super.appendHoverText(stack, context, displayComponent, textConsumer, type);

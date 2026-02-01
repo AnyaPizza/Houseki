@@ -31,10 +31,23 @@ public class ModArmorItem extends Item {
                     .put(ModArmorMaterials.PLATINUM_MATERIAL, List.of(new MobEffectInstance(MobEffects.ABSORPTION, 20, 1, false, false, true)))
                     .build();
 
+    /**
+     * Creates a ModArmorItem configured with the given item properties.
+     *
+     * @param settings the item properties used to configure this armor item
+     */
     public ModArmorItem(Properties settings) {
         super(settings);
     }
 
+    /**
+     * Checks each tick on the server whether the holding entity is a player wearing a full suit of armor and, if so, evaluates and applies the corresponding armor set effects.
+     *
+     * @param stack the item stack instance
+     * @param world the server level where the tick occurs
+     * @param entity the entity holding or carrying the item
+     * @param slot the equipment slot this item occupies, or {@code null} if not applicable
+     */
     @Override
     public void inventoryTick(@NonNull ItemStack stack, ServerLevel world, @NonNull Entity entity, @Nullable EquipmentSlot slot) {
         if (!world.isClientSide()) {
@@ -47,6 +60,14 @@ public class ModArmorItem extends Item {
         super.inventoryTick(stack, world, entity, slot);
     }
 
+    /**
+     * Applies configured mob effects to the player when they are wearing the matching full armor set.
+     *
+     * For each armor material in MATERIAL_TO_EFFECT_MAP, ensures the player has that material's full armor
+     * equipped and, if so, adds the material's associated effects to the player.
+     *
+     * @param player the player to evaluate and possibly apply effects to
+     */
     private void evaluateArmorEffects(Player player) {
         for (Map.Entry<ArmorMaterial, List<MobEffectInstance>> entry : MATERIAL_TO_EFFECT_MAP.entrySet()) {
             ArmorMaterial mapArmorMaterial = entry.getKey();
@@ -58,6 +79,13 @@ public class ModArmorItem extends Item {
         }
     }
 
+    /**
+     * Applies the given mob effects to the player when they are wearing a complete armor set of the specified material and do not already have any of the effects.
+     *
+     * @param player the player to evaluate and apply effects to
+     * @param mapArmorMaterial the armor material whose full set is required to grant the effects
+     * @param mapStatusEffect the list of mob effect instances to apply (effect type, duration, amplifier, ambient flag, and visibility are used)
+     */
     private void addStatusEffectForMaterial(Player player, ArmorMaterial mapArmorMaterial, List<MobEffectInstance> mapStatusEffect) {
         boolean hasPlayerEffect = mapStatusEffect.stream().anyMatch(statusEffectInstance -> player.hasEffect(statusEffectInstance.getEffect()));
 
@@ -69,6 +97,13 @@ public class ModArmorItem extends Item {
         }
     }
 
+    /**
+     * Checks whether the player is wearing a full set of armor whose pieces all match the given material.
+     *
+     * @param material the armor material to check for on each equipped armor slot
+     * @param player   the player whose equipped armor will be inspected
+     * @return         `true` if boots, leggings, chestplate, and helmet all have the same assetId as the provided material, `false` otherwise
+     */
     private boolean hasCorrectArmorOn(ArmorMaterial material, Player player) {
         Equippable equippableComponentBoots = player.getItemBySlot(EquipmentSlot.FEET).getItem().components().get(DataComponents.EQUIPPABLE);
         Equippable equippableComponentLeggings = player.getItemBySlot(EquipmentSlot.LEGS).getItem().components().get(DataComponents.EQUIPPABLE);
@@ -79,6 +114,12 @@ public class ModArmorItem extends Item {
                 equippableComponentBreastplate.assetId().get().equals(material.assetId()) && equippableComponentHelmet.assetId().get().equals(material.assetId());
     }
 
+    /**
+     * Determines whether the player is wearing an item in all four armor slots (helmet, chestplate, leggings, boots).
+     *
+     * @param player the player to check
+     * @return `true` if helmet, chestplate, leggings, and boots slots are all non-empty; `false` otherwise
+     */
     private boolean hasFullSuitOfArmorOn(Player player) {
         ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
         ItemStack leggings = player.getItemBySlot(EquipmentSlot.LEGS);

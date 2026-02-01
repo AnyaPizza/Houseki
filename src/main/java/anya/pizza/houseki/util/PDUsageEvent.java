@@ -17,6 +17,19 @@ import java.util.Set;
 public class PDUsageEvent implements PlayerBlockBreakEvents.Before{
     private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
 
+    /**
+     * Handles PremiumDrill extra harvesting before a block is broken.
+     *
+     * When the player is using a PremiumDrillItem on the target position, attempts to destroy surrounding
+     * blocks within the drill's area of effect while tracking processed positions to avoid duplicate harvesting.
+     *
+     * @param world the level where the block break is occurring
+     * @param player the player breaking the block
+     * @param pos the position of the block being broken
+     * @param state the BlockState of the block being broken
+     * @param blockEntity the BlockEntity at the position, or null if none
+     * @return `true` if the event is handled and default processing should not continue, `false` otherwise
+     */
     @Override
     public boolean beforeBlockBreak(Level world, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity) {
 

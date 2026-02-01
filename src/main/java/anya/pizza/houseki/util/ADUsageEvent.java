@@ -17,6 +17,14 @@ import java.util.Set;
 public class ADUsageEvent implements PlayerBlockBreakEvents.Before{
     private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
 
+    /**
+     * Performs Advanced Drill area harvesting before a block is broken: when the player is a server-side player holding an AdvancedDrillItem,
+     * attempts to destroy additional valid blocks in a 5×5 area around the targeted position while preventing duplicate processing.
+     *
+     * @param pos the targeted block position that triggered this event
+     * @param blockEntity the block entity at the targeted position, or null if none (not used)
+     * @return `true` to allow the event system to continue processing
+     */
     @Override
     public boolean beforeBlockBreak(Level world, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity) {
 

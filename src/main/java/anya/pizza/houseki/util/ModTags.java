@@ -43,6 +43,12 @@ public class ModTags {
         public static final TagKey<Block> ENHANCED_DRILL_MINEABLE = createTag("enhanced_mineable");
 
 
+        /**
+         * Creates a block tag key using the mod's namespace and the provided name.
+         *
+         * @param name the tag name (path) to append to the mod's namespace
+         * @return the TagKey for the block identified by the mod namespace and given name
+         */
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name));
         }
@@ -67,6 +73,12 @@ public class ModTags {
         public static final TagKey<Item> ARMOR = createTag("armor");
         public static final TagKey<Item> MOB_ARMORS = createTag("mob_armors");
 
+        /**
+         * Creates an item tag key in this mod's namespace.
+         *
+         * @param name the tag path (identifier path) to use within the mod namespace
+         * @return the TagKey<Item> for the namespaced item tag
+         */
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name));
         }

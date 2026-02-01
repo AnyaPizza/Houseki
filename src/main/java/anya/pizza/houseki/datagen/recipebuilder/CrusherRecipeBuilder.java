@@ -43,11 +43,26 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
+    /**
+     * Sets the probability that the auxiliary output is produced when the recipe is processed.
+     *
+     * @param chance the probability between 0.0 and 1.0 for producing the auxiliary output
+     * @return this builder
+     */
     public CrusherRecipeBuilder chance(double chance) {
         this.auxiliaryChance = chance;
         return this;
     }
 
+    /**
+     * Exports this builder's crusher recipe and its advancement to the given exporter under the provided recipe key.
+     *
+     * The advancement will include the stored criteria, a "has_the_recipe" criterion for the recipe key,
+     * rewards that grant the recipe, and OR requirements strategy.
+     *
+     * @param exporter the RecipeOutput used to accept the recipe and register its advancement
+     * @param recipeKey the resource key that identifies the exported recipe
+     */
     public void save(RecipeOutput exporter, @NonNull ResourceKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeKey))
@@ -62,23 +77,48 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
         exporter.accept(recipeKey, recipe, null);
     }
 
+    /**
+     * Adds an advancement criterion under the given name to be used when unlocking the recipe.
+     *
+     * @param name the identifier for the criterion
+     * @param criterion the criterion that will be associated with the given name
+     * @return this builder instance for method chaining
+     */
     @Override
     public @NonNull RecipeBuilder unlockedBy(@NonNull String name, @NonNull Criterion<?> criterion) {
         this.criteria.put(name, criterion);
         return this;
     }
 
+    /**
+     * Sets the recipe group identifier used to group related recipes.
+     *
+     * @param group the group identifier, or {@code null} to clear the group
+     * @return this builder instance
+     */
     @Override
     public @NonNull RecipeBuilder group(@Nullable String group) {
         this.group = group;
         return this;
     }
 
+    /**
+     * Provide the default recipe resource key for this builder.
+     *
+     * <p>Indicates that this builder has no default recipe ResourceKey.</p>
+     *
+     * @return `null` to indicate no default ResourceKey<Recipe<?>> is provided
+     */
     @Override
     public @Nullable ResourceKey<Recipe<?>> defaultId() {
         return null;
     }
 
+    /**
+     * Provides a representative result item for this recipe builder.
+     *
+     * @return `Items.AIR` — a placeholder result when the builder has no concrete output
+     */
     public Item getResult() {
         return Items.AIR;
     }

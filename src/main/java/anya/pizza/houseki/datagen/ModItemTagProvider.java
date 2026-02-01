@@ -12,10 +12,25 @@ import org.jspecify.annotations.NonNull;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
+    /**
+     * Creates a ModItemTagProvider used to generate item tag data for the mod.
+     *
+     * @param output the FabricPackOutput used to write generated data
+     * @param completableFuture a future that supplies the game's HolderLookup.Provider needed for tag resolution
+     */
     public ModItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
         super(output, completableFuture);
     }
 
+    /**
+     * Populates item tag mappings for the mod's items used during data generation.
+     *
+     * <p>Adds mod items to both vanilla and mod-specific tags, covering armor sets (head, chest, legs, feet),
+     * tool groups (axes, hoes, shovels, swords, pickaxes), beacon payment items, drills and drill bits,
+     * smithing templates, mob armors, and repair-material tags.
+     *
+     * @param wrapperLookup a holder lookup provider used to resolve registry holders when building tag values
+     */
     @Override
     protected void addTags(HolderLookup.@NonNull Provider wrapperLookup) {
         valueLookupBuilder(ItemTags.BEACON_PAYMENT_ITEMS)

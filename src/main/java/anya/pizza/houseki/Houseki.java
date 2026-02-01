@@ -22,6 +22,10 @@ public class Houseki implements ModInitializer {
 	public static final String MOD_ID = "houseki";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	/**
+	 * Initializes the mod by registering items, blocks, item groups, block entities, screen handlers,
+	 * recipe serializers, loot table modifiers, world generation, fuel values, and player block-break event handlers.
+	 */
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();

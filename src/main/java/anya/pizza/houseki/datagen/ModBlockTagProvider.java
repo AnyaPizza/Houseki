@@ -11,10 +11,25 @@ import org.jspecify.annotations.NonNull;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
+    /**
+     * Creates a ModBlockTagProvider for generating this mod's block tag data.
+     *
+     * @param output the FabricPackOutput used to write generated data files
+     * @param registriesFuture a CompletableFuture that supplies the registry lookup provider needed when constructing tag values
+     */
     public ModBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
+    /**
+     * Populates the mod's block tag assignments (mineability, tool requirements, beacon bases, immunities, and shape variants).
+     *
+     * This method registers which mod blocks belong to standard tags such as MINEABLE_WITH_PICKAXE, NEEDS_STONE_TOOL,
+     * NEEDS_IRON_TOOL, NEEDS_DIAMOND_TOOL, BEACON_BASE_BLOCKS, WITHER_IMMUNE, DRAGON_IMMUNE, WALLS, STAIRS, SLABS, and the
+     * mod-specific PREMIUM_DRILL_MINEABLE and ENHANCED_DRILL_MINEABLE groups.
+     *
+     * @param wrapperLookup provider for registry/holder lookups used when building tag value sets
+     */
     @Override
     protected void addTags(HolderLookup.@NonNull Provider wrapperLookup) {
         valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)

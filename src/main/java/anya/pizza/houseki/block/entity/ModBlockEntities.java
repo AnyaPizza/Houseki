@@ -15,6 +15,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(CrusherBlockEntity::new, ModBlocks.CRUSHER).build());
 
 
+    /**
+     * Registers the mod's block entity types and logs an informational message.
+     *
+     * <p>Call this during mod initialization to ensure block entity types are available to the game.</p>
+     */
     public static void registerBlockEntities() {
         Houseki.LOGGER.info("Registering Block Entities for " + Houseki.MOD_ID);
     }
