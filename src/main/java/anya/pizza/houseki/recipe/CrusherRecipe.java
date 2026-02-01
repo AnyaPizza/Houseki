@@ -3,18 +3,19 @@ package anya.pizza.houseki.recipe;
 import java.util.List;
 import java.util.Optional;
 
+import anya.pizza.houseki.Houseki;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.RegistryByteBuf;
-import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.network.codec.PacketCodecs;
-import net.minecraft.recipe.*;
-import net.minecraft.recipe.book.RecipeBookCategory;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.world.World;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.level.Level;
 
 public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime, Optional<ItemStack> auxiliaryOutput, double auxiliaryChance) implements Recipe<CrusherRecipeInput> {
     public static final int DEFAULT_CRUSHING_TIME = 200;
@@ -39,52 +40,76 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         this(inputItem, output, crushingTime, Optional.empty(), DEFAULT_AUXILIARY_CHANCE);
     }
 
-    public DefaultedList<Ingredient> getIngredients() {
-        DefaultedList<Ingredient> list = DefaultedList.ofSize(1);
+    public NonNullList<Ingredient> getIngredients() {
+        NonNullList<Ingredient> list = NonNullList.createWithCapacity(1);
         list.add(this.inputItem);
         return list;
     }
 
     @Override
-    public boolean matches(CrusherRecipeInput input, World world) {
-        if (world.isClient()) {
+    public boolean matches(CrusherRecipeInput input, Level world) {
+        if (world.isClientSide()) {
             return false;
         }
 
-        return inputItem.test(input.getStackInSlot(0));
+        return inputItem.test(input.getItem(0));
+    }
+
+    public static class Type implements RecipeType<CrusherRecipe> {
+        public static final Type INSTANCE = new Type();
+
+        private Type() {}
+
+        @Override
+        public String toString() {
+            return Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "crushing").toString();
+        }
     }
 
     @Override
-    public ItemStack craft(CrusherRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+    public boolean showNotification() {
+        return true;
+    }
+
+    @Override
+    public String group() {
+        return group();
+    }
+
+    @Override
+    public ItemStack assemble(CrusherRecipeInput input) {
         return output.copy();
     }
 
-    public ItemStack getResult(RegistryWrapper.WrapperLookup ignoredRegistriesLookup) {
+    public ItemStack getResult(HolderLookup.Provider ignoredRegistriesLookup) {
         return output;
     }
 
     @Override
     public RecipeSerializer<? extends Recipe<CrusherRecipeInput>> getSerializer() {
-        return ModRecipes.CRUSHER_SERIALIZER;
+        return ModSerializer.CRUSHER_SERIALIZER;
     }
 
     @Override
     public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {
-        return ModRecipes.CRUSHER_TYPE;
+        return ModTypes.CRUSHER_TYPE;
     }
 
     //No idea if this is right but it works?
     @Override
-    public IngredientPlacement getIngredientPlacement() {
-        return IngredientPlacement.forMultipleSlots(List.of());
+    public PlacementInfo placementInfo() {
+        return PlacementInfo.NOT_PLACEABLE;
     }
 
     @Override
-    public RecipeBookCategory getRecipeBookCategory() {
+    public RecipeBookCategory recipeBookCategory() {
         return null;
     }
 
+
     public static class Serializer implements RecipeSerializer<CrusherRecipe> {
+        public static final Serializer INSTANCE = new Serializer();
+
         public static final MapCodec<CrusherRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
             Ingredient.CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
             ItemStack.CODEC.fieldOf("result").forGetter(CrusherRecipe::output),
@@ -96,15 +121,14 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
             Codec.DOUBLE.optionalFieldOf("auxiliary_chance", DEFAULT_AUXILIARY_CHANCE).forGetter(CrusherRecipe::auxiliaryChance)
             ).apply(inst, CrusherRecipe::new));
 
-        public static final PacketCodec<RegistryByteBuf, CrusherRecipe> STREAM_CODEC =
-            PacketCodec.tuple(
-                Ingredient.PACKET_CODEC, CrusherRecipe::inputItem,
-                ItemStack.PACKET_CODEC, CrusherRecipe::output,
-                PacketCodecs.INTEGER, CrusherRecipe::crushingTime,
-                PacketCodecs.optional(ItemStack.OPTIONAL_PACKET_CODEC), CrusherRecipe::auxiliaryOutput,
-                PacketCodecs.DOUBLE, CrusherRecipe::auxiliaryChance,
+        public static final StreamCodec<RegistryFriendlyByteBuf, CrusherRecipe> STREAM_CODEC =
+            StreamCodec.composite(
+                Ingredient.CONTENTS_STREAM_CODEC, CrusherRecipe::inputItem,
+                ItemStack.STREAM_CODEC, CrusherRecipe::output,
+                ByteBufCodecs.INT, CrusherRecipe::crushingTime,
+                ByteBufCodecs.optional(ItemStack.OPTIONAL_STREAM_CODEC), CrusherRecipe::auxiliaryOutput,
+                ByteBufCodecs.DOUBLE, CrusherRecipe::auxiliaryChance,
                 CrusherRecipe::new);
-
 
         @Override
         public MapCodec<CrusherRecipe> codec() {
@@ -112,7 +136,7 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         }
 
         @Override
-        public PacketCodec<RegistryByteBuf, CrusherRecipe> packetCodec() {
+        public StreamCodec<RegistryFriendlyByteBuf, CrusherRecipe> streamCodec() {
             return STREAM_CODEC;
         }
     }
