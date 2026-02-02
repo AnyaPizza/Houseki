@@ -5,12 +5,10 @@
     "#": "houseki:aluminum"
   },
   "pattern": [
-    "   ",
     "# #",
     "# #"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:aluminum_boots"
   }
 }

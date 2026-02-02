@@ -3,14 +3,24 @@ package anya.pizza.houseki.recipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import java.util.Optional;
 
-public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime, Optional<ItemStack> auxiliaryOutput, double auxiliaryChance) implements Recipe<CrusherRecipeInput> {
+public record CrusherRecipe(
+    Ingredient inputItem, 
+    Item output, 
+    int crushingTime, 
+    Optional<Item> auxiliaryOutput, 
+    double auxiliaryChance
+) implements Recipe<CrusherRecipeInput> {
     public static final int DEFAULT_CRUSHING_TIME = 200;
     public static final double DEFAULT_AUXILIARY_CHANCE = 1.0; //1 = 100%
 
@@ -26,7 +36,7 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
     }
 
     public ItemStack getResult(HolderLookup.Provider registries) {
-        return output;
+        return new ItemStack(this.output);
     }
 
     //public CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime) {
@@ -40,7 +50,7 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
 
     @Override
     public ItemStack assemble(CrusherRecipeInput input) {
-        return this.output.copy();
+        return new ItemStack(this.output);
     }
 
     @Override
@@ -65,21 +75,25 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         return RecipeBookCategories.CRAFTING_MISC;
     }
     
-    public static RecipeSerializer<CrusherRecipe> SERIALIZER = new RecipeSerializer<>(
+    public static final RecipeSerializer<CrusherRecipe> SERIALIZER = new RecipeSerializer<>(
         RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(CrusherRecipe::output),
-                Codec.INT.optionalFieldOf("crushingTime", DEFAULT_CRUSHING_TIME).forGetter(CrusherRecipe::crushingTime),
-                ItemStack.CODEC.optionalFieldOf("auxiliary_result").forGetter(CrusherRecipe::auxiliaryOutput),
-                Codec.DOUBLE.optionalFieldOf("auxiliary_chance", DEFAULT_AUXILIARY_CHANCE).forGetter(CrusherRecipe::auxiliaryChance)
+            Ingredient.CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
+            // Use the standard Item registry codec here
+            BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").forGetter(CrusherRecipe::output),
+            Codec.INT.optionalFieldOf("crushingTime", DEFAULT_CRUSHING_TIME).forGetter(CrusherRecipe::crushingTime),
+            // Use the same item codec for the optional auxiliary result
+            BuiltInRegistries.ITEM.byNameCodec().optionalFieldOf("auxiliary_result").forGetter(CrusherRecipe::auxiliaryOutput),
+            Codec.DOUBLE.optionalFieldOf("auxiliary_chance", DEFAULT_AUXILIARY_CHANCE).forGetter(CrusherRecipe::auxiliaryChance)
         ).apply(inst, CrusherRecipe::new)),
+        
         StreamCodec.composite(
-                Ingredient.CONTENTS_STREAM_CODEC, CrusherRecipe::inputItem,
-                ItemStack.STREAM_CODEC, CrusherRecipe::output,
-                ByteBufCodecs.VAR_INT, CrusherRecipe::crushingTime,
-                ByteBufCodecs.optional(ItemStack.STREAM_CODEC), CrusherRecipe::auxiliaryOutput,
-                ByteBufCodecs.DOUBLE, CrusherRecipe::auxiliaryChance,
-                CrusherRecipe::new
+            Ingredient.CONTENTS_STREAM_CODEC, CrusherRecipe::inputItem,
+            // Use Item reference for network
+            ByteBufCodecs.registry(Registries.ITEM), CrusherRecipe::output,
+            ByteBufCodecs.VAR_INT.<RegistryFriendlyByteBuf>cast(), CrusherRecipe::crushingTime,
+            ByteBufCodecs.optional(ByteBufCodecs.registry(Registries.ITEM)), CrusherRecipe::auxiliaryOutput,
+            ByteBufCodecs.DOUBLE.<RegistryFriendlyByteBuf>cast(), CrusherRecipe::auxiliaryChance,
+            CrusherRecipe::new
         )
     );
 

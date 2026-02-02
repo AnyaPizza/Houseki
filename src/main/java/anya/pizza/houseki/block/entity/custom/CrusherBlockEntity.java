@@ -199,8 +199,16 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
         if (recipe.isEmpty()) return false;
 
         CrusherRecipe crusherRecipe = recipe.get().value();
+        
+        // 1. Get the main output stack
+        // In 1.21, getResult technically wants the registry provider, but for 
+        // a simple Item-to-Stack conversion, it doesn't strictly need it.
         ItemStack output = crusherRecipe.getResult(null);
-        ItemStack auxiliary = crusherRecipe.auxiliaryOutput().orElse(ItemStack.EMPTY);
+
+        // 2. Map the Optional<Item> to an Optional<ItemStack>
+        ItemStack auxiliary = crusherRecipe.auxiliaryOutput()
+                .map(ItemStack::new)      // Convert the Item to a Stack if present
+                .orElse(ItemStack.EMPTY); // Otherwise return the empty stack
 
         return canInsertIntoSlot(OUTPUT_SLOT, output) && canInsertIntoSlot(AUXILIARY_OUTPUT_SLOT, auxiliary);
     }
@@ -230,6 +238,23 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
      * recipe provides one and its configured chance succeeds. One item is removed from the input slot
      * when a recipe is applied.
      */
+    // private void craftItem() {
+    //     Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
+    //     if (recipe.isEmpty()) return;
+
+    //     CrusherRecipe crusherRecipe = recipe.get().value();
+
+    //     // Handle Main Output
+    //     insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy(), 1.0);
+
+    //     // Handle Auxiliary Output
+    //     crusherRecipe.auxiliaryOutput().ifPresent(stack -> {
+    //         insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy(), crusherRecipe.auxiliaryChance());
+    //     });
+
+    //     inventory.get(INPUT_SLOT).shrink(1);
+    // }
+
     private void craftItem() {
         Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return;
@@ -237,11 +262,14 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
         CrusherRecipe crusherRecipe = recipe.get().value();
 
         // Handle Main Output
+        // getResult already returns a new ItemStack(output), so we copy that.
         insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy(), 1.0);
 
         // Handle Auxiliary Output
-        crusherRecipe.auxiliaryOutput().ifPresent(stack -> {
-            insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy(), crusherRecipe.auxiliaryChance());
+        crusherRecipe.auxiliaryOutput().ifPresent(item -> {
+            // Convert the raw Item into a new ItemStack so we can use .copy() or set counts
+            ItemStack auxStack = new ItemStack(item); 
+            insertOrIncrement(AUXILIARY_OUTPUT_SLOT, auxStack, crusherRecipe.auxiliaryChance());
         });
 
         inventory.get(INPUT_SLOT).shrink(1);

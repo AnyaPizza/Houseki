@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "houseki:limestone",
   "result": {
-    "count": 1,
     "id": "houseki:limestone_wall"
   }
 }

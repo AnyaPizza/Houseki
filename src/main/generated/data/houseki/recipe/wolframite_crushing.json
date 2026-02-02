@@ -1,14 +1,8 @@
 {
-  "type": "houseki:crushing",
+  "type": "houseki:crusher",
   "auxiliary_chance": 0.5,
-  "auxiliary_result": {
-    "count": 1,
-    "id": "minecraft:quartz"
-  },
+  "auxiliary_result": "minecraft:quartz",
   "crushingTime": 250,
   "ingredient": "houseki:wolframite",
-  "result": {
-    "count": 1,
-    "id": "houseki:tungsten"
-  }
+  "result": "houseki:tungsten"
 }

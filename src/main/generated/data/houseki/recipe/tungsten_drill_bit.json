@@ -6,12 +6,10 @@
     "X": "houseki:block_of_tungsten"
   },
   "pattern": [
-    "   ",
     " # ",
     "#X#"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:tungsten_drill_bit"
   }
 }

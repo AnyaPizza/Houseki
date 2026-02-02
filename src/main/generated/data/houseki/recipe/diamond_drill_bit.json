@@ -5,12 +5,10 @@
     "#": "minecraft:diamond_block"
   },
   "pattern": [
-    "   ",
     " # ",
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:diamond_drill_bit"
   }
 }

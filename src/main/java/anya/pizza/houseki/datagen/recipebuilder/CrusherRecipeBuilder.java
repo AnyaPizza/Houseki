@@ -9,11 +9,10 @@ import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.resources.ResourceKey;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -21,25 +20,25 @@ import java.util.*;
 
 public class CrusherRecipeBuilder implements RecipeBuilder {
     private final Ingredient input;
-    private final ItemStack output;
+    private final ItemLike output;
     private final int crushingTime;
-    private Optional<ItemStack> auxiliaryOutput = Optional.empty();
+    private Optional<ItemLike> auxiliaryOutput = Optional.empty();
     private double auxiliaryChance = 1;
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
     @Nullable
     public String group;
 
-    public CrusherRecipeBuilder(Ingredient input, ItemStack output, int crushingTime) {
+    public CrusherRecipeBuilder(Ingredient input, ItemLike output, int crushingTime) {
         this.input = input;
         this.output = output;
         this.crushingTime = crushingTime;
     }
 
-    public static CrusherRecipeBuilder create(Ingredient input, ItemStack output, int crushingTime) {
+    public static CrusherRecipeBuilder create(Ingredient input, ItemLike output, int crushingTime) {
         return new CrusherRecipeBuilder(input, output, crushingTime);
     }
 
-    public CrusherRecipeBuilder auxiliary(ItemStack stack) {
+    public CrusherRecipeBuilder auxiliary(ItemLike stack) {
         this.auxiliaryOutput = Optional.of(stack);
         return this;
     }
@@ -57,10 +56,16 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
         this.criteria.forEach(advancement::addCriterion);
 
         // Create an instance of your recipe record
-        CrusherRecipe recipe = new CrusherRecipe(input, output, crushingTime, auxiliaryOutput, auxiliaryChance);
+        CrusherRecipe recipe = new CrusherRecipe(
+            this.input, 
+            this.output.asItem(), 
+            this.crushingTime, 
+            this.auxiliaryOutput.map(ItemLike::asItem), 
+            this.auxiliaryChance
+        );
 
         // Export it using the built-in exporter
-        exporter.accept(recipeKey, recipe, null);
+        exporter.accept(recipeKey, recipe, advancement.build(recipeKey.registry().withPrefix("recipes/")));
     }
 
     @Override
@@ -81,6 +86,6 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     public Item getResult() {
-        return output.getItem();
+        return output.asItem();
     }
 }

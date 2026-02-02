@@ -1,14 +1,8 @@
 {
-  "type": "houseki:crushing",
+  "type": "houseki:crusher",
   "auxiliary_chance": 0.5,
-  "auxiliary_result": {
-    "count": 1,
-    "id": "minecraft:clay"
-  },
+  "auxiliary_result": "minecraft:clay",
   "crushingTime": 250,
   "ingredient": "houseki:bauxite",
-  "result": {
-    "count": 1,
-    "id": "houseki:crushed_bauxite"
-  }
+  "result": "houseki:crushed_bauxite"
 }
