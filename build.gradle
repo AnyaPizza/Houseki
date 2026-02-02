@@ -11,6 +11,11 @@ base {
 }
 
 repositories {
+	mavenCentral()
+	maven {
+        name = "Fabric"
+        url = "https://maven.fabricmc.net/"
+    }
 	maven {
 		name = "TerraformersMC"
 		url = "https://maven.terraformersmc.com/"
@@ -24,14 +29,10 @@ fabricApi {
 }
 
 dependencies {
-	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	//mappings loom.officialMojangMappings()
-	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	implementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 }
 
 processResources {
