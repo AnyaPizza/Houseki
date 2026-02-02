@@ -49,32 +49,66 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemLike> CAST_STEEL_SMELTABLES = List.of(ModItems.STEEL);
 
                 //Crushing recipes with auxiliary output
-                CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.BAUXITE), ModItems.CRUSHED_BAUXITE, 250).chance(0.5)
-                        .auxiliary(Items.CLAY).save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "bauxite_crushing")));
+                CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.BAUXITE), ModItems.CRUSHED_BAUXITE, 250)
+                        .chance(0.5)
+                        .auxiliary(Items.CLAY)
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "bauxite_crushing"))
+                        );
 
-                CrusherRecipeBuilder.create(Ingredient.of(Items.SANDSTONE), Items.SAND, 100).chance(0.2)
-                        .auxiliary(Items.CALCITE).save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "sandstone_crushing")));
+                CrusherRecipeBuilder.create(Ingredient.of(Items.SANDSTONE), Items.SAND, 100)
+                        .chance(0.2)
+                        .auxiliary(Items.CALCITE)
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "sandstone_crushing"))
+                        );
 
-                CrusherRecipeBuilder.create(Ingredient.of(ModItems.WOLFRAMITE), ModItems.TUNGSTEN, 250).chance(0.5)
-                        .auxiliary(Items.QUARTZ).save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "wolframite_crushing")));
+                CrusherRecipeBuilder.create(Ingredient.of(ModItems.WOLFRAMITE), ModItems.TUNGSTEN, 250)
+                        .chance(0.5)
+                        .auxiliary(Items.QUARTZ)
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "wolframite_crushing"))
+                        );
 
-                // Crushing recipes WITHOUT an auxiliary output (it will default to Optional.empty())
+                // Crushing recipes WITHOUT an auxiliary output
                 CrusherRecipeBuilder.create(Ingredient.of(Items.COBBLESTONE), Items.GRAVEL, 100)
-                        .save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "cobblestone_crushing")));
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "cobblestone_crushing"))
+                        );
 
                 CrusherRecipeBuilder.create(Ingredient.of(Items.STONE), Items.GRAVEL, 100)
-                        .save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "stone_crushing")));
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "stone_crushing"))
+                        );
 
                 CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.PLATINUM_ORE), ModItems.PLATINUM, 250)
-                        .save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "platinum_ore_crushing")));
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "platinum_ore_crushing"))
+                        );
+
                 CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.DEEPSLATE_PLATINUM_ORE), ModItems.PLATINUM, 250)
-                        .save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "deepslate_platinum_ore_crushing")));
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "deepslate_platinum_ore_crushing"))
+                        );
 
                 CrusherRecipeBuilder.create(Ingredient.of(Items.COPPER_INGOT), ModItems.PLATINUM_NUGGET, 250)
-                        .save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "copper_ingot_crushing")));
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "copper_ingot_crushing"))
+                        );
 
                 CrusherRecipeBuilder.create(Ingredient.of(ModItems.SCHEELITE), ModItems.TUNGSTEN, 250)
-                        .save(output, String.valueOf(Identifier.fromNamespaceAndPath("houseki", "scheelite_crushing")));
+                        .save(
+                                output, 
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "scheelite_crushing"))
+                        );
 
                 //Smithing Upgrades
                 offerPinkuUpgradeRecipe(output, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.PINKU_HELMET);

@@ -39,10 +39,6 @@ public record CrusherRecipe(
         return new ItemStack(this.output);
     }
 
-    //public CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime) {
-    //    this(inputItem, output, crushingTime, Optional.empty(), DEFAULT_AUXILIARY_CHANCE);
-    //}
-
     @Override
     public boolean matches(CrusherRecipeInput input, Level level) {
         return this.inputItem.test(input.getItem(0));
@@ -106,31 +102,4 @@ public record CrusherRecipe(
     public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {
         return ModTypes.CRUSHER_TYPE;
     }
-
-    /*public static class Serializer implements RecipeSerializer<CrusherRecipe> {
-        public static final Serializer INSTANCE = new Serializer();
-
-        private static final MapCodec<CrusherRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(CrusherRecipe::output),
-                Codec.INT.optionalFieldOf("crushing_time", 200).forGetter(CrusherRecipe::crushingTime),
-                ItemStack.CODEC.optionalFieldOf("auxiliary_result").forGetter(CrusherRecipe::auxiliaryOutput),
-                Codec.DOUBLE.optionalFieldOf("auxiliary_chance", 1.0).forGetter(CrusherRecipe::auxiliaryChance)
-        ).apply(inst, CrusherRecipe::new));
-
-        private static final StreamCodec<RegistryFriendlyByteBuf, CrusherRecipe> STREAM_CODEC = StreamCodec.composite(
-                Ingredient.CONTENTS_STREAM_CODEC, CrusherRecipe::inputItem,
-                ItemStack.STREAM_CODEC, CrusherRecipe::output,
-                ByteBufCodecs.VAR_INT, CrusherRecipe::crushingTime,
-                ByteBufCodecs.optional(ItemStack.STREAM_CODEC), CrusherRecipe::auxiliaryOutput,
-                ByteBufCodecs.DOUBLE, CrusherRecipe::auxiliaryChance,
-                CrusherRecipe::new
-        );
-
-        @Override
-        public MapCodec<CrusherRecipe> codec() { return CODEC; }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, CrusherRecipe> streamCodec() { return STREAM_CODEC; }
-    }*/
 }
