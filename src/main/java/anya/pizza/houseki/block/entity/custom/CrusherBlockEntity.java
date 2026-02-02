@@ -5,7 +5,6 @@ import anya.pizza.houseki.block.entity.ImplementedInventory;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.recipe.CrusherRecipe;
 import anya.pizza.houseki.recipe.CrusherRecipeInput;
-import anya.pizza.houseki.recipe.ModSerializer;
 import anya.pizza.houseki.recipe.ModTypes;
 import anya.pizza.houseki.screen.custom.CrusherScreenHandler;
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
@@ -34,7 +33,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
-import org.lwjgl.system.windows.INPUT;
 
 import java.util.Optional;
 
@@ -115,7 +113,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     @Override
     public void preRemoveSideEffects(@NonNull BlockPos pos, @NonNull BlockState oldState) {
         assert level != null;
-        Containers.dropContents(level, pos, (this));
         if (level != null) {
             Containers.dropContents(level, pos, this);
         }
@@ -238,23 +235,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
      * recipe provides one and its configured chance succeeds. One item is removed from the input slot
      * when a recipe is applied.
      */
-    // private void craftItem() {
-    //     Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
-    //     if (recipe.isEmpty()) return;
-
-    //     CrusherRecipe crusherRecipe = recipe.get().value();
-
-    //     // Handle Main Output
-    //     insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy(), 1.0);
-
-    //     // Handle Auxiliary Output
-    //     crusherRecipe.auxiliaryOutput().ifPresent(stack -> {
-    //         insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy(), crusherRecipe.auxiliaryChance());
-    //     });
-
-    //     inventory.get(INPUT_SLOT).shrink(1);
-    // }
-
     private void craftItem() {
         Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return;
@@ -263,7 +243,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
 
         // Handle Main Output
         // getResult already returns a new ItemStack(output), so we copy that.
-        insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy(), 1.0);
+        insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null), 1.0);
 
         // Handle Auxiliary Output
         crusherRecipe.auxiliaryOutput().ifPresent(item -> {
@@ -297,10 +277,12 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     }
 
     private Optional<RecipeHolder<CrusherRecipe>> getCurrentRecipe() {
-        assert this.getLevel() != null;
-        return ((ServerLevel) this.getLevel()).recipeAccess()
-                .getRecipeFor(ModTypes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), this.getLevel());
-
+        Level level = this.getLevel();
+        if (!(level instanceof ServerLevel serverLevel)) {
+            return Optional.empty();
+        }
+        return serverLevel.recipeAccess()
+                .getRecipeFor(ModTypes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), level);
     }
 
     @Override
