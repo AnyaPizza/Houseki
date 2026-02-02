@@ -1,5 +1,6 @@
 package anya.pizza.houseki.util;
 
+import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.item.ModItems;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.advancements.criterion.ItemPredicate;
@@ -7,6 +8,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -17,7 +19,7 @@ import static net.minecraft.data.recipes.RecipeProvider.*;
 
 public class ModGenRecipes {
     protected final RecipeOutput exporter;
-    private static final HolderGetter<Item> itemLookup = null;
+    public static HolderGetter<Item> itemLookup = null;
 
     public ModGenRecipes(RecipeOutput exporter) {
         this.exporter = exporter;
@@ -31,8 +33,8 @@ public class ModGenRecipes {
    }
 
     public static void offerDrillUpgradeRecipe(RecipeOutput exporter, Item input, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(input), Ingredient.of(ModItems.BLOCK_OF_CAST_STEEL), category, result)
-                .unlocks("has_block_of_cast_steel", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PINKU)).save(exporter, getItemName(result) + "_smithing");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(input), Ingredient.of(ModBlocks.BLOCK_OF_CAST_STEEL), category, result)
+                .unlocks("has_block_of_cast_steel", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.BLOCK_OF_CAST_STEEL)).save(exporter, getItemName(result) + "_smithing");
     }
 
 
@@ -44,7 +46,7 @@ public class ModGenRecipes {
                 .pattern("###")
                 .pattern(" S ")
                 .pattern(" S ")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }
@@ -56,7 +58,7 @@ public class ModGenRecipes {
                 .pattern("## ")
                 .pattern("#S ")
                 .pattern(" S ")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }
@@ -68,7 +70,7 @@ public class ModGenRecipes {
                 .pattern(" # ")
                 .pattern(" S ")
                 .pattern(" S ")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }
@@ -80,7 +82,7 @@ public class ModGenRecipes {
                 .pattern(" # ")
                 .pattern(" # ")
                 .pattern(" S ")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }
@@ -92,7 +94,7 @@ public class ModGenRecipes {
                 .pattern("## ")
                 .pattern(" S ")
                 .pattern(" S ")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }
@@ -103,8 +105,7 @@ public class ModGenRecipes {
                 .define('#', input)
                 .pattern("###")
                 .pattern("# #")
-                .pattern("   ")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }
@@ -115,7 +116,7 @@ public class ModGenRecipes {
                 .pattern("# #")
                 .pattern("###")
                 .pattern("###")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }
@@ -126,7 +127,7 @@ public class ModGenRecipes {
                 .pattern("###")
                 .pattern("# #")
                 .pattern("# #")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }
@@ -134,10 +135,9 @@ public class ModGenRecipes {
     public static void offerBootsRecipe(RecipeOutput exporter, ItemLike output, ItemLike input) {
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output, 1)
                 .define('#', input)
-                .pattern("   ")
                 .pattern("# #")
                 .pattern("# #")
-                .unlockedBy(getHasName(input), inventoryTrigger((ItemPredicate.Builder) input))
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .showNotification(true)
                 .save(exporter);
     }

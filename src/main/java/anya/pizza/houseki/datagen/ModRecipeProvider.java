@@ -5,12 +5,12 @@ import anya.pizza.houseki.datagen.recipebuilder.CrusherRecipeBuilder;
 import anya.pizza.houseki.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -31,7 +31,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    protected @NonNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider wrapperLookup, @NonNull RecipeOutput recipeExporter) {
+    protected RecipeProvider createRecipeProvider(HolderLookup.Provider wrapperLookup, RecipeOutput recipeExporter) {
         return new RecipeProvider(wrapperLookup, recipeExporter) {
             @Override
             public void buildRecipes() {
@@ -109,7 +109,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.PLATINUM, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_PLATINUM);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.SULFUR, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_SULFUR);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
-                nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL_B);
+                nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL);
 
 
                 //Smelting Recipes
@@ -392,7 +392,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.CAST_STEEL), has(ModItems.CAST_STEEL)).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(output);
 
                 shaped(RecipeCategory.MISC, ModItems.TUNGSTEN_DRILL_BIT, 1)
-                        .pattern("   ")
                         .pattern(" # ")
                         .pattern("#X#")
                         .define('#', ModItems.TUNGSTEN).define('X', ModBlocks.BLOCK_OF_TUNGSTEN_B)
@@ -402,11 +401,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern(" X ")
                         .pattern("#R#")
                         .pattern("###")
-                        .define('X', ModItems.CAST_STEEL).define('#', ModBlocks.BLOCK_OF_CAST_STEEL_B).define('R', Items.REDSTONE).unlockedBy(getHasName(ModItems.CAST_STEEL), has(ModItems.CAST_STEEL))
-                        .unlockedBy(getHasName(ModBlocks.BLOCK_OF_CAST_STEEL_B), has(ModBlocks.BLOCK_OF_CAST_STEEL_B)).unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE)).save(output);
+                        .define('X', ModItems.CAST_STEEL).define('#', ModBlocks.BLOCK_OF_CAST_STEEL).define('R', Items.REDSTONE).unlockedBy(getHasName(ModItems.CAST_STEEL), has(ModItems.CAST_STEEL))
+                        .unlockedBy(getHasName(ModBlocks.BLOCK_OF_CAST_STEEL), has(ModBlocks.BLOCK_OF_CAST_STEEL)).unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE)).save(output);
 
                 shaped(RecipeCategory.MISC, ModItems.DIAMOND_DRILL_BIT, 1)
-                        .pattern("   ")
                         .pattern(" # ")
                         .pattern("###")
                         .define('#', Blocks.DIAMOND_BLOCK).unlockedBy(getHasName(Blocks.DIAMOND_BLOCK), has(Blocks.DIAMOND_BLOCK)).save(output);
@@ -427,8 +425,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("#X#")
                         .pattern("#U#")
                         .pattern("###")
-                        .define('#', ModItems.CAST_STEEL).define('X', ModBlocks.BLOCK_OF_CAST_STEEL_B).define('U', ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE)
-                        .unlockedBy(getHasName(ModItems.CAST_STEEL), has(ModItems.CAST_STEEL)).unlockedBy(getHasName(ModBlocks.BLOCK_OF_CAST_STEEL_B), has(ModBlocks.BLOCK_OF_CAST_STEEL_B)).unlockedBy(getHasName(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE), has(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE))
+                        .define('#', ModItems.CAST_STEEL).define('X', ModBlocks.BLOCK_OF_CAST_STEEL).define('U', ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE)
+                        .unlockedBy(getHasName(ModItems.CAST_STEEL), has(ModItems.CAST_STEEL)).unlockedBy(getHasName(ModBlocks.BLOCK_OF_CAST_STEEL), has(ModBlocks.BLOCK_OF_CAST_STEEL)).unlockedBy(getHasName(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE), has(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE))
                         .save(output);
             }
         };

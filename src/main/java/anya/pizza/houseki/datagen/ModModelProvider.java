@@ -52,7 +52,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(ModBlocks.SULFUR_ORE);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_SULFUR);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_STEEL);
-        blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_CAST_STEEL_B);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_CAST_STEEL);
 
         blockStateModelGenerator.createFurnace(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE_ONLY_TOP);
 

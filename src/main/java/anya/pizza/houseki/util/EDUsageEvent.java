@@ -27,7 +27,7 @@ public class EDUsageEvent implements PlayerBlockBreakEvents.Before{
                 return true;
             }
             for (BlockPos position : EnhancedDrillItem.getBlocksToBeDestroyed(1, pos, serverPlayer)) { //3x3
-                if (pos == position || !ed.isCorrectToolForDrops(mainHandItem, world.getBlockState(position))) {
+                if (pos.equals(position) || !ed.isCorrectToolForDrops(mainHandItem, world.getBlockState(position))) {
                     continue;
                 }
                 HARVESTED_BLOCKS.add(position);

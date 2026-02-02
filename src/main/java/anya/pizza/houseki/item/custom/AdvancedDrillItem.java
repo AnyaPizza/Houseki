@@ -16,7 +16,7 @@ public class AdvancedDrillItem extends Item {
         super(settings.pickaxe(material, attackDamage, attackSpeed));
     }
 
-    public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos intitalBlockPos, ServerPlayer player) {
+    public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos initialBlockPos, ServerPlayer player) {
         List<BlockPos> positions = new ArrayList<>();
         HitResult hit = player.pick(20, 0, false);
         if (hit.getType() == HitResult.Type.BLOCK) {
@@ -25,21 +25,21 @@ public class AdvancedDrillItem extends Item {
             if (blockHit.getDirection() == Direction.DOWN || blockHit.getDirection() == Direction.UP) {
                 for (int x = -range; x <= range; x++) {
                     for (int y = -range; y <= range; y++) {
-                        positions.add(new BlockPos(intitalBlockPos.getX() + x, intitalBlockPos.getY(), intitalBlockPos.getZ() + y));
+                        positions.add(new BlockPos(initialBlockPos.getX() + x, initialBlockPos.getY(), initialBlockPos.getZ() + y));
                     }
                 }
             }
             if (blockHit.getDirection() == Direction.NORTH || blockHit.getDirection() == Direction.SOUTH) {
                 for (int x = -range; x <= range; x++) {
                     for (int y = -range; y <= range; y++) {
-                        positions.add(new BlockPos(intitalBlockPos.getX() + x, intitalBlockPos.getY() + y, intitalBlockPos.getZ()));
+                        positions.add(new BlockPos(initialBlockPos.getX() + x, initialBlockPos.getY() + y, initialBlockPos.getZ()));
                     }
                 }
             }
             if (blockHit.getDirection() == Direction.EAST || blockHit.getDirection() == Direction.WEST) {
                 for (int x = -range; x <= range; x++) {
                     for (int y = -range; y <= range; y++) {
-                        positions.add(new BlockPos(intitalBlockPos.getX(), intitalBlockPos.getY() + y, intitalBlockPos.getZ() + x));
+                        positions.add(new BlockPos(initialBlockPos.getX(), initialBlockPos.getY() + y, initialBlockPos.getZ() + x));
                     }
                 }
             }

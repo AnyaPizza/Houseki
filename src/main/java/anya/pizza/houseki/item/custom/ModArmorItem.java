@@ -63,8 +63,7 @@ public class ModArmorItem extends Item {
 
         if (hasCorrectArmorOn(mapArmorMaterial, player) && !hasPlayerEffect) {
             for (MobEffectInstance instance : mapStatusEffect) {
-                player.addEffect(new MobEffectInstance(instance.getEffect(),
-                        instance.getDuration(), instance.getAmplifier(), instance.isAmbient(), instance.isVisible()));
+                player.addEffect(new MobEffectInstance(instance));
             }
         }
     }
@@ -75,8 +74,22 @@ public class ModArmorItem extends Item {
         Equippable equippableComponentBreastplate = player.getItemBySlot(EquipmentSlot.CHEST).getItem().components().get(DataComponents.EQUIPPABLE);
         Equippable equippableComponentHelmet = player.getItemBySlot(EquipmentSlot.HEAD).getItem().components().get(DataComponents.EQUIPPABLE);
 
-        return equippableComponentBoots.assetId().get().equals(material.assetId()) && equippableComponentLeggings.assetId().get().equals(material.assetId()) &&
-                equippableComponentBreastplate.assetId().get().equals(material.assetId()) && equippableComponentHelmet.assetId().get().equals(material.assetId());
+        //return equippableComponentBoots.assetId().get().equals(material.assetId()) && equippableComponentLeggings.assetId().get().equals(material.assetId()) &&
+        //        equippableComponentBreastplate.assetId().get().equals(material.assetId()) && equippableComponentHelmet.assetId().get().equals(material.assetId());
+
+        if (equippableComponentBoots == null || equippableComponentLeggings == null
+                || equippableComponentBreastplate == null || equippableComponentHelmet == null) {
+            return false;
+        }
+        if (equippableComponentBoots.assetId().isEmpty() || equippableComponentLeggings.assetId().isEmpty()
+                || equippableComponentBreastplate.assetId().isEmpty() || equippableComponentHelmet.assetId().isEmpty()) {
+            return false;
+        }
+        var assetId = material.assetId();
+        return equippableComponentBoots.assetId().get().equals(assetId)
+                && equippableComponentLeggings.assetId().get().equals(assetId)
+                && equippableComponentBreastplate.assetId().get().equals(assetId)
+                && equippableComponentHelmet.assetId().get().equals(assetId);
     }
 
     private boolean hasFullSuitOfArmorOn(Player player) {

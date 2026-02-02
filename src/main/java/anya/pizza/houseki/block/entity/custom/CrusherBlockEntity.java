@@ -34,6 +34,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
+import org.lwjgl.system.windows.INPUT;
 
 import java.util.Optional;
 
@@ -96,7 +97,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     }
 
     @Override
-    public BlockPos getScreenOpeningData(@NonNull ServerPlayer serverPlayerEntity) {
+    public BlockPos getScreenOpeningData(ServerPlayer serverPlayerEntity) {
         return this.worldPosition;
     }
 
@@ -115,6 +116,9 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     public void preRemoveSideEffects(@NonNull BlockPos pos, @NonNull BlockState oldState) {
         assert level != null;
         Containers.dropContents(level, pos, (this));
+        if (level != null) {
+            Containers.dropContents(level, pos, this);
+        }
         super.preRemoveSideEffects(pos, oldState);
     }
 
@@ -280,10 +284,13 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     public boolean canPlaceItemThroughFace(int slot, @NonNull ItemStack stack, @Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
         if (slot == INPUT_SLOT) {
-            assert this.getLevel() != null;
-            assert level != null;
-            ((ServerLevel) this.getLevel()).recipeAccess()
-                    .getRecipeFor(ModTypes.CRUSHER_TYPE, new CrusherRecipeInput(stack), level).isPresent();
+            Level level = getLevel();
+            if (level instanceof ServerLevel serverLevel) {
+                return serverLevel.recipeAccess()
+                        .getRecipeFor(ModTypes.CRUSHER_TYPE, new CrusherRecipeInput(stack), level)
+                        .isPresent();
+            }
+            return false;
         }
         return false;
     }
@@ -301,7 +308,13 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
 
     @Override
     public boolean stillValid(@NonNull Player player) {
-        return worldPosition.closerThan(worldPosition, 4.5);
+        return level != null
+                && level.getBlockEntity(worldPosition) == this
+                && player.distanceToSqr(
+                        worldPosition.getX() + 0.5,
+                        worldPosition.getY() + 0.5,
+                        worldPosition.getZ() + 0.5
+                ) <= 4.5 * 4.5;
     }
 
     @Override

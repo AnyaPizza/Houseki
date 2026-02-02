@@ -4,6 +4,7 @@ import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import anya.pizza.houseki.recipe.CrusherRecipeInput;
 import anya.pizza.houseki.recipe.ModTypes;
 import anya.pizza.houseki.screen.ModScreenHandlers;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -21,8 +22,8 @@ public class CrusherScreenHandler extends AbstractContainerMenu {
     private final ContainerData propertyDelegate;
     public final CrusherBlockEntity blockEntity;
 
-    public CrusherScreenHandler(int syncId, Inventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.level().getBlockEntity(pos), new SimpleContainerData(5));
+    public CrusherScreenHandler(int syncId, Inventory playerInventory, BlockPos pos) {
+        this(syncId, playerInventory, playerInventory.player.level().getBlockEntity(pos), new SimpleContainerData(5));
     }
 
     /**
@@ -30,33 +31,32 @@ public class CrusherScreenHandler extends AbstractContainerMenu {
      *
      * @param syncId               window sync id assigned by the client/server
      * @param playerInventory      the player's inventory to populate player slots and hotbar
-     * @param blockEntity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a CrusherBlockEntity
-     * @param arrayPropertyDelegate the PropertyDelegate used to synchronize progress, fuel, and related GUI properties
+     * @param entity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a CrusherBlockEntity
+     * @param data the PropertyDelegate used to synchronize progress, fuel, and related GUI properties
      */
-    public CrusherScreenHandler(int syncId, Inventory playerInventory, BlockEntity blockEntity, ContainerData arrayPropertyDelegate) {
+    public CrusherScreenHandler(int syncId, Inventory playerInventory, BlockEntity entity, ContainerData data) {
         super(ModScreenHandlers.CRUSHER_SCREEN_HANDLER, syncId);
-        checkContainerSize((Container) blockEntity, 4);
-        this.inventory = (Container) blockEntity;
-        this.propertyDelegate = arrayPropertyDelegate;
-        this.blockEntity = (CrusherBlockEntity) blockEntity;
+        this.blockEntity = (entity instanceof CrusherBlockEntity) ? (CrusherBlockEntity) entity : null;
+        this.inventory = (entity instanceof Container container) ? container : new SimpleContainer(4);
+        checkContainerSize(this.inventory, 4);
+        this.propertyDelegate = data;
+
         this.addSlot(new Slot(inventory, 0, 35, -5)); //Input Slot
         this.addSlot(new Slot(inventory, 1, 13, 41)); //Fuel Slot
         this.addSlot(new Slot(inventory, 2, 115, 30) { //Output Slot
-            @Override
-            public boolean mayPlace(ItemStack stack) {
+            @Override public boolean mayPlace(ItemStack stack) {
                 return false;
             }
         });
         this.addSlot(new Slot(inventory, 3, 137, 30) { //Auxiliary Slot
-            @Override
-            public boolean mayPlace(ItemStack stack) {
+            @Override public boolean mayPlace(ItemStack stack) {
                 return false; //Makes output slot read-only
             }
         });
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
-        addDataSlots(arrayPropertyDelegate);
+        addDataSlots(data);
     }
 
     public boolean isBurning() {
@@ -94,11 +94,11 @@ public class CrusherScreenHandler extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (blockEntity.getFuelTime(originalStack) > 0) {
+                if (blockEntity != null && blockEntity.getFuelTime(originalStack) > 0) {
                     if (!moveItemStackTo(originalStack, 1, 2, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (blockEntity.getLevel() instanceof ServerLevel serverWorld) {
+                } else if (player.level() instanceof ServerLevel serverWorld) {
                     CrusherRecipeInput recipeInput = new CrusherRecipeInput(originalStack);
                     boolean hasCrusherRecipe = serverWorld.recipeAccess()
                             .getRecipeFor(ModTypes.CRUSHER_TYPE, recipeInput, serverWorld)

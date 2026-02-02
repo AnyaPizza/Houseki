@@ -13,6 +13,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.ItemLike;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -48,7 +49,7 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
-    public void save(RecipeOutput exporter, @NonNull ResourceKey<Recipe<?>> recipeKey) {
+    public void save(RecipeOutput exporter, ResourceKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeKey))
                 .rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(recipeKey))
@@ -80,6 +81,6 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     public Item getResult() {
-        return Items.AIR;
+        return output.getItem();
     }
 }

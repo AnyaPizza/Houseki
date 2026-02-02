@@ -107,7 +107,7 @@ public class ModBlocks {
     public static final Block BLOCK_OF_STEEL = registerBlock("block_of_steel",
             properties -> new Block(properties.mapColor(MapColor.CLAY).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresCorrectToolForDrops().strength(4.5F, 5.5F).sound(SoundType.METAL)));
 
-    public static final Block BLOCK_OF_CAST_STEEL_B = registerBlock("block_of_cast_steel_b",
+    public static final Block BLOCK_OF_CAST_STEEL = registerBlock("block_of_cast_steel",
             properties -> new Block(properties.mapColor(MapColor.CLAY).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresCorrectToolForDrops().strength(5.5F, 6.5F).sound(SoundType.METAL)));
 
     public static final Block BAUXITE = registerBlock("bauxite",
@@ -175,15 +175,15 @@ public class ModBlocks {
     public static final Block LIMESTONE_STAIRS = registerBlock("limestone_stairs",
             properties -> new StairBlock(ModBlocks.LIMESTONE.defaultBlockState(),properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
     public static final Block POLISHED_LIMESTONE_STAIRS = registerBlock("polished_limestone_stairs",
-            properties -> new StairBlock(ModBlocks.LIMESTONE.defaultBlockState(),properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
+            properties -> new StairBlock(ModBlocks.POLISHED_LIMESTONE.defaultBlockState(),properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
     public static final Block LIMESTONE_BRICK_STAIRS = registerBlock("limestone_brick_stairs",
-            properties -> new StairBlock(ModBlocks.LIMESTONE.defaultBlockState(),properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
+            properties -> new StairBlock(ModBlocks.LIMESTONE_BRICKS.defaultBlockState(),properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
     public static final Block SLATE_STAIRS = registerBlock("slate_stairs",
-            properties -> new StairBlock(ModBlocks.LIMESTONE.defaultBlockState(),properties.mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
+            properties -> new StairBlock(ModBlocks.SLATE.defaultBlockState(),properties.mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
     public static final Block POLISHED_SLATE_STAIRS = registerBlock("polished_slate_stairs",
-            properties -> new StairBlock(ModBlocks.LIMESTONE.defaultBlockState(),properties.mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
+            properties -> new StairBlock(ModBlocks.POLISHED_SLATE.defaultBlockState(),properties.mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
     public static final Block SLATE_TILE_STAIRS = registerBlock("slate_tile_stairs",
-            properties -> new StairBlock(ModBlocks.LIMESTONE.defaultBlockState(),properties.mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
+            properties -> new StairBlock(ModBlocks.SLATE_TILES.defaultBlockState(),properties.mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2, 6)));
 
     //Slabs
     public static final Block LIMESTONE_SLAB = registerBlock("limestone_slab",

@@ -12,12 +12,12 @@ public class HousekiClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        MenuScreens.register(ModScreenHandlers.CRUSHER_SCREEN_HANDLER, CrusherScreen::new);
-
         ChunkSectionLayerMap.putBlock(ModBlocks.ALUMINUM_GLASS, ChunkSectionLayer.TRANSLUCENT);
         ChunkSectionLayerMap.putBlock(ModBlocks.ALUMINUM_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
         ChunkSectionLayerMap.putBlock(ModBlocks.ALUMINUM_DOOR, ChunkSectionLayer.CUTOUT);
         ChunkSectionLayerMap.putBlock(ModBlocks.ALUMINUM_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+
+        MenuScreens.register(ModScreenHandlers.CRUSHER_SCREEN_HANDLER, CrusherScreen::new);
 
     }
 }

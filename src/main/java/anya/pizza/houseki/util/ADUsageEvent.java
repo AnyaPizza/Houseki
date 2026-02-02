@@ -27,7 +27,7 @@ public class ADUsageEvent implements PlayerBlockBreakEvents.Before{
                 return true;
             }
             for (BlockPos position : AdvancedDrillItem.getBlocksToBeDestroyed(2, pos, serverPlayer)) { //5x5
-                if (pos == position || !ad.isCorrectToolForDrops(mainHandItem, world.getBlockState(position))) {
+                if (pos.equals(position) || !ad.isCorrectToolForDrops(mainHandItem, world.getBlockState(position))) {
                     continue;
                 }
                 HARVESTED_BLOCKS.add(position);

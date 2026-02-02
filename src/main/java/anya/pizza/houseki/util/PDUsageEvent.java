@@ -27,7 +27,7 @@ public class PDUsageEvent implements PlayerBlockBreakEvents.Before{
                 return true;
             }
             for (BlockPos position : PremiumDrillItem.getBlocksToBeDestroyed(2, pos, serverPlayer)) { //5x5
-                if (pos == position || !pd.isCorrectToolForDrops(mainHandItem, world.getBlockState(position))) {
+                if (pos.equals(position) || !pd.isCorrectToolForDrops(mainHandItem, world.getBlockState(position))) {
                     continue;
                 }
                 HARVESTED_BLOCKS.add(position);

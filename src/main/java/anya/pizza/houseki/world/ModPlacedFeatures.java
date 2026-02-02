@@ -89,8 +89,8 @@ public class ModPlacedFeatures {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }
 
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key,
-                                                                                          Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
-        register(context, key, configuration, List.of(modifiers));
+    //private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key,
+    //                                                                                     Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
+    //   register(context, key, configuration, List.of(modifiers));
     }
-}
+

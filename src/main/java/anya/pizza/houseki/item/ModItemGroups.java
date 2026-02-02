@@ -251,7 +251,7 @@ public class ModItemGroups {
                         entries.accept(ModBlocks.BLOCK_OF_SULFUR);
 
                         entries.accept(ModBlocks.BLOCK_OF_STEEL);
-                        entries.accept(ModBlocks.BLOCK_OF_CAST_STEEL_B);
+                        entries.accept(ModBlocks.BLOCK_OF_CAST_STEEL);
                     }).build());
 
 
