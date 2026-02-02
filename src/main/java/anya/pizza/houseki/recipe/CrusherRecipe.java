@@ -35,20 +35,43 @@ public record CrusherRecipe(
         }
     }
 
+    /**
+     * Create an ItemStack containing the recipe's primary output.
+     *
+     * @param registries the registry provider (not used by this implementation)
+     * @return an ItemStack containing one unit of the recipe's output
+     */
     public ItemStack getResult(HolderLookup.Provider registries) {
         return new ItemStack(this.output);
     }
 
+    /**
+     * Determines whether this recipe matches the provided crusher input.
+     *
+     * @param input the crusher input whose first slot will be tested against the recipe's ingredient
+     * @param level the current level/world context
+     * @return true if the recipe's input ingredient matches the item in the first slot of {@code input}, false otherwise
+     */
     @Override
     public boolean matches(CrusherRecipeInput input, Level level) {
         return this.inputItem.test(input.getItem(0));
     }
 
+    /**
+     * Create an ItemStack representing this recipe's primary output.
+     *
+     * @return an ItemStack containing the recipe's output item with a count of 1
+     */
     @Override
     public ItemStack assemble(CrusherRecipeInput input) {
         return new ItemStack(this.output);
     }
 
+    /**
+     * Indicates whether using this recipe triggers a player notification.
+     *
+     * @return true if a notification should be shown when the recipe is used, false otherwise.
+     */
     @Override
     public boolean showNotification() {
         return true;
@@ -65,6 +88,11 @@ public record CrusherRecipe(
         return PlacementInfo.create(this.inputItem);
     }
 
+    /**
+     * Specifies the recipe book category for this recipe.
+     *
+     * @return the RecipeBookCategory under which this recipe appears (RecipeBookCategories.CRAFTING_MISC)
+     */
     @Override
     public RecipeBookCategory recipeBookCategory() {
         // Use a standard category or your own
@@ -98,6 +126,11 @@ public record CrusherRecipe(
         return SERIALIZER;
     }
 
+    /**
+     * Identifies the recipe type for crusher recipes.
+     *
+     * @return the RecipeType instance that identifies crusher recipes
+     */
     @Override
     public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {
         return ModTypes.CRUSHER_TYPE;
