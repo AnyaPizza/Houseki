@@ -30,11 +30,11 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     public String group;
 
     /**
-     * Creates a new builder for a crusher recipe with the given input, primary output, and crushing time.
+     * Creates a new CrusherRecipeBuilder for building a crusher recipe.
      *
-     * @param input the ingredient required by the recipe
-     * @param output the primary output item for the recipe
-     * @param crushingTime the time required to crush the input (in ticks)
+     * @param input the ingredient(s) consumed by the recipe
+     * @param output the resulting item produced by the recipe
+     * @param crushingTime the crushing duration in ticks
      */
     public CrusherRecipeBuilder(Ingredient input, ItemLike output, int crushingTime) {
         this.input = input;
@@ -43,21 +43,21 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     /**
-     * Create a CrusherRecipeBuilder for the given input, output, and crushing time.
+     * Create a builder for a crusher recipe.
      *
-     * @param input the required input ingredient for the recipe
-     * @param output the primary output item of the recipe
-     * @param crushingTime the time required to crush the input (in ticks)
-     * @return a CrusherRecipeBuilder configured with the specified input, output, and crushing time
+     * @param input        the ingredient consumed by the recipe
+     * @param output       the item produced by the recipe
+     * @param crushingTime the crushing duration for the recipe
+     * @return             a CrusherRecipeBuilder configured with the provided input, output, and crushing time
      */
     public static CrusherRecipeBuilder create(Ingredient input, ItemLike output, int crushingTime) {
         return new CrusherRecipeBuilder(input, output, crushingTime);
     }
 
     /**
-     * Sets an auxiliary output item produced alongside the primary output.
+     * Sets an optional auxiliary output item for the crusher recipe.
      *
-     * @param stack the auxiliary output item to produce when the recipe yields an auxiliary result
+     * @param stack the auxiliary output item to produce in addition to the primary output
      * @return this builder instance
      */
     public CrusherRecipeBuilder auxiliary(ItemLike stack) {
@@ -66,10 +66,10 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     /**
-     * Sets the probability of producing the auxiliary output.
+     * Set the probability that the auxiliary output is produced.
      *
-     * @param chance the probability that the auxiliary output will be produced (0.0 to 1.0)
-     * @return this builder instance
+     * @param chance the probability (0.0 to 1.0) that the auxiliary output is produced
+     * @return the current CrusherRecipeBuilder instance
      */
     public CrusherRecipeBuilder chance(double chance) {
         this.auxiliaryChance = chance;
@@ -77,14 +77,15 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     /**
-     * Creates a CrusherRecipe with the builder's configured fields, constructs an associated advancement
-     * from the builder's criteria and the recipe unlocking trigger, and writes both to the provided exporter.
+     * Builds an advancement that unlocks the given recipe and exports the constructed
+     * CrusherRecipe together with that advancement.
      *
-     * The advancement is configured with the recipe as its reward, uses OR requirements, and is placed
-     * under the "recipes/" path. The created recipe includes the primary output, the optional auxiliary
-     * output (if configured) and its production chance.
+     * The advancement will include a `"has_the_recipe"` criterion for the provided
+     * recipe key, any additional criteria configured on this builder, and will reward
+     * the recipe. The built advancement is placed under the `"recipes/"` advancement
+     * path when exported.
      *
-     * @param exporter  destination that accepts the recipe and its advancement
+     * @param exporter  target consumer that accepts the recipe and its advancement
      * @param recipeKey resource key identifying the recipe to export
      */
     public void save(RecipeOutput exporter, ResourceKey<Recipe<?>> recipeKey) {
@@ -115,14 +116,14 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     /**
-     * Saves this builder's crusher recipe and its corresponding advancement via the provided exporter.
+     * Builds a CrusherRecipe and its unlocking advancement, then registers them with the provided exporter under the "recipes/..." advancement path.
      *
-     * The advancement is placed under the "recipes/" path and uses the builder's configured unlock criteria;
-     * the recipe is created from the builder's input, primary output, optional auxiliary output (with chance),
-     * and crushing time.
+     * The method parses the given recipeId into an Identifier and ResourceKey, adds a "has_the_recipe" criterion and any configured criteria to the advancement,
+     * sets the recipe as the advancement reward, constructs a CrusherRecipe using this builder's input, output, crushing time, optional auxiliary output, and auxiliary chance,
+     * and finally passes the recipe, its resource key, and the built advancement (placed under "recipes/<id>") to the exporter.
      *
-     * @param exporter the target that accepts the serialized recipe and built advancement
-     * @param recipeId the string identifier of the recipe (e.g., "namespace:path")
+     * @param exporter  the RecipeOutput consumer that receives the recipe ResourceKey, the built CrusherRecipe, and its corresponding Advancement
+     * @param recipeId  the string identifier for the recipe (parsed into an Identifier and used to derive the advancement path)
      */
     public void save(RecipeOutput exporter, String recipeId) {
         // 1. Convert the String ID into an Identifier and a ResourceKey
@@ -152,11 +153,11 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     /**
-     * Add an unlocking criterion identified by the given name to this builder.
+     * Adds an advancement criterion that will be required to unlock the resulting recipe.
      *
-     * @param name      the unique name for the criterion
-     * @param criterion the criterion that must be satisfied to unlock the recipe
-     * @return          this RecipeBuilder instance for method chaining
+     * @param name      a unique identifier for the criterion within the recipe's advancement
+     * @param criterion the criterion describing the unlocking condition
+     * @return          this builder instance for method chaining
      */
     @Override
     public @NonNull RecipeBuilder unlockedBy(@NonNull String name, @NonNull Criterion<?> criterion) {
@@ -171,9 +172,9 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     /**
-     * Indicates the builder has no default recipe key.
+     * Indicates this builder does not supply a default recipe identifier.
      *
-     * @return null to indicate no default ResourceKey<Recipe<?>> is provided for this recipe
+     * @return {@code null} to indicate no default {@code ResourceKey<Recipe<?>>} is provided.
      */
     @Override
     public @Nullable ResourceKey<Recipe<?>> defaultId() {
@@ -181,9 +182,9 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
     }
 
     /**
-     * Get the primary output item for this recipe.
+     * Gets the Item representation of the configured recipe output.
      *
-     * @return the Item produced by the recipe
+     * @return the Item corresponding to the builder's output
      */
     public Item getResult() {
         return output.asItem();

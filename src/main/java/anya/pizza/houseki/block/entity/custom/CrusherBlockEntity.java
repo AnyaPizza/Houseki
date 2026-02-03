@@ -241,13 +241,11 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     }
 
     /**
-     * Apply the currently matched crusher recipe: produce the recipe's main output, optionally produce
-     * the auxiliary output based on its chance, and consume one input item.
+     * Apply the currently matched crusher recipe, producing the recipe's outputs and consuming one input item.
      *
-     * If no matching recipe is available, the method makes no changes. The main output is always
-     * inserted (or stacked) into the main output slot; the auxiliary output is inserted only if the
-     * recipe provides one and its configured chance succeeds. One item is removed from the input slot
-     * when a recipe is applied.
+     * If no matching recipe is available, no changes are made. The recipe's main output is inserted into (or stacked
+     * onto) the main output slot; the auxiliary output is inserted into the auxiliary output slot only if the recipe
+     * provides one and its configured chance succeeds. One item is removed from the input slot when the recipe is applied.
      */
     private void craftItem() {
         Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();

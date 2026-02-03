@@ -5,12 +5,10 @@
     "#": "houseki:sapphire"
   },
   "pattern": [
-    "   ",
     "# #",
     "# #"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:sapphire_boots"
   }
 }

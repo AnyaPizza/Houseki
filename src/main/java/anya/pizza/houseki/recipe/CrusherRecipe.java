@@ -36,20 +36,21 @@ public record CrusherRecipe(
     }
 
     /**
-     * Create an ItemStack for the recipe's primary output item.
+     * Create an ItemStack containing the recipe's primary output.
      *
-     * @return a new ItemStack containing the recipe's output item
+     * @param registries the registry provider (not used by this implementation)
+     * @return an ItemStack containing one unit of the recipe's output
      */
     public ItemStack getResult(HolderLookup.Provider registries) {
         return new ItemStack(this.output);
     }
 
     /**
-     * Checks whether this recipe matches the provided input.
+     * Determines whether this recipe matches the provided crusher input.
      *
-     * @param input the crusher input to test
-     * @param level the world level context (may be unused)
-     * @return true if the recipe's ingredient matches the input's first item, false otherwise
+     * @param input the crusher input whose first slot will be tested against the recipe's ingredient
+     * @param level the current level/world context
+     * @return true if the recipe's input ingredient matches the item in the first slot of {@code input}, false otherwise
      */
     @Override
     public boolean matches(CrusherRecipeInput input, Level level) {
@@ -57,10 +58,9 @@ public record CrusherRecipe(
     }
 
     /**
-     * Creates an ItemStack for this recipe's primary output.
+     * Create an ItemStack representing this recipe's primary output.
      *
-     * @param input the recipe input
-     * @return an ItemStack containing the recipe's output Item
+     * @return an ItemStack containing the recipe's output item with a count of 1
      */
     @Override
     public ItemStack assemble(CrusherRecipeInput input) {
@@ -68,9 +68,9 @@ public record CrusherRecipe(
     }
 
     /**
-     * Indicates whether completing this recipe should display a crafting notification.
+     * Indicates whether using this recipe triggers a player notification.
      *
-     * @return `true` if a crafting result should display a notification, `false` otherwise.
+     * @return true if a notification should be shown when the recipe is used, false otherwise.
      */
     @Override
     public boolean showNotification() {
@@ -89,9 +89,9 @@ public record CrusherRecipe(
     }
 
     /**
-     * Specifies which recipe book category this recipe appears under.
+     * Specifies the recipe book category for this recipe.
      *
-     * @return the recipe book category for this recipe (RecipeBookCategories.CRAFTING_MISC)
+     * @return the RecipeBookCategory under which this recipe appears (RecipeBookCategories.CRAFTING_MISC)
      */
     @Override
     public RecipeBookCategory recipeBookCategory() {
@@ -127,9 +127,9 @@ public record CrusherRecipe(
     }
 
     /**
-     * The recipe type associated with crusher recipes.
+     * Identifies the recipe type for crusher recipes.
      *
-     * @return the recipe type for crusher recipes
+     * @return the RecipeType instance that identifies crusher recipes
      */
     @Override
     public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {

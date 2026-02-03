@@ -8,6 +8,13 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "has_tungsten": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:tungsten"
+          }
+        ]
+      },
       "trigger": "minecraft:inventory_changed"
     }
   },

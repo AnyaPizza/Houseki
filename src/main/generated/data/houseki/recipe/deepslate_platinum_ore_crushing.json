@@ -1,9 +1,6 @@
 {
-  "type": "houseki:crushing",
+  "type": "houseki:crusher",
   "crushingTime": 250,
   "ingredient": "houseki:deepslate_platinum_ore",
-  "result": {
-    "count": 1,
-    "id": "houseki:platinum"
-  }
+  "result": "houseki:platinum"
 }

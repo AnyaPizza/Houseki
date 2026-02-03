@@ -5,12 +5,10 @@
     "#": "houseki:tungsten"
   },
   "pattern": [
-    "   ",
     "# #",
     "# #"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:tungsten_boots"
   }
 }

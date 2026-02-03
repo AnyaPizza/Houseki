@@ -13,10 +13,8 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherScreenHandler>
     private static final Identifier ARROW_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "textures/gui/crusher/crush_progress.png");
     private static final Identifier CRUSHING_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "textures/gui/crusher/crushing_progress.png");
 
-    public CrusherScreen(CrusherScreenHandler handler, Inventory inventory, Component title/*, int imageWidth, int imageHeight*/) {
-        super(handler, inventory, title);
-        //imageWidth = 176;
-        //imageHeight = 176;
+    public CrusherScreen(CrusherScreenHandler handler, Inventory inventory, Component title, final int imageWidth, final int imageHeight) {
+        super(handler, inventory, title, imageWidth, imageHeight);
     }
 
     @Override

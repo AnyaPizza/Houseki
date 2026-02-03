@@ -6,11 +6,9 @@
   },
   "pattern": [
     "###",
-    "# #",
-    "   "
+    "# #"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:steel_helmet"
   }
 }
