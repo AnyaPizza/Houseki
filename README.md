@@ -269,7 +269,7 @@ The Crusher is a new block entity that crushes minerals to make other minerals! 
 
 Jaw Crushers use iron plates to crush things down; therefore, the fuel in a crusher is Iron Ingots. 
 
-![Crusher GUI](https://cdn.modrinth.com/data/cached_images/28a540ad736a2fe6cf4f1915704dcba95435ca54.png)
+![Crusher GUI](https://cdn.modrinth.com/data/cached_images/39c73d62b6b0215d9e2520c64b44dbad6641620d.png)
 
 ---
 
