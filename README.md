@@ -442,7 +442,8 @@ Bauxite is a sedimentary rock and the primary source of aluminum, composed mainl
 
 Bauxite can be found in Beachs, Deep Oceans, Deep Lukewarm Oceans, Lukewarm Oceans, Jungles, Savannas, Warm Oceans, Forests, Swamps, and Mangrove Swamps.
 
-Bauxite is only used to get Crushed Bauxite for Aluminum at the moment.
+Bauxite is only used to get Crushed Bauxite for Aluminum at the moment. 
+Bauxite has a 50% chance to yield Clay in the Crusher.
 
 </details>
 
