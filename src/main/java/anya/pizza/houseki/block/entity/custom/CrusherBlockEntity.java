@@ -5,7 +5,6 @@ import anya.pizza.houseki.block.entity.ImplementedInventory;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.recipe.CrusherRecipe;
 import anya.pizza.houseki.recipe.CrusherRecipeInput;
-import anya.pizza.houseki.recipe.ModSerializer;
 import anya.pizza.houseki.recipe.ModTypes;
 import anya.pizza.houseki.screen.custom.CrusherScreenHandler;
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
@@ -34,7 +33,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
-import org.lwjgl.system.windows.INPUT;
 
 import java.util.Optional;
 
@@ -112,10 +110,16 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
         return new CrusherScreenHandler(syncId, playerInventory, this, propertyDelegate);
     }
 
+    /**
+     * Drops this block entity's inventory at the given position when the block is removed, then
+     * invokes superclass removal side-effects.
+     *
+     * @param pos the position of the block being removed
+     * @param oldState the previous block state at that position
+     */
     @Override
     public void preRemoveSideEffects(@NonNull BlockPos pos, @NonNull BlockState oldState) {
         assert level != null;
-        Containers.dropContents(level, pos, (this));
         if (level != null) {
             Containers.dropContents(level, pos, this);
         }
@@ -194,13 +198,29 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
                 .orElse(CrusherRecipe.DEFAULT_CRUSHING_TIME);
     }
 
+    /**
+     * Determines whether the current crusher recipe can be executed given available output space.
+     *
+     * Checks that a matching recipe exists and that the recipe's primary output and optional auxiliary
+     * output can both fit into their respective output slots.
+     *
+     * @return true if both the main output and the auxiliary output (if present) can be inserted into their slots, false otherwise.
+     */
     private boolean canCraft() {
         Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return false;
 
         CrusherRecipe crusherRecipe = recipe.get().value();
+        
+        // 1. Get the main output stack
+        // In 1.21, getResult technically wants the registry provider, but for 
+        // a simple Item-to-Stack conversion, it doesn't strictly need it.
         ItemStack output = crusherRecipe.getResult(null);
-        ItemStack auxiliary = crusherRecipe.auxiliaryOutput().orElse(ItemStack.EMPTY);
+
+        // 2. Map the Optional<Item> to an Optional<ItemStack>
+        ItemStack auxiliary = crusherRecipe.auxiliaryOutput()
+                .map(ItemStack::new)      // Convert the Item to a Stack if present
+                .orElse(ItemStack.EMPTY); // Otherwise return the empty stack
 
         return canInsertIntoSlot(OUTPUT_SLOT, output) && canInsertIntoSlot(AUXILIARY_OUTPUT_SLOT, auxiliary);
     }
@@ -222,13 +242,11 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     }
 
     /**
-     * Apply the currently matched crusher recipe: produce the recipe's main output, optionally produce
-     * the auxiliary output based on its chance, and consume one input item.
+     * Apply the currently matched crusher recipe, producing the recipe's outputs and consuming one input item.
      *
-     * If no matching recipe is available, the method makes no changes. The main output is always
-     * inserted (or stacked) into the main output slot; the auxiliary output is inserted only if the
-     * recipe provides one and its configured chance succeeds. One item is removed from the input slot
-     * when a recipe is applied.
+     * If no matching recipe is available, no changes are made. The recipe's main output is inserted into (or stacked
+     * onto) the main output slot; the auxiliary output is inserted into the auxiliary output slot only if the recipe
+     * provides one and its configured chance succeeds. One item is removed from the input slot when the recipe is applied.
      */
     private void craftItem() {
         Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
@@ -237,11 +255,14 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
         CrusherRecipe crusherRecipe = recipe.get().value();
 
         // Handle Main Output
-        insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy(), 1.0);
+        // getResult already returns a new ItemStack(output), so we copy that.
+        insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null), 1.0);
 
         // Handle Auxiliary Output
-        crusherRecipe.auxiliaryOutput().ifPresent(stack -> {
-            insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy(), crusherRecipe.auxiliaryChance());
+        crusherRecipe.auxiliaryOutput().ifPresent(item -> {
+            // Convert the raw Item into a new ItemStack so we can use .copy() or set counts
+            ItemStack auxStack = new ItemStack(item); 
+            insertOrIncrement(AUXILIARY_OUTPUT_SLOT, auxStack, crusherRecipe.auxiliaryChance());
         });
 
         inventory.get(INPUT_SLOT).shrink(1);
@@ -268,13 +289,27 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
         }
     }
 
+    /**
+     * Look up the crusher recipe that matches the current input stack on the server.
+     *
+     * @return An Optional containing the matching RecipeHolder<CrusherRecipe> when running on a server and a recipe exists; {@code Optional.empty()} otherwise.
+     */
     private Optional<RecipeHolder<CrusherRecipe>> getCurrentRecipe() {
-        assert this.getLevel() != null;
-        return ((ServerLevel) this.getLevel()).recipeAccess()
-                .getRecipeFor(ModTypes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), this.getLevel());
-
+        Level level = this.getLevel();
+        if (!(level instanceof ServerLevel serverLevel)) {
+            return Optional.empty();
+        }
+        return serverLevel.recipeAccess()
+                .getRecipeFor(ModTypes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), level);
     }
 
+    /**
+     * Get the inventory slot indices that are accessible from the given block face.
+     *
+     * @param side the block face from which access is attempted
+     * @return an array of slot indices accessible from the specified face; if {@link Direction#DOWN} returns
+     *         OUTPUT_SLOT and AUXILIARY_OUTPUT_SLOT, otherwise returns INPUT_SLOT and FUEL_SLOT
+     */
     @Override
     public int @NonNull [] getSlotsForFace(@NonNull Direction side) {
         return side == Direction.DOWN ? new int[]{OUTPUT_SLOT, AUXILIARY_OUTPUT_SLOT} : new int[]{INPUT_SLOT, FUEL_SLOT};

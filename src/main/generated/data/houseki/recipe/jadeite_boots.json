@@ -5,12 +5,10 @@
     "#": "houseki:jadeite"
   },
   "pattern": [
-    "   ",
     "# #",
     "# #"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:jadeite_boots"
   }
 }

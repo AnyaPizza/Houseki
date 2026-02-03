@@ -5,12 +5,10 @@
     "#": "houseki:nephrite"
   },
   "pattern": [
-    "   ",
     "# #",
     "# #"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:nephrite_boots"
   }
 }

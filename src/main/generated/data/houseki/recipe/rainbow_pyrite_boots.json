@@ -5,12 +5,10 @@
     "#": "houseki:rainbow_pyrite"
   },
   "pattern": [
-    "   ",
     "# #",
     "# #"
   ],
   "result": {
-    "count": 1,
     "id": "houseki:rainbow_pyrite_boots"
   }
 }
