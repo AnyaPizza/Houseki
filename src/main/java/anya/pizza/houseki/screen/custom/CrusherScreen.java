@@ -13,8 +13,8 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherScreenHandler>
     private static final Identifier ARROW_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "textures/gui/crusher/crush_progress.png");
     private static final Identifier CRUSHING_TEXTURE = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "textures/gui/crusher/crushing_progress.png");
 
-    public CrusherScreen(CrusherScreenHandler handler, Inventory inventory, Component title, final int imageWidth, final int imageHeight) {
-        super(handler, inventory, title, imageWidth, imageHeight);
+    public CrusherScreen(CrusherScreenHandler handler, Inventory inventory, Component title) {
+        super(handler, inventory, title, 176, 176);
     }
 
     @Override
@@ -22,13 +22,13 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherScreenHandler>
         super.init();
         titleLabelX = 114;
         titleLabelY = -4;
-        //imageHeight = 196;
+        inventoryLabelY = imageHeight - 104;
     }
 
     @Override
     protected void renderBg(GuiGraphics context, float delta, int mouseX, int mouseY) {
         int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
+        int y = (height - 196) / 2;
 
         context.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, 176, 176, 256, 256);
         renderProgressArrow(context, x, y);
