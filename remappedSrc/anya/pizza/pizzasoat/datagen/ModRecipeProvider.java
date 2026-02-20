@@ -20,6 +20,12 @@ import java.util.concurrent.CompletableFuture;
 import static anya.pizza.houseki.util.ModGenRecipes.offerPinkuUpgradeRecipe;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
+    /**
+     * Creates a ModRecipeProvider for generating the mod's datapack recipes.
+     *
+     * @param output the FabricDataOutput used to write generated data
+     * @param registriesFuture a future that supplies registry lookups required during recipe generation
+     */
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
