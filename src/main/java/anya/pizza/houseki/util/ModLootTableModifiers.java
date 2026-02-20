@@ -37,6 +37,7 @@ public class ModLootTableModifiers {
     private static final Identifier VILLAGE_WEAPONSMITH_ID = Identifier.of("minecraft", "chests/village/village_weaponsmith");
     private static final Identifier WOODLAND_MANSION_ID = Identifier.of("minecraft", "chests/woodland_mansion");
     private static final Identifier WARDEN_ID = Identifier.of("minecraft", "entities/warden");
+    private static final Identifier ZOMBIE_ID = Identifier.of("minecraft", "entities/zombie");
 
 
 
@@ -732,6 +733,16 @@ public class ModLootTableModifiers {
                         .conditionally(RandomChanceLootCondition.builder(0.4f))
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD))
                         .with(ItemEntry.builder(ModItems.PINKU).conditionally(RandomChanceLootCondition.builder(0.1f)).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
+
+            if (ZOMBIE_ID.equals(key.getValue())) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_SPEAR))
+                        .with(ItemEntry.builder(ModItems.ALUMINUM_SPEAR))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }

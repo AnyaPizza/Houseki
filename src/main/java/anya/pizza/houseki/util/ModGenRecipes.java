@@ -95,6 +95,18 @@ public class ModGenRecipes {
                 .offerTo(exporter);
     }
 
+    public static void offerSpearRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, output, 1)
+                .input('#', input)
+                .input('S', Items.STICK)
+                .pattern("  #")
+                .pattern(" S ")
+                .pattern("S  ")
+                .criterion(hasItem(input), conditionsFromItemPredicates())
+                .showNotification(true)
+                .offerTo(exporter);
+    }
+
     //Armor
     public static void offerHelmetRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output, 1)

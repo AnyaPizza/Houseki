@@ -86,6 +86,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ModItems.PINKU_SHOVEL);
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ModItems.PINKU_SWORD);
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_HOE, RecipeCategory.TOOLS, ModItems.PINKU_HOE);
+                offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_SPEAR, RecipeCategory.TOOLS, ModItems.PINKU_SPEAR);
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT, ModItems.PINKU_NAUTILUS_ARMOR);
                 offerDrillUpgradeRecipe(exporter, ModItems.SIMPLE_DRILL_HEAD, RecipeCategory.TOOLS, ModItems.ENHANCED_DRILL_HEAD);
                 offerDrillUpgradeRecipe(exporter, ModItems.SIMPLE_TUNGSTEN_DRILL, RecipeCategory.TOOLS, ModItems.ENHANCED_TUNGSTEN_DRILL);
@@ -192,6 +193,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerHoeRecipe(exporter, ModItems.SAPPHIRE_HOE, ModItems.SAPPHIRE);
                 offerHoeRecipe(exporter, ModItems.STEEL_HOE, ModItems.STEEL);
                 offerHoeRecipe(exporter, ModItems.TUNGSTEN_HOE, ModItems.TUNGSTEN);
+
+                //Spear Recipes
+                offerSpearRecipe(exporter, ModItems.RAINBOW_PYRITE_SPEAR, ModItems.RAINBOW_PYRITE);
+                offerSpearRecipe(exporter, ModItems.ALUMINUM_SPEAR, ModItems.ALUMINUM);
+                offerSpearRecipe(exporter, ModItems.CAST_STEEL_SPEAR, ModItems.CAST_STEEL);
+                offerSpearRecipe(exporter, ModItems.JADEITE_SPEAR, ModItems.JADEITE);
+                offerSpearRecipe(exporter, ModItems.NEPHRITE_SPEAR, ModItems.NEPHRITE);
+                offerSpearRecipe(exporter, ModItems.PLATINUM_SPEAR, ModItems.PLATINUM);
+                offerSpearRecipe(exporter, ModItems.SAPPHIRE_SPEAR, ModItems.SAPPHIRE);
+                offerSpearRecipe(exporter, ModItems.STEEL_SPEAR, ModItems.STEEL);
+                offerSpearRecipe(exporter, ModItems.TUNGSTEN_SPEAR, ModItems.TUNGSTEN);
 
                 //Armor
                 offerHelmetRecipe(exporter, ModItems.RAINBOW_PYRITE_HELMET, ModItems.RAINBOW_PYRITE);

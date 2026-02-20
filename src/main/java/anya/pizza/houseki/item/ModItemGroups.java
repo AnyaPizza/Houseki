@@ -175,6 +175,18 @@ public class ModItemGroups {
                         entries.add(ModItems.ADVANCED_DIAMOND_DRILL);
                         entries.add(ModItems.PREMIUM_DIAMOND_DRILL);
 
+                        entries.add(ModItems.PINKU_SPEAR);
+                        entries.add(ModItems.RAINBOW_PYRITE_SPEAR);
+                        entries.add(ModItems.TUNGSTEN_SPEAR);
+                        entries.add(ModItems.ALUMINUM_SPEAR);
+                        entries.add(ModItems.SAPPHIRE_SPEAR);
+                        entries.add(ModItems.NEPHRITE_SPEAR);
+                        entries.add(ModItems.JADEITE_SPEAR);
+                        entries.add(ModItems.PLATINUM_SPEAR);
+                        entries.add(ModItems.STEEL_SPEAR);
+
+                        entries.add(ModItems.CAST_STEEL_SPEAR);
+
                     }).build());
 
     public static final ItemGroup HOUSEKI_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,

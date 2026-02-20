@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "houseki:pinku",
+  "base": "minecraft:netherite_spear",
+  "result": {
+    "id": "houseki:pinku_spear"
+  },
+  "template": "houseki:pinku_upgrade_smithing_template"
+}
