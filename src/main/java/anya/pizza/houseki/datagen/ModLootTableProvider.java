@@ -25,7 +25,6 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
     @Override
     public void generate() {
-        //Block Drops Itself
         dropSelf(ModBlocks.BLOCK_OF_PINKU);
         dropSelf(ModBlocks.BLOCK_OF_RAINBOW_PYRITE);
         dropSelf(ModBlocks.PINKU_ORE);
@@ -70,7 +69,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.PLATINUM_ORE);
         dropSelf(ModBlocks.DEEPSLATE_PLATINUM_ORE);
 
-        //Block drops other stuff.
+
         add(ModBlocks.WOLFRAMITE_ORE, LightOreDrops(ModBlocks.WOLFRAMITE_ORE, ModItems.WOLFRAMITE));
 
         add(ModBlocks.RAINBOW_PYRITE_ORE, SingleItemOreDrops(ModBlocks.RAINBOW_PYRITE_ORE, ModItems.RAINBOW_PYRITE));

@@ -1,6 +1,9 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "houseki:block/aluminum_glass"
+    "all": {
+      "force_translucent": true,
+      "sprite": "houseki:block/aluminum_glass"
+    }
   }
 }

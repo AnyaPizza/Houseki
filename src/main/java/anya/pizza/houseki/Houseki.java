@@ -30,10 +30,9 @@ public class Houseki implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
-		ModLootTableModifiers.modifyLootTables();
-
 		ModSerializer.registerSerializers();
 		ModTypes.registerRecipeTypes();
+		ModLootTableModifiers.modifyLootTables();
 
 		ModWorldGeneration.generateModWorldGeneration();
 

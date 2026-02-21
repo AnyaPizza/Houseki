@@ -286,5 +286,18 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.PLATINUM_BOOTS)
                 .add(ModItems.STEEL_BOOTS)
                 .add(ModItems.CAST_STEEL_BOOTS);
+
+        valueLookupBuilder(ItemTags.SPEARS)
+                .add(ModItems.PINKU_SPEAR)
+                .add(ModItems.RAINBOW_PYRITE_SPEAR)
+                .add(ModItems.TUNGSTEN_SPEAR)
+                .add(ModItems.ALUMINUM_SPEAR)
+                .add(ModItems.SAPPHIRE_SPEAR)
+                .add(ModItems.NEPHRITE_SPEAR)
+                .add(ModItems.NEPHRITE_SPEAR)
+                .add(ModItems.JADEITE_SPEAR)
+                .add(ModItems.PLATINUM_SPEAR)
+                .add(ModItems.STEEL_SPEAR)
+                .add(ModItems.CAST_STEEL_SPEAR);
     }
 }

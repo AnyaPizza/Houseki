@@ -1,6 +1,5 @@
 package anya.pizza.houseki.util;
 
-
 import anya.pizza.houseki.Houseki;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
@@ -41,7 +40,6 @@ public class ModTags {
 
         public static final TagKey<Block> PREMIUM_DRILL_MINEABLE = createTag("premium_mineable");
         public static final TagKey<Block> ENHANCED_DRILL_MINEABLE = createTag("enhanced_mineable");
-
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name));
