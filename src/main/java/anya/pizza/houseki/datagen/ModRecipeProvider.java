@@ -59,69 +59,39 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemLike> STEEL_SMELTABLES = List.of(ModItems.CRUDE_IRON);
                 List<ItemLike> CAST_STEEL_SMELTABLES = List.of(ModItems.STEEL);
 
-                //Crushing recipes with auxiliary output
+                // Crushing recipes with auxiliary output
                 CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.BAUXITE), ModItems.CRUSHED_BAUXITE, 250)
-                        .chance(0.5)
-                        .auxiliary(Items.CLAY)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "bauxite_crushing"))
-                        );
+                        .chance(0.5).auxiliary(Items.CLAY).save(output,
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "bauxite_crushing")));
 
                 CrusherRecipeBuilder.create(Ingredient.of(Items.SANDSTONE), Items.SAND, 100)
-                        .chance(0.2)
-                        .auxiliary(Items.CALCITE)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "sandstone_crushing"))
-                        );
+                        .chance(0.2).auxiliary(Items.CALCITE).save(output,
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "sandstone_crushing")));
 
                 CrusherRecipeBuilder.create(Ingredient.of(ModItems.WOLFRAMITE), ModItems.TUNGSTEN, 250)
-                        .chance(0.5)
-                        .auxiliary(Items.QUARTZ)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "wolframite_crushing"))
-                        );
+                        .chance(0.5).auxiliary(Items.QUARTZ).save(output,
+                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "wolframite_crushing")));
 
                 // Crushing recipes WITHOUT an auxiliary output
                 CrusherRecipeBuilder.create(Ingredient.of(Items.COBBLESTONE), Items.GRAVEL, 100)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "cobblestone_crushing"))
-                        );
+                        .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "cobblestone_crushing")));
 
                 CrusherRecipeBuilder.create(Ingredient.of(Items.STONE), Items.GRAVEL, 100)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "stone_crushing"))
-                        );
+                        .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "stone_crushing")));
 
                 CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.PLATINUM_ORE), ModItems.PLATINUM, 250)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "platinum_ore_crushing"))
-                        );
+                        .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "platinum_ore_crushing")));
 
                 CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.DEEPSLATE_PLATINUM_ORE), ModItems.PLATINUM, 250)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "deepslate_platinum_ore_crushing"))
-                        );
+                        .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "deepslate_platinum_ore_crushing")));
 
                 CrusherRecipeBuilder.create(Ingredient.of(Items.COPPER_INGOT), ModItems.PLATINUM_NUGGET, 250)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "copper_ingot_crushing"))
-                        );
+                        .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "copper_ingot_crushing")));
 
                 CrusherRecipeBuilder.create(Ingredient.of(ModItems.SCHEELITE), ModItems.TUNGSTEN, 250)
-                        .save(
-                                output, 
-                                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "scheelite_crushing"))
-                        );
+                        .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "scheelite_crushing")));
 
-                //Smithing Upgrades
+                // Smithing Upgrades
                 offerPinkuUpgradeRecipe(output, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.PINKU_HELMET);
                 offerPinkuUpgradeRecipe(output, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.PINKU_CHESTPLATE);
                 offerPinkuUpgradeRecipe(output, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ModItems.PINKU_LEGGINGS);
@@ -132,6 +102,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerPinkuUpgradeRecipe(output, Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ModItems.PINKU_SWORD);
                 offerPinkuUpgradeRecipe(output, Items.NETHERITE_HOE, RecipeCategory.TOOLS, ModItems.PINKU_HOE);
                 offerPinkuUpgradeRecipe(output, Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT, ModItems.PINKU_NAUTILUS_ARMOR);
+                offerPinkuUpgradeRecipe(output, Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, ModItems.PINKU_SPEAR);
                 offerDrillUpgradeRecipe(output, ModItems.SIMPLE_DRILL_HEAD, RecipeCategory.TOOLS, ModItems.ENHANCED_DRILL_HEAD);
                 offerDrillUpgradeRecipe(output, ModItems.SIMPLE_TUNGSTEN_DRILL, RecipeCategory.TOOLS, ModItems.ENHANCED_TUNGSTEN_DRILL);
                 offerDrillUpgradeRecipe(output, ModItems.ENHANCED_DRILL_HEAD, RecipeCategory.TOOLS, ModItems.ADVANCED_DRILL_HEAD);
@@ -143,7 +114,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerDrillUpgradeRecipe(output, ModItems.ADVANCED_DIAMOND_DRILL, RecipeCategory.TOOLS, ModItems.PREMIUM_DIAMOND_DRILL);
 
 
-                //Block Reversing Recipes
+                // Block Reversing Recipes
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.PINKU, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_PINKU);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.RAINBOW_PYRITE, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_RAINBOW_PYRITE);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.TUNGSTEN, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_TUNGSTEN_B);
@@ -155,8 +126,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL);
 
-
-                //Smelting Recipes
+                // Smelting Recipes
                 oreSmelting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ALUMINUM, 0.5f, 200, "aluminum");
                 oreSmelting(PINKU_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.PINKU_SHARD, 0.5f, 250, "pinku");
                 oreSmelting(RAINBOW_PYRITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.RAINBOW_PYRITE, 0.5f, 200, "rainbow_pyrite");
@@ -168,7 +138,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreSmelting(PLATINUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.PLATINUM, 0.5f, 200, "platinum");
                 oreSmelting(SULFUR_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.SULFUR, 0.5f, 200, "sulfur");
 
-                //Blasting Recipes
+                // Blasting Recipes
                 oreBlasting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ALUMINUM, 0.5f, 100, "aluminum");
                 oreBlasting(PINKU_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.PINKU_SHARD, 0.5f, 150, "pinku");
                 oreBlasting(RAINBOW_PYRITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.RAINBOW_PYRITE, 0.5f, 100, "rainbow_pyrite");
@@ -183,7 +153,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreBlasting(STEEL_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.STEEL, 0.5f, 120, "steel");
                 oreBlasting(CAST_STEEL_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.CAST_STEEL, 0.5f, 120, "cast_steel");
 
-                //Pickaxe Recipes
+                // Pickaxe Recipes
                 offerPickaxeRecipe(output, ModItems.RAINBOW_PYRITE_PICKAXE, ModItems.RAINBOW_PYRITE);
                 offerPickaxeRecipe(output, ModItems.ALUMINUM_PICKAXE, ModItems.ALUMINUM);
                 offerPickaxeRecipe(output, ModItems.CAST_STEEL_PICKAXE, ModItems.CAST_STEEL);
@@ -194,7 +164,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerPickaxeRecipe(output, ModItems.STEEL_PICKAXE, ModItems.STEEL);
                 offerPickaxeRecipe(output, ModItems.TUNGSTEN_PICKAXE, ModItems.TUNGSTEN);
 
-                //Axe Recipes
+                // Axe Recipes
                 offerAxeRecipe(output, ModItems.RAINBOW_PYRITE_AXE, ModItems.RAINBOW_PYRITE);
                 offerAxeRecipe(output, ModItems.ALUMINUM_AXE, ModItems.ALUMINUM);
                 offerAxeRecipe(output, ModItems.CAST_STEEL_AXE, ModItems.CAST_STEEL);
@@ -205,7 +175,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerAxeRecipe(output, ModItems.STEEL_AXE, ModItems.STEEL);
                 offerAxeRecipe(output, ModItems.TUNGSTEN_AXE, ModItems.TUNGSTEN);
 
-                //Shovel Recipes
+                // Shovel Recipes
                 offerShovelRecipe(output, ModItems.RAINBOW_PYRITE_SHOVEL, ModItems.RAINBOW_PYRITE);
                 offerShovelRecipe(output, ModItems.ALUMINUM_SHOVEL, ModItems.ALUMINUM);
                 offerShovelRecipe(output, ModItems.CAST_STEEL_SHOVEL, ModItems.CAST_STEEL);
@@ -216,7 +186,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerShovelRecipe(output, ModItems.STEEL_SHOVEL, ModItems.STEEL);
                 offerShovelRecipe(output, ModItems.TUNGSTEN_SHOVEL, ModItems.TUNGSTEN);
 
-                //Sword Recipes
+                // Sword Recipes
                 offerSwordRecipe(output, ModItems.RAINBOW_PYRITE_SWORD, ModItems.RAINBOW_PYRITE);
                 offerSwordRecipe(output, ModItems.ALUMINUM_SWORD, ModItems.ALUMINUM);
                 offerSwordRecipe(output, ModItems.CAST_STEEL_SWORD, ModItems.CAST_STEEL);
@@ -227,7 +197,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerSwordRecipe(output, ModItems.STEEL_SWORD, ModItems.STEEL);
                 offerSwordRecipe(output, ModItems.TUNGSTEN_SWORD, ModItems.TUNGSTEN);
 
-                //Hoe Recipes
+                // Hoe Recipes
                 offerHoeRecipe(output, ModItems.RAINBOW_PYRITE_HOE, ModItems.RAINBOW_PYRITE);
                 offerHoeRecipe(output, ModItems.ALUMINUM_HOE, ModItems.ALUMINUM);
                 offerHoeRecipe(output, ModItems.CAST_STEEL_HOE, ModItems.CAST_STEEL);
@@ -238,7 +208,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerHoeRecipe(output, ModItems.STEEL_HOE, ModItems.STEEL);
                 offerHoeRecipe(output, ModItems.TUNGSTEN_HOE, ModItems.TUNGSTEN);
 
-                //Armor
+                // Spear Recipes
+                offerSpearRecipe(output, ModItems.RAINBOW_PYRITE_SPEAR, ModItems.RAINBOW_PYRITE);
+                offerSpearRecipe(output, ModItems.ALUMINUM_SPEAR, ModItems.ALUMINUM);
+                offerSpearRecipe(output, ModItems.CAST_STEEL_SPEAR, ModItems.CAST_STEEL);
+                offerSpearRecipe(output, ModItems.JADEITE_SPEAR, ModItems.JADEITE);
+                offerSpearRecipe(output, ModItems.NEPHRITE_SPEAR, ModItems.NEPHRITE);
+                offerSpearRecipe(output, ModItems.PLATINUM_SPEAR, ModItems.PLATINUM);
+                offerSpearRecipe(output, ModItems.SAPPHIRE_SPEAR, ModItems.SAPPHIRE);
+                offerSpearRecipe(output, ModItems.STEEL_SPEAR, ModItems.STEEL);
+                offerSpearRecipe(output, ModItems.TUNGSTEN_SPEAR, ModItems.TUNGSTEN);
+
+                // Armor
                 offerHelmetRecipe(output, ModItems.RAINBOW_PYRITE_HELMET, ModItems.RAINBOW_PYRITE);
                 offerChestplateRecipe(output, ModItems.RAINBOW_PYRITE_CHESTPLATE, ModItems.RAINBOW_PYRITE);
                 offerLeggingsRecipe(output, ModItems.RAINBOW_PYRITE_LEGGINGS, ModItems.RAINBOW_PYRITE);
@@ -276,7 +257,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerLeggingsRecipe(output, ModItems.TUNGSTEN_LEGGINGS, ModItems.TUNGSTEN);
                 offerBootsRecipe(output, ModItems.TUNGSTEN_BOOTS, ModItems.TUNGSTEN);
 
-                //Stonecutting Recipes
+                // Stonecutting Recipes
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_LIMESTONE, ModBlocks.LIMESTONE, 1);
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICKS, ModBlocks.LIMESTONE, 1);
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICK_STAIRS, ModBlocks.LIMESTONE, 1);
@@ -303,7 +284,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SLATE_SLAB, ModBlocks.SLATE, 2);
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SLATE_WALL, ModBlocks.SLATE, 1);
 
-                //Crafting Recipes
+                // Crafting Recipes
                 chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_LIMESTONE, ModBlocks.LIMESTONE_SLAB);
                 twoByTwoPacker(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICKS, ModBlocks.LIMESTONE);
                 polished(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_LIMESTONE, ModBlocks.LIMESTONE_BRICKS);
@@ -313,7 +294,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 twoByTwoPacker(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAUXITE, ModItems.CRUSHED_BAUXITE);
                 stainedGlassPaneFromStainedGlass(ModBlocks.ALUMINUM_GLASS_PANE, ModBlocks.ALUMINUM_GLASS);
 
-                //Slab Recipes
+                // Slab Recipes
                 slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_SLAB, ModBlocks.LIMESTONE);
                 slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICK_SLAB, ModBlocks.LIMESTONE_BRICKS);
                 slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_LIMESTONE_SLAB, ModBlocks.POLISHED_LIMESTONE);
@@ -321,7 +302,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SLATE_TILE_SLAB, ModBlocks.SLATE_TILES);
                 slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SLATE_SLAB, ModBlocks.POLISHED_SLATE);
 
-                //Wall Recipes
+                // Wall Recipes
                 wall(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_WALL, ModBlocks.LIMESTONE);
                 wall(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICK_WALL, ModBlocks.LIMESTONE_BRICKS);
                 wall(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_LIMESTONE_WALL, ModBlocks.POLISHED_LIMESTONE);
@@ -329,7 +310,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 wall(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SLATE_TILE_WALL, ModBlocks.SLATE_TILES);
                 wall(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SLATE_WALL, ModBlocks.POLISHED_SLATE);
 
-                //Stair Recipes
+                // Stair Recipes
                 stairBuilder(ModBlocks.LIMESTONE_STAIRS, Ingredient.of(ModBlocks.LIMESTONE)).unlockedBy(getHasName(ModBlocks.LIMESTONE), has(ModBlocks.LIMESTONE)).save(output);
                 stairBuilder(ModBlocks.LIMESTONE_BRICK_STAIRS, Ingredient.of(ModBlocks.LIMESTONE_BRICKS)).unlockedBy(getHasName(ModBlocks.LIMESTONE_BRICKS), has(ModBlocks.LIMESTONE_BRICKS)).save(output);
                 stairBuilder(ModBlocks.POLISHED_LIMESTONE_STAIRS, Ingredient.of(ModBlocks.POLISHED_LIMESTONE)).unlockedBy(getHasName(ModBlocks.POLISHED_LIMESTONE), has(ModBlocks.POLISHED_LIMESTONE)).save(output);
@@ -337,11 +318,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 stairBuilder(ModBlocks.SLATE_TILE_STAIRS, Ingredient.of(ModBlocks.SLATE_TILES)).unlockedBy(getHasName(ModBlocks.SLATE_TILES), has(ModBlocks.SLATE_TILES)).save(output);
                 stairBuilder(ModBlocks.POLISHED_SLATE_STAIRS, Ingredient.of(ModBlocks.POLISHED_SLATE)).unlockedBy(getHasName(ModBlocks.POLISHED_SLATE), has(ModBlocks.POLISHED_SLATE)).save(output);
 
-                //Door Recipes
+                // Door Recipes
                 doorBuilder(ModBlocks.ALUMINUM_DOOR, Ingredient.of(ModItems.ALUMINUM)).unlockedBy(getHasName(ModItems.ALUMINUM), has(ModItems.ALUMINUM)).save(output);
                 trapdoorBuilder(ModBlocks.ALUMINUM_TRAPDOOR, Ingredient.of(ModItems.ALUMINUM)).unlockedBy(getHasName(ModItems.ALUMINUM), has(ModItems.ALUMINUM)).save(output);
 
-               //Drills
+               // Drills
                 shapeless(RecipeCategory.TOOLS, ModItems.SIMPLE_TUNGSTEN_DRILL, 1)
                         .requires(ModItems.TUNGSTEN_DRILL_BIT)
                         .requires(ModItems.SIMPLE_DRILL_HEAD)
@@ -399,7 +380,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .save(output);
 
 
-                //Random
+                // Random
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ALUMINUM_GLASS,1)
                         .pattern("###")
                         .pattern("#X#")

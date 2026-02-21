@@ -175,6 +175,18 @@ public class ModItemGroups {
                         entries.accept(ModItems.ADVANCED_DIAMOND_DRILL);
                         entries.accept(ModItems.PREMIUM_DIAMOND_DRILL);
 
+                        entries.accept(ModItems.PINKU_SPEAR);
+                        entries.accept(ModItems.RAINBOW_PYRITE_SPEAR);
+                        entries.accept(ModItems.TUNGSTEN_SPEAR);
+                        entries.accept(ModItems.ALUMINUM_SPEAR);
+                        entries.accept(ModItems.SAPPHIRE_SPEAR);
+                        entries.accept(ModItems.NEPHRITE_SPEAR);
+                        entries.accept(ModItems.JADEITE_SPEAR);
+                        entries.accept(ModItems.PLATINUM_SPEAR);
+                        entries.accept(ModItems.STEEL_SPEAR);
+
+                        entries.accept(ModItems.CAST_STEEL_SPEAR);
+
                     }).build());
 
     public static final CreativeModeTab HOUSEKI_BLOCKS_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
@@ -253,8 +265,7 @@ public class ModItemGroups {
                         entries.accept(ModBlocks.BLOCK_OF_STEEL);
                         entries.accept(ModBlocks.BLOCK_OF_CAST_STEEL);
                     }).build());
-
-
+    
     public static void registerItemGroups() {
         Houseki.LOGGER.info("Registering ItemGroups for " + Houseki.MOD_ID);
     }
