@@ -95,24 +95,20 @@ public record CrusherRecipe(
      */
     @Override
     public RecipeBookCategory recipeBookCategory() {
-        // Use a standard category or your own
         return RecipeBookCategories.CRAFTING_MISC;
     }
     
     public static final RecipeSerializer<CrusherRecipe> SERIALIZER = new RecipeSerializer<>(
         RecordCodecBuilder.mapCodec(inst -> inst.group(
             Ingredient.CODEC.fieldOf("ingredient").forGetter(CrusherRecipe::inputItem),
-            // Use the standard Item registry codec here
             BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").forGetter(CrusherRecipe::output),
             Codec.INT.optionalFieldOf("crushingTime", DEFAULT_CRUSHING_TIME).forGetter(CrusherRecipe::crushingTime),
-            // Use the same item codec for the optional auxiliary result
             BuiltInRegistries.ITEM.byNameCodec().optionalFieldOf("auxiliary_result").forGetter(CrusherRecipe::auxiliaryOutput),
             Codec.DOUBLE.optionalFieldOf("auxiliary_chance", DEFAULT_AUXILIARY_CHANCE).forGetter(CrusherRecipe::auxiliaryChance)
         ).apply(inst, CrusherRecipe::new)),
         
         StreamCodec.composite(
             Ingredient.CONTENTS_STREAM_CODEC, CrusherRecipe::inputItem,
-            // Use Item reference for network
             ByteBufCodecs.registry(Registries.ITEM), CrusherRecipe::output,
             ByteBufCodecs.VAR_INT.<RegistryFriendlyByteBuf>cast(), CrusherRecipe::crushingTime,
             ByteBufCodecs.optional(ByteBufCodecs.registry(Registries.ITEM)), CrusherRecipe::auxiliaryOutput,

@@ -42,14 +42,6 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
         this.crushingTime = crushingTime;
     }
 
-    /**
-     * Create a builder for a crusher recipe.
-     *
-     * @param input        the ingredient consumed by the recipe
-     * @param output       the item produced by the recipe
-     * @param crushingTime the crushing duration for the recipe
-     * @return             a CrusherRecipeBuilder configured with the provided input, output, and crushing time
-     */
     public static CrusherRecipeBuilder create(Ingredient input, ItemLike output, int crushingTime) {
         return new CrusherRecipeBuilder(input, output, crushingTime);
     }
@@ -89,16 +81,11 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
      * @param recipeKey resource key identifying the recipe to export
      */
     public void save(RecipeOutput exporter, ResourceKey<Recipe<?>> recipeKey) {
-        // 1. Build the advancement
-        // We use recipeKey.getValue() to get the Identifier (e.g., "modid:item_crushing")
         Advancement.Builder advancement = exporter.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeKey))
                 .rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(recipeKey))
                 .requirements(AdvancementRequirements.Strategy.OR);
-        
         this.criteria.forEach(advancement::addCriterion);
-
-        // 2. Create the recipe record
         CrusherRecipe recipe = new CrusherRecipe(
             this.input, 
             this.output.asItem(), 
@@ -106,8 +93,6 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
             this.auxiliaryOutput.map(ItemLike::asItem), 
             this.auxiliaryChance
         );
-
-        // 3. Export
         exporter.accept(
             recipeKey, 
             recipe, 
@@ -126,19 +111,13 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
      * @param recipeId  the string identifier for the recipe (parsed into an Identifier and used to derive the advancement path)
      */
     public void save(RecipeOutput exporter, String recipeId) {
-        // 1. Convert the String ID into an Identifier and a ResourceKey
         Identifier id = Identifier.parse(recipeId);
         ResourceKey<Recipe<?>> recipeKey = ResourceKey.create(Registries.RECIPE, id);
-
-        // 2. Build the Advancement
         Advancement.Builder advancement = exporter.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeKey))
                 .rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(recipeKey))
                 .requirements(AdvancementRequirements.Strategy.OR);
-        
         this.criteria.forEach(advancement::addCriterion);
-
-        // 3. Create the Recipe Instance
         CrusherRecipe recipe = new CrusherRecipe(
             this.input, 
             this.output.asItem(), 
@@ -146,9 +125,6 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
             this.auxiliaryOutput.map(ItemLike::asItem), 
             this.auxiliaryChance
         );
-
-        // 4. Export with the prefixed advancement path
-        // Using id.withPrefix ensures the advancement file is correctly placed in "advancements/recipes/..."
         exporter.accept(recipeKey, recipe, advancement.build(id.withPrefix("recipes/")));
     }
 

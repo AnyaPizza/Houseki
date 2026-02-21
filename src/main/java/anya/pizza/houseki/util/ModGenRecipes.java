@@ -23,7 +23,6 @@ public class ModGenRecipes {
         this.exporter = exporter;
     }
 
-
     //Smithing Templates
     public static void offerPinkuUpgradeRecipe(RecipeOutput exporter, Item input, RecipeCategory category, Item result) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(input), Ingredient.of(ModItems.PINKU), category, result)
@@ -34,7 +33,6 @@ public class ModGenRecipes {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(input), Ingredient.of(ModBlocks.BLOCK_OF_CAST_STEEL), category, result)
                 .unlocks("has_block_of_cast_steel", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.BLOCK_OF_CAST_STEEL)).save(exporter, getItemName(result) + "_smithing");
     }
-
 
     //Tool Recipes
     public static void offerPickaxeRecipe(RecipeOutput exporter, ItemLike output, ItemLike input) {
@@ -97,6 +95,18 @@ public class ModGenRecipes {
                 .save(exporter);
     }
 
+    public static void offerSpearRecipe(RecipeOutput exporter, ItemLike output, ItemLike input) {
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, output, 1)
+                .define('#', input)
+                .define('S', Items.STICK)
+                .pattern("  #")
+                .pattern(" S ")
+                .pattern("S  ")
+                .unlockedBy(getHasName(input), InventoryChangeTrigger.TriggerInstance.hasItems(input))
+                .showNotification(true)
+                .save(exporter);
+    }
+
     //Armor
     public static void offerHelmetRecipe(RecipeOutput exporter, ItemLike output, ItemLike input) {
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output, 1)
@@ -139,5 +149,4 @@ public class ModGenRecipes {
                 .showNotification(true)
                 .save(exporter);
     }
-
 }
