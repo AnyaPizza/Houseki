@@ -40,7 +40,6 @@ public class CrusherScreenHandler extends AbstractContainerMenu {
         this.inventory = (entity instanceof Container container) ? container : new SimpleContainer(4);
         checkContainerSize(this.inventory, 4);
         this.propertyDelegate = data;
-
         this.addSlot(new Slot(inventory, 0, 35, -5)); //Input Slot
         this.addSlot(new Slot(inventory, 1, 13, 41)); //Fuel Slot
         this.addSlot(new Slot(inventory, 2, 115, 30) { //Output Slot
@@ -53,7 +52,6 @@ public class CrusherScreenHandler extends AbstractContainerMenu {
                 return false; //Makes output slot read-only
             }
         });
-
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
         addDataSlots(data);

@@ -43,7 +43,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     private static final int FUEL_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;
     private static final int AUXILIARY_OUTPUT_SLOT = 3;
-
     protected final ContainerData propertyDelegate;
     private int progress = 0;
     private int maxProgress = CrusherRecipe.DEFAULT_CRUSHING_TIME;
@@ -110,13 +109,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
         return new CrusherScreenHandler(syncId, playerInventory, this, propertyDelegate);
     }
 
-    /**
-     * Drops this block entity's inventory at the given position when the block is removed, then
-     * invokes superclass removal side-effects.
-     *
-     * @param pos the position of the block being removed
-     * @param oldState the previous block state at that position
-     */
     @Override
     public void preRemoveSideEffects(@NonNull BlockPos pos, @NonNull BlockState oldState) {
         assert level != null;
@@ -148,10 +140,8 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
 
     public void tick(Level world, BlockPos pos, BlockState state) {
         if (world.isClientSide()) return;
-
         boolean dirty = false;
         ItemStack input = inventory.getFirst();
-
         if(!ItemStack.isSameItemSameComponents(input, lastInput)) {
             lastInput = input.copy();
             updateMaxProgress(world);
@@ -161,7 +151,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
             }
         }
 
-        //Handle fuel
+        //Handles Fuel
         if (fuelTime > 0) {
             fuelTime--;
             dirty = true;
@@ -175,12 +165,10 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
             }
         }
 
-        //Handle Crushing
+        //Handles Crushing
         boolean canCraftNow = fuelTime > 0 && canCraft();
         isCrafting = canCraftNow || (fuelTime > 0 && progress > 0);
-
         world.setBlockAndUpdate(pos, state.setValue(CrusherBlock.LIT, fuelTime > 0));
-
         if (canCraftNow) {
             progress++;
             dirty = true;
@@ -198,26 +186,11 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
                 .orElse(CrusherRecipe.DEFAULT_CRUSHING_TIME);
     }
 
-    /**
-     * Determines whether the current crusher recipe can be executed given available output space.
-     *
-     * Checks that a matching recipe exists and that the recipe's primary output and optional auxiliary
-     * output can both fit into their respective output slots.
-     *
-     * @return true if both the main output and the auxiliary output (if present) can be inserted into their slots, false otherwise.
-     */
     private boolean canCraft() {
         Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return false;
-
         CrusherRecipe crusherRecipe = recipe.get().value();
-        
-        // 1. Get the main output stack
-        // In 1.21, getResult technically wants the registry provider, but for 
-        // a simple Item-to-Stack conversion, it doesn't strictly need it.
         ItemStack output = crusherRecipe.getResult(null);
-
-        // 2. Map the Optional<Item> to an Optional<ItemStack>
         ItemStack auxiliary = crusherRecipe.auxiliaryOutput()
                 .map(ItemStack::new)      // Convert the Item to a Stack if present
                 .orElse(ItemStack.EMPTY); // Otherwise return the empty stack
@@ -251,14 +224,9 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvi
     private void craftItem() {
         Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return;
-
         CrusherRecipe crusherRecipe = recipe.get().value();
-
-        // Handle Main Output
-        // getResult already returns a new ItemStack(output), so we copy that.
         insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null), 1.0);
-
-        // Handle Auxiliary Output
+        // Handles Auxiliary Output
         crusherRecipe.auxiliaryOutput().ifPresent(item -> {
             // Convert the raw Item into a new ItemStack so we can use .copy() or set counts
             ItemStack auxStack = new ItemStack(item); 

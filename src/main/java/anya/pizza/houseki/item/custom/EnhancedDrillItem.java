@@ -23,7 +23,6 @@ public class EnhancedDrillItem extends Item {
         HitResult hit = player.pick(20, 0, false);
         if (hit.getType() == HitResult.Type.BLOCK) {
             BlockHitResult blockHit = (BlockHitResult) hit;
-
             if (blockHit.getDirection() == Direction.DOWN || blockHit.getDirection() == Direction.UP) {
                 for (int x = -range; x <= range; x++) {
                     for (int y = -range; y <= range; y++) {

@@ -36,7 +36,6 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SLATE_KEY = registerKey("ore_slate");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_BAUXITE_KEY = registerKey("ore_bauxite");
 
-
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -83,7 +82,6 @@ public class ModConfiguredFeatures {
 
         List<OreConfiguration.TargetBlockState> overworldSlateOre = List.of(OreConfiguration.target(stoneReplaceables,ModBlocks.SLATE.defaultBlockState()),
                         OreConfiguration.target(deepslateReplaceables,ModBlocks.SLATE.defaultBlockState()));
-
 
         register(context, PINKU_ORE_KEY, Feature.ORE, new OreConfiguration(endPinkuOres, 3));
         register(context, RAINBOW_PYRITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldRainbowPyriteOres, 10));

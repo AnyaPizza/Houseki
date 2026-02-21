@@ -51,7 +51,6 @@ public class ModArmorItem extends Item {
         for (Map.Entry<ArmorMaterial, List<MobEffectInstance>> entry : MATERIAL_TO_EFFECT_MAP.entrySet()) {
             ArmorMaterial mapArmorMaterial = entry.getKey();
             List<MobEffectInstance> mapStatusEffects = entry.getValue();
-
             if (hasCorrectArmorOn(mapArmorMaterial, player)) {
                 addStatusEffectForMaterial(player, mapArmorMaterial, mapStatusEffects);
             }
@@ -60,7 +59,6 @@ public class ModArmorItem extends Item {
 
     private void addStatusEffectForMaterial(Player player, ArmorMaterial mapArmorMaterial, List<MobEffectInstance> mapStatusEffect) {
         boolean hasPlayerEffect = mapStatusEffect.stream().anyMatch(statusEffectInstance -> player.hasEffect(statusEffectInstance.getEffect()));
-
         if (hasCorrectArmorOn(mapArmorMaterial, player) && !hasPlayerEffect) {
             for (MobEffectInstance instance : mapStatusEffect) {
                 player.addEffect(new MobEffectInstance(instance));
@@ -73,10 +71,6 @@ public class ModArmorItem extends Item {
         Equippable equippableComponentLeggings = player.getItemBySlot(EquipmentSlot.LEGS).getItem().components().get(DataComponents.EQUIPPABLE);
         Equippable equippableComponentBreastplate = player.getItemBySlot(EquipmentSlot.CHEST).getItem().components().get(DataComponents.EQUIPPABLE);
         Equippable equippableComponentHelmet = player.getItemBySlot(EquipmentSlot.HEAD).getItem().components().get(DataComponents.EQUIPPABLE);
-
-        //return equippableComponentBoots.assetId().get().equals(material.assetId()) && equippableComponentLeggings.assetId().get().equals(material.assetId()) &&
-        //        equippableComponentBreastplate.assetId().get().equals(material.assetId()) && equippableComponentHelmet.assetId().get().equals(material.assetId());
-
         if (equippableComponentBoots == null || equippableComponentLeggings == null
                 || equippableComponentBreastplate == null || equippableComponentHelmet == null) {
             return false;
@@ -98,7 +92,6 @@ public class ModArmorItem extends Item {
         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
         ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
 
-        return !helmet.isEmpty() && !chestplate.isEmpty()
-                && !leggings.isEmpty() && !boots.isEmpty();
+        return !helmet.isEmpty() && !chestplate.isEmpty() && !leggings.isEmpty() && !boots.isEmpty();
     }
 }

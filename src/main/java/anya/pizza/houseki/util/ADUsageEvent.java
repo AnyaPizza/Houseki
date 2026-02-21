@@ -19,9 +19,7 @@ public class ADUsageEvent implements PlayerBlockBreakEvents.Before{
 
     @Override
     public boolean beforeBlockBreak(Level world, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity) {
-
         ItemStack mainHandItem = player.getMainHandItem();
-
         if (mainHandItem.getItem() instanceof AdvancedDrillItem ad && player instanceof ServerPlayer serverPlayer) {
             if (HARVESTED_BLOCKS.contains(pos)) {
                 return true;

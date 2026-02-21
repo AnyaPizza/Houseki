@@ -32,7 +32,6 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_SLATE_PLACED_KEY = registerKey("ore_slate_placed");
     public static final ResourceKey<PlacedFeature> ORE_BAUXITE_PLACED_KEY = registerKey("ore_bauxite_placed");
 
-
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -86,9 +85,4 @@ public class ModPlacedFeatures {
                                 List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }
-
-    //private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key,
-    //                                                                                     Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
-    //   register(context, key, configuration, List.of(modifiers));
-    }
-
+}
