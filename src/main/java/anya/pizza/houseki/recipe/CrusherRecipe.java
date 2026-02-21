@@ -26,15 +26,6 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
         }
     }
 
-    // Secondary Constructor (For DataGen/Old Recipes)
-    // This allows you to call: new CrusherRecipe(input, output, time)
-    /**
-     * Creates a CrusherRecipe for the given input, primary output, and crushing time with no auxiliary output and an auxiliary chance of 1.0.
-     *
-     * @param inputItem    the ingredient consumed by the recipe
-     * @param output       the primary result produced by the recipe
-     * @param crushingTime the time required to perform the crushing, in ticks
-     */
     public CrusherRecipe(Ingredient inputItem, ItemStack output, int crushingTime) {
         this(inputItem, output, crushingTime, Optional.empty(), DEFAULT_AUXILIARY_CHANCE);
     }
@@ -104,7 +95,6 @@ public record CrusherRecipe(Ingredient inputItem, ItemStack output, int crushing
                 PacketCodecs.optional(ItemStack.OPTIONAL_PACKET_CODEC), CrusherRecipe::auxiliaryOutput,
                 PacketCodecs.DOUBLE, CrusherRecipe::auxiliaryChance,
                 CrusherRecipe::new);
-
 
         @Override
         public MapCodec<CrusherRecipe> codec() {

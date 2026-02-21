@@ -214,8 +214,6 @@ public class ModItems {
     public static final Item NEPHRITE_NAUTILUS_ARMOR = registerItem("nephrite_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.NEPHRITE_MATERIAL).maxCount(1)));
     public static final Item JADEITE_NAUTILUS_ARMOR = registerItem("jadeite_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.JADEITE_MATERIAL).maxCount(1)));
 
-
-
     private static Item registerItem(String name, Function<Item.Settings, Item> function) {
         return Registry.register(Registries.ITEM, Identifier.of(Houseki.MOD_ID, name),
                 function.apply(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Houseki.MOD_ID, name)))));

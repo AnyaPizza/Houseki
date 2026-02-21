@@ -33,7 +33,6 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_SLATE_KEY = registerKey("ore_slate");
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_BAUXITE_KEY = registerKey("ore_bauxite");
 
-
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);

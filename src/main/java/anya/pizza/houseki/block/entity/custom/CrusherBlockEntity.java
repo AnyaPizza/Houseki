@@ -43,7 +43,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private static final int FUEL_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;
     private static final int AUXILIARY_OUTPUT_SLOT = 3;
-
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = CrusherRecipe.DEFAULT_CRUSHING_TIME;
@@ -138,10 +137,8 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) return;
-
         boolean dirty = false;
         ItemStack input = inventory.getFirst();
-
         if(!ItemStack.areItemsAndComponentsEqual(input, lastInput)) {
             lastInput = input.copy();
             updateMaxProgress(world);
@@ -151,7 +148,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             }
         }
 
-        //Handle fuel
+        //Handles Fuel
         if (fuelTime > 0) {
             fuelTime--;
             dirty = true;
@@ -165,12 +162,10 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             }
         }
 
-        //Handle Crushing
+        //Handles Crushing
         boolean canCraftNow = fuelTime > 0 && canCraft();
         isCrafting = canCraftNow || (fuelTime > 0 && progress > 0);
-
         world.setBlockState(pos, state.with(CrusherBlock.LIT, fuelTime > 0));
-
         if (canCraftNow) {
             progress++;
             dirty = true;
@@ -191,7 +186,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private boolean canCraft() {
         Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return false;
-
         CrusherRecipe crusherRecipe = recipe.get().value();
         ItemStack output = crusherRecipe.getResult(null);
         ItemStack auxiliary = crusherRecipe.auxiliaryOutput().orElse(ItemStack.EMPTY);
@@ -227,13 +221,10 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private void craftItem() {
         Optional<RecipeEntry<CrusherRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return;
-
         CrusherRecipe crusherRecipe = recipe.get().value();
-
-        // Handle Main Output
+        // Handles Main Output
         insertOrIncrement(OUTPUT_SLOT, crusherRecipe.getResult(null).copy(), 1.0);
-
-        // Handle Auxiliary Output
+        // Handles Auxiliary Output
         crusherRecipe.auxiliaryOutput().ifPresent(stack -> {
             insertOrIncrement(AUXILIARY_OUTPUT_SLOT, stack.copy(), crusherRecipe.auxiliaryChance());
         });

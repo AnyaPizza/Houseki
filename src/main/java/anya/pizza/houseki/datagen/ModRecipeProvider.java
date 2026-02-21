@@ -48,7 +48,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemConvertible> STEEL_SMELTABLES = List.of(ModItems.CRUDE_IRON);
                 List<ItemConvertible> CAST_STEEL_SMELTABLES = List.of(ModItems.STEEL);
 
-                //Crushing recipes with auxiliary output
+                // Crushing recipes with auxiliary output
                 CrusherRecipeBuilder.create(Ingredient.ofItems(ModBlocks.BAUXITE), new ItemStack(ModItems.CRUSHED_BAUXITE), 250).chance(0.5)
                         .auxiliary(new ItemStack(Items.CLAY)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "bauxite_crushing")));
 
@@ -76,7 +76,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.SCHEELITE), new ItemStack(ModItems.TUNGSTEN), 250)
                         .offerTo(exporter, String.valueOf(Identifier.of("houseki", "scheelite_crushing")));
 
-                //Smithing Upgrades
+                // Smithing Upgrades
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.PINKU_HELMET);
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.PINKU_CHESTPLATE);
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ModItems.PINKU_LEGGINGS);
@@ -99,7 +99,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerDrillUpgradeRecipe(exporter, ModItems.ADVANCED_DIAMOND_DRILL, RecipeCategory.TOOLS, ModItems.PREMIUM_DIAMOND_DRILL);
 
 
-                //Block Reversing Recipes
+                // Block Reversing Recipes
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.PINKU, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_PINKU);
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.RAINBOW_PYRITE, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_RAINBOW_PYRITE);
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.TUNGSTEN, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_TUNGSTEN_B);
@@ -112,7 +112,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL_B);
 
 
-                //Smelting Recipes
+                // Smelting Recipes
                 offerSmelting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM, 0.5f, 200, "aluminum");
                 offerSmelting(PINKU_SMELTABLES, RecipeCategory.MISC, ModItems.PINKU_SHARD, 0.5f, 250, "pinku");
                 offerSmelting(RAINBOW_PYRITE_SMELTABLES, RecipeCategory.MISC, ModItems.RAINBOW_PYRITE, 0.5f, 200, "rainbow_pyrite");
@@ -124,7 +124,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerSmelting(PLATINUM_SMELTABLES, RecipeCategory.MISC, ModItems.PLATINUM, 0.5f, 200, "platinum");
                 offerSmelting(SULFUR_SMELTABLES, RecipeCategory.MISC, ModItems.SULFUR, 0.5f, 200, "sulfur");
 
-                //Blasting Recipes
+                // Blasting Recipes
                 offerBlasting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM, 0.5f, 100, "aluminum");
                 offerBlasting(PINKU_SMELTABLES, RecipeCategory.MISC, ModItems.PINKU_SHARD, 0.5f, 150, "pinku");
                 offerBlasting(RAINBOW_PYRITE_SMELTABLES, RecipeCategory.MISC, ModItems.RAINBOW_PYRITE, 0.5f, 100, "rainbow_pyrite");
@@ -139,7 +139,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerBlasting(STEEL_SMELTABLES, RecipeCategory.MISC, ModItems.STEEL, 0.5f, 120, "steel");
                 offerBlasting(CAST_STEEL_SMELTABLES, RecipeCategory.MISC, ModItems.CAST_STEEL, 0.5f, 120, "cast_steel");
 
-                //Pickaxe Recipes
+                // Pickaxe Recipes
                 offerPickaxeRecipe(exporter, ModItems.RAINBOW_PYRITE_PICKAXE, ModItems.RAINBOW_PYRITE);
                 offerPickaxeRecipe(exporter, ModItems.ALUMINUM_PICKAXE, ModItems.ALUMINUM);
                 offerPickaxeRecipe(exporter, ModItems.CAST_STEEL_PICKAXE, ModItems.CAST_STEEL);
@@ -150,7 +150,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerPickaxeRecipe(exporter, ModItems.STEEL_PICKAXE, ModItems.STEEL);
                 offerPickaxeRecipe(exporter, ModItems.TUNGSTEN_PICKAXE, ModItems.TUNGSTEN);
 
-                //Axe Recipes
+                // Axe Recipes
                 offerAxeRecipe(exporter, ModItems.RAINBOW_PYRITE_AXE, ModItems.RAINBOW_PYRITE);
                 offerAxeRecipe(exporter, ModItems.ALUMINUM_AXE, ModItems.ALUMINUM);
                 offerAxeRecipe(exporter, ModItems.CAST_STEEL_AXE, ModItems.CAST_STEEL);
@@ -161,7 +161,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerAxeRecipe(exporter, ModItems.STEEL_AXE, ModItems.STEEL);
                 offerAxeRecipe(exporter, ModItems.TUNGSTEN_AXE, ModItems.TUNGSTEN);
 
-                //Shovel Recipes
+                // Shovel Recipes
                 offerShovelRecipe(exporter, ModItems.RAINBOW_PYRITE_SHOVEL, ModItems.RAINBOW_PYRITE);
                 offerShovelRecipe(exporter, ModItems.ALUMINUM_SHOVEL, ModItems.ALUMINUM);
                 offerShovelRecipe(exporter, ModItems.CAST_STEEL_SHOVEL, ModItems.CAST_STEEL);
@@ -172,7 +172,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerShovelRecipe(exporter, ModItems.STEEL_SHOVEL, ModItems.STEEL);
                 offerShovelRecipe(exporter, ModItems.TUNGSTEN_SHOVEL, ModItems.TUNGSTEN);
 
-                //Sword Recipes
+                // Sword Recipes
                 offerSwordRecipe(exporter, ModItems.RAINBOW_PYRITE_SWORD, ModItems.RAINBOW_PYRITE);
                 offerSwordRecipe(exporter, ModItems.ALUMINUM_SWORD, ModItems.ALUMINUM);
                 offerSwordRecipe(exporter, ModItems.CAST_STEEL_SWORD, ModItems.CAST_STEEL);
@@ -183,7 +183,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerSwordRecipe(exporter, ModItems.STEEL_SWORD, ModItems.STEEL);
                 offerSwordRecipe(exporter, ModItems.TUNGSTEN_SWORD, ModItems.TUNGSTEN);
 
-                //Hoe Recipes
+                // Hoe Recipes
                 offerHoeRecipe(exporter, ModItems.RAINBOW_PYRITE_HOE, ModItems.RAINBOW_PYRITE);
                 offerHoeRecipe(exporter, ModItems.ALUMINUM_HOE, ModItems.ALUMINUM);
                 offerHoeRecipe(exporter, ModItems.CAST_STEEL_HOE, ModItems.CAST_STEEL);
@@ -194,7 +194,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerHoeRecipe(exporter, ModItems.STEEL_HOE, ModItems.STEEL);
                 offerHoeRecipe(exporter, ModItems.TUNGSTEN_HOE, ModItems.TUNGSTEN);
 
-                //Spear Recipes
+                // Spear Recipes
                 offerSpearRecipe(exporter, ModItems.RAINBOW_PYRITE_SPEAR, ModItems.RAINBOW_PYRITE);
                 offerSpearRecipe(exporter, ModItems.ALUMINUM_SPEAR, ModItems.ALUMINUM);
                 offerSpearRecipe(exporter, ModItems.CAST_STEEL_SPEAR, ModItems.CAST_STEEL);
@@ -205,7 +205,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerSpearRecipe(exporter, ModItems.STEEL_SPEAR, ModItems.STEEL);
                 offerSpearRecipe(exporter, ModItems.TUNGSTEN_SPEAR, ModItems.TUNGSTEN);
 
-                //Armor
+                // Armor
                 offerHelmetRecipe(exporter, ModItems.RAINBOW_PYRITE_HELMET, ModItems.RAINBOW_PYRITE);
                 offerChestplateRecipe(exporter, ModItems.RAINBOW_PYRITE_CHESTPLATE, ModItems.RAINBOW_PYRITE);
                 offerLeggingsRecipe(exporter, ModItems.RAINBOW_PYRITE_LEGGINGS, ModItems.RAINBOW_PYRITE);
@@ -243,7 +243,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerLeggingsRecipe(exporter, ModItems.TUNGSTEN_LEGGINGS, ModItems.TUNGSTEN);
                 offerBootsRecipe(exporter, ModItems.TUNGSTEN_BOOTS, ModItems.TUNGSTEN);
 
-                //Stonecutting Recipes
+                // Stonecutting Recipes
                 offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_LIMESTONE, ModBlocks.LIMESTONE, 1);
                 offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICKS, ModBlocks.LIMESTONE, 1);
                 offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICK_STAIRS, ModBlocks.LIMESTONE, 1);
@@ -270,7 +270,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SLATE_SLAB, ModBlocks.SLATE, 2);
                 offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SLATE_WALL, ModBlocks.SLATE, 1);
 
-                //Crafting Recipes
+                // Crafting Recipes
                 offerChiseledBlockRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_LIMESTONE, ModBlocks.LIMESTONE_SLAB);
                 offer2x2CompactingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICKS, ModBlocks.LIMESTONE);
                 offerPolishedStoneRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_LIMESTONE, ModBlocks.LIMESTONE_BRICKS);
@@ -280,7 +280,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offer2x2CompactingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAUXITE, ModItems.CRUSHED_BAUXITE);
                 offerStainedGlassPaneRecipe(ModBlocks.ALUMINUM_GLASS_PANE, ModBlocks.ALUMINUM_GLASS);
 
-                //Slab Recipes
+                // Slab Recipes
                 offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_SLAB, ModBlocks.LIMESTONE);
                 offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICK_SLAB, ModBlocks.LIMESTONE_BRICKS);
                 offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_LIMESTONE_SLAB, ModBlocks.POLISHED_LIMESTONE);
@@ -288,7 +288,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SLATE_TILE_SLAB, ModBlocks.SLATE_TILES);
                 offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SLATE_SLAB, ModBlocks.POLISHED_SLATE);
 
-                //Wall Recipes
+                // Wall Recipes
                 offerWallRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_WALL, ModBlocks.LIMESTONE);
                 offerWallRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIMESTONE_BRICK_WALL, ModBlocks.LIMESTONE_BRICKS);
                 offerWallRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_LIMESTONE_WALL, ModBlocks.POLISHED_LIMESTONE);
@@ -296,7 +296,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerWallRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SLATE_TILE_WALL, ModBlocks.SLATE_TILES);
                 offerWallRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SLATE_WALL, ModBlocks.POLISHED_SLATE);
 
-                //Stair Recipes
+                // Stair Recipes
                 createStairsRecipe(ModBlocks.LIMESTONE_STAIRS, Ingredient.ofItem(ModBlocks.LIMESTONE)).criterion(hasItem(ModBlocks.LIMESTONE), conditionsFromItem(ModBlocks.LIMESTONE)).offerTo(exporter);
                 createStairsRecipe(ModBlocks.LIMESTONE_BRICK_STAIRS, Ingredient.ofItem(ModBlocks.LIMESTONE_BRICKS)).criterion(hasItem(ModBlocks.LIMESTONE_BRICKS), conditionsFromItem(ModBlocks.LIMESTONE_BRICKS)).offerTo(exporter);
                 createStairsRecipe(ModBlocks.POLISHED_LIMESTONE_STAIRS, Ingredient.ofItem(ModBlocks.POLISHED_LIMESTONE)).criterion(hasItem(ModBlocks.POLISHED_LIMESTONE), conditionsFromItem(ModBlocks.POLISHED_LIMESTONE)).offerTo(exporter);
@@ -304,11 +304,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 createStairsRecipe(ModBlocks.SLATE_TILE_STAIRS, Ingredient.ofItem(ModBlocks.SLATE_TILES)).criterion(hasItem(ModBlocks.SLATE_TILES), conditionsFromItem(ModBlocks.SLATE_TILES)).offerTo(exporter);
                 createStairsRecipe(ModBlocks.POLISHED_SLATE_STAIRS, Ingredient.ofItem(ModBlocks.POLISHED_SLATE)).criterion(hasItem(ModBlocks.POLISHED_SLATE), conditionsFromItem(ModBlocks.POLISHED_SLATE)).offerTo(exporter);
 
-                //Door Recipes
+                // Door Recipes
                 createDoorRecipe(ModBlocks.ALUMINUM_DOOR, Ingredient.ofItem(ModItems.ALUMINUM)).criterion(hasItem(ModItems.ALUMINUM), conditionsFromItem(ModItems.ALUMINUM)).offerTo(exporter);
                 createTrapdoorRecipe(ModBlocks.ALUMINUM_TRAPDOOR, Ingredient.ofItem(ModItems.ALUMINUM)).criterion(hasItem(ModItems.ALUMINUM), conditionsFromItem(ModItems.ALUMINUM)).offerTo(exporter);
 
-               //Drills
+               // Drills
                 createShapeless(RecipeCategory.TOOLS, ModItems.SIMPLE_TUNGSTEN_DRILL, 1)
                         .input(ModItems.TUNGSTEN_DRILL_BIT)
                         .input(ModItems.SIMPLE_DRILL_HEAD)
@@ -366,7 +366,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(exporter);
 
 
-                //Random
+                // Random
                 createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ALUMINUM_GLASS,1)
                         .pattern("###")
                         .pattern("#X#")
@@ -403,7 +403,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .criterion(hasItem(ModItems.CAST_STEEL), conditionsFromItem(ModItems.CAST_STEEL)).criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT)).offerTo(exporter);
 
                 createShaped(RecipeCategory.MISC, ModItems.TUNGSTEN_DRILL_BIT, 1)
-                        .pattern("   ")
                         .pattern(" # ")
                         .pattern("#X#")
                         .input('#', ModItems.TUNGSTEN).input('X', ModBlocks.BLOCK_OF_TUNGSTEN_B)
@@ -417,7 +416,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .criterion(hasItem(ModBlocks.BLOCK_OF_CAST_STEEL_B), conditionsFromItem(ModBlocks.BLOCK_OF_CAST_STEEL_B)).criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE)).offerTo(exporter);
 
                 createShaped(RecipeCategory.MISC, ModItems.DIAMOND_DRILL_BIT, 1)
-                        .pattern("   ")
                         .pattern(" # ")
                         .pattern("###")
                         .input('#', Blocks.DIAMOND_BLOCK).criterion(hasItem(Blocks.DIAMOND_BLOCK), conditionsFromItem(Blocks.DIAMOND_BLOCK)).offerTo(exporter);

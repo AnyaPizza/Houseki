@@ -50,7 +50,6 @@ public class ModArmorItem extends Item {
         for (Map.Entry<ArmorMaterial, List<StatusEffectInstance>> entry : MATERIAL_TO_EFFECT_MAP.entrySet()) {
             ArmorMaterial mapArmorMaterial = entry.getKey();
             List<StatusEffectInstance> mapStatusEffects = entry.getValue();
-
             if (hasCorrectArmorOn(mapArmorMaterial, player)) {
                 addStatusEffectForMaterial(player, mapArmorMaterial, mapStatusEffects);
             }
@@ -84,7 +83,6 @@ public class ModArmorItem extends Item {
         ItemStack chestplate = player.getEquippedStack(EquipmentSlot.CHEST);
         ItemStack helmet = player.getEquippedStack(EquipmentSlot.HEAD);
 
-        return !helmet.isEmpty() && !chestplate.isEmpty()
-                && !leggings.isEmpty() && !boots.isEmpty();
+        return !helmet.isEmpty() && !chestplate.isEmpty() && !leggings.isEmpty() && !boots.isEmpty();
     }
 }

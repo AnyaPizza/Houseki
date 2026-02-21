@@ -53,7 +53,6 @@ public class CrusherScreenHandler extends ScreenHandler {
                 return false; //Makes output slot read-only
             }
         });
-
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
         addProperties(arrayPropertyDelegate);

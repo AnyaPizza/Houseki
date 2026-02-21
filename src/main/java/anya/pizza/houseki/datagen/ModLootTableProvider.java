@@ -26,7 +26,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        //Block Drops Itself
+        //Block Drops itself
         addDrop(ModBlocks.BLOCK_OF_PINKU);
         addDrop(ModBlocks.BLOCK_OF_RAINBOW_PYRITE);
         addDrop(ModBlocks.PINKU_ORE);

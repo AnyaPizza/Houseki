@@ -21,7 +21,6 @@ public class ModGenRecipes {
         this.exporter = exporter;
     }
 
-
     //Smithing Templates
     public static void offerPinkuUpgradeRecipe(RecipeExporter exporter, Item input, RecipeCategory category, Item result) {
         SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE), Ingredient.ofItems(input), Ingredient.ofItems(ModItems.PINKU), category, result)
@@ -32,7 +31,6 @@ public class ModGenRecipes {
         SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE), Ingredient.ofItems(input), Ingredient.ofItems(ModItems.BLOCK_OF_CAST_STEEL), category, result)
                 .criterion("has_block_of_cast_steel", conditionsFromItemPredicates()).offerTo(exporter, getItemPath(result) + "_smithing");
     }
-
 
     //Tool Recipes
     public static void offerPickaxeRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
@@ -113,7 +111,6 @@ public class ModGenRecipes {
                 .input('#', input)
                 .pattern("###")
                 .pattern("# #")
-                .pattern("   ")
                 .criterion(hasItem(input), conditionsFromItemPredicates())
                 .showNotification(true)
                 .offerTo(exporter);
@@ -144,12 +141,10 @@ public class ModGenRecipes {
     public static void offerBootsRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output, 1)
                 .input('#', input)
-                .pattern("   ")
                 .pattern("# #")
                 .pattern("# #")
                 .criterion(hasItem(input), conditionsFromItemPredicates())
                 .showNotification(true)
                 .offerTo(exporter);
     }
-
 }

@@ -22,7 +22,6 @@ public class PremiumDrillItem extends Item {
         HitResult hit = player.raycast(20, 0, false);
         if (hit.getType() == HitResult.Type.BLOCK) {
             BlockHitResult blockHit = (BlockHitResult) hit;
-
             if (blockHit.getSide() == Direction.DOWN || blockHit.getSide() == Direction.UP) {
                 for (int x = -range; x <= range; x++) {
                     for (int y = -range; y <= range; y++) {

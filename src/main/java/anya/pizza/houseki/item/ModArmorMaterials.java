@@ -105,5 +105,4 @@ public class ModArmorMaterials {
         map.put(EquipmentType.BOOTS, 4);
         map.put(EquipmentType.BODY, 12);
     }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4.5f, 0.3f, ModTags.Items.CAST_STEEL_REPAIR, CAST_STEEL_KEY);
-
 }

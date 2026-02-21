@@ -266,7 +266,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLOCK_OF_CAST_STEEL_B);
                     }).build());
 
-
     public static void registerItemGroups() {
         Houseki.LOGGER.info("Registering ItemGroups for " + Houseki.MOD_ID);
     }

@@ -54,11 +54,7 @@ public class CrusherRecipeBuilder implements CraftingRecipeJsonBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(recipeKey))
                 .criteriaMerger(AdvancementRequirements.CriterionMerger.OR);
         this.criteria.forEach(advancement::criterion);
-
-        // Create an instance of your recipe record
         CrusherRecipe recipe = new CrusherRecipe(input, output, crushingTime, auxiliaryOutput, auxiliaryChance);
-
-        // Export it using the built-in exporter
         exporter.accept(recipeKey, recipe, null);
     }
 

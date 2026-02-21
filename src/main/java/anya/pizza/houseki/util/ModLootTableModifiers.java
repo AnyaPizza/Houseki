@@ -19,8 +19,10 @@ public class ModLootTableModifiers {
     private static final Identifier ANCIENT_CITY_ID = Identifier.of("minecraft", "chests/ancient_city");
     private static final Identifier BASTION_TREASURE_ID = Identifier.of("minecraft", "chests/bastion_treasure");
     private static final Identifier BURIED_TREASURE_ID = Identifier.of("minecraft", "chests/buried_treasure");
+    private static final Identifier CAMEL_HUSK_ID = Identifier.of("minecraft", "entities/camel_husk");
     private static final Identifier DESERT_PYRAMID_ID = Identifier.of("minecraft", "chests/desert/pyramid");
     private static final Identifier END_CITY_TREASURE_ID = Identifier.of("minecraft", "chests/end_city_treasure");
+    private static final Identifier HUSK_ID = Identifier.of("minecraft", "entities/husk");
     private static final Identifier JUNGLE_TEMPLE_ID = Identifier.of("minecraft", "chests/jungle_temple");
     private static final Identifier OCEAN_RUINS_ID = Identifier.of("minecraft", "chests/underwater_run_big");
     private static final Identifier PILLAGER_OUTPOST_ID = Identifier.of("minecraft", "chests/pillager_outpost");
@@ -38,8 +40,7 @@ public class ModLootTableModifiers {
     private static final Identifier WOODLAND_MANSION_ID = Identifier.of("minecraft", "chests/woodland_mansion");
     private static final Identifier WARDEN_ID = Identifier.of("minecraft", "entities/warden");
     private static final Identifier ZOMBIE_ID = Identifier.of("minecraft", "entities/zombie");
-
-
+    private static final Identifier ZOMBIE_HORSE_ID = Identifier.of("minecraft", "entities/zombie_horse");
 
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((key, tableBuilder, sources, registry) -> {
@@ -266,8 +267,22 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
                         .with(ItemEntry.builder(ModItems.SAPPHIRE_NAUTILUS_ARMOR).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+                        .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_SPEAR).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 1))))
+                        .with(ItemEntry.builder(ModItems.ALUMINUM_SPEAR).weight(1)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 1))))
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
+                tableBuilder.pool(poolBuilder.build());
+            }
+
+            if (CAMEL_HUSK_ID.equals(key.getValue())) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(UniformLootNumberProvider.create(1, 1))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_SPEAR))
+                        .with(ItemEntry.builder(ModItems.ALUMINUM_SPEAR))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
 
@@ -368,7 +383,23 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.ENHANCED_DRILL_HEAD).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
                         .with(ItemEntry.builder(ModItems.DIAMOND_DRILL_BIT).weight(1)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))));
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
+                        .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_SPEAR).weight(1)
+                                .apply(new EnchantWithLevelsLootFunction.Builder(UniformLootNumberProvider.create(20, 39)))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 1))))
+                        .with(ItemEntry.builder(ModItems.ALUMINUM_SPEAR).weight(1)
+                                .apply(new EnchantWithLevelsLootFunction.Builder(UniformLootNumberProvider.create(20, 39)))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 1))));
+                tableBuilder.pool(poolBuilder.build());
+            }
+
+            if (HUSK_ID.equals(key.getValue())) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(UniformLootNumberProvider.create(1, 1))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_SPEAR))
+                        .with(ItemEntry.builder(ModItems.ALUMINUM_SPEAR))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
 
@@ -669,6 +700,10 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
                         .with(ItemEntry.builder(ModItems.TUNGSTEN).weight(3)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
+                        .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_SPEAR).weight(3)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 1))))
+                        .with(ItemEntry.builder(ModItems.ALUMINUM_SPEAR).weight(3)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 1))))
                         .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_HORSE_ARMOR).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
                         .with(ItemEntry.builder(ModItems.ALUMINUM_HORSE_ARMOR).weight(1)
@@ -747,6 +782,15 @@ public class ModLootTableModifiers {
                 tableBuilder.pool(poolBuilder.build());
             }
 
+            if (ZOMBIE_HORSE_ID.equals(key.getValue())) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(UniformLootNumberProvider.create(1, 1))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_SPEAR))
+                        .with(ItemEntry.builder(ModItems.ALUMINUM_SPEAR))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
         });
     }
 }

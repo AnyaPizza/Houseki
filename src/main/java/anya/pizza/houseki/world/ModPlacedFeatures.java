@@ -34,7 +34,6 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> ORE_SLATE_PLACED_KEY = registerKey("ore_slate_placed");
     public static final RegistryKey<PlacedFeature> ORE_BAUXITE_PLACED_KEY = registerKey("ore_bauxite_placed");
 
-
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
