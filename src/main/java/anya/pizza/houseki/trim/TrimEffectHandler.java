@@ -15,6 +15,11 @@ public class TrimEffectHandler {
             EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
     };
 
+    /**
+     * Register a server tick handler that periodically applies armor-trim-based status effects to all connected players.
+     *
+     * The registered handler runs every 40 server ticks and invokes applyEffects for each online ServerPlayerEntity.
+     */
     public static void registerTrimEffects() {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.getTicks() % 40 == 0) {
@@ -25,6 +30,12 @@ public class TrimEffectHandler {
         });
     }
 
+    /**
+     * Counts amethyst and diamond trims on the player's equipped armor (head, chest, legs, feet)
+     * and applies the corresponding bonuses based on those counts.
+     *
+     * @param player the server player whose equipped armor is inspected and updated
+     */
     private static void applyEffects(ServerPlayerEntity player) {
         int amethystCount = 0;
         int diamondCount = 0;
@@ -44,6 +55,14 @@ public class TrimEffectHandler {
         handleDiamondBonus(player, diamondCount);
     }
 
+    /**
+     * Applies the amethyst-trim speed bonus to the given player based on how many armor pieces have amethyst trim.
+     *
+     * If `aCount` is 4 or greater, applies Speed with amplifier 1 for 80 ticks; if `aCount` is between 1 and 3, applies Speed with amplifier 0 for 80 ticks; no effect when `aCount` is 0.
+     *
+     * @param player the player to receive the speed effect
+     * @param aCount the number of equipped armor pieces that have amethyst trim
+     */
     private static void handleAmethystBonus(ServerPlayerEntity player, int aCount) {
         if (aCount >= 4) {
             // Full Set
@@ -54,6 +73,15 @@ public class TrimEffectHandler {
         }
     }
 
+    /**
+     * Applies a jump boost effect to the player based on the number of diamond-trimmed armor pieces.
+     *
+     * If `dCount` is 4 or greater, applies Jump Boost with amplifier 1; if `dCount` is greater than 0, applies Jump Boost with amplifier 0.
+     * The effect lasts 80 ticks, is ambient, does not show particles, and shows the status icon.
+     *
+     * @param player the player to receive the jump boost effect
+     * @param dCount the number of equipped armor pieces trimmed with diamond
+     */
     private static void handleDiamondBonus(ServerPlayerEntity player, int dCount) {
         if (dCount >= 4) {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 80, 1, true, false, true));

@@ -17,11 +17,24 @@ public class ModTrimMaterials {
     public static final RegistryKey<ArmorTrimMaterial> RAINBOW_PYRITE =
             RegistryKey.of(RegistryKeys.TRIM_MATERIAL, Identifier.of(Houseki.MOD_ID, "rainbow_pyrite"));
 
+    /**
+     * Initializes and registers the mod's armor trim materials.
+     *
+     * @param registerable the registry to add the mod's ArmorTrimMaterial entries to
+     */
     public static void bootstrap(Registerable<ArmorTrimMaterial> registerable) {
         register(registerable, RAINBOW_PYRITE, Registries.ITEM.getEntry(ModItems.RAINBOW_PYRITE),
                 Style.EMPTY.withColor(TextColor.parse("#b03fe0").getOrThrow()));
     }
 
+    /**
+     * Creates and registers an ArmorTrimMaterial under the provided registry key using the given display style.
+     *
+     * @param registerable the registry to add the trim material to
+     * @param trimMaterialKey the registry key under which the trim material will be registered
+     * @param item a registry entry for the item associated with the trim material (used to identify the material)
+     * @param style the text style to apply to the trim material's display name
+     */
     private static void register(Registerable<ArmorTrimMaterial> registerable, RegistryKey<ArmorTrimMaterial> trimMaterialKey, RegistryEntry<Item> item, Style style) {
         ArmorTrimMaterial trimMaterial = new ArmorTrimMaterial(ArmorTrimAssets.of("rainbow_pyrite"),
                 Text.translatable(Util.createTranslationKey("trim_material", trimMaterialKey.getValue())).fillStyle(style));

@@ -17,6 +17,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         super(output, completableFuture);
     }
 
+    /**
+     * Registers the mod's item-to-tag mappings for data generation.
+     *
+     * <p>Populates item tag builders with the mod's items so the datagen framework can emit
+     * item tag JSONs used at runtime.</p>
+     *
+     * @param wrapperLookup a registry lookup used to resolve registry entries while building tags
+     */
     @Override
     protected void configure(RegistryWrapper.@NonNull WrapperLookup wrapperLookup) {
         valueLookupBuilder(ItemTags.BEACON_PAYMENT_ITEMS)

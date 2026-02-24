@@ -12,6 +12,12 @@ public class ModRegistryDataGenerator extends FabricDynamicRegistryProvider {
         super(output, registriesFuture);
     }
 
+    /**
+     * Populates the given Entries with all entries from the TRIM_MATERIAL, CONFIGURED_FEATURE, and PLACED_FEATURE registries.
+     *
+     * @param registries lookup used to retrieve registry contents by RegistryKey
+     * @param entries target collection to receive the registry entries
+     */
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
         entries.addAll(registries.getOrThrow(RegistryKeys.TRIM_MATERIAL));
@@ -19,6 +25,11 @@ public class ModRegistryDataGenerator extends FabricDynamicRegistryProvider {
         entries.addAll(registries.getOrThrow(RegistryKeys.PLACED_FEATURE));
     }
 
+    /**
+     * Provide the display name for this data provider.
+     *
+     * @return the display name of this provider
+     */
     @Override
     public String getName() {
         return "Datagen";

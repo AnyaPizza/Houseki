@@ -22,6 +22,14 @@ public class HousekiDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModRegistryDataGenerator::new);
 	}
 
+	/**
+	 * Registers the mod's data registries and their bootstrap suppliers with the provided RegistryBuilder.
+	 *
+	 * Specifically registers CONFIGURED_FEATURE, PLACED_FEATURE, and TRIM_MATERIAL with their respective
+	 * bootstrap suppliers.
+	 *
+	 * @param registryBuilder the RegistryBuilder to which the mod registries and bootstrap suppliers are added
+	 */
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
