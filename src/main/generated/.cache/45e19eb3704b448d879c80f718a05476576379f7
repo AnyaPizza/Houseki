@@ -1,4 +1,5 @@
-// 1.21.11	-999999999-01-01T00:00:00	Houseki/World Gen
+// 1.21.11	-999999999-01-01T00:00:00	Houseki/Datagen
+638ca32e16a5e8f5b5220bbdf05c83b7da31688d data/houseki/trim_material/rainbow_pyrite.json
 a8deca43f759b452ccb7ee06748a0a9805be6186 data/houseki/worldgen/configured_feature/bauxite_rainbow_pyrite_ore.json
 5b71b29cfe067bd8d50832ec8c3a90e9c8976944 data/houseki/worldgen/configured_feature/blackstone_sulfur_ore.json
 97f5a699ee5394b35f583d8bd42e54dde21571a9 data/houseki/worldgen/configured_feature/jadeite_ore.json

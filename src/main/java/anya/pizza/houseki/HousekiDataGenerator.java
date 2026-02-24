@@ -1,6 +1,7 @@
 package anya.pizza.houseki;
 
 import anya.pizza.houseki.datagen.*;
+import anya.pizza.houseki.trim.ModTrimMaterials;
 import anya.pizza.houseki.world.ModConfiguredFeatures;
 import anya.pizza.houseki.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -25,5 +26,6 @@ public class HousekiDataGenerator implements DataGeneratorEntrypoint {
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.TRIM_MATERIAL, ModTrimMaterials::bootstrap);
 	}
 }
