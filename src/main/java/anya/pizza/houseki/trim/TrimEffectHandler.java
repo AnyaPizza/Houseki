@@ -17,6 +17,7 @@ public class TrimEffectHandler {
 
     public static void registerTrimEffects() {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
+            //Could cause lag for big servers. May need to rebalance in future if needed.
             if (server.getTicks() % 40 == 0) {
                 for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
                     applyEffects(player);
@@ -47,18 +48,18 @@ public class TrimEffectHandler {
     private static void handleAmethystBonus(ServerPlayerEntity player, int aCount) {
         if (aCount >= 4) {
             // Full Set
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 80, 1, true, false, true));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 50, 1, true, false, true));
         } else if (aCount > 0) {
             // Anything under a full set
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 80, 0, true, false, true));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 50, 0, true, false, true));
         }
     }
 
     private static void handleDiamondBonus(ServerPlayerEntity player, int dCount) {
         if (dCount >= 4) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 80, 1, true, false, true));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 50, 1, true, false, true));
         } else if (dCount > 0) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 80, 0, true, false, true));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 50, 0, true, false, true));
         }
     }
 }
