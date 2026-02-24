@@ -5,7 +5,6 @@
     "#": "minecraft:diamond_block"
   },
   "pattern": [
-    "   ",
     " # ",
     "###"
   ],
