@@ -15,12 +15,13 @@ public class ModRegistryDataGenerator extends FabricDynamicRegistryProvider {
 
     @Override
     protected void configure(HolderLookup.Provider registries, Entries entries) {
+        entries.addAll(registries.lookupOrThrow(Registries.TRIM_MATERIAL));
         entries.addAll(registries.lookupOrThrow(Registries.CONFIGURED_FEATURE));
         entries.addAll(registries.lookupOrThrow(Registries.PLACED_FEATURE));
     }
 
     @Override
     public @NonNull String getName() {
-        return "World Gen";
+        return "Datagen";
     }
 }

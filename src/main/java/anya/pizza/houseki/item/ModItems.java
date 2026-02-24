@@ -3,6 +3,7 @@ package anya.pizza.houseki.item;
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.item.custom.*;
+import anya.pizza.houseki.trim.ModTrimMaterials;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.minecraft.world.item.AxeItem;
@@ -22,7 +23,7 @@ import java.util.function.Function;
 
 public class ModItems {
     //Items
-    public static final Item RAINBOW_PYRITE = registerItem("rainbow_pyrite", Item::new);
+    public static final Item RAINBOW_PYRITE = registerItem("rainbow_pyrite", setting -> new Item(setting.trimMaterial(ModTrimMaterials.RAINBOW_PYRITE)));
     public static final Item PINKU = registerItem("pinku", Item::new);
     public static final Item PINKU_SHARD = registerItem("pinku_shard", Item::new);
     public static final Item WOLFRAMITE = registerItem("wolframite", Item::new);

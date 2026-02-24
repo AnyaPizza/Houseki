@@ -29,17 +29,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output, registriesFuture);
     }
 
-    /**
-     * Create a RecipeProvider that registers all Houseki mod recipes.
-     *
-     * <p>The provider's buildRecipes implementation defines crushing, smelting, blasting,
-     * stonecutting, crafting, tool/armor, upgrade, and related recipes and emits them to
-     * the given recipe output with mod-specific resource keys.</p>
-     *
-     * @param wrapperLookup a registry lookup provider used when constructing recipes
-     * @param recipeExporter the recipe output to which generated recipes will be saved
-     * @return a RecipeProvider configured to generate the Houseki mod's recipes
-     */
     @Override
     protected RecipeProvider createRecipeProvider(HolderLookup.Provider wrapperLookup, RecipeOutput recipeExporter) {
         return new RecipeProvider(wrapperLookup, recipeExporter) {

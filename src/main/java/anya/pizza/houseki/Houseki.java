@@ -6,6 +6,7 @@ import anya.pizza.houseki.item.ModItemGroups;
 import anya.pizza.houseki.item.ModItems;
 import anya.pizza.houseki.recipe.ModTypes;
 import anya.pizza.houseki.screen.ModScreenHandlers;
+import anya.pizza.houseki.trim.TrimEffectHandler;
 import anya.pizza.houseki.util.ADUsageEvent;
 import anya.pizza.houseki.util.EDUsageEvent;
 import anya.pizza.houseki.util.PDUsageEvent;
@@ -33,6 +34,8 @@ public class Houseki implements ModInitializer {
 		ModSerializer.registerSerializers();
 		ModTypes.registerRecipeTypes();
 		ModLootTableModifiers.modifyLootTables();
+
+		TrimEffectHandler.registerTrimEffects();
 
 		ModWorldGeneration.generateModWorldGeneration();
 
