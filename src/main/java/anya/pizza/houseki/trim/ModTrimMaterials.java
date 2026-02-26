@@ -15,9 +15,12 @@ import net.minecraft.world.item.equipment.trim.TrimMaterial;
 
 public class ModTrimMaterials {
     public static final ResourceKey<TrimMaterial> RAINBOW_PYRITE = registryKey("rainbow_pyrite");
+    public static final ResourceKey<TrimMaterial> PINKU = registryKey("pinku");
 
     public static void bootstrap(BootstrapContext<TrimMaterial> context) {
+        // Trims with no effects
         register(context, RAINBOW_PYRITE, Style.EMPTY.withColor(TextColor.parseColor("#b03fe0").getOrThrow()), MaterialAssetGroup.create("rainbow_pyrite"));
+        register(context, PINKU, Style.EMPTY.withColor(TextColor.parseColor("#f10af7").getOrThrow()), MaterialAssetGroup.create("pinku"));
     }
 
     private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> registryKey, Style style, MaterialAssetGroup assets) {

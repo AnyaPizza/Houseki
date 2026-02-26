@@ -20,7 +20,8 @@
         "quartz": "minecraft:trims/color_palettes/quartz",
         "redstone": "minecraft:trims/color_palettes/redstone",
         "resin": "minecraft:trims/color_palettes/resin",
-        "rainbow_pyrite": "houseki:trims/color_palettes/rainbow_pyrite"
+        "rainbow_pyrite": "houseki:trims/color_palettes/rainbow_pyrite",
+        "pinku": "houseki:trims/color_palettes/pinku"
       },
       "textures": [
         "minecraft:trims/entity/humanoid/sentry",

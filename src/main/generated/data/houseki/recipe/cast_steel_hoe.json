@@ -6,9 +6,9 @@
     "S": "minecraft:stick"
   },
   "pattern": [
-    "## ",
-    " S ",
-    " S "
+    "##",
+    " S",
+    " S"
   ],
   "result": {
     "id": "houseki:cast_steel_hoe"

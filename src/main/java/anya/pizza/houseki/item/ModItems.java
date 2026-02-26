@@ -24,7 +24,7 @@ import java.util.function.Function;
 public class ModItems {
     //Items
     public static final Item RAINBOW_PYRITE = registerItem("rainbow_pyrite", setting -> new Item(setting.trimMaterial(ModTrimMaterials.RAINBOW_PYRITE)));
-    public static final Item PINKU = registerItem("pinku", Item::new);
+    public static final Item PINKU = registerItem("pinku", setting -> new Item(setting.trimMaterial(ModTrimMaterials.PINKU)));
     public static final Item PINKU_SHARD = registerItem("pinku_shard", Item::new);
     public static final Item WOLFRAMITE = registerItem("wolframite", Item::new);
     public static final Item SCHEELITE = registerItem("scheelite", Item::new);

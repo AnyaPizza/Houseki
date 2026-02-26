@@ -29,7 +29,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.CAST_STEEL);
 
         valueLookupBuilder(ItemTags.TRIM_MATERIALS)
-                .add(ModItems.RAINBOW_PYRITE);
+                .add(ModItems.RAINBOW_PYRITE)
+                .add(ModItems.PINKU);
 
         valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.PINKU_HELMET)
