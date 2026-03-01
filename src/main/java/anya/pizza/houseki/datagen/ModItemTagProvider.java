@@ -30,7 +30,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.CAST_STEEL);
 
         valueLookupBuilder(ItemTags.TRIM_MATERIALS)
-                .add(ModItems.RAINBOW_PYRITE);
+                .add(ModItems.RAINBOW_PYRITE)
+                .add(ModItems.PINKU)
+                .add(ModItems.SAPPHIRE)
+                .add(ModItems.NEPHRITE)
+                .add(ModItems.JADEITE)
+                .add(ModItems.CAST_STEEL);
 
         valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.PINKU_HELMET)

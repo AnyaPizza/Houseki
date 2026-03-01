@@ -20,22 +20,22 @@ import java.util.function.Function;
 public class ModItems {
     //Items
     public static final Item RAINBOW_PYRITE = registerItem("rainbow_pyrite", setting -> new Item(setting.trimMaterial(ModTrimMaterials.RAINBOW_PYRITE)));
-    public static final Item PINKU = registerItem("pinku", Item::new);
+    public static final Item PINKU = registerItem("pinku", setting -> new Item(setting.trimMaterial(ModTrimMaterials.PINKU)));
     public static final Item PINKU_SHARD = registerItem("pinku_shard", Item::new);
     public static final Item WOLFRAMITE = registerItem("wolframite", Item::new);
     public static final Item SCHEELITE = registerItem("scheelite", Item::new);
     public static final Item TUNGSTEN = registerItem("tungsten", setting -> new Item(setting.fireproof()));
     public static final Item CRUSHED_BAUXITE = registerItem("crushed_bauxite", Item::new);
     public static final Item ALUMINUM = registerItem("aluminum", Item::new);
-    public static final Item SAPPHIRE = registerItem("sapphire", Item::new);
-    public static final Item NEPHRITE = registerItem("nephrite", Item::new);
-    public static final Item JADEITE = registerItem("jadeite", Item::new);
+    public static final Item SAPPHIRE = registerItem("sapphire", setting -> new Item(setting.trimMaterial(ModTrimMaterials.SAPPHIRE)));
+    public static final Item NEPHRITE = registerItem("nephrite", setting -> new Item(setting.trimMaterial(ModTrimMaterials.NEPHRITE)));
+    public static final Item JADEITE = registerItem("jadeite", setting -> new Item(setting.trimMaterial(ModTrimMaterials.JADEITE)));
     public static final Item PLATINUM = registerItem("platinum", Item::new);
     public static final Item PLATINUM_NUGGET = registerItem("platinum_nugget", Item::new);
     public static final Item SULFUR = registerItem("sulfur", Item::new);
     public static final Item CRUDE_IRON = registerItem("crude_iron", Item::new);
     public static final Item STEEL = registerItem("steel", Item::new);
-    public static final Item CAST_STEEL = registerItem("cast_steel", Item::new);
+    public static final Item CAST_STEEL = registerItem("cast_steel", setting -> new Item(setting.trimMaterial(ModTrimMaterials.CAST_STEEL)));
     public static final Item TUNGSTEN_DRILL_BIT = registerItem("tungsten_drill_bit", setting -> new Item(setting.fireproof()));
     public static final Item SIMPLE_DRILL_HEAD = registerItem("simple_drill_head", Item::new);
     public static final Item ENHANCED_DRILL_HEAD = registerItem("enhanced_drill_head", Item::new);

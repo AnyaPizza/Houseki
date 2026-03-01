@@ -1,5 +1,10 @@
 // 1.21.11	-999999999-01-01T00:00:00	Houseki/Datagen
+1fc09c4c3149f46845a328dbc82cc587f0f07454 data/houseki/trim_material/cast_steel.json
+cd724ab35960818f7c2bf7315bf8ec140b7c8fa0 data/houseki/trim_material/jadeite.json
+9696ec0cd77379c09e28bbbc1d0c54e550fe5b59 data/houseki/trim_material/nephrite.json
+809d935e71deabf337a98a4b99950ff24ce3351f data/houseki/trim_material/pinku.json
 638ca32e16a5e8f5b5220bbdf05c83b7da31688d data/houseki/trim_material/rainbow_pyrite.json
+86a39ddd23cf06539e120397b97fed86614fe0b9 data/houseki/trim_material/sapphire.json
 a8deca43f759b452ccb7ee06748a0a9805be6186 data/houseki/worldgen/configured_feature/bauxite_rainbow_pyrite_ore.json
 5b71b29cfe067bd8d50832ec8c3a90e9c8976944 data/houseki/worldgen/configured_feature/blackstone_sulfur_ore.json
 97f5a699ee5394b35f583d8bd42e54dde21571a9 data/houseki/worldgen/configured_feature/jadeite_ore.json
