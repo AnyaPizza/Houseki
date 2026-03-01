@@ -258,6 +258,10 @@
 
   "trim_material.houseki.rainbow_pyrite": "Rainbow Pyrite",
   "trim_material.houseki.pinku": "Pinku",
+  "trim_material.houseki.sapphire": "Sapphire",
+  "trim_material.houseki.nephrite": "Nephrite",
+  "trim_material.houseki.jadeite": "Jadeite",
+  "trim_material.houseki.cast_steel": "Cast Steel",
 
   "advancements.armor_sets.root.title": "Houseki Armor Sets",
   "advancements.armor_sets.root.description": "A set of advancements for collecting armor sets in the mod",
