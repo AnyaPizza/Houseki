@@ -7,16 +7,16 @@
       "translate": "advancements.armor_sets.root.description"
     },
     "icon": {
-      "id": "houseki:pinku"
+      "id": "houseki:pinku_chestplate"
     },
     "frame": "task",
     "show_toast": false,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "houseki:textures/block/block_of_pinku.png"
+    "background": "houseki:gui/advancements/backgrounds/rainbow_pyrite"
   },
   "criteria": {
-    "pick_up_pizzas_armor": {
+    "pick_up_houseki_armor": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [

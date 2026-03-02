@@ -1,0 +1,47 @@
+{
+  "parent": "houseki:general/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.drill.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.drill.description"
+    },
+    "icon": {
+      "id": "houseki:premium_tungsten_drill"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:simple_tungsten_drill",
+              "houseki:enhanced_tungsten_drill",
+              "houseki:advanced_tungsten_drill",
+              "houseki:premium_tungsten_drill",
+              "houseki:premium_diamond_drill",
+              "houseki:advanced_diamond_drill",
+              "houseki:enhanced_diamond_drill",
+              "houseki:simple_diamond_drill"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_drill"
+    ]
+  ],
+  "rewards": {
+    "experience": 150
+  }
+}
