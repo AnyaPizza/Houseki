@@ -284,5 +284,13 @@
   "advancements.houseki.steel_armor_set.title": "Ancient Metal",
   "advancements.houseki.steel_armor_set.description": "Get a full set of Steel Armor!",
   "advancements.houseki.cast_steel_armor_set.title": "Steel But Stronger",
-  "advancements.houseki.cast_steel_armor_set.description": "Get a full set of Cast Steel Armor!"
+  "advancements.houseki.cast_steel_armor_set.description": "Get a full set of Cast Steel Armor!",
+  "advancements.general.root.title": "Houseki's Advancements",
+  "advancements.general.root.description": "A set of advancements for Houseki!",
+  "advancements.houseki.drill.title": "Drills!",
+  "advancements.houseki.drill.description": "Acquired a drill!",
+  "advancements.houseki.pinku.title": "The Power of Pinku!",
+  "advancements.houseki.pinku.description": "Acquire Pinku!",
+  "advancements.houseki.crusher_crafting.title": "It's Crushing Time!",
+  "advancements.houseki.crusher_crafting.description": "Crafted a crusher!"
 }
