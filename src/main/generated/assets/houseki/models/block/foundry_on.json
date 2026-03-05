@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "houseki:block/foundry_front_on",
+    "side": "houseki:block/foundry_side",
+    "top": "houseki:block/foundry_top"
+  }
+}

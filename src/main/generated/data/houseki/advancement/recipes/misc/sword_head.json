@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_steel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:steel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sword_head_cast": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:sword_head_cast"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:sword_head"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_steel",
+      "has_sword_head_cast"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:sword_head"
+    ]
+  }
+}

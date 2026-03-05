@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "houseki:hoe_head_cast",
+    "houseki:steel"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:hoe_head"
+  }
+}

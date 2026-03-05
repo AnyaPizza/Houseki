@@ -56,6 +56,9 @@
     "houseki:blackstone_sulfur_ore",
     "houseki:sulfur_ore",
     "houseki:block_of_steel",
-    "houseki:block_of_cast_steel"
+    "houseki:block_of_cast_steel",
+    "houseki:meteoric_iron",
+    "houseki:block_of_meteoric_iron",
+    "houseki:foundry"
   ]
 }

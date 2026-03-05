@@ -10,9 +10,9 @@ Houseki is a mod that is based on the realism of stones/rocks, gems, crystals, a
 ## Don't see the item you want in the mod?
 Check out the [Suggestion Box](https://whispermeter.com/feedback/housekidev) and suggest what you want! Or just leave feedback, up to you!
 
-**!!Remember, your suggestion must be a real thing and have real uses!!**
+**!!Remember, your suggestion must be a real thing with real uses!!**
 
-You can also look at the [Development Board](https://trello.com/b/gkn3qGlL/houseki-development), and you can see if your suggestion is being worked on or not!
+You can also check the [Development Board](https://trello.com/b/gkn3qGlL/houseki-development), to see if your suggestion is being worked on or not! You can also open any of the cards and vote for the stuff you want the most!
 
 ![The Stuffs](https://cdn.modrinth.com/data/cached_images/5a28e411ac7dc7cd8b66559befd9e663b7a03e8c.png)
 
@@ -500,7 +500,7 @@ There are 4 stages of Drills
 <summary>The Simple Drill</summary>
 
 The simple drill acts as a normal pickaxe, but faster.
-The Tungsten Simple Drill insta mines stone and very quickly mines Deepslate. 
+The Tungsten Simple Drill instantly mines stone and very quickly mines Deepslate. 
 The Diamond Simple Drill is not much faster than a regular Netherite Pickaxe, but it lasts longer.
 
 </details>

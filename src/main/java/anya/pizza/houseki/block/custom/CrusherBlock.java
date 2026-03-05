@@ -91,7 +91,8 @@ public class CrusherBlock extends BlockWithEntity {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, ModBlockEntities.CRUSHER_BE, (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+        return validateTicker(type, ModBlockEntities.CRUSHER_BE, (world1, pos, state1, blockEntity)
+                -> blockEntity.tick(world1, pos, state1));
     }
 
     @Override

@@ -74,7 +74,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLACKSTONE_SULFUR_ORE)
                 .add(ModBlocks.SULFUR_ORE)
                 .add(ModBlocks.BLOCK_OF_STEEL)
-                .add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                .add(ModBlocks.BLOCK_OF_CAST_STEEL)
+                .add(ModBlocks.METEORIC_IRON)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON)
+                .add(ModBlocks.FOUNDRY);
 
         valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.BAUXITE)
@@ -83,12 +86,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLOCK_OF_SULFUR)
                 .add(ModBlocks.ALUMINUM_DOOR)
                 .add(ModBlocks.ALUMINUM_TRAPDOOR)
-                .add(ModBlocks.CRUSHER);
+                .add(ModBlocks.CRUSHER)
+                .add(ModBlocks.FOUNDRY);
 
         valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_RAINBOW_PYRITE)
-                .add(ModBlocks.BLOCK_OF_SAPPHIRE)
                 .add(ModBlocks.WOLFRAMITE_ORE)
                 .add(ModBlocks.NETHERRACK_WOLFRAMITE_ORE)
                 .add(ModBlocks.RAINBOW_PYRITE_ORE)
@@ -111,7 +114,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.PINKU_ORE)
                 .add(ModBlocks.SAPPHIRE_ORE)
-                .add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE);
+                .add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE)
+                .add(ModBlocks.BLOCK_OF_SAPPHIRE)
+                .add(ModBlocks.METEORIC_IRON)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON);
 
         valueLookupBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.BLOCK_OF_PINKU)
@@ -122,18 +128,23 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLOCK_OF_JADEITE)
                 .add(ModBlocks.BLOCK_OF_PLATINUM)
                 .add(ModBlocks.BLOCK_OF_STEEL)
-                .add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                .add(ModBlocks.BLOCK_OF_CAST_STEEL)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON);
 
         valueLookupBuilder(BlockTags.WITHER_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_SAPPHIRE)
                 .add(ModBlocks.ALUMINUM_GLASS)
-                .add(ModBlocks.ALUMINUM_GLASS_PANE);
+                .add(ModBlocks.ALUMINUM_GLASS_PANE)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON)
+                .add(ModBlocks.METEORIC_IRON);
 
         valueLookupBuilder(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.ALUMINUM_GLASS)
-                .add(ModBlocks.ALUMINUM_GLASS_PANE);
+                .add(ModBlocks.ALUMINUM_GLASS_PANE)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON)
+                .add(ModBlocks.METEORIC_IRON);
 
         valueLookupBuilder(BlockTags.WALLS)
                 .add(ModBlocks.LIMESTONE_WALL)

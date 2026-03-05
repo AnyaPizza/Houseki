@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "houseki:steel",
+    "H": "minecraft:iron_helmet"
+  },
+  "pattern": [
+    "###",
+    "#H#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:helmet_cast"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "houseki:steel",
+    "H": "minecraft:wooden_hoe"
+  },
+  "pattern": [
+    "###",
+    "#H#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:hoe_head_cast"
+  }
+}

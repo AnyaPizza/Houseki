@@ -2,6 +2,9 @@
   "values": [
     "houseki:pinku_ore",
     "houseki:sapphire_ore",
-    "houseki:deepslate_sapphire_ore"
+    "houseki:deepslate_sapphire_ore",
+    "houseki:block_of_sapphire",
+    "houseki:meteoric_iron",
+    "houseki:block_of_meteoric_iron"
   ]
 }

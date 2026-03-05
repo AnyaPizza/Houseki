@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "houseki:steel",
+    "A": "minecraft:wooden_axe"
+  },
+  "pattern": [
+    "###",
+    "#A#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:axe_head_cast"
+  }
+}

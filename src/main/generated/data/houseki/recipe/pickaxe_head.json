@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "houseki:pickaxe_head_cast",
+    "houseki:steel",
+    "houseki:steel"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:pickaxe_head"
+  }
+}

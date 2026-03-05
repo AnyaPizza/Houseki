@@ -39,6 +39,7 @@
   "block.houseki.scheelite_ore": "Scheelite Ore",
   "block.houseki.deepslate_scheelite_ore": "Deepslate Scheelite Ore",
   "block.houseki.crusher": "Crusher",
+  "block.houseki.foundry": "Foundry",
   "block.houseki.bauxite": "Bauxite",
   "block.houseki.aluminum_glass": "Aluminum Glass",
   "block.houseki.aluminum_glass_pane": "Aluminum Glass Pane",
@@ -64,6 +65,9 @@
   "block.houseki.blackstone_sulfur_ore": "Blackstone Sulfur Ore",
   "block.houseki.sulfur_ore": "Sulfur Ore",
   "block.houseki.block_of_steel": "Block of Steel",
+  "block.houseki.block_of_cast_steel": "Block of Cast Steel",
+  "block.houseki.block_of_meteoric_iron": "Block of Meteoric Iron",
+  "block.houseki.meteoric_iron": "Meteoric Iron",
 
   "block.houseki.limestone_stairs": "Limestone Stairs",
   "block.houseki.limestone_slab": "Limestone Slab",
@@ -88,7 +92,6 @@
   "block.houseki.aluminum_trapdoor": "Aluminum Trapdoor",
 
   "block.houseki.block_of_tungsten_b": "Block of Tungsten",
-  "block.houseki.block_of_cast_steel": "Block of Cast Steel",
   "item.houseki.block_of_tungsten": "Block of Tungsten",
 
   "item.houseki.pinku_pickaxe": "Pinku Pickaxe",
@@ -262,6 +265,7 @@
   "itemgroup.houseki.housekiblocks": "Houseki Blocks",
 
   "gui.houseki.crusher": "Crusher",
+  "gui.houseki.foundry": "Foundry",
 
   "trim_material.houseki.rainbow_pyrite": "Rainbow Pyrite",
   "trim_material.houseki.pinku": "Pinku",

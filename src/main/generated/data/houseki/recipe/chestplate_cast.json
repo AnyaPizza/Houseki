@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "houseki:steel",
+    "C": "minecraft:iron_chestplate"
+  },
+  "pattern": [
+    "###",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:chestplate_cast"
+  }
+}

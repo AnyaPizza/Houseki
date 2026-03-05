@@ -176,7 +176,6 @@ public class ModItemGroups {
                         entries.add(ModItems.CAST_STEEL_SPEAR);
                         entries.add(ModItems.PICKAXE_HEAD_CAST);
 
-                        entries.add(ModItems.PICKAXE_HEAD_CAST);
                         entries.add(ModItems.AXE_HEAD_CAST);
                         entries.add(ModItems.SHOVEL_HEAD_CAST);
                         entries.add(ModItems.SWORD_HEAD_CAST);
@@ -185,8 +184,8 @@ public class ModItemGroups {
                         entries.add(ModItems.HELMET_CAST);
                         entries.add(ModItems.CHESTPLATE_CAST);
                         entries.add(ModItems.LEGGINGS_CAST);
-
                         entries.add(ModItems.BOOTS_CAST);
+
                         entries.add(ModItems.PICKAXE_HEAD);
                         entries.add(ModItems.AXE_HEAD);
                         entries.add(ModItems.SHOVEL_HEAD);
@@ -237,6 +236,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLOCK_OF_PLATINUM);
 
                         entries.add(ModBlocks.CRUSHER);
+                        entries.add(ModBlocks.FOUNDRY);
 
                         entries.add(ModBlocks.LIMESTONE);
                         entries.add(ModBlocks.LIMESTONE_STAIRS);

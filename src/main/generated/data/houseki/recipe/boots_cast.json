@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "houseki:steel",
+    "B": "minecraft:iron_boots"
+  },
+  "pattern": [
+    "###",
+    "#B#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:boots_cast"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_iron_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_steel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:steel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:boots_cast"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_steel",
+      "has_iron_boots"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:boots_cast"
+    ]
+  }
+}

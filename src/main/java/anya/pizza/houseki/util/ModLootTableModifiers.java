@@ -3,6 +3,7 @@ package anya.pizza.houseki.util;
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.item.ModItems;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
@@ -739,6 +740,18 @@ public class ModLootTableModifiers {
                 tableBuilder.pool(poolBuilder.build());
             }
 
+            if (WARDEN_ID.equals(key.getValue())) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.4f))
+                        .with(ItemEntry.builder(ModBlocks.METEORIC_IRON))
+                        .with(ItemEntry.builder(ModItems.PINKU_SHARD))
+                        .with(ItemEntry.builder(ModItems.PINKU).conditionally(RandomChanceLootCondition.builder(0.1f))
+                                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
+
             if (WOODLAND_MANSION_ID.equals(key.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(UniformLootNumberProvider.create(1f, 3f))
@@ -786,17 +799,6 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.PINKU_SHARD))
                         .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f)).build());
                 tableBuilder.pool(poolBuilder);
-            }
-
-            if (WARDEN_ID.equals(key.getValue())) {
-                LootPool.Builder poolBuilder = LootPool.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(0.4f))
-                        .with(ItemEntry.builder(ModItems.PINKU_SHARD))
-                        .with(ItemEntry.builder(ModItems.PINKU).conditionally(RandomChanceLootCondition.builder(0.1f))
-                                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
             }
 
             if (ZOMBIE_ID.equals(key.getValue())) {

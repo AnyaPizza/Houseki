@@ -50,8 +50,11 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_SULFUR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_STEEL);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_CAST_STEEL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.METEORIC_IRON);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_METEORIC_IRON);
 
         blockStateModelGenerator.registerCooker(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE);
+        blockStateModelGenerator.registerCooker(ModBlocks.FOUNDRY, TexturedModel.ORIENTABLE);
 
         limestonePool.stairs(ModBlocks.LIMESTONE_STAIRS);
         limestoneBrickPool.stairs(ModBlocks.LIMESTONE_BRICK_STAIRS);

@@ -109,7 +109,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL);
 
-
                 // Smelting Recipes
                 offerSmelting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM, 0.5f, 200, "aluminum");
                 offerSmelting(PINKU_SMELTABLES, RecipeCategory.MISC, ModItems.PINKU_SHARD, 0.5f, 250, "pinku");

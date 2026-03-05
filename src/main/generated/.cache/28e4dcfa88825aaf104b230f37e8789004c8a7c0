@@ -1,13 +1,13 @@
 // 1.21.11	-999999999-01-01T00:00:00	Houseki/Tags for minecraft:block
 23caf7f61e4b2f6fa59b168a7ee49539eb44acf1 data/houseki/tags/block/enhanced_mineable.json
 80ad3ac92e1280a2f60b25a83d2a16751740cc33 data/houseki/tags/block/premium_mineable.json
-7dab8b093f03a4e5d85c4c22c9ccda4ab7a434c1 data/minecraft/tags/block/beacon_base_blocks.json
-318b5ff53b23a2fd9abc3c47df27bc2754c73bd4 data/minecraft/tags/block/dragon_immune.json
-6ec0e8e195999bac9956f8d43e197a4c4161c545 data/minecraft/tags/block/mineable/pickaxe.json
-61d7df78bcfa3e13ade529a582628c3e98874534 data/minecraft/tags/block/needs_diamond_tool.json
-81c938f091394f93a8107db389f2e10707caf4a3 data/minecraft/tags/block/needs_iron_tool.json
-a6d6f07f3f67922463680566c209895a384217e0 data/minecraft/tags/block/needs_stone_tool.json
+3a872b346c761360db3b94468363a00d2bffd9e7 data/minecraft/tags/block/beacon_base_blocks.json
+0f1595e54291f56a27bc1017154402fbafdc332a data/minecraft/tags/block/dragon_immune.json
+3a0bbb408c56e2aebb5ef34f1586086af12f9b04 data/minecraft/tags/block/mineable/pickaxe.json
+619533fcf65797b48dcb726400d5332640971a28 data/minecraft/tags/block/needs_diamond_tool.json
+4835fa6fdda735b5399e8c95596fd1b649ef5f57 data/minecraft/tags/block/needs_iron_tool.json
+a1beff16345c32d8dc88c3db520414648833a2c5 data/minecraft/tags/block/needs_stone_tool.json
 4bef11ab83e59ceac264840bbd5887acf361aa5f data/minecraft/tags/block/slabs.json
 ddad2cc2ddb25ca2aca83cf30800498d87462f2a data/minecraft/tags/block/stairs.json
 c00dcbb8bc9bf174790936ec490fc471de01049b data/minecraft/tags/block/walls.json
-7e85b4b4f7a2701ec132b9ed6b32f6980b6d4ef2 data/minecraft/tags/block/wither_immune.json
+c373d1213497c9cd4d214d4ee023e99f928a2619 data/minecraft/tags/block/wither_immune.json

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "houseki:steel",
+    "P": "minecraft:wooden_pickaxe"
+  },
+  "pattern": [
+    "###",
+    "#P#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "houseki:pickaxe_head_cast"
+  }
+}

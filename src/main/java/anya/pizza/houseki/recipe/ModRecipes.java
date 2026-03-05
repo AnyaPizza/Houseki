@@ -18,6 +18,16 @@ public class ModRecipes {
                 }
             });
 
+    public static final RecipeSerializer<FoundryRecipe> FOUNDRY_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, Identifier.of(Houseki.MOD_ID, "foundry"), new FoundryRecipe.Serializer());
+    public static final RecipeType<FoundryRecipe> FOUNDRY_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, Identifier.of(Houseki.MOD_ID, "foundry"), new RecipeType<>() {
+                @Override
+                public String toString() {
+                    return "foundry";
+                }
+            });
+
     public static void registerRecipes() {
         Houseki.LOGGER.info("Registering Recipes for " + Houseki.MOD_ID);
     }
