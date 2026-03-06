@@ -88,12 +88,33 @@ public class CrusherBlock extends BlockWithEntity {
         return ActionResult.SUCCESS;
     }
 
+    /**
+     * Provides a ticker that delegates ticking to the crusher block entity implementation when the
+     * supplied block entity type matches the crusher block entity type.
+     *
+     * @return a {@link BlockEntityTicker} that invokes the crusher's tick method when `type` equals
+     *         {@code ModBlockEntities.CRUSHER_BE}, or {@code null} otherwise.
+     */
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, ModBlockEntities.CRUSHER_BE, (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+        return validateTicker(type, ModBlockEntities.CRUSHER_BE, (world1, pos, state1, blockEntity)
+                -> blockEntity.tick(world1, pos, state1));
     }
 
+    /**
+     * Displays ambient sounds and particles for an active crusher block.
+     *
+     * When the block's `LIT` property is true, this method occasionally plays two different
+     * machine-related sounds and spawns ash and smoke particles near the block's face
+     * determined by its `FACING` axis. If the block entity contains an item in slot 1,
+     * an item particle of that stack is also spawned at the same location.
+     *
+     * @param state the current block state (reads `LIT` and `FACING`)
+     * @param world the client world where particles and sounds are spawned
+     * @param pos   the block position used as the particle/sound origin (centered)
+     * @param random a random source used to vary sounds, offsets, and particle timing
+     */
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (!state.get(LIT)) {

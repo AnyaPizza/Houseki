@@ -3,6 +3,7 @@ package anya.pizza.houseki.block.entity;
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
+import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -15,6 +16,16 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(CrusherBlockEntity::new, ModBlocks.CRUSHER).build(null));
 
 
+    public static final BlockEntityType<FoundryBlockEntity> FOUNDRY_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Houseki.MOD_ID, "foundry_be"),
+                    FabricBlockEntityTypeBuilder.create(FoundryBlockEntity::new, ModBlocks.FOUNDRY).build(null));
+
+
+    /**
+     * Logs that the mod's block entity types are being registered.
+     *
+     * This method only emits an informational log message and has no other side effects.
+     */
     public static void registerBlockEntities() {
         Houseki.LOGGER.info("Registering Block Entities for " + Houseki.MOD_ID);
     }

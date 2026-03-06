@@ -2,6 +2,8 @@ package anya.pizza.houseki.block;
 
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.custom.CrusherBlock;
+import anya.pizza.houseki.block.custom.FoundryBlock;
+import io.netty.handler.ipfilter.IpSubnetFilter;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -98,6 +100,11 @@ public class ModBlocks {
     public static final Block BAUXITE = registerBlock("bauxite",
             properties -> new Block(properties.mapColor(MapColor.BROWN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.25F, 4.2F)));
 
+    public static final Block METEORIC_IRON = registerBlock("meteoric_iron",
+            properties -> new Block(properties.mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.DRAGON).requiresTool().strength(50F, 1200F)));
+
+    public static final Block BLOCK_OF_METEORIC_IRON = registerBlock("block_of_meteoric_iron",
+            properties -> new Block(properties.mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.DRAGON).requiresTool().strength(50F, 1200F)));
 
     //Adds Ore
     public static final Block PINKU_ORE = registerBlock("pinku_ore",
@@ -213,8 +220,23 @@ public class ModBlocks {
             properties -> new CrusherBlock(properties
                     .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F).luminance(createLightLevelFromLitBlockState(13))));
 
+    public static final Block FOUNDRY = registerBlock("foundry",
+            properties -> new FoundryBlock(properties
+                    .mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F).luminance(createLightLevelFromLitBlockState(13))));
 
 
+
+    /**
+     * Create and register a Block under this mod's namespace and return the registered instance.
+     *
+     * <p>Applies the provided function to a new block settings object (preconfigured with the block
+     * registry key), registers a corresponding BlockItem, and registers the Block in the global block
+     * registry using the mod's Identifier composed from the given name.
+     *
+     * @param name     the registry name (path) for the block within this mod's namespace
+     * @param function a constructor-like function that creates a Block when given its AbstractBlock.Settings
+     * @return         the Block instance registered in the global block registry
+     */
     private static Block registerBlock(String name, Function<AbstractBlock.Settings, Block> function) {
         Block toRegister = function.apply(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Houseki.MOD_ID, name))));
         registerBlockItem(name, toRegister);

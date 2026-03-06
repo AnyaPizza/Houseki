@@ -29,6 +29,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output, registriesFuture);
     }
 
+    /**
+     * Produces a RecipeGenerator that registers this mod's complete set of data-driven recipes.
+     *
+     * <p>The returned generator's generate() method defines and offers recipes for crushing, smelting,
+     * blasting, crafting (shaped, shapeless, 2x2), stonecutting, smithing upgrades, reversible
+     * compacting, tool/armor construction, drills, slabs/walls/stairs/doors/trapdoors and other
+     * mod-specific recipe categories.</p>
+     *
+     * @return a RecipeGenerator that, when run, emits all recipe JSONs for the mod's data generation
+     */
     @Override
     protected @NonNull RecipeGenerator getRecipeGenerator(RegistryWrapper.@NonNull WrapperLookup wrapperLookup, @NonNull RecipeExporter recipeExporter) {
         return new RecipeGenerator(wrapperLookup, recipeExporter) {
@@ -108,7 +118,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.SULFUR, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_SULFUR);
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL);
-
 
                 // Smelting Recipes
                 offerSmelting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM, 0.5f, 200, "aluminum");

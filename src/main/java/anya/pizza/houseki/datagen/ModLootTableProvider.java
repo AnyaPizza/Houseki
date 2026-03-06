@@ -24,6 +24,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         super(dataOutput, registryLookup);
     }
 
+    /**
+     * Registers loot-table entries for mod blocks handled by this provider.
+     *
+     * <p>Maps each block to the appropriate drop behavior (block self-drops, slab/door handling,
+     * ore-specific drop tables with fortune/silk-touch behavior, and glass with silk-touch),
+     * delegating to helper builders where needed.
+     */
     @Override
     public void generate() {
         //Block Drops itself
@@ -70,6 +77,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.BAUXITE);
         addDrop(ModBlocks.PLATINUM_ORE);
         addDrop(ModBlocks.DEEPSLATE_PLATINUM_ORE);
+        addDrop(ModBlocks.METEORIC_IRON);
+        addDrop(ModBlocks.BLOCK_OF_METEORIC_IRON);
+        addDrop(ModBlocks.FOUNDRY);
 
         //Block drops other stuff.
         addDrop(ModBlocks.WOLFRAMITE_ORE, LightOreDrops(ModBlocks.WOLFRAMITE_ORE, ModItems.WOLFRAMITE));
