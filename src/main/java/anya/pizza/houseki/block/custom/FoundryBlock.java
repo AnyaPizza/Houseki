@@ -85,7 +85,6 @@ public class FoundryBlock extends BlockWithEntity {
                 player.openHandledScreen(foundryBlockEntity);
             }
         }
-
         return ActionResult.SUCCESS;
     }
 

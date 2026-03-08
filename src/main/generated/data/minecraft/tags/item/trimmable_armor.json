@@ -35,6 +35,10 @@
     "houseki:cast_steel_helmet",
     "houseki:cast_steel_chestplate",
     "houseki:cast_steel_leggings",
-    "houseki:cast_steel_boots"
+    "houseki:cast_steel_boots",
+    "houseki:meteoric_iron_helmet",
+    "houseki:meteoric_iron_chestplate",
+    "houseki:meteoric_iron_leggings",
+    "houseki:meteoric_iron_boots"
   ]
 }

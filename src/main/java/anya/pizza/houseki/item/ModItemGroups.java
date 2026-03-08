@@ -106,6 +106,16 @@ public class ModItemGroups {
                         entries.add(ModItems.CAST_STEEL_SWORD);
                         entries.add(ModItems.CAST_STEEL_HOE);
 
+                        entries.add(ModItems.METEORIC_IRON_HELMET);
+                        entries.add(ModItems.METEORIC_IRON_CHESTPLATE);
+                        entries.add(ModItems.METEORIC_IRON_LEGGINGS);
+                        entries.add(ModItems.METEORIC_IRON_BOOTS);
+                        entries.add(ModItems.METEORIC_IRON_PICKAXE);
+                        entries.add(ModItems.METEORIC_IRON_AXE);
+                        entries.add(ModItems.METEORIC_IRON_SHOVEL);
+                        entries.add(ModItems.METEORIC_IRON_SWORD);
+                        entries.add(ModItems.METEORIC_IRON_HOE);
+
                         entries.add(ModItems.PINKU_HORSE_ARMOR);
                         entries.add(ModItems.RAINBOW_PYRITE_HORSE_ARMOR);
                         entries.add(ModItems.TUNGSTEN_HORSE_ARMOR);
@@ -116,6 +126,7 @@ public class ModItemGroups {
                         entries.add(ModItems.NEPHRITE_HORSE_ARMOR);
                         entries.add(ModItems.JADEITE_HORSE_ARMOR);
 
+                        entries.add(ModItems.METEORIC_IRON_HORSE_ARMOR);
                         entries.add(ModItems.PINKU_NAUTILUS_ARMOR);
                         entries.add(ModItems.RAINBOW_PYRITE_NAUTILUS_ARMOR);
                         entries.add(ModItems.TUNGSTEN_NAUTILUS_ARMOR);
@@ -124,8 +135,9 @@ public class ModItemGroups {
                         entries.add(ModItems.PLATINUM_NAUTILUS_ARMOR);
                         entries.add(ModItems.CAST_STEEL_NAUTILUS_ARMOR);
                         entries.add(ModItems.NEPHRITE_NAUTILUS_ARMOR);
-                        entries.add(ModItems.JADEITE_NAUTILUS_ARMOR);
 
+                        entries.add(ModItems.JADEITE_NAUTILUS_ARMOR);
+                        entries.add(ModItems.METEORIC_IRON_NAUTILUS_ARMOR);
                         entries.add(ModItems.PINKU);
                         entries.add(ModItems.PINKU_SHARD);
                         entries.add(ModItems.PINKU_UPGRADE_SMITHING_TEMPLATE);
@@ -133,9 +145,9 @@ public class ModItemGroups {
                         entries.add(ModItems.WOLFRAMITE);
                         entries.add(ModItems.SCHEELITE);
                         entries.add(ModItems.TUNGSTEN);
+
                         entries.add(ModItems.TUNGSTEN_POWDER);
                         entries.add(ModItems.CRUSHED_BAUXITE);
-
                         entries.add(ModItems.ALUMINUM);
                         entries.add(ModItems.SAPPHIRE);
                         entries.add(ModItems.NEPHRITE);
@@ -143,55 +155,58 @@ public class ModItemGroups {
                         entries.add(ModItems.PLATINUM);
                         entries.add(ModItems.PLATINUM_NUGGET);
                         entries.add(ModItems.SULFUR);
+
                         entries.add(ModItems.CRUDE_IRON);
                         entries.add(ModItems.STEEL);
-
                         entries.add(ModItems.CAST_STEEL);
+                        entries.add(ModItems.METEORIC_IRON_INGOT);
                         entries.add(ModItems.NICKEL_POWDER);
                         entries.add(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE);
                         entries.add(ModItems.TUNGSTEN_DRILL_BIT);
                         entries.add(ModItems.DIAMOND_DRILL_BIT);
                         entries.add(ModItems.SIMPLE_DRILL_HEAD);
+
                         entries.add(ModItems.ENHANCED_DRILL_HEAD);
                         entries.add(ModItems.ADVANCED_DRILL_HEAD);
                         entries.add(ModItems.PREMIUM_DRILL_HEAD);
-
                         entries.add(ModItems.SIMPLE_TUNGSTEN_DRILL);
                         entries.add(ModItems.ENHANCED_TUNGSTEN_DRILL);
                         entries.add(ModItems.ADVANCED_TUNGSTEN_DRILL);
                         entries.add(ModItems.PREMIUM_TUNGSTEN_DRILL);
                         entries.add(ModItems.SIMPLE_DIAMOND_DRILL);
                         entries.add(ModItems.ENHANCED_DIAMOND_DRILL);
+
                         entries.add(ModItems.ADVANCED_DIAMOND_DRILL);
                         entries.add(ModItems.PREMIUM_DIAMOND_DRILL);
                         entries.add(ModItems.PINKU_SPEAR);
-
                         entries.add(ModItems.RAINBOW_PYRITE_SPEAR);
                         entries.add(ModItems.TUNGSTEN_SPEAR);
                         entries.add(ModItems.ALUMINUM_SPEAR);
                         entries.add(ModItems.SAPPHIRE_SPEAR);
                         entries.add(ModItems.NEPHRITE_SPEAR);
                         entries.add(ModItems.JADEITE_SPEAR);
+
                         entries.add(ModItems.PLATINUM_SPEAR);
                         entries.add(ModItems.CAST_STEEL_SPEAR);
+                        entries.add(ModItems.METEORIC_IRON_SPEAR);
                         entries.add(ModItems.PICKAXE_HEAD_CAST);
-
                         entries.add(ModItems.AXE_HEAD_CAST);
                         entries.add(ModItems.SHOVEL_HEAD_CAST);
                         entries.add(ModItems.SWORD_HEAD_CAST);
                         entries.add(ModItems.HOE_HEAD_CAST);
                         entries.add(ModItems.SPEAR_HEAD_CAST);
+
                         entries.add(ModItems.HELMET_CAST);
                         entries.add(ModItems.CHESTPLATE_CAST);
                         entries.add(ModItems.LEGGINGS_CAST);
                         entries.add(ModItems.BOOTS_CAST);
+                        entries.add(ModItems.CS_PICKAXE_HEAD);
+                        entries.add(ModItems.CS_AXE_HEAD);
+                        entries.add(ModItems.CS_SHOVEL_HEAD);
+                        entries.add(ModItems.CS_SWORD_HEAD);
+                        entries.add(ModItems.CS_HOE_HEAD);
 
-                        entries.add(ModItems.PICKAXE_HEAD);
-                        entries.add(ModItems.AXE_HEAD);
-                        entries.add(ModItems.SHOVEL_HEAD);
-                        entries.add(ModItems.SWORD_HEAD);
-                        entries.add(ModItems.HOE_HEAD);
-                        entries.add(ModItems.SPEAR_HEAD);
+                        entries.add(ModItems.CS_SPEAR_HEAD);
 
                     }).build());
 

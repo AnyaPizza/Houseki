@@ -263,7 +263,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     public boolean canInsert(int slot, ItemStack stack, @org.jetbrains.annotations.Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
         if (slot == INPUT_SLOT) {
-            ((ServerWorld) this.getWorld()).getRecipeManager()
+            return ((ServerWorld) this.getWorld()).getRecipeManager()
                     .getFirstMatch(ModRecipes.FOUNDRY_TYPE, new FoundryRecipeCastInput(stack), world).isPresent();
         }
         return false;

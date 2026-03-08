@@ -48,7 +48,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxProgress = CrusherRecipe.DEFAULT_CRUSHING_TIME;
     private int fuelTime = 0;
     private int maxFuelTime = 0;
-    private final int lastValidFuelTime = 0;
+    private int lastValidFuelTime = 0;
     private boolean isCrafting = false;
     private ItemStack lastInput = ItemStack.EMPTY; //Cache input to detect changes
 
@@ -157,6 +157,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
             int fuelVal = getFuelTime(fuelStack);
             if (fuelVal > 0) {
                 fuelTime = maxFuelTime = fuelVal;
+                lastValidFuelTime = fuelVal;
                 fuelStack.decrement(1);
                 dirty = true;
             }
@@ -256,7 +257,6 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     private Optional<RecipeEntry<CrusherRecipe>> getCurrentRecipe() {
         return ((ServerWorld) this.getWorld()).getRecipeManager()
                 .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), this.getWorld());
-
     }
 
     @Override
@@ -268,7 +268,7 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
         if (slot == INPUT_SLOT) {
-            ((ServerWorld) this.getWorld()).getRecipeManager()
+            return ((ServerWorld) this.getWorld()).getRecipeManager()
                     .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(stack), world).isPresent();
         }
         return false;

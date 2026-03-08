@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meteoric_iron_ingot": {
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "houseki:meteoric_iron_axe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meteoric_iron_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "houseki:meteoric_iron_axe"
+    ]
+  }
+}
