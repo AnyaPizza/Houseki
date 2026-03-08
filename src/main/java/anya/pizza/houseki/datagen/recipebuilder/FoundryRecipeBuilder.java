@@ -10,7 +10,6 @@ import net.minecraft.data.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.registry.RegistryKey;
@@ -44,7 +43,7 @@ public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
                 .criteriaMerger(AdvancementRequirements.CriterionMerger.OR);
         this.criteria.forEach(advancement::criterion);
         FoundryRecipe recipe = new FoundryRecipe(input, output, meltTime);
-        exporter.accept(recipeKey, recipe, null);
+        exporter.accept(recipeKey, recipe, advancement.build(recipeKey.getValue()));
     }
 
     @Override
@@ -61,6 +60,6 @@ public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
 
     @Override
     public Item getOutputItem() {
-        return Items.AIR;
+        return output.getItem();
     }
 }

@@ -57,7 +57,6 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
         return ModRecipes.FOUNDRY_TYPE;
     }
 
-    //No idea if this is right but it works?
     @Override
     public IngredientPlacement getIngredientPlacement() {
         return IngredientPlacement.forMultipleSlots(List.of());

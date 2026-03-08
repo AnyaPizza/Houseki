@@ -1,0 +1,55 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "display": {
+    "title": {
+      "translate": "advancements.houseki.meteoric_iron_armor_set.title"
+    },
+    "description": {
+      "translate": "advancements.houseki.meteoric_iron_armor_set.description"
+    },
+    "icon": {
+      "id": "houseki:meteoric_iron_chestplate"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "meteoric_iron_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "houseki:meteoric_iron_helmet"
+            ]
+          },
+          {
+            "items": [
+              "houseki:meteoric_iron_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "houseki:meteoric_iron_leggings"
+            ]
+          },
+          {
+            "items": [
+              "houseki:meteoric_iron_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "meteoric_iron_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

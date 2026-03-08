@@ -4,7 +4,7 @@ import anya.pizza.houseki.util.ModTags;
 import net.minecraft.item.ToolMaterial;
 
 public class ModToolMaterials {
-    public static ToolMaterial PINKU = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_PINKU_TOOL, 2580, 10, 5, 16, ModTags.Items.PINKU_REPAIR);
+    public static ToolMaterial PINKU = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_PINKU_TOOL, 4580, 10, 5, 16, ModTags.Items.PINKU_REPAIR);
     public static ToolMaterial RAINBOW_PYRITE = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_RAINBOW_PYRITE_TOOL, 2000, 8, 4, 12, ModTags.Items.RAINBOW_REPAIR);
     public static ToolMaterial TUNGSTEN = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_TUNGSTEN_TOOL, 3000, 9, 4.5f, 15, ModTags.Items.TUNGSTEN_REPAIR);
     public static ToolMaterial TUNGSTEN_DRILL = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_DRILL_TOOL, 5000, 45, 4.5f, 15, ModTags.Items.TUNGSTEN_REPAIR);
@@ -21,4 +21,5 @@ public class ModToolMaterials {
     public static ToolMaterial NEPHRITE = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_NEPHRITE_TOOL, 2000, 7.5f, 3.5f, 12, ModTags.Items.NEPHRITE_REPAIR);
     public static ToolMaterial PLATINUM = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_PLATINUM_TOOL, 3000, 9, 4.5f, 15, ModTags.Items.PLATINUM_REPAIR);
     public static ToolMaterial CAST_STEEL = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_CAST_STEEL_TOOL, 3000, 9, 4.5f, 15, ModTags.Items.CAST_STEEL_REPAIR);
+    public static ToolMaterial METEORIC_IRON = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_METEORIC_IRON_TOOL, 3000, 9.5f, 4.5f, 15, ModTags.Items.METEORIC_IRON_REPAIR);
 }

@@ -28,19 +28,22 @@ public class FoundryScreenHandler extends ScreenHandler {
     }
 
     /**
-     * Creates a Crusher screen handler, initializes the crusher and player inventories, and attaches the provided property delegate for GUI state syncing.
+     * Creates a Foundry screen handler, initializes the foundry and player inventories, and attaches the provided property delegate for GUI state syncing.
      *
      * @param syncId               window sync id assigned by the client/server
      * @param playerInventory      the player's inventory to populate player slots and hotbar
-     * @param blockEntity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a CrusherBlockEntity
+     * @param blockEntity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a FoundryBlockEntity
      * @param arrayPropertyDelegate the PropertyDelegate used to synchronize progress, fuel, and related GUI properties
      */
     public FoundryScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.FOUNDRY_SCREEN_HANDLER, syncId);
-        checkSize((Inventory) blockEntity, 4);
-        this.inventory = (Inventory) blockEntity;
+        if (!(blockEntity instanceof FoundryBlockEntity foundryEntity)) {
+            throw new IllegalStateException("Expected FoundryBlockEntity but got " + blockEntity.getClass().getName());
+        }
+        checkSize(foundryEntity, 4);
+        this.inventory = foundryEntity;
         this.propertyDelegate = arrayPropertyDelegate;
-        this.blockEntity = (FoundryBlockEntity) blockEntity;
+        this.blockEntity = foundryEntity;
         this.addSlot(new Slot(inventory, 0, 35, -5)); //Input Slot
         this.addSlot(new Slot(inventory, 1, 13, 41)); //Fuel Slot
         this.addSlot(new Slot(inventory, 2, 115, 30) { //Output Slot

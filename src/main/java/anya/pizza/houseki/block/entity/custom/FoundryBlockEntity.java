@@ -1,11 +1,11 @@
 package anya.pizza.houseki.block.entity.custom;
 
-import anya.pizza.houseki.block.custom.CrusherBlock;
 import anya.pizza.houseki.block.custom.FoundryBlock;
 import anya.pizza.houseki.block.entity.ImplementedInventory;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
-import anya.pizza.houseki.recipe.*;
-import anya.pizza.houseki.screen.custom.CrusherScreenHandler;
+import anya.pizza.houseki.recipe.FoundryRecipe;
+import anya.pizza.houseki.recipe.FoundryRecipeCastInput;
+import anya.pizza.houseki.recipe.ModRecipes;
 import anya.pizza.houseki.screen.custom.FoundryScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -47,7 +47,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxProgress = FoundryRecipe.DEFAULT_MELT_TIME;
     private int fuelTime = 0;
     private int maxFuelTime = 0;
-    private final int lastValidFuelTime = 0;
+    private int lastValidFuelTime = 0;
     private boolean isCrafting = false;
     private ItemStack lastInput = ItemStack.EMPTY; //Cache input to detect changes
 
@@ -156,6 +156,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
             int fuelVal = getFuelTime(fuelStack);
             if (fuelVal > 0) {
                 fuelTime = maxFuelTime = fuelVal;
+                lastValidFuelTime = fuelVal;
                 fuelStack.decrement(1);
                 dirty = true;
             }
@@ -261,8 +262,10 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     @Override
     public boolean canInsert(int slot, ItemStack stack, @org.jetbrains.annotations.Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
-        if (slot == INPUT_SLOT) ((ServerWorld) this.getWorld()).getRecipeManager()
-                .getFirstMatch(ModRecipes.FOUNDRY_TYPE, new FoundryRecipeCastInput(stack), world).isPresent();
+        if (slot == INPUT_SLOT) {
+            return ((ServerWorld) this.getWorld()).getRecipeManager()
+                    .getFirstMatch(ModRecipes.FOUNDRY_TYPE, new FoundryRecipeCastInput(stack), world).isPresent();
+        }
         return false;
     }
 
@@ -279,7 +282,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
-        return pos.isWithinDistance(pos, 4.5);
+        return player.squaredDistanceTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) <= 64;
     }
 
     @Override

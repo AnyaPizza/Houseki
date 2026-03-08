@@ -9,6 +9,7 @@
     "houseki:jadeite_helmet",
     "houseki:platinum_helmet",
     "houseki:cast_steel_helmet",
+    "houseki:meteoric_iron_helmet",
     "houseki:pinku_chestplate",
     "houseki:rainbow_pyrite_chestplate",
     "houseki:tungsten_chestplate",
@@ -18,6 +19,7 @@
     "houseki:jadeite_chestplate",
     "houseki:platinum_chestplate",
     "houseki:cast_steel_chestplate",
+    "houseki:meteoric_iron_chestplate",
     "houseki:pinku_leggings",
     "houseki:rainbow_pyrite_leggings",
     "houseki:tungsten_leggings",
@@ -27,6 +29,7 @@
     "houseki:jadeite_leggings",
     "houseki:platinum_leggings",
     "houseki:cast_steel_leggings",
+    "houseki:meteoric_iron_leggings",
     "houseki:pinku_boots",
     "houseki:rainbow_pyrite_boots",
     "houseki:tungsten_boots",
@@ -35,6 +38,7 @@
     "houseki:nephrite_boots",
     "houseki:jadeite_boots",
     "houseki:platinum_boots",
-    "houseki:cast_steel_boots"
+    "houseki:cast_steel_boots",
+    "houseki:meteoric_iron_boots"
   ]
 }
