@@ -3,7 +3,6 @@ package anya.pizza.houseki.block;
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.custom.CrusherBlock;
 import anya.pizza.houseki.block.custom.FoundryBlock;
-import io.netty.handler.ipfilter.IpSubnetFilter;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;

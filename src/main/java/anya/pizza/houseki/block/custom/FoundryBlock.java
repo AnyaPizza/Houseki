@@ -1,7 +1,6 @@
 package anya.pizza.houseki.block.custom;
 
 import anya.pizza.houseki.block.entity.ModBlockEntities;
-import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;
@@ -82,13 +81,10 @@ public class FoundryBlock extends BlockWithEntity {
     @Override
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient()) {
-            NamedScreenHandlerFactory screenHandlerFactory = ((FoundryBlockEntity) world.getBlockEntity(pos));
-
-            if (screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
+            if (world.getBlockEntity(pos) instanceof FoundryBlockEntity foundryBlockEntity) {
+                player.openHandledScreen(foundryBlockEntity);
             }
         }
-
         return ActionResult.SUCCESS;
     }
 

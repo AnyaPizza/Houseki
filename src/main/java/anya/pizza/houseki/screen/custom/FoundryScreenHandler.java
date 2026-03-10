@@ -1,8 +1,6 @@
 package anya.pizza.houseki.screen.custom;
 
-import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
-import anya.pizza.houseki.recipe.CrusherRecipeInput;
 import anya.pizza.houseki.recipe.FoundryRecipeCastInput;
 import anya.pizza.houseki.recipe.ModRecipes;
 import anya.pizza.houseki.screen.ModScreenHandlers;
@@ -24,26 +22,30 @@ public class FoundryScreenHandler extends ScreenHandler {
     public final FoundryBlockEntity blockEntity;
 
     public FoundryScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(5));
+        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(9));
     }
 
     /**
-     * Creates a Crusher screen handler, initializes the crusher and player inventories, and attaches the provided property delegate for GUI state syncing.
+     * Creates a Foundry screen handler, initializes the foundry and player inventories, and attaches the provided property delegate for GUI state syncing.
      *
      * @param syncId               window sync id assigned by the client/server
      * @param playerInventory      the player's inventory to populate player slots and hotbar
-     * @param blockEntity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a CrusherBlockEntity
+     * @param blockEntity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a FoundryBlockEntity
      * @param arrayPropertyDelegate the PropertyDelegate used to synchronize progress, fuel, and related GUI properties
      */
     public FoundryScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.FOUNDRY_SCREEN_HANDLER, syncId);
-        checkSize((Inventory) blockEntity, 4);
-        this.inventory = (Inventory) blockEntity;
+        if (!(blockEntity instanceof FoundryBlockEntity foundryEntity)) {
+            throw new IllegalStateException("Expected FoundryBlockEntity but got " + blockEntity.getClass().getName());
+        }
+        checkSize(foundryEntity, 4);
+        this.inventory = foundryEntity;
         this.propertyDelegate = arrayPropertyDelegate;
-        this.blockEntity = (FoundryBlockEntity) blockEntity;
-        this.addSlot(new Slot(inventory, 0, 35, -5)); //Input Slot
-        this.addSlot(new Slot(inventory, 1, 13, 41)); //Fuel Slot
-        this.addSlot(new Slot(inventory, 2, 115, 30) { //Output Slot
+        this.blockEntity = foundryEntity;
+        this.addSlot(new Slot(inventory, 0, 26, 20)); //Input Slot
+        this.addSlot(new Slot(inventory, 1, 26, 53)); //Fuel Slot
+        this.addSlot(new Slot(inventory, 2, 134, 20)); //Cast Slot
+        this.addSlot(new Slot(inventory, 3, 134, 53) { //Output Slot
             @Override
             public boolean canInsert(ItemStack stack) {
                 return false;
@@ -60,13 +62,16 @@ public class FoundryScreenHandler extends ScreenHandler {
         addProperties(arrayPropertyDelegate);
     }
 
-    public boolean isBurning() {
-        return propertyDelegate.get(2) > 0;
-    }
-
-    public boolean isCrafting() {
-        return propertyDelegate.get(4) > 0;
-    }
+    public int getMeltProgress() { return this.propertyDelegate.get(0); }
+    public int getMaxMeltProgress() { return this.propertyDelegate.get(1); }
+    public int getFuelTime() { return this.propertyDelegate.get(2); }
+    public int getMaxFuelTime() { return this.propertyDelegate.get(3); }
+    public int getMetalLevel() { return this.propertyDelegate.get(4); }
+    public int getMaxMetalLevel() { return this.propertyDelegate.get(5); }
+    public int getCastProgress() { return this.propertyDelegate.get(6); }
+    public int getMaxCastTime() { return this.propertyDelegate.get(7); }
+    public boolean isBurning() { return this.propertyDelegate.get(2) > 0; }
+    public boolean isCrafting() { return propertyDelegate.get(4) > 0; }
 
     public int getScaledArrowProgress() {
         int progress = propertyDelegate.get(0);
@@ -96,7 +101,7 @@ public class FoundryScreenHandler extends ScreenHandler {
                 }
             } else {
                 if (blockEntity.getFuelTime(originalStack) > 0) {
-                    if (!insertItem(originalStack, 1, 2, false)) {
+                    if (!insertItem(originalStack, 1, 3, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (blockEntity.getWorld() instanceof ServerWorld serverWorld) {
@@ -105,7 +110,7 @@ public class FoundryScreenHandler extends ScreenHandler {
                             .getFirstMatch(ModRecipes.FOUNDRY_TYPE, recipeCastInput, serverWorld)
                             .isPresent();
                     if (hasFoundryRecipe) {
-                        if (!insertItem(originalStack, 0, 1, false)) {
+                        if (!insertItem(originalStack, 0, 2, false)) {
                             return ItemStack.EMPTY;
                         }
                     } else {

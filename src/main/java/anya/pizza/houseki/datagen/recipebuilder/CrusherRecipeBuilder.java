@@ -55,7 +55,7 @@ public class CrusherRecipeBuilder implements CraftingRecipeJsonBuilder {
                 .criteriaMerger(AdvancementRequirements.CriterionMerger.OR);
         this.criteria.forEach(advancement::criterion);
         CrusherRecipe recipe = new CrusherRecipe(input, output, crushingTime, auxiliaryOutput, auxiliaryChance);
-        exporter.accept(recipeKey, recipe, null);
+        exporter.accept(recipeKey, recipe, advancement.build(recipeKey.getValue()));
     }
 
     @Override

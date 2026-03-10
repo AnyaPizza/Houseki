@@ -35,6 +35,8 @@ public class ModTags {
         public static final TagKey<Block> INCORRECT_FOR_PLATINUM_TOOL = createTag("incorrect_for_platinum_tool");
         public static final TagKey<Block> NEEDS_CAST_STEEL_TOOL = createTag("needs_cast_steel_tool");
         public static final TagKey<Block> INCORRECT_FOR_CAST_STEEL_TOOL = createTag("incorrect_for_cast_steel_tool");
+        public static final TagKey<Block> NEEDS_METEORIC_IRON_TOOL = createTag("needs_meteoric_iron_tool");
+        public static final TagKey<Block> INCORRECT_FOR_METEORIC_IRON_TOOL = createTag("incorrect_for_meteoric_iron_tool");
 
         public static final TagKey<Block> PREMIUM_DRILL_MINEABLE = createTag("premium_mineable");
         public static final TagKey<Block> ENHANCED_DRILL_MINEABLE = createTag("enhanced_mineable");
@@ -58,6 +60,7 @@ public class ModTags {
         public static final TagKey<Item> PLATINUM_REPAIR = createTag("platinum_repair");
         public static final TagKey<Item> CAST_STEEL_REPAIR = createTag("cast_steel_repair");
         public static final TagKey<Item> DIAMOND_REPAIR = createTag("diamond_repair");
+        public static final TagKey<Item> METEORIC_IRON_REPAIR = createTag("meteoric_iron_repair");
 
         public static final TagKey<Item> ARMOR = createTag("armor");
         public static final TagKey<Item> MOB_ARMORS = createTag("mob_armors");

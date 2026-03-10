@@ -18,6 +18,7 @@ import java.util.List;
 
 public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int meltTime) implements Recipe<FoundryRecipeCastInput> {
     public static final int DEFAULT_MELT_TIME = 200;
+    public static final int DEFAULT_CAST_TIME = 200;
 
     //public FoundryRecipe(Ingredient inputItem, ItemStack output, int meltTime) {
     //    this(inputCastItem, output, meltTime);
@@ -57,7 +58,6 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
         return ModRecipes.FOUNDRY_TYPE;
     }
 
-    //No idea if this is right but it works?
     @Override
     public IngredientPlacement getIngredientPlacement() {
         return IngredientPlacement.forMultipleSlots(List.of());
