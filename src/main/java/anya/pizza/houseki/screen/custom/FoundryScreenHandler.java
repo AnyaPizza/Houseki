@@ -69,12 +69,6 @@ public class FoundryScreenHandler extends ScreenHandler {
                 return false;
             }
         });
-        this.addSlot(new Slot(inventory, 3, 137, 30) { //Auxiliary Slot
-            @Override
-            public boolean canInsert(ItemStack stack) {
-                return false; //Makes output slot read-only
-            }
-        });
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
         addProperties(arrayPropertyDelegate);

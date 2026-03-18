@@ -41,7 +41,7 @@ Once you have a Pinku, you can then use it to upgrade Netherite Armor in a Smith
 
 ![Pinku Upgrade Recipe](https://cdn.modrinth.com/data/cached_images/f04149c60535009725061cf9725be456a55c99d7.png)
 
-The Pinku Upgrade Template can not be duplicated and can be found in Ancient Cities and End Cities. It can only be given as a reward in Trial Chambers.
+The Pinku Upgrade Template can not be duplicated and can be found in Ancient Cities and End Cities. It can also be given as a reward in Trial Chambers.
 
 Pinku can be given to you as a drop after defeating the Warden.
 Pinku Shards can be found in Ancient Cities, Bastions, Buried Treasure, End Cities, and Woodland Mansions. They can also be given as a reward from Trial Chambers and a drop from defeating the Warden.

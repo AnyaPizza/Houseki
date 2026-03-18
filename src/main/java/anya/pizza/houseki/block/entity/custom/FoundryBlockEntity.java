@@ -55,7 +55,8 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxCastProgress = FoundryRecipe.DEFAULT_CAST_TIME;
     private int lastValidFuelTime = 0;
     private boolean isCrafting = false;
-    private ItemStack lastInput = ItemStack.EMPTY; /**
+    private ItemStack lastInput = ItemStack.EMPTY;
+    /**
      * Creates a FoundryBlockEntity at the specified position and block state and initializes its property delegate.
      *
      * <p>The property delegate exposes nine indices used for UI synchronization:
@@ -268,7 +269,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
             dirty = true;
         } else {
             if (meltProgress > 0) {
-                meltProgress = Math.max(0, meltProgress - 2); //Cool down
+                meltProgress = Math.max(10, meltProgress - 2); //Cool down
                 dirty = true;
             }
         }
@@ -282,7 +283,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
             dirty = true;
         } else {
             if (castProgress > 0) {
-                castProgress = Math.max(0, castProgress - 2);
+                castProgress = Math.max(20, castProgress - 2);
                 dirty = true;
             }
         }
@@ -296,52 +297,6 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
             markDirty(world, pos, state);
         }
     }
-        /*if (world.isClient()) return;
-        boolean dirty = false;
-        ItemStack input = inventory.getFirst();
-        if(!ItemStack.areItemsAndComponentsEqual(input, lastInput)) {
-            lastInput = input.copy();
-            updateMaxProgress(world);
-            if (meltProgress > 0 && !canCraft()) {
-                meltProgress = 0;
-                dirty = true;
-            }
-        }
-
-        //Handles Fuel
-        if (fuelTime > 0) {
-            fuelTime--;
-            dirty = true;
-        } else if (canCraft()) {
-            ItemStack fuelStack = inventory.get(FUEL_SLOT);
-            int fuelVal = getFuelTime(fuelStack);
-            if (fuelVal > 0) {
-                fuelTime = maxFuelTime = fuelVal;
-                lastValidFuelTime = fuelVal;
-                fuelStack.decrement(1);
-                dirty = true;
-            }
-        }
-
-        //Handles Casting
-        boolean canCraftNow = fuelTime > 0 && canCraft();
-        isCrafting = canCraftNow || (fuelTime > 0 && meltProgress > 0);
-        world.setBlockState(pos, state.with(FoundryBlock.LIT, fuelTime > 0));
-        if (canCraftNow) {
-            meltProgress++;
-            dirty = true;
-            if (meltProgress >= maxMeltProgress) {
-                craftItem();
-                meltProgress = 0;
-            }
-        }
-        if (dirty) markDirty(world, pos, state);
-    }*/
-
-    //private void updateMaxProgress(World world) {
-    //    Optional<RecipeEntry<FoundryRecipe>> recipe = getCurrentRecipe();
-    //    maxProgress = recipe.map(entry -> entry.value().meltTime())
-    //            .orElse(FoundryRecipe.DEFAULT_MELT_TIME);
     /**
      * Determines whether the foundry can start melting the current input stack.
      *
@@ -413,6 +368,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         } else {
             currentOutput.increment(output.getCount());
         }
+        inventory.get(CAST_SLOT).decrement(1);
         //Optional<RecipeEntry<FoundryRecipe>> recipe = getCurrentRecipe();
         //if (recipe.isEmpty()) return;
         //FoundryRecipe foundryRecipe = recipe.get().value();
