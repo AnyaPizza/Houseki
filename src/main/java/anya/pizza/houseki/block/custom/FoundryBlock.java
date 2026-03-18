@@ -78,6 +78,11 @@ public class FoundryBlock extends BlockWithEntity {
         return BlockRenderType.MODEL;
     }
 
+    /**
+     * Opens the foundry's handled screen for the player when invoked on the server and the block at the target position has a FoundryBlockEntity.
+     *
+     * @return ActionResult.SUCCESS
+     */
     @Override
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient()) {

@@ -48,6 +48,16 @@ public class CrusherRecipeBuilder implements CraftingRecipeJsonBuilder {
         return this;
     }
 
+    /**
+     * Builds an advancement for unlocking the given recipe and exports the constructed crusher recipe.
+     *
+     * The method creates an advancement that uses an "has_the_recipe" criterion, sets the recipe as the advancement reward,
+     * applies any additional criteria added to this builder, constructs a CrusherRecipe from the builder state, and passes
+     * both recipe and advancement to the provided exporter.
+     *
+     * @param exporter  the RecipeExporter that will receive the finished recipe and its associated advancement
+     * @param recipeKey the registry key that identifies the recipe to export; used in the advancement reward and as the recipe id
+     */
     public void offerTo(RecipeExporter exporter, RegistryKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.getAdvancementBuilder()
                 .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeKey))
@@ -58,6 +68,13 @@ public class CrusherRecipeBuilder implements CraftingRecipeJsonBuilder {
         exporter.accept(recipeKey, recipe, advancement.build(recipeKey.getValue()));
     }
 
+    /**
+     * Adds a named advancement criterion to this recipe builder.
+     *
+     * @param name      the unique name for the criterion within the recipe's advancement
+     * @param criterion the advancement criterion to add
+     * @return          this builder instance for method chaining
+     */
     @Override
     public CraftingRecipeJsonBuilder criterion(String name, AdvancementCriterion<?> criterion) {
         this.criteria.put(name, criterion);

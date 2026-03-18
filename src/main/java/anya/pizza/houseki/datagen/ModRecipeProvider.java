@@ -29,6 +29,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output, registriesFuture);
     }
 
+    /**
+     * Creates a RecipeGenerator configured to emit this mod's data-driven recipes.
+     *
+     * The generated RecipeGenerator, when invoked, registers the mod's full set of recipes
+     * (smelting, blasting, crushing, smithing upgrades, tool/armor/item crafting, stonecutting,
+     * slab/wall/stair/door/trapdoor recipes, drill and drill-head construction/upgrade recipes,
+     * reversible compacting, and miscellaneous shaped/shapeless recipes) and offers them to the
+     * provided exporter.
+     *
+     * @param wrapperLookup a registry lookup used by the generator to resolve game registries
+     * @param recipeExporter the exporter to which generated recipes will be offered
+     * @return a RecipeGenerator configured to produce and export the mod's recipes
+     */
     @Override
     protected @NonNull RecipeGenerator getRecipeGenerator(RegistryWrapper.@NonNull WrapperLookup wrapperLookup, @NonNull RecipeExporter recipeExporter) {
         return new RecipeGenerator(wrapperLookup, recipeExporter) {

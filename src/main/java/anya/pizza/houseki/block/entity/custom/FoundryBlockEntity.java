@@ -55,11 +55,42 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxCastProgress = FoundryRecipe.DEFAULT_CAST_TIME;
     private int lastValidFuelTime = 0;
     private boolean isCrafting = false;
-    private ItemStack lastInput = ItemStack.EMPTY; //Cache input to detect changes
+    private ItemStack lastInput = ItemStack.EMPTY; /**
+     * Creates a FoundryBlockEntity at the specified position and block state and initializes its property delegate.
+     *
+     * <p>The property delegate exposes nine indices used for UI synchronization:
+     * 0 = meltProgress,
+     * 1 = maxMeltProgress,
+     * 2 = fuelTime (or lastValidFuelTime when fuelTime is zero),
+     * 3 = maxFuelTime,
+     * 4 = metalLevel,
+     * 5 = maxMetalLevel,
+     * 6 = castProgress,
+     * 7 = maxCastProgress,
+     * 8 = isCrafting (1 if crafting, 0 otherwise).
+     *
+     * @param pos   the block position of this block entity
+     * @param state the block state at the given position
+     */
 
     public FoundryBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FOUNDRY_BE, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
+            /**
+             * Retrieve a synchronization property value by index for the screen handler.
+             *
+             * @param index property index (0–8) identifying which value to return
+             * @return the value for the requested property:
+             *         0 = current melt progress,
+             *         1 = maximum melt progress,
+             *         2 = current fuel time (or last valid fuel time when not burning),
+             *         3 = maximum fuel time,
+             *         4 = current metal level,
+             *         5 = maximum metal level,
+             *         6 = current cast progress,
+             *         7 = maximum cast progress,
+             *         8 = `1` if crafting is active, `0` otherwise; returns `0` for an invalid index
+             */
             @Override
             public int get(int index) {
                 return switch (index) {
@@ -76,6 +107,16 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
                 };
             }
 
+            /**
+             * Assigns an internal property identified by its index to the given value.
+             *
+             * Index mapping:
+             * 0 = meltProgress, 1 = maxMeltProgress, 2 = fuelTime, 3 = maxFuelTime,
+             * 4 = metalLevel, 5 = maxMetalLevel, 6 = castProgress, 7 = maxCastProgress.
+             *
+             * @param index the property index (0–7) to set
+             * @param value the new integer value for the selected property
+             */
             @Override
             public void set(int index, int value) {
                 switch (index) {
@@ -90,6 +131,11 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
                 }
             }
 
+            /**
+             * Number of properties exposed by this block entity's property delegate.
+             *
+             * @return the fixed size (9) of the property delegate
+             */
             @Override
             public int size() {
                 return 9;
@@ -128,6 +174,14 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         super.onBlockReplaced(pos, oldState);
     }
 
+    /**
+     * Persists this block entity's inventory and runtime state into the provided WriteView for saving or syncing.
+     *
+     * Writes inventory contents and the following integer properties: `progress` (melt progress),
+     * `max_progress` (max melt progress), `fuel_time`, `max_fuel_time`, `metal_level`, and `cast_time`.
+     *
+     * @param view the WriteView to receive saved data
+     */
     @Override
     protected void writeData(WriteView view) {
         super.writeData(view);
@@ -140,6 +194,19 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         view.putInt("cast_time", castProgress);
     }
 
+    /**
+     * Loads the block entity's inventory and persisted progress/fuel/metal state from the given view.
+     *
+     * Reads inventory contents and the following integer keys from the view:
+     * - "melt_progress" → meltProgress
+     * - "max_melt_progress" → maxMeltProgress
+     * - "fuel_time" → fuelTime
+     * - "max_fuel_time" → maxFuelTime
+     * - "metal_level" → metalLevel
+     * - "cast_time" → castProgress
+     *
+     * @param view the ReadView containing persisted data (e.g., NBT) for this block entity
+     */
     @Override
     protected void readData(ReadView view) {
         super.readData(view);
@@ -152,6 +219,17 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         castProgress = view.getInt("cast_time", 0);
     }
 
+    /**
+     * Performs server-side per-tick processing for the foundry: manages fuel consumption, melting of input
+     * into molten metal, casting of metal into outputs, and synchronizes the block's lit state and dirty flag.
+     *
+     * <p>Behavior:
+     * - Decrements remaining burn time when burning and attempts to consume a fuel item when out of fuel and work is pending.
+     * - Advances melt progress while burning and able to melt; on completion consumes the input and increases the metal level.
+     * - Advances cast progress while burning and able to cast; on completion produces the casted item.
+     * - Applies cooldown to melt and cast progress when not actively melting/casting.
+     * - Updates the block state's LIT property when burning starts or stops and marks the block entity dirty when state or inventory changes.
+     */
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) return;
 
@@ -264,7 +342,11 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     //    Optional<RecipeEntry<FoundryRecipe>> recipe = getCurrentRecipe();
     //    maxProgress = recipe.map(entry -> entry.value().meltTime())
     //            .orElse(FoundryRecipe.DEFAULT_MELT_TIME);
-    //}
+    /**
+     * Determines whether the foundry can start melting the current input stack.
+     *
+     * @return `true` if the input slot contains `ModItems.STEEL` and increasing `metalLevel` by 90 would not exceed `maxMetalLevel`, `false` otherwise.
+     */
 
     private boolean canMelt() {
         ItemStack input = getStack(INPUT_SLOT);
@@ -273,6 +355,15 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         return hasValidInput && hasMeltedMetal;
     }
 
+    /**
+     * Determines whether the block can perform a casting operation with the current cast and metal.
+     *
+     * Checks that a cast item is present, at least 90 metal units are available, the cast maps to a valid
+     * result, and the output slot can accept the produced item (either empty or same item type with room
+     * for the produced stack).
+     *
+     * @return `true` if casting can proceed, `false` otherwise.
+     */
     private boolean canCast() {
         ItemStack cast = getStack(CAST_SLOT);
         ItemStack output = getStack(OUTPUT_SLOT);
@@ -306,13 +397,11 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     //}
 
     /**
-     * Apply the currently matched crusher recipe: produce the recipe's main output, optionally produce
-     * the auxiliary output based on its chance, and consume one input item.
+     * Produce the item corresponding to the current cast and apply its effects.
      *
-     * If no matching recipe is available, the method makes no changes. The main output is always
-     * inserted (or stacked) into the main output slot; the auxiliary output is inserted only if the
-     * recipe provides one and its configured chance succeeds. One item is removed from the input slot
-     * when a recipe is applied.
+     * Inserts the cast's mapped result into the OUTPUT_SLOT (incrementing the existing stack if present)
+     * and subtracts 90 from metalLevel. If the cast does not map to a valid result, only metalLevel is
+     * reduced and the output slot remains unchanged.
      */
     private void craftItem() {
         ItemStack cast = getStack(CAST_SLOT);
@@ -332,6 +421,12 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         //inventory.get(INPUT_SLOT).decrement(1);
     }
 
+    /**
+     * Determine the produced output for a given cast item used in the foundry.
+     *
+     * @param cast the cast ItemStack to evaluate
+     * @return the resulting ItemStack for the cast (a pickaxe head) or `ItemStack.EMPTY` if no match
+     */
     private ItemStack getResultFromCast(ItemStack cast) {
         if (cast.isOf(ModItems.PICKAXE_HEAD_CAST)) {
             return new ItemStack(ModItems.CS_PICKAXE_HEAD);
@@ -358,7 +453,13 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     //    } else {
     //        slotStack.increment(result.getCount());
     //    }
-    //}
+    /**
+     * Finds the first foundry recipe that matches the block entity's current input.
+     *
+     * Uses the server world's recipe manager with a FoundryRecipeCastInput constructed from the inventory's first slot.
+     *
+     * @return an Optional containing the first matching RecipeEntry<FoundryRecipe>, or empty if no match is found
+     */
 
     private Optional<RecipeEntry<FoundryRecipe>> getCurrentRecipe() {
         return ((ServerWorld) this.getWorld()).getRecipeManager()
@@ -371,6 +472,17 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         return side == Direction.DOWN ? new int[]{OUTPUT_SLOT} : new int[]{INPUT_SLOT, FUEL_SLOT};
     }
 
+    /**
+     * Determines whether the given item stack may be inserted into the specified slot from the given side.
+     *
+     * For the fuel slot, accepts items that provide fuel time (> 0). For the input slot, accepts items that match
+     * a foundry recipe input. All other slots reject insertion.
+     *
+     * @param slot  the target slot index (e.g., INPUT_SLOT, FUEL_SLOT, etc.)
+     * @param stack the item stack proposed for insertion
+     * @param side  the direction from which insertion is attempted, or null if not side-specific
+     * @return      `true` if the stack may be inserted into the slot from the specified side, `false` otherwise
+     */
     @Override
     public boolean canInsert(int slot, ItemStack stack, @org.jetbrains.annotations.Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
@@ -392,11 +504,20 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         return BlockEntityUpdateS2CPacket.create(this);
     }
 
+    /**
+     * Determines whether the given player may interact with this block entity based on proximity.
+     *
+     * @param player the player to check
+     * @return `true` if the player's squared distance to the block's center is less than or equal to 64, `false` otherwise
+     */
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
         return player.squaredDistanceTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) <= 64;
     }
 
+    /**
+     * Removes all items from the block entity's inventory and marks the block entity as dirty so the change is persisted and synchronized.
+     */
     @Override
     public void clear() {
         inventory.clear();

@@ -15,12 +15,24 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     private static final Identifier MELTING_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/foundry/melting_progress.png");
     private static final Identifier FLUID_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/foundry/foundry_metal.png");
 
+    /**
+     * Creates a FoundryScreen for the given handler and player inventory and configures the GUI to its standard 176×176 size.
+     *
+     * @param handler the screen handler providing access to the foundry's server-side state and sync methods
+     * @param inventory the player's inventory to be displayed and managed by the screen
+     * @param title the screen title text displayed at the top of the GUI
+     */
     public FoundryScreen(FoundryScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
         backgroundWidth = 176;
         backgroundHeight = 176;
     }
 
+    /**
+     * Initializes screen components and centers the title horizontally within the GUI background.
+     *
+     * Sets `titleX` so the title text is centered based on `backgroundWidth` and the title's rendered width.
+     */
     @Override
     protected void init() {
         super.init();
@@ -41,7 +53,20 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     //        context.drawTexture(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE2, x + 79, y + 39, 0, 0,
     //                handler.getScaledArrowProgress(), 16, 24, 16);
     //    }
-    //}
+    /**
+     * Renders the foundry GUI background and its dynamic progress indicators.
+     *
+     * Draws the static GUI texture centered on screen, then overlays:
+     * - a melting flame graphic when the foundry is burning (height based on metal level),
+     * - the fluid (molten metal) fill gauge (vertical portion based on metal level),
+     * - a melt progress arrow (horizontal width based on melt progress),
+     * - a cast progress arrow (horizontal width based on cast progress).
+     *
+     * @param context the drawing context to issue texture draw calls
+     * @param delta   partial tick time used for interpolated rendering updates
+     * @param mouseX  current mouse x position (screen coordinates)
+     * @param mouseY  current mouse y position (screen coordinates)
+     */
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
@@ -80,7 +105,17 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     //        context.drawTexture(RenderPipelines.GUI_TEXTURED, MELTING_TEXTURE, x + 5, y + 69 - progress, 0,
     //                20 - progress, 6, progress, 6, 20);
     //    }
-    //}
+    /**
+     * Renders the screen background, standard UI components, and hover tooltips; shows a "Molten Steel" tooltip when the mouse is over the fluid tank.
+     *
+     * When the cursor is inside the fluid-tank region, a tooltip of the form
+     * "Molten Steel: <current> / <max> mB" is displayed.
+     *
+     * @param context the drawing context used for rendering
+     * @param mouseX  the current mouse x-coordinate relative to the window
+     * @param mouseY  the current mouse y-coordinate relative to the window
+     * @param delta   frame delta time / partial tick used for smooth rendering updates
+     */
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {

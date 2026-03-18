@@ -31,6 +31,11 @@ public class ModArmorItem extends Item {
                     .put(ModArmorMaterials.METEORIC_IRON_MATERIAL, List.of(new StatusEffectInstance(StatusEffects.SATURATION, 20, 0, false, false, true)))
                     .build();
 
+    /**
+     * Creates a ModArmorItem configured with the provided item settings.
+     *
+     * @param settings the item settings (e.g., durability, group, maxCount) to apply to this armor item
+     */
     public ModArmorItem(Settings settings) {
         super(settings);
     }

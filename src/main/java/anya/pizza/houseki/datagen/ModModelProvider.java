@@ -76,6 +76,14 @@ public class ModModelProvider extends FabricModelProvider {
         polishedSlatePool.wall(ModBlocks.POLISHED_SLATE_WALL);
     }
 
+    /**
+     * Registers all item models and armor trim templates for the mod into the data generator.
+     *
+     * Registers generated item models, handheld tool models, armor trim registrations, horse and nautilus armors,
+     * and cast/head models with the provided ItemModelGenerator.
+     *
+     * @param itemModelGenerator the generator used to register item and armor models during data generation
+     */
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.RAINBOW_PYRITE, Models.GENERATED);
