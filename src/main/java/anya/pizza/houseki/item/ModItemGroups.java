@@ -290,6 +290,12 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLOCK_OF_METEORIC_IRON);
                     }).build());
 
+    /**
+     * Log an informational message that the mod's item groups are being registered.
+     *
+     * <p>Intended to be called during mod initialization to indicate the registration step
+     * for item groups in the application logs.</p>
+     */
     public static void registerItemGroups() {
         Houseki.LOGGER.info("Registering ItemGroups for " + Houseki.MOD_ID);
     }

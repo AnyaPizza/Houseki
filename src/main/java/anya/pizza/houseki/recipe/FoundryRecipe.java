@@ -18,6 +18,7 @@ import java.util.List;
 
 public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int meltTime) implements Recipe<FoundryRecipeCastInput> {
     public static final int DEFAULT_MELT_TIME = 200;
+    public static final int DEFAULT_CAST_TIME = 200;
 
     //public FoundryRecipe(Ingredient inputItem, ItemStack output, int meltTime) {
     //    this(inputCastItem, output, meltTime);
@@ -52,11 +53,23 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
         return ModRecipes.FOUNDRY_SERIALIZER;
     }
 
+    /**
+     * Exposes the recipe category used for foundry recipes.
+     *
+     * @return `ModRecipes.FOUNDRY_TYPE`, the recipe type used for foundry recipes.
+     */
     @Override
     public RecipeType<? extends Recipe<FoundryRecipeCastInput>> getType() {
         return ModRecipes.FOUNDRY_TYPE;
     }
 
+    /**
+     * Specifies how ingredients are positioned for this recipe.
+     *
+     * <p>Indicates that the recipe's ingredient(s) may occupy multiple inventory slots without fixed indices.</p>
+     *
+     * @return an IngredientPlacement configured for multiple slots (no fixed slot indices)
+     */
     @Override
     public IngredientPlacement getIngredientPlacement() {
         return IngredientPlacement.forMultipleSlots(List.of());

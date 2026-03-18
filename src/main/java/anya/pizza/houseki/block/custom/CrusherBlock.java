@@ -75,6 +75,14 @@ public class CrusherBlock extends BlockWithEntity {
         return BlockRenderType.MODEL;
     }
 
+    /**
+     * Opens the crusher's GUI for the interacting player when activated on the server.
+     *
+     * Performs a server-side check and, if the block entity at the position is a
+     * CrusherBlockEntity, opens its handled screen for the player.
+     *
+     * @return ActionResult.SUCCESS to indicate the interaction was handled.
+     */
     @Override
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient()) {

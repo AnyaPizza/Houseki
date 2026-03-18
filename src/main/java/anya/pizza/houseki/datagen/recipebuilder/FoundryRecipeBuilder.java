@@ -36,6 +36,15 @@ public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
         return new FoundryRecipeBuilder(input, output, meltTime);
     }
 
+    /**
+     * Exports the built foundry recipe together with its unlocking advancement to the provided exporter.
+     *
+     * The advancement includes a recipe-unlocked criterion named "has_the_recipe", grants the recipe as a reward,
+     * merges criteria with an OR policy, and includes any additional criteria accumulated on this builder.
+     *
+     * @param exporter the recipient that will be given the recipe and its advancement
+     * @param recipeKey the registry key used to identify the exported recipe and to build the advancement rewards
+     */
     public void offerTo(RecipeExporter exporter, RegistryKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.getAdvancementBuilder()
                 .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeKey))
@@ -46,6 +55,13 @@ public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
         exporter.accept(recipeKey, recipe, advancement.build(recipeKey.getValue()));
     }
 
+    /**
+     * Adds a named advancement criterion to this recipe builder.
+     *
+     * @param name a unique identifier for the criterion
+     * @param criterion the advancement criterion to associate with the given name
+     * @return this builder instance for method chaining
+     */
     @Override
     public CraftingRecipeJsonBuilder criterion(String name, AdvancementCriterion<?> criterion) {
         this.criteria.put(name, criterion);
@@ -58,6 +74,11 @@ public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
         return this;
     }
 
+    /**
+     * Retrieves the item produced by this recipe's output.
+     *
+     * @return the underlying Item from the recipe's output ItemStack
+     */
     @Override
     public Item getOutputItem() {
         return output.getItem();

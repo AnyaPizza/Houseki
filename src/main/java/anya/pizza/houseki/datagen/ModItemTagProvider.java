@@ -18,6 +18,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         super(output, completableFuture);
     }
 
+    /**
+     * Populate item tag groups with mod and vanilla items used for data generation.
+     *
+     * Registers items into standard Minecraft and mod-specific item tags (armor, tools,
+     * repair materials, drills, casts, trim materials, beacon payments, etc.) so the
+     * generated data contains the correct tag memberships.
+     *
+     * @param wrapperLookup lookup of registries used when building tag values
+     */
     @Override
     protected void configure(RegistryWrapper.@NonNull WrapperLookup wrapperLookup) {
         valueLookupBuilder(ItemTags.BEACON_PAYMENT_ITEMS)

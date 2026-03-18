@@ -1,8 +1,6 @@
 package anya.pizza.houseki.screen.custom;
 
-import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
-import anya.pizza.houseki.recipe.CrusherRecipeInput;
 import anya.pizza.houseki.recipe.FoundryRecipeCastInput;
 import anya.pizza.houseki.recipe.ModRecipes;
 import anya.pizza.houseki.screen.ModScreenHandlers;
@@ -23,17 +21,30 @@ public class FoundryScreenHandler extends ScreenHandler {
     private final PropertyDelegate propertyDelegate;
     public final FoundryBlockEntity blockEntity;
 
+    /**
+     * Creates a FoundryScreenHandler for the given player inventory and foundry block position.
+     *
+     * Resolves the block entity at the provided position and attaches a new ArrayPropertyDelegate with nine properties.
+     *
+     * @param syncId the synchronization id for this screen handler
+     * @param inventory the player's inventory
+     * @param pos the position of the foundry block
+     * @throws IllegalStateException if the block entity at the given position is not a FoundryBlockEntity
+     */
     public FoundryScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(5));
+        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(9));
     }
 
     /**
-     * Creates a Foundry screen handler, initializes the foundry and player inventories, and attaches the provided property delegate for GUI state syncing.
+     * Create a Foundry screen handler and configure its inventory slots and GUI property synchronization.
      *
-     * @param syncId               window sync id assigned by the client/server
-     * @param playerInventory      the player's inventory to populate player slots and hotbar
-     * @param blockEntity          the block entity whose inventory backs this handler; must be an Inventory of size 4 and is used as a FoundryBlockEntity
-     * @param arrayPropertyDelegate the PropertyDelegate used to synchronize progress, fuel, and related GUI properties
+     * The provided BlockEntity must be a FoundryBlockEntity with an inventory size of 4; the handler attaches the given PropertyDelegate to synchronize melt, fuel, metal level, and cast properties.
+     *
+     * @param syncId                window sync id assigned by the client/server
+     * @param playerInventory       the player's inventory used to populate player slots and hotbar
+     * @param blockEntity           the backing block entity; must be a FoundryBlockEntity with an inventory size of 4
+     * @param arrayPropertyDelegate the PropertyDelegate used to synchronize progress, fuel, metal level, and cast-related GUI properties
+     * @throws IllegalStateException if {@code blockEntity} is not a FoundryBlockEntity
      */
     public FoundryScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.FOUNDRY_SCREEN_HANDLER, syncId);
@@ -44,9 +55,15 @@ public class FoundryScreenHandler extends ScreenHandler {
         this.inventory = foundryEntity;
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = foundryEntity;
-        this.addSlot(new Slot(inventory, 0, 35, -5)); //Input Slot
-        this.addSlot(new Slot(inventory, 1, 13, 41)); //Fuel Slot
-        this.addSlot(new Slot(inventory, 2, 115, 30) { //Output Slot
+        this.addSlot(new Slot(inventory, 0, 26, 20)); //Input Slot
+        this.addSlot(new Slot(inventory, 1, 26, 53)); //Fuel Slot
+        this.addSlot(new Slot(inventory, 2, 134, 20)); //Cast Slot
+        this.addSlot(new Slot(inventory, 3, 134, 53) { /**
+             * Prevents manual insertion into this output slot.
+             *
+             * @param stack the item stack attempted to be inserted
+             * @return `false` always — items may not be inserted into this slot
+             */
             @Override
             public boolean canInsert(ItemStack stack) {
                 return false;
@@ -63,14 +80,74 @@ public class FoundryScreenHandler extends ScreenHandler {
         addProperties(arrayPropertyDelegate);
     }
 
-    public boolean isBurning() {
-        return propertyDelegate.get(2) > 0;
-    }
+    /**
+ * Gets the current melt progress of the foundry.
+ *
+ * @return the current melt progress value, where larger values indicate further progress toward completion
+ */
+public int getMeltProgress() { return this.propertyDelegate.get(0); }
+    /**
+ * Maximum melt progress required to complete the current melt operation.
+ *
+ * @return the maximum melt progress value.
+ */
+public int getMaxMeltProgress() { return this.propertyDelegate.get(1); }
+    /**
+ * Gets the current remaining fuel time for the foundry.
+ *
+ * @return the current remaining fuel time in ticks
+ */
+public int getFuelTime() { return this.propertyDelegate.get(2); }
+    /**
+ * Get the maximum fuel time available for the current fuel.
+ *
+ * @return the maximum fuel time in ticks as reported by the screen handler's property delegate
+ */
+public int getMaxFuelTime() { return this.propertyDelegate.get(3); }
+    /**
+ * Gets the current metal level stored by the foundry.
+ *
+ * @return the current metal level as an integer
+ */
+public int getMetalLevel() { return this.propertyDelegate.get(4); }
+    /**
+ * Gets the maximum metal level the foundry can hold.
+ *
+ * @return the maximum metal level as an integer
+ */
+public int getMaxMetalLevel() { return this.propertyDelegate.get(5); }
+    /**
+ * Gets the current progress of the foundry's casting operation.
+ *
+ * @return the current cast progress value
+ */
+public int getCastProgress() { return this.propertyDelegate.get(6); }
+    /**
+ * Gets the maximum cast time for the current casting operation.
+ *
+ * @return the maximum cast time in ticks
+ */
+public int getMaxCastTime() { return this.propertyDelegate.get(7); }
+    /**
+ * Checks whether the foundry currently has remaining fuel.
+ *
+ * @return `true` if the foundry has remaining fuel time, `false` otherwise.
+ */
+public boolean isBurning() { return this.propertyDelegate.get(2) > 0; }
+    /**
+ * Determines whether the foundry is currently processing (crafting) metal.
+ *
+ * @return `true` if the foundry is crafting (metal level greater than zero), `false` otherwise.
+ */
+public boolean isCrafting() { return propertyDelegate.get(4) > 0; }
 
-    public boolean isCrafting() {
-        return propertyDelegate.get(4) > 0;
-    }
-
+    /**
+     * Computes the horizontal melt progress for the UI arrow, scaled to a 24-pixel width.
+     *
+     * Uses the internal melt progress and max melt progress properties to calculate the pixel length.
+     *
+     * @return the number of pixels (0–24) representing current melt progress; 0 if progress is zero or max progress is zero
+     */
     public int getScaledArrowProgress() {
         int progress = propertyDelegate.get(0);
         int maxProgress = propertyDelegate.get(1);
@@ -86,6 +163,18 @@ public class FoundryScreenHandler extends ScreenHandler {
         return maxFuelTime > 0 && fuelTime > 0 ? (fuelTime * progressPixelSize) / maxFuelTime : 0;
     }
 
+    /**
+     * Moves items between the player inventory and the foundry inventory for a shift-clicked slot.
+     *
+     * Attempts to transfer the stack from a foundry slot into the player inventory, or from the
+     * player inventory into the appropriate foundry slot (fuel slot if the item is fuel, input
+     * slots if a matching foundry recipe exists). If the transfer cannot be completed the method
+     * leaves inventories unchanged for that operation.
+     *
+     * @param player  the player performing the quick-move action
+     * @param invSlot the index of the clicked slot
+     * @return a copy of the moved ItemStack, or ItemStack.EMPTY if no transfer occurred
+     */
     @Override
     public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
@@ -99,7 +188,7 @@ public class FoundryScreenHandler extends ScreenHandler {
                 }
             } else {
                 if (blockEntity.getFuelTime(originalStack) > 0) {
-                    if (!insertItem(originalStack, 1, 2, false)) {
+                    if (!insertItem(originalStack, 1, 3, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (blockEntity.getWorld() instanceof ServerWorld serverWorld) {
@@ -108,7 +197,7 @@ public class FoundryScreenHandler extends ScreenHandler {
                             .getFirstMatch(ModRecipes.FOUNDRY_TYPE, recipeCastInput, serverWorld)
                             .isPresent();
                     if (hasFoundryRecipe) {
-                        if (!insertItem(originalStack, 0, 1, false)) {
+                        if (!insertItem(originalStack, 0, 2, false)) {
                             return ItemStack.EMPTY;
                         }
                     } else {

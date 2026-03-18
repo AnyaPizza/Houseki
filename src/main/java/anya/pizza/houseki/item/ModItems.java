@@ -238,11 +238,27 @@ public class ModItems {
     public static final Item CS_HOE_HEAD = registerItem("cast_steel_hoe_head", setting -> new Item(setting.maxCount(1)));
     public static final Item CS_SPEAR_HEAD = registerItem("cast_steel_spear_head", setting -> new Item(setting.maxCount(1)));
 
+    /**
+     * Register an Item in the global item registry under this mod's namespace.
+     *
+     * The provided function is called with an Item.Settings instance whose registryKey
+     * is set to this mod's item registry key for the given name.
+     *
+     * @param name     the item identifier path (will be namespaced with the mod ID)
+     * @param function a function that creates the Item from an Item.Settings
+     * @return         the Item instance that was registered
+     */
     private static Item registerItem(String name, Function<Item.Settings, Item> function) {
         return Registry.register(Registries.ITEM, Identifier.of(Houseki.MOD_ID, name),
                 function.apply(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Houseki.MOD_ID, name)))));
     }
 
+    /**
+     * Signals registration of this mod's items during startup.
+     *
+     * <p>Intended to be called from the mod initialization sequence to mark the ModItems
+     * class as registered (emits an informational log entry).</p>
+     */
     public static void registerModItems() {
         Houseki.LOGGER.info("Registering ModItems for " + Houseki.MOD_ID);
     }

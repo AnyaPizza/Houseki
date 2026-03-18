@@ -135,6 +135,15 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         maxFuelTime = view.getInt("max_fuel_time", 0);
     }
 
+    /**
+     * Performs the per-tick server-side update for the crusher: manages fuel consumption, advances
+     * or resets crushing progress, executes completed crush recipes, updates the block's lit state,
+     * and marks the block entity dirty when its stored state or inventory changes.
+     *
+     * @param world the world containing this block entity (server-side expected)
+     * @param pos   the block position of this crusher
+     * @param state the current block state at {@code pos}; the method may update the {@code LIT} property
+     */
     public void tick(World world, BlockPos pos, BlockState state) {
         if (world.isClient()) return;
         boolean dirty = false;
@@ -254,16 +263,36 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         }
     }
 
+    /**
+     * Finds the first crusher recipe that matches the block entity's current input item.
+     *
+     * @return an Optional containing the matching RecipeEntry&lt;CrusherRecipe&gt; if present, otherwise an empty Optional
+     */
     private Optional<RecipeEntry<CrusherRecipe>> getCurrentRecipe() {
         return ((ServerWorld) this.getWorld()).getRecipeManager()
                 .getFirstMatch(ModRecipes.CRUSHER_TYPE, new CrusherRecipeInput(inventory.getFirst()), this.getWorld());
     }
 
+    /**
+     * Determine which inventory slot indices are accessible from a given block face.
+     *
+     * @param side the block face being accessed
+     * @return an array of slot indices accessible from {@code side}; if {@code side} is {@link Direction#DOWN}
+     *         the array contains the output and auxiliary output slots, otherwise it contains the input and fuel slots
+     */
     @Override
     public int[] getAvailableSlots(Direction side) {
         return side == Direction.DOWN ? new int[]{OUTPUT_SLOT, AUXILIARY_OUTPUT_SLOT} : new int[]{INPUT_SLOT, FUEL_SLOT};
     }
 
+    /**
+     * Determines whether the given item stack may be inserted into the specified slot from the given side.
+     *
+     * @param slot  the target slot index (e.g., input or fuel)
+     * @param stack the item stack to insert
+     * @param side  the side of the block from which insertion is attempted; may be null and is not used by this implementation
+     * @return      `true` if the stack may be inserted into the slot: for the fuel slot if it provides fuel time, for the input slot if it matches a crusher recipe in this world, `false` otherwise
+     */
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
@@ -285,11 +314,23 @@ public class CrusherBlockEntity extends BlockEntity implements ExtendedScreenHan
         return BlockEntityUpdateS2CPacket.create(this);
     }
 
+    /**
+     * Determines whether the given player may interact with this block entity based on distance.
+     *
+     * @param player the player attempting to use the block entity
+     * @return `true` if the player is within 8 blocks (squared distance ≤ 64) of the block entity's center, `false` otherwise
+     */
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
         return player.squaredDistanceTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) <= 64;
     }
 
+    /**
+     * Clears the block entity's inventory and marks the entity as modified.
+     *
+     * This empties all item slots and flags the block entity so changes are persisted
+     * and inventories are updated for viewers.
+     */
     @Override
     public void clear() {
         inventory.clear();
