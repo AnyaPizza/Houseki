@@ -19,6 +19,7 @@ import java.util.List;
 public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int meltTime) implements Recipe<FoundryRecipeCastInput> {
     public static final int DEFAULT_MELT_TIME = 200;
     public static final int DEFAULT_CAST_TIME = 200;
+    public static final int DEFAULT_COOLING_TIME = 200;
 
     //public FoundryRecipe(Ingredient inputItem, ItemStack output, int meltTime) {
     //    this(inputCastItem, output, meltTime);
