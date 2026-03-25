@@ -2,7 +2,7 @@ package anya.pizza.houseki.screen.custom;
 
 import anya.pizza.houseki.Houseki;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.network.chat.Component;
@@ -26,23 +26,33 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherScreenHandler>
     }
 
     @Override
-    protected void renderBg(GuiGraphics context, float delta, int mouseX, int mouseY) {
+    protected void extractMenuBackground(GuiGraphicsExtractor graphics) {
         int x = (width - imageWidth) / 2;
         int y = (height - 196) / 2;
 
-        context.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, 176, 176, 256, 256);
-        renderProgressArrow(context, x, y);
-        renderProgressCrushing(context, x, y);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, 176, 176, 256, 256);
+        renderProgressArrow(graphics, x, y);
+        renderProgressCrushing(graphics, x, y);
     }
 
-    private void renderProgressArrow(GuiGraphics context, int x, int y) {
+    //@Override
+    //protected void renderBg(GuiGraphicsExtractor context, float delta, int mouseX, int mouseY) {
+    //    int x = (width - imageWidth) / 2;
+    //    int y = (height - 196) / 2;
+//
+     //    context.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, 176, 176, 256, 256);
+    //    renderProgressArrow(context, x, y);
+    //    renderProgressCrushing(context, x, y);
+    //}
+
+    private void renderProgressArrow(GuiGraphicsExtractor context, int x, int y) {
         if(menu.getPropertyDelegate().get(0) > 0 && menu.isCrafting()) {
             context.blit(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE, x + 79, y + 39, 0, 0,
                     menu.getScaledArrowProgress(), 16, 24, 16);
         }
     }
 
-    private void renderProgressCrushing(GuiGraphics context, int x, int y) {
+    private void renderProgressCrushing(GuiGraphicsExtractor context, int x, int y) {
         if (menu.isBurning()) {
             int progress = menu.getScaledFuelProgress();
             context.blit(RenderPipelines.GUI_TEXTURED, CRUSHING_TEXTURE, x + 5, y + 69 - progress, 0,
@@ -50,10 +60,17 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherScreenHandler>
         }
     }
 
+    //@Override
+    //public void render(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
+    //    renderBackground(context, mouseX, mouseY, delta);
+    //    super.render(context, mouseX, mouseY, delta);
+    //    renderTooltip(context, mouseX, mouseY);
+    //}
+
     @Override
-    public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
-        super.render(context, mouseX, mouseY, delta);
-        renderTooltip(context, mouseX, mouseY);
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+        extractMenuBackground(graphics);
+        super.extractRenderState(graphics, mouseX, mouseY, delta);
+        extractTooltip(graphics, mouseX, mouseY);
     }
 }
