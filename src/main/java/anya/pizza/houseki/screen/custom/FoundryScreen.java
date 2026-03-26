@@ -8,6 +8,8 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     private static final Identifier GUI_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/foundry/foundry_gui.png");
@@ -15,6 +17,7 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     private static final Identifier ARROW_TEXTURE2 = Identifier.of(Houseki.MOD_ID, "textures/gui/foundry/foundry_arrow2.png");
     private static final Identifier MELTING_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/foundry/melting_progress.png");
     private static final Identifier FLUID_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/foundry/foundry_metal.png");
+    private static final Logger log = LoggerFactory.getLogger(FoundryScreen.class);
 
     /**
      * Creates a FoundryScreen for the given handler and player inventory and configures the GUI to its standard 176×176 size.
@@ -68,8 +71,8 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
         }
 
         if (handler.getMetalLevel() > 0) {
-            int scaledFluidHeight = (int) ((float) handler.getMetalLevel() / handler.getMaxMetalLevel() * 16);
-            context.drawTexture(RenderPipelines.GUI_TEXTURED, FLUID_TEXTURE, x + 80, y + 25 + (50 - scaledFluidHeight), 0, 43 - scaledFluidHeight, 16, scaledFluidHeight, 16, 43);
+            int scaledFluidHeight = (int) ((float) handler.getMetalLevel() / handler.getMaxMetalLevel() * 43);
+            context.drawTexture(RenderPipelines.GUI_TEXTURED, FLUID_TEXTURE, x + 80, y + 22 + (43 - scaledFluidHeight), 0, 43 - scaledFluidHeight, 16, scaledFluidHeight, 16, 43);
         }
 
         if (handler.getMeltProgress() > 0) {
@@ -91,32 +94,18 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
             int color = (alpha << 24) | 0xFFFFFF;
             context.fill(x + 134, y + 18, x + 134 + 16, y + 18 + 16, color);
         }
-        //renderProgressArrow(context, x, y);
-        //renderProgressArrow2(context, x, y);
-        //renderProgressMelting(context, x, y);
+
+        if (handler.getCoolingProgress() > 0 && handler.getMaxCoolingProgress() > 0) {
+            int barX = x + 131;
+            int barY = y + 37;
+            int barWidth = 22;
+            int barHeight = 3;
+            context.fill(barX, barY, barX + barWidth, barY + barHeight, 0xFF404040);
+            float barPercent = (float) handler.getCoolingProgress() / handler.getMaxCoolingProgress();
+            int fillWidth = (int) (barPercent * barWidth);
+            context.fill(barX, barY, barX + fillWidth, barY + barHeight, 0xFF6BB5FF);
+        }
     }
-
-    //private void renderProgressArrow(DrawContext context, int x, int y) {
-    //    if(handler.getPropertyDelegate().get(0) > 0 && handler.isCrafting()) {
-    //        context.drawTexture(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE, x + 30, y + 50, 0, 0,
-    //                handler.getScaledArrowProgress(), 16, 24, 16);
-    //    }
-    //}
-
-    //private void renderProgressArrow2(DrawContext context, int x, int y) {
-    //    if(handler.getPropertyDelegate().get(0) > 0 && handler.isCrafting()) {
-    //        context.drawTexture(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE2, x + 105, y + 50, 0, 0,
-    //                handler.getScaledArrowProgress(), 16, 24, 16);
-    //    }
-    //}
-
-    //private void renderProgressMelting(DrawContext context, int x, int y) {
-    //    if (handler.isBurning()) {
-    //        int progress = handler.getScaledFuelProgress();
-    //        context.drawTexture(RenderPipelines.GUI_TEXTURED, MELTING_TEXTURE, x + 27, y + 50 - progress, 0,
-    //                14 - progress, 14, progress, 14, 14);
-    //    }
-    //}
 
     /**
      * Renders the screen background, standard UI components, and hover tooltips; shows a "Molten Steel" tooltip when the mouse is over the fluid tank.
@@ -138,9 +127,16 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
 
         //Tooltips for fluid tank
         int x = (width - backgroundWidth) / 2;
-        int y = (width - backgroundHeight) / 2;
-        if (isPointWithinBounds(80, 20, 16, 50, mouseX, mouseY)) {
-            context.drawTooltip(textRenderer, Text.literal("Molten Steel: " + handler.getMetalLevel() + " / " + handler.getMaxMetalLevel() + " mB"), mouseX, mouseY);
+        int y = (height - backgroundHeight) / 2;
+        if (isPointWithinBounds(80, 21, 16, 45, mouseX, mouseY)) {
+            context.drawTooltip(textRenderer, Text.literal("Molten Steel: " +
+                    handler.getMetalLevel() + " / " + handler.getMaxMetalLevel() + " mB"), mouseX, mouseY);
+        }
+
+        if (handler.getCoolingProgress() > 0 && handler.getMaxCoolingProgress() > 0 &&
+                isPointWithinBounds(130, 17, 24, 26, mouseX, mouseY)) {
+            int percent = (int) ((float) handler.getCoolingProgress() / handler.getMaxCoolingProgress() * 100);
+            context.drawTooltip(textRenderer, Text.literal("Cooling: " + percent + "%"), mouseX, mouseY);
         }
     }
 }
