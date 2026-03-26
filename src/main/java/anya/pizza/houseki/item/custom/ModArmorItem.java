@@ -74,13 +74,17 @@ public class ModArmorItem extends Item {
     }
 
     private boolean hasCorrectArmorOn(ArmorMaterial material, PlayerEntity player) {
-        EquippableComponent equippableComponentBoots = player.getEquippedStack(EquipmentSlot.FEET).getItem().getComponents().get(DataComponentTypes.EQUIPPABLE);
-        EquippableComponent equippableComponentLeggings = player.getEquippedStack(EquipmentSlot.LEGS).getItem().getComponents().get(DataComponentTypes.EQUIPPABLE);
-        EquippableComponent equippableComponentBreastplate = player.getEquippedStack(EquipmentSlot.CHEST).getItem().getComponents().get(DataComponentTypes.EQUIPPABLE);
-        EquippableComponent equippableComponentHelmet = player.getEquippedStack(EquipmentSlot.HEAD).getItem().getComponents().get(DataComponentTypes.EQUIPPABLE);
+        EquippableComponent boots = player.getEquippedStack(EquipmentSlot.FEET).getItem().getComponents().get(DataComponentTypes.EQUIPPABLE);
+        EquippableComponent leggings = player.getEquippedStack(EquipmentSlot.LEGS).getItem().getComponents().get(DataComponentTypes.EQUIPPABLE);
+        EquippableComponent chestplate = player.getEquippedStack(EquipmentSlot.CHEST).getItem().getComponents().get(DataComponentTypes.EQUIPPABLE);
+        EquippableComponent helmet = player.getEquippedStack(EquipmentSlot.HEAD).getItem().getComponents().get(DataComponentTypes.EQUIPPABLE);
 
-        return equippableComponentBoots.assetId().get().equals(material.assetId()) && equippableComponentLeggings.assetId().get().equals(material.assetId()) &&
-                equippableComponentBreastplate.assetId().get().equals(material.assetId()) && equippableComponentHelmet.assetId().get().equals(material.assetId());
+        if (boots == null || leggings == null || chestplate == null || helmet == null) return false;
+        if (boots.assetId().isEmpty() || leggings.assetId().isEmpty()
+                || chestplate.assetId().isEmpty() || helmet.assetId().isEmpty()) return false;
+
+        return boots.assetId().get().equals(material.assetId()) && leggings.assetId().get().equals(material.assetId()) &&
+                chestplate.assetId().get().equals(material.assetId()) && helmet.assetId().get().equals(material.assetId());
     }
 
     private boolean hasFullSuitOfArmorOn(PlayerEntity player) {

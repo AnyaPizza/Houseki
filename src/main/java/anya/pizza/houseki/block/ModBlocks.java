@@ -170,15 +170,15 @@ public class ModBlocks {
     public static final Block LIMESTONE_STAIRS = registerBlock("limestone_stairs",
             properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block POLISHED_LIMESTONE_STAIRS = registerBlock("polished_limestone_stairs",
-            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
+            properties -> new StairsBlock(ModBlocks.POLISHED_LIMESTONE.getDefaultState(),properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block LIMESTONE_BRICK_STAIRS = registerBlock("limestone_brick_stairs",
-            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
+            properties -> new StairsBlock(ModBlocks.LIMESTONE_BRICKS.getDefaultState(),properties.mapColor(MapColor.OFF_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block SLATE_STAIRS = registerBlock("slate_stairs",
-            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
+            properties -> new StairsBlock(ModBlocks.SLATE.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block POLISHED_SLATE_STAIRS = registerBlock("polished_slate_stairs",
-            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
+            properties -> new StairsBlock(ModBlocks.POLISHED_SLATE.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
     public static final Block SLATE_TILE_STAIRS = registerBlock("slate_tile_stairs",
-            properties -> new StairsBlock(ModBlocks.LIMESTONE.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
+            properties -> new StairsBlock(ModBlocks.SLATE_TILES.getDefaultState(),properties.mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 6)));
 
     //Slabs
     public static final Block LIMESTONE_SLAB = registerBlock("limestone_slab",

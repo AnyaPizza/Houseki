@@ -36,7 +36,7 @@ public class ModLootTableModifiers {
     private static final Identifier TRIAL_REWARD_RARE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_rare");
     private static final Identifier TRIAL_REWARD_OMINOUS_RARE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_ominous_rare");
     private static final Identifier TRIAL_REWARD_UNIQUE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_unique");
-    private static final Identifier TRIAL_REWARD_OMINOUS_UNIQUE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_unique");
+    private static final Identifier TRIAL_REWARD_OMINOUS_UNIQUE_ID = Identifier.of("minecraft", "chests/trial_chambers/reward_ominous_unique");
     private static final Identifier VILLAGE_MASON_ID = Identifier.of("minecraft", "chests/village/village_mason");
     private static final Identifier VILLAGE_TOOLSMITH_ID = Identifier.of("minecraft", "chests/village/village_toolsmith");
     private static final Identifier VILLAGE_WEAPONSMITH_ID = Identifier.of("minecraft", "chests/village/village_weaponsmith");
