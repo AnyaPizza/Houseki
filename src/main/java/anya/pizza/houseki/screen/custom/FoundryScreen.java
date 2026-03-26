@@ -89,11 +89,13 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
                 }
             }
 
-            // Small indicator dots for the inactive metal if it has content
+            // Small indicator for the inactive metal with outline
             int otherLevel = activeType == FoundryBlockEntity.METAL_STEEL
                     ? handler.getMeteoricIronLevel() : handler.getSteelLevel();
             if (otherLevel > 0) {
                 int dotColor = activeType == FoundryBlockEntity.METAL_STEEL ? 0xFF3050B0 : 0xFFD4760A;
+                // Dark outline around the dot
+                context.fill(x + 96, y + 59, x + 101, y + 64, 0xFF202020);
                 context.fill(x + 97, y + 60, x + 100, y + 63, dotColor);
             }
         }
@@ -188,10 +190,13 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
             String miLine = (activeType == FoundryBlockEntity.METAL_METEORIC_IRON ? "\u00A79\u25B6 " : "  ")
                     + "Meteoric Iron: " + miLvl + " / " + maxLvl + " mB";
 
+            boolean locked = handler.getCastProgress() > 0 || handler.getCoolingProgress() > 0;
+            String switchHint = locked ? "\u00A7cLocked during casting" : "\u00A77Click to switch";
+
             context.drawTooltip(textRenderer, List.of(
                     Text.literal(steelLine),
                     Text.literal(miLine),
-                    Text.literal("\u00A77Click to switch")
+                    Text.literal(switchHint)
             ), mouseX, mouseY);
         }
         if (handler.getCoolingProgress() > 0 && handler.getMaxCoolingProgress() > 0
@@ -205,6 +210,8 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     @Override
     public boolean mouseClicked(Click click, boolean bl) {
         if (isPointWithinBounds(80, 21, 16, 45, click.x(), click.y())) {
+            // Don't allow switching during casting or cooling
+            if (handler.getCastProgress() > 0 || handler.getCoolingProgress() > 0) return true;
             if (this.client != null && this.client.interactionManager != null) {
                 this.client.interactionManager.clickButton(this.handler.syncId, 0);
                 return true;

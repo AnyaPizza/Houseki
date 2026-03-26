@@ -59,7 +59,8 @@ public class FoundryScreenHandler extends ScreenHandler {
         this.addSlot(new Slot(inventory, 2, 134, 18) { //Cast Slot
             @Override
             public boolean canTakeItems(PlayerEntity player) {
-                return propertyDelegate.get(9) == 0;
+                // Locked while casting or cooling
+                return propertyDelegate.get(6) == 0 && propertyDelegate.get(9) == 0;
             }
         });
         this.addSlot(new Slot(inventory, 3, 135, 53) { //Output Slot
@@ -191,6 +192,8 @@ public class FoundryScreenHandler extends ScreenHandler {
     @Override
     public boolean onButtonClick(PlayerEntity player, int id) {
         if (id == 0) {
+            // Block switching while casting or cooling is in progress
+            if (propertyDelegate.get(6) > 0 || propertyDelegate.get(9) > 0) return false;
             blockEntity.cycleActiveMetalType();
             return true;
         }
