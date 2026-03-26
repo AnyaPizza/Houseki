@@ -31,7 +31,7 @@ public class MeteoriteStructure extends Structure {
         Random random = context.random();
         int radius = MeteoriteStructurePiece.MIN_RADIUS
                 + random.nextInt(MeteoriteStructurePiece.MAX_RADIUS - MeteoriteStructurePiece.MIN_RADIUS + 1);
-        int craterDepth = radius + 2 + random.nextInt(3);
+        int craterDepth = radius + 3 + random.nextInt(4);
 
         BlockPos pos = new BlockPos(x, surfaceY, z);
         long pieceSeed = random.nextLong();
