@@ -1,13 +1,17 @@
 package anya.pizza.houseki.screen.custom;
 
 import anya.pizza.houseki.Houseki;
+import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
 import net.minecraft.client.gl.RenderPipelines;
+import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     private static final Identifier GUI_TEXTURE = Identifier.of(Houseki.MOD_ID, "textures/gui/foundry/foundry_gui.png");
@@ -69,9 +73,29 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
             context.drawTexture(RenderPipelines.GUI_TEXTURED, MELTING_TEXTURE, x + 27, y + 36 + (14 - fireHeight), 0, 14 - fireHeight, 14, fireHeight, 14, 14);
         }
 
-        if (handler.getMetalLevel() > 0) {
-            int scaledFluidHeight = (int) ((float) handler.getMetalLevel() / handler.getMaxMetalLevel() * 43);
-            context.drawTexture(RenderPipelines.GUI_TEXTURED, FLUID_TEXTURE, x + 80, y + 22 + (43 - scaledFluidHeight), 0, 43 - scaledFluidHeight, 16, scaledFluidHeight, 16, 43);
+        if (handler.getSteelLevel() > 0 || handler.getMeteoricIronLevel() > 0) {
+            int activeType = handler.getActiveMetalType();
+            int displayLevel = activeType == FoundryBlockEntity.METAL_STEEL
+                    ? handler.getSteelLevel() : handler.getMeteoricIronLevel();
+            int maxLevel = handler.getMaxMetalLevel();
+
+            if (displayLevel > 0) {
+                int scaledFluidHeight = (int) ((float) displayLevel / maxLevel * 43);
+                context.drawTexture(RenderPipelines.GUI_TEXTURED, FLUID_TEXTURE, x + 80, y + 22 + (43 - scaledFluidHeight), 0, 43 - scaledFluidHeight, 16, scaledFluidHeight, 16, 43);
+
+                // Blue tint overlay for meteoric iron to visually distinguish it
+                if (activeType == FoundryBlockEntity.METAL_METEORIC_IRON) {
+                    context.fill(x + 80, y + 22 + (43 - scaledFluidHeight), x + 96, y + 65, 0x603050B0);
+                }
+            }
+
+            // Small indicator dots for the inactive metal if it has content
+            int otherLevel = activeType == FoundryBlockEntity.METAL_STEEL
+                    ? handler.getMeteoricIronLevel() : handler.getSteelLevel();
+            if (otherLevel > 0) {
+                int dotColor = activeType == FoundryBlockEntity.METAL_STEEL ? 0xFF3050B0 : 0xFFD4760A;
+                context.fill(x + 97, y + 60, x + 100, y + 63, dotColor);
+            }
         }
 
         if (handler.getMeltProgress() > 0) {
@@ -153,12 +177,39 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         if (isPointWithinBounds(80, 21, 16, 45, mouseX, mouseY)) {
-            context.drawTooltip(textRenderer, Text.literal("Molten Steel: " + handler.getMetalLevel() + " / " + handler.getMaxMetalLevel() + " mB"), mouseX, mouseY);
+            int activeType = handler.getActiveMetalType();
+            int steelLvl = handler.getSteelLevel();
+            int miLvl = handler.getMeteoricIronLevel();
+            int maxLvl = handler.getMaxMetalLevel();
+
+            // Show both metals, mark the active one with an arrow
+            String steelLine = (activeType == FoundryBlockEntity.METAL_STEEL ? "\u00A7e\u25B6 " : "  ")
+                    + "Molten Steel: " + steelLvl + " / " + maxLvl + " mB";
+            String miLine = (activeType == FoundryBlockEntity.METAL_METEORIC_IRON ? "\u00A79\u25B6 " : "  ")
+                    + "Meteoric Iron: " + miLvl + " / " + maxLvl + " mB";
+
+            context.drawTooltip(textRenderer, List.of(
+                    Text.literal(steelLine),
+                    Text.literal(miLine),
+                    Text.literal("\u00A77Click to switch")
+            ), mouseX, mouseY);
         }
         if (handler.getCoolingProgress() > 0 && handler.getMaxCoolingProgress() > 0
                 && isPointWithinBounds(130, 17, 24, 26, mouseX, mouseY)) {
             int percent = (int) ((float) handler.getCoolingProgress() / handler.getMaxCoolingProgress() * 100);
             context.drawTooltip(textRenderer, Text.literal("Cooling: " + percent + "%"), mouseX, mouseY);
         }
+    }
+
+    // Click on the fluid tank to cycle through metal types
+    @Override
+    public boolean mouseClicked(Click click, boolean bl) {
+        if (isPointWithinBounds(80, 21, 16, 45, click.x(), click.y())) {
+            if (this.client != null && this.client.interactionManager != null) {
+                this.client.interactionManager.clickButton(this.handler.syncId, 0);
+                return true;
+            }
+        }
+        return super.mouseClicked(click, bl);
     }
 }

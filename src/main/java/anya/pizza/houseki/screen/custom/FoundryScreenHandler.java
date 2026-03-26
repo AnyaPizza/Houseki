@@ -31,7 +31,7 @@ public class FoundryScreenHandler extends ScreenHandler {
      * @throws IllegalStateException if the block entity at the given position is not a FoundryBlockEntity
      */
     public FoundryScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(12));
+        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(13));
     }
 
     /**
@@ -93,12 +93,14 @@ public class FoundryScreenHandler extends ScreenHandler {
     public int getMaxMeltProgress() { return this.propertyDelegate.get(1); }
     public int getFuelTime() { return this.propertyDelegate.get(2); }
     public int getMaxFuelTime() { return this.propertyDelegate.get(3); }
-    public int getMetalLevel() { return this.propertyDelegate.get(4); }
+    public int getSteelLevel() { return this.propertyDelegate.get(4); }
     public int getMaxMetalLevel() { return this.propertyDelegate.get(5); }
     public int getCastProgress() { return this.propertyDelegate.get(6); }
     public int getMaxCastTime() { return this.propertyDelegate.get(7); }
     public int getCoolingProgress() { return this.propertyDelegate.get(9); }
     public int getMaxCoolingProgress() { return this.propertyDelegate.get(10); }
+    public int getMeteoricIronLevel() { return this.propertyDelegate.get(11); }
+    public int getActiveMetalType() { return this.propertyDelegate.get(12); }
     public boolean isBurning() { return this.propertyDelegate.get(2) > 0; }
     public boolean isCrafting() { return propertyDelegate.get(8) > 0; }
 
@@ -139,7 +141,10 @@ public class FoundryScreenHandler extends ScreenHandler {
                 }
                 slot.onQuickTransfer(originalStack, itemStack);
             } else {
-                if (originalStack.isOf(ModItems.PICKAXE_HEAD_CAST)) {
+                // All cast items go to the cast slot
+                if (originalStack.isOf(ModItems.PICKAXE_HEAD_CAST) || originalStack.isOf(ModItems.AXE_HEAD_CAST)
+                        || originalStack.isOf(ModItems.SHOVEL_HEAD_CAST) || originalStack.isOf(ModItems.SWORD_HEAD_CAST)
+                        || originalStack.isOf(ModItems.HOE_HEAD_CAST) || originalStack.isOf(ModItems.SPEAR_HEAD_CAST)) {
                     if (!this.insertItem(originalStack, 2, 3, false)) {
                         return ItemStack.EMPTY;
                     }
@@ -147,7 +152,7 @@ public class FoundryScreenHandler extends ScreenHandler {
                     if (!this.insertItem(originalStack, 1, 2, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (originalStack.isOf(ModItems.STEEL)) {
+                } else if (originalStack.isOf(ModItems.STEEL) || originalStack.isOf(ModItems.METEORIC_IRON_INGOT)) {
                     if (!this.insertItem(originalStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
@@ -180,6 +185,16 @@ public class FoundryScreenHandler extends ScreenHandler {
     @Override
     public boolean canUse(PlayerEntity player) {
         return inventory.canPlayerUse(player);
+    }
+
+    // Handle button clicks from the client (metal type cycling)
+    @Override
+    public boolean onButtonClick(PlayerEntity player, int id) {
+        if (id == 0) {
+            blockEntity.cycleActiveMetalType();
+            return true;
+        }
+        return false;
     }
 
     private void addPlayerInventory(PlayerInventory playerInventory) {

@@ -53,8 +53,14 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxMeltProgress = FoundryRecipe.DEFAULT_MELT_TIME;
     private int fuelTime = 0;
     private int maxFuelTime = 0;
-    private int metalLevel = 0;
-    private int maxMetalLevel = 1000; //100 = 1 ingot, holds 10 ingots total
+    // Metal type constants
+    public static final int METAL_STEEL = 0;
+    public static final int METAL_METEORIC_IRON = 1;
+
+    private int steelLevel = 0;
+    private int meteoricIronLevel = 0;
+    private int maxMetalLevel = 1000; // 100 = 1 ingot, holds 10 ingots per metal type
+    private int activeMetalType = METAL_STEEL; // selected metal for casting
     private int castProgress = 0;
     private int maxCastProgress = FoundryRecipe.DEFAULT_CAST_TIME;
     private int coolingProgress = 0;
@@ -105,13 +111,15 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
                     case 1 -> maxMeltProgress;
                     case 2 -> fuelTime > 0 ? fuelTime : lastValidFuelTime;
                     case 3 -> maxFuelTime;
-                    case 4 -> metalLevel;
+                    case 4 -> steelLevel;
                     case 5 -> maxMetalLevel;
                     case 6 -> castProgress;
                     case 7 -> maxCastProgress;
                     case 8 -> isCrafting ? 1 : 0;
                     case 9 -> coolingProgress;
                     case 10 -> maxCoolingProgress;
+                    case 11 -> meteoricIronLevel;
+                    case 12 -> activeMetalType;
                     default -> 0;
                 };
             }
@@ -133,13 +141,15 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
                     case 1 -> maxMeltProgress = value;
                     case 2 -> fuelTime = value;
                     case 3 -> maxFuelTime = value;
-                    case 4 -> metalLevel = value;
+                    case 4 -> steelLevel = value;
                     case 5 -> maxMetalLevel = value;
                     case 6 -> castProgress = value;
                     case 7 -> maxCastProgress = value;
                     case 8 -> isCrafting = (value != 0);
                     case 9 -> coolingProgress = value;
                     case 10 -> maxCoolingProgress = value;
+                    case 11 -> meteoricIronLevel = value;
+                    case 12 -> activeMetalType = value;
                 }
             }
 
@@ -150,7 +160,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
              */
             @Override
             public int size() {
-                return 11;
+                return 13;
             }
         };
     }
@@ -202,8 +212,10 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         view.putInt("max_melt_progress", maxMeltProgress);
         view.putInt("fuel_time", fuelTime);
         view.putInt("max_fuel_time", maxFuelTime);
-        view.putInt("metal_level", metalLevel);
+        view.putInt("steel_level", steelLevel);
+        view.putInt("meteoric_iron_level", meteoricIronLevel);
         view.putInt("max_metal_level", maxMetalLevel);
+        view.putInt("active_metal_type", activeMetalType);
         view.putInt("cast_time", castProgress);
         view.putInt("max_cast_time", maxCastProgress);
         view.putInt("cooling_time", coolingProgress);
@@ -231,8 +243,10 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         maxMeltProgress = view.getInt("max_melt_progress", 0);
         fuelTime = view.getInt("fuel_time", 0);
         maxFuelTime = view.getInt("max_fuel_time", 0);
-        metalLevel = view.getInt("metal_level", 0);
+        steelLevel = view.getInt("steel_level", 0);
+        meteoricIronLevel = view.getInt("meteoric_iron_level", 0);
         maxMetalLevel = view.getInt("max_metal_level", 0);
+        activeMetalType = view.getInt("active_metal_type", 0);
         castProgress = view.getInt("cast_time", 0);
         maxCastProgress = view.getInt("max_cast_time", 0);
         coolingProgress = view.getInt("cooling_time", 0);
@@ -281,8 +295,14 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         if (isBurning && canMelt()) {
             meltProgress++;
             if (meltProgress >= maxMeltProgress) {
-                getStack(INPUT_SLOT).decrement(1);
-                metalLevel += 90;
+                ItemStack meltedInput = getStack(INPUT_SLOT);
+                // Add to the correct metal tank based on input type
+                if (meltedInput.isOf(ModItems.STEEL)) {
+                    steelLevel += 90;
+                } else if (meltedInput.isOf(ModItems.METEORIC_IRON_INGOT)) {
+                    meteoricIronLevel += 90;
+                }
+                meltedInput.decrement(1);
                 meltProgress = 0;
             }
             dirty = true;
@@ -299,7 +319,12 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
             if (castProgress >= maxCastProgress) {
                 ItemStack result = getResultFromCast(getStack(CAST_SLOT));
                 setStack(COOLING_SLOT, result.copy());
-                metalLevel -= 90;
+                // Drain from the active metal's tank
+                if (activeMetalType == METAL_STEEL) {
+                    steelLevel -= 90;
+                } else {
+                    meteoricIronLevel -= 90;
+                }
                 castProgress = 0;
                 maxCoolingProgress = getCurrentRecipe()
                         .map(r -> r.value().coolingTime())
@@ -357,9 +382,14 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     private boolean canMelt() {
         ItemStack input = getStack(INPUT_SLOT);
-        boolean hasValidInput = input.isOf(ModItems.STEEL);
-        boolean hasMeltedMetal = metalLevel + 90 <= maxMetalLevel;
-        return hasValidInput && hasMeltedMetal;
+        // Each metal fills its own tank
+        if (input.isOf(ModItems.STEEL)) {
+            return steelLevel + 90 <= maxMetalLevel;
+        }
+        if (input.isOf(ModItems.METEORIC_IRON_INGOT)) {
+            return meteoricIronLevel + 90 <= maxMetalLevel;
+        }
+        return false;
     }
 
     /**
@@ -374,7 +404,12 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     private boolean canCast() {
         ItemStack cast = getStack(CAST_SLOT);
         ItemStack output = getStack(OUTPUT_SLOT);
-        if (cast.isEmpty() || metalLevel < 90) return false;
+        if (cast.isEmpty()) return false;
+
+        // Check if the active metal has enough for casting
+        int activeLevel = activeMetalType == METAL_STEEL ? steelLevel : meteoricIronLevel;
+        if (activeLevel < 90) return false;
+
         ItemStack expectedOutput = getResultFromCast(cast);
         if (expectedOutput.isEmpty()) return false;
 
@@ -416,10 +451,29 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
      * @return the resulting ItemStack for the cast (a pickaxe head) or `ItemStack.EMPTY` if no match
      */
     private ItemStack getResultFromCast(ItemStack cast) {
-        if (cast.isOf(ModItems.PICKAXE_HEAD_CAST)) {
-            return new ItemStack(ModItems.CS_PICKAXE_HEAD);
+        // Map cast + active metal type to the correct output head
+        if (activeMetalType == METAL_STEEL) {
+            if (cast.isOf(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.CS_PICKAXE_HEAD);
+            if (cast.isOf(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.CS_AXE_HEAD);
+            if (cast.isOf(ModItems.SHOVEL_HEAD_CAST)) return new ItemStack(ModItems.CS_SHOVEL_HEAD);
+            if (cast.isOf(ModItems.SWORD_HEAD_CAST)) return new ItemStack(ModItems.CS_SWORD_HEAD);
+            if (cast.isOf(ModItems.HOE_HEAD_CAST)) return new ItemStack(ModItems.CS_HOE_HEAD);
+            if (cast.isOf(ModItems.SPEAR_HEAD_CAST)) return new ItemStack(ModItems.CS_SPEAR_HEAD);
+        } else if (activeMetalType == METAL_METEORIC_IRON) {
+            if (cast.isOf(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.MI_PICKAXE_HEAD);
+            if (cast.isOf(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.MI_AXE_HEAD);
+            if (cast.isOf(ModItems.SHOVEL_HEAD_CAST)) return new ItemStack(ModItems.MI_SHOVEL_HEAD);
+            if (cast.isOf(ModItems.SWORD_HEAD_CAST)) return new ItemStack(ModItems.MI_SWORD_HEAD);
+            if (cast.isOf(ModItems.HOE_HEAD_CAST)) return new ItemStack(ModItems.MI_HOE_HEAD);
+            if (cast.isOf(ModItems.SPEAR_HEAD_CAST)) return new ItemStack(ModItems.MI_SPEAR_HEAD);
         }
         return ItemStack.EMPTY;
+    }
+
+    // Cycle through available metal types (called from screen handler on button click)
+    public void cycleActiveMetalType() {
+        activeMetalType = (activeMetalType + 1) % 2;
+        markDirty();
     }
 
     /**
