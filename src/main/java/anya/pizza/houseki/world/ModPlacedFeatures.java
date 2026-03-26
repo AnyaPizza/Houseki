@@ -6,13 +6,13 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
 
@@ -34,6 +34,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> ORE_LIMESTONE_PLACED_KEY = registerKey("ore_limestone_placed");
     public static final RegistryKey<PlacedFeature> ORE_SLATE_PLACED_KEY = registerKey("ore_slate_placed");
     public static final RegistryKey<PlacedFeature> ORE_BAUXITE_PLACED_KEY = registerKey("ore_bauxite_placed");
+    public static final RegistryKey<PlacedFeature> METEORITE_PLACED_KEY = registerKey("meteorite_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -80,6 +81,12 @@ public class ModPlacedFeatures {
                 ModOrePlacement.modifiersWithCount(2, HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.getTop())));
         register(context, ORE_BAUXITE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ORE_BAUXITE_KEY),
                 ModOrePlacement.modifiersWithCount(2, HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.getTop())));
+
+        register(context, METEORITE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.METEORITE_KEY),
+                RarityFilterPlacementModifier.of(32),
+                SquarePlacementModifier.of(),
+                HeightmapPlacementModifier.of(Heightmap.Type.WORLD_SURFACE_WG),
+                BiomePlacementModifier.of());
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

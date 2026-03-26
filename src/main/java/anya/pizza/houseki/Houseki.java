@@ -8,6 +8,7 @@ import anya.pizza.houseki.recipe.ModRecipes;
 import anya.pizza.houseki.screen.ModScreenHandlers;
 import anya.pizza.houseki.trim.TrimEffectHandler;
 import anya.pizza.houseki.util.*;
+import anya.pizza.houseki.world.feature.ModFeatures;
 import anya.pizza.houseki.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -27,6 +28,7 @@ public class Houseki implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
 		ModRecipes.registerRecipes();
+		ModFeatures.registerFeatures();
 		ModLootTableModifiers.modifyLootTables();
 
 		TrimEffectHandler.registerTrimEffects();

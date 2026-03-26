@@ -56,6 +56,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int lastValidFuelTime = 0;
     private boolean isCrafting = false;
     private ItemStack lastInput = ItemStack.EMPTY;
+    private int metalType = 0; // 0 = steel, 1 = meteoric iron
     /**
      * Creates a FoundryBlockEntity at the specified position and block state and initializes its property delegate.
      *
@@ -193,6 +194,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         view.putInt("max_fuel_time", maxFuelTime);
         view.putInt("metal_level", metalLevel);
         view.putInt("cast_time", castProgress);
+        view.putInt("metal_type", metalType);
     }
 
     /**
@@ -218,6 +220,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         maxFuelTime = view.getInt("max_fuel_time", 0);
         metalLevel = view.getInt("metal_level", 0);
         castProgress = view.getInt("cast_time", 0);
+        metalType = view.getInt("metal_type", 0);
     }
 
     /**
@@ -262,7 +265,11 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         if (isBurning && canMelt()) {
             meltProgress++;
             if (meltProgress >= maxMeltProgress) {
-                getStack(INPUT_SLOT).decrement(1);
+                ItemStack meltInput = getStack(INPUT_SLOT);
+                if (metalLevel == 0) {
+                    metalType = meltInput.isOf(ModItems.STEEL) ? 0 : 1;
+                }
+                meltInput.decrement(1);
                 metalLevel += 90;
                 meltProgress = 0;
             }
@@ -305,9 +312,11 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     private boolean canMelt() {
         ItemStack input = getStack(INPUT_SLOT);
-        boolean hasValidInput = input.isOf(ModItems.STEEL);
+        boolean hasValidInput = input.isOf(ModItems.STEEL) || input.isOf(ModItems.METEORIC_IRON_INGOT);
         boolean hasMeltedMetal = metalLevel + 90 <= maxMetalLevel;
-        return hasValidInput && hasMeltedMetal;
+        if (!hasValidInput || !hasMeltedMetal) return false;
+        int inputType = input.isOf(ModItems.STEEL) ? 0 : 1;
+        return metalLevel == 0 || metalType == inputType;
     }
 
     /**
@@ -384,8 +393,20 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
      * @return the resulting ItemStack for the cast (a pickaxe head) or `ItemStack.EMPTY` if no match
      */
     private ItemStack getResultFromCast(ItemStack cast) {
-        if (cast.isOf(ModItems.PICKAXE_HEAD_CAST)) {
-            return new ItemStack(ModItems.CS_PICKAXE_HEAD);
+        if (metalType == 0) {
+            if (cast.isOf(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.CS_PICKAXE_HEAD);
+            if (cast.isOf(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.CS_AXE_HEAD);
+            if (cast.isOf(ModItems.SHOVEL_HEAD_CAST)) return new ItemStack(ModItems.CS_SHOVEL_HEAD);
+            if (cast.isOf(ModItems.SWORD_HEAD_CAST)) return new ItemStack(ModItems.CS_SWORD_HEAD);
+            if (cast.isOf(ModItems.HOE_HEAD_CAST)) return new ItemStack(ModItems.CS_HOE_HEAD);
+            if (cast.isOf(ModItems.SPEAR_HEAD_CAST)) return new ItemStack(ModItems.CS_SPEAR_HEAD);
+        } else if (metalType == 1) {
+            if (cast.isOf(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.MI_PICKAXE_HEAD);
+            if (cast.isOf(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.MI_AXE_HEAD);
+            if (cast.isOf(ModItems.SHOVEL_HEAD_CAST)) return new ItemStack(ModItems.MI_SHOVEL_HEAD);
+            if (cast.isOf(ModItems.SWORD_HEAD_CAST)) return new ItemStack(ModItems.MI_SWORD_HEAD);
+            if (cast.isOf(ModItems.HOE_HEAD_CAST)) return new ItemStack(ModItems.MI_HOE_HEAD);
+            if (cast.isOf(ModItems.SPEAR_HEAD_CAST)) return new ItemStack(ModItems.MI_SPEAR_HEAD);
         }
         return ItemStack.EMPTY;
     }

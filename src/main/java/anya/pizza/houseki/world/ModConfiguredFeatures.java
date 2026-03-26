@@ -2,6 +2,7 @@ package anya.pizza.houseki.world;
 
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.ModBlocks;
+import anya.pizza.houseki.world.feature.ModFeatures;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -33,6 +34,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_LIMESTONE_KEY = registerKey("ore_limestone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_SLATE_KEY = registerKey("ore_slate");
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_BAUXITE_KEY = registerKey("ore_bauxite");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> METEORITE_KEY = registerKey("meteorite");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -101,6 +103,8 @@ public class ModConfiguredFeatures {
         register(context, ORE_LIMESTONE_KEY, Feature.ORE, new OreFeatureConfig(overworldLimestoneOre, 64));
         register(context, ORE_SLATE_KEY, Feature.ORE, new OreFeatureConfig(overworldSlateOre, 64));
         register(context, ORE_BAUXITE_KEY, Feature.ORE, new OreFeatureConfig(overworldBauxiteOre, 64));
+
+        register(context, METEORITE_KEY, ModFeatures.METEORITE, DefaultFeatureConfig.INSTANCE);
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
