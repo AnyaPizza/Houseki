@@ -5,6 +5,7 @@ import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -54,18 +55,16 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     //                handler.getScaledArrowProgress(), 16, 24, 16);
     //    }
     /**
-     * Renders the foundry GUI background and its dynamic progress indicators.
+     * Render the foundry GUI background and its dynamic indicators.
      *
-     * Draws the static GUI texture centered on screen, then overlays:
-     * - a melting flame graphic when the foundry is burning (height based on metal level),
-     * - the fluid (molten metal) fill gauge (vertical portion based on metal level),
-     * - a melt progress arrow (horizontal width based on melt progress),
-     * - a cast progress arrow (horizontal width based on cast progress).
+     * Draws the base GUI texture centered on screen and overlays the flame (when burning),
+     * the molten-metal fill gauge, melt and cast progress arrows, and an optional cooling
+     * item with a translucent overlay reflecting cooling progress.
      *
-     * @param context the drawing context to issue texture draw calls
-     * @param delta   partial tick time used for interpolated rendering updates
-     * @param mouseX  current mouse x position (screen coordinates)
-     * @param mouseY  current mouse y position (screen coordinates)
+     * @param context the drawing context used for texture and item rendering
+     * @param delta   partial tick time for interpolated rendering updates
+     * @param mouseX  current mouse x position on screen
+     * @param mouseY  current mouse y position on screen
      */
 
     @Override
@@ -82,7 +81,7 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
 
         if (handler.getMetalLevel() > 0) {
             int scaledFluidHeight = (int) ((float) handler.getMetalLevel() / handler.getMaxMetalLevel() * 50);
-            context.drawTexture(RenderPipelines.GUI_TEXTURED, FLUID_TEXTURE, x + 80, y + 20 + (50 - scaledFluidHeight), 0, 50 - scaledFluidHeight, 50, scaledFluidHeight, 16, 43);
+            context.drawTexture(RenderPipelines.GUI_TEXTURED, FLUID_TEXTURE, x + 80, y + 20 + (50 - scaledFluidHeight), 0, 50 - scaledFluidHeight, 16, scaledFluidHeight, 16, 43);
         }
 
         if (handler.getMeltProgress() > 0) {
@@ -93,6 +92,16 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
         if (handler.getCastProgress() > 0) {
             int castPixelWidth = (int) ((float) handler.getCastProgress() / handler.getMaxCastTime() * 24);
             context.drawTexture(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE2, x + 105, y + 35, 176, 30, castPixelWidth, 16, 256, 256);
+        }
+
+        ItemStack coolingStack = handler.getSlot(4).getStack();
+        if (!coolingStack.isEmpty()) {
+            context.drawItem(coolingStack, x + 134, y + 18);
+
+            float coolPercent = (float) handler.getCoolingProgress() / handler.getMaxCoolingProgress();
+            int alpha  = (int) ((1.0f - coolPercent) * 100);
+            int color = (alpha << 24) | 0xFFFFFF;
+            context.fill(x + 134, y + 18, x + 134 + 16, y + 18 + 16, color);
         }
         //renderProgressArrow(context, x, y);
         //renderProgressArrow2(context, x, y);
