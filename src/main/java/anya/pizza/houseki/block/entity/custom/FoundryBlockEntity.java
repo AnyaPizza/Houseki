@@ -137,8 +137,9 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
                     case 5 -> maxMetalLevel = value;
                     case 6 -> castProgress = value;
                     case 7 -> maxCastProgress = value;
-                    case 8 -> coolingProgress = value;
-                    case 9 -> maxCoolingProgress = value;
+                    case 8 -> isCrafting = (value != 0);
+                    case 9 -> coolingProgress = value;
+                    case 10 -> maxCoolingProgress = value;
                 }
             }
 
@@ -197,8 +198,8 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     protected void writeData(WriteView view) {
         super.writeData(view);
         Inventories.writeData(view, inventory);
-        view.putInt("progress", meltProgress);
-        view.putInt("max_progress", maxMeltProgress);
+        view.putInt("melt_progress", meltProgress);
+        view.putInt("max_melt_progress", maxMeltProgress);
         view.putInt("fuel_time", fuelTime);
         view.putInt("max_fuel_time", maxFuelTime);
         view.putInt("metal_level", metalLevel);
@@ -287,7 +288,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
             dirty = true;
         } else {
             if (meltProgress > 0) {
-                meltProgress = Math.max(10, meltProgress - 2); //Cool down
+                meltProgress = Math.max(0, meltProgress - 2); //Cool down
                 dirty = true;
             }
         }
