@@ -1,6 +1,5 @@
 package anya.pizza.houseki.block.entity.custom;
 
-import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.custom.FoundryBlock;
 import anya.pizza.houseki.block.entity.ImplementedInventory;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
@@ -317,8 +316,11 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
                 setStack(COOLING_SLOT, result.copy());
                 metalLevel -= 90;
                 castProgress = 0;
+                maxCoolingProgress = getCurrentRecipe()
+                        .map(r -> r.value().coolingTime())
+                        .orElse(FoundryRecipe.DEFAULT_COOLING_TIME);
                 coolingProgress = 1;
-                }
+            }
             dirty = true;
         } else {
             castProgress = 0;
@@ -390,9 +392,8 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         ItemStack expectedOutput = getResultFromCast(cast);
         if (expectedOutput.isEmpty()) return false;
 
-        return output.isEmpty() || (output.isOf(expectedOutput.getItem()) &&
-                output.getCount() + expectedOutput.getCount() <= output.getMaxCount() &&
-                getStack(COOLING_SLOT).isEmpty());
+        return getStack(COOLING_SLOT).isEmpty() && (output.isEmpty() || (output.isOf(expectedOutput.getItem())
+        && output.getCount() + expectedOutput.getCount() <= output.getMaxCount()));
     }
 
     /**
