@@ -67,18 +67,6 @@ public class FoundryScreenHandler extends ScreenHandler {
         });
         this.addSlot(new Slot(inventory, 3, 135, 53) { //Output Slot
             /**
-             * Prevents manual insertion into this output slot.
-             *
-             * @param player the player attempting to take items from the slot
-             * @return `true` if cooling is not active and the player may take items, `false` otherwise
-             */
-            @Override
-            public boolean canTakeItems(PlayerEntity player) {
-                return propertyDelegate.get(9) == 0;
-            }
-        });
-        this.addSlot(new Slot(inventory, 3, 135, 53) { //Output Slot
-            /**
              * Prevents any ItemStack from being inserted into this slot.
              *
              * @param stack the ItemStack being offered for insertion (ignored)
