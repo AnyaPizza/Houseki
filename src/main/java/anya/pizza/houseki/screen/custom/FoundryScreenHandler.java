@@ -67,18 +67,6 @@ public class FoundryScreenHandler extends ScreenHandler {
         });
         this.addSlot(new Slot(inventory, 3, 135, 53) { //Output Slot
             /**
-             * Prevents manual insertion into this output slot.
-             *
-             * @param player the player attempting to take items from the slot
-             * @return `true` if cooling is not active and the player may take items, `false` otherwise
-             */
-            @Override
-            public boolean canTakeItems(PlayerEntity player) {
-                return propertyDelegate.get(9) == 0;
-            }
-        });
-        this.addSlot(new Slot(inventory, 3, 135, 53) { //Output Slot
-            /**
              * Prevents any ItemStack from being inserted into this slot.
              *
              * @param stack the ItemStack being offered for insertion (ignored)
@@ -162,9 +150,12 @@ public class FoundryScreenHandler extends ScreenHandler {
                 slot.onQuickTransfer(originalStack, itemStack);
             } else {
                 // All cast items go to the cast slot
+                // All cast items (tool heads + armor) go to the cast slot
                 if (originalStack.isOf(ModItems.PICKAXE_HEAD_CAST) || originalStack.isOf(ModItems.AXE_HEAD_CAST)
                         || originalStack.isOf(ModItems.SHOVEL_HEAD_CAST) || originalStack.isOf(ModItems.SWORD_HEAD_CAST)
-                        || originalStack.isOf(ModItems.HOE_HEAD_CAST) || originalStack.isOf(ModItems.SPEAR_HEAD_CAST)) {
+                        || originalStack.isOf(ModItems.HOE_HEAD_CAST) || originalStack.isOf(ModItems.SPEAR_HEAD_CAST)
+                        || originalStack.isOf(ModItems.HELMET_CAST) || originalStack.isOf(ModItems.CHESTPLATE_CAST)
+                        || originalStack.isOf(ModItems.LEGGINGS_CAST) || originalStack.isOf(ModItems.BOOTS_CAST)) {
                     if (!this.insertItem(originalStack, 2, 3, false)) {
                         return ItemStack.EMPTY;
                     }
