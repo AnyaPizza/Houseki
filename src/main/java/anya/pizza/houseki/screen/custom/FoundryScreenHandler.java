@@ -32,7 +32,7 @@ public class FoundryScreenHandler extends ScreenHandler {
      * @throws IllegalStateException if the block entity at the given position is not a FoundryBlockEntity
      */
     public FoundryScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(12));
+        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(13));
     }
 
     /**
@@ -58,8 +58,16 @@ public class FoundryScreenHandler extends ScreenHandler {
         this.blockEntity = foundryEntity;
         this.addSlot(new Slot(inventory, 0, 26, 18)); //Input Slot
         this.addSlot(new Slot(inventory, 1, 26, 53)); //Fuel Slot
-        this.addSlot(new Slot(inventory, 2, 134, 18) { /**
-             * Allows a player to take items from the cast slot only when the foundry reports no active cooling.
+        this.addSlot(new Slot(inventory, 2, 134, 18) { //Cast Slot
+            @Override
+            public boolean canTakeItems(PlayerEntity player) {
+                // Locked while casting or cooling
+                return propertyDelegate.get(6) == 0 && propertyDelegate.get(9) == 0;
+            }
+        });
+        this.addSlot(new Slot(inventory, 3, 135, 53) { //Output Slot
+            /**
+             * Prevents manual insertion into this output slot.
              *
              * @param player the player attempting to take items from the slot
              * @return `true` if cooling is not active and the player may take items, `false` otherwise
@@ -82,22 +90,10 @@ public class FoundryScreenHandler extends ScreenHandler {
             }
         });
         this.addSlot(new Slot(inventory, 4, -1000, -1000) {
-            /**
-             * Prevents any ItemStack from being inserted into this slot.
-             *
-             * @param stack the ItemStack being offered for insertion (ignored)
-             * @return `false` always, indicating insertion is disallowed
-             */
             @Override
             public boolean canInsert(ItemStack stack) {
                 return false;
             }
-            /**
-             * Determine whether the specified player is allowed to take items from this slot.
-             *
-             * @param playerEntity the player attempting to take items
-             * @return `true` if the player may take items from this slot, `false` otherwise
-             */
             @Override
             public boolean canTakeItems(PlayerEntity playerEntity) {
                 return false;
@@ -108,78 +104,20 @@ public class FoundryScreenHandler extends ScreenHandler {
         addProperties(arrayPropertyDelegate);
     }
 
-    /**
- * Gets the current melt progress of the foundry.
- *
- * @return the current melt progress value (propertyDelegate index 0)
- */
-public int getMeltProgress() { return this.propertyDelegate.get(0); }
-    /**
- * Gets the maximum melt progress required to complete the melting process.
- *
- * @return the maximum melt progress required to finish melting
- */
-public int getMaxMeltProgress() { return this.propertyDelegate.get(1); }
-    /**
- * Get the current remaining fuel burn time.
- *
- * @return the current fuel time in ticks
- */
-public int getFuelTime() { return this.propertyDelegate.get(2); }
-    /**
- * Gets the maximum fuel time for the foundry.
- *
- * @return the maximum fuel time in ticks.
- */
-public int getMaxFuelTime() { return this.propertyDelegate.get(3); }
-    /**
- * Gets the current metal level in the foundry.
- *
- * @return the current metal level stored in the property's index 4
- */
-public int getMetalLevel() { return this.propertyDelegate.get(4); }
-    /**
- * Retrieves the maximum metal level for the foundry.
- *
- * @return the maximum metal level
- */
-public int getMaxMetalLevel() { return this.propertyDelegate.get(5); }
-    /**
- * Gets the current cast progress used by the GUI.
- *
- * @return the current cast progress (property delegate index 6)
- */
-public int getCastProgress() { return this.propertyDelegate.get(6); }
-    /**
- * Gets the maximum cast time for the current cast operation.
- *
- * @return the maximum cast time in ticks
- */
-public int getMaxCastTime() { return this.propertyDelegate.get(7); }
-    /**
- * Gets the current cooling progress for the foundry.
- *
- * @return the current cooling progress as an integer from the property delegate
- */
-public int getCoolingProgress() { return this.propertyDelegate.get(9); }
-    /**
- * Gets the maximum cooling progress for the foundry's GUI.
- *
- * @return the maximum cooling progress value
- */
-public int getMaxCoolingProgress() { return this.propertyDelegate.get(10); }
-    /**
- * Indicates whether the foundry currently has active fuel burn.
- *
- * @return `true` if the foundry has fuel time remaining, `false` otherwise.
- */
-public boolean isBurning() { return this.propertyDelegate.get(2) > 0; }
-    /**
- * Checks if the foundry is currently performing a crafting operation.
- *
- * @return `true` if the foundry is performing a craft operation, `false` otherwise.
- */
-public boolean isCrafting() { return propertyDelegate.get(8) > 0; }
+    public int getMeltProgress() { return this.propertyDelegate.get(0); }
+    public int getMaxMeltProgress() { return this.propertyDelegate.get(1); }
+    public int getFuelTime() { return this.propertyDelegate.get(2); }
+    public int getMaxFuelTime() { return this.propertyDelegate.get(3); }
+    public int getSteelLevel() { return this.propertyDelegate.get(4); }
+    public int getMaxMetalLevel() { return this.propertyDelegate.get(5); }
+    public int getCastProgress() { return this.propertyDelegate.get(6); }
+    public int getMaxCastTime() { return this.propertyDelegate.get(7); }
+    public int getCoolingProgress() { return this.propertyDelegate.get(9); }
+    public int getMaxCoolingProgress() { return this.propertyDelegate.get(10); }
+    public int getMeteoricIronLevel() { return this.propertyDelegate.get(11); }
+    public int getActiveMetalType() { return this.propertyDelegate.get(12); }
+    public boolean isBurning() { return this.propertyDelegate.get(2) > 0; }
+    public boolean isCrafting() { return propertyDelegate.get(8) > 0; }
 
     /**
      * Computes the horizontal melt progress for the UI arrow, scaled to a 24-pixel width.
@@ -208,13 +146,6 @@ public boolean isCrafting() { return propertyDelegate.get(8) > 0; }
         return maxFuelTime > 0 && fuelTime > 0 ? (fuelTime * progressPixelSize) / maxFuelTime : 0;
     }
 
-    /**
-     * Handles shift-click (quick move) transfers between the foundry container slots and the player's inventory.
-     *
-     * @param player  the player performing the quick-move action
-     * @param invSlot the index of the clicked slot within this screen handler's slot list
-     * @return the item stack that was moved (a copy of the original); `ItemStack.EMPTY` if no transfer occurred
-     */
     @Override
     public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack itemStack = ItemStack.EMPTY;
@@ -230,7 +161,10 @@ public boolean isCrafting() { return propertyDelegate.get(8) > 0; }
                 }
                 slot.onQuickTransfer(originalStack, itemStack);
             } else {
-                if (originalStack.isOf(ModItems.PICKAXE_HEAD_CAST)) {
+                // All cast items go to the cast slot
+                if (originalStack.isOf(ModItems.PICKAXE_HEAD_CAST) || originalStack.isOf(ModItems.AXE_HEAD_CAST)
+                        || originalStack.isOf(ModItems.SHOVEL_HEAD_CAST) || originalStack.isOf(ModItems.SWORD_HEAD_CAST)
+                        || originalStack.isOf(ModItems.HOE_HEAD_CAST) || originalStack.isOf(ModItems.SPEAR_HEAD_CAST)) {
                     if (!this.insertItem(originalStack, 2, 3, false)) {
                         return ItemStack.EMPTY;
                     }
@@ -238,7 +172,7 @@ public boolean isCrafting() { return propertyDelegate.get(8) > 0; }
                     if (!this.insertItem(originalStack, 1, 2, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (originalStack.isOf(ModItems.STEEL)) {
+                } else if (originalStack.isOf(ModItems.STEEL) || originalStack.isOf(ModItems.METEORIC_IRON_INGOT)) {
                     if (!this.insertItem(originalStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
@@ -277,6 +211,18 @@ public boolean isCrafting() { return propertyDelegate.get(8) > 0; }
     @Override
     public boolean canUse(PlayerEntity player) {
         return inventory.canPlayerUse(player);
+    }
+
+    // Handle button clicks from the client (metal type cycling)
+    @Override
+    public boolean onButtonClick(PlayerEntity player, int id) {
+        if (id == 0) {
+            // Block switching while casting or cooling is in progress
+            if (propertyDelegate.get(6) > 0 || propertyDelegate.get(9) > 0) return false;
+            blockEntity.cycleActiveMetalType();
+            return true;
+        }
+        return false;
     }
 
     private void addPlayerInventory(PlayerInventory playerInventory) {

@@ -238,6 +238,14 @@ public class ModItems {
     public static final Item CS_HOE_HEAD = registerItem("cast_steel_hoe_head", setting -> new Item(setting.maxCount(1)));
     public static final Item CS_SPEAR_HEAD = registerItem("cast_steel_spear_head", setting -> new Item(setting.maxCount(1)));
 
+    //Meteoric Iron Heads
+    public static final Item MI_PICKAXE_HEAD = registerItem("meteoric_iron_pickaxe_head", setting -> new Item(setting.maxCount(1)));
+    public static final Item MI_AXE_HEAD = registerItem("meteoric_iron_axe_head", setting -> new Item(setting.maxCount(1)));
+    public static final Item MI_SHOVEL_HEAD = registerItem("meteoric_iron_shovel_head", setting -> new Item(setting.maxCount(1)));
+    public static final Item MI_SWORD_HEAD = registerItem("meteoric_iron_sword_head", setting -> new Item(setting.maxCount(1)));
+    public static final Item MI_HOE_HEAD = registerItem("meteoric_iron_hoe_head", setting -> new Item(setting.maxCount(1)));
+    public static final Item MI_SPEAR_HEAD = registerItem("meteoric_iron_spear_head", setting -> new Item(setting.maxCount(1)));
+
     /**
      * Register an Item in the global item registry under this mod's namespace.
      *

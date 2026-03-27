@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 948372615,
+    "separation": 56,
+    "spacing": 96
+  },
+  "structures": [
+    {
+      "structure": "houseki:meteorite",
+      "weight": 1
+    }
+  ]
+}

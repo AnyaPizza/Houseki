@@ -208,6 +208,13 @@ public class ModItemGroups {
 
                         entries.add(ModItems.CS_SPEAR_HEAD);
 
+                        entries.add(ModItems.MI_PICKAXE_HEAD);
+                        entries.add(ModItems.MI_AXE_HEAD);
+                        entries.add(ModItems.MI_SHOVEL_HEAD);
+                        entries.add(ModItems.MI_SWORD_HEAD);
+                        entries.add(ModItems.MI_HOE_HEAD);
+                        entries.add(ModItems.MI_SPEAR_HEAD);
+
                     }).build());
 
     public static final ItemGroup HOUSEKI_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,

@@ -265,5 +265,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CS_SWORD_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.CS_HOE_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.CS_SPEAR_HEAD, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.MI_PICKAXE_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MI_AXE_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MI_SHOVEL_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MI_SWORD_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MI_HOE_HEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MI_SPEAR_HEAD, Models.GENERATED);
     }
 }

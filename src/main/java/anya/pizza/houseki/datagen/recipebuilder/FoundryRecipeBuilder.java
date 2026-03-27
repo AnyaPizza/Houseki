@@ -27,14 +27,6 @@ public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
     @Nullable
     public String group;
 
-    /**
-     * Creates a FoundryRecipeBuilder configured with the given ingredient, result stack, and timing values.
-     *
-     * @param input      the ingredient required by the foundry recipe
-     * @param output     the resulting item stack produced by the recipe
-     * @param meltTime   number of ticks required to melt the input
-     * @param coolingTime number of ticks required to cool the output
-     */
     public FoundryRecipeBuilder(Ingredient input, ItemStack output, int meltTime, int coolingTime) {
         this.input = input;
         this.output = output;
@@ -42,15 +34,6 @@ public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
         this.coolingTime = coolingTime;
     }
 
-    /**
-     * Create a FoundryRecipeBuilder configured with the specified ingredient, result stack, melt time, and cooling time.
-     *
-     * @param input       the ingredient required by the foundry recipe
-     * @param output      the resulting item stack produced by the recipe
-     * @param meltTime    the melt duration value for the recipe
-     * @param coolingTime the cooling duration value for the recipe
-     * @return a new FoundryRecipeBuilder initialized with the provided values
-     */
     public static FoundryRecipeBuilder create(Ingredient input, ItemStack output, int meltTime, int coolingTime) {
         return new FoundryRecipeBuilder(input, output, meltTime, coolingTime);
     }

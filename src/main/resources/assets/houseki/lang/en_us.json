@@ -243,6 +243,12 @@
   "item.houseki.cast_steel_sword_head": "Cast Steel Sword Head",
   "item.houseki.cast_steel_hoe_head": "Cast Steel Hoe Head",
   "item.houseki.cast_steel_spear_head": "Cast Steel Spear Head",
+  "item.houseki.meteoric_iron_pickaxe_head": "Meteoric Iron Pickaxe Head",
+  "item.houseki.meteoric_iron_axe_head": "Meteoric Iron Axe Head",
+  "item.houseki.meteoric_iron_shovel_head": "Meteoric Iron Shovel Head",
+  "item.houseki.meteoric_iron_sword_head": "Meteoric Iron Sword Head",
+  "item.houseki.meteoric_iron_hoe_head": "Meteoric Iron Hoe Head",
+  "item.houseki.meteoric_iron_spear_head": "Meteoric Iron Spear Head",
 
   "tag.item.houseki.drills": "Drills",
   "tag.item.houseki.drill_bits": "Drill Bits",

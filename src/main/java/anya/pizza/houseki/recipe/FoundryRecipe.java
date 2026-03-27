@@ -21,11 +21,6 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
     public static final int DEFAULT_CAST_TIME = 200;
     public static final int DEFAULT_COOLING_TIME = 200;
 
-    /**
-     * Provides the recipe's ingredient list.
-     *
-     * @return a DefaultedList containing the single `Ingredient` required by this recipe
-     */
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> list = DefaultedList.ofSize(1);
         list.add(this.inputCastItem);

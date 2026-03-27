@@ -88,6 +88,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.SCHEELITE), new ItemStack(ModItems.TUNGSTEN_POWDER), 250)
                         .offerTo(exporter, String.valueOf(Identifier.of("houseki", "scheelite_crushing")));
 
+                CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.METEORIC_IRON_INGOT), new ItemStack(Items.RAW_IRON), 300).chance(0.35)
+                        .auxiliary(new ItemStack(ModItems.NICKEL_POWDER)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "meteoric_iron_crushing")));
+
                 // Smithing Upgrades
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.PINKU_HELMET);
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.PINKU_CHESTPLATE);
