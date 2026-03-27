@@ -312,11 +312,10 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
             meltProgress++;
             if (meltProgress >= maxMeltProgress) {
                 ItemStack meltedInput = getStack(INPUT_SLOT);
-                // Add to the correct metal tank based on input type
                 if (meltedInput.isOf(ModItems.STEEL)) {
-                    steelLevel += 90;
+                    steelLevel += 100;
                 } else if (meltedInput.isOf(ModItems.METEORIC_IRON_INGOT)) {
-                    meteoricIronLevel += 90;
+                    meteoricIronLevel += 100;
                 }
                 meltedInput.decrement(1);
                 meltProgress = 0;
@@ -337,9 +336,9 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
                 setStack(COOLING_SLOT, result.copy());
                 // Drain from the active metal's tank
                 if (activeMetalType == METAL_STEEL) {
-                    steelLevel -= 90;
+                    steelLevel -= 100;
                 } else {
-                    meteoricIronLevel -= 90;
+                    meteoricIronLevel -= 100;
                 }
                 castProgress = 0;
                 maxCoolingProgress = getCurrentRecipe()
@@ -398,12 +397,11 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     private boolean canMelt() {
         ItemStack input = getStack(INPUT_SLOT);
-        // Each metal fills its own tank
         if (input.isOf(ModItems.STEEL)) {
-            return steelLevel + 90 <= maxMetalLevel;
+            return steelLevel + 100 <= maxMetalLevel;
         }
         if (input.isOf(ModItems.METEORIC_IRON_INGOT)) {
-            return meteoricIronLevel + 90 <= maxMetalLevel;
+            return meteoricIronLevel + 100 <= maxMetalLevel;
         }
         return false;
     }
@@ -423,7 +421,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
 
         // Check if the active metal has enough for casting
         int activeLevel = activeMetalType == METAL_STEEL ? steelLevel : meteoricIronLevel;
-        if (activeLevel < 90) return false;
+        if (activeLevel < 100) return false;
 
         ItemStack expectedOutput = getResultFromCast(cast);
         if (expectedOutput.isEmpty()) return false;
@@ -432,32 +430,17 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         && output.getCount() + expectedOutput.getCount() <= output.getMaxCount()));
     }
 
+    /**
+     * Determines whether the cooled item can be transferred from the cooling slot into the output slot.
+     *
+     * @return `true` if the output slot is empty or already contains the same item and has enough remaining space to accommodate the cooled item's entire stack, `false` otherwise.
+     */
     private boolean canFinishCooling() {
         ItemStack coolingItem = getStack(COOLING_SLOT);
         ItemStack output = getStack(OUTPUT_SLOT);
         return output.isEmpty() || (output.isOf(coolingItem.getItem()) && output.getCount() +
                 coolingItem.getCount() <= output.getMaxCount());
     }
-
-    /**
-     * Produce the item corresponding to the current cast and apply its effects.
-     *
-     * Inserts the cast's mapped result into the OUTPUT_SLOT (incrementing the existing stack if present)
-     * and subtracts 90 from metalLevel. If the cast does not map to a valid result, only metalLevel is
-     * reduced and the output slot remains unchanged.
-     */
-    //private void craftItem() {
-    //    ItemStack cast = getStack(CAST_SLOT);
-    //    ItemStack output = getResultFromCast(cast);
-    //    metalLevel -= 90;
-    //    ItemStack currentOutput = getStack(OUTPUT_SLOT);
-    //    if (currentOutput.isEmpty()) {
-    //        setStack(OUTPUT_SLOT, output.copy());
-    //    } else {
-    //        currentOutput.increment(output.getCount());
-    //    }
-    //    inventory.get(CAST_SLOT).decrement(1);
-    //}
 
     /**
      * Determine the produced output for a given cast item used in the foundry.
@@ -578,6 +561,12 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         return BlockEntityUpdateS2CPacket.create(this);
     }
 
+    /**
+     * Produce the block entity's initial NBT used when the chunk is sent to clients.
+     *
+     * @param registries a registry lookup used when constructing the NBT representation
+     * @return an NbtCompound containing this block entity's initial state for chunk synchronization
+     */
     @Override
     public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registries) {
         return createNbt(registries);

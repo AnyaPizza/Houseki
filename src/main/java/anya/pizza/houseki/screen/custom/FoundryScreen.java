@@ -42,8 +42,6 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
     protected void init() {
         super.init();
         titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
-        //titleY = -4;
-        //backgroundHeight = 196;
     }
 
     /**
@@ -118,32 +116,7 @@ public class FoundryScreen extends HandledScreen<FoundryScreenHandler> {
             int fillWidth = (int) (barPercent * barWidth);
             context.fill(barX, barY, barX + fillWidth, barY + barHeight, 0xFF6BB5FF);
         }
-        //renderProgressArrow(context, x, y);
-        //renderProgressArrow2(context, x, y);
-        //renderProgressMelting(context, x, y);
     }
-
-    //private void renderProgressArrow(DrawContext context, int x, int y) {
-    //    if(handler.getPropertyDelegate().get(0) > 0 && handler.isCrafting()) {
-    //        context.drawTexture(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE, x + 30, y + 50, 0, 0,
-    //                handler.getScaledArrowProgress(), 16, 24, 16);
-    //    }
-    //}
-
-    //private void renderProgressArrow2(DrawContext context, int x, int y) {
-    //    if(handler.getPropertyDelegate().get(0) > 0 && handler.isCrafting()) {
-    //        context.drawTexture(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE2, x + 105, y + 50, 0, 0,
-    //                handler.getScaledArrowProgress(), 16, 24, 16);
-    //    }
-    //}
-
-    //private void renderProgressMelting(DrawContext context, int x, int y) {
-    //    if (handler.isBurning()) {
-    //        int progress = handler.getScaledFuelProgress();
-    //        context.drawTexture(RenderPipelines.GUI_TEXTURED, MELTING_TEXTURE, x + 27, y + 50 - progress, 0,
-    //                14 - progress, 14, progress, 14, 14);
-    //    }
-    //}
 
     /**
      * Renders the screen background, standard UI components, and hover tooltips; shows a "Molten Steel" tooltip when the mouse is over the fluid tank.

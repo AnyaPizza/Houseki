@@ -230,7 +230,7 @@ public class ModItems {
     public static final Item LEGGINGS_CAST = registerItem("leggings_cast", setting -> new Item(setting.recipeRemainder(Items.IRON_LEGGINGS).maxCount(1)));
     public static final Item BOOTS_CAST = registerItem("boots_cast", setting -> new Item(setting.recipeRemainder(Items.IRON_BOOTS).maxCount(1)));
 
-    //Heads
+    //Cast Steel Heads
     public static final Item CS_PICKAXE_HEAD = registerItem("cast_steel_pickaxe_head", setting -> new Item(setting.maxCount(1)));
     public static final Item CS_AXE_HEAD = registerItem("cast_steel_axe_head", setting -> new Item(setting.maxCount(1)));
     public static final Item CS_SHOVEL_HEAD = registerItem("cast_steel_shovel_head", setting -> new Item(setting.maxCount(1)));

@@ -207,7 +207,6 @@ public class ModItemGroups {
                         entries.add(ModItems.CS_HOE_HEAD);
 
                         entries.add(ModItems.CS_SPEAR_HEAD);
-
                         entries.add(ModItems.MI_PICKAXE_HEAD);
                         entries.add(ModItems.MI_AXE_HEAD);
                         entries.add(ModItems.MI_SHOVEL_HEAD);
