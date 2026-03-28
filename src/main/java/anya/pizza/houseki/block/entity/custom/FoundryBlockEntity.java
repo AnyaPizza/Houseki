@@ -4,10 +4,9 @@ import anya.pizza.houseki.block.custom.FoundryBlock;
 import anya.pizza.houseki.block.entity.ImplementedInventory;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.item.ModItems;
-import anya.pizza.houseki.recipe.FoundryRecipe;
-import anya.pizza.houseki.recipe.FoundryRecipeCastInput;
-import anya.pizza.houseki.recipe.ModRecipes;
+import anya.pizza.houseki.recipe.*;
 import anya.pizza.houseki.screen.custom.FoundryScreenHandler;
+import anya.pizza.houseki.util.ModTags;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -50,7 +49,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     private static final int COOLING_SLOT = 4;
     protected final PropertyDelegate propertyDelegate;
     private int meltProgress = 0;
-    private int maxMeltProgress = FoundryRecipe.DEFAULT_MELT_TIME;
+    private int maxMeltProgress = FoundryMeltingRecipe.DEFAULT_MELT_TIME;
     private int fuelTime = 0;
     private int maxFuelTime = 0;
     // Metal type constants
@@ -62,9 +61,9 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     private int maxMetalLevel = 1000; // 100 = 1 ingot, holds 10 ingots per metal type
     private int activeMetalType = METAL_STEEL; // selected metal for casting
     private int castProgress = 0;
-    private int maxCastProgress = FoundryRecipe.DEFAULT_CAST_TIME;
+    private int maxCastProgress = FoundryCastingRecipe.DEFAULT_CAST_TIME;
     private int coolingProgress = 0;
-    private int maxCoolingProgress = FoundryRecipe.DEFAULT_COOLING_TIME;
+    private int maxCoolingProgress = FoundryCastingRecipe.DEFAULT_COOLING_TIME;
     private int lastValidFuelTime = 0;
     private boolean isCrafting = false;
     private ItemStack lastInput = ItemStack.EMPTY;
@@ -341,9 +340,9 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
                     meteoricIronLevel -= 100;
                 }
                 castProgress = 0;
-                maxCoolingProgress = getCurrentRecipe()
+                maxCoolingProgress = getCurrentCastingRecipe()
                         .map(r -> r.value().coolingTime())
-                        .orElse(FoundryRecipe.DEFAULT_COOLING_TIME);
+                        .orElse(FoundryCastingRecipe.DEFAULT_COOLING_TIME);
                 coolingProgress = 1;
             }
             dirty = true;
@@ -487,25 +486,6 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
     }
 
     /**
-     * Conditionally insert or merge an ItemStack into the given inventory slot.
-     *
-     * If `result` is empty nothing is changed. When the probabilistic check against `chance` succeeds,
-     * the method places `result` into the slot if it is empty, or increases the existing stack's count by
-     * `result.getCount()` if the slot already contains the same item.
-     *
-     * @param slot   the index of the target inventory slot
-     * @param result the ItemStack to insert or merge into the slot
-     * @param chance a probability in the range [0, 1] that the insertion will occur
-     */
-    //private void insertOrIncrement(int slot, ItemStack result, double chance) {
-    //    if (result.isEmpty() || Math.random() > chance) return;
-    //    ItemStack slotStack = inventory.get(slot);
-    //    if (slotStack.isEmpty()) {
-    //        inventory.set(slot, result);
-    //    } else {
-    //        slotStack.increment(result.getCount());
-    //    }
-    /**
      * Finds the first foundry recipe that matches the block entity's current input.
      *
      * Uses the server world's recipe manager with a FoundryRecipeCastInput constructed from the inventory's first slot.
@@ -513,9 +493,15 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
      * @return an Optional containing the first matching RecipeEntry<FoundryRecipe>, or empty if no match is found
      */
 
-    private Optional<RecipeEntry<FoundryRecipe>> getCurrentRecipe() {
+    private Optional<RecipeEntry<FoundryMeltingRecipe>> getCurrentMeltingRecipe() {
         return ((ServerWorld) this.getWorld()).getRecipeManager()
-                .getFirstMatch(ModRecipes.FOUNDRY_TYPE, new FoundryRecipeCastInput(inventory.getFirst()), this.getWorld());
+                .getFirstMatch(ModRecipes.FOUNDRY_MELTING_TYPE, new FoundryRecipeInput(inventory.getFirst()), this.getWorld());
+
+    }
+
+    private Optional<RecipeEntry<FoundryCastingRecipe>> getCurrentCastingRecipe() {
+        return ((ServerWorld) this.getWorld()).getRecipeManager()
+                .getFirstMatch(ModRecipes.FOUNDRY_CASTING_TYPE, new FoundryRecipeCastInput(inventory.getFirst()), this.getWorld());
 
     }
 
@@ -540,7 +526,11 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedScreenHan
         if (slot == FUEL_SLOT) return getFuelTime(stack) > 0;
         if (slot == INPUT_SLOT) {
             return ((ServerWorld) this.getWorld()).getRecipeManager()
-                    .getFirstMatch(ModRecipes.FOUNDRY_TYPE, new FoundryRecipeCastInput(stack), world).isPresent();
+                    .getFirstMatch(ModRecipes.FOUNDRY_MELTING_TYPE, new FoundryRecipeInput(stack), world).isPresent();
+        }
+        if (slot == CAST_SLOT) {
+            return ((ServerWorld) this.getWorld()).getRecipeManager()
+                    .getFirstMatch(ModRecipes.FOUNDRY_CASTING_TYPE, new FoundryRecipeCastInput(stack), world).isPresent();
         }
         return false;
     }

@@ -16,28 +16,28 @@ import net.minecraft.world.World;
 import java.util.List;
 
 
-public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int meltTime, int coolingTime) implements Recipe<FoundryRecipeCastInput> {
+public record FoundryMeltingRecipe(Ingredient inputMeltingItem, ItemStack output, int meltTime /*int coolingTime*/) implements Recipe<FoundryRecipeInput> {
     public static final int DEFAULT_MELT_TIME = 200;
-    public static final int DEFAULT_CAST_TIME = 200;
-    public static final int DEFAULT_COOLING_TIME = 200;
+    //public static final int DEFAULT_CAST_TIME = 200;
+    //public static final int DEFAULT_COOLING_TIME = 200;
 
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> list = DefaultedList.ofSize(1);
-        list.add(this.inputCastItem);
+        list.add(this.inputMeltingItem);
         return list;
     }
 
     @Override
-    public boolean matches(FoundryRecipeCastInput input, World world) {
+    public boolean matches(FoundryRecipeInput input, World world) {
         if (world.isClient()) {
             return false;
         }
 
-        return inputCastItem.test(input.getStackInSlot(0));
+        return inputMeltingItem.test(input.getStackInSlot(0));
     }
 
     @Override
-    public ItemStack craft(FoundryRecipeCastInput input, RegistryWrapper.WrapperLookup lookup) {
+    public ItemStack craft(FoundryRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
         return output.copy();
     }
 
@@ -46,8 +46,8 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
     }
 
     @Override
-    public RecipeSerializer<? extends Recipe<FoundryRecipeCastInput>> getSerializer() {
-        return ModRecipes.FOUNDRY_SERIALIZER;
+    public RecipeSerializer<? extends Recipe<FoundryRecipeInput>> getSerializer() {
+        return ModRecipes.FOUNDRY_MELTING_SERIALIZER;
     }
 
     /**
@@ -56,8 +56,8 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
      * @return `ModRecipes.FOUNDRY_TYPE`, the recipe type used for foundry recipes.
      */
     @Override
-    public RecipeType<? extends Recipe<FoundryRecipeCastInput>> getType() {
-        return ModRecipes.FOUNDRY_TYPE;
+    public RecipeType<? extends Recipe<FoundryRecipeInput>> getType() {
+        return ModRecipes.FOUNDRY_MELTING_TYPE;
     }
 
     /**
@@ -77,21 +77,21 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
         return null;
     }
 
-    public static class Serializer implements RecipeSerializer<FoundryRecipe> {
-        public static final MapCodec<FoundryRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.CODEC.fieldOf("ingredient").forGetter(FoundryRecipe::inputCastItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(FoundryRecipe::output),
-                Codec.INT.optionalFieldOf("meltTime", DEFAULT_MELT_TIME).forGetter(FoundryRecipe::meltTime),
-                Codec.INT.optionalFieldOf("coolingTime", DEFAULT_COOLING_TIME).forGetter(FoundryRecipe::coolingTime)
-        ).apply(inst, FoundryRecipe::new));
+    public static class Serializer implements RecipeSerializer<FoundryMeltingRecipe> {
+        public static final MapCodec<FoundryMeltingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+                Ingredient.CODEC.fieldOf("ingredient").forGetter(FoundryMeltingRecipe::inputMeltingItem),
+                ItemStack.CODEC.fieldOf("result").forGetter(FoundryMeltingRecipe::output),
+                Codec.INT.optionalFieldOf("meltTime", DEFAULT_MELT_TIME).forGetter(FoundryMeltingRecipe::meltTime)
+                //Codec.INT.optionalFieldOf("coolingTime", DEFAULT_COOLING_TIME).forGetter(FoundryMeltingRecipe::coolingTime)
+        ).apply(inst, FoundryMeltingRecipe::new));
 
-        public static final PacketCodec<RegistryByteBuf, FoundryRecipe> STREAM_CODEC =
+        public static final PacketCodec<RegistryByteBuf, FoundryMeltingRecipe> STREAM_CODEC =
                 PacketCodec.tuple(
-                        Ingredient.PACKET_CODEC, FoundryRecipe::inputCastItem,
-                        ItemStack.PACKET_CODEC, FoundryRecipe::output,
-                        PacketCodecs.INTEGER, FoundryRecipe::meltTime,
-                        PacketCodecs.INTEGER, FoundryRecipe::coolingTime,
-                        FoundryRecipe::new);
+                        Ingredient.PACKET_CODEC, FoundryMeltingRecipe::inputMeltingItem,
+                        ItemStack.PACKET_CODEC, FoundryMeltingRecipe::output,
+                        PacketCodecs.INTEGER, FoundryMeltingRecipe::meltTime,
+                        //PacketCodecs.INTEGER, FoundryMeltingRecipe::coolingTime,
+                        FoundryMeltingRecipe::new);
 
         /**
          * Provide the MapCodec used to serialize and deserialize FoundryRecipe instances.
@@ -99,7 +99,7 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
          * @return the MapCodec that encodes and decodes FoundryRecipe objects
          */
         @Override
-        public MapCodec<FoundryRecipe> codec() {
+        public MapCodec<FoundryMeltingRecipe> codec() {
             return CODEC;
         }
 
@@ -109,7 +109,7 @@ public record FoundryRecipe(Ingredient inputCastItem, ItemStack output, int melt
          * @return the packet codec that reads and writes a FoundryRecipe to a RegistryByteBuf
          */
         @Override
-        public PacketCodec<RegistryByteBuf, FoundryRecipe> packetCodec() {
+        public PacketCodec<RegistryByteBuf, FoundryMeltingRecipe> packetCodec() {
             return STREAM_CODEC;
         }
     }

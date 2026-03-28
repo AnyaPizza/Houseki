@@ -2,7 +2,9 @@ package anya.pizza.houseki.datagen;
 
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.datagen.recipebuilder.CrusherRecipeBuilder;
+import anya.pizza.houseki.datagen.recipebuilder.FoundryCastingRecipeBuilder;
 import anya.pizza.houseki.item.ModItems;
+import anya.pizza.houseki.recipe.FoundryCastingRecipe;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
@@ -91,6 +93,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
                 CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.SCHEELITE), new ItemStack(ModItems.TUNGSTEN_POWDER), 250)
                         .offerTo(exporter, String.valueOf(Identifier.of("houseki", "scheelite_crushing")));
+
+                FoundryCastingRecipeBuilder.create(Ingredient.ofItem(ModItems.PICKAXE_HEAD_CAST), new ItemStack(ModItems.PINKU), 0, 100, 100)
+                        .offerTo(exporter, String.valueOf(Identifier.of("houseki", "pickaxe_head_casting")));
 
                 // Smithing Upgrades
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.PINKU_HELMET);

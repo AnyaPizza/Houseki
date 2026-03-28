@@ -18,13 +18,23 @@ public class ModRecipes {
                 }
             });
 
-    public static final RecipeSerializer<FoundryRecipe> FOUNDRY_SERIALIZER = Registry.register(
-            Registries.RECIPE_SERIALIZER, Identifier.of(Houseki.MOD_ID, "foundry"), new FoundryRecipe.Serializer());
-    public static final RecipeType<FoundryRecipe> FOUNDRY_TYPE = Registry.register(
-            Registries.RECIPE_TYPE, Identifier.of(Houseki.MOD_ID, "foundry"), new RecipeType<>() {
+    public static final RecipeSerializer<FoundryMeltingRecipe> FOUNDRY_MELTING_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, Identifier.of(Houseki.MOD_ID, "foundry_melting"), new FoundryMeltingRecipe.Serializer());
+    public static final RecipeType<FoundryMeltingRecipe> FOUNDRY_MELTING_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, Identifier.of(Houseki.MOD_ID, "foundry_melting"), new RecipeType<>() {
                 @Override
                 public String toString() {
-                    return "foundry";
+                    return "foundry_melting";
+                }
+            });
+
+    public static final RecipeSerializer<FoundryCastingRecipe> FOUNDRY_CASTING_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, Identifier.of(Houseki.MOD_ID, "foundry_casting"), new FoundryCastingRecipe.Serializer());
+    public static final RecipeType<FoundryCastingRecipe> FOUNDRY_CASTING_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, Identifier.of(Houseki.MOD_ID, "foundry_casting"), new RecipeType<>() {
+                @Override
+                public String toString() {
+                    return "foundry_casting";
                 }
             });
 

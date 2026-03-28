@@ -3,13 +3,12 @@ package anya.pizza.houseki.recipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.input.RecipeInput;
 
-public record FoundryRecipeCastInput(ItemStack cast) implements RecipeInput {
-    @Override
-    public ItemStack getStackInSlot(int slot) {
-        if (slot !=2) {
+public record FoundryRecipeInput(ItemStack meltInput) implements RecipeInput {
+    public ItemStack getStackInSlot(int castSlot) {
+        if (castSlot !=2) {
             return ItemStack.EMPTY;
         }
-        return cast;
+        return meltInput;
     }
 
     @Override

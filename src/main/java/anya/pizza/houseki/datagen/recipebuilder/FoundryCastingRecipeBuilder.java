@@ -1,6 +1,7 @@
 package anya.pizza.houseki.datagen.recipebuilder;
 
-import anya.pizza.houseki.recipe.FoundryRecipe;
+import anya.pizza.houseki.recipe.FoundryCastingRecipe;
+import anya.pizza.houseki.recipe.FoundryMeltingRecipe;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.AdvancementRequirements;
@@ -18,24 +19,29 @@ import org.jspecify.annotations.Nullable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
+import static anya.pizza.houseki.block.entity.custom.FoundryBlockEntity.METAL_METEORIC_IRON;
+import static anya.pizza.houseki.block.entity.custom.FoundryBlockEntity.METAL_STEEL;
+
+public class FoundryCastingRecipeBuilder implements CraftingRecipeJsonBuilder {
     private final Ingredient input;
     private final ItemStack output;
-    private final int meltTime;
+    private int activeMetalType = METAL_STEEL;
+    private final int castTime;
     private final int coolingTime;
     private final Map<String, AdvancementCriterion<?>> criteria = new LinkedHashMap<>();
     @Nullable
     public String group;
 
-    public FoundryRecipeBuilder(Ingredient input, ItemStack output, int meltTime, int coolingTime) {
+    public FoundryCastingRecipeBuilder(Ingredient input, ItemStack output, int activeMetalType, int castTime, int coolingTime) {
         this.input = input;
         this.output = output;
-        this.meltTime = meltTime;
+        this.activeMetalType = activeMetalType;
+        this.castTime = castTime;
         this.coolingTime = coolingTime;
     }
 
-    public static FoundryRecipeBuilder create(Ingredient input, ItemStack output, int meltTime, int coolingTime) {
-        return new FoundryRecipeBuilder(input, output, meltTime, coolingTime);
+    public static FoundryCastingRecipeBuilder create(Ingredient input, ItemStack output, int activeMetalType, int castTime, int coolingTime) {
+        return new FoundryCastingRecipeBuilder(input, output, activeMetalType, castTime, coolingTime);
     }
 
     /**
@@ -53,7 +59,7 @@ public class FoundryRecipeBuilder implements CraftingRecipeJsonBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(recipeKey))
                 .criteriaMerger(AdvancementRequirements.CriterionMerger.OR);
         this.criteria.forEach(advancement::criterion);
-        FoundryRecipe recipe = new FoundryRecipe(input, output, meltTime, coolingTime);
+        FoundryCastingRecipe recipe = new FoundryCastingRecipe(input, output, activeMetalType, castTime, coolingTime);
         exporter.accept(recipeKey, recipe, advancement.build(recipeKey.getValue()));
     }
 
