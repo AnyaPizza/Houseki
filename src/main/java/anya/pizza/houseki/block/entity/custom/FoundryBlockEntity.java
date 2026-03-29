@@ -6,7 +6,6 @@ import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.item.ModItems;
 import anya.pizza.houseki.recipe.*;
 import anya.pizza.houseki.screen.custom.FoundryScreenHandler;
-import anya.pizza.houseki.util.ModTags;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

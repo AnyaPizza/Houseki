@@ -17,13 +17,12 @@ import java.util.List;
 
 
 public record FoundryCastingRecipe(Ingredient inputCastingItem, ItemStack output, int activeMetalType, int castTime, int coolingTime) implements Recipe<FoundryRecipeCastInput> {
-    //public static final int DEFAULT_MELT_TIME = 200;
     public static final int DEFAULT_CAST_TIME = 200;
     public static final int DEFAULT_COOLING_TIME = 200;
 
     public DefaultedList<Ingredient> getIngredients() {
-        DefaultedList<Ingredient> list = DefaultedList.ofSize(1);
-        list.add(this.inputCastingItem);
+        DefaultedList<Ingredient> list = DefaultedList.of();
+        list.set(0, this.inputCastingItem);
         return list;
     }
 

@@ -16,13 +16,11 @@ import net.minecraft.world.World;
 import java.util.List;
 
 
-public record FoundryMeltingRecipe(Ingredient inputMeltingItem, ItemStack output, int meltTime /*int coolingTime*/) implements Recipe<FoundryRecipeInput> {
+public record FoundryMeltingRecipe(Ingredient inputMeltingItem, ItemStack output, int meltTime) implements Recipe<FoundryRecipeInput> {
     public static final int DEFAULT_MELT_TIME = 200;
-    //public static final int DEFAULT_CAST_TIME = 200;
-    //public static final int DEFAULT_COOLING_TIME = 200;
 
     public DefaultedList<Ingredient> getIngredients() {
-        DefaultedList<Ingredient> list = DefaultedList.ofSize(1);
+        DefaultedList<Ingredient> list = DefaultedList.of();
         list.add(this.inputMeltingItem);
         return list;
     }
@@ -82,7 +80,6 @@ public record FoundryMeltingRecipe(Ingredient inputMeltingItem, ItemStack output
                 Ingredient.CODEC.fieldOf("ingredient").forGetter(FoundryMeltingRecipe::inputMeltingItem),
                 ItemStack.CODEC.fieldOf("result").forGetter(FoundryMeltingRecipe::output),
                 Codec.INT.optionalFieldOf("meltTime", DEFAULT_MELT_TIME).forGetter(FoundryMeltingRecipe::meltTime)
-                //Codec.INT.optionalFieldOf("coolingTime", DEFAULT_COOLING_TIME).forGetter(FoundryMeltingRecipe::coolingTime)
         ).apply(inst, FoundryMeltingRecipe::new));
 
         public static final PacketCodec<RegistryByteBuf, FoundryMeltingRecipe> STREAM_CODEC =
@@ -90,7 +87,6 @@ public record FoundryMeltingRecipe(Ingredient inputMeltingItem, ItemStack output
                         Ingredient.PACKET_CODEC, FoundryMeltingRecipe::inputMeltingItem,
                         ItemStack.PACKET_CODEC, FoundryMeltingRecipe::output,
                         PacketCodecs.INTEGER, FoundryMeltingRecipe::meltTime,
-                        //PacketCodecs.INTEGER, FoundryMeltingRecipe::coolingTime,
                         FoundryMeltingRecipe::new);
 
         /**
