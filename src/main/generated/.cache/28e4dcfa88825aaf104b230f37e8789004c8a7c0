@@ -1,6 +1,6 @@
 // 1.21.11	-999999999-01-01T00:00:00	Houseki/Tags for minecraft:block
 23caf7f61e4b2f6fa59b168a7ee49539eb44acf1 data/houseki/tags/block/enhanced_mineable.json
-2da583f721f259c6889e51658f404960df9ec3ab data/houseki/tags/block/meteor_wont_replace.json
+1a39479598db3fcb1011704aa283ce843d5b4192 data/houseki/tags/block/meteor_wont_replace.json
 80ad3ac92e1280a2f60b25a83d2a16751740cc33 data/houseki/tags/block/premium_mineable.json
 3a872b346c761360db3b94468363a00d2bffd9e7 data/minecraft/tags/block/beacon_base_blocks.json
 0f1595e54291f56a27bc1017154402fbafdc332a data/minecraft/tags/block/dragon_immune.json

@@ -181,11 +181,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .addOptionalTag(BlockTags.SHOVEL_MINEABLE);
 
         valueLookupBuilder(ModTags.Blocks.METEOR_WONT_REPLACE)
-                .forceAddTag(BlockTags.BASE_STONE_OVERWORLD)
                 .forceAddTag(BlockTags.COAL_ORES)
                 .forceAddTag(BlockTags.IRON_ORES)
                 .forceAddTag(BlockTags.GOLD_ORES)
-                .forceAddTag(BlockTags.TERRACOTTA)
                 .add(ModBlocks.PLATINUM_ORE)
                 .add(ModBlocks.DEEPSLATE_PLATINUM_ORE)
                 .add(Blocks.COBBLESTONE)

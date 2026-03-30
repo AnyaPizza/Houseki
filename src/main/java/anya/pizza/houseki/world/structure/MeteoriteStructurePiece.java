@@ -2,6 +2,7 @@ package anya.pizza.houseki.world.structure;
 
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.util.ModTags;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.NbtCompound;
@@ -30,10 +31,10 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
  */
 public class MeteoriteStructurePiece extends StructurePiece {
     // Size range for the meteorite sphere (in blocks). Diameter will be 2x this.
-    public static final int MIN_RADIUS = 20;
-    public static final int MAX_RADIUS = 60;
+    public static final int MIN_RADIUS = 5;
+    public static final int MAX_RADIUS = 10;
     // How much wider the crater is than the meteorite itself
-    private static final int CRATER_EXTRA = 6;
+    private static final int CRATER_EXTRA = 25;
     // How far above the surface we clear blocks (to remove tall trees)
     private static final int TREE_CLEAR_HEIGHT = 60;
 
@@ -92,8 +93,11 @@ public class MeteoriteStructurePiece extends StructurePiece {
     // deepest at the center, gradually rising to surface level at the edges.
     private int getCraterFloorY(double horizDist, int craterRadius) {
         if (horizDist > craterRadius) return surfaceY;
-        double depthFraction = 1.0 - (horizDist / craterRadius);
-        int localDepth = (int) (craterDepth * depthFraction * depthFraction);
+        //double depthFraction = 1.0 - (horizDist / craterRadius);
+        double distanceRatio = horizDist / craterRadius;
+        double bowlCurve = Math.sqrt(1.0 - (distanceRatio * distanceRatio));
+        //int localDepth = (int) (craterDepth * depthFraction * depthFraction);
+        int localDepth = (int) (craterDepth * bowlCurve);
         return surfaceY - localDepth;
     }
 
@@ -115,7 +119,8 @@ public class MeteoriteStructurePiece extends StructurePiece {
         // Deterministic random from stored seed - critical for cross-chunk consistency
         Random random = Random.create(this.seed);
         int craterRadius = meteorRadius + CRATER_EXTRA;
-        int meteorCenterY = surfaceY - craterDepth;
+        int settleAmount = 5;
+        int meteorCenterY = (surfaceY - craterDepth) + meteorRadius - settleAmount;
         BlockPos meteorCenter = new BlockPos(centerX, meteorCenterY, centerZ);
 
         // Bail out if the center is in water or lava - meteorites in oceans look bad
@@ -131,7 +136,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
         for (int dx = -craterRadius - 2; dx <= craterRadius + 2; dx++) {
             for (int dz = -craterRadius - 2; dz <= craterRadius + 2; dz++) {
                 double horizDist = Math.sqrt(dx * dx + dz * dz);
-                if (horizDist > craterRadius + 2) continue;
+                if (horizDist > craterRadius + 5) continue;
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
@@ -161,7 +166,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
                         if (existing.isOf(Blocks.BEDROCK)) continue;
                         if (!existing.isAir()) {
                             // Replace dirt, sand, grass, etc. with crater material
-                            if (!isStoneType(existing)) {
+                            if (!meteorWontReplace(existing)) {
                                 world.setBlockState(floorPos, getCraterLiner(random), 2);
                             }
                         }
@@ -199,7 +204,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
                     // Check if this block is exposed (has air neighbor)
                     if (isExposedToAir(world, pos, chunkBox)) {
-                        if (!isStoneType(state)) {
+                        if (!meteorWontReplace(state)) {
                             world.setBlockState(pos, getCraterLiner(random), 2);
                         }
                     }
@@ -262,9 +267,9 @@ public class MeteoriteStructurePiece extends StructurePiece {
                 double horizDist = Math.sqrt(dx * dx + dz * dz);
                 if (horizDist < craterRadius - 2.5 || horizDist > craterRadius + 2) continue;
 
-                BlockState rimBlock = getShellBlock(random);
+                BlockState rimBlock = getEjectaRim(random);
                 int rimRoll = random.nextInt(3);
-                BlockState raisedBlock = getShellBlock(random);
+                BlockState raisedBlock = getEjectaRim(random);
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
@@ -291,8 +296,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
         }
     }
 
-    // Returns true for natural stone variants that don't need to be replaced in crater walls/floor.
-    private boolean isStoneType(BlockState state) {
+    private boolean meteorWontReplace(BlockState state) {
         return state.isIn(ModTags.Blocks.METEOR_WONT_REPLACE);
     }
 
@@ -315,25 +319,35 @@ public class MeteoriteStructurePiece extends StructurePiece {
         return false;
     }
 
-    // Weighted random palette for crater floors and walls: 50% stone, 20% cobble, 20% gravel, 10% cobbled deepslate
+    // Weighted random palette for crater floors and walls
     private BlockState getCraterLiner(Random random) {
         int roll = random.nextInt(10);
-        if (roll < 5) return Blocks.STONE.getDefaultState();
+        if (roll < 6) return Blocks.STONE.getDefaultState();
         if (roll < 7) return Blocks.COBBLESTONE.getDefaultState();
-        if (roll < 9) return Blocks.GRAVEL.getDefaultState();
+        if (roll < 8) return Blocks.MAGMA_BLOCK.getDefaultState();
+        if (roll < 9) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
         if (roll < 10) return Blocks.COAL_BLOCK.getDefaultState();
-        return Blocks.COBBLED_DEEPSLATE.getDefaultState();
+        return Blocks.GRAVEL.getDefaultState();
     }
 
-    // Weighted random palette for the meteorite shell and rim: 40% stone, 20% cobble, 20% gravel, 20% deepslate
+    // Weighted random palette for the meteorite shell
     private BlockState getShellBlock(Random random) {
         int roll = random.nextInt(10);
-        if (roll < 3) return Blocks.REDSTONE_BLOCK.getDefaultState();
-        //if (roll < 3) return Blocks.AIR.getDefaultState();
-        //if (roll < 4) return Blocks.STONE.getDefaultState();
-        //if (roll < 6) return Blocks.COBBLESTONE.getDefaultState();
-        //if (roll < 8) return Blocks.GRAVEL.getDefaultState();
-        //return Blocks.DEEPSLATE.getDefaultState();
-        return Blocks.IRON_BLOCK.getDefaultState();
+        if (roll < 4) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
+        if (roll < 6) return Blocks.COBBLESTONE.getDefaultState();
+        if (roll < 8) return Blocks.MAGMA_BLOCK.getDefaultState();
+        if (roll < 10) return Blocks.COAL_BLOCK.getDefaultState();
+        return Blocks.OBSIDIAN.getDefaultState();
+    }
+
+    private BlockState getEjectaRim(Random random) {
+        int roll = random.nextInt(10);
+        if (roll < 3) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
+        if (roll < 4) return Blocks.GRAVEL.getDefaultState();
+        if (roll < 5) return Blocks.DIRT.getDefaultState();
+        if (roll < 6) return Blocks.COBBLESTONE.getDefaultState();
+        if (roll < 8) return Blocks.STONE.getDefaultState();
+        if (roll < 10) return Blocks.COAL_BLOCK.getDefaultState();
+        return Blocks.OBSIDIAN.getDefaultState();
     }
 }
