@@ -6,7 +6,6 @@ import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.structure.StructureSet;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.chunk.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.gen.chunk.placement.SpreadType;
 import net.minecraft.world.gen.structure.Structure;

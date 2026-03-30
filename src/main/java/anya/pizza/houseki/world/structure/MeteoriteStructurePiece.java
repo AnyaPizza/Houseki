@@ -319,7 +319,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
     // Weighted random palette for crater floors and walls
     private BlockState getCraterLiner(Random random) {
         int roll = random.nextInt(11);
-        if (roll < 6) return Blocks.STONE.getDefaultState();
+        if (roll < 5) return Blocks.STONE.getDefaultState();
         if (roll < 7) return Blocks.COBBLESTONE.getDefaultState();
         if (roll < 8) return Blocks.MAGMA_BLOCK.getDefaultState();
         if (roll < 9) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
