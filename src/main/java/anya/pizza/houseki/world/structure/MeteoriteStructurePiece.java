@@ -2,7 +2,6 @@ package anya.pizza.houseki.world.structure;
 
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.util.ModTags;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.NbtCompound;
@@ -93,10 +92,8 @@ public class MeteoriteStructurePiece extends StructurePiece {
     // deepest at the center, gradually rising to surface level at the edges.
     private int getCraterFloorY(double horizDist, int craterRadius) {
         if (horizDist > craterRadius) return surfaceY;
-        //double depthFraction = 1.0 - (horizDist / craterRadius);
         double distanceRatio = horizDist / craterRadius;
         double bowlCurve = Math.sqrt(1.0 - (distanceRatio * distanceRatio));
-        //int localDepth = (int) (craterDepth * depthFraction * depthFraction);
         int localDepth = (int) (craterDepth * bowlCurve);
         return surfaceY - localDepth;
     }
@@ -321,7 +318,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
     // Weighted random palette for crater floors and walls
     private BlockState getCraterLiner(Random random) {
-        int roll = random.nextInt(10);
+        int roll = random.nextInt(11);
         if (roll < 6) return Blocks.STONE.getDefaultState();
         if (roll < 7) return Blocks.COBBLESTONE.getDefaultState();
         if (roll < 8) return Blocks.MAGMA_BLOCK.getDefaultState();
@@ -332,7 +329,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
     // Weighted random palette for the meteorite shell
     private BlockState getShellBlock(Random random) {
-        int roll = random.nextInt(10);
+        int roll = random.nextInt(11);
         if (roll < 4) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
         if (roll < 6) return Blocks.COBBLESTONE.getDefaultState();
         if (roll < 8) return Blocks.MAGMA_BLOCK.getDefaultState();
@@ -341,7 +338,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
     }
 
     private BlockState getEjectaRim(Random random) {
-        int roll = random.nextInt(10);
+        int roll = random.nextInt(11);
         if (roll < 3) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
         if (roll < 4) return Blocks.GRAVEL.getDefaultState();
         if (roll < 5) return Blocks.DIRT.getDefaultState();
