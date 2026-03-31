@@ -35,16 +35,6 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherScreenHandler>
         renderProgressCrushing(graphics, x, y);
     }
 
-    //@Override
-    //protected void renderBg(GuiGraphicsExtractor context, float delta, int mouseX, int mouseY) {
-    //    int x = (width - imageWidth) / 2;
-    //    int y = (height - 196) / 2;
-//
-     //    context.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, 176, 176, 256, 256);
-    //    renderProgressArrow(context, x, y);
-    //    renderProgressCrushing(context, x, y);
-    //}
-
     private void renderProgressArrow(GuiGraphicsExtractor context, int x, int y) {
         if(menu.getPropertyDelegate().get(0) > 0 && menu.isCrafting()) {
             context.blit(RenderPipelines.GUI_TEXTURED, ARROW_TEXTURE, x + 79, y + 39, 0, 0,
@@ -59,13 +49,6 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherScreenHandler>
                     20 - progress, 6, progress, 6, 20);
         }
     }
-
-    //@Override
-    //public void render(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
-    //    renderBackground(context, mouseX, mouseY, delta);
-    //    super.render(context, mouseX, mouseY, delta);
-    //    renderTooltip(context, mouseX, mouseY);
-    //}
 
     @Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {

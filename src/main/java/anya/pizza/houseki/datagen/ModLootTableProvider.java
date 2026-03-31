@@ -68,7 +68,13 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.BAUXITE);
         dropSelf(ModBlocks.PLATINUM_ORE);
         dropSelf(ModBlocks.DEEPSLATE_PLATINUM_ORE);
+        dropSelf(ModBlocks.METEORIC_IRON);
+        dropSelf(ModBlocks.BLOCK_OF_METEORIC_IRON);
+        dropSelf(ModBlocks.FOUNDRY);
 
+        //Block drops other stuff.
+        add(ModBlocks.WOLFRAMITE_ORE, LightOreDrops(ModBlocks.WOLFRAMITE_ORE, ModItems.WOLFRAMITE));
+        add(ModBlocks.NETHERRACK_WOLFRAMITE_ORE, LightOreDrops(ModBlocks.NETHERRACK_WOLFRAMITE_ORE, ModItems.WOLFRAMITE));
 
         add(ModBlocks.WOLFRAMITE_ORE, LightOreDrops(ModBlocks.WOLFRAMITE_ORE, ModItems.WOLFRAMITE));
 

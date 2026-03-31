@@ -9,6 +9,8 @@ import net.minecraft.resources.Identifier;
 
 public class ModSerializer {
     public static final RecipeSerializer<CrusherRecipe> CRUSHER_SERIALIZER = register("crusher", CrusherRecipe.SERIALIZER);
+    public static final RecipeSerializer<FoundryMeltingRecipe> FOUNDRY_MELTING_SERIALIZER = register("melting", FoundryMeltingRecipe.SERIALIZER);
+    public static final RecipeSerializer<FoundryCastingRecipe> FOUNDRY_CASTING_SERIALIZER = register("casting", FoundryCastingRecipe.SERIALIZER);
 
     public static <T extends Recipe<?>> RecipeSerializer<T> register(String name, RecipeSerializer<T> serializer) {
         return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name), serializer);

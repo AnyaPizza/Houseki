@@ -33,13 +33,15 @@ public class ModTags {
         public static final TagKey<Block> INCORRECT_FOR_JADEITE_TOOL = createTag("incorrect_for_jadeite_tool");
         public static final TagKey<Block> NEEDS_PLATINUM_TOOL = createTag("needs_platinum_tool");
         public static final TagKey<Block> INCORRECT_FOR_PLATINUM_TOOL = createTag("incorrect_for_platinum_tool");
-        public static final TagKey<Block> NEEDS_STEEL_TOOL = createTag("needs_steel_tool");
-        public static final TagKey<Block> INCORRECT_FOR_STEEL_TOOL = createTag("incorrect_for_steel_tool");
         public static final TagKey<Block> NEEDS_CAST_STEEL_TOOL = createTag("needs_cast_steel_tool");
         public static final TagKey<Block> INCORRECT_FOR_CAST_STEEL_TOOL = createTag("incorrect_for_cast_steel_tool");
+        public static final TagKey<Block> NEEDS_METEORIC_IRON_TOOL = createTag("needs_meteoric_iron_tool");
+        public static final TagKey<Block> INCORRECT_FOR_METEORIC_IRON_TOOL = createTag("incorrect_for_meteoric_iron_tool");
 
         public static final TagKey<Block> PREMIUM_DRILL_MINEABLE = createTag("premium_mineable");
         public static final TagKey<Block> ENHANCED_DRILL_MINEABLE = createTag("enhanced_mineable");
+
+        public static final TagKey<Block> METEOR_WONT_REPLACE = createTag("meteor_wont_replace");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name));
@@ -58,12 +60,13 @@ public class ModTags {
         public static final TagKey<Item> NEPHRITE_REPAIR = createTag("nephrite_repair");
         public static final TagKey<Item> JADEITE_REPAIR = createTag("jadeite_repair");
         public static final TagKey<Item> PLATINUM_REPAIR = createTag("platinum_repair");
-        public static final TagKey<Item> STEEL_REPAIR = createTag("steel_repair");
         public static final TagKey<Item> CAST_STEEL_REPAIR = createTag("cast_steel_repair");
         public static final TagKey<Item> DIAMOND_REPAIR = createTag("diamond_repair");
+        public static final TagKey<Item> METEORIC_IRON_REPAIR = createTag("meteoric_iron_repair");
 
         public static final TagKey<Item> ARMOR = createTag("armor");
         public static final TagKey<Item> MOB_ARMORS = createTag("mob_armors");
+        public static final TagKey<Item> CASTS = createTag("casts");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name));

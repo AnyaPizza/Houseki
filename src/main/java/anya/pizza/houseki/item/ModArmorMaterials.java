@@ -23,8 +23,8 @@ public class ModArmorMaterials {
     public static final ResourceKey<EquipmentAsset> NEPHRITE_KEY = ResourceKey.create(REGISTRY_KEY, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "nephrite"));
     public static final ResourceKey<EquipmentAsset> JADEITE_KEY = ResourceKey.create(REGISTRY_KEY, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "jadeite"));
     public static final ResourceKey<EquipmentAsset> PLATINUM_KEY = ResourceKey.create(REGISTRY_KEY, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "platinum"));
-    public static final ResourceKey<EquipmentAsset> STEEL_KEY = ResourceKey.create(REGISTRY_KEY, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "steel"));
     public static final ResourceKey<EquipmentAsset> CAST_STEEL_KEY = ResourceKey.create(REGISTRY_KEY, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "cast_steel"));
+    public static final ResourceKey<EquipmentAsset> METEORIC_IRON_KEY = ResourceKey.create(REGISTRY_KEY, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteoric_iron"));
 
     public static final ArmorMaterial PINKU_MATERIAL = new ArmorMaterial(2580, Util.make(new EnumMap<>(ArmorType.class), map -> {
         map.put(ArmorType.HELMET, 6);
@@ -90,14 +90,6 @@ public class ModArmorMaterials {
         map.put(ArmorType.BODY, 12);
     }), 15, SoundEvents.ARMOR_EQUIP_GOLD, 4, 0.2f, ModTags.Items.PLATINUM_REPAIR, PLATINUM_KEY);
 
-    public static final ArmorMaterial STEEL_MATERIAL = new ArmorMaterial(2500, Util.make(new EnumMap<>(ArmorType.class), map -> {
-        map.put(ArmorType.HELMET, 4);
-        map.put(ArmorType.CHESTPLATE, 9);
-        map.put(ArmorType.LEGGINGS, 7);
-        map.put(ArmorType.BOOTS, 4);
-        map.put(ArmorType.BODY, 11);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.5f, 0.2f, ModTags.Items.STEEL_REPAIR, STEEL_KEY);
-
     public static final ArmorMaterial CAST_STEEL_MATERIAL = new ArmorMaterial(3000, Util.make(new EnumMap<>(ArmorType.class), map -> {
         map.put(ArmorType.HELMET, 4);
         map.put(ArmorType.CHESTPLATE, 9);
@@ -105,4 +97,12 @@ public class ModArmorMaterials {
         map.put(ArmorType.BOOTS, 4);
         map.put(ArmorType.BODY, 12);
     }), 15, SoundEvents.ARMOR_EQUIP_IRON, 4.5f, 0.3f, ModTags.Items.CAST_STEEL_REPAIR, CAST_STEEL_KEY);
+
+    public static final ArmorMaterial METEORIC_IRON_MATERIAL = new ArmorMaterial(3000, Util.make(new EnumMap<>(ArmorType.class), map -> {
+        map.put(ArmorType.HELMET, 4);
+        map.put(ArmorType.CHESTPLATE, 9);
+        map.put(ArmorType.LEGGINGS, 7);
+        map.put(ArmorType.BOOTS, 4);
+        map.put(ArmorType.BODY, 12);
+    }), 15, SoundEvents.ARMOR_EQUIP_DIAMOND, 5.5f, 0.7f, ModTags.Items.METEORIC_IRON_REPAIR, METEORIC_IRON_KEY);
 }

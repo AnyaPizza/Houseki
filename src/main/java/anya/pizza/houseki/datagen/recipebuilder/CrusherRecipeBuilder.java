@@ -2,6 +2,7 @@ package anya.pizza.houseki.datagen.recipebuilder;
 
 import anya.pizza.houseki.recipe.CrusherRecipe;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
@@ -115,7 +116,7 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
         ResourceKey<Recipe<?>> recipeKey = ResourceKey.create(Registries.RECIPE, id);
         Advancement.Builder advancement = exporter.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeKey))
-                .rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(recipeKey))
+                .rewards(AdvancementRewards.Builder.recipe(recipeKey))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
         CrusherRecipe recipe = new CrusherRecipe(

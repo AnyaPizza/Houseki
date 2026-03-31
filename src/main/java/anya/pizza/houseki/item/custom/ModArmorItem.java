@@ -29,6 +29,7 @@ public class ModArmorItem extends Item {
                     .put(ModArmorMaterials.TUNGSTEN_MATERIAL, List.of(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 20, 4, false, false, true)))
                     .put(ModArmorMaterials.CAST_STEEL_MATERIAL, List.of(new MobEffectInstance(MobEffects.STRENGTH, 20, 1, false, false, true)))
                     .put(ModArmorMaterials.PLATINUM_MATERIAL, List.of(new MobEffectInstance(MobEffects.ABSORPTION, 20, 1, false, false, true)))
+                    .put(ModArmorMaterials.METEORIC_IRON_MATERIAL, List.of(new MobEffectInstance(MobEffects.SATURATION, 20, 0, false, false, true)))
                     .build();
 
     public ModArmorItem(Properties settings) {

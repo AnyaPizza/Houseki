@@ -4,6 +4,7 @@ import anya.pizza.houseki.datagen.*;
 import anya.pizza.houseki.trim.ModTrimMaterials;
 import anya.pizza.houseki.world.ModConfiguredFeatures;
 import anya.pizza.houseki.world.ModPlacedFeatures;
+import anya.pizza.houseki.world.structure.ModStructures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
@@ -27,5 +28,6 @@ public class HousekiDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.TRIM_MATERIAL, ModTrimMaterials::bootstrap);
-	}
+		registryBuilder.addRegistry(RegistryKeys.STRUCTURE, ModStructures::bootstrapStructure);
+		registryBuilder.addRegistry(RegistryKeys.STRUCTURE_SET, ModStructures::bootstrapStructureSet);	}
 }

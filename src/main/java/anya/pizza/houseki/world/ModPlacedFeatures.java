@@ -20,6 +20,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SANDSTONE_RAINBOW_PYRITE_ORE_PLACED_KEY = registerKey("sandstone_rainbow_pyrite_ore_placed");
     public static final ResourceKey<PlacedFeature> BAUXITE_RAINBOW_PYRITE_ORE_PLACED_KEY = registerKey("bauxite_rainbow_pyrite_ore_placed");
     public static final ResourceKey<PlacedFeature> WOLFRAMITE_ORE_PLACED_KEY = registerKey("wolframite_ore_placed");
+    public static final ResourceKey<PlacedFeature> NETHERRACK_WOLFRAMITE_ORE_PLACED_KEY = registerKey("netherrack_wolframite_ore_placed");
     public static final ResourceKey<PlacedFeature> SCHEELITE_ORE_PLACED_KEY = registerKey("scheelite_ore_placed");
     public static final ResourceKey<PlacedFeature> SAPPHIRE_ORE_PLACED_KEY = registerKey("sapphire_ore_placed");
     public static final ResourceKey<PlacedFeature> NEPHRITE_ORE_PLACED_KEY = registerKey("nephrite_ore_placed");
@@ -47,6 +48,8 @@ public class ModPlacedFeatures {
 
         register(context, WOLFRAMITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WOLFRAMITE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
+        register(context, WOLFRAMITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHERRACK_WOLFRAMITE_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(30, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
 
         register(context, SCHEELITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SCHEELITE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(6, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64))));

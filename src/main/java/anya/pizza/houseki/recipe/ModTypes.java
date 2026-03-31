@@ -10,6 +10,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 
 public class ModTypes {
     public static final RecipeType<CrusherRecipe> CRUSHER_TYPE = register("crushing", CrusherRecipe.Type.INSTANCE);
+    public static final RecipeType<FoundryMeltingRecipe> MELTING_FOUNDRY_TYPE = register("melting", FoundryMeltingRecipe.Type.INSTANCE);
+    public static final RecipeType<FoundryCastingRecipe> CASTING_FOUNDRY_TYPE = register("casting", FoundryCastingRecipe.Type.INSTANCE);
 
     public static <T extends Recipe<? extends RecipeInput>> RecipeType<T> register(String name, RecipeType<T> type) {
         return Registry.register(BuiltInRegistries.RECIPE_TYPE, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name), type);

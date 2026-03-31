@@ -20,6 +20,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(ModBlocks.PINKU_ORE);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_PINKU);
         blockStateModelGenerator.createTrivialCube(ModBlocks.WOLFRAMITE_ORE);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.NETHERRACK_WOLFRAMITE_ORE);
         blockStateModelGenerator.createTrivialCube(ModBlocks.RAINBOW_PYRITE_ORE);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_RAINBOW_PYRITE);
@@ -52,8 +53,11 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_SULFUR);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_STEEL);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_CAST_STEEL);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.METEORIC_IRON);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_METEORIC_IRON);
 
         blockStateModelGenerator.createFurnace(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE_ONLY_TOP);
+        blockStateModelGenerator.createFurnace(ModBlocks.FOUNDRY, TexturedModel.ORIENTABLE_ONLY_TOP);
 
         limestonePool.stairs(ModBlocks.LIMESTONE_STAIRS);
         limestoneBrickPool.stairs(ModBlocks.LIMESTONE_BRICK_STAIRS);
@@ -83,6 +87,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.WOLFRAMITE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SCHEELITE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.TUNGSTEN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.TUNGSTEN_POWDER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CRUSHED_BAUXITE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.ALUMINUM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SAPPHIRE, ModelTemplates.FLAT_ITEM);
@@ -94,6 +99,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.CRUDE_IRON, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.STEEL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_INGOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.NICKEL_POWDER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.TUNGSTEN_DRILL_BIT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SIMPLE_DRILL_HEAD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.ENHANCED_DRILL_HEAD, ModelTemplates.FLAT_ITEM);
@@ -156,18 +163,16 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.PLATINUM_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.PLATINUM_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.PLATINUM_SPEAR, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.STEEL_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.STEEL_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.STEEL_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.STEEL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.STEEL_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.STEEL_SPEAR, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL_SPEAR, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_HELMET, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_CHESTPLATE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_LEGGINGS, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_BOOTS, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SIMPLE_DIAMOND_DRILL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.ENHANCED_DIAMOND_DRILL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.ADVANCED_DIAMOND_DRILL, ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -205,10 +210,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateTrimmableItem(ModItems.PLATINUM_CHESTPLATE, ModArmorMaterials.PLATINUM_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(ModItems.PLATINUM_LEGGINGS,  ModArmorMaterials.PLATINUM_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
         itemModelGenerator.generateTrimmableItem(ModItems.PLATINUM_BOOTS, ModArmorMaterials.PLATINUM_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(ModItems.STEEL_HELMET, ModArmorMaterials.STEEL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(ModItems.STEEL_CHESTPLATE, ModArmorMaterials.STEEL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(ModItems.STEEL_LEGGINGS,  ModArmorMaterials.STEEL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(ModItems.STEEL_BOOTS, ModArmorMaterials.STEEL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
         itemModelGenerator.generateTrimmableItem(ModItems.CAST_STEEL_HELMET, ModArmorMaterials.CAST_STEEL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerator.generateTrimmableItem(ModItems.CAST_STEEL_CHESTPLATE, ModArmorMaterials.CAST_STEEL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(ModItems.CAST_STEEL_LEGGINGS,  ModArmorMaterials.CAST_STEEL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
@@ -220,10 +221,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.ALUMINUM_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SAPPHIRE_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.PLATINUM_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.STEEL_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.NEPHRITE_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.JADEITE_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(ModItems.PINKU_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.RAINBOW_PYRITE_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
@@ -231,9 +232,34 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.ALUMINUM_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SAPPHIRE_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.PLATINUM_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.STEEL_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.NEPHRITE_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.JADEITE_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(ModItems.PICKAXE_HEAD_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.AXE_HEAD_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.SHOVEL_HEAD_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.SWORD_HEAD_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.HOE_HEAD_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.SPEAR_HEAD_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.HELMET_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CHESTPLATE_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.LEGGINGS_CAST, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.BOOTS_CAST, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(ModItems.CS_PICKAXE_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CS_AXE_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CS_SHOVEL_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CS_SWORD_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CS_HOE_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CS_SPEAR_HEAD, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(ModItems.MI_PICKAXE_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.MI_AXE_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.MI_SHOVEL_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.MI_SWORD_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.MI_HOE_HEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.MI_SPEAR_HEAD, ModelTemplates.FLAT_ITEM);
     }
 }

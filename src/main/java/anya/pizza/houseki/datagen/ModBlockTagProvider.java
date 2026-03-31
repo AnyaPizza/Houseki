@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -25,6 +26,7 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE)
                 .add(ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE)
                 .add(ModBlocks.WOLFRAMITE_ORE)
+                .add(ModBlocks.NETHERRACK_WOLFRAMITE_ORE)
                 .add(ModBlocks.SCHEELITE_ORE)
                 .add(ModBlocks.CRUSHER)
                 .add(ModBlocks.BLOCK_OF_TUNGSTEN_B)
@@ -73,7 +75,10 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.BLACKSTONE_SULFUR_ORE)
                 .add(ModBlocks.SULFUR_ORE)
                 .add(ModBlocks.BLOCK_OF_STEEL)
-                .add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                .add(ModBlocks.BLOCK_OF_CAST_STEEL)
+                .add(ModBlocks.METEORIC_IRON)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON)
+                .add(ModBlocks.FOUNDRY);
 
         valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.BAUXITE)
@@ -82,13 +87,14 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.BLOCK_OF_SULFUR)
                 .add(ModBlocks.ALUMINUM_DOOR)
                 .add(ModBlocks.ALUMINUM_TRAPDOOR)
-                .add(ModBlocks.CRUSHER);
+                .add(ModBlocks.CRUSHER)
+                .add(ModBlocks.FOUNDRY);
 
         valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_RAINBOW_PYRITE)
-                .add(ModBlocks.BLOCK_OF_SAPPHIRE)
                 .add(ModBlocks.WOLFRAMITE_ORE)
+                .add(ModBlocks.NETHERRACK_WOLFRAMITE_ORE)
                 .add(ModBlocks.RAINBOW_PYRITE_ORE)
                 .add(ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE)
                 .add(ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE)
@@ -109,7 +115,10 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
         valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.PINKU_ORE)
                 .add(ModBlocks.SAPPHIRE_ORE)
-                .add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE);
+                .add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE)
+                .add(ModBlocks.BLOCK_OF_SAPPHIRE)
+                .add(ModBlocks.METEORIC_IRON)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON);
 
         valueLookupBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.BLOCK_OF_PINKU)
@@ -120,18 +129,23 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.BLOCK_OF_JADEITE)
                 .add(ModBlocks.BLOCK_OF_PLATINUM)
                 .add(ModBlocks.BLOCK_OF_STEEL)
-                .add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                .add(ModBlocks.BLOCK_OF_CAST_STEEL)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON);
 
         valueLookupBuilder(BlockTags.WITHER_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.BLOCK_OF_SAPPHIRE)
                 .add(ModBlocks.ALUMINUM_GLASS)
-                .add(ModBlocks.ALUMINUM_GLASS_PANE);
+                .add(ModBlocks.ALUMINUM_GLASS_PANE)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON)
+                .add(ModBlocks.METEORIC_IRON);
 
         valueLookupBuilder(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)
                 .add(ModBlocks.ALUMINUM_GLASS)
-                .add(ModBlocks.ALUMINUM_GLASS_PANE);
+                .add(ModBlocks.ALUMINUM_GLASS_PANE)
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON)
+                .add(ModBlocks.METEORIC_IRON);
 
         valueLookupBuilder(BlockTags.WALLS)
                 .add(ModBlocks.LIMESTONE_WALL)
@@ -165,5 +179,14 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
         valueLookupBuilder(ModTags.Blocks.ENHANCED_DRILL_MINEABLE)
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addOptionalTag(BlockTags.MINEABLE_WITH_SHOVEL);
+
+        valueLookupBuilder(ModTags.Blocks.METEOR_WONT_REPLACE)
+                .forceAddTag(BlockTags.COAL_ORES)
+                .forceAddTag(BlockTags.IRON_ORES)
+                .forceAddTag(BlockTags.GOLD_ORES)
+                .add(ModBlocks.PLATINUM_ORE)
+                .add(ModBlocks.DEEPSLATE_PLATINUM_ORE)
+                .add(Blocks.COBBLESTONE)
+                .add(Blocks.COBBLED_DEEPSLATE);
     }
 }

@@ -2,6 +2,7 @@ package anya.pizza.houseki.block;
 
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.custom.CrusherBlock;
+import anya.pizza.houseki.block.custom.FoundryBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
@@ -113,6 +114,11 @@ public class ModBlocks {
     public static final Block BAUXITE = registerBlock("bauxite",
             properties -> new Block(properties.mapColor(MapColor.COLOR_BROWN).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.25F, 4.2F)));
 
+    public static final Block METEORIC_IRON = registerBlock("meteoric_iron",
+            properties -> new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.DRAGON).requiresCorrectToolForDrops().strength(50F, 1200F)));
+
+    public static final Block BLOCK_OF_METEORIC_IRON = registerBlock("block_of_meteoric_iron",
+            properties -> new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.DRAGON).requiresCorrectToolForDrops().strength(50F, 1200F)));
 
     //Adds Ore
     public static final Block PINKU_ORE = registerBlock("pinku_ore",
@@ -135,6 +141,10 @@ public class ModBlocks {
             properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
                     .mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3, 4)));
                         //4.5 Moh Scale
+    public static final Block NETHERRACK_WOLFRAMITE_ORE = registerBlock("netherrack_wolframite_ore",
+            properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
+                    .mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3, 4)));
+
     public static final Block SCHEELITE_ORE = registerBlock("scheelite_ore",
             properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
                     .mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3, 4).sound(SoundType.NETHERRACK)));
@@ -224,6 +234,9 @@ public class ModBlocks {
             properties -> new CrusherBlock(properties
                     .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(litBlockEmission(13))));
 
+    public static final Block FOUNDRY = registerBlock("foundry",
+            properties -> new FoundryBlock(properties
+                    .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(litBlockEmission(13))));
 
 
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {

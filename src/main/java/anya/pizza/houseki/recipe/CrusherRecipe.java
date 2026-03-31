@@ -14,13 +14,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import java.util.Optional;
 
-public record CrusherRecipe(
-    Ingredient inputItem, 
-    Item output, 
-    int crushingTime, 
-    Optional<Item> auxiliaryOutput, 
-    double auxiliaryChance
-) implements Recipe<CrusherRecipeInput> {
+public record CrusherRecipe(Ingredient inputItem, Item output, int crushingTime, Optional<Item> auxiliaryOutput, double auxiliaryChance) implements Recipe<CrusherRecipeInput> {
     public static final int DEFAULT_CRUSHING_TIME = 200;
     public static final double DEFAULT_AUXILIARY_CHANCE = 1.0; //1 = 100%
 
@@ -119,7 +113,7 @@ public record CrusherRecipe(
 
     @Override
     public RecipeSerializer<? extends Recipe<CrusherRecipeInput>> getSerializer() {
-        return SERIALIZER;
+        return ModSerializer.CRUSHER_SERIALIZER;
     }
 
     /**

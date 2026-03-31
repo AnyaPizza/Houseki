@@ -24,6 +24,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SANDSTONE_RAINBOW_PYRITE_ORE_KEY = registerKey("sandstone_rainbow_pyrite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BAUXITE_RAINBOW_PYRITE_ORE_KEY = registerKey("bauxite_rainbow_pyrite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WOLFRAMITE_ORE_KEY = registerKey("wolframite_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> NETHERRACK_WOLFRAMITE_ORE_KEY = registerKey("netherrack_wolframite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCHEELITE_ORE_KEY = registerKey("scheelite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SAPPHIRE_ORE_KEY = registerKey("sapphire_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> NEPHRITE_ORE_KEY = registerKey("nephrite_ore");
@@ -50,6 +51,7 @@ public class ModConfiguredFeatures {
         RuleTest limestoneReplaceables = new BlockMatchTest(ModBlocks.LIMESTONE);
         RuleTest slateReplaceables = new BlockMatchTest(ModBlocks.SLATE);
         RuleTest netherrackReplaceables = new BlockMatchTest(Blocks.NETHERRACK);
+        RuleTest quartzReplaceables = new BlockMatchRuleTest(Blocks.NETHER_QUARTZ_ORE);
 
         List<OreConfiguration.TargetBlockState> endPinkuOres = List.of(OreConfiguration.target(endReplaceables, ModBlocks.PINKU_ORE.defaultBlockState()));
 
@@ -58,6 +60,7 @@ public class ModConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> overworldBauxiteRainbowPyriteOres = List.of(OreConfiguration.target(bauxiteReplaceables, ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE.defaultBlockState()));
 
         List<OreConfiguration.TargetBlockState> overworldWolframiteOres = List.of(OreConfiguration.target(graniteReplaceables, ModBlocks.WOLFRAMITE_ORE.defaultBlockState()));
+        List<OreFeatureConfig.Target> netherWolframiteOres = List.of(OreFeatureConfig.createTarget(quartzReplaceables, ModBlocks.NETHERRACK_WOLFRAMITE_ORE.getDefaultState()));
 
         List<OreConfiguration.TargetBlockState> netherScheeliteOres = List.of(OreConfiguration.target(netherrackReplaceables, ModBlocks.SCHEELITE_ORE.defaultBlockState()));
 
@@ -88,6 +91,7 @@ public class ModConfiguredFeatures {
         register(context, SANDSTONE_RAINBOW_PYRITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldSandstoneRainbowPyriteOres, 5));
         register(context, BAUXITE_RAINBOW_PYRITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldBauxiteRainbowPyriteOres, 8));
         register(context, WOLFRAMITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldWolframiteOres, 4));
+        register(context, NETHERRACK_WOLFRAMITE_ORE_KEY, Feature.ORE, new OreConfiguration(netherWolframiteOres, 8));
         register(context, SCHEELITE_ORE_KEY, Feature.ORE, new OreConfiguration(netherScheeliteOres, 6));
         register(context, SAPPHIRE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldSapphireOres, 3));
         register(context, NEPHRITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldNephriteOres, 8));

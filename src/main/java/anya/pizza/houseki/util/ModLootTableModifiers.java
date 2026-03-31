@@ -5,6 +5,7 @@ import anya.pizza.houseki.item.ModItems;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.TagEntry;
 import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -63,6 +64,8 @@ public class ModLootTableModifiers {
                         .add(LootItem.lootTableItem(ModItems.RAINBOW_PYRITE_HORSE_ARMOR).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.ALUMINUM_HORSE_ARMOR).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.TUNGSTEN_HORSE_ARMOR).setWeight(1))
+                        .add(LootItem.lootTableItem(ModItems.TUNGSTEN).setWeight(1))
+                        .add(LootItem.lootTableItem(ModItems.TUNGSTEN_POWDER).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.CRUDE_IRON).setWeight(1)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))));
                 tableBuilder.pool(poolBuilder.build());
@@ -111,12 +114,14 @@ public class ModLootTableModifiers {
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
                         .add(LootItem.lootTableItem(ModItems.STEEL).setWeight(1)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
+                        .add(LootItem.lootTableItem(ModItems.NICKEL_POWDER).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.CAST_STEEL).setWeight(1)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
                         .add(LootItem.lootTableItem(ModItems.PINKU_HORSE_ARMOR).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.ENHANCED_DRILL_HEAD).setWeight(1))
-                        .add(LootItem.lootTableItem(ModItems.DIAMOND_DRILL_BIT).setWeight(1));
+                        .add(LootItem.lootTableItem(ModItems.DIAMOND_DRILL_BIT).setWeight(1))
+                        .add(TagEntry.tagContents(ModTags.Items.CASTS).setWeight(1));
                 tableBuilder.pool(poolBuilder.build());
                 LootPool.Builder rarePoolBuilder = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
@@ -261,7 +266,8 @@ public class ModLootTableModifiers {
                         .add(LootItem.lootTableItem(ModBlocks.CHISELED_LIMESTONE).setWeight(10)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
                         .add(LootItem.lootTableItem(ModItems.ALUMINUM_HORSE_ARMOR).setWeight(10))
-                        .add(LootItem.lootTableItem(ModItems.SAPPHIRE_HORSE_ARMOR).setWeight(5));
+                        .add(LootItem.lootTableItem(ModItems.SAPPHIRE_HORSE_ARMOR).setWeight(5))
+                        .add(TagEntry.tagContents(ModTags.Items.CASTS).setWeight(1));
                 tableBuilder.pool(poolBuilder.build());
             }
 
@@ -359,7 +365,6 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
                         .setRolls(UniformGenerator.between(1f, 2f))
                         .add(LootItem.lootTableItem(ModItems.RAINBOW_PYRITE_NAUTILUS_ARMOR).setWeight(3))
-                        .add(LootItem.lootTableItem(ModItems.STEEL_NAUTILUS_ARMOR).setWeight(3))
                         .add(LootItem.lootTableItem(ModItems.ALUMINUM_NAUTILUS_ARMOR).setWeight(3))
                         .add(LootItem.lootTableItem(ModItems.CAST_STEEL_NAUTILUS_ARMOR).setWeight(2))
                         .add(LootItem.lootTableItem(ModItems.TUNGSTEN_NAUTILUS_ARMOR).setWeight(2))
@@ -396,7 +401,7 @@ public class ModLootTableModifiers {
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
                         .add(LootItem.lootTableItem(ModItems.NEPHRITE).setWeight(70)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
-                        .add(LootItem.lootTableItem(ModItems.TUNGSTEN).setWeight(5)
+                        .add(LootItem.lootTableItem(ModItems.TUNGSTEN).setWeight(1)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
                         .add(LootItem.lootTableItem(ModItems.PLATINUM_NUGGET).setWeight(5)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
@@ -432,7 +437,8 @@ public class ModLootTableModifiers {
                         .add(LootItem.lootTableItem(ModItems.RAINBOW_PYRITE).setWeight(3)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
                         .add(LootItem.lootTableItem(ModItems.TUNGSTEN).setWeight(1)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))));
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
+                        .add(TagEntry.tagContents(ModTags.Items.CASTS).setWeight(1));
                 tableBuilder.pool(poolBuilder.build());
             }
 
@@ -442,7 +448,8 @@ public class ModLootTableModifiers {
                         .add(LootItem.lootTableItem(ModItems.PLATINUM_NUGGET).setWeight(2)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
                         .add(LootItem.lootTableItem(ModItems.TUNGSTEN).setWeight(2)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))));
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
+                        .add(TagEntry.tagContents(ModTags.Items.CASTS).setWeight(1));
                 tableBuilder.pool(poolBuilder.build());
             }
 
@@ -548,7 +555,8 @@ public class ModLootTableModifiers {
                         .add(LootItem.lootTableItem(ModItems.TUNGSTEN).setWeight(1)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
                         .add(LootItem.lootTableItem(ModItems.SULFUR).setWeight(1)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))));
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
+                        .add(TagEntry.tagContents(ModTags.Items.CASTS).setWeight(1));
                 tableBuilder.pool(poolBuilder.build());
             }
 
@@ -630,6 +638,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(LootItemRandomChanceCondition.randomChance(0.4f))
+                        .add(LootItem.lootTableItem(ModBlocks.METEORIC_IRON))
                         .add(LootItem.lootTableItem(ModItems.PINKU_SHARD))
                         .add(LootItem.lootTableItem(ModItems.PINKU).when(LootItemRandomChanceCondition.randomChance(0.1f)))
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f)).build());

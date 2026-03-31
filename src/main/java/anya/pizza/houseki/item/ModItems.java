@@ -6,12 +6,7 @@ import anya.pizza.houseki.item.custom.*;
 import anya.pizza.houseki.trim.ModTrimMaterials;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Registry;
@@ -40,6 +35,10 @@ public class ModItems {
     public static final Item CRUDE_IRON = registerItem("crude_iron", Item::new);
     public static final Item STEEL = registerItem("steel", Item::new);
     public static final Item CAST_STEEL = registerItem("cast_steel", setting -> new Item(setting.trimMaterial(ModTrimMaterials.CAST_STEEL)));
+    public static final Item NICKEL_POWDER = registerItem("nickel_powder", Item::new);
+    public static final Item TUNGSTEN_POWDER = registerItem("tungsten_powder", Item::new);
+    public static final Item METEORIC_IRON_INGOT = registerItem("meteoric_iron_ingot", Item::new);
+
     public static final Item TUNGSTEN_DRILL_BIT = registerItem("tungsten_drill_bit", setting -> new Item(setting.fireResistant()));
     public static final Item SIMPLE_DRILL_HEAD = registerItem("simple_drill_head", Item::new);
     public static final Item ENHANCED_DRILL_HEAD = registerItem("enhanced_drill_head", Item::new);
@@ -122,14 +121,6 @@ public class ModItems {
     public static final Item PLATINUM_SPEAR = registerItem("platinum_spear", setting -> new Item(setting.spear(ModToolMaterials.PLATINUM, 1.13F, 1.5F, 0.3F,
             2.5F, 7.0F, 5.5F, 5.1F, 7.75F, 4.6F)));
 
-    public static final Item STEEL_PICKAXE = registerItem("steel_pickaxe", setting -> new Item(setting.pickaxe(ModToolMaterials.STEEL, 0.5f, 1.0f)));
-    public static final Item STEEL_AXE = registerItem("steel_axe", setting -> new AxeItem(ModToolMaterials.STEEL, 4.0f, 1.0f, setting));
-    public static final Item STEEL_SHOVEL = registerItem("steel_shovel", setting -> new ShovelItem(ModToolMaterials.STEEL, 0.0f, 1.0f, setting));
-    public static final Item STEEL_SWORD = registerItem("steel_sword", setting -> new Item(setting.sword(ModToolMaterials.STEEL, 2, 1.0f)));
-    public static final Item STEEL_HOE = registerItem("steel_hoe", setting -> new HoeItem(ModToolMaterials.STEEL, -5.5f, 4.0f, setting));
-    public static final Item STEEL_SPEAR = registerItem("steel_spear", setting -> new Item(setting.spear(ModToolMaterials.STEEL, 1.05F, 1.075F, 0.5F,
-            3.0F, 7.5F, 6.5F, 5.1F, 10.0F, 4.6F)));
-
     public static final Item CAST_STEEL_PICKAXE = registerItem("cast_steel_pickaxe", setting -> new Item(setting.pickaxe(ModToolMaterials.CAST_STEEL, 1, 1.0f)));
     public static final Item CAST_STEEL_AXE = registerItem("cast_steel_axe", setting -> new AxeItem(ModToolMaterials.CAST_STEEL, 4.5f, 1.0f, setting));
     public static final Item CAST_STEEL_SHOVEL = registerItem("cast_steel_shovel", setting -> new ShovelItem(ModToolMaterials.CAST_STEEL, 0.3f, 1.0f, setting));
@@ -137,6 +128,14 @@ public class ModItems {
     public static final Item CAST_STEEL_HOE = registerItem("cast_steel_hoe", setting -> new HoeItem(ModToolMaterials.CAST_STEEL, -4.5f, 4.0f, setting));
     public static final Item CAST_STEEL_SPEAR = registerItem("cast_steel_spear", setting -> new Item(setting.spear(ModToolMaterials.CAST_STEEL, 1.10F, 1.13F, 0.4F,
             2.7F, 7.3F, 5.7F, 5.1F, 9.35F, 4.6F)));
+
+    public static final Item METEORIC_IRON_PICKAXE = registerItem("meteoric_iron_pickaxe", setting -> new Item(setting.pickaxe(ModToolMaterials.METEORIC_IRON, 1, 1.5f)));
+    public static final Item METEORIC_IRON_AXE = registerItem("meteoric_iron_axe", setting -> new AxeItem(ModToolMaterials.METEORIC_IRON, 5.5f, 1.5f, setting));
+    public static final Item METEORIC_IRON_SHOVEL = registerItem("meteoric_iron_shovel", setting -> new ShovelItem(ModToolMaterials.METEORIC_IRON, 0.5f, 1.0f, setting));
+    public static final Item METEORIC_IRON_SWORD = registerItem("meteoric_iron_sword", setting -> new Item(setting.sword(ModToolMaterials.METEORIC_IRON, 4, 1.0f)));
+    public static final Item METEORIC_IRON_HOE = registerItem("meteoric_iron_hoe", setting -> new HoeItem(ModToolMaterials.METEORIC_IRON, -3.5f, 4.0f, setting));
+    public static final Item METEORIC_IRON_SPEAR = registerItem("meteoric_iron_spear", setting -> new Item(setting.spear(ModToolMaterials.METEORIC_IRON, 1.00F, 1.15F, 0.3F,
+            2.7F, 7.3F, 5.7F, 4.1F, 7.35F, 4.6F)));
 
     public static final Item SIMPLE_DIAMOND_DRILL = registerItem("simple_diamond_drill", setting -> new Item(setting.pickaxe(ModToolMaterials.DIAMOND_DRILL, 1, -2.8f).fireResistant()));
     public static final Item ENHANCED_DIAMOND_DRILL = registerItem("enhanced_diamond_drill", setting -> new EnhancedDrillItem(ModToolMaterials.ENHANCED_DIAMOND_DRILL, 1, -2.1f, setting.fireResistant()));
@@ -184,15 +183,15 @@ public class ModItems {
     public static final Item PLATINUM_LEGGINGS = registerItem("platinum_leggings", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.PLATINUM_MATERIAL, ArmorType.LEGGINGS)));
     public static final Item PLATINUM_BOOTS = registerItem("platinum_boots", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.PLATINUM_MATERIAL, ArmorType.BOOTS)));
 
-    public static final Item STEEL_HELMET = registerItem("steel_helmet", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.STEEL_MATERIAL, ArmorType.HELMET)));
-    public static final Item STEEL_CHESTPLATE = registerItem("steel_chestplate", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.STEEL_MATERIAL, ArmorType.CHESTPLATE)));
-    public static final Item STEEL_LEGGINGS = registerItem("steel_leggings", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.STEEL_MATERIAL, ArmorType.LEGGINGS)));
-    public static final Item STEEL_BOOTS = registerItem("steel_boots", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.STEEL_MATERIAL, ArmorType.BOOTS)));
-
     public static final Item CAST_STEEL_HELMET = registerItem("cast_steel_helmet", setting -> new ModArmorItem(setting.humanoidArmor(ModArmorMaterials.CAST_STEEL_MATERIAL, ArmorType.HELMET)));
     public static final Item CAST_STEEL_CHESTPLATE = registerItem("cast_steel_chestplate", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.CAST_STEEL_MATERIAL, ArmorType.CHESTPLATE)));
     public static final Item CAST_STEEL_LEGGINGS = registerItem("cast_steel_leggings", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.CAST_STEEL_MATERIAL, ArmorType.LEGGINGS)));
     public static final Item CAST_STEEL_BOOTS = registerItem("cast_steel_boots", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.CAST_STEEL_MATERIAL, ArmorType.BOOTS)));
+
+    public static final Item METEORIC_IRON_HELMET = registerItem("meteoric_iron_helmet", setting -> new ModArmorItem(setting.humanoidArmor(ModArmorMaterials.METEORIC_IRON_MATERIAL, ArmorType.HELMET)));
+    public static final Item METEORIC_IRON_CHESTPLATE = registerItem("meteoric_iron_chestplate", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.METEORIC_IRON_MATERIAL, ArmorType.CHESTPLATE)));
+    public static final Item METEORIC_IRON_BOOTS = registerItem("meteoric_iron_boots", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.METEORIC_IRON_MATERIAL, ArmorType.BOOTS)));
+    public static final Item METEORIC_IRON_LEGGINGS = registerItem("meteoric_iron_leggings", setting -> new Item(setting.humanoidArmor(ModArmorMaterials.METEORIC_IRON_MATERIAL, ArmorType.LEGGINGS)));
 
     //Horse Armor
     public static final Item PINKU_HORSE_ARMOR = registerItem("pinku_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.PINKU_MATERIAL).stacksTo(1)));
@@ -201,10 +200,10 @@ public class ModItems {
     public static final Item ALUMINUM_HORSE_ARMOR = registerItem("aluminum_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.ALUMINUM_MATERIAL).stacksTo(1)));
     public static final Item SAPPHIRE_HORSE_ARMOR = registerItem("sapphire_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.SAPPHIRE_MATERIAL).stacksTo(1)));
     public static final Item PLATINUM_HORSE_ARMOR = registerItem("platinum_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.PLATINUM_MATERIAL).stacksTo(1)));
-    public static final Item STEEL_HORSE_ARMOR = registerItem("steel_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.STEEL_MATERIAL).stacksTo(1)));
     public static final Item CAST_STEEL_HORSE_ARMOR = registerItem("cast_steel_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.CAST_STEEL_MATERIAL).stacksTo(1)));
     public static final Item NEPHRITE_HORSE_ARMOR = registerItem("nephrite_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.NEPHRITE_MATERIAL).stacksTo(1)));
     public static final Item JADEITE_HORSE_ARMOR = registerItem("jadeite_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.JADEITE_MATERIAL).stacksTo(1)));
+    public static final Item METEORIC_IRON_HORSE_ARMOR = registerItem("meteoric_iron_horse_armor", setting -> new Item(setting.horseArmor(ModArmorMaterials.METEORIC_IRON_MATERIAL).stacksTo(1)));
 
     //Nautilus Armor
     public static final Item PINKU_NAUTILUS_ARMOR = registerItem("pinku_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.PINKU_MATERIAL).stacksTo(1)));
@@ -213,38 +212,45 @@ public class ModItems {
     public static final Item ALUMINUM_NAUTILUS_ARMOR = registerItem("aluminum_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.ALUMINUM_MATERIAL).stacksTo(1)));
     public static final Item SAPPHIRE_NAUTILUS_ARMOR = registerItem("sapphire_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.SAPPHIRE_MATERIAL).stacksTo(1)));
     public static final Item PLATINUM_NAUTILUS_ARMOR = registerItem("platinum_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.PLATINUM_MATERIAL).stacksTo(1)));
-    public static final Item STEEL_NAUTILUS_ARMOR = registerItem("steel_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.STEEL_MATERIAL).stacksTo(1)));
     public static final Item CAST_STEEL_NAUTILUS_ARMOR = registerItem("cast_steel_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.CAST_STEEL_MATERIAL).stacksTo(1)));
     public static final Item NEPHRITE_NAUTILUS_ARMOR = registerItem("nephrite_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.NEPHRITE_MATERIAL).stacksTo(1)));
     public static final Item JADEITE_NAUTILUS_ARMOR = registerItem("jadeite_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.JADEITE_MATERIAL).stacksTo(1)));
+    public static final Item METEORIC_IRON_NAUTILUS_ARMOR = registerItem("meteoric_iron_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.METEORIC_IRON_MATERIAL).stacksTo(1)));
+
+    //Casts
+    public static final Item PICKAXE_HEAD_CAST = registerItem("pickaxe_head_cast", setting -> new Item(setting.stacksTo(1)));
+    public static final Item AXE_HEAD_CAST = registerItem("axe_head_cast", setting -> new Item(setting.stacksTo(1)));
+    public static final Item SHOVEL_HEAD_CAST = registerItem("shovel_head_cast", setting -> new Item(setting.stacksTo(1)));
+    public static final Item SWORD_HEAD_CAST = registerItem("sword_head_cast", setting -> new Item(setting.stacksTo(1)));
+    public static final Item HOE_HEAD_CAST = registerItem("hoe_head_cast", setting -> new Item(setting.stacksTo(1)));
+    public static final Item SPEAR_HEAD_CAST = registerItem("spear_head_cast", setting -> new Item(setting.stacksTo(1)));
+    public static final Item HELMET_CAST = registerItem("helmet_cast", setting -> new Item(setting.craftRemainder(Items.IRON_HELMET).stacksTo(1)));
+    public static final Item CHESTPLATE_CAST = registerItem("chestplate_cast", setting -> new Item(setting.craftRemainder(Items.IRON_CHESTPLATE).stacksTo(1)));
+    public static final Item LEGGINGS_CAST = registerItem("leggings_cast", setting -> new Item(setting.craftRemainder(Items.IRON_LEGGINGS).stacksTo(1)));
+    public static final Item BOOTS_CAST = registerItem("boots_cast", setting -> new Item(setting.craftRemainder(Items.IRON_BOOTS).stacksTo(1)));
+
+    //Cast Steel Heads
+    public static final Item CS_PICKAXE_HEAD = registerItem("cast_steel_pickaxe_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item CS_AXE_HEAD = registerItem("cast_steel_axe_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item CS_SHOVEL_HEAD = registerItem("cast_steel_shovel_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item CS_SWORD_HEAD = registerItem("cast_steel_sword_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item CS_HOE_HEAD = registerItem("cast_steel_hoe_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item CS_SPEAR_HEAD = registerItem("cast_steel_spear_head", setting -> new Item(setting.stacksTo(1)));
+
+    //Meteoric Iron Heads
+    public static final Item MI_PICKAXE_HEAD = registerItem("meteoric_iron_pickaxe_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item MI_AXE_HEAD = registerItem("meteoric_iron_axe_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item MI_SHOVEL_HEAD = registerItem("meteoric_iron_shovel_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item MI_SWORD_HEAD = registerItem("meteoric_iron_sword_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item MI_HOE_HEAD = registerItem("meteoric_iron_hoe_head", setting -> new Item(setting.stacksTo(1)));
+    public static final Item MI_SPEAR_HEAD = registerItem("meteoric_iron_spear_head", setting -> new Item(setting.stacksTo(1)));
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name),
                 function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name)))));
     }
 
-    private static void customIngredients(FabricCreativeModeTabOutput entries) {
-        entries.accept(PINKU);
-        entries.accept(PINKU_SHARD);
-        entries.accept(RAINBOW_PYRITE);
-        entries.accept(WOLFRAMITE);
-        entries.accept(SCHEELITE);
-        entries.accept(TUNGSTEN);
-        entries.accept(CRUSHED_BAUXITE);
-        entries.accept(ALUMINUM);
-        entries.accept(SAPPHIRE);
-        entries.accept(PLATINUM);
-        entries.accept(PLATINUM_NUGGET);
-        entries.accept(NEPHRITE);
-        entries.accept(JADEITE);
-        entries.accept(SULFUR);
-        entries.accept(CRUDE_IRON);
-        entries.accept(STEEL);
-        entries.accept(CAST_STEEL);
-    }
-
     public static void registerModItems() {
         Houseki.LOGGER.info("Registering ModItems for " + Houseki.MOD_ID);
-        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(ModItems::customIngredients);
     }
 }

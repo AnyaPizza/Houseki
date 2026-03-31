@@ -14,7 +14,6 @@ import anya.pizza.houseki.util.ModLootTableModifiers;
 import anya.pizza.houseki.world.gen.ModWorldGeneration;
 import anya.pizza.houseki.recipe.ModSerializer;
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import org.slf4j.Logger;

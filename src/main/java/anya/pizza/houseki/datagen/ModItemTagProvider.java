@@ -26,7 +26,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.JADEITE)
                 .add(ModItems.PLATINUM)
                 .add(ModItems.STEEL)
-                .add(ModItems.CAST_STEEL);
+                .add(ModItems.CAST_STEEL)
+                .add(ModItems.METEORIC_IRON_INGOT);
 
         valueLookupBuilder(ItemTags.TRIM_MATERIALS)
                 .add(ModItems.RAINBOW_PYRITE)
@@ -69,14 +70,14 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.PLATINUM_CHESTPLATE)
                 .add(ModItems.PLATINUM_LEGGINGS)
                 .add(ModItems.PLATINUM_BOOTS)
-                .add(ModItems.STEEL_HELMET)
-                .add(ModItems.STEEL_CHESTPLATE)
-                .add(ModItems.STEEL_LEGGINGS)
-                .add(ModItems.STEEL_BOOTS)
                 .add(ModItems.CAST_STEEL_HELMET)
                 .add(ModItems.CAST_STEEL_CHESTPLATE)
                 .add(ModItems.CAST_STEEL_LEGGINGS)
-                .add(ModItems.CAST_STEEL_BOOTS);
+                .add(ModItems.CAST_STEEL_BOOTS)
+                .add(ModItems.METEORIC_IRON_HELMET)
+                .add(ModItems.METEORIC_IRON_CHESTPLATE)
+                .add(ModItems.METEORIC_IRON_LEGGINGS)
+                .add(ModItems.METEORIC_IRON_BOOTS);
 
         valueLookupBuilder(ItemTags.AXES)
                 .add(ModItems.PINKU_AXE)
@@ -87,8 +88,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_AXE)
                 .add(ModItems.JADEITE_AXE)
                 .add(ModItems.PLATINUM_AXE)
-                .add(ModItems.STEEL_AXE)
-                .add(ModItems.CAST_STEEL_AXE);
+                .add(ModItems.CAST_STEEL_AXE)
+                .add(ModItems.METEORIC_IRON_AXE);
 
         valueLookupBuilder(ItemTags.HOES)
                 .add(ModItems.PINKU_HOE)
@@ -99,8 +100,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_HOE)
                 .add(ModItems.JADEITE_HOE)
                 .add(ModItems.PLATINUM_HOE)
-                .add(ModItems.STEEL_HOE)
-                .add(ModItems.CAST_STEEL_HOE);
+                .add(ModItems.CAST_STEEL_HOE)
+                .add(ModItems.METEORIC_IRON_HOE);
 
         valueLookupBuilder(ItemTags.SHOVELS)
                 .add(ModItems.PINKU_SHOVEL)
@@ -111,8 +112,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_SHOVEL)
                 .add(ModItems.JADEITE_SHOVEL)
                 .add(ModItems.PLATINUM_SHOVEL)
-                .add(ModItems.STEEL_SHOVEL)
-                .add(ModItems.CAST_STEEL_SHOVEL);
+                .add(ModItems.CAST_STEEL_SHOVEL)
+                .add(ModItems.METEORIC_IRON_SHOVEL);
 
         valueLookupBuilder(ItemTags.SWORDS)
                 .add(ModItems.PINKU_SWORD)
@@ -123,8 +124,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_SWORD)
                 .add(ModItems.JADEITE_SWORD)
                 .add(ModItems.PLATINUM_SWORD)
-                .add(ModItems.STEEL_SWORD)
-                .add(ModItems.CAST_STEEL_SWORD);
+                .add(ModItems.CAST_STEEL_SWORD)
+                .add(ModItems.METEORIC_IRON_SWORD);
 
         valueLookupBuilder(ItemTags.PICKAXES)
                 .add(ModItems.PINKU_PICKAXE)
@@ -135,8 +136,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_PICKAXE)
                 .add(ModItems.JADEITE_PICKAXE)
                 .add(ModItems.PLATINUM_PICKAXE)
-                .add(ModItems.STEEL_PICKAXE)
-                .add(ModItems.CAST_STEEL_PICKAXE);
+                .add(ModItems.CAST_STEEL_PICKAXE)
+                .add(ModItems.METEORIC_IRON_PICKAXE);
 
         valueLookupBuilder(ModTags.Items.DRILLS)
                 .add(ModItems.SIMPLE_DRILL_HEAD)
@@ -169,8 +170,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_BOOTS)
                 .add(ModItems.JADEITE_BOOTS)
                 .add(ModItems.PLATINUM_BOOTS)
-                .add(ModItems.STEEL_BOOTS)
-                .add(ModItems.CAST_STEEL_BOOTS);
+                .add(ModItems.CAST_STEEL_BOOTS)
+                .add(ModItems.METEORIC_IRON_BOOTS);
 
         valueLookupBuilder(ItemTags.LEG_ARMOR)
                 .add(ModItems.PINKU_LEGGINGS)
@@ -181,8 +182,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_LEGGINGS)
                 .add(ModItems.JADEITE_LEGGINGS)
                 .add(ModItems.PLATINUM_LEGGINGS)
-                .add(ModItems.STEEL_LEGGINGS)
-                .add(ModItems.CAST_STEEL_LEGGINGS);
+                .add(ModItems.CAST_STEEL_LEGGINGS)
+                .add(ModItems.METEORIC_IRON_LEGGINGS);
 
         valueLookupBuilder(ItemTags.CHEST_ARMOR)
                 .add(ModItems.PINKU_CHESTPLATE)
@@ -193,8 +194,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_CHESTPLATE)
                 .add(ModItems.JADEITE_CHESTPLATE)
                 .add(ModItems.PLATINUM_CHESTPLATE)
-                .add(ModItems.STEEL_CHESTPLATE)
-                .add(ModItems.CAST_STEEL_CHESTPLATE);
+                .add(ModItems.CAST_STEEL_CHESTPLATE)
+                .add(ModItems.METEORIC_IRON_CHESTPLATE);
 
         valueLookupBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModItems.PINKU_HELMET)
@@ -205,8 +206,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_HELMET)
                 .add(ModItems.JADEITE_HELMET)
                 .add(ModItems.PLATINUM_HELMET)
-                .add(ModItems.STEEL_HELMET)
-                .add(ModItems.CAST_STEEL_HELMET);
+                .add(ModItems.CAST_STEEL_HELMET)
+                .add(ModItems.METEORIC_IRON_HELMET);
 
         valueLookupBuilder(ModTags.Items.MOB_ARMORS)
                 .add(ModItems.PINKU_HORSE_ARMOR)
@@ -217,8 +218,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_HORSE_ARMOR)
                 .add(ModItems.JADEITE_HORSE_ARMOR)
                 .add(ModItems.PLATINUM_HORSE_ARMOR)
-                .add(ModItems.STEEL_HORSE_ARMOR)
                 .add(ModItems.CAST_STEEL_HORSE_ARMOR)
+                .add(ModItems.METEORIC_IRON_HORSE_ARMOR)
                 .add(ModItems.PINKU_NAUTILUS_ARMOR)
                 .add(ModItems.RAINBOW_PYRITE_NAUTILUS_ARMOR)
                 .add(ModItems.TUNGSTEN_NAUTILUS_ARMOR)
@@ -227,8 +228,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_NAUTILUS_ARMOR)
                 .add(ModItems.JADEITE_NAUTILUS_ARMOR)
                 .add(ModItems.PLATINUM_NAUTILUS_ARMOR)
-                .add(ModItems.STEEL_NAUTILUS_ARMOR)
-                .add(ModItems.CAST_STEEL_NAUTILUS_ARMOR);
+                .add(ModItems.CAST_STEEL_NAUTILUS_ARMOR)
+                .add(ModItems.METEORIC_IRON_NAUTILUS_ARMOR);
 
         valueLookupBuilder(ModTags.Items.PINKU_REPAIR)
                 .add(ModItems.PINKU);
@@ -246,10 +247,10 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.JADEITE);
         valueLookupBuilder(ModTags.Items.PLATINUM_REPAIR)
                 .add(ModItems.PLATINUM);
-        valueLookupBuilder(ModTags.Items.STEEL_REPAIR)
-                .add(ModItems.STEEL);
         valueLookupBuilder(ModTags.Items.CAST_STEEL_REPAIR)
                 .add(ModItems.CAST_STEEL);
+        valueLookupBuilder(ModTags.Items.METEORIC_IRON_REPAIR)
+                .add(ModItems.METEORIC_IRON_INGOT);
         valueLookupBuilder(ModTags.Items.DIAMOND_REPAIR)
                 .add(Items.DIAMOND);
 
@@ -262,8 +263,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_HELMET)
                 .add(ModItems.JADEITE_HELMET)
                 .add(ModItems.PLATINUM_HELMET)
-                .add(ModItems.STEEL_HELMET)
                 .add(ModItems.CAST_STEEL_HELMET)
+                .add(ModItems.METEORIC_IRON_HELMET)
                 .add(ModItems.PINKU_CHESTPLATE)
                 .add(ModItems.RAINBOW_PYRITE_CHESTPLATE)
                 .add(ModItems.TUNGSTEN_CHESTPLATE)
@@ -272,8 +273,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_CHESTPLATE)
                 .add(ModItems.JADEITE_CHESTPLATE)
                 .add(ModItems.PLATINUM_CHESTPLATE)
-                .add(ModItems.STEEL_CHESTPLATE)
                 .add(ModItems.CAST_STEEL_CHESTPLATE)
+                .add(ModItems.METEORIC_IRON_CHESTPLATE)
                 .add(ModItems.PINKU_LEGGINGS)
                 .add(ModItems.RAINBOW_PYRITE_LEGGINGS)
                 .add(ModItems.TUNGSTEN_LEGGINGS)
@@ -282,8 +283,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_LEGGINGS)
                 .add(ModItems.JADEITE_LEGGINGS)
                 .add(ModItems.PLATINUM_LEGGINGS)
-                .add(ModItems.STEEL_LEGGINGS)
                 .add(ModItems.CAST_STEEL_LEGGINGS)
+                .add(ModItems.METEORIC_IRON_LEGGINGS)
                 .add(ModItems.PINKU_BOOTS)
                 .add(ModItems.RAINBOW_PYRITE_BOOTS)
                 .add(ModItems.TUNGSTEN_BOOTS)
@@ -292,8 +293,8 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_BOOTS)
                 .add(ModItems.JADEITE_BOOTS)
                 .add(ModItems.PLATINUM_BOOTS)
-                .add(ModItems.STEEL_BOOTS)
-                .add(ModItems.CAST_STEEL_BOOTS);
+                .add(ModItems.CAST_STEEL_BOOTS)
+                .add(ModItems.METEORIC_IRON_BOOTS);
 
         valueLookupBuilder(ItemTags.SPEARS)
                 .add(ModItems.PINKU_SPEAR)
@@ -305,7 +306,19 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.NEPHRITE_SPEAR)
                 .add(ModItems.JADEITE_SPEAR)
                 .add(ModItems.PLATINUM_SPEAR)
-                .add(ModItems.STEEL_SPEAR)
-                .add(ModItems.CAST_STEEL_SPEAR);
+                .add(ModItems.CAST_STEEL_SPEAR)
+                .add(ModItems.METEORIC_IRON_SPEAR);
+
+        valueLookupBuilder(ModTags.Items.CASTS)
+                .add(ModItems.PICKAXE_HEAD_CAST)
+                .add(ModItems.AXE_HEAD_CAST)
+                .add(ModItems.SHOVEL_HEAD_CAST)
+                .add(ModItems.SWORD_HEAD_CAST)
+                .add(ModItems.HOE_HEAD_CAST)
+                .add(ModItems.SPEAR_HEAD_CAST)
+                .add(ModItems.HELMET_CAST)
+                .add(ModItems.CHESTPLATE_CAST)
+                .add(ModItems.LEGGINGS_CAST)
+                .add(ModItems.BOOTS_CAST);
     }
 }
