@@ -56,10 +56,12 @@ public class MeteoriteStructurePiece extends StructurePiece {
     private final int meteorRadius; // radius of the meteorite sphere (7-11)
     private final int craterDepth;  // how deep the crater goes below surfaceY
     private final long seed;        // deterministic seed for reproducible random across chunk passes
+    private final int biomeVariantId; // ordinal of BiomeVariant, determined at structure placement time
 
     // Primary constructor, used when the structure is first created during worldgen
     public MeteoriteStructurePiece(int centerX, int surfaceY, int centerZ,
-                                   int meteorRadius, int craterDepth, long seed) {
+                                   int meteorRadius, int craterDepth, long seed,
+                                   int biomeVariantId) {
         super(ModStructures.METEORITE_PIECE_TYPE, 0,
                 makeBounds(centerX, surfaceY, centerZ, meteorRadius, craterDepth));
         this.centerX = centerX;
@@ -68,6 +70,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
         this.meteorRadius = meteorRadius;
         this.craterDepth = craterDepth;
         this.seed = seed;
+        this.biomeVariantId = biomeVariantId;
     }
 
     // NBT constructor, used when loading from a saved game. orElse() provides fallback defaults.
@@ -79,6 +82,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
         this.meteorRadius = data.getInt("mr").orElse(7);
         this.craterDepth = data.getInt("cd").orElse(10);
         this.seed = data.getLong("seed").orElse(0L);
+        this.biomeVariantId = data.getInt("bv").orElse(0);
     }
 
     // Computes the bounding box that fully encloses the structure.
@@ -98,6 +102,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
         data.putInt("mr", meteorRadius);
         data.putInt("cd", craterDepth);
         data.putLong("seed", seed);
+        data.putInt("bv", biomeVariantId);
     }
 
     // Returns the Y of the crater floor at a given horizontal distance from center.
@@ -112,24 +117,29 @@ public class MeteoriteStructurePiece extends StructurePiece {
     }
 
     /**
-     * Determines the visual variant based on the biome at the meteor center.
-     * Only affects crater lining, meteorite shell, and ejecta rim blocks.
-     * Core blocks (METEORIC_IRON) and debris are unchanged.
+     * Maps a biome holder to its variant ordinal. Called from MeteoriteStructure during
+     * findGenerationPoint, where the full biome source is safely accessible.
      */
-    private BiomeVariant determineBiomeVariant(WorldGenLevel level) {
-        Holder<Biome> biome = level.getBiome(new BlockPos(centerX, surfaceY, centerZ));
-
+    public static int resolveBiomeVariantId(Holder<Biome> biome) {
         if (biome.is(Biomes.DESERT)) {
-            return BiomeVariant.DESERT;
+            return BiomeVariant.DESERT.ordinal();
         }
         if (biome.is(Biomes.MANGROVE_SWAMP) || biome.is(Biomes.SWAMP)) {
-            return BiomeVariant.MANGROVE;
+            return BiomeVariant.MANGROVE.ordinal();
         }
         if (biome.is(Biomes.SNOWY_PLAINS) || biome.is(Biomes.SNOWY_TAIGA)
                 || biome.is(Biomes.SNOWY_BEACH) || biome.is(Biomes.SNOWY_SLOPES)
                 || biome.is(Biomes.FROZEN_PEAKS) || biome.is(Biomes.ICE_SPIKES)
                 || biome.is(Biomes.GROVE)) {
-            return BiomeVariant.SNOWY;
+            return BiomeVariant.SNOWY.ordinal();
+        }
+        return BiomeVariant.DEFAULT.ordinal();
+    }
+
+    private BiomeVariant getVariant() {
+        BiomeVariant[] values = BiomeVariant.values();
+        if (biomeVariantId >= 0 && biomeVariantId < values.length) {
+            return values[biomeVariantId];
         }
         return BiomeVariant.DEFAULT;
     }
@@ -155,13 +165,18 @@ public class MeteoriteStructurePiece extends StructurePiece {
         int settleAmount = 5;
         int meteorCenterY = (surfaceY - craterDepth) + meteorRadius - settleAmount;
         BlockPos meteorCenter = new BlockPos(centerX, meteorCenterY, centerZ);
-        BiomeVariant variant = determineBiomeVariant(level);
+        BiomeVariant variant = getVariant();
 
-        // Bail out if the center is in water or lava - meteorites in oceans look bad
+        // Bail out on lava for all variants. Bail out on water only for DEFAULT
+        // and DESERT variants. Swamp/Mangrove and Snowy biomes commonly have water
+        // surfaces and are allowed to generate with water present.
         BlockPos surfacePos = new BlockPos(centerX, surfaceY - 1, centerZ);
         BlockState surfaceState = level.getBlockState(surfacePos);
+        if (surfaceState.getFluidState().is(FluidTags.LAVA)) {
+            return;
+        }
         if (surfaceState.getFluidState().is(FluidTags.WATER)
-                || surfaceState.getFluidState().is(FluidTags.LAVA)) {
+                && variant != BiomeVariant.MANGROVE && variant != BiomeVariant.SNOWY) {
             return;
         }
 
@@ -267,6 +282,39 @@ public class MeteoriteStructurePiece extends StructurePiece {
                         if (!meteorWontReplace(state)) {
                             level.setBlock(pos, getCraterLiner(random, variant), 2);
                         }
+                    }
+                }
+            }
+        }
+
+        // Phase 2.5: Seal caves and ravines beneath the crater.
+        // Carvers (caves, ravines) run before structures and may have opened gaps
+        // below the crater floor that would be visible from inside. Scan downward
+        // from just below the 2-block liner and fill any air or fluid pockets until
+        // we hit a thick enough stretch of solid material.
+        int sealDepth = craterDepth + meteorRadius;
+        for (int dx = -craterRadius - 1; dx <= craterRadius + 1; dx++) {
+            for (int dz = -craterRadius - 1; dz <= craterRadius + 1; dz++) {
+                double horizDist = Math.sqrt(dx * dx + dz * dz);
+                if (horizDist > craterRadius + 1) continue;
+
+                int bx = centerX + dx;
+                int bz = centerZ + dz;
+                int craterFloorY = getCraterFloorY(horizDist, craterRadius);
+
+                int solidStreak = 0;
+                for (int y = craterFloorY - 3; y >= craterFloorY - sealDepth; y--) {
+                    BlockPos pos = new BlockPos(bx, y, bz);
+                    if (!chunkBox.isInside(pos)) continue;
+                    BlockState state = level.getBlockState(pos);
+                    if (state.is(Blocks.BEDROCK)) break;
+                    if (state.isAir() || !state.getFluidState().isEmpty()) {
+                        level.setBlock(pos, getCraterLiner(random, variant), 2);
+                        solidStreak = 0;
+                    } else {
+                        solidStreak++;
+                        // Five consecutive solid blocks means we are past the opening
+                        if (solidStreak >= 5) break;
                     }
                 }
             }

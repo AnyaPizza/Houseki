@@ -2,6 +2,11 @@ package anya.pizza.houseki.world.structure;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -53,9 +58,25 @@ public class MeteoriteStructure extends Structure {
         // Generate a seed for the piece so it can produce deterministic results across chunk passes
         long pieceSeed = random.nextLong();
 
+        // Determine biome variant now, while the full biome source is accessible.
+        // During postProcess only nearby chunks are available, so sampling the biome
+        // at the meteor center from there would crash for large structures.
+        Climate.Sampler sampler = context.randomState().sampler();
+        Holder<Biome> biome = context.biomeSource().getNoiseBiome(
+                x >> 2, surfaceY >> 2, z >> 2, sampler);
+
+        // Reject ocean and river biomes outright. Without this, the structure
+        // is registered (visible to /locate) but postProcess skips it silently,
+        // creating ghost entries that players can never find.
+        if (biome.is(BiomeTags.IS_OCEAN) || biome.is(BiomeTags.IS_RIVER)) {
+            return Optional.empty();
+        }
+
+        int biomeVariantId = MeteoriteStructurePiece.resolveBiomeVariantId(biome);
+
         return Optional.of(new GenerationStub(pos, collector -> {
             collector.addPiece(new MeteoriteStructurePiece(
-                    x, surfaceY, z, radius, craterDepth, pieceSeed));
+                    x, surfaceY, z, radius, craterDepth, pieceSeed, biomeVariantId));
         }));
     }
 
