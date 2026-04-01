@@ -48,7 +48,7 @@ public class ModPlacedFeatures {
 
         register(context, WOLFRAMITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WOLFRAMITE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
-        register(context, NETHERRACK_WOLFRAMITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHERRACK_WOLFRAMITE_ORE_KEY),
+        register(context, WOLFRAMITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHERRACK_WOLFRAMITE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(30, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
 
         register(context, SCHEELITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SCHEELITE_ORE_KEY),

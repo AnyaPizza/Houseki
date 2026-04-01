@@ -4,11 +4,11 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.recipe.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -23,7 +23,7 @@ public record FoundryCastingRecipe(Ingredient inputCastingItem, Item output, int
 
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();
-        list.add(this.inputCastingItem);
+        list.set(0, this.inputCastingItem);
         return list;
     }
 
@@ -90,7 +90,7 @@ public record FoundryCastingRecipe(Ingredient inputCastingItem, Item output, int
     public static final RecipeSerializer<FoundryCastingRecipe> SERIALIZER = new RecipeSerializer<>(
         RecordCodecBuilder.mapCodec(inst -> inst.group(
                 Ingredient.CODEC.fieldOf("ingredient").forGetter(FoundryCastingRecipe::inputCastingItem),
-                BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").forGetter(FoundryCastingRecipe::output),
+                ItemStack.CODEC.fieldOf("result").forGetter(FoundryCastingRecipe::output),
                 Codec.INT.fieldOf("activeMetalType").forGetter(FoundryCastingRecipe::activeMetalType),
                 Codec.INT.optionalFieldOf("castTime", DEFAULT_CAST_TIME).forGetter(FoundryCastingRecipe::castTime),
                 Codec.INT.optionalFieldOf("coolingTime", DEFAULT_COOLING_TIME).forGetter(FoundryCastingRecipe::coolingTime)

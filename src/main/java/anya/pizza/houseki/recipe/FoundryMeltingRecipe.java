@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -96,7 +95,7 @@ public record FoundryMeltingRecipe(Ingredient inputMeltingItem, Item output, int
     public static final RecipeSerializer<FoundryMeltingRecipe> SERIALIZER = new RecipeSerializer<>(
         RecordCodecBuilder.mapCodec(inst -> inst.group(
                 Ingredient.CODEC.fieldOf("ingredient").forGetter(FoundryMeltingRecipe::inputMeltingItem),
-                BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").forGetter(FoundryMeltingRecipe::output),
+                ItemStack.CODEC.fieldOf("result").forGetter(FoundryMeltingRecipe::output),
                 Codec.INT.optionalFieldOf("meltTime", DEFAULT_MELT_TIME).forGetter(FoundryMeltingRecipe::meltTime)
         ).apply(inst, FoundryMeltingRecipe::new)),
 

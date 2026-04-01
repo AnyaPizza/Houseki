@@ -1,19 +1,15 @@
 package anya.pizza.houseki.world.structure;
 
 import anya.pizza.houseki.Houseki;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
-import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
+import net.minecraft.registry.*;
+import net.minecraft.registry.tag.BiomeTags;
+import net.minecraft.structure.StructurePieceType;
+import net.minecraft.structure.StructureSet;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.chunk.placement.RandomSpreadStructurePlacement;
+import net.minecraft.world.gen.chunk.placement.SpreadType;
+import net.minecraft.world.gen.structure.Structure;
+import net.minecraft.world.gen.structure.StructureType;
 
 /**
  * Handles all registry setup for the meteorite structure.
@@ -22,34 +18,34 @@ import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
  */
 public class ModStructures {
     // Unique key for the meteorite structure in the STRUCTURE registry (resolves to "houseki:meteorite")
-    public static final ResourceKey<Structure> METEORITE_KEY =
-            ResourceKey.create(Registries.STRUCTURE, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"));
+    public static final RegistryKey<Structure> METEORITE_KEY =
+            RegistryKey.of(RegistryKeys.STRUCTURE, Identifier.of(Houseki.MOD_ID, "meteorite"));
 
     // Key for the structure set, which controls placement frequency and spacing
-    public static final ResourceKey<StructureSet> METEORITE_SET_KEY =
-            ResourceKey.create(Registries.STRUCTURE_SET, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"));
+    public static final RegistryKey<StructureSet> METEORITE_SET_KEY =
+            RegistryKey.of(RegistryKeys.STRUCTURE_SET, Identifier.of(Houseki.MOD_ID, "meteorite"));
 
     // Registers the structure type with its codec so Minecraft can serialize/deserialize it
     public static final StructureType<MeteoriteStructure> METEORITE_TYPE =
-            Registry.register(BuiltInRegistries.STRUCTURE_TYPE,
-                    Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"),
+            Registry.register(Registries.STRUCTURE_TYPE,
+                    Identifier.of(Houseki.MOD_ID, "meteorite"),
                     () -> MeteoriteStructure.CODEC);
 
     // Registers the piece type. The method reference points to the NBT constructor used for deserialization.
     public static final StructurePieceType METEORITE_PIECE_TYPE =
-            Registry.register(BuiltInRegistries.STRUCTURE_PIECE,
-                    Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"),
+            Registry.register(Registries.STRUCTURE_PIECE,
+                    Identifier.of(Houseki.MOD_ID, "meteorite"),
                     MeteoriteStructurePiece::new);
 
     /**
      * Called during datagen. Creates the meteorite structure and restricts it to Overworld biomes.
      * Produces: data/houseki/worldgen/structure/meteorite.json
      */
-    public static void bootstrapStructure(BootstrapContext<Structure> context) {
-        var biomes = context.lookup(Registries.BIOME);
+    public static void bootstrapStructure(Registerable<Structure> context) {
+        var biomes = context.getRegistryLookup(RegistryKeys.BIOME);
 
         context.register(METEORITE_KEY, new MeteoriteStructure(
-                new Structure.StructureSettings.Builder(biomes.getOrThrow(BiomeTags.IS_OVERWORLD)).build()
+                new Structure.Config.Builder(biomes.getOrThrow(BiomeTags.IS_OVERWORLD)).build()
         ));
     }
 
@@ -62,12 +58,12 @@ public class ModStructures {
      * SpreadType.LINEAR = uniform random offset within each grid cell
      * Salt = unique seed so meteorites don't overlap with other structures
      */
-    public static void bootstrapStructureSet(BootstrapContext<StructureSet> context) {
-        var structures = context.lookup(Registries.STRUCTURE);
+    public static void bootstrapStructureSet(Registerable<StructureSet> context) {
+        var structures = context.getRegistryLookup(RegistryKeys.STRUCTURE);
 
         context.register(METEORITE_SET_KEY, new StructureSet(
                 structures.getOrThrow(METEORITE_KEY),
-                new RandomSpreadStructurePlacement(96, 56, RandomSpreadType.LINEAR, 948372615)
+                new RandomSpreadStructurePlacement(96, 56, SpreadType.LINEAR, 948372615)
         ));
     }
 

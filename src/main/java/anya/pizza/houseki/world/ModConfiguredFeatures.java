@@ -51,7 +51,7 @@ public class ModConfiguredFeatures {
         RuleTest limestoneReplaceables = new BlockMatchTest(ModBlocks.LIMESTONE);
         RuleTest slateReplaceables = new BlockMatchTest(ModBlocks.SLATE);
         RuleTest netherrackReplaceables = new BlockMatchTest(Blocks.NETHERRACK);
-        RuleTest quartzReplaceables = new BlockMatchTest(Blocks.NETHER_QUARTZ_ORE);
+        RuleTest quartzReplaceables = new BlockMatchRuleTest(Blocks.NETHER_QUARTZ_ORE);
 
         List<OreConfiguration.TargetBlockState> endPinkuOres = List.of(OreConfiguration.target(endReplaceables, ModBlocks.PINKU_ORE.defaultBlockState()));
 
@@ -60,7 +60,7 @@ public class ModConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> overworldBauxiteRainbowPyriteOres = List.of(OreConfiguration.target(bauxiteReplaceables, ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE.defaultBlockState()));
 
         List<OreConfiguration.TargetBlockState> overworldWolframiteOres = List.of(OreConfiguration.target(graniteReplaceables, ModBlocks.WOLFRAMITE_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> netherWolframiteOres = List.of(OreConfiguration.target(quartzReplaceables, ModBlocks.NETHERRACK_WOLFRAMITE_ORE.defaultBlockState()));
+        List<OreFeatureConfig.Target> netherWolframiteOres = List.of(OreFeatureConfig.createTarget(quartzReplaceables, ModBlocks.NETHERRACK_WOLFRAMITE_ORE.getDefaultState()));
 
         List<OreConfiguration.TargetBlockState> netherScheeliteOres = List.of(OreConfiguration.target(netherrackReplaceables, ModBlocks.SCHEELITE_ORE.defaultBlockState()));
 

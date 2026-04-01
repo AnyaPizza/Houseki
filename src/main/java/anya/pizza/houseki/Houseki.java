@@ -12,7 +12,6 @@ import anya.pizza.houseki.util.EDUsageEvent;
 import anya.pizza.houseki.util.PDUsageEvent;
 import anya.pizza.houseki.util.ModLootTableModifiers;
 import anya.pizza.houseki.world.gen.ModWorldGeneration;
-import anya.pizza.houseki.world.structure.ModStructures;
 import anya.pizza.houseki.recipe.ModSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -38,7 +37,6 @@ public class Houseki implements ModInitializer {
 		TrimEffectHandler.registerTrimEffects();
 
 		ModWorldGeneration.generateModWorldGeneration();
-		ModStructures.register();
 
 		FuelValueEvents.BUILD.register((builder, context) -> {
 			builder.add(ModItems.SULFUR, 1600);

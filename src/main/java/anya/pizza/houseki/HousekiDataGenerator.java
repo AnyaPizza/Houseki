@@ -28,6 +28,6 @@ public class HousekiDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.TRIM_MATERIAL, ModTrimMaterials::bootstrap);
-		registryBuilder.add(Registries.STRUCTURE, ModStructures::bootstrapStructure);
-		registryBuilder.add(Registries.STRUCTURE_SET, ModStructures::bootstrapStructureSet);	}
+		registryBuilder.addRegistry(RegistryKeys.STRUCTURE, ModStructures::bootstrapStructure);
+		registryBuilder.addRegistry(RegistryKeys.STRUCTURE_SET, ModStructures::bootstrapStructureSet);	}
 }

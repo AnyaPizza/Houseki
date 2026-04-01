@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "houseki:cast_steel_sword_head",
-    "X": "minecraft:stick"
+    "#": "houseki:cast_steel",
+    "S": "minecraft:stick"
   },
   "pattern": [
     "#",
-    "X",
-    "X"
+    "#",
+    "S"
   ],
   "result": {
     "id": "houseki:cast_steel_sword"

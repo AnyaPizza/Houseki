@@ -1,8 +1,0 @@
-{
-  "type": "houseki:crusher",
-  "auxiliary_chance": 0.35,
-  "auxiliary_result": "houseki:nickel_powder",
-  "crushingTime": 300,
-  "ingredient": "houseki:meteoric_iron_ingot",
-  "result": "minecraft:raw_iron"
-}

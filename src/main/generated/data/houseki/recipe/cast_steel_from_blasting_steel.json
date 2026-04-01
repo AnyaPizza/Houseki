@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 120,
+  "experience": 0.5,
+  "group": "cast_steel",
+  "ingredient": "houseki:steel",
+  "result": {
+    "id": "houseki:cast_steel"
+  }
+}
