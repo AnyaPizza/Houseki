@@ -28,8 +28,8 @@ public class TrimEffectHandler {
     }
 
     private static void applyEffects(ServerPlayer player) {
-        int amethystCount = 0;
-        int diamondCount = 0;
+        //int amethystCount = 0;
+        //int diamondCount = 0;
 
         for (EquipmentSlot slot : ARMOR_SLOTS) {
             ItemStack stack = player.getItemBySlot(slot);
@@ -38,12 +38,12 @@ public class TrimEffectHandler {
             ArmorTrim trim = stack.get(DataComponents.TRIM);
             if (trim == null) continue;
 
-            if (trim.material().is(TrimMaterials.AMETHYST)) amethystCount++;
-            if (trim.material().is(TrimMaterials.DIAMOND)) diamondCount++;
+            //if (trim.material().is(TrimMaterials.AMETHYST)) amethystCount++;
+            //if (trim.material().is(TrimMaterials.DIAMOND)) diamondCount++;
         }
 
-        handleAmethystBonus(player, amethystCount);
-        handleDiamondBonus(player, diamondCount);
+        //handleAmethystBonus(player, amethystCount);
+        //handleDiamondBonus(player, diamondCount);
     }
 
     private static void handleAmethystBonus(ServerPlayer player, int aCount) {
