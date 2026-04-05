@@ -7,3 +7,8 @@
 # These are Windows script files and should use crlf
 *.bat           text eol=crlf
 
+# Normalize generated and resource JSON files to LF so Windows checkouts
+# do not produce hundreds of line-ending-only dirty files.
+*.json          text eol=lf
+*.java          text eol=lf
+

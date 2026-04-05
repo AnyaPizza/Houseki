@@ -2,5 +2,5 @@
   "type": "houseki:meteorite",
   "biomes": "#minecraft:is_overworld",
   "spawn_overrides": {},
-  "step": "surface_structures"
+  "step": "top_layer_modification"
 }

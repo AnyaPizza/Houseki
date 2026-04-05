@@ -2,6 +2,11 @@ package anya.pizza.houseki.world.structure;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -53,9 +58,65 @@ public class MeteoriteStructure extends Structure {
         // Generate a seed for the piece so it can produce deterministic results across chunk passes
         long pieceSeed = random.nextLong();
 
+        // Determine biome variant now, while the full biome source is accessible.
+        // During postProcess only nearby chunks are available, so sampling the biome
+        // at the meteor center from there would crash for large structures.
+        Climate.Sampler sampler = context.randomState().sampler();
+        Holder<Biome> biome = context.biomeSource().getNoiseBiome(
+                x >> 2, surfaceY >> 2, z >> 2, sampler);
+
+        // Reject ocean, river, beach and shore biomes outright. Without this,
+        // the structure is registered (visible to /locate) but postProcess skips it
+        // silently, creating ghost entries that players can never find.
+        if (biome.is(BiomeTags.IS_OCEAN) || biome.is(BiomeTags.IS_RIVER)
+                || biome.is(BiomeTags.IS_BEACH)
+                || biome.is(Biomes.STONY_SHORE)) {
+            return Optional.empty();
+        }
+
+        // Check terrain height variance and water presence around the impact site.
+        // Sample at three distances: center, half crater radius, and full clearing
+        // radius. Using only half-radius missed water bodies near the crater edge,
+        // causing hard vertical cutoffs where the bowl meets the water.
+        // Reject if:
+        //   - any point's height differs by >8 blocks from center (steep terrain)
+        //   - any point has water (WORLD_SURFACE_WG != OCEAN_FLOOR_WG)
+        int craterRadius = radius + 25; // same as CRATER_EXTRA in MeteoriteStructurePiece
+        int vegClearRadius = craterRadius + 12;
+        int innerDist = craterRadius / 2;
+        int outerDist = vegClearRadius;
+        int[][] offsets = {
+                {0, 0},
+                // Inner ring at half crater radius
+                {innerDist, 0}, {-innerDist, 0}, {0, innerDist}, {0, -innerDist},
+                {innerDist, innerDist}, {innerDist, -innerDist}, {-innerDist, innerDist}, {-innerDist, -innerDist},
+                // Outer ring at full vegetation clearing radius
+                {outerDist, 0}, {-outerDist, 0}, {0, outerDist}, {0, -outerDist},
+                {outerDist, outerDist}, {outerDist, -outerDist}, {-outerDist, outerDist}, {-outerDist, -outerDist}
+        };
+        for (int[] off : offsets) {
+            int sx = x + off[0];
+            int sz = z + off[1];
+            int sampleSurface = context.chunkGenerator().getBaseHeight(
+                    sx, sz, Heightmap.Types.WORLD_SURFACE_WG,
+                    context.heightAccessor(), context.randomState());
+            int sampleFloor = context.chunkGenerator().getBaseHeight(
+                    sx, sz, Heightmap.Types.OCEAN_FLOOR_WG,
+                    context.heightAccessor(), context.randomState());
+            // Water detected: surface is above the ocean floor
+            if (sampleSurface - sampleFloor > 1) {
+                return Optional.empty();
+            }
+            if (Math.abs(sampleSurface - surfaceY) > 8) {
+                return Optional.empty();
+            }
+        }
+
+        int biomeVariantId = MeteoriteStructurePiece.resolveBiomeVariantId(biome);
+
         return Optional.of(new GenerationStub(pos, collector -> {
             collector.addPiece(new MeteoriteStructurePiece(
-                    x, surfaceY, z, radius, craterDepth, pieceSeed));
+                    x, surfaceY, z, radius, craterDepth, pieceSeed, biomeVariantId));
         }));
     }
 

@@ -41,3 +41,6 @@ replay_*.log
 
 # accidental conflict copies
 *Name clash*
+
+# decompiled Minecraft class files (used for API inspection, not project source)
+net/
