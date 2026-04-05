@@ -75,16 +75,25 @@ public class MeteoriteStructure extends Structure {
         }
 
         // Check terrain height variance and water presence around the impact site.
-        // Sample center + 8 perimeter points at half the crater radius.
+        // Sample at three distances: center, half crater radius, and full clearing
+        // radius. Using only half-radius missed water bodies near the crater edge,
+        // causing hard vertical cutoffs where the bowl meets the water.
         // Reject if:
         //   - any point's height differs by >8 blocks from center (steep terrain)
         //   - any point has water (WORLD_SURFACE_WG != OCEAN_FLOOR_WG)
-        // This catches inland lakes in any biome that biome tags can't detect.
         int craterRadius = radius + 25; // same as CRATER_EXTRA in MeteoriteStructurePiece
-        int sampleDist = craterRadius / 2;
-        int[][] offsets = {{0, 0},
-                {sampleDist, 0}, {-sampleDist, 0}, {0, sampleDist}, {0, -sampleDist},
-                {sampleDist, sampleDist}, {sampleDist, -sampleDist}, {-sampleDist, sampleDist}, {-sampleDist, -sampleDist}};
+        int vegClearRadius = craterRadius + 12;
+        int innerDist = craterRadius / 2;
+        int outerDist = vegClearRadius;
+        int[][] offsets = {
+                {0, 0},
+                // Inner ring at half crater radius
+                {innerDist, 0}, {-innerDist, 0}, {0, innerDist}, {0, -innerDist},
+                {innerDist, innerDist}, {innerDist, -innerDist}, {-innerDist, innerDist}, {-innerDist, -innerDist},
+                // Outer ring at full vegetation clearing radius
+                {outerDist, 0}, {-outerDist, 0}, {0, outerDist}, {0, -outerDist},
+                {outerDist, outerDist}, {outerDist, -outerDist}, {-outerDist, outerDist}, {-outerDist, -outerDist}
+        };
         for (int[] off : offsets) {
             int sx = x + off[0];
             int sz = z + off[1];

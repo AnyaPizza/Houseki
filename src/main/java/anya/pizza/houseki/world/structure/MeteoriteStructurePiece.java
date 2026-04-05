@@ -195,6 +195,8 @@ public class MeteoriteStructurePiece extends StructurePiece {
      *   3. Meteorite sphere - place the iron core and stone shell
      *   4. Debris scatter - drop iron fragments on the crater floor
      *   5. Ejecta rim - scorched ring with occasional raised blocks at the crater edge
+     *   6. Fallen trees - biome-specific logs on the crater floor
+     *   7. Impact heat - fire and lava near the core for a fresh-impact look
      */
     @Override
     public void postProcess(WorldGenLevel level, StructureManager structureManager,
@@ -290,12 +292,13 @@ public class MeteoriteStructurePiece extends StructurePiece {
             }
         }
 
-        // Phase 1.5: Remove floating vines and leaves left after tree clearing.
-        // This pass does NOT respect chunkBox boundaries. Trees from adjacent
-        // chunks can place leaves into already-processed chunks. By clearing
-        // across chunk boundaries we catch leaves that appear after our Phase 1
-        // pass on an adjacent chunk has already finished. Setting blocks to air
-        // in loaded adjacent chunks is safe during postProcess.
+        // Phase 1.5: Remove ALL floating vegetation left after tree clearing.
+        // Not just vines and leaves -- also logs, mushroom blocks, bamboo, and
+        // any other vegetation that can end up hovering after the crater carves
+        // away the terrain beneath. Trees from adjacent chunks can place blocks
+        // into already-processed chunks, so this pass does NOT respect chunkBox
+        // boundaries. Setting blocks to air in loaded adjacent chunks is safe
+        // during postProcess.
         // Top-to-bottom scan so vine chains collapse correctly in a single pass.
         int floatClearRadius = craterRadius + 15;
         for (int dx = -floatClearRadius; dx <= floatClearRadius; dx++) {
@@ -312,10 +315,15 @@ public class MeteoriteStructurePiece extends StructurePiece {
                 for (int y = topY; y >= bottomY; y--) {
                     BlockPos pos = new BlockPos(bx, y, bz);
                     BlockState state = level.getBlockState(pos);
+                    // Remove unsupported vines
                     if (state.is(Blocks.VINE) && !hasVineSupport(level, pos)) {
                         level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+                        continue;
                     }
-                    if (state.is(BlockTags.LEAVES)) {
+                    // Remove all leaves, logs, mushroom blocks, bamboo, and
+                    // other vegetation unconditionally in the clearing zone.
+                    // These should not be floating above the impact site.
+                    if (isVegetation(state)) {
                         level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
                     }
                 }
@@ -485,6 +493,72 @@ public class MeteoriteStructurePiece extends StructurePiece {
                         }
                     }
                 }
+            }
+        }
+
+        // Phase 7: Impact heat effects - fire and lava for a fresh-impact look.
+        // Fire is placed on the crater floor within the inner portion of the bowl.
+        // On magma blocks the fire stays permanently; on other blocks it dies out
+        // naturally over time, creating a sense of recency on discovery.
+        int fireRadius = (int) (craterRadius * 0.6);
+        for (int dx = -fireRadius; dx <= fireRadius; dx++) {
+            for (int dz = -fireRadius; dz <= fireRadius; dz++) {
+                double horizDist = Math.sqrt(dx * dx + dz * dz);
+                if (horizDist > fireRadius) continue;
+                // Sparse placement - roughly 15% of eligible positions get fire
+                if (random.nextInt(100) >= 15) continue;
+
+                int bx = centerX + dx;
+                int bz = centerZ + dz;
+                int floorY = getCraterFloorY(horizDist, craterRadius);
+                if (floorY >= surfaceY - 1) continue;
+
+                BlockPos firePos = new BlockPos(bx, floorY, bz);
+                if (!chunkBox.isInside(firePos)) continue;
+
+                BlockState atPos = level.getBlockState(firePos);
+                BlockState below = level.getBlockState(firePos.below());
+                // Place fire only in air on top of a solid, non-fluid block
+                if (atPos.isAir() && !below.isAir() && below.getFluidState().isEmpty()) {
+                    level.setBlock(firePos, Blocks.FIRE.defaultBlockState(), 2);
+                }
+            }
+        }
+
+        // Small lava pools near the meteor core for extreme-heat visuals.
+        // Place just outside the meteorite sphere so the lava ends up on the
+        // crater floor next to the rock. The previous approach tried to place
+        // inside the sphere radius where all positions are solid, so lava never
+        // appeared. Scan upward from floor to find the first air block above
+        // solid ground, which handles any debris or sphere surface blocks.
+        int lavaCount = 2 + random.nextInt(3);
+        for (int i = 0; i < lavaCount; i++) {
+            double angle = random.nextDouble() * Math.PI * 2;
+            double dist = meteorRadius + 1.0 + random.nextDouble() * meteorRadius * 0.6;
+            int lx = centerX + (int) Math.round(Math.cos(angle) * dist);
+            int lz = centerZ + (int) Math.round(Math.sin(angle) * dist);
+
+            double horizDist = Math.sqrt((lx - centerX) * (lx - centerX)
+                    + (lz - centerZ) * (lz - centerZ));
+            int floorY = getCraterFloorY(horizDist, craterRadius);
+            if (floorY >= surfaceY - 1) continue;
+
+            // Scan upward to find the first air block above solid ground.
+            // This handles cases where debris or the sphere surface is present.
+            BlockPos lavaPos = null;
+            for (int scanY = floorY; scanY < floorY + 10; scanY++) {
+                BlockPos candidate = new BlockPos(lx, scanY, lz);
+                if (!chunkBox.isInside(candidate)) break;
+                BlockState atScan = level.getBlockState(candidate);
+                BlockState belowScan = level.getBlockState(candidate.below());
+                if (atScan.isAir() && !belowScan.isAir()
+                        && belowScan.getFluidState().isEmpty()) {
+                    lavaPos = candidate;
+                    break;
+                }
+            }
+            if (lavaPos != null) {
+                level.setBlock(lavaPos, Blocks.LAVA.defaultBlockState(), 2);
             }
         }
     }
