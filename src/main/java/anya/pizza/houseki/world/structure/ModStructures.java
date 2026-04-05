@@ -6,6 +6,7 @@ import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.structure.StructureSet;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.chunk.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.gen.chunk.placement.SpreadType;
 import net.minecraft.world.gen.structure.Structure;
@@ -45,7 +46,9 @@ public class ModStructures {
         var biomes = context.getRegistryLookup(RegistryKeys.BIOME);
 
         context.register(METEORITE_KEY, new MeteoriteStructure(
-                new Structure.Config.Builder(biomes.getOrThrow(BiomeTags.IS_OVERWORLD)).build()
+                new Structure.Config.Builder(biomes.getOrThrow(BiomeTags.IS_OVERWORLD))
+                        .step(GenerationStep.Feature.TOP_LAYER_MODIFICATION)
+                        .build()
         ));
     }
 

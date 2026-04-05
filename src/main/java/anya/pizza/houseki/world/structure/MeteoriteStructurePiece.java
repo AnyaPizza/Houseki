@@ -4,49 +4,46 @@ import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.util.ModTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.structure.StructureContext;
 import net.minecraft.structure.StructurePiece;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
-/**
- * The actual block-placing piece for the meteorite structure.
- * Handles everything: crater excavation, wall lining, meteorite sphere, debris, and ejecta rim.
- *
- * Generation happens in 5 phases (see generate() for details):
- *   1. Crater excavation (bowl shape + tree clearing)
- *   2. Crater wall lining (replace exposed dirt/sand with stone)
- *   3. Meteorite sphere (iron core + stone shell with noise for roughness)
- *   4. Debris scatter (iron fragments on crater floor)
- *   5. Ejecta rim (scorched ring around the crater edge)
- */
 public class MeteoriteStructurePiece extends StructurePiece {
-    // Size range for the meteorite sphere (in blocks). Diameter will be 2x this.
     public static final int MIN_RADIUS = 5;
     public static final int MAX_RADIUS = 10;
-    // How much wider the crater is than the meteorite itself
     private static final int CRATER_EXTRA = 25;
-    // How far above the surface we clear blocks (to remove tall trees)
     private static final int TREE_CLEAR_HEIGHT = 60;
 
-    private final int centerX;      // world X of the impact center
-    private final int surfaceY;     // Y of the terrain surface at impact
-    private final int centerZ;      // world Z of the impact center
-    private final int meteorRadius; // radius of the meteorite sphere (7-11)
-    private final int craterDepth;  // how deep the crater goes below surfaceY
-    private final long seed;        // deterministic seed for reproducible random across chunk passes
+    private enum BiomeVariant {
+        DEFAULT, DESERT, MANGROVE, SNOWY, JUNGLE, TAIGA, BADLANDS, SAVANNA, CHERRY, MUSHROOM, DARK_FOREST
+    }
 
-    // Primary constructor, used when the structure is first created during worldgen
+    private final int centerX;
+    private final int surfaceY;
+    private final int centerZ;
+    private final int meteorRadius;
+    private final int craterDepth;
+    private final long seed;
+    private final int biomeVariantId;
+
     public MeteoriteStructurePiece(int centerX, int surfaceY, int centerZ,
-                                   int meteorRadius, int craterDepth, long seed) {
+                                   int meteorRadius, int craterDepth, long seed,
+                                   int biomeVariantId) {
         super(ModStructures.METEORITE_PIECE_TYPE, 0,
                 makeBounds(centerX, surfaceY, centerZ, meteorRadius, craterDepth));
         this.centerX = centerX;
@@ -55,9 +52,9 @@ public class MeteoriteStructurePiece extends StructurePiece {
         this.meteorRadius = meteorRadius;
         this.craterDepth = craterDepth;
         this.seed = seed;
+        this.biomeVariantId = biomeVariantId;
     }
 
-    // NBT constructor, used when loading from a saved game. orElse() provides fallback defaults.
     public MeteoriteStructurePiece(StructureContext context, NbtCompound nbt) {
         super(ModStructures.METEORITE_PIECE_TYPE, nbt);
         this.centerX = nbt.getInt("cx").orElse(0);
@@ -66,13 +63,11 @@ public class MeteoriteStructurePiece extends StructurePiece {
         this.meteorRadius = nbt.getInt("mr").orElse(7);
         this.craterDepth = nbt.getInt("cd").orElse(10);
         this.seed = nbt.getLong("seed").orElse(0L);
+        this.biomeVariantId = nbt.getInt("bv").orElse(0);
     }
 
-    // Computes the bounding box that fully encloses the structure.
-    // Horizontal: meteorite + crater + small buffer for the ejecta rim.
-    // Vertical: deep enough for the sphere at crater bottom, high enough to clear trees.
     private static BlockBox makeBounds(int cx, int sy, int cz, int r, int depth) {
-        int extent = r + CRATER_EXTRA + 6;
+        int extent = r + CRATER_EXTRA + 17;
         return new BlockBox(cx - extent, sy - depth - r - 2, cz - extent,
                 cx + extent, sy + TREE_CLEAR_HEIGHT, cz + extent);
     }
@@ -85,66 +80,96 @@ public class MeteoriteStructurePiece extends StructurePiece {
         nbt.putInt("mr", meteorRadius);
         nbt.putInt("cd", craterDepth);
         nbt.putLong("seed", seed);
+        nbt.putInt("bv", biomeVariantId);
     }
 
-    // Returns the Y of the crater floor at a given horizontal distance from center.
-    // Uses a quadratic curve (depthFraction^2) to create a smooth bowl shape:
-    // deepest at the center, gradually rising to surface level at the edges.
+    private int getCraterFloorY(double horizDist, int craterRadius, int localTerrainY) {
+        if (horizDist > craterRadius) return localTerrainY;
+        double ratio = horizDist / craterRadius;
+        double bowlCurve = Math.cos(Math.PI * 0.5 * ratio);
+        bowlCurve = bowlCurve * bowlCurve;
+        int centerFloor = surfaceY - craterDepth;
+        return localTerrainY + (int) (bowlCurve * (centerFloor - localTerrainY));
+    }
+
     private int getCraterFloorY(double horizDist, int craterRadius) {
-        if (horizDist > craterRadius) return surfaceY;
-        double distanceRatio = horizDist / craterRadius;
-        double bowlCurve = Math.sqrt(1.0 - (distanceRatio * distanceRatio));
-        int localDepth = (int) (craterDepth * bowlCurve);
-        return surfaceY - localDepth;
+        return getCraterFloorY(horizDist, craterRadius, surfaceY);
     }
 
-    /**
-     * Main generation method. Called once per chunk that overlaps this piece's bounding box.
-     * Uses a deterministic seed so the output is identical regardless of chunk load order.
-     *
-     * Phases:
-     *   1. Crater excavation - dig the bowl and clear trees
-     *   2. Wall lining - replace exposed non-stone blocks with scorched material
-     *   3. Meteorite sphere - place the iron core and stone shell
-     *   4. Debris scatter - drop iron fragments on the crater floor
-     *   5. Ejecta rim - scorched ring with occasional raised blocks at the crater edge
-     */
+    public static int resolveBiomeVariantId(RegistryEntry<Biome> biome) {
+        if (biome.matchesKey(BiomeKeys.DESERT)) return BiomeVariant.DESERT.ordinal();
+        if (biome.matchesKey(BiomeKeys.MANGROVE_SWAMP) || biome.matchesKey(BiomeKeys.SWAMP))
+            return BiomeVariant.MANGROVE.ordinal();
+        if (biome.matchesKey(BiomeKeys.SNOWY_PLAINS) || biome.matchesKey(BiomeKeys.SNOWY_TAIGA)
+                || biome.matchesKey(BiomeKeys.SNOWY_BEACH) || biome.matchesKey(BiomeKeys.SNOWY_SLOPES)
+                || biome.matchesKey(BiomeKeys.FROZEN_PEAKS) || biome.matchesKey(BiomeKeys.ICE_SPIKES)
+                || biome.matchesKey(BiomeKeys.GROVE))
+            return BiomeVariant.SNOWY.ordinal();
+        if (biome.matchesKey(BiomeKeys.JUNGLE) || biome.matchesKey(BiomeKeys.SPARSE_JUNGLE)
+                || biome.matchesKey(BiomeKeys.BAMBOO_JUNGLE))
+            return BiomeVariant.JUNGLE.ordinal();
+        if (biome.matchesKey(BiomeKeys.TAIGA) || biome.matchesKey(BiomeKeys.OLD_GROWTH_PINE_TAIGA)
+                || biome.matchesKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA))
+            return BiomeVariant.TAIGA.ordinal();
+        if (biome.matchesKey(BiomeKeys.BADLANDS) || biome.matchesKey(BiomeKeys.ERODED_BADLANDS)
+                || biome.matchesKey(BiomeKeys.WOODED_BADLANDS))
+            return BiomeVariant.BADLANDS.ordinal();
+        if (biome.matchesKey(BiomeKeys.SAVANNA) || biome.matchesKey(BiomeKeys.SAVANNA_PLATEAU)
+                || biome.matchesKey(BiomeKeys.WINDSWEPT_SAVANNA))
+            return BiomeVariant.SAVANNA.ordinal();
+        if (biome.matchesKey(BiomeKeys.CHERRY_GROVE)) return BiomeVariant.CHERRY.ordinal();
+        if (biome.matchesKey(BiomeKeys.MUSHROOM_FIELDS)) return BiomeVariant.MUSHROOM.ordinal();
+        if (biome.matchesKey(BiomeKeys.DARK_FOREST)) return BiomeVariant.DARK_FOREST.ordinal();
+        return BiomeVariant.DEFAULT.ordinal();
+    }
+
+    private BiomeVariant getVariant() {
+        BiomeVariant[] values = BiomeVariant.values();
+        if (biomeVariantId >= 0 && biomeVariantId < values.length) return values[biomeVariantId];
+        return BiomeVariant.DEFAULT;
+    }
+
     @Override
     public void generate(StructureWorldAccess world, StructureAccessor structureAccessor,
                          ChunkGenerator chunkGenerator, Random chunkRandom,
                          BlockBox chunkBox, ChunkPos chunkPos, BlockPos pivot) {
-        // Deterministic random from stored seed - critical for cross-chunk consistency
         Random random = Random.create(this.seed);
         int craterRadius = meteorRadius + CRATER_EXTRA;
         int settleAmount = 5;
         int meteorCenterY = (surfaceY - craterDepth) + meteorRadius - settleAmount;
         BlockPos meteorCenter = new BlockPos(centerX, meteorCenterY, centerZ);
+        BiomeVariant variant = getVariant();
 
-        // Bail out if the center is in water or lava - meteorites in oceans look bad
-        BlockPos surfacePos = new BlockPos(centerX, surfaceY - 1, centerZ);
-        BlockState surfaceState = world.getBlockState(surfacePos);
-        if (surfaceState.getFluidState().isIn(FluidTags.WATER)
-                || surfaceState.getFluidState().isIn(FluidTags.LAVA)) {
-            return;
+        // Water/lava safety check at 5 points
+        int waterCheckDist = craterRadius / 2;
+        int[][] waterChecks = {{0, 0}, {waterCheckDist, 0}, {-waterCheckDist, 0},
+                {0, waterCheckDist}, {0, -waterCheckDist}};
+        for (int[] wc : waterChecks) {
+            int wx = centerX + wc[0];
+            int wz = centerZ + wc[1];
+            int wy = world.getTopY(Heightmap.Type.WORLD_SURFACE, wx, wz) - 1;
+            BlockState wcState = world.getBlockState(new BlockPos(wx, wy, wz));
+            if (wcState.getFluidState().isIn(FluidTags.LAVA)) return;
+            if (wcState.getFluidState().isIn(FluidTags.WATER)) return;
         }
 
-        // Phase 1: Clear EVERYTHING in crater area (trees, vegetation, terrain)
-        // and line exposed walls/floor with crater material
-        for (int dx = -craterRadius - 2; dx <= craterRadius + 2; dx++) {
-            for (int dz = -craterRadius - 2; dz <= craterRadius + 2; dz++) {
+        // Phase 1: Terrain-adaptive crater excavation and vegetation clearing
+        int vegClearRadius = craterRadius + 12;
+        for (int dx = -vegClearRadius; dx <= vegClearRadius; dx++) {
+            for (int dz = -vegClearRadius; dz <= vegClearRadius; dz++) {
                 double horizDist = Math.sqrt(dx * dx + dz * dz);
-                if (horizDist > craterRadius + 5) continue;
+                if (horizDist > vegClearRadius) continue;
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
-                int actualSurfaceY = world.getTopY(Heightmap.Type.WORLD_SURFACE, bx, bz);
-                int topClearY = Math.max(actualSurfaceY, surfaceY) + TREE_CLEAR_HEIGHT;
-                int craterFloorY = getCraterFloorY(horizDist, craterRadius);
-
+                int rawSurfaceY = world.getTopY(Heightmap.Type.WORLD_SURFACE, bx, bz);
+                int groundY = getGroundLevel(world, bx, bz, rawSurfaceY);
+                int topClearY = Math.max(rawSurfaceY, surfaceY) + TREE_CLEAR_HEIGHT;
                 boolean insideCrater = horizDist <= craterRadius;
 
                 if (insideCrater) {
-                    // Clear everything from high above (trees!) down to crater floor
+                    int craterFloorY = getCraterFloorY(horizDist, craterRadius, groundY);
+
                     for (int y = topClearY; y >= craterFloorY; y--) {
                         BlockPos pos = new BlockPos(bx, y, bz);
                         if (!chunkBox.contains(pos)) continue;
@@ -155,26 +180,21 @@ public class MeteoriteStructurePiece extends StructurePiece {
                         }
                     }
 
-                    // Line the crater floor (1-2 blocks deep) with scorched material
                     for (int depth = 0; depth < 2; depth++) {
                         BlockPos floorPos = new BlockPos(bx, craterFloorY - 1 - depth, bz);
                         if (!chunkBox.contains(floorPos)) continue;
                         BlockState existing = world.getBlockState(floorPos);
                         if (existing.isOf(Blocks.BEDROCK)) continue;
-                        if (!existing.isAir()) {
-                            // Replace dirt, sand, grass, etc. with crater material
-                            if (!meteorWontReplace(existing)) {
-                                world.setBlockState(floorPos, getCraterLiner(random), 2);
-                            }
+                        if (!existing.isAir() && !meteorWontReplace(existing)) {
+                            world.setBlockState(floorPos, getCraterLiner(random, variant), 2);
                         }
                     }
-                } else if (horizDist <= craterRadius + 2) {
-                    // Near-rim: clear trees and vegetation above terrain
-                    for (int y = topClearY; y > actualSurfaceY; y--) {
+                } else {
+                    for (int y = topClearY; y >= groundY; y--) {
                         BlockPos pos = new BlockPos(bx, y, bz);
                         if (!chunkBox.contains(pos)) continue;
                         BlockState state = world.getBlockState(pos);
-                        if (!state.isAir() && !state.isOf(Blocks.BEDROCK)) {
+                        if (!state.isAir() && !state.isOf(Blocks.BEDROCK) && isVegetation(state)) {
                             world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
                         }
                     }
@@ -182,14 +202,12 @@ public class MeteoriteStructurePiece extends StructurePiece {
             }
         }
 
-        // Phase 1.5: Remove floating vines left after tree clearing
-        // In jungle biomes, vines attached to cleared trees are left hanging in mid-air.
-        // Top-to-bottom scan so vine chains collapse correctly in a single pass.
-        int vineRadius = craterRadius + 5;
-        for (int dx = -vineRadius; dx <= vineRadius; dx++) {
-            for (int dz = -vineRadius; dz <= vineRadius; dz++) {
+        // Phase 1.5: Float cleanup - remove all floating vegetation
+        int floatClearRadius = craterRadius + 15;
+        for (int dx = -floatClearRadius; dx <= floatClearRadius; dx++) {
+            for (int dz = -floatClearRadius; dz <= floatClearRadius; dz++) {
                 double horizDist = Math.sqrt(dx * dx + dz * dz);
-                if (horizDist > vineRadius) continue;
+                if (horizDist > floatClearRadius) continue;
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
@@ -198,45 +216,52 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
                 for (int y = topY; y >= bottomY; y--) {
                     BlockPos pos = new BlockPos(bx, y, bz);
-                    if (!chunkBox.contains(pos)) continue;
                     BlockState state = world.getBlockState(pos);
                     if (state.isOf(Blocks.VINE) && !hasVineSupport(world, pos)) {
+                        world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
+                        continue;
+                    }
+                    if (isVegetation(state)) {
                         world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
                     }
                 }
             }
         }
 
-        // Phase 2: Line crater walls - replace any exposed non-stone blocks
-        for (int dx = -craterRadius; dx <= craterRadius; dx++) {
-            for (int dz = -craterRadius; dz <= craterRadius; dz++) {
+        // Phase 2: Cave sealing
+        int sealDepth = craterDepth + meteorRadius;
+        for (int dx = -craterRadius - 1; dx <= craterRadius + 1; dx++) {
+            for (int dz = -craterRadius - 1; dz <= craterRadius + 1; dz++) {
                 double horizDist = Math.sqrt(dx * dx + dz * dz);
-                if (horizDist > craterRadius) continue;
+                if (horizDist > craterRadius + 1) continue;
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
-                int craterFloorY = getCraterFloorY(horizDist, craterRadius);
+                int rawSY = world.getTopY(Heightmap.Type.WORLD_SURFACE, bx, bz);
+                int groundY = getGroundLevel(world, bx, bz, rawSY);
 
-                // Scan the wall: from crater floor up to where it meets terrain
-                for (int y = craterFloorY - 1; y <= surfaceY; y++) {
+                if (surfaceY - groundY > 6) continue;
+
+                int craterFloorY = getCraterFloorY(horizDist, craterRadius, groundY);
+
+                int solidStreak = 0;
+                for (int y = craterFloorY - 3; y >= craterFloorY - sealDepth; y--) {
                     BlockPos pos = new BlockPos(bx, y, bz);
                     if (!chunkBox.contains(pos)) continue;
                     BlockState state = world.getBlockState(pos);
-                    if (state.isAir() || state.isOf(Blocks.BEDROCK)) continue;
-
-                    // Check if this block is exposed (has air neighbor)
-                    if (isExposedToAir(world, pos, chunkBox)) {
-                        if (!meteorWontReplace(state)) {
-                            world.setBlockState(pos, getCraterLiner(random), 2);
-                        }
+                    if (state.isOf(Blocks.BEDROCK)) break;
+                    if (state.isAir() || !state.getFluidState().isEmpty()) {
+                        world.setBlockState(pos, getCraterLiner(random, variant), 2);
+                        solidStreak = 0;
+                    } else {
+                        solidStreak++;
+                        if (solidStreak >= 5) break;
                     }
                 }
             }
         }
 
-        // Phase 3: Place meteorite sphere
-        // The sphere has two zones: an inner core of METEORIC_IRON and an outer shell of mixed stone.
-        // Noise is added to each block's distance to create an irregular, natural-looking surface.
+        // Phase 3: Meteorite sphere
         int coreRadius = Math.max(2, meteorRadius / 2);
         for (int dx = -meteorRadius; dx <= meteorRadius; dx++) {
             for (int dy = -meteorRadius; dy <= meteorRadius; dy++) {
@@ -245,7 +270,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
                     if (dist > meteorRadius + 0.5) continue;
 
                     double noise = (random.nextDouble() - 0.5) * 0.8;
-                    BlockState shellBlock = getShellBlock(random);
+                    BlockState shellBlock = getShellBlock(random, variant);
 
                     double noisyDist = dist + noise;
                     if (noisyDist > meteorRadius) continue;
@@ -264,7 +289,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
             }
         }
 
-        // Phase 4: Scatter meteoric iron debris on crater floor
+        // Phase 4: Debris scatter
         int debrisCount = 3 + random.nextInt(5);
         for (int i = 0; i < debrisCount; i++) {
             double angle = random.nextDouble() * Math.PI * 2;
@@ -283,21 +308,20 @@ public class MeteoriteStructurePiece extends StructurePiece {
             }
         }
 
-        // Phase 5: Scorched ejecta rim at actual terrain height
+        // Phase 5: Ejecta rim
         for (int dx = -craterRadius - 2; dx <= craterRadius + 2; dx++) {
             for (int dz = -craterRadius - 2; dz <= craterRadius + 2; dz++) {
                 double horizDist = Math.sqrt(dx * dx + dz * dz);
                 if (horizDist < craterRadius - 2.5 || horizDist > craterRadius + 2) continue;
 
-                BlockState rimBlock = getEjectaRim(random);
-                int rimRoll = random.nextInt(3);
-                BlockState raisedBlock = getEjectaRim(random);
-
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
                 int actualY = world.getTopY(Heightmap.Type.WORLD_SURFACE, bx, bz);
 
-                // Replace surface block with rim material
+                if (Math.abs(actualY - surfaceY) > 4) continue;
+
+                BlockState rimBlock = getEjectaRim(random, variant);
+
                 BlockPos rimPos = new BlockPos(bx, actualY - 1, bz);
                 if (chunkBox.contains(rimPos)) {
                     BlockState rimState = world.getBlockState(rimPos);
@@ -306,82 +330,440 @@ public class MeteoriteStructurePiece extends StructurePiece {
                         world.setBlockState(rimPos, rimBlock, 2);
                     }
                 }
+            }
+        }
 
-                // Raised rim blocks
-                if (rimRoll == 0 && horizDist >= craterRadius - 1 && horizDist <= craterRadius + 0.5) {
-                    BlockPos aboveRim = new BlockPos(bx, actualY, bz);
-                    if (chunkBox.contains(aboveRim) && world.getBlockState(aboveRim).isAir()) {
-                        world.setBlockState(aboveRim, raisedBlock, 2);
+        // Phase 6: Fallen trees
+        BlockState fallenLog = getFallenLogBlock(variant);
+        if (fallenLog != null) {
+            int treeCount = 1 + random.nextInt(3);
+            for (int t = 0; t < treeCount; t++) {
+                double angle = random.nextDouble() * Math.PI * 2;
+                double dist = craterRadius * 0.3 + random.nextDouble() * craterRadius * 0.5;
+                int tx = centerX + (int) Math.round(Math.cos(angle) * dist);
+                int tz = centerZ + (int) Math.round(Math.sin(angle) * dist);
+
+                double hd = Math.sqrt((tx - centerX) * (tx - centerX) + (tz - centerZ) * (tz - centerZ));
+                int floorY = getCraterFloorY(hd, craterRadius);
+                if (floorY >= surfaceY - 1) continue;
+
+                boolean alongX = random.nextBoolean();
+                Direction.Axis axis = alongX ? Direction.Axis.X : Direction.Axis.Z;
+                BlockState log = fallenLog.with(PillarBlock.AXIS, axis);
+
+                int length = 3 + random.nextInt(5);
+                for (int i = 0; i < length; i++) {
+                    int lx = alongX ? tx + i : tx;
+                    int lz = alongX ? tz : tz + i;
+
+                    double ld = Math.sqrt((lx - centerX) * (lx - centerX) + (lz - centerZ) * (lz - centerZ));
+                    if (ld > craterRadius) break;
+
+                    int ly = getCraterFloorY(ld, craterRadius);
+                    BlockPos logPos = new BlockPos(lx, ly, lz);
+                    if (!chunkBox.contains(logPos)) continue;
+
+                    BlockState existing = world.getBlockState(logPos);
+                    if (existing.isAir()) {
+                        BlockState below = world.getBlockState(logPos.down());
+                        if (!below.isAir() && below.getFluidState().isEmpty()) {
+                            world.setBlockState(logPos, log, 2);
+                        }
                     }
                 }
             }
         }
+
+        // Phase 7: Fire and lava pools
+        int fireRadius = (int) (craterRadius * 0.6);
+        for (int dx = -fireRadius; dx <= fireRadius; dx++) {
+            for (int dz = -fireRadius; dz <= fireRadius; dz++) {
+                double horizDist = Math.sqrt(dx * dx + dz * dz);
+                if (horizDist > fireRadius) continue;
+                if (random.nextInt(100) >= 15) continue;
+
+                int bx = centerX + dx;
+                int bz = centerZ + dz;
+                int floorY = getCraterFloorY(horizDist, craterRadius);
+                if (floorY >= surfaceY - 1) continue;
+
+                BlockPos firePos = new BlockPos(bx, floorY, bz);
+                if (!chunkBox.contains(firePos)) continue;
+
+                BlockState atPos = world.getBlockState(firePos);
+                BlockState below = world.getBlockState(firePos.down());
+                if (atPos.isAir() && !below.isAir() && below.getFluidState().isEmpty()) {
+                    world.setBlockState(firePos, Blocks.FIRE.getDefaultState(), 2);
+                }
+            }
+        }
+
+        // Small lava pools near the meteor core
+        int lavaCount = 2 + random.nextInt(3);
+        for (int i = 0; i < lavaCount; i++) {
+            double angle = random.nextDouble() * Math.PI * 2;
+            double dist = meteorRadius + 1.0 + random.nextDouble() * meteorRadius * 0.6;
+            int lx = centerX + (int) Math.round(Math.cos(angle) * dist);
+            int lz = centerZ + (int) Math.round(Math.sin(angle) * dist);
+
+            double horizDist = Math.sqrt((lx - centerX) * (lx - centerX)
+                    + (lz - centerZ) * (lz - centerZ));
+            int floorY = getCraterFloorY(horizDist, craterRadius);
+            if (floorY >= surfaceY - 1) continue;
+
+            BlockPos lavaPos = null;
+            for (int scanY = floorY; scanY < floorY + 10; scanY++) {
+                BlockPos candidate = new BlockPos(lx, scanY, lz);
+                if (!chunkBox.contains(candidate)) break;
+                BlockState atScan = world.getBlockState(candidate);
+                BlockState belowScan = world.getBlockState(candidate.down());
+                if (atScan.isAir() && !belowScan.isAir()
+                        && belowScan.getFluidState().isEmpty()) {
+                    lavaPos = candidate;
+                    break;
+                }
+            }
+            if (lavaPos != null) {
+                world.setBlockState(lavaPos, Blocks.LAVA.getDefaultState(), 2);
+            }
+        }
     }
 
-    // A vine is supported if it has a solid (non-air, non-vine) block on any
-    // horizontal side, or any non-air block directly above (vine chain or solid).
-    // During a top-to-bottom scan, already-removed vines above read as air,
-    // so unsupported chains collapse correctly in one pass.
     private boolean hasVineSupport(StructureWorldAccess world, BlockPos pos) {
-        for (BlockPos neighbor : new BlockPos[]{pos.north(), pos.south(), pos.east(), pos.west()}) {
+        for (BlockPos neighbor : new BlockPos[]{pos.north(), pos.east(), pos.south(), pos.west()}) {
             BlockState s = world.getBlockState(neighbor);
             if (!s.isAir() && !s.isOf(Blocks.VINE)) return true;
         }
         return !world.getBlockState(pos.up()).isAir();
     }
 
+    private boolean isVegetation(BlockState state) {
+        return state.isIn(BlockTags.LEAVES) || state.isIn(BlockTags.LOGS)
+                || state.isOf(Blocks.VINE) || state.isOf(Blocks.MOSS_CARPET)
+                || state.isOf(Blocks.SHORT_GRASS) || state.isOf(Blocks.TALL_GRASS)
+                || state.isOf(Blocks.FERN) || state.isOf(Blocks.LARGE_FERN)
+                || state.isOf(Blocks.DEAD_BUSH) || state.isOf(Blocks.BAMBOO)
+                || state.isOf(Blocks.SUGAR_CANE) || state.isOf(Blocks.COCOA)
+                || state.isOf(Blocks.MUSHROOM_STEM)
+                || state.isOf(Blocks.BROWN_MUSHROOM_BLOCK)
+                || state.isOf(Blocks.RED_MUSHROOM_BLOCK)
+                || state.isOf(Blocks.BEE_NEST)
+                || state.isOf(Blocks.MANGROVE_ROOTS)
+                || state.isOf(Blocks.HANGING_ROOTS);
+    }
+
+    private int getGroundLevel(StructureWorldAccess world, int x, int z, int rawSurfaceY) {
+        for (int y = rawSurfaceY - 1; y > world.getBottomY(); y--) {
+            BlockState state = world.getBlockState(new BlockPos(x, y, z));
+            if (state.isAir()) continue;
+            if (isVegetation(state)) continue;
+            return y + 1;
+        }
+        return rawSurfaceY;
+    }
+
     private boolean meteorWontReplace(BlockState state) {
         return state.isIn(ModTags.Blocks.METEOR_WONT_REPLACE);
     }
 
-    // Checks all 6 neighbors. If any is air (and within the chunk box), the block is "exposed"
-    // and should be lined with crater material in Phase 2.
-    private boolean isExposedToAir(StructureWorldAccess world, BlockPos pos, BlockBox box) {
-        for (int i = 0; i < 6; i++) {
-            BlockPos neighbor = switch (i) {
-                case 0 -> pos.up();
-                case 1 -> pos.down();
-                case 2 -> pos.north();
-                case 3 -> pos.south();
-                case 4 -> pos.east();
-                default -> pos.west();
-            };
-            if (box.contains(neighbor) && world.getBlockState(neighbor).isAir()) {
-                return true;
+    private BlockState getFallenLogBlock(BiomeVariant variant) {
+        return switch (variant) {
+            case DEFAULT -> Blocks.OAK_LOG.getDefaultState();
+            case DESERT -> null;
+            case MANGROVE -> Blocks.MANGROVE_LOG.getDefaultState();
+            case SNOWY -> Blocks.SPRUCE_LOG.getDefaultState();
+            case JUNGLE -> Blocks.JUNGLE_LOG.getDefaultState();
+            case TAIGA -> Blocks.SPRUCE_LOG.getDefaultState();
+            case BADLANDS -> null;
+            case SAVANNA -> Blocks.ACACIA_LOG.getDefaultState();
+            case CHERRY -> Blocks.CHERRY_LOG.getDefaultState();
+            case MUSHROOM -> null;
+            case DARK_FOREST -> Blocks.DARK_OAK_LOG.getDefaultState();
+        };
+    }
+
+    private BlockState getCraterLiner(Random random, BiomeVariant variant) {
+        int roll = random.nextInt(11);
+        return switch (variant) {
+            case DESERT -> {
+                if (roll < 5) yield Blocks.SANDSTONE.getDefaultState();
+                if (roll < 7) yield Blocks.SMOOTH_SANDSTONE.getDefaultState();
+                if (roll < 8) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.TERRACOTTA.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.RED_SANDSTONE.getDefaultState();
             }
-        }
-        return false;
+            case MANGROVE -> {
+                if (roll < 5) yield Blocks.MUD.getDefaultState();
+                if (roll < 7) yield Blocks.PACKED_MUD.getDefaultState();
+                if (roll < 8) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.CLAY.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.MUDDY_MANGROVE_ROOTS.getDefaultState();
+            }
+            case SNOWY -> {
+                if (roll < 4) yield Blocks.SNOW_BLOCK.getDefaultState();
+                if (roll < 6) yield Blocks.PACKED_ICE.getDefaultState();
+                if (roll < 8) yield Blocks.STONE.getDefaultState();
+                if (roll < 9) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.GRAVEL.getDefaultState();
+            }
+            case JUNGLE -> {
+                if (roll < 4) yield Blocks.MOSS_BLOCK.getDefaultState();
+                if (roll < 6) yield Blocks.MUD.getDefaultState();
+                if (roll < 8) yield Blocks.STONE.getDefaultState();
+                if (roll < 9) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.ROOTED_DIRT.getDefaultState();
+            }
+            case TAIGA -> {
+                if (roll < 4) yield Blocks.PODZOL.getDefaultState();
+                if (roll < 6) yield Blocks.COARSE_DIRT.getDefaultState();
+                if (roll < 8) yield Blocks.STONE.getDefaultState();
+                if (roll < 9) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.GRAVEL.getDefaultState();
+            }
+            case BADLANDS -> {
+                if (roll < 3) yield Blocks.TERRACOTTA.getDefaultState();
+                if (roll < 5) yield Blocks.ORANGE_TERRACOTTA.getDefaultState();
+                if (roll < 7) yield Blocks.RED_SANDSTONE.getDefaultState();
+                if (roll < 8) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.YELLOW_TERRACOTTA.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.BROWN_TERRACOTTA.getDefaultState();
+            }
+            case SAVANNA -> {
+                if (roll < 4) yield Blocks.COARSE_DIRT.getDefaultState();
+                if (roll < 6) yield Blocks.STONE.getDefaultState();
+                if (roll < 8) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 9) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.GRAVEL.getDefaultState();
+            }
+            case CHERRY -> {
+                if (roll < 4) yield Blocks.STONE.getDefaultState();
+                if (roll < 6) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 7) yield Blocks.MOSS_BLOCK.getDefaultState();
+                if (roll < 8) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.CLAY.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.GRAVEL.getDefaultState();
+            }
+            case MUSHROOM -> {
+                if (roll < 4) yield Blocks.MYCELIUM.getDefaultState();
+                if (roll < 6) yield Blocks.STONE.getDefaultState();
+                if (roll < 8) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 9) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.GRAVEL.getDefaultState();
+            }
+            case DARK_FOREST -> {
+                if (roll < 4) yield Blocks.ROOTED_DIRT.getDefaultState();
+                if (roll < 6) yield Blocks.COARSE_DIRT.getDefaultState();
+                if (roll < 8) yield Blocks.STONE.getDefaultState();
+                if (roll < 9) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+            }
+            default -> {
+                if (roll < 5) yield Blocks.STONE.getDefaultState();
+                if (roll < 7) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 8) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.GRAVEL.getDefaultState();
+            }
+        };
     }
 
-    // Weighted random palette for crater floors and walls
-    private BlockState getCraterLiner(Random random) {
+    private BlockState getShellBlock(Random random, BiomeVariant variant) {
         int roll = random.nextInt(11);
-        if (roll < 5) return Blocks.STONE.getDefaultState();
-        if (roll < 7) return Blocks.COBBLESTONE.getDefaultState();
-        if (roll < 8) return Blocks.MAGMA_BLOCK.getDefaultState();
-        if (roll < 9) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
-        if (roll < 10) return Blocks.COAL_BLOCK.getDefaultState();
-        return Blocks.GRAVEL.getDefaultState();
+        return switch (variant) {
+            case DESERT -> {
+                if (roll < 3) yield Blocks.SANDSTONE.getDefaultState();
+                if (roll < 5) yield Blocks.SMOOTH_SANDSTONE.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.TERRACOTTA.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case MANGROVE -> {
+                if (roll < 3) yield Blocks.PACKED_MUD.getDefaultState();
+                if (roll < 5) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.MUD.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case SNOWY -> {
+                if (roll < 3) yield Blocks.PACKED_ICE.getDefaultState();
+                if (roll < 5) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.BLUE_ICE.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case JUNGLE, DARK_FOREST -> {
+                if (roll < 3) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 5) yield Blocks.MOSS_BLOCK.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.STONE.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case TAIGA -> {
+                if (roll < 3) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 5) yield Blocks.STONE.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COBBLESTONE.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case BADLANDS -> {
+                if (roll < 3) yield Blocks.TERRACOTTA.getDefaultState();
+                if (roll < 5) yield Blocks.RED_SANDSTONE.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.ORANGE_TERRACOTTA.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case SAVANNA -> {
+                if (roll < 3) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 5) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.STONE.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case CHERRY -> {
+                if (roll < 3) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 5) yield Blocks.STONE.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.CLAY.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case MUSHROOM -> {
+                if (roll < 3) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 5) yield Blocks.STONE.getDefaultState();
+                if (roll < 7) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 9) yield Blocks.COAL_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COBBLESTONE.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            default -> {
+                if (roll < 4) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 6) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 8) yield Blocks.MAGMA_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+        };
     }
 
-    // Weighted random palette for the meteorite shell
-    private BlockState getShellBlock(Random random) {
+    private BlockState getEjectaRim(Random random, BiomeVariant variant) {
         int roll = random.nextInt(11);
-        if (roll < 4) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
-        if (roll < 6) return Blocks.COBBLESTONE.getDefaultState();
-        if (roll < 8) return Blocks.MAGMA_BLOCK.getDefaultState();
-        if (roll < 10) return Blocks.COAL_BLOCK.getDefaultState();
-        return Blocks.OBSIDIAN.getDefaultState();
-    }
-
-    private BlockState getEjectaRim(Random random) {
-        int roll = random.nextInt(11);
-        if (roll < 3) return Blocks.COBBLED_DEEPSLATE.getDefaultState();
-        if (roll < 4) return Blocks.GRAVEL.getDefaultState();
-        if (roll < 5) return Blocks.DIRT.getDefaultState();
-        if (roll < 6) return Blocks.COBBLESTONE.getDefaultState();
-        if (roll < 8) return Blocks.STONE.getDefaultState();
-        if (roll < 10) return Blocks.COAL_BLOCK.getDefaultState();
-        return Blocks.OBSIDIAN.getDefaultState();
+        return switch (variant) {
+            case DESERT -> {
+                if (roll < 3) yield Blocks.TERRACOTTA.getDefaultState();
+                if (roll < 4) yield Blocks.RED_SANDSTONE.getDefaultState();
+                if (roll < 5) yield Blocks.SANDSTONE.getDefaultState();
+                if (roll < 6) yield Blocks.SMOOTH_SANDSTONE.getDefaultState();
+                if (roll < 8) yield Blocks.CUT_SANDSTONE.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case MANGROVE -> {
+                if (roll < 3) yield Blocks.MUD.getDefaultState();
+                if (roll < 4) yield Blocks.PACKED_MUD.getDefaultState();
+                if (roll < 5) yield Blocks.CLAY.getDefaultState();
+                if (roll < 6) yield Blocks.MUDDY_MANGROVE_ROOTS.getDefaultState();
+                if (roll < 8) yield Blocks.MOSS_BLOCK.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case SNOWY -> {
+                if (roll < 3) yield Blocks.SNOW_BLOCK.getDefaultState();
+                if (roll < 5) yield Blocks.PACKED_ICE.getDefaultState();
+                if (roll < 7) yield Blocks.STONE.getDefaultState();
+                if (roll < 8) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case JUNGLE -> {
+                if (roll < 3) yield Blocks.MOSS_BLOCK.getDefaultState();
+                if (roll < 4) yield Blocks.MUD.getDefaultState();
+                if (roll < 5) yield Blocks.ROOTED_DIRT.getDefaultState();
+                if (roll < 6) yield Blocks.COARSE_DIRT.getDefaultState();
+                if (roll < 8) yield Blocks.STONE.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case TAIGA -> {
+                if (roll < 3) yield Blocks.PODZOL.getDefaultState();
+                if (roll < 4) yield Blocks.COARSE_DIRT.getDefaultState();
+                if (roll < 5) yield Blocks.STONE.getDefaultState();
+                if (roll < 6) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 8) yield Blocks.GRAVEL.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case BADLANDS -> {
+                if (roll < 3) yield Blocks.TERRACOTTA.getDefaultState();
+                if (roll < 4) yield Blocks.ORANGE_TERRACOTTA.getDefaultState();
+                if (roll < 5) yield Blocks.YELLOW_TERRACOTTA.getDefaultState();
+                if (roll < 6) yield Blocks.RED_SANDSTONE.getDefaultState();
+                if (roll < 8) yield Blocks.BROWN_TERRACOTTA.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case SAVANNA -> {
+                if (roll < 3) yield Blocks.COARSE_DIRT.getDefaultState();
+                if (roll < 4) yield Blocks.GRAVEL.getDefaultState();
+                if (roll < 5) yield Blocks.DIRT.getDefaultState();
+                if (roll < 6) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 8) yield Blocks.STONE.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case CHERRY -> {
+                if (roll < 3) yield Blocks.STONE.getDefaultState();
+                if (roll < 4) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 5) yield Blocks.CLAY.getDefaultState();
+                if (roll < 6) yield Blocks.MOSS_BLOCK.getDefaultState();
+                if (roll < 8) yield Blocks.GRAVEL.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case MUSHROOM -> {
+                if (roll < 3) yield Blocks.MYCELIUM.getDefaultState();
+                if (roll < 4) yield Blocks.STONE.getDefaultState();
+                if (roll < 5) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 6) yield Blocks.GRAVEL.getDefaultState();
+                if (roll < 8) yield Blocks.DIRT.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            case DARK_FOREST -> {
+                if (roll < 3) yield Blocks.ROOTED_DIRT.getDefaultState();
+                if (roll < 4) yield Blocks.COARSE_DIRT.getDefaultState();
+                if (roll < 5) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 6) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 8) yield Blocks.STONE.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+            default -> {
+                if (roll < 3) yield Blocks.COBBLED_DEEPSLATE.getDefaultState();
+                if (roll < 4) yield Blocks.GRAVEL.getDefaultState();
+                if (roll < 5) yield Blocks.DIRT.getDefaultState();
+                if (roll < 6) yield Blocks.COBBLESTONE.getDefaultState();
+                if (roll < 8) yield Blocks.STONE.getDefaultState();
+                if (roll < 10) yield Blocks.COAL_BLOCK.getDefaultState();
+                yield Blocks.OBSIDIAN.getDefaultState();
+            }
+        };
     }
 }
