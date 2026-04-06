@@ -8,6 +8,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -43,13 +44,18 @@ public class ModStructures {
 
     /**
      * Called during datagen. Creates the meteorite structure and restricts it to Overworld biomes.
+     * Uses TOP_LAYER_MODIFICATION step so the crater carving runs after all features
+     * (including trees from VEGETAL_DECORATION), preventing vegetation from spawning
+     * inside the crater.
      * Produces: data/houseki/worldgen/structure/meteorite.json
      */
     public static void bootstrapStructure(BootstrapContext<Structure> context) {
         var biomes = context.lookup(Registries.BIOME);
 
         context.register(METEORITE_KEY, new MeteoriteStructure(
-                new Structure.StructureSettings.Builder(biomes.getOrThrow(BiomeTags.IS_OVERWORLD)).build()
+                new Structure.StructureSettings.Builder(biomes.getOrThrow(BiomeTags.IS_OVERWORLD))
+                        .generationStep(GenerationStep.Decoration.TOP_LAYER_MODIFICATION)
+                        .build()
         ));
     }
 
