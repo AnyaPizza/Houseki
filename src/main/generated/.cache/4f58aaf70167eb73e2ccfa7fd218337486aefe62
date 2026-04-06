@@ -17,7 +17,7 @@ ec57f9bc282129a405671c0cbe1351776233180a data/houseki/tags/item/rainbow_repair.j
 951a13aaad7fc49196355557da57962ad5e81e0a data/houseki/tags/item/smithing_templates.json
 99271eda5a20b9907438394c39cb184add853c51 data/houseki/tags/item/tungsten_repair.json
 f53375b0da0d5b0d42eee8770806391321167cc7 data/minecraft/tags/item/axes.json
-a75c32c8aebe0ae6598d5b60285c0d4a4ee93053 data/minecraft/tags/item/beacon_payment_items.json
+2866d8fe7af58ba906ce274df8de499f8ec48e97 data/minecraft/tags/item/beacon_payment_items.json
 70ca432d206aae230620709e2781eda9b7cfa8b2 data/minecraft/tags/item/chest_armor.json
 ef32a352b8faa94b89fa6eb35340336ebcb5de7b data/minecraft/tags/item/foot_armor.json
 43c3835eb879b0d53ae6422045ccec5eeee473b9 data/minecraft/tags/item/head_armor.json
@@ -27,5 +27,5 @@ fd914a2272463dfc95c31a1ec24de9b3bb008516 data/minecraft/tags/item/pickaxes.json
 24035121ca9fcb498eddfdd934e2e0743e1f4f0f data/minecraft/tags/item/shovels.json
 844749c1784b92f56d0080b2f242e44e7d41bfcf data/minecraft/tags/item/spears.json
 49dd3dbfabf987cc01d86733adb602f60bb7ac35 data/minecraft/tags/item/swords.json
-485fcc09331bf9c0cee951977efb1d725816ef18 data/minecraft/tags/item/trim_materials.json
+aac18166e2695a4908da2ac61d044a6df84da996 data/minecraft/tags/item/trim_materials.json
 06d2ef7fe12cb06f9b4e9504aa900293df00c843 data/minecraft/tags/item/trimmable_armor.json

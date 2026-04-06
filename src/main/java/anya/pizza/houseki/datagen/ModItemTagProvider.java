@@ -38,7 +38,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PLATINUM)
                 .add(ModItems.STEEL)
                 .add(ModItems.CAST_STEEL)
-                .add(ModItems.METEORIC_IRON_INGOT);
+                .add(ModItems.METEORIC_IRON_INGOT)
+                .add(ModItems.SUGILITE)
+                .add(ModItems.BISMUTH);
 
         valueLookupBuilder(ItemTags.TRIM_MATERIALS)
                 .add(ModItems.RAINBOW_PYRITE)
@@ -46,7 +48,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.SAPPHIRE)
                 .add(ModItems.NEPHRITE)
                 .add(ModItems.JADEITE)
-                .add(ModItems.CAST_STEEL);
+                .add(ModItems.CAST_STEEL)
+                .add(ModItems.SUGILITE)
+                .add(ModItems.BISMUTH);
 
         valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.PINKU_HELMET)

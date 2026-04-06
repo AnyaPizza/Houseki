@@ -2,9 +2,7 @@ package anya.pizza.houseki.datagen;
 
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.datagen.recipebuilder.CrusherRecipeBuilder;
-import anya.pizza.houseki.datagen.recipebuilder.FoundryCastingRecipeBuilder;
 import anya.pizza.houseki.item.ModItems;
-import anya.pizza.houseki.recipe.FoundryCastingRecipe;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
@@ -62,6 +60,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemConvertible> CRUDE_IRON_SMELTABLES = List.of(Items.IRON_INGOT);
                 List<ItemConvertible> STEEL_SMELTABLES = List.of(ModItems.CRUDE_IRON);
                 List<ItemConvertible> METEORIC_IRON_SMELTABLES = List.of(ModBlocks.METEORIC_IRON);
+                List<ItemConvertible> SUGILITE_SMELTABLES = List.of(ModBlocks.SUGILITE_ORE);
+                List<ItemConvertible> BISMUTH_SMELTABLES = List.of(ModBlocks.BISMUTH_ORE);
 
                 // Crushing recipes with auxiliary output
                 CrusherRecipeBuilder.create(Ingredient.ofItems(ModBlocks.BAUXITE), new ItemStack(ModItems.CRUSHED_BAUXITE), 250).chance(0.5)
@@ -76,6 +76,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.METEORIC_IRON_INGOT), new ItemStack(Items.RAW_IRON), 300).chance(0.35)
                         .auxiliary(new ItemStack(ModItems.NICKEL_POWDER)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "meteoric_iron_crushing")));
 
+                CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.SUGILITE), new ItemStack(ModBlocks.SUGILITE_ORE), 250).chance(0.2)
+                        .auxiliary(new ItemStack(Items.RAW_IRON)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "sugilite_crushing")));
+
+                CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.BISMUTH),  new ItemStack(ModBlocks.BISMUTH_ORE), 250).chance(0.3)
+                        .auxiliary(new ItemStack(ModItems.TUNGSTEN_POWDER)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "bismuth_crushing")));
+
+                CrusherRecipeBuilder.create(Ingredient.ofItems(Items.COPPER_INGOT), new ItemStack(ModItems.PLATINUM_NUGGET), 250).chance(0.03)
+                        .auxiliary(new ItemStack(ModItems.BISMUTH)).offerTo(exporter, String.valueOf(Identifier.of("houseki", "copper_ingot_crushing")));
+
 
                 // Crushing recipes WITHOUT an auxiliary output (it will default to Optional.empty())
                 CrusherRecipeBuilder.create(Ingredient.ofItems(Items.COBBLESTONE), new ItemStack(Items.GRAVEL), 100)
@@ -89,14 +98,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 CrusherRecipeBuilder.create(Ingredient.ofItems(ModBlocks.DEEPSLATE_PLATINUM_ORE), new ItemStack(ModItems.PLATINUM), 250)
                         .offerTo(exporter, String.valueOf(Identifier.of("houseki", "deepslate_platinum_ore_crushing")));
 
-                CrusherRecipeBuilder.create(Ingredient.ofItems(Items.COPPER_INGOT), new ItemStack(ModItems.PLATINUM_NUGGET), 250)
-                        .offerTo(exporter, String.valueOf(Identifier.of("houseki", "copper_ingot_crushing")));
-
                 CrusherRecipeBuilder.create(Ingredient.ofItems(ModItems.SCHEELITE), new ItemStack(ModItems.TUNGSTEN_POWDER), 250)
                         .offerTo(exporter, String.valueOf(Identifier.of("houseki", "scheelite_crushing")));
-
-                //FoundryCastingRecipeBuilder.create(Ingredient.ofItem(ModItems.PICKAXE_HEAD_CAST), new ItemStack(ModItems.PINKU), 0, 100, 100)
-                //        .offerTo(exporter, String.valueOf(Identifier.of("houseki", "pickaxe_head_casting")));
 
                 // Smithing Upgrades
                 offerPinkuUpgradeRecipe(exporter, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.PINKU_HELMET);
@@ -133,6 +136,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL);
                 offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.METEORIC_IRON_INGOT, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_METEORIC_IRON);
+                offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.SUGILITE, RecipeCategory.DECORATIONS, ModBlocks.SUGILITE_BLOCK);
+                offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.BISMUTH, RecipeCategory.DECORATIONS, ModBlocks.BISMUTH_BLOCK);
 
                 // Smelting Recipes
                 offerSmelting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM, 0.5f, 200, "aluminum");
@@ -145,6 +150,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerSmelting(JADEITE_SMELTABLES, RecipeCategory.MISC, ModItems.JADEITE, 0.5f, 250, "jadeite");
                 offerSmelting(PLATINUM_SMELTABLES, RecipeCategory.MISC, ModItems.PLATINUM, 0.5f, 200, "platinum");
                 offerSmelting(SULFUR_SMELTABLES, RecipeCategory.MISC, ModItems.SULFUR, 0.5f, 200, "sulfur");
+                offerSmelting(SUGILITE_SMELTABLES, RecipeCategory.MISC, ModItems.SUGILITE, 0.5f, 200, "sugilite");
+                offerSmelting(BISMUTH_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH, 0.7f, 200, "bismuth");
 
                 // Blasting Recipes
                 offerBlasting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM, 0.5f, 100, "aluminum");
@@ -160,6 +167,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerBlasting(CRUDE_IRON_SMELTABLES, RecipeCategory.MISC, ModItems.CRUDE_IRON, 0.5f, 100, "crude_iron");
                 offerBlasting(STEEL_SMELTABLES, RecipeCategory.MISC, ModItems.STEEL, 0.5f, 100, "steel");
                 offerBlasting(METEORIC_IRON_SMELTABLES, RecipeCategory.MISC, ModItems.METEORIC_IRON_INGOT, 0.5f, 150, "meteoric_iron_ingot");
+                offerBlasting(SUGILITE_SMELTABLES, RecipeCategory.MISC, ModItems.SUGILITE, 0.5f, 200, "sugilite");
+                offerBlasting(BISMUTH_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH, 0.7f, 200, "bismuth");
 
                 // Pickaxe Recipes
                 offerPickaxeRecipe(exporter, ModItems.RAINBOW_PYRITE_PICKAXE, ModItems.RAINBOW_PYRITE);

@@ -52,6 +52,10 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_CAST_STEEL);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.METEORIC_IRON);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOCK_OF_METEORIC_IRON);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SUGILITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BISMUTH_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BISMUTH_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SUGILITE_ORE);
 
         blockStateModelGenerator.registerCooker(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE);
         blockStateModelGenerator.registerCooker(ModBlocks.FOUNDRY, TexturedModel.ORIENTABLE);
@@ -106,6 +110,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CAST_STEEL, Models.GENERATED);
         itemModelGenerator.register(ModItems.METEORIC_IRON_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.NICKEL_POWDER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SUGILITE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BISMUTH, Models.GENERATED);
+
         itemModelGenerator.register(ModItems.TUNGSTEN_DRILL_BIT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SIMPLE_DRILL_HEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.ENHANCED_DRILL_HEAD, Models.GENERATED);

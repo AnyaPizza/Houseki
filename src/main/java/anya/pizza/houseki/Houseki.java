@@ -2,6 +2,7 @@ package anya.pizza.houseki;
 
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
+import anya.pizza.houseki.effect.ModEffects;
 import anya.pizza.houseki.item.ModItemGroups;
 import anya.pizza.houseki.item.ModItems;
 import anya.pizza.houseki.recipe.ModRecipes;
@@ -34,6 +35,8 @@ public class Houseki implements ModInitializer {
 		TrimEffectHandler.registerTrimEffects();
 
 		ModWorldGeneration.generateModWorldGeneration();
+
+		ModEffects.registerEffects();
 
 		FuelRegistryEvents.BUILD.register((builder, context) -> {
 			builder.add(ModItems.SULFUR, 1600);

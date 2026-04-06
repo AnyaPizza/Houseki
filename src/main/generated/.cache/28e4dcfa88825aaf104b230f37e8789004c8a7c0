@@ -2,11 +2,11 @@
 23caf7f61e4b2f6fa59b168a7ee49539eb44acf1 data/houseki/tags/block/enhanced_mineable.json
 1a39479598db3fcb1011704aa283ce843d5b4192 data/houseki/tags/block/meteor_wont_replace.json
 80ad3ac92e1280a2f60b25a83d2a16751740cc33 data/houseki/tags/block/premium_mineable.json
-3a872b346c761360db3b94468363a00d2bffd9e7 data/minecraft/tags/block/beacon_base_blocks.json
+4ddfe713b0802ead80420fbe3fead91c48a362bf data/minecraft/tags/block/beacon_base_blocks.json
 0f1595e54291f56a27bc1017154402fbafdc332a data/minecraft/tags/block/dragon_immune.json
-3a0bbb408c56e2aebb5ef34f1586086af12f9b04 data/minecraft/tags/block/mineable/pickaxe.json
+35da9ae5b93126a429f01615d6b9faa11384ad50 data/minecraft/tags/block/mineable/pickaxe.json
 619533fcf65797b48dcb726400d5332640971a28 data/minecraft/tags/block/needs_diamond_tool.json
-4835fa6fdda735b5399e8c95596fd1b649ef5f57 data/minecraft/tags/block/needs_iron_tool.json
+a44cf83de910730d24bd39d19691ef856ff4a542 data/minecraft/tags/block/needs_iron_tool.json
 a1beff16345c32d8dc88c3db520414648833a2c5 data/minecraft/tags/block/needs_stone_tool.json
 4bef11ab83e59ceac264840bbd5887acf361aa5f data/minecraft/tags/block/slabs.json
 ddad2cc2ddb25ca2aca83cf30800498d87462f2a data/minecraft/tags/block/stairs.json

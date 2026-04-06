@@ -1,5 +1,10 @@
 {
   "type": "houseki:crushing",
+  "auxiliary_chance": 0.03,
+  "auxiliary_result": {
+    "count": 1,
+    "id": "houseki:bismuth"
+  },
   "crushingTime": 250,
   "ingredient": "minecraft:copper_ingot",
   "result": {

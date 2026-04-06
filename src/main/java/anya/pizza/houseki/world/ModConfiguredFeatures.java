@@ -29,6 +29,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> PLATINUM_ORE_KEY = registerKey("platinum_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SULFUR_ORE_KEY = registerKey("sulfur_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BLACKSTONE_SULFUR_ORE_KEY = registerKey("blackstone_sulfur_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SUGILITE_ORE_KEY = registerKey("sugilite_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BISMUTH_ORE_KEY = registerKey("bismuth_ore");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_LIMESTONE_KEY = registerKey("ore_limestone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_SLATE_KEY = registerKey("ore_slate");
@@ -73,17 +75,20 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> overworldPlatinumOres = List.of(OreFeatureConfig.createTarget(copperReplaceables, ModBlocks.PLATINUM_ORE.getDefaultState()),
                         OreFeatureConfig.createTarget(deepCopperReplaceables, ModBlocks.DEEPSLATE_PLATINUM_ORE.getDefaultState()));
 
-        List<OreFeatureConfig.Target> netherSulfurOres = List.of(OreFeatureConfig.createTarget(netherrackReplaceables,ModBlocks.SULFUR_ORE.getDefaultState()));
-        List<OreFeatureConfig.Target> blackstoneSulfurOres = List.of(OreFeatureConfig.createTarget(blackstoneReplaceables,ModBlocks.BLACKSTONE_SULFUR_ORE.getDefaultState()));
+        List<OreFeatureConfig.Target> netherSulfurOres = List.of(OreFeatureConfig.createTarget(netherrackReplaceables, ModBlocks.SULFUR_ORE.getDefaultState()));
+        List<OreFeatureConfig.Target> blackstoneSulfurOres = List.of(OreFeatureConfig.createTarget(blackstoneReplaceables, ModBlocks.BLACKSTONE_SULFUR_ORE.getDefaultState()));
 
 
-        List<OreFeatureConfig.Target> overworldLimestoneOre = List.of(OreFeatureConfig.createTarget(stoneReplaceables,ModBlocks.LIMESTONE.getDefaultState()),
-                        OreFeatureConfig.createTarget(deepslateReplaceables,ModBlocks.LIMESTONE.getDefaultState()));
+        List<OreFeatureConfig.Target> overworldLimestoneOre = List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.LIMESTONE.getDefaultState()),
+                OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.LIMESTONE.getDefaultState()));
 
-        List<OreFeatureConfig.Target> overworldSlateOre = List.of(OreFeatureConfig.createTarget(stoneReplaceables,ModBlocks.SLATE.getDefaultState()),
-                        OreFeatureConfig.createTarget(deepslateReplaceables,ModBlocks.SLATE.getDefaultState()));
+        List<OreFeatureConfig.Target> overworldSlateOre = List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.SLATE.getDefaultState()),
+                OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.SLATE.getDefaultState()));
 
+        List<OreFeatureConfig.Target> netherSugiliteOre = List.of(OreFeatureConfig.createTarget(netherrackReplaceables, ModBlocks.SUGILITE_ORE.getDefaultState()));
+        List<OreFeatureConfig.Target> overworldBismuthOre = List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.BISMUTH_ORE.getDefaultState()));
 
+        //Vein Size
         register(context, PINKU_ORE_KEY, Feature.ORE, new OreFeatureConfig(endPinkuOres, 3));
         register(context, RAINBOW_PYRITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldRainbowPyriteOres, 10));
         register(context, SANDSTONE_RAINBOW_PYRITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldSandstoneRainbowPyriteOres, 5));
@@ -97,6 +102,8 @@ public class ModConfiguredFeatures {
         register(context, PLATINUM_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldPlatinumOres, 3));
         register(context, SULFUR_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherSulfurOres, 2));
         register(context, BLACKSTONE_SULFUR_ORE_KEY, Feature.ORE, new OreFeatureConfig(blackstoneSulfurOres, 10));
+        register(context, SUGILITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherSugiliteOre, 4));
+        register(context, BISMUTH_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldBismuthOre, 3));
 
         register(context, ORE_LIMESTONE_KEY, Feature.ORE, new OreFeatureConfig(overworldLimestoneOre, 64));
         register(context, ORE_SLATE_KEY, Feature.ORE, new OreFeatureConfig(overworldSlateOre, 64));

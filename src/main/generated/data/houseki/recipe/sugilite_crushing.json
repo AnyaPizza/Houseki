@@ -1,0 +1,14 @@
+{
+  "type": "houseki:crushing",
+  "auxiliary_chance": 0.2,
+  "auxiliary_result": {
+    "count": 1,
+    "id": "minecraft:raw_iron"
+  },
+  "crushingTime": 250,
+  "ingredient": "houseki:sugilite",
+  "result": {
+    "count": 1,
+    "id": "houseki:sugilite_ore"
+  }
+}

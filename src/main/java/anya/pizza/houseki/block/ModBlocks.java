@@ -105,6 +105,12 @@ public class ModBlocks {
     public static final Block BLOCK_OF_METEORIC_IRON = registerBlock("block_of_meteoric_iron",
             properties -> new Block(properties.mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.DRAGON).requiresTool().strength(50F, 1200F)));
 
+    public static final Block SUGILITE_BLOCK = registerBlock("sugilite_block",
+            properties -> new Block(properties.mapColor(MapColor.PURPLE).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(7F, 8F)));
+
+    public static final Block BISMUTH_BLOCK = registerBlock("bismuth_block",
+            properties -> new Block(properties.mapColor(MapColor.TEAL).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresTool().strength(4F, 4F)));
+
     //Adds Ore
     public static final Block PINKU_ORE = registerBlock("pinku_ore",
             properties -> new Block(properties
@@ -165,6 +171,15 @@ public class ModBlocks {
     public static final Block BLACKSTONE_SULFUR_ORE = registerBlock("blackstone_sulfur_ore",
             properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
                     .mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 2.5F)));
+
+    public static final Block SUGILITE_ORE = registerBlock("sugilite_ore",
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.PURPLE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(4F, 7F)));
+                        //Moh Scale 6
+    public static final Block BISMUTH_ORE = registerBlock("bismuth_ore",
+            properties -> new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), properties
+                    .mapColor(MapColor.TEAL).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2, 3)));
+                        //Moh Scale 2
 
     //Stairs
     public static final Block LIMESTONE_STAIRS = registerBlock("limestone_stairs",

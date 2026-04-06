@@ -19,6 +19,8 @@ public class ModTrimMaterials {
     public static final RegistryKey<ArmorTrimMaterial> NEPHRITE = RegistryKey.of(RegistryKeys.TRIM_MATERIAL, Identifier.of(Houseki.MOD_ID, "nephrite"));
     public static final RegistryKey<ArmorTrimMaterial> JADEITE = RegistryKey.of(RegistryKeys.TRIM_MATERIAL, Identifier.of(Houseki.MOD_ID, "jadeite"));
     public static final RegistryKey<ArmorTrimMaterial> CAST_STEEL = RegistryKey.of(RegistryKeys.TRIM_MATERIAL, Identifier.of(Houseki.MOD_ID, "cast_steel"));
+    public static final RegistryKey<ArmorTrimMaterial> SUGILITE = RegistryKey.of(RegistryKeys.TRIM_MATERIAL, Identifier.of(Houseki.MOD_ID, "sugilite"));
+    public static final RegistryKey<ArmorTrimMaterial> BISMUTH = RegistryKey.of(RegistryKeys.TRIM_MATERIAL, Identifier.of(Houseki.MOD_ID, "bismuth"));
 
     public static void bootstrap(Registerable<ArmorTrimMaterial> registerable) {
         register(registerable, RAINBOW_PYRITE, Style.EMPTY.withColor(TextColor.parse("#b03fe0").getOrThrow()));
@@ -27,6 +29,8 @@ public class ModTrimMaterials {
         register(registerable, NEPHRITE, Style.EMPTY.withColor(TextColor.parse("#60A472").getOrThrow()));
         register(registerable, JADEITE, Style.EMPTY.withColor(TextColor.parse("#246542").getOrThrow()));
         register(registerable, CAST_STEEL, Style.EMPTY.withColor(TextColor.parse("#8B929B").getOrThrow()));
+        register(registerable, SUGILITE, Style.EMPTY.withColor(TextColor.parse("#5743BD").getOrThrow()));
+        register(registerable, BISMUTH, Style.EMPTY.withColor(TextColor.parse("#6AC7FF").getOrThrow()));
     }
 
     private static void register(Registerable<ArmorTrimMaterial> registerable, RegistryKey<ArmorTrimMaterial> trimMaterialKey, Style style) {

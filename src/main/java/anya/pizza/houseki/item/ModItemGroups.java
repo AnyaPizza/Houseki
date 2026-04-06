@@ -161,11 +161,13 @@ public class ModItemGroups {
                         entries.add(ModItems.CAST_STEEL);
                         entries.add(ModItems.METEORIC_IRON_INGOT);
                         entries.add(ModItems.NICKEL_POWDER);
+                        entries.add(ModItems.SUGILITE);
+                        entries.add(ModItems.BISMUTH);
                         entries.add(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE);
                         entries.add(ModItems.TUNGSTEN_DRILL_BIT);
+
                         entries.add(ModItems.DIAMOND_DRILL_BIT);
                         entries.add(ModItems.SIMPLE_DRILL_HEAD);
-
                         entries.add(ModItems.ENHANCED_DRILL_HEAD);
                         entries.add(ModItems.ADVANCED_DRILL_HEAD);
                         entries.add(ModItems.PREMIUM_DRILL_HEAD);
@@ -173,9 +175,9 @@ public class ModItemGroups {
                         entries.add(ModItems.ENHANCED_TUNGSTEN_DRILL);
                         entries.add(ModItems.ADVANCED_TUNGSTEN_DRILL);
                         entries.add(ModItems.PREMIUM_TUNGSTEN_DRILL);
+
                         entries.add(ModItems.SIMPLE_DIAMOND_DRILL);
                         entries.add(ModItems.ENHANCED_DIAMOND_DRILL);
-
                         entries.add(ModItems.ADVANCED_DIAMOND_DRILL);
                         entries.add(ModItems.PREMIUM_DIAMOND_DRILL);
                         entries.add(ModItems.PINKU_SPEAR);
@@ -183,9 +185,9 @@ public class ModItemGroups {
                         entries.add(ModItems.TUNGSTEN_SPEAR);
                         entries.add(ModItems.ALUMINUM_SPEAR);
                         entries.add(ModItems.SAPPHIRE_SPEAR);
+
                         entries.add(ModItems.NEPHRITE_SPEAR);
                         entries.add(ModItems.JADEITE_SPEAR);
-
                         entries.add(ModItems.PLATINUM_SPEAR);
                         entries.add(ModItems.CAST_STEEL_SPEAR);
                         entries.add(ModItems.METEORIC_IRON_SPEAR);
@@ -193,9 +195,9 @@ public class ModItemGroups {
                         entries.add(ModItems.AXE_HEAD_CAST);
                         entries.add(ModItems.SHOVEL_HEAD_CAST);
                         entries.add(ModItems.SWORD_HEAD_CAST);
+
                         entries.add(ModItems.HOE_HEAD_CAST);
                         entries.add(ModItems.SPEAR_HEAD_CAST);
-
                         entries.add(ModItems.HELMET_CAST);
                         entries.add(ModItems.CHESTPLATE_CAST);
                         entries.add(ModItems.LEGGINGS_CAST);
@@ -203,9 +205,9 @@ public class ModItemGroups {
                         entries.add(ModItems.CS_PICKAXE_HEAD);
                         entries.add(ModItems.CS_AXE_HEAD);
                         entries.add(ModItems.CS_SHOVEL_HEAD);
+
                         entries.add(ModItems.CS_SWORD_HEAD);
                         entries.add(ModItems.CS_HOE_HEAD);
-
                         entries.add(ModItems.CS_SPEAR_HEAD);
                         entries.add(ModItems.MI_PICKAXE_HEAD);
                         entries.add(ModItems.MI_AXE_HEAD);
@@ -294,6 +296,10 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLOCK_OF_CAST_STEEL);
                         entries.add(ModBlocks.METEORIC_IRON);
                         entries.add(ModBlocks.BLOCK_OF_METEORIC_IRON);
+                        entries.add(ModBlocks.BISMUTH_ORE);
+                        entries.add(ModBlocks.BISMUTH_BLOCK);
+                        entries.add(ModBlocks.SUGILITE_ORE);
+                        entries.add(ModBlocks.SUGILITE_BLOCK);
                     }).build());
 
     /**
