@@ -20,13 +20,13 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.houseki.found_meteorite.description"
+      "translate": "advancements.houseki.meteorite.description"
     },
     "icon": {
       "id": "houseki:meteoric_iron"
     },
     "title": {
-      "translate": "advancements.houseki.found_meteorite.title"
+      "translate": "advancements.houseki.meteorite.title"
     }
   },
   "requirements": [

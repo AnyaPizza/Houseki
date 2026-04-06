@@ -20,6 +20,8 @@ public class ModTrimMaterials {
     public static final ResourceKey<TrimMaterial> NEPHRITE = registryKey("nephrite");
     public static final ResourceKey<TrimMaterial> JADEITE = registryKey("jadeite");
     public static final ResourceKey<TrimMaterial> CAST_STEEL = registryKey("cast_steel");
+    public static final ResourceKey<TrimMaterial> SUGILITE = registryKey("sugilite");
+    public static final ResourceKey<TrimMaterial> BISMUTH = registryKey("bismuth");
 
     public static void bootstrap(BootstrapContext<TrimMaterial> context) {
         // Trims with no effects
@@ -29,6 +31,10 @@ public class ModTrimMaterials {
         register(context, NEPHRITE, Style.EMPTY.withColor(TextColor.parseColor("#60A472").getOrThrow()), MaterialAssetGroup.create("nephrite"));
         register(context, JADEITE, Style.EMPTY.withColor(TextColor.parseColor("#246542").getOrThrow()), MaterialAssetGroup.create("jadeite"));
         register(context, CAST_STEEL, Style.EMPTY.withColor(TextColor.parseColor("#8B929B").getOrThrow()), MaterialAssetGroup.create("cast_steel"));
+
+        //Trims with effects
+        register(context, SUGILITE, Style.EMPTY.withColor(TextColor.parseColor("#5743BD").getOrThrow()), MaterialAssetGroup.create("sugilite"));
+        register(context, BISMUTH, Style.EMPTY.withColor(TextColor.parseColor("#6AC7FF").getOrThrow()), MaterialAssetGroup.create("bismuth"));
     }
 
     private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> registryKey, Style style, MaterialAssetGroup assets) {

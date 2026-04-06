@@ -19,8 +19,8 @@ public class HousekiDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModModelProvider::new);
-		pack.addProvider(ModRegistryDataGenerator::new);
 		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(ModRegistryDataGenerator::new);
 	}
 
 	@Override
@@ -29,5 +29,6 @@ public class HousekiDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.TRIM_MATERIAL, ModTrimMaterials::bootstrap);
 		registryBuilder.add(Registries.STRUCTURE, ModStructures::bootstrapStructure);
-		registryBuilder.add(Registries.STRUCTURE_SET, ModStructures::bootstrapStructureSet);	}
+		registryBuilder.add(Registries.STRUCTURE_SET, ModStructures::bootstrapStructureSet);
+	}
 }

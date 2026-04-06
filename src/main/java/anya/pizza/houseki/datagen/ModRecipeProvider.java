@@ -47,6 +47,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemLike> CRUDE_IRON_SMELTABLES = List.of(Items.IRON_INGOT);
                 List<ItemLike> STEEL_SMELTABLES = List.of(ModItems.CRUDE_IRON);
                 List<ItemLike> METEORIC_IRON_SMELTABLES = List.of(ModBlocks.METEORIC_IRON);
+                List<ItemLike> SUGILITE_SMELTABLES = List.of(ModBlocks.SUGILITE_ORE);
+                List<ItemLike> BISMUTH_SMELTABLES = List.of(ModBlocks.BISMUTH_ORE);
 
                 // Crushing recipes with auxiliary output
                 CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.BAUXITE), ModItems.CRUSHED_BAUXITE, 250).chance(0.5)
@@ -61,6 +63,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 CrusherRecipeBuilder.create(Ingredient.of(ModItems.METEORIC_IRON_INGOT), Items.RAW_IRON, 300).chance(0.35)
                         .auxiliary(ModItems.NICKEL_POWDER).save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "meteoric_iron_crushing")));
 
+                CrusherRecipeBuilder.create(Ingredient.of(ModItems.BISMUTH), ModBlocks.BISMUTH_ORE, 250).chance(0.3)
+                        .auxiliary(ModItems.TUNGSTEN_POWDER).save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "bismuth_crushing")));
+
+                CrusherRecipeBuilder.create(Ingredient.of(Items.COPPER_INGOT), ModItems.PLATINUM_NUGGET, 250).chance(0.03)
+                        .auxiliary(ModItems.BISMUTH).save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "copper_ingot_crushing")));
+
                 // Crushing recipes WITHOUT an auxiliary output
                 CrusherRecipeBuilder.create(Ingredient.of(Items.COBBLESTONE), Items.GRAVEL, 100)
                         .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "cobblestone_crushing")));
@@ -70,12 +78,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
                 CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.PLATINUM_ORE), ModItems.PLATINUM, 250)
                         .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "platinum_ore_crushing")));
-
                 CrusherRecipeBuilder.create(Ingredient.of(ModBlocks.DEEPSLATE_PLATINUM_ORE), ModItems.PLATINUM, 250)
                         .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "deepslate_platinum_ore_crushing")));
-
-                CrusherRecipeBuilder.create(Ingredient.of(Items.COPPER_INGOT), ModItems.PLATINUM_NUGGET, 250)
-                        .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "copper_ingot_crushing")));
 
                 CrusherRecipeBuilder.create(Ingredient.of(ModItems.SCHEELITE), ModItems.TUNGSTEN, 250)
                         .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "scheelite_crushing")));
@@ -115,6 +119,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.METEORIC_IRON_INGOT, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_METEORIC_IRON);
+                nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.SUGILITE, RecipeCategory.DECORATIONS, ModBlocks.SUGILITE_BLOCK);
+                nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.BISMUTH, RecipeCategory.DECORATIONS, ModBlocks.BISMUTH_BLOCK);
 
                 // Smelting Recipes
                 oreSmelting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ALUMINUM, 0.5f, 200, "aluminum");
@@ -127,6 +133,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreSmelting(JADEITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.JADEITE, 0.5f, 250, "jadeite");
                 oreSmelting(PLATINUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.PLATINUM, 0.5f, 200, "platinum");
                 oreSmelting(SULFUR_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.SULFUR, 0.5f, 200, "sulfur");
+                oreSmelting(SUGILITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.SUGILITE, 0.5f, 200, "sugilite");
+                oreSmelting(BISMUTH_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.BISMUTH, 0.7f, 200, "bismuth");
 
                 // Blasting Recipes
                 oreBlasting(ALUMINUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ALUMINUM, 0.5f, 100, "aluminum");
@@ -142,6 +150,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreBlasting(CRUDE_IRON_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.CRUDE_IRON, 0.5f, 100, "crude_iron");
                 oreBlasting(STEEL_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.STEEL, 0.5f, 120, "steel");
                 oreBlasting(METEORIC_IRON_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC,ModItems.METEORIC_IRON_INGOT, 0.5f, 150, "meteoric_iron_ingot");
+                oreBlasting(SUGILITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.SUGILITE, 0.5f, 200, "sugilite");
+                oreBlasting(BISMUTH_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.BISMUTH, 0.7f, 200, "bismuth");
 
                 // Pickaxe Recipes
                 offerPickaxeRecipe(output, ModItems.RAINBOW_PYRITE_PICKAXE, ModItems.RAINBOW_PYRITE);
@@ -174,16 +184,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerAxeRecipe(output, ModItems.PLATINUM_AXE, ModItems.PLATINUM);
                 offerAxeRecipe(output, ModItems.SAPPHIRE_AXE, ModItems.SAPPHIRE);
                 offerAxeRecipe(output, ModItems.TUNGSTEN_AXE, ModItems.TUNGSTEN);
-
-                // Shovel Recipes
-                offerShovelRecipe(output, ModItems.RAINBOW_PYRITE_SHOVEL, ModItems.RAINBOW_PYRITE);
-                offerShovelRecipe(output, ModItems.ALUMINUM_SHOVEL, ModItems.ALUMINUM);
-                offerShovelRecipe(output, ModItems.CAST_STEEL_SHOVEL, ModItems.CAST_STEEL);
-                offerShovelRecipe(output, ModItems.JADEITE_SHOVEL, ModItems.JADEITE);
-                offerShovelRecipe(output, ModItems.NEPHRITE_SHOVEL, ModItems.NEPHRITE);
-                offerShovelRecipe(output, ModItems.PLATINUM_SHOVEL, ModItems.PLATINUM);
-                offerShovelRecipe(output, ModItems.SAPPHIRE_SHOVEL, ModItems.SAPPHIRE);
-                offerShovelRecipe(output, ModItems.TUNGSTEN_SHOVEL, ModItems.TUNGSTEN);
                 shaped(RecipeCategory.TOOLS, ModItems.CAST_STEEL_AXE,1)
                         .pattern("#")
                         .pattern("X")
@@ -197,6 +197,29 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("X")
                         .define('#', ModItems.MI_AXE_HEAD).define('X', Items.STICK)
                         .unlockedBy(getHasName(ModItems.MI_AXE_HEAD), has(ModItems.MI_AXE_HEAD))
+                        .unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(output);
+
+                // Shovel Recipes
+                offerShovelRecipe(output, ModItems.RAINBOW_PYRITE_SHOVEL, ModItems.RAINBOW_PYRITE);
+                offerShovelRecipe(output, ModItems.ALUMINUM_SHOVEL, ModItems.ALUMINUM);
+                offerShovelRecipe(output, ModItems.JADEITE_SHOVEL, ModItems.JADEITE);
+                offerShovelRecipe(output, ModItems.NEPHRITE_SHOVEL, ModItems.NEPHRITE);
+                offerShovelRecipe(output, ModItems.PLATINUM_SHOVEL, ModItems.PLATINUM);
+                offerShovelRecipe(output, ModItems.SAPPHIRE_SHOVEL, ModItems.SAPPHIRE);
+                offerShovelRecipe(output, ModItems.TUNGSTEN_SHOVEL, ModItems.TUNGSTEN);
+                shaped(RecipeCategory.TOOLS, ModItems.CAST_STEEL_SHOVEL,1)
+                        .pattern("#")
+                        .pattern("X")
+                        .pattern("X")
+                        .define('#', ModItems.CS_SHOVEL_HEAD).define('X', Items.STICK)
+                        .unlockedBy(getHasName(ModItems.CS_SHOVEL_HEAD), has(ModItems.CS_SHOVEL_HEAD))
+                        .unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(output);
+                shaped(RecipeCategory.TOOLS, ModItems.METEORIC_IRON_SHOVEL,1)
+                        .pattern("#")
+                        .pattern("X")
+                        .pattern("X")
+                        .define('#', ModItems.MI_SHOVEL_HEAD).define('X', Items.STICK)
+                        .unlockedBy(getHasName(ModItems.MI_SHOVEL_HEAD), has(ModItems.MI_SHOVEL_HEAD))
                         .unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(output);
 
                 // Sword Recipes

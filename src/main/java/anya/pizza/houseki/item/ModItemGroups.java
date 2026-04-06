@@ -96,16 +96,6 @@ public class ModItemGroups {
                         entries.accept(ModItems.PLATINUM_SWORD);
                         entries.accept(ModItems.PLATINUM_HOE);
 
-                        entries.accept(ModItems.METEORIC_IRON_HELMET);
-                        entries.accept(ModItems.METEORIC_IRON_CHESTPLATE);
-                        entries.accept(ModItems.METEORIC_IRON_LEGGINGS);
-                        entries.accept(ModItems.METEORIC_IRON_BOOTS);
-                        entries.accept(ModItems.METEORIC_IRON_PICKAXE);
-                        entries.accept(ModItems.METEORIC_IRON_AXE);
-                        entries.accept(ModItems.METEORIC_IRON_SHOVEL);
-                        entries.accept(ModItems.METEORIC_IRON_SWORD);
-                        entries.accept(ModItems.METEORIC_IRON_HOE);
-
                         entries.accept(ModItems.CAST_STEEL_HELMET);
                         entries.accept(ModItems.CAST_STEEL_CHESTPLATE);
                         entries.accept(ModItems.CAST_STEEL_LEGGINGS);
@@ -115,6 +105,16 @@ public class ModItemGroups {
                         entries.accept(ModItems.CAST_STEEL_SHOVEL);
                         entries.accept(ModItems.CAST_STEEL_SWORD);
                         entries.accept(ModItems.CAST_STEEL_HOE);
+
+                        entries.accept(ModItems.METEORIC_IRON_HELMET);
+                        entries.accept(ModItems.METEORIC_IRON_CHESTPLATE);
+                        entries.accept(ModItems.METEORIC_IRON_LEGGINGS);
+                        entries.accept(ModItems.METEORIC_IRON_BOOTS);
+                        entries.accept(ModItems.METEORIC_IRON_PICKAXE);
+                        entries.accept(ModItems.METEORIC_IRON_AXE);
+                        entries.accept(ModItems.METEORIC_IRON_SHOVEL);
+                        entries.accept(ModItems.METEORIC_IRON_SWORD);
+                        entries.accept(ModItems.METEORIC_IRON_HOE);
 
                         entries.accept(ModItems.PINKU_HORSE_ARMOR);
                         entries.accept(ModItems.RAINBOW_PYRITE_HORSE_ARMOR);
@@ -161,11 +161,13 @@ public class ModItemGroups {
                         entries.accept(ModItems.CAST_STEEL);
                         entries.accept(ModItems.METEORIC_IRON_INGOT);
                         entries.accept(ModItems.NICKEL_POWDER);
+                        entries.accept(ModItems.SUGILITE);
+                        entries.accept(ModItems.BISMUTH);
                         entries.accept(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE);
                         entries.accept(ModItems.TUNGSTEN_DRILL_BIT);
+
                         entries.accept(ModItems.DIAMOND_DRILL_BIT);
                         entries.accept(ModItems.SIMPLE_DRILL_HEAD);
-
                         entries.accept(ModItems.ENHANCED_DRILL_HEAD);
                         entries.accept(ModItems.ADVANCED_DRILL_HEAD);
                         entries.accept(ModItems.PREMIUM_DRILL_HEAD);
@@ -173,9 +175,9 @@ public class ModItemGroups {
                         entries.accept(ModItems.ENHANCED_TUNGSTEN_DRILL);
                         entries.accept(ModItems.ADVANCED_TUNGSTEN_DRILL);
                         entries.accept(ModItems.PREMIUM_TUNGSTEN_DRILL);
+
                         entries.accept(ModItems.SIMPLE_DIAMOND_DRILL);
                         entries.accept(ModItems.ENHANCED_DIAMOND_DRILL);
-
                         entries.accept(ModItems.ADVANCED_DIAMOND_DRILL);
                         entries.accept(ModItems.PREMIUM_DIAMOND_DRILL);
                         entries.accept(ModItems.PINKU_SPEAR);
@@ -183,9 +185,9 @@ public class ModItemGroups {
                         entries.accept(ModItems.TUNGSTEN_SPEAR);
                         entries.accept(ModItems.ALUMINUM_SPEAR);
                         entries.accept(ModItems.SAPPHIRE_SPEAR);
+
                         entries.accept(ModItems.NEPHRITE_SPEAR);
                         entries.accept(ModItems.JADEITE_SPEAR);
-
                         entries.accept(ModItems.PLATINUM_SPEAR);
                         entries.accept(ModItems.CAST_STEEL_SPEAR);
                         entries.accept(ModItems.METEORIC_IRON_SPEAR);
@@ -193,9 +195,9 @@ public class ModItemGroups {
                         entries.accept(ModItems.AXE_HEAD_CAST);
                         entries.accept(ModItems.SHOVEL_HEAD_CAST);
                         entries.accept(ModItems.SWORD_HEAD_CAST);
+
                         entries.accept(ModItems.HOE_HEAD_CAST);
                         entries.accept(ModItems.SPEAR_HEAD_CAST);
-
                         entries.accept(ModItems.HELMET_CAST);
                         entries.accept(ModItems.CHESTPLATE_CAST);
                         entries.accept(ModItems.LEGGINGS_CAST);
@@ -203,9 +205,9 @@ public class ModItemGroups {
                         entries.accept(ModItems.CS_PICKAXE_HEAD);
                         entries.accept(ModItems.CS_AXE_HEAD);
                         entries.accept(ModItems.CS_SHOVEL_HEAD);
+
                         entries.accept(ModItems.CS_SWORD_HEAD);
                         entries.accept(ModItems.CS_HOE_HEAD);
-
                         entries.accept(ModItems.CS_SPEAR_HEAD);
                         entries.accept(ModItems.MI_PICKAXE_HEAD);
                         entries.accept(ModItems.MI_AXE_HEAD);
@@ -290,11 +292,14 @@ public class ModItemGroups {
                         entries.accept(ModBlocks.SULFUR_ORE);
                         entries.accept(ModBlocks.BLACKSTONE_SULFUR_ORE);
                         entries.accept(ModBlocks.BLOCK_OF_SULFUR);
-
                         entries.accept(ModBlocks.BLOCK_OF_STEEL);
                         entries.accept(ModBlocks.BLOCK_OF_CAST_STEEL);
                         entries.accept(ModBlocks.METEORIC_IRON);
                         entries.accept(ModBlocks.BLOCK_OF_METEORIC_IRON);
+                        entries.accept(ModBlocks.BISMUTH_ORE);
+                        entries.accept(ModBlocks.BISMUTH_BLOCK);
+                        entries.accept(ModBlocks.SUGILITE_ORE);
+                        entries.accept(ModBlocks.SUGILITE_BLOCK);
                     }).build());
     
     public static void registerItemGroups() {

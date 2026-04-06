@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "houseki:cast_steel",
-    "S": "minecraft:stick"
+    "#": "houseki:cast_steel_shovel_head",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "#",
-    "S",
-    "S"
+    "X",
+    "X"
   ],
   "result": {
     "id": "houseki:cast_steel_shovel"

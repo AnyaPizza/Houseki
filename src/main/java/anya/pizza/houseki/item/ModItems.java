@@ -38,6 +38,8 @@ public class ModItems {
     public static final Item NICKEL_POWDER = registerItem("nickel_powder", Item::new);
     public static final Item TUNGSTEN_POWDER = registerItem("tungsten_powder", Item::new);
     public static final Item METEORIC_IRON_INGOT = registerItem("meteoric_iron_ingot", Item::new);
+    public static final Item SUGILITE = registerItem("sugilite", setting -> new Item(setting.trimMaterial(ModTrimMaterials.SUGILITE)));
+    public static final Item BISMUTH = registerItem("bismuth", setting -> new Item(setting.trimMaterial(ModTrimMaterials.BISMUTH)));
 
     public static final Item TUNGSTEN_DRILL_BIT = registerItem("tungsten_drill_bit", setting -> new Item(setting.fireResistant()));
     public static final Item SIMPLE_DRILL_HEAD = registerItem("simple_drill_head", Item::new);
