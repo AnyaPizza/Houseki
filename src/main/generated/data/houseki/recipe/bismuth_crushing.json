@@ -1,0 +1,8 @@
+{
+  "type": "houseki:crusher",
+  "auxiliary_chance": 0.3,
+  "auxiliary_result": "houseki:tungsten_powder",
+  "crushingTime": 250,
+  "ingredient": "houseki:bismuth",
+  "result": "houseki:bismuth_ore"
+}

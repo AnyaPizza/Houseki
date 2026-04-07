@@ -16,7 +16,7 @@
     "hidden": false
   },
   "criteria": {
-    "meteoric_iron": {
+    "meteoric_iron_armor": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -46,7 +46,7 @@
   },
   "requirements": [
     [
-      "meteoric_iron"
+      "meteoric_iron_armor"
     ]
   ],
   "rewards": {

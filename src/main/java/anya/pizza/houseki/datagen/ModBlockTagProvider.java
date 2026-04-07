@@ -78,7 +78,11 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.BLOCK_OF_CAST_STEEL)
                 .add(ModBlocks.METEORIC_IRON)
                 .add(ModBlocks.BLOCK_OF_METEORIC_IRON)
-                .add(ModBlocks.FOUNDRY);
+                .add(ModBlocks.FOUNDRY)
+                .add(ModBlocks.SUGILITE_BLOCK)
+                .add(ModBlocks.SUGILITE_ORE)
+                .add(ModBlocks.BISMUTH_BLOCK)
+                .add(ModBlocks.BISMUTH_ORE);
 
         valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.BAUXITE)
@@ -110,7 +114,11 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.PLATINUM_ORE)
                 .add(ModBlocks.DEEPSLATE_PLATINUM_ORE)
                 .add(ModBlocks.BLOCK_OF_STEEL)
-                .add(ModBlocks.BLOCK_OF_CAST_STEEL);
+                .add(ModBlocks.BLOCK_OF_CAST_STEEL)
+                .add(ModBlocks.BISMUTH_BLOCK)
+                .add(ModBlocks.BISMUTH_ORE)
+                .add(ModBlocks.SUGILITE_BLOCK)
+                .add(ModBlocks.SUGILITE_ORE);
 
         valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.PINKU_ORE)
@@ -130,7 +138,9 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.BLOCK_OF_PLATINUM)
                 .add(ModBlocks.BLOCK_OF_STEEL)
                 .add(ModBlocks.BLOCK_OF_CAST_STEEL)
-                .add(ModBlocks.BLOCK_OF_METEORIC_IRON);
+                .add(ModBlocks.BLOCK_OF_METEORIC_IRON)
+                .add(ModBlocks.SUGILITE_BLOCK)
+                .add(ModBlocks.BISMUTH_BLOCK);
 
         valueLookupBuilder(BlockTags.WITHER_IMMUNE)
                 .add(ModBlocks.BLOCK_OF_PINKU)

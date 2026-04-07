@@ -59,6 +59,10 @@
     "houseki:block_of_cast_steel",
     "houseki:meteoric_iron",
     "houseki:block_of_meteoric_iron",
-    "houseki:foundry"
+    "houseki:foundry",
+    "houseki:sugilite_block",
+    "houseki:sugilite_ore",
+    "houseki:bismuth_block",
+    "houseki:bismuth_ore"
   ]
 }

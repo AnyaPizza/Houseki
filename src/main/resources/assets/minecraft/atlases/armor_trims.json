@@ -25,7 +25,9 @@
         "sapphire": "houseki:trims/color_palettes/sapphire",
         "nephrite": "houseki:trims/color_palettes/nephrite",
         "jadeite": "houseki:trims/color_palettes/jadeite",
-        "cast_steel": "houseki:trims/color_palettes/cast_steel"
+        "cast_steel": "houseki:trims/color_palettes/cast_steel",
+        "sugilite": "houseki:trims/color_palettes/sugilite",
+        "bismuth": "houseki:trims/color_palettes/bismuth"
       },
       "textures": [
         "minecraft:trims/entity/humanoid/sentry",

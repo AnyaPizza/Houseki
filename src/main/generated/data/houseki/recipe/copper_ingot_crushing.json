@@ -1,5 +1,7 @@
 {
   "type": "houseki:crusher",
+  "auxiliary_chance": 0.03,
+  "auxiliary_result": "houseki:bismuth",
   "crushingTime": 250,
   "ingredient": "minecraft:copper_ingot",
   "result": "houseki:platinum_nugget"

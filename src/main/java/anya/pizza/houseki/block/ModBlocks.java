@@ -120,6 +120,12 @@ public class ModBlocks {
     public static final Block BLOCK_OF_METEORIC_IRON = registerBlock("block_of_meteoric_iron",
             properties -> new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.DRAGON).requiresCorrectToolForDrops().strength(50F, 1200F)));
 
+    public static final Block SUGILITE_BLOCK = registerBlock("sugilite_block",
+            properties -> new Block(properties.mapColor(MapColor.COLOR_PURPLE).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresCorrectToolForDrops().strength(7F, 8F)));
+
+    public static final Block BISMUTH_BLOCK = registerBlock("bismuth_block",
+            properties -> new Block(properties.mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresCorrectToolForDrops().strength(4F, 4F)));
+
     //Adds Ore
     public static final Block PINKU_ORE = registerBlock("pinku_ore",
             properties -> new Block(properties
@@ -180,6 +186,15 @@ public class ModBlocks {
     public static final Block BLACKSTONE_SULFUR_ORE = registerBlock("blackstone_sulfur_ore",
             properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
                     .mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 2.5F)));
+
+    public static final Block SUGILITE_ORE = registerBlock("sugilite_ore",
+            properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
+                    .mapColor(MapColor.COLOR_PURPLE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4F, 7F)));
+                        //Moh Scale 6
+    public static final Block BISMUTH_ORE = registerBlock("bismuth_ore",
+            properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
+                    .mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2F, 3F)));
+                        //Moh Scale 2
 
     //Stairs
     public static final Block LIMESTONE_STAIRS = registerBlock("limestone_stairs",

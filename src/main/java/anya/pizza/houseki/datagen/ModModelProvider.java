@@ -55,6 +55,10 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_CAST_STEEL);
         blockStateModelGenerator.createTrivialCube(ModBlocks.METEORIC_IRON);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_METEORIC_IRON);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.SUGILITE_BLOCK);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.BISMUTH_BLOCK);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.BISMUTH_ORE);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.SUGILITE_ORE);
 
         blockStateModelGenerator.createFurnace(ModBlocks.CRUSHER, TexturedModel.ORIENTABLE_ONLY_TOP);
         blockStateModelGenerator.createFurnace(ModBlocks.FOUNDRY, TexturedModel.ORIENTABLE_ONLY_TOP);
@@ -101,6 +105,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.NICKEL_POWDER, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.SUGILITE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.BISMUTH, ModelTemplates.FLAT_ITEM);
+
         itemModelGenerator.generateFlatItem(ModItems.TUNGSTEN_DRILL_BIT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SIMPLE_DRILL_HEAD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.ENHANCED_DRILL_HEAD, ModelTemplates.FLAT_ITEM);

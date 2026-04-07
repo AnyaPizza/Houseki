@@ -5,6 +5,7 @@
   "item.houseki.wolframite": "Wolframite",
   "item.houseki.scheelite": "Scheelite",
   "item.houseki.tungsten": "Tungsten",
+  "item.houseki.tungsten_powder": "Tungsten Powder",
   "item.houseki.crushed_bauxite": "Crushed Bauxite",
   "item.houseki.aluminum": "Aluminum",
   "item.houseki.sapphire": "Sapphire",
@@ -17,7 +18,9 @@
   "item.houseki.steel": "Steel",
   "item.houseki.cast_steel": "Cast Steel",
   "item.houseki.nickel_powder": "Nickel Powder",
-  "item.houseki.tungsten_powder": "Tungsten Powder",
+  "item.houseki.sugilite": "Sugilite",
+  "item.houseki.bismuth": "Bismuth",
+
   "item.houseki.meteoric_iron_ingot": "Meteoric Iron Ingot",
   "item.houseki.tungsten_drill_bit": "Tungsten Drill Bit",
   "item.houseki.diamond_drill_bit": "Diamond Drill Bit",
@@ -66,8 +69,13 @@
   "block.houseki.blackstone_sulfur_ore": "Blackstone Sulfur Ore",
   "block.houseki.sulfur_ore": "Sulfur Ore",
   "block.houseki.block_of_steel": "Block of Steel",
-  "block.houseki.meteoric_iron": "Meteoric Iron",
+  "block.houseki.block_of_cast_steel": "Block of Cast Steel",
   "block.houseki.block_of_meteoric_iron": "Block of Meteoric Iron",
+  "block.houseki.meteoric_iron": "Meteoric Iron",
+  "block.houseki.sugilite_ore": "Sugilite Ore",
+  "block.houseki.sugilite_block": "Sugilite Block",
+  "block.houseki.bismuth_ore": "Bismuth Ore",
+  "block.houseki.bismuth_block": "Bismuth Block",
 
   "block.houseki.limestone_stairs": "Limestone Stairs",
   "block.houseki.limestone_slab": "Limestone Slab",
@@ -92,8 +100,6 @@
   "block.houseki.aluminum_trapdoor": "Aluminum Trapdoor",
 
   "block.houseki.block_of_tungsten_b": "Block of Tungsten",
-  "block.houseki.block_of_cast_steel": "Block of Cast Steel",
-  "item.houseki.block_of_cast_steel": "Block of Cast Steel",
   "item.houseki.block_of_tungsten": "Block of Tungsten",
 
   "item.houseki.pinku_pickaxe": "Pinku Pickaxe",
@@ -238,7 +244,6 @@
   "item.houseki.chestplate_cast": "Chestplate Cast",
   "item.houseki.leggings_cast": "Leggings Cast",
   "item.houseki.boots_cast": "Boots Cast",
-
   "item.houseki.cast_steel_pickaxe_head": "Cast Steel Pickaxe Head",
   "item.houseki.cast_steel_axe_head": "Cast Steel Axe Head",
   "item.houseki.cast_steel_shovel_head": "Cast Steel Shovel Head",
@@ -270,6 +275,7 @@
   "tag.item.houseki.diamond_repair": "Diamond Repairable",
   "tag.item.houseki.armor": "Houseki Armor",
   "tag.item.houseki.mob_armors": "Mob Armors",
+  "tag.item.houseki.casts": "Casts",
 
   "item.houseki.smithing_template.pinku_upgrade.applies_to": "Netherite Equipment",
   "item.houseki.smithing_template.pinku_upgrade.ingredients": "Pinku",
@@ -294,6 +300,10 @@
   "trim_material.houseki.nephrite": "Nephrite",
   "trim_material.houseki.jadeite": "Jadeite",
   "trim_material.houseki.cast_steel": "Cast Steel",
+  "trim_material.houseki.sugilite": "Sugilite",
+  "trim_material.houseki.bismuth": "Bismuth",
+
+  "effect.houseki.sugilite_protection": "Sugilite Protection",
 
   "advancements.armor_sets.root.title": "Houseki Armor Sets",
   "advancements.armor_sets.root.description": "A set of advancements for collecting armor sets in the mod",
@@ -315,7 +325,7 @@
   "advancements.houseki.platinum_armor_set.description": "Get a full set of Platinum Armor!",
   "advancements.houseki.cast_steel_armor_set.title": "Steel But Stronger",
   "advancements.houseki.cast_steel_armor_set.description": "Get a full set of Cast Steel Armor!",
-  "advancements.houseki.meteoric_iron_armor_set.title": "The Sacred Metal",
+  "advancements.houseki.meteoric_iron_armor_set.title": "The Sacred Egyptian Metal",
   "advancements.houseki.meteoric_iron_armor_set.description": "Get a full set of Meteoric Iron Armor!",
   "advancements.general.root.title": "Houseki's Advancements",
   "advancements.general.root.description": "A set of advancements for Houseki!",
@@ -325,8 +335,8 @@
   "advancements.houseki.pinku.description": "Acquire Pinku!",
   "advancements.houseki.crusher_crafting.title": "It's Crushing Time!",
   "advancements.houseki.crusher_crafting.description": "Crafted a Crusher!",
-  "advancements.houseki.foundry_crafting.title": "Melting and Casting!",
+  "advancements.houseki.foundry_crafting.title": "Melting and Casting",
   "advancements.houseki.foundry_crafting.description": "Crafted a Foundry!",
-  "advancements.houseki.found_meteorite.title": "Space Rock",
-  "advancements.houseki.found_meteorite.description": "Found a Meteorite!"
+  "advancements.houseki.meteorite.title": "Space Rock",
+  "advancements.houseki.meteorite.description": "Found a Meteorite!"
 }

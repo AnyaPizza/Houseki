@@ -1,8 +1,10 @@
 package anya.pizza.houseki.trim;
 
+import anya.pizza.houseki.effect.ModEffects;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -28,8 +30,8 @@ public class TrimEffectHandler {
     }
 
     private static void applyEffects(ServerPlayer player) {
-        //int amethystCount = 0;
-        //int diamondCount = 0;
+        int sugiliteCount = 0;
+        int bismuthCount = 0;
 
         for (EquipmentSlot slot : ARMOR_SLOTS) {
             ItemStack stack = player.getItemBySlot(slot);
@@ -38,29 +40,29 @@ public class TrimEffectHandler {
             ArmorTrim trim = stack.get(DataComponents.TRIM);
             if (trim == null) continue;
 
-            //if (trim.material().is(TrimMaterials.AMETHYST)) amethystCount++;
-            //if (trim.material().is(TrimMaterials.DIAMOND)) diamondCount++;
+            if (trim.material().is(ModTrimMaterials.SUGILITE)) sugiliteCount++;
+            if (trim.material().is(ModTrimMaterials.BISMUTH)) bismuthCount++;
         }
 
-        //handleAmethystBonus(player, amethystCount);
-        //handleDiamondBonus(player, diamondCount);
+        handleSugiliteBonus(player, sugiliteCount);
+        handleBismuthBonus(player, bismuthCount);
     }
 
-    private static void handleAmethystBonus(ServerPlayer player, int aCount) {
+    private static void handleSugiliteBonus(ServerPlayer player, int aCount) {
         if (aCount >= 4) {
             // Full Set
-            player.addEffect(new MobEffectInstance(MobEffects.SPEED, 50, 1, true, false, true));
+            player.addEffect(new MobEffectInstance(ModEffects.SUGILITE_PROTECTION, 50, 1, true, false, false));
         } else if (aCount > 0) {
             // Anything under a full set
-            player.addEffect(new MobEffectInstance(MobEffects.SPEED, 50, 0, true, false, true));
+            player.addEffect(new MobEffectInstance(ModEffects.SUGILITE_PROTECTION, 50, 0, true, false, false));
         }
     }
 
-    private static void handleDiamondBonus(ServerPlayer player, int dCount) {
+    private static void handleBismuthBonus(ServerPlayer player, int dCount) {
         if (dCount >= 4) {
-            player.addEffect(new MobEffectInstance(MobEffects.JUMP_BOOST, 50, 1, true, false, true));
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 50, 1, true, false, false));
         } else if (dCount > 0) {
-            player.addEffect(new MobEffectInstance(MobEffects.JUMP_BOOST, 50, 0, true, false, true));
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 50, 0, true, false, false));
         }
     }
 }
