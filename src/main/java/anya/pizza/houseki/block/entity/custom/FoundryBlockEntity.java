@@ -447,6 +447,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
     private ItemStack getResultFromCast(ItemStack cast) {
         // Map cast + active metal type to the correct output
         if (activeMetalType == METAL_STEEL) {
+            if (cast.is(ModItems.INGOT_CAST)) return new ItemStack(ModItems.CAST_STEEL);
             // Tool heads
             if (cast.is(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.CS_PICKAXE_HEAD);
             if (cast.is(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.CS_AXE_HEAD);
@@ -460,6 +461,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
             if (cast.is(ModItems.LEGGINGS_CAST)) return new ItemStack(ModItems.CAST_STEEL_LEGGINGS);
             if (cast.is(ModItems.BOOTS_CAST)) return new ItemStack(ModItems.CAST_STEEL_BOOTS);
         } else if (activeMetalType == METAL_METEORIC_IRON) {
+            if (cast.is(ModItems.INGOT_CAST)) return new ItemStack(ModItems.METEORIC_IRON_INGOT);
             // Tool heads
             if (cast.is(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.MI_PICKAXE_HEAD);
             if (cast.is(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.MI_AXE_HEAD);
