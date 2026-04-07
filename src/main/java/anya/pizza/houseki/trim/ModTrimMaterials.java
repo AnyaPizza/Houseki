@@ -23,12 +23,15 @@ public class ModTrimMaterials {
     public static final RegistryKey<ArmorTrimMaterial> BISMUTH = RegistryKey.of(RegistryKeys.TRIM_MATERIAL, Identifier.of(Houseki.MOD_ID, "bismuth"));
 
     public static void bootstrap(Registerable<ArmorTrimMaterial> registerable) {
+        //Trims, No Effects
         register(registerable, RAINBOW_PYRITE, Style.EMPTY.withColor(TextColor.parse("#b03fe0").getOrThrow()));
         register(registerable, PINKU, Style.EMPTY.withColor(TextColor.parse("#f10af7").getOrThrow()));
         register(registerable, SAPPHIRE, Style.EMPTY.withColor(TextColor.parse("#0f52ba").getOrThrow()));
         register(registerable, NEPHRITE, Style.EMPTY.withColor(TextColor.parse("#60A472").getOrThrow()));
         register(registerable, JADEITE, Style.EMPTY.withColor(TextColor.parse("#246542").getOrThrow()));
         register(registerable, CAST_STEEL, Style.EMPTY.withColor(TextColor.parse("#8B929B").getOrThrow()));
+
+        //Trims With Effects
         register(registerable, SUGILITE, Style.EMPTY.withColor(TextColor.parse("#5743BD").getOrThrow()));
         register(registerable, BISMUTH, Style.EMPTY.withColor(TextColor.parse("#6AC7FF").getOrThrow()));
     }

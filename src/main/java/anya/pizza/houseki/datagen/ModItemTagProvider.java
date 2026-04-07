@@ -325,6 +325,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.METEORIC_IRON_SPEAR);
 
         valueLookupBuilder(ModTags.Items.CASTS)
+                .add(ModItems.INGOT_CAST)
                 .add(ModItems.PICKAXE_HEAD_CAST)
                 .add(ModItems.AXE_HEAD_CAST)
                 .add(ModItems.SHOVEL_HEAD_CAST)

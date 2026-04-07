@@ -255,6 +255,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.JADEITE_NAUTILUS_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.METEORIC_IRON_NAUTILUS_ARMOR, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.INGOT_CAST, Models.GENERATED);
         itemModelGenerator.register(ModItems.PICKAXE_HEAD_CAST, Models.GENERATED);
         itemModelGenerator.register(ModItems.AXE_HEAD_CAST, Models.GENERATED);
         itemModelGenerator.register(ModItems.SHOVEL_HEAD_CAST, Models.GENERATED);

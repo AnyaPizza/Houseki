@@ -118,8 +118,17 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.DRILL_UPGRADE_SMITHING_TEMPLATE).weight(1))
                         .with(ItemEntry.builder(ModItems.ENHANCED_DRILL_HEAD).weight(1))
                         .with(ItemEntry.builder(ModItems.DIAMOND_DRILL_BIT).weight(1))
-                        .with(TagEntry.builder(ModTags.Items.CASTS).weight(1))
                         .with(ItemEntry.builder(ModItems.BISMUTH).weight(1))
+                        .with(ItemEntry.builder(ModItems.PICKAXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.AXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SHOVEL_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SWORD_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HOE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HELMET_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.CHESTPLATE_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.LEGGINGS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.BOOTS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.INGOT_CAST).weight(1))
                         .with(ItemEntry.builder(ModItems.SUGILITE).weight(1)
                                 .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))));
                 tableBuilder.pool(poolBuilder.build());
@@ -264,7 +273,16 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
                         .with(ItemEntry.builder(ModItems.ALUMINUM_HORSE_ARMOR).weight(10))
                         .with(ItemEntry.builder(ModItems.SAPPHIRE_HORSE_ARMOR).weight(5))
-                        .with(TagEntry.builder(ModTags.Items.CASTS).weight(1)
+                        .with(ItemEntry.builder(ModItems.PICKAXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.INGOT_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.AXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SHOVEL_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SWORD_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HOE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HELMET_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.CHESTPLATE_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.LEGGINGS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.BOOTS_CAST).weight(1)
                                 .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))));
                 tableBuilder.pool(poolBuilder.build());
             }
@@ -435,7 +453,16 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
                         .with(ItemEntry.builder(ModItems.TUNGSTEN).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
-                        .with(TagEntry.builder(ModTags.Items.CASTS).weight(1)
+                        .with(ItemEntry.builder(ModItems.PICKAXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.AXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SHOVEL_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SWORD_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HOE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HELMET_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.CHESTPLATE_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.LEGGINGS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.BOOTS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.INGOT_CAST).weight(1)
                                 .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))));
                 tableBuilder.pool(poolBuilder.build());
             }
@@ -446,7 +473,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.PLATINUM_NUGGET).weight(2))
                         .with(ItemEntry.builder(ModItems.TUNGSTEN).weight(2)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
-                        .with(TagEntry.builder(ModTags.Items.CASTS).weight(1)
+                        .with(ItemEntry.builder(ModItems.PICKAXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.AXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SHOVEL_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SWORD_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HOE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HELMET_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.CHESTPLATE_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.LEGGINGS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.BOOTS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.INGOT_CAST).weight(1)
                                 .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))));
                 tableBuilder.pool(poolBuilder.build());
             }
@@ -560,8 +596,17 @@ public class ModLootTableModifiers {
                                 .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))))
                         .with(ItemEntry.builder(ModItems.SULFUR).weight(1)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
-                        .with(TagEntry.builder(ModTags.Items.CASTS).weight(1)
-                                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))));;
+                        .with(ItemEntry.builder(ModItems.PICKAXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.AXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SHOVEL_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SWORD_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HOE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HELMET_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.CHESTPLATE_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.LEGGINGS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.BOOTS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.INGOT_CAST).weight(1)
+                                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))));
                 tableBuilder.pool(poolBuilder.build());
             }
 
@@ -590,7 +635,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.RAINBOW_PYRITE_HORSE_ARMOR).weight(1))
                         .with(ItemEntry.builder(ModItems.ALUMINUM_HORSE_ARMOR).weight(1))
                         .with(ItemEntry.builder(ModItems.TUNGSTEN_HORSE_ARMOR).weight(1))
-                        .with(TagEntry.builder(ModTags.Items.CASTS).weight(1)
+                        .with(ItemEntry.builder(ModItems.PICKAXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.AXE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SHOVEL_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.SWORD_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HOE_HEAD_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.HELMET_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.CHESTPLATE_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.LEGGINGS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.BOOTS_CAST).weight(1))
+                        .with(ItemEntry.builder(ModItems.INGOT_CAST).weight(1)
                                 .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f))));
                 tableBuilder.pool(poolBuilder.build());
             }
