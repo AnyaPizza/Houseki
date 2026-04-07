@@ -220,6 +220,7 @@ public class ModItems {
     public static final Item METEORIC_IRON_NAUTILUS_ARMOR = registerItem("meteoric_iron_nautilus_armor", setting -> new Item(setting.nautilusArmor(ModArmorMaterials.METEORIC_IRON_MATERIAL).stacksTo(1)));
 
     //Casts
+    public static final Item INGOT_CAST = registerItem("ingot_cast", setting -> new Item(setting.stacksTo(1)));
     public static final Item PICKAXE_HEAD_CAST = registerItem("pickaxe_head_cast", setting -> new Item(setting.stacksTo(1)));
     public static final Item AXE_HEAD_CAST = registerItem("axe_head_cast", setting -> new Item(setting.stacksTo(1)));
     public static final Item SHOVEL_HEAD_CAST = registerItem("shovel_head_cast", setting -> new Item(setting.stacksTo(1)));

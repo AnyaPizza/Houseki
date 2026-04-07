@@ -3,6 +3,7 @@ package anya.pizza.houseki.screen.custom;
 import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
 import anya.pizza.houseki.item.ModItems;
 import anya.pizza.houseki.screen.ModScreenHandlers;
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -36,18 +37,6 @@ public class FoundryScreenHandler extends AbstractContainerMenu {
         this(syncId, inventory, inventory.player.level().getBlockEntity(pos), new SimpleContainerData(13));
     }
 
-    /**
-     * Construct a FoundryScreenHandler, configure its inventory slots (input, fuel, cast, output, and a disabled slot),
-     * register player inventory/hotbar slots, and attach the provided PropertyDelegate for GUI synchronization.
-     *
-     * The provided {@code blockEntity} must be a {@link FoundryBlockEntity} whose inventory size is 5.
-     *
-     * @param syncId                window sync id assigned by the client/server
-     * @param playerInventory       the player's inventory used to populate player slots and hotbar
-     * @param blockEntity           the backing block entity; must be a {@code FoundryBlockEntity} with an inventory size of 5
-     * @param arrayPropertyDelegate the PropertyDelegate used to synchronize melt, fuel, metal level, cast, and cooling GUI properties
-     * @throws IllegalStateException if {@code blockEntity} is not a {@code FoundryBlockEntity}
-     */
     public FoundryScreenHandler(int syncId, Inventory playerInventory, BlockEntity entity, ContainerData data) {
         super(ModScreenHandlers.FOUNDRY_SCREEN_HANDLER, syncId);
         this.blockEntity = (entity instanceof FoundryBlockEntity) ? (FoundryBlockEntity) entity : null;
@@ -149,11 +138,12 @@ public class FoundryScreenHandler extends AbstractContainerMenu {
             } else {
                 // All cast items go to the cast slot
                 // All cast items (tool heads + armor) go to the cast slot
-                if (originalStack.is(ModItems.PICKAXE_HEAD_CAST) || originalStack.is(ModItems.AXE_HEAD_CAST)
-                        || originalStack.is(ModItems.SHOVEL_HEAD_CAST) || originalStack.is(ModItems.SWORD_HEAD_CAST)
-                        || originalStack.is(ModItems.HOE_HEAD_CAST) || originalStack.is(ModItems.SPEAR_HEAD_CAST)
-                        || originalStack.is(ModItems.HELMET_CAST) || originalStack.is(ModItems.CHESTPLATE_CAST)
-                        || originalStack.is(ModItems.LEGGINGS_CAST) || originalStack.is(ModItems.BOOTS_CAST)) {
+                if (originalStack.is(ModItems.INGOT_CAST) || originalStack.is(ModItems.PICKAXE_HEAD_CAST) ||
+                        originalStack.is(ModItems.AXE_HEAD_CAST) || originalStack.is(ModItems.SHOVEL_HEAD_CAST) ||
+                        originalStack.is(ModItems.SWORD_HEAD_CAST) || originalStack.is(ModItems.HOE_HEAD_CAST) ||
+                        originalStack.is(ModItems.SPEAR_HEAD_CAST) || originalStack.is(ModItems.HELMET_CAST) ||
+                        originalStack.is(ModItems.CHESTPLATE_CAST) || originalStack.is(ModItems.LEGGINGS_CAST) ||
+                        originalStack.is(ModItems.BOOTS_CAST)) {
                     if (!this.moveItemStackTo(originalStack, 2, 3, false)) {
                         return ItemStack.EMPTY;
                     }

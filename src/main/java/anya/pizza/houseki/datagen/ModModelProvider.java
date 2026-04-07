@@ -251,6 +251,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.JADEITE_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.METEORIC_IRON_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerator.generateFlatItem(ModItems.INGOT_CAST, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.PICKAXE_HEAD_CAST, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.AXE_HEAD_CAST, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SHOVEL_HEAD_CAST, ModelTemplates.FLAT_ITEM);

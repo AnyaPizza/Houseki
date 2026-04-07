@@ -191,11 +191,12 @@ public class ModItemGroups {
                         entries.accept(ModItems.PLATINUM_SPEAR);
                         entries.accept(ModItems.CAST_STEEL_SPEAR);
                         entries.accept(ModItems.METEORIC_IRON_SPEAR);
+                        entries.accept(ModItems.INGOT_CAST);
                         entries.accept(ModItems.PICKAXE_HEAD_CAST);
                         entries.accept(ModItems.AXE_HEAD_CAST);
                         entries.accept(ModItems.SHOVEL_HEAD_CAST);
-                        entries.accept(ModItems.SWORD_HEAD_CAST);
 
+                        entries.accept(ModItems.SWORD_HEAD_CAST);
                         entries.accept(ModItems.HOE_HEAD_CAST);
                         entries.accept(ModItems.SPEAR_HEAD_CAST);
                         entries.accept(ModItems.HELMET_CAST);
@@ -204,8 +205,8 @@ public class ModItemGroups {
                         entries.accept(ModItems.BOOTS_CAST);
                         entries.accept(ModItems.CS_PICKAXE_HEAD);
                         entries.accept(ModItems.CS_AXE_HEAD);
-                        entries.accept(ModItems.CS_SHOVEL_HEAD);
 
+                        entries.accept(ModItems.CS_SHOVEL_HEAD);
                         entries.accept(ModItems.CS_SWORD_HEAD);
                         entries.accept(ModItems.CS_HOE_HEAD);
                         entries.accept(ModItems.CS_SPEAR_HEAD);
@@ -214,6 +215,7 @@ public class ModItemGroups {
                         entries.accept(ModItems.MI_SHOVEL_HEAD);
                         entries.accept(ModItems.MI_SWORD_HEAD);
                         entries.accept(ModItems.MI_HOE_HEAD);
+
                         entries.accept(ModItems.MI_SPEAR_HEAD);
 
                     }).build());
