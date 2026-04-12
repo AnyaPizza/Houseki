@@ -1,5 +1,3 @@
-# This mod is protected under the ARR License
-
 ## Modpacks
 
 Use in modpacks is allowed on all supported platforms.
@@ -11,7 +9,7 @@ Use in modpacks is allowed on all supported platforms.
 Use in videos and similar media is allowed on all platforms.
 - Permission is not required.
 - Give correct and proper credit.
-- Do not link to unauthorized repost sites. My mods will only be available officially on Modrinth.
+- Do not link to unauthorized repost sites. My mods, resource packs, datapacks, etc., will only be available officially on Modrinth.
 
 ## Republishing Mod Files or Forks
 
