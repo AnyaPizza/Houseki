@@ -16,7 +16,7 @@ You can also look at the [Development Board](https://trello.com/b/gkn3qGlL/house
 
 ![The Stuffs](https://github.com/user-attachments/assets/f6ac4e37-2cd6-46e7-aed8-16db7e51d4bd)
 
-To learn more about the mod you can visit the [Wiki](https://github.com/AnyaPizza/Houseki/wiki)!
+To learn more about the mod, you can visit the [Wiki](https://github.com/AnyaPizza/Houseki/wiki)!
 
 This mod requires the [Fabric API](https://modrinth.com/mod/fabric-api) to work!
 
@@ -89,7 +89,7 @@ The Crusher is a new block entity that crushes minerals to make other minerals!
 
 The Foundry melts certain metals and then pours them into casts to produce tools and armor components!
 
-In 1.21.11 REI is fully compatible with these crafters.
+In 1.21.11, REI is fully compatible with these crafters.
 
 ---
 
@@ -163,7 +163,7 @@ There are two types of Drills, the Diamond Drills and the Tungsten Drills.
 # 🧙‍♀️ Trim Effects & Armor Effects
 
 Houseki features full armor effects and some trim effects!
-This means when you wear a full set of certain armors in the mod you will gain a special effect that matches the real world uses.
+This means when you wear a full set of certain armors in the mod, you will gain a special effect that is inspired by the real-world uses.
 
 Same with the trim effects! Read more on the Wiki!
 
@@ -173,14 +173,11 @@ Same with the trim effects! Read more on the Wiki!
 
 ### 🌠 Meteorites
 
-Houseki has Meteorites features scatter around the world! They can be different based on the biome!
+Houseki has Meteorites features scattered around the world! They can be different based on the biome!
 
 
 <img width="1376" height="1034" alt="2026-04-05_21 14 39" src="https://github.com/user-attachments/assets/b024c610-90c1-4ca7-96a5-1d205cfa1096" />
 
 ---
-
-Feel free to use this mod in your Modrinth/Curseforge-hosted modpacks without asking for permission. Do not redistribute the jar files anywhere else!
-
 
 This is my first mod and attempt at pixel art. So I do apologize for any problems and bad artwork.
