@@ -283,7 +283,13 @@ public class MeteoriteStructurePiece extends StructurePiece {
                     if (noisyDist <= coreRadius) {
                         world.setBlockState(pos, ModBlocks.METEORIC_IRON.getDefaultState(), 2);
                     } else {
-                        world.setBlockState(pos, shellBlock, 2);
+                        // Rare platinum ore deposits carried within the meteorite shell.
+                        // ~5% of shell blocks are replaced with platinum ore.
+                        if (random.nextInt(20) == 0) {
+                            world.setBlockState(pos, getPlatinumOre(random), 2);
+                        } else {
+                            world.setBlockState(pos, shellBlock, 2);
+                        }
                     }
                 }
             }
@@ -305,6 +311,38 @@ public class MeteoriteStructurePiece extends StructurePiece {
             if (!chunkBox.contains(debrisPos)) continue;
             if (world.getBlockState(debrisPos).isAir()) {
                 world.setBlockState(debrisPos, ModBlocks.METEORIC_IRON.getDefaultState(), 2);
+            }
+        }
+
+        // Phase 4.5: Platinum ore deposits embedded in the crater walls and floor.
+        // Impact mineralization: 1-3 small clusters of 1-3 blocks each, placed
+        // below the crater floor surface so players must mine to find them.
+        int platinumClusterCount = 1 + random.nextInt(3);
+        for (int c = 0; c < platinumClusterCount; c++) {
+            double angle = random.nextDouble() * Math.PI * 2;
+            double dist = meteorRadius + random.nextDouble() * (craterRadius * 0.6);
+            int px = centerX + (int) Math.round(Math.cos(angle) * dist);
+            int pz = centerZ + (int) Math.round(Math.sin(angle) * dist);
+
+            double horizDist = Math.sqrt((px - centerX) * (px - centerX)
+                    + (pz - centerZ) * (pz - centerZ));
+            int floorY = getCraterFloorY(horizDist, craterRadius);
+            if (floorY >= surfaceY - 1) continue;
+
+            // Place cluster 2-4 blocks below the crater floor
+            int depth = 2 + random.nextInt(3);
+            int clusterSize = 1 + random.nextInt(3);
+            for (int b = 0; b < clusterSize; b++) {
+                int ox = (b == 0) ? 0 : random.nextInt(3) - 1;
+                int oy = (b == 0) ? 0 : random.nextInt(2);
+                int oz = (b == 0) ? 0 : random.nextInt(3) - 1;
+                BlockPos orePos = new BlockPos(px + ox, floorY - depth + oy, pz + oz);
+                if (!chunkBox.contains(orePos)) continue;
+                BlockState existing = world.getBlockState(orePos);
+                if (existing.isOf(Blocks.BEDROCK) || existing.isAir()) continue;
+                if (!meteorWontReplace(existing)) {
+                    world.setBlockState(orePos, getPlatinumOre(random), 2);
+                }
             }
         }
 
@@ -464,6 +502,14 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
     private boolean meteorWontReplace(BlockState state) {
         return state.isIn(ModTags.Blocks.METEOR_WONT_REPLACE);
+    }
+
+    // Returns a random platinum ore variant: 70% regular, 30% deepslate.
+    private BlockState getPlatinumOre(Random random) {
+        if (random.nextInt(10) < 3) {
+            return ModBlocks.DEEPSLATE_PLATINUM_ORE.getDefaultState();
+        }
+        return ModBlocks.PLATINUM_ORE.getDefaultState();
     }
 
     private BlockState getFallenLogBlock(BiomeVariant variant) {
