@@ -2,5 +2,5 @@
   "type": "houseki:crusher",
   "crushingTime": 250,
   "ingredient": "houseki:scheelite",
-  "result": "houseki:tungsten"
+  "result": "houseki:tungsten_powder"
 }
