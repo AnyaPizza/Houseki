@@ -543,6 +543,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .criterion(hasItem(ModItems.NICKEL_POWDER), conditionsFromItem(ModItems.NICKEL_POWDER))
                         .offerTo(exporter, String.valueOf(Identifier.of("houseki", "tungsten_from_powder")));
 
+                // Casts
+
+                createShaped(RecipeCategory.MISC, ModItems.INGOT_CAST, 1)
+                        .pattern("###")
+                        .pattern("#I#")
+                        .pattern("###")
+                        .input('#', ModItems.STEEL).criterion(hasItem(ModItems.STEEL), conditionsFromItem(ModItems.STEEL))
+                        .input('I', Items.IRON_INGOT).criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .offerTo(exporter);
+
                 createShaped(RecipeCategory.MISC, ModItems.PICKAXE_HEAD_CAST, 1)
                         .pattern("###")
                         .pattern("#P#")
