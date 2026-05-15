@@ -2,6 +2,7 @@ package anya.pizza.houseki.compat.rei;
 
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.item.ModItems;
+import net.minecraft.recipe.BlastingRecipe;
 import anya.pizza.houseki.recipe.CrusherRecipe;
 import anya.pizza.houseki.recipe.FoundryMeltingRecipe;
 import anya.pizza.houseki.recipe.ModRecipes;
@@ -11,6 +12,7 @@ import me.shedaniel.rei.api.common.plugins.REICommonPlugin;
 import me.shedaniel.rei.api.common.registry.display.ServerDisplayRegistry;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.item.Item;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
@@ -26,6 +28,11 @@ public class HousekiREICommon implements REICommonPlugin {
         registry.beginRecipeFiller(FoundryMeltingRecipe.class)
                 .filterType(ModRecipes.FOUNDRY_MELTING_TYPE)
                 .fill(FoundryMeltingDisplay::new);
+
+        registry.beginRecipeFiller(BlastingRecipe.class)
+                .filterType(RecipeType.BLASTING)
+                .filter(recipe -> recipe.id().getValue().getNamespace().equals(Houseki.MOD_ID))
+                .fill(FixedBlastingDisplay::new);
 
         registerCastingDisplays(registry);
     }
@@ -66,6 +73,8 @@ public class HousekiREICommon implements REICommonPlugin {
 
     @Override
     public void registerDisplaySerializer(DisplaySerializerRegistry registry) {
+        registry.register(Identifier.ofVanilla("default/blasting"), FixedBlastingDisplay.SERIALIZER);
+        registry.register(Identifier.ofVanilla("client/smoking"), FixedClientsidedSmokingDisplay.SERIALIZER);
         registry.register(Identifier.of(Houseki.MOD_ID, "crusher"), CrusherDisplay.SERIALIZER);
         registry.register(Identifier.of(Houseki.MOD_ID, "foundry_melting"), FoundryMeltingDisplay.SERIALIZER);
         registry.register(Identifier.of(Houseki.MOD_ID, "foundry_casting"), FoundryCastingDisplay.SERIALIZER);
