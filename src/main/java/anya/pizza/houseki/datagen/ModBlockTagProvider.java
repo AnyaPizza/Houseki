@@ -5,13 +5,8 @@ import anya.pizza.houseki.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.references.BlockIds;
-import net.minecraft.references.BlockItemId;
 import net.minecraft.references.BlockItemIds;
-import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -75,9 +70,6 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getRK(ModBlocks.POLISHED_SLATE_STAIRS))
                 .add(ModBlocks.getRK(ModBlocks.POLISHED_SLATE_WALL))
                 .add(ModBlocks.getRK(ModBlocks.CHISELED_SLATE))
-                .add(ModBlocks.getRK(ModBlocks.BLOCK_OF_SULFUR))
-                .add(ModBlocks.getRK(ModBlocks.BLACKSTONE_SULFUR_ORE))
-                .add(ModBlocks.getRK(ModBlocks.SULFUR_ORE))
                 .add(ModBlocks.getRK(ModBlocks.BLOCK_OF_STEEL))
                 .add(ModBlocks.getRK(ModBlocks.BLOCK_OF_CAST_STEEL))
                 .add(ModBlocks.getRK(ModBlocks.METEORIC_IRON))
@@ -90,9 +82,6 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.getRK(ModBlocks.BAUXITE))
-                .add(ModBlocks.getRK(ModBlocks.SULFUR_ORE))
-                .add(ModBlocks.getRK(ModBlocks.BLACKSTONE_SULFUR_ORE))
-                .add(ModBlocks.getRK(ModBlocks.BLOCK_OF_SULFUR))
                 .add(ModBlocks.getRK(ModBlocks.ALUMINUM_DOOR))
                 .add(ModBlocks.getRK(ModBlocks.ALUMINUM_TRAPDOOR))
                 .add(ModBlocks.getRK(ModBlocks.CRUSHER))

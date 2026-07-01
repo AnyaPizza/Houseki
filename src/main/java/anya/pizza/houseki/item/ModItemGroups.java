@@ -154,7 +154,7 @@ public class ModItemGroups {
                         entries.accept(ModItems.JADEITE);
                         entries.accept(ModItems.PLATINUM);
                         entries.accept(ModItems.PLATINUM_NUGGET);
-                        entries.accept(ModItems.SULFUR);
+                        entries.accept(ModItems.SULFUR_POWDER);
 
                         entries.accept(ModItems.CRUDE_IRON);
                         entries.accept(ModItems.STEEL);
@@ -291,9 +291,6 @@ public class ModItemGroups {
                         entries.accept(ModBlocks.POLISHED_SLATE_WALL);
                         entries.accept(ModBlocks.CHISELED_SLATE);
 
-                        entries.accept(ModBlocks.SULFUR_ORE);
-                        entries.accept(ModBlocks.BLACKSTONE_SULFUR_ORE);
-                        entries.accept(ModBlocks.BLOCK_OF_SULFUR);
                         entries.accept(ModBlocks.BLOCK_OF_STEEL);
                         entries.accept(ModBlocks.BLOCK_OF_CAST_STEEL);
                         entries.accept(ModBlocks.METEORIC_IRON);

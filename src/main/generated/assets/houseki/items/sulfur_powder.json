@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "houseki:item/sulfur"
+    "model": "houseki:item/sulfur_powder"
   }
 }

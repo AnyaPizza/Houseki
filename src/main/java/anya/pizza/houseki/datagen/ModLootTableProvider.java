@@ -62,7 +62,6 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.SLATE_SLAB, createSlabItemTable(ModBlocks.SLATE_SLAB));
         add(ModBlocks.POLISHED_SLATE_SLAB, createSlabItemTable(ModBlocks.POLISHED_SLATE_SLAB));
         add(ModBlocks.SLATE_TILE_SLAB, createSlabItemTable(ModBlocks.SLATE_TILE_SLAB));
-        dropSelf(ModBlocks.BLOCK_OF_SULFUR);
         dropSelf(ModBlocks.BLOCK_OF_STEEL);
         dropSelf(ModBlocks.BLOCK_OF_CAST_STEEL);
         dropSelf(ModBlocks.BAUXITE);
@@ -94,9 +93,6 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         add(ModBlocks.NEPHRITE_ORE, LightOreDrops(ModBlocks.NEPHRITE_ORE, ModItems.NEPHRITE));
         add(ModBlocks.JADEITE_ORE, LightOreDrops(ModBlocks.JADEITE_ORE, ModItems.JADEITE));
-
-        add(ModBlocks.SULFUR_ORE, AverageOreDrops(ModBlocks.SULFUR_ORE, ModItems.SULFUR));
-        add(ModBlocks.BLACKSTONE_SULFUR_ORE, AverageOreDrops(ModBlocks.BLACKSTONE_SULFUR_ORE, ModItems.SULFUR));
     }
 
     public LootTable.Builder AverageOreDrops(Block drop, Item item) {

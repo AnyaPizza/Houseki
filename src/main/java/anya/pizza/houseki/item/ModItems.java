@@ -32,7 +32,7 @@ public class ModItems {
     public static final Item JADEITE = registerItem("jadeite", setting -> new Item(setting.trimMaterial(ModTrimMaterials.JADEITE)));
     public static final Item PLATINUM = registerItem("platinum", Item::new);
     public static final Item PLATINUM_NUGGET = registerItem("platinum_nugget", Item::new);
-    public static final Item SULFUR = registerItem("sulfur", Item::new);
+    public static final Item SULFUR_POWDER = registerItem("sulfur_powder", Item::new);
     public static final Item CRUDE_IRON = registerItem("crude_iron", Item::new);
     public static final Item STEEL = registerItem("steel", Item::new);
     public static final Item CAST_STEEL = registerItem("cast_steel", setting -> new Item(setting.trimMaterial(ModTrimMaterials.CAST_STEEL)));

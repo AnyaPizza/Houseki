@@ -43,7 +43,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemLike> NEPHRITE_SMELTABLES = List.of(ModBlocks.NEPHRITE_ORE);
                 List<ItemLike> JADEITE_SMELTABLES = List.of(ModBlocks.JADEITE_ORE);
                 List<ItemLike> PLATINUM_SMELTABLES = List.of(ModBlocks.PLATINUM_ORE, ModBlocks.DEEPSLATE_PLATINUM_ORE);
-                List<ItemLike> SULFUR_SMELTABLES = List.of(ModBlocks.SULFUR_ORE, ModBlocks.BLACKSTONE_SULFUR_ORE);
                 List<ItemLike> CRUDE_IRON_SMELTABLES = List.of(Items.IRON_INGOT);
                 List<ItemLike> STEEL_SMELTABLES = List.of(ModItems.CRUDE_IRON);
                 List<ItemLike> METEORIC_IRON_SMELTABLES = List.of(ModBlocks.METEORIC_IRON);
@@ -68,6 +67,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
                 CrusherRecipeBuilder.create(Ingredient.of(Items.COPPER_INGOT), ModItems.PLATINUM_NUGGET, 250).chance(0.03)
                         .auxiliary(ModItems.BISMUTH).save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "copper_ingot_crushing")));
+
+                CrusherRecipeBuilder.create(Ingredient.of(Blocks.SULFUR), ModItems.SULFUR_POWDER, 250).chance(0.5)
+                                .auxiliary(ModItems.SULFUR_POWDER).save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("houseki", "sulfur_crushing")));
 
                 // Crushing recipes WITHOUT an auxiliary output
                 CrusherRecipeBuilder.create(Ingredient.of(Items.COBBLESTONE), Items.GRAVEL, 100)
@@ -115,7 +117,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.SAPPHIRE, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_SAPPHIRE);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.JADEITE, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_JADEITE);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.PLATINUM, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_PLATINUM);
-                nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.SULFUR, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_SULFUR);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_STEEL);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.CAST_STEEL, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_CAST_STEEL);
                 nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.METEORIC_IRON_INGOT, RecipeCategory.DECORATIONS, ModBlocks.BLOCK_OF_METEORIC_IRON);
@@ -132,7 +133,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreSmelting(NEPHRITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.NEPHRITE, 0.5f, 200, "nephrite");
                 oreSmelting(JADEITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.JADEITE, 0.5f, 250, "jadeite");
                 oreSmelting(PLATINUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.PLATINUM, 0.5f, 200, "platinum");
-                oreSmelting(SULFUR_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.SULFUR, 0.5f, 200, "sulfur");
                 oreSmelting(SUGILITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.SUGILITE, 0.5f, 200, "sugilite");
                 oreSmelting(BISMUTH_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.BISMUTH, 0.7f, 200, "bismuth");
 
@@ -146,7 +146,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreBlasting(NEPHRITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.NEPHRITE, 0.5f, 100, "nephrite");
                 oreBlasting(JADEITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.JADEITE, 0.5f, 150, "jadeite");
                 oreBlasting(PLATINUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.PLATINUM, 0.5f, 100, "platinum");
-                oreBlasting(SULFUR_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.SULFUR, 0.5f, 100, "sulfur");
                 oreBlasting(CRUDE_IRON_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.CRUDE_IRON, 0.5f, 100, "crude_iron");
                 oreBlasting(STEEL_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.STEEL, 0.5f, 120, "steel");
                 oreBlasting(METEORIC_IRON_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC,ModItems.METEORIC_IRON_INGOT, 0.5f, 150, "meteoric_iron_ingot");
@@ -464,14 +463,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("X#X")
                         .pattern("#X#")
                         .pattern("X#X")
-                        .define('#', Items.SAND).define('X', ModItems.SULFUR)
-                        .unlockedBy(getHasName(ModItems.SULFUR), has(ModItems.SULFUR)).unlockedBy(getHasName(Items.SAND), has(Items.SAND)).save(output);
+                        .define('#', Items.SAND).define('X', ModItems.SULFUR_POWDER)
+                        .unlockedBy(getHasName(ModItems.SULFUR_POWDER), has(ModItems.SULFUR_POWDER)).unlockedBy(getHasName(Items.SAND), has(Items.SAND)).save(output);
 
                 shaped(RecipeCategory.MISC, Items.TORCH, 4)
                         .pattern("X")
                         .pattern("#")
-                        .define('X', ModItems.SULFUR).define('#', Items.STICK)
-                        .unlockedBy(getHasName(ModItems.SULFUR), has(ModItems.SULFUR)).unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(output);
+                        .define('X', ModItems.SULFUR_POWDER).define('#', Items.STICK)
+                        .unlockedBy(getHasName(ModItems.SULFUR_POWDER), has(ModItems.SULFUR_POWDER)).unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(output);
 
                 shaped(RecipeCategory.MISC, ModBlocks.CRUSHER, 1)
                         .pattern("###")

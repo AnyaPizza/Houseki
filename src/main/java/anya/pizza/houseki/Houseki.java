@@ -44,10 +44,7 @@ public class Houseki implements ModInitializer {
 		ModEffects.registerEffects();
 
 		FuelValueEvents.BUILD.register((builder, context) -> {
-			builder.add(ModItems.SULFUR, 1600);
-		});
-		FuelValueEvents.BUILD.register((builder, context) -> {
-			builder.add(ModBlocks.BLOCK_OF_SULFUR, 16000);
+			builder.add(ModItems.SULFUR_POWDER, 1600);
 		});
 
 		PlayerBlockBreakEvents.BEFORE.register(new EDUsageEvent());

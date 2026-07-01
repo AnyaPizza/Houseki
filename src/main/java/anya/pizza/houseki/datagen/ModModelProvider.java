@@ -48,9 +48,6 @@ public class ModModelProvider extends FabricModelProvider {
         BlockModelGenerators.BlockFamilyProvider slatePool = blockStateModelGenerator.family(ModBlocks.SLATE);
         BlockModelGenerators.BlockFamilyProvider polishedSlatePool = blockStateModelGenerator.family(ModBlocks.POLISHED_SLATE);
         blockStateModelGenerator.createTrivialCube(ModBlocks.CHISELED_SLATE);
-        blockStateModelGenerator.createTrivialCube(ModBlocks.BLACKSTONE_SULFUR_ORE);
-        blockStateModelGenerator.createTrivialCube(ModBlocks.SULFUR_ORE);
-        blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_SULFUR);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_STEEL);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_CAST_STEEL);
         blockStateModelGenerator.createTrivialCube(ModBlocks.METEORIC_IRON);
@@ -99,7 +96,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.JADEITE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.PLATINUM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.PLATINUM_NUGGET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.SULFUR, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.SULFUR_POWDER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CRUDE_IRON, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.STEEL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CAST_STEEL, ModelTemplates.FLAT_ITEM);

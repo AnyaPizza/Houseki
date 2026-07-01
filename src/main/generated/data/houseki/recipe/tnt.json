@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": "minecraft:sand",
-    "X": "houseki:sulfur"
+    "X": "houseki:sulfur_powder"
   },
   "pattern": [
     "X#X",

@@ -1,0 +1,8 @@
+{
+  "type": "houseki:crusher",
+  "auxiliary_chance": 0.5,
+  "auxiliary_result": "houseki:sulfur_powder",
+  "crushingTime": 250,
+  "ingredient": "minecraft:sulfur",
+  "result": "houseki:sulfur_powder"
+}

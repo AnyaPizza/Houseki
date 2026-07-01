@@ -90,9 +90,6 @@ public class ModBlocks {
     public static final Block CHISELED_LIMESTONE = registerBlock("chiseled_limestone",
             properties -> new Block(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6)));
 
-    public static final Block BLOCK_OF_SULFUR = registerBlock("block_of_sulfur",
-            properties -> new Block(properties.mapColor(MapColor.COLOR_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5, 6).lightLevel(s -> 7)));
-
     public static final Block SLATE = registerBlock("slate",
             properties -> new Block(properties.mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6)));
 
@@ -178,14 +175,6 @@ public class ModBlocks {
     public static final Block DEEPSLATE_PLATINUM_ORE = registerBlock("deepslate_platinum_ore",
             properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
                     .mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3, 4).sound(SoundType.DEEPSLATE)));
-
-    public static final Block SULFUR_ORE = registerBlock("sulfur_ore",
-            properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
-                    .mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1, 2).sound(SoundType.NETHERRACK)));
-                        //Moh scale 1.5
-    public static final Block BLACKSTONE_SULFUR_ORE = registerBlock("blackstone_sulfur_ore",
-            properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
-                    .mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 2.5F)));
 
     public static final Block SUGILITE_ORE = registerBlock("sugilite_ore",
             properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties

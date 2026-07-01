@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": "minecraft:stick",
-    "X": "houseki:sulfur"
+    "X": "houseki:sulfur_powder"
   },
   "pattern": [
     "X",
