@@ -2,7 +2,7 @@ package anya.pizza.houseki.util;
 
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.item.ModItems;
-import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.advancements.triggers.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;

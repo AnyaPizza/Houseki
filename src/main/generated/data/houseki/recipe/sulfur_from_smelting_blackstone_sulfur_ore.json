@@ -1,7 +1,5 @@
 {
   "type": "minecraft:smelting",
-  "category": "misc",
-  "cookingtime": 200,
   "experience": 0.5,
   "group": "sulfur",
   "ingredient": "houseki:blackstone_sulfur_ore",

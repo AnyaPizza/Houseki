@@ -13,6 +13,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.Function;
 
@@ -247,6 +248,10 @@ public class ModItems {
     public static final Item MI_SWORD_HEAD = registerItem("meteoric_iron_sword_head", setting -> new Item(setting.stacksTo(1)));
     public static final Item MI_HOE_HEAD = registerItem("meteoric_iron_hoe_head", setting -> new Item(setting.stacksTo(1)));
     public static final Item MI_SPEAR_HEAD = registerItem("meteoric_iron_spear_head", setting -> new Item(setting.stacksTo(1)));
+
+    public static ResourceKey<Item> getRK(Item item) {
+        return BuiltInRegistries.ITEM.getResourceKey(item).get();
+    }
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name),

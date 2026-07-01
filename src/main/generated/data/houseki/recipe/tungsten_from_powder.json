@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "houseki:tungsten_powder",
     "houseki:nickel_powder"

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
   "cookingtime": 120,
   "experience": 0.5,
   "group": "steel",

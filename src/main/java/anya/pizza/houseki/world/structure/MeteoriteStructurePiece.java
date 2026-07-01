@@ -734,12 +734,12 @@ public class MeteoriteStructurePiece extends StructurePiece {
             }
             case BADLANDS -> {
                 if (roll < 3) yield Blocks.TERRACOTTA.defaultBlockState();
-                if (roll < 5) yield Blocks.ORANGE_TERRACOTTA.defaultBlockState();
+                if (roll < 5) yield Blocks.DYED_TERRACOTTA.orange().defaultBlockState();
                 if (roll < 7) yield Blocks.RED_SANDSTONE.defaultBlockState();
                 if (roll < 8) yield Blocks.MAGMA_BLOCK.defaultBlockState();
-                if (roll < 9) yield Blocks.YELLOW_TERRACOTTA.defaultBlockState();
+                if (roll < 9) yield Blocks.DYED_TERRACOTTA.yellow().defaultBlockState();
                 if (roll < 10) yield Blocks.COAL_BLOCK.defaultBlockState();
-                yield Blocks.BROWN_TERRACOTTA.defaultBlockState();
+                yield Blocks.DYED_TERRACOTTA.brown().defaultBlockState();
             }
             case SAVANNA -> {
                 if (roll < 4) yield Blocks.COARSE_DIRT.defaultBlockState();
@@ -836,7 +836,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
                 if (roll < 5) yield Blocks.RED_SANDSTONE.defaultBlockState();
                 if (roll < 7) yield Blocks.MAGMA_BLOCK.defaultBlockState();
                 if (roll < 9) yield Blocks.COAL_BLOCK.defaultBlockState();
-                if (roll < 10) yield Blocks.ORANGE_TERRACOTTA.defaultBlockState();
+                if (roll < 10) yield Blocks.DYED_TERRACOTTA.orange().defaultBlockState();
                 yield Blocks.OBSIDIAN.defaultBlockState();
             }
             case SAVANNA -> {
@@ -923,10 +923,10 @@ public class MeteoriteStructurePiece extends StructurePiece {
             }
             case BADLANDS -> {
                 if (roll < 3) yield Blocks.TERRACOTTA.defaultBlockState();
-                if (roll < 4) yield Blocks.ORANGE_TERRACOTTA.defaultBlockState();
-                if (roll < 5) yield Blocks.YELLOW_TERRACOTTA.defaultBlockState();
+                if (roll < 4) yield Blocks.DYED_TERRACOTTA.orange().defaultBlockState();
+                if (roll < 5) yield Blocks.DYED_TERRACOTTA.yellow().defaultBlockState();
                 if (roll < 6) yield Blocks.RED_SANDSTONE.defaultBlockState();
-                if (roll < 8) yield Blocks.BROWN_TERRACOTTA.defaultBlockState();
+                if (roll < 8) yield Blocks.DYED_TERRACOTTA.brown().defaultBlockState();
                 if (roll < 10) yield Blocks.COAL_BLOCK.defaultBlockState();
                 yield Blocks.OBSIDIAN.defaultBlockState();
             }

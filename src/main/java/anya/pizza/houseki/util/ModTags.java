@@ -41,6 +41,8 @@ public class ModTags {
         public static final TagKey<Block> PREMIUM_DRILL_MINEABLE = createTag("premium_mineable");
         public static final TagKey<Block> ENHANCED_DRILL_MINEABLE = createTag("enhanced_mineable");
 
+        public static final TagKey<Block> COAL_ORES = createTag("coal_ore");
+
         public static final TagKey<Block> METEOR_WONT_REPLACE = createTag("meteor_wont_replace");
 
         private static TagKey<Block> createTag(String name) {
