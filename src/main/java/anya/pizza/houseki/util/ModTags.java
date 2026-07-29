@@ -43,6 +43,8 @@ public class ModTags {
 
         public static final TagKey<Block> METEOR_WONT_REPLACE = createTag("meteor_wont_replace");
 
+        public static final TagKey<Block> HOUSEKI_ORES = createTag("houseki_ores");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name));
         }
