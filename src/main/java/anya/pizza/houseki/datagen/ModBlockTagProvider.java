@@ -195,5 +195,22 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getRK(ModBlocks.DEEPSLATE_PLATINUM_ORE))
                 .add(BlockItemIds.COBBLESTONE.block())
                 .add(BlockItemIds.COBBLED_DEEPSLATE.block());
+
+        tag(ModTags.Blocks.HOUSEKI_ORES)
+                .add(ModBlocks.getRK(ModBlocks.PLATINUM_ORE))
+                .add(ModBlocks.getRK(ModBlocks.RAINBOW_PYRITE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.BAUXITE_RAINBOW_PYRITE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.SANDSTONE_RAINBOW_PYRITE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.WOLFRAMITE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.NETHERRACK_WOLFRAMITE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.SCHEELITE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.SAPPHIRE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.DEEPSLATE_SAPPHIRE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.NEPHRITE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.JADEITE_ORE))
+                .add(ModBlocks.getRK(ModBlocks.PLATINUM_ORE))
+                .add(ModBlocks.getRK(ModBlocks.DEEPSLATE_PLATINUM_ORE))
+                .add(ModBlocks.getRK(ModBlocks.BISMUTH_ORE))
+                .add(ModBlocks.getRK(ModBlocks.SUGILITE_ORE));
     }
 }
