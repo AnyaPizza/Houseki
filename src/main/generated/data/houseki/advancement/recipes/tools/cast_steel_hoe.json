@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:cast_steel_hoe"
+        "recipes": "houseki:cast_steel_hoe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

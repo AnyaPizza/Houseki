@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:slate_tile_wall_from_slate_stonecutting"
+        "recipes": "houseki:slate_tile_wall_from_slate_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

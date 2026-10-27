@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:bismuth"
+        "recipes": "houseki:bismuth"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

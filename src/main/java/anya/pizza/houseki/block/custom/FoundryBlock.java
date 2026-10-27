@@ -2,7 +2,6 @@ package anya.pizza.houseki.block.custom;
 
 import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -32,15 +31,9 @@ import org.jetbrains.annotations.Nullable;
 public class FoundryBlock extends BaseEntityBlock {
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
-    public static final MapCodec<FoundryBlock> CODEC = simpleCodec(FoundryBlock::new);
 
     public FoundryBlock(Properties settings) {
         super(settings);
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
     }
 
     @Override

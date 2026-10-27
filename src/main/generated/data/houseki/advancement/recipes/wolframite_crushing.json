@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:wolframite_crushing"
+        "recipes": "houseki:wolframite_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

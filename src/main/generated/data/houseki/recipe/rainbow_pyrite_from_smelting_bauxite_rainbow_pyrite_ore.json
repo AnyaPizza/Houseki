@@ -1,5 +1,6 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
   "experience": 0.5,
   "group": "rainbow_pyrite",
   "ingredient": "houseki:bauxite_rainbow_pyrite_ore",

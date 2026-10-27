@@ -61,9 +61,8 @@ public class MeteoriteStructure extends Structure {
         // Determine biome variant now, while the full biome source is accessible.
         // During postProcess only nearby chunks are available, so sampling the biome
         // at the meteor center from there would crash for large structures.
-        Climate.Sampler sampler = context.randomState().sampler();
-        Holder<Biome> biome = context.biomeSource().getNoiseBiome(
-                x >> 2, surfaceY >> 2, z >> 2, sampler);
+        Holder<Biome> biome = context.biomeResolver().getNoiseBiome(
+                x >> 2, surfaceY >> 2, z >> 2);
 
         // Reject ocean, river, beach and shore biomes outright. Without this,
         // the structure is registered (visible to /locate) but postProcess skips it

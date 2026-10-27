@@ -54,7 +54,7 @@ public class ModBlocks {
 
     public static final Block ALUMINUM_GLASS = registerBlock("aluminum_glass",
             properties -> new TransparentBlock(properties.instrument(NoteBlockInstrument.HAT).strength(2, 1000).sound(SoundType.GLASS)
-                    .noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)) {
+                    .noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never)) {
                 @Override
                 public @NonNull VoxelShape getVisualShape(@NonNull BlockState state, @NonNull BlockGetter world, @NonNull BlockPos pos, @NonNull CollisionContext context) {
                     return super.getVisualShape(state, world, pos, context);
@@ -229,7 +229,7 @@ public class ModBlocks {
 
     //Doors
     public static final Block ALUMINUM_DOOR = registerBlock("aluminum_door",
-            properties -> new DoorBlock(BlockSetType.IRON, properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(5).noOcclusion().pushReaction(PushReaction.DESTROY)));
+            properties -> new DoorBlock(BlockSetType.IRON, properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(5).noOcclusion().pushReaction(PushReaction.POPPED)));
     public static final Block ALUMINUM_TRAPDOOR = registerBlock("aluminum_trapdoor",
             properties -> new TrapDoorBlock(BlockSetType.IRON, properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(5).noOcclusion().isValidSpawn(Blocks::never)));
 

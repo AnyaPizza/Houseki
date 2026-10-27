@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:bismuth_from_smelting_bismuth_ore"
+        "recipes": "houseki:bismuth_from_smelting_bismuth_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

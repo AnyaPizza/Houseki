@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:sugilite"
+        "recipes": "houseki:sugilite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

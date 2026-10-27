@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:nephrite_pickaxe"
+        "recipes": "houseki:nephrite_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

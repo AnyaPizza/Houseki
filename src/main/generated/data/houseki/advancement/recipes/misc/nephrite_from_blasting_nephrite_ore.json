@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:nephrite_from_blasting_nephrite_ore"
+        "recipes": "houseki:nephrite_from_blasting_nephrite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

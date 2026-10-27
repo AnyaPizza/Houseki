@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:meteoric_iron_pickaxe"
+        "recipes": "houseki:meteoric_iron_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

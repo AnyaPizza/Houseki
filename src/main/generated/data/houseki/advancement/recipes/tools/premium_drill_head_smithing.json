@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:premium_drill_head_smithing"
+        "recipes": "houseki:premium_drill_head_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

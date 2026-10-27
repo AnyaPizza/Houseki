@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:meteoric_iron_shovel"
+        "recipes": "houseki:meteoric_iron_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

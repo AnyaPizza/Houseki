@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:simple_tungsten_drill"
+        "recipes": "houseki:simple_tungsten_drill"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

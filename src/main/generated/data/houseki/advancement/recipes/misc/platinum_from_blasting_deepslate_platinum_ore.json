@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:platinum_from_blasting_deepslate_platinum_ore"
+        "recipes": "houseki:platinum_from_blasting_deepslate_platinum_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

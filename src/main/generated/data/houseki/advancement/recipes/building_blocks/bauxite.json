@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:bauxite"
+        "recipes": "houseki:bauxite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

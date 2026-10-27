@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:torch"
+        "recipes": "houseki:torch"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

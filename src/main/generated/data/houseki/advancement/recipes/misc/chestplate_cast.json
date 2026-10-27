@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:chestplate_cast"
+        "recipes": "houseki:chestplate_cast"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

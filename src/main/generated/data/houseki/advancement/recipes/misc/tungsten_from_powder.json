@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:tungsten_from_powder"
+        "recipes": "houseki:tungsten_from_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

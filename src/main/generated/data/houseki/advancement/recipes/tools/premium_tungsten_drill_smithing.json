@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:premium_tungsten_drill_smithing"
+        "recipes": "houseki:premium_tungsten_drill_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

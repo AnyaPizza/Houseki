@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:hoe_head_cast"
+        "recipes": "houseki:hoe_head_cast"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

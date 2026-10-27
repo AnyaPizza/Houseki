@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:scheelite_from_blasting_scheelite_ore"
+        "recipes": "houseki:scheelite_from_blasting_scheelite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

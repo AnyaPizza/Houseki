@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:block_of_tungsten"
+        "recipes": "houseki:block_of_tungsten"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:nephrite_boots"
+        "recipes": "houseki:nephrite_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

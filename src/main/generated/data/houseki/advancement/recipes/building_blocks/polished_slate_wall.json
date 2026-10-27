@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:polished_slate_wall"
+        "recipes": "houseki:polished_slate_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

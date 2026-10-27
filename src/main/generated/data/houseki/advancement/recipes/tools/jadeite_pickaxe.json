@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:jadeite_pickaxe"
+        "recipes": "houseki:jadeite_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

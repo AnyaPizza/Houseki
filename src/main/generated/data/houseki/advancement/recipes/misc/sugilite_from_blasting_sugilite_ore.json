@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:sugilite_from_blasting_sugilite_ore"
+        "recipes": "houseki:sugilite_from_blasting_sugilite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

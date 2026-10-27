@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:deepslate_platinum_ore_crushing"
+        "recipes": "houseki:deepslate_platinum_ore_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

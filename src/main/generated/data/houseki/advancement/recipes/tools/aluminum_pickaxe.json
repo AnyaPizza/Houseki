@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:aluminum_pickaxe"
+        "recipes": "houseki:aluminum_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

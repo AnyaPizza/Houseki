@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:tungsten_helmet"
+        "recipes": "houseki:tungsten_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

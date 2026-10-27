@@ -1,6 +1,5 @@
 package anya.pizza.houseki.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import net.minecraft.world.InteractionHand;
@@ -37,15 +36,9 @@ import org.jspecify.annotations.NonNull;
 public class CrusherBlock extends BaseEntityBlock {
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
-    public static final MapCodec<CrusherBlock> CODEC = simpleCodec(CrusherBlock::new);
 
     public CrusherBlock(Properties settings) {
         super(settings);
-    }
-
-    @Override
-    protected @NonNull MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
     }
 
     @Override

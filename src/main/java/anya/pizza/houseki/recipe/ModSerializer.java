@@ -1,6 +1,7 @@
 package anya.pizza.houseki.recipe;
 
 import anya.pizza.houseki.Houseki;
+import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.core.registries.BuiltInRegistries;

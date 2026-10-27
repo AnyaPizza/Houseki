@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:tungsten_shovel"
+        "recipes": "houseki:tungsten_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

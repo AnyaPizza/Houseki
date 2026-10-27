@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:rainbow_pyrite_from_blasting_bauxite_rainbow_pyrite_ore"
+        "recipes": "houseki:rainbow_pyrite_from_blasting_bauxite_rainbow_pyrite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

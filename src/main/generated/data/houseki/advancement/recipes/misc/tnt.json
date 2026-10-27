@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:tnt"
+        "recipes": "houseki:tnt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

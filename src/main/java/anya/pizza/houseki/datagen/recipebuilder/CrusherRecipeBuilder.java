@@ -83,7 +83,7 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
      */
     public void save(RecipeOutput exporter, ResourceKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeKey))
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(exporter.lookup(Registries.RECIPE).getOrThrow(recipeKey)))
                 .rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(recipeKey))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
@@ -115,7 +115,7 @@ public class CrusherRecipeBuilder implements RecipeBuilder {
         Identifier id = Identifier.parse(recipeId);
         ResourceKey<Recipe<?>> recipeKey = ResourceKey.create(Registries.RECIPE, id);
         Advancement.Builder advancement = exporter.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeKey))
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(exporter.lookup(Registries.RECIPE).getOrThrow(recipeKey)))
                 .rewards(AdvancementRewards.Builder.recipe(recipeKey))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:nephrite_axe"
+        "recipes": "houseki:nephrite_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

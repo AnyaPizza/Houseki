@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:cast_steel"
+        "recipes": "houseki:cast_steel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

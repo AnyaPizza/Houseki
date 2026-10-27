@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:sapphire_from_blasting_deepslate_sapphire_ore"
+        "recipes": "houseki:sapphire_from_blasting_deepslate_sapphire_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

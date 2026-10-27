@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:chiseled_limestone"
+        "recipes": "houseki:chiseled_limestone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

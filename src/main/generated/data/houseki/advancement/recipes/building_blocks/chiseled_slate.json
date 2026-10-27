@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:chiseled_slate"
+        "recipes": "houseki:chiseled_slate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

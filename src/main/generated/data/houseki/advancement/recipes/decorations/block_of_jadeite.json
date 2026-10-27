@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:block_of_jadeite"
+        "recipes": "houseki:block_of_jadeite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

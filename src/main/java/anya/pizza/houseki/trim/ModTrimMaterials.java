@@ -10,7 +10,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Util;
 
-import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
 
 public class ModTrimMaterials {
@@ -25,21 +24,21 @@ public class ModTrimMaterials {
 
     public static void bootstrap(BootstrapContext<TrimMaterial> context) {
         // Trims with no effects
-        register(context, RAINBOW_PYRITE, Style.EMPTY.withColor(TextColor.parseColor("#b03fe0").getOrThrow()), MaterialAssetGroup.create("rainbow_pyrite"));
-        register(context, PINKU, Style.EMPTY.withColor(TextColor.parseColor("#f10af7").getOrThrow()), MaterialAssetGroup.create("pinku"));
-        register(context, SAPPHIRE, Style.EMPTY.withColor(TextColor.parseColor("#0f52ba").getOrThrow()), MaterialAssetGroup.create("sapphire"));
-        register(context, NEPHRITE, Style.EMPTY.withColor(TextColor.parseColor("#60A472").getOrThrow()), MaterialAssetGroup.create("nephrite"));
-        register(context, JADEITE, Style.EMPTY.withColor(TextColor.parseColor("#246542").getOrThrow()), MaterialAssetGroup.create("jadeite"));
-        register(context, CAST_STEEL, Style.EMPTY.withColor(TextColor.parseColor("#8B929B").getOrThrow()), MaterialAssetGroup.create("cast_steel"));
+        register(context, RAINBOW_PYRITE, Style.EMPTY.withColor(TextColor.parseColor("#b03fe0").getOrThrow()), Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "rainbow_pyrite"));
+        register(context, PINKU, Style.EMPTY.withColor(TextColor.parseColor("#f10af7").getOrThrow()), Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "pinku"));
+        register(context, SAPPHIRE, Style.EMPTY.withColor(TextColor.parseColor("#0f52ba").getOrThrow()), Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "sapphire"));
+        register(context, NEPHRITE, Style.EMPTY.withColor(TextColor.parseColor("#60A472").getOrThrow()), Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "nephrite"));
+        register(context, JADEITE, Style.EMPTY.withColor(TextColor.parseColor("#246542").getOrThrow()), Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "jadeite"));
+        register(context, CAST_STEEL, Style.EMPTY.withColor(TextColor.parseColor("#8B929B").getOrThrow()), Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "cast_steel"));
 
         //Trims with effects
-        register(context, SUGILITE, Style.EMPTY.withColor(TextColor.parseColor("#5743BD").getOrThrow()), MaterialAssetGroup.create("sugilite"));
-        register(context, BISMUTH, Style.EMPTY.withColor(TextColor.parseColor("#6AC7FF").getOrThrow()), MaterialAssetGroup.create("bismuth"));
+        register(context, SUGILITE, Style.EMPTY.withColor(TextColor.parseColor("#5743BD").getOrThrow()), Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "sugilite"));
+        register(context, BISMUTH, Style.EMPTY.withColor(TextColor.parseColor("#6AC7FF").getOrThrow()), Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "bismuth"));
     }
 
-    private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> registryKey, Style style, MaterialAssetGroup assets) {
+    private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> registryKey, Style style, Identifier identifier) {
         Component description = Component.translatable(Util.makeDescriptionId("trim_material", registryKey.identifier())).withStyle(style);
-        context.register(registryKey, new TrimMaterial(assets, description));
+        context.register(registryKey, new TrimMaterial(identifier, description));
     }
 
     private static ResourceKey<TrimMaterial> registryKey(final String trim) {

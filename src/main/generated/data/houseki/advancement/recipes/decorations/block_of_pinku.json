@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:block_of_pinku"
+        "recipes": "houseki:block_of_pinku"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

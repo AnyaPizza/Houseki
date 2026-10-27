@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:polished_limestone_stairs"
+        "recipes": "houseki:polished_limestone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

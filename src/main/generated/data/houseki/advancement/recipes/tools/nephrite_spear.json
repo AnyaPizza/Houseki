@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:nephrite_spear"
+        "recipes": "houseki:nephrite_spear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:cast_steel_pickaxe"
+        "recipes": "houseki:cast_steel_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

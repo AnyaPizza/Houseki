@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:limestone_wall"
+        "recipes": "houseki:limestone_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

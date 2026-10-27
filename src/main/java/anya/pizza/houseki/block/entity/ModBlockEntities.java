@@ -5,7 +5,6 @@ import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.block.entity.custom.CrusherBlockEntity;
 import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Registry;

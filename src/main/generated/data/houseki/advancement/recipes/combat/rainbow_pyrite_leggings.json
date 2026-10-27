@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:rainbow_pyrite_leggings"
+        "recipes": "houseki:rainbow_pyrite_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

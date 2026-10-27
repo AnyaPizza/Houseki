@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:pinku_spear_smithing"
+        "recipes": "houseki:pinku_spear_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:pinku_shard_from_smelting_pinku_ore"
+        "recipes": "houseki:pinku_shard_from_smelting_pinku_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

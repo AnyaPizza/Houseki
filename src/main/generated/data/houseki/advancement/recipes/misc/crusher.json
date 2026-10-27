@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:crusher"
+        "recipes": "houseki:crusher"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

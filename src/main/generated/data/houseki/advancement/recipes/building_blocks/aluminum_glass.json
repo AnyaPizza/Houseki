@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:aluminum_glass"
+        "recipes": "houseki:aluminum_glass"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

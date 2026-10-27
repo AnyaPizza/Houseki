@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:leggings_cast"
+        "recipes": "houseki:leggings_cast"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

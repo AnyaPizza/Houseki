@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:aluminum_from_smelting_crushed_bauxite"
+        "recipes": "houseki:aluminum_from_smelting_crushed_bauxite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

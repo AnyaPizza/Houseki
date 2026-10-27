@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:shovel_head_cast"
+        "recipes": "houseki:shovel_head_cast"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

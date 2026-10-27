@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:pinku_helmet_smithing"
+        "recipes": "houseki:pinku_helmet_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

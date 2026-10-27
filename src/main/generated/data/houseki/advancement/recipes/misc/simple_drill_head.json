@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:simple_drill_head"
+        "recipes": "houseki:simple_drill_head"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

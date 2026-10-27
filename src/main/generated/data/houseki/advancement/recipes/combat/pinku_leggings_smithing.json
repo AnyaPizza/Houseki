@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:pinku_leggings_smithing"
+        "recipes": "houseki:pinku_leggings_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

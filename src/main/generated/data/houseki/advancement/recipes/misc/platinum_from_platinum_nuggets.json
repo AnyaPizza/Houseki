@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:platinum_from_platinum_nuggets"
+        "recipes": "houseki:platinum_from_platinum_nuggets"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

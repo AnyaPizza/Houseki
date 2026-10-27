@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:boots_cast"
+        "recipes": "houseki:boots_cast"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:steel_from_blasting_crude_iron"
+        "recipes": "houseki:steel_from_blasting_crude_iron"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:wolframite_from_blasting_netherrack_wolframite_ore"
+        "recipes": "houseki:wolframite_from_blasting_netherrack_wolframite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

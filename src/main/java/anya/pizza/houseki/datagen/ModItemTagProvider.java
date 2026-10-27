@@ -5,7 +5,6 @@ import anya.pizza.houseki.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.references.ItemIds;
-import net.minecraft.world.item.Items;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import org.jspecify.annotations.NonNull;

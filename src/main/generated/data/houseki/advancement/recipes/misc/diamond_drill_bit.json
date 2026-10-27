@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:diamond_drill_bit"
+        "recipes": "houseki:diamond_drill_bit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:platinum_pickaxe"
+        "recipes": "houseki:platinum_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

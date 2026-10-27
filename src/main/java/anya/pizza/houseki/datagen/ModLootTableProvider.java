@@ -12,7 +12,8 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.UniformGenerator;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.HolderLookup;
 
@@ -96,23 +97,20 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
     }
 
     public LootTable.Builder AverageOreDrops(Block drop, Item item) {
-        HolderLookup.RegistryLookup<Enchantment> impl = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createSilkTouchDispatchTable(drop, this.applyExplosionDecay(drop, ((net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer.Builder<?>)
-                LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 5))))
-                .apply(ApplyBonusCount.addOreBonusCount(impl.getOrThrow(Enchantments.FORTUNE)))));
+        return this.createSilkTouchDispatchTable(drop, this.applyExplosionDecay(drop, ((net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer.Builder<?>)
+                LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 5))))
+                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))));
     }
 
     public LootTable.Builder SingleItemOreDrops(Block drop, Item item) {
-        HolderLookup.RegistryLookup<Enchantment> impl = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createSilkTouchDispatchTable(drop, this.applyExplosionDecay(drop, ((net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer.Builder<?>)
-                LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 1.0f))))
-                .apply(ApplyBonusCount.addOreBonusCount(impl.getOrThrow(Enchantments.FORTUNE)))));
+        return this.createSilkTouchDispatchTable(drop, this.applyExplosionDecay(drop, ((net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer.Builder<?>)
+                LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 1))))
+                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))));
     }
 
     public LootTable.Builder LightOreDrops(Block drop, Item item) {
-        HolderLookup.RegistryLookup<Enchantment> impl = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createSilkTouchDispatchTable(drop, this.applyExplosionDecay(drop, ((net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer.Builder<?>)
-                LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))
-                .apply(ApplyBonusCount.addOreBonusCount(impl.getOrThrow(Enchantments.FORTUNE)))));
+        return this.createSilkTouchDispatchTable(drop, this.applyExplosionDecay(drop, ((net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer.Builder<?>)
+                LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2))))
+                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))));
     }
 }

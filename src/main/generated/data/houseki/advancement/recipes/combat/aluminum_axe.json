@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:aluminum_axe"
+        "recipes": "houseki:aluminum_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

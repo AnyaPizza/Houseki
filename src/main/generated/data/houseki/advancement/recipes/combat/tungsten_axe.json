@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:tungsten_axe"
+        "recipes": "houseki:tungsten_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

@@ -6,6 +6,7 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.triggers.Criterion;
 import net.minecraft.advancements.triggers.RecipeUnlockedTrigger;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
@@ -49,11 +50,11 @@ public class FoundryCastingRecipeBuilder implements RecipeBuilder {
      * merges criteria with an OR policy, and includes any additional criteria accumulated on this builder.
      *
      * @param exporter the recipient that will be given the recipe and its advancement
-     * @param recipeKey the registry key used to identify the exported recipe and to build the advancement rewards
+     * @param location the registry key used to identify the exported recipe and to build the advancement rewards
      */
     public void save(RecipeOutput exporter, ResourceKey<Recipe<?>> location) {
         Advancement.Builder advancement = exporter.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(location))
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(exporter.lookup(Registries.RECIPE).getOrThrow(location)))
                 .rewards(AdvancementRewards.Builder.recipe(location))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);

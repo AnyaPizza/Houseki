@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:meteoric_iron_ingot_from_blasting_meteoric_iron"
+        "recipes": "houseki:meteoric_iron_ingot_from_blasting_meteoric_iron"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

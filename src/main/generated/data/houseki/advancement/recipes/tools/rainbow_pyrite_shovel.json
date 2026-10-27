@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:rainbow_pyrite_shovel"
+        "recipes": "houseki:rainbow_pyrite_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

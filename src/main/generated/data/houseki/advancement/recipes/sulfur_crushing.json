@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:sulfur_crushing"
+        "recipes": "houseki:sulfur_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

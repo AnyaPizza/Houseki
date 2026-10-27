@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:pinku_from_pinku_shards"
+        "recipes": "houseki:pinku_from_pinku_shards"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

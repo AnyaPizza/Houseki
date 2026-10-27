@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:sapphire_hoe"
+        "recipes": "houseki:sapphire_hoe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

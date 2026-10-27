@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:helmet_cast"
+        "recipes": "houseki:helmet_cast"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

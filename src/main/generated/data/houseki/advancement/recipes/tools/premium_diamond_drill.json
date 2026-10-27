@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:premium_diamond_drill"
+        "recipes": "houseki:premium_diamond_drill"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

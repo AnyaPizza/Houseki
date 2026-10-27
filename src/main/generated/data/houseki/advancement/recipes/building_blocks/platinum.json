@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:platinum"
+        "recipes": "houseki:platinum"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

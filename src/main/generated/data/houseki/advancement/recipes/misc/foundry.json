@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:foundry"
+        "recipes": "houseki:foundry"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

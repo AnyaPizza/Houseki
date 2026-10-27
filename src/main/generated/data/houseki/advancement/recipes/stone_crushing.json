@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:stone_crushing"
+        "recipes": "houseki:stone_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:polished_slate_stairs_from_slate_stonecutting"
+        "recipes": "houseki:polished_slate_stairs_from_slate_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

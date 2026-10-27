@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:block_of_sapphire"
+        "recipes": "houseki:block_of_sapphire"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

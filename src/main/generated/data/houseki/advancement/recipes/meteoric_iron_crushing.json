@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:meteoric_iron_crushing"
+        "recipes": "houseki:meteoric_iron_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

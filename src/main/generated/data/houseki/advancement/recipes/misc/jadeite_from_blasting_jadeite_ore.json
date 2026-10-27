@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:jadeite_from_blasting_jadeite_ore"
+        "recipes": "houseki:jadeite_from_blasting_jadeite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

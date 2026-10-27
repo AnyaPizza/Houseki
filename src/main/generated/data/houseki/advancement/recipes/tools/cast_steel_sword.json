@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "houseki:cast_steel_sword"
+        "recipes": "houseki:cast_steel_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
