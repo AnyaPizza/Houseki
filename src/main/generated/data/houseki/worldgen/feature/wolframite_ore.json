@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:ore",
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 4,
+  "targets": [
+    {
+      "state": "houseki:wolframite_ore",
+      "target": {
+        "block": "minecraft:granite",
+        "predicate_type": "minecraft:block_match"
+      }
+    }
+  ]
+}

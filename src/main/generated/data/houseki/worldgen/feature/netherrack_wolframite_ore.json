@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:ore",
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 8,
+  "targets": [
+    {
+      "state": "houseki:netherrack_wolframite_ore",
+      "target": {
+        "block": "minecraft:nether_quartz_ore",
+        "predicate_type": "minecraft:block_match"
+      }
+    }
+  ]
+}

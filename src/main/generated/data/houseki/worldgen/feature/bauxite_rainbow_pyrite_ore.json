@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:ore",
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 8,
+  "targets": [
+    {
+      "state": "houseki:bauxite_rainbow_pyrite_ore",
+      "target": {
+        "block": "houseki:bauxite",
+        "predicate_type": "minecraft:block_match"
+      }
+    }
+  ]
+}

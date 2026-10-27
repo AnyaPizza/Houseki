@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:ore",
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 8,
+  "targets": [
+    {
+      "state": "houseki:jadeite_ore",
+      "target": {
+        "block": "houseki:slate",
+        "predicate_type": "minecraft:block_match"
+      }
+    }
+  ]
+}

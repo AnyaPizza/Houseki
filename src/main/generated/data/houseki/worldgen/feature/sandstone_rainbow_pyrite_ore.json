@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:ore",
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 5,
+  "targets": [
+    {
+      "state": "houseki:sandstone_rainbow_pyrite_ore",
+      "target": {
+        "block": "minecraft:sandstone",
+        "predicate_type": "minecraft:block_match"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:ore",
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 3,
+  "targets": [
+    {
+      "state": "houseki:platinum_ore",
+      "target": {
+        "block": "minecraft:copper_ore",
+        "predicate_type": "minecraft:block_match"
+      }
+    },
+    {
+      "state": "houseki:deepslate_platinum_ore",
+      "target": {
+        "block": "minecraft:deepslate_copper_ore",
+        "predicate_type": "minecraft:block_match"
+      }
+    }
+  ]
+}
