@@ -4,9 +4,11 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -107,6 +109,26 @@ public class MeteoriteStructure extends Structure {
                 return Optional.empty();
             }
             if (Math.abs(sampleSurface - surfaceY) > 8) {
+                return Optional.empty();
+            }
+        }
+
+        // Check the impact center and cardinal samples before piece placement.
+        // Base terrain queries are safe across the full crater; postProcess only
+        // has access to the chunk being decorated and its immediate neighbors.
+        int[][] fluidChecks = {{0, 0}, {innerDist, 0}, {-innerDist, 0},
+                {0, innerDist}, {0, -innerDist}};
+        for (int[] off : fluidChecks) {
+            int sx = x + off[0];
+            int sz = z + off[1];
+            int sampleSurface = context.chunkGenerator().getBaseHeight(
+                    sx, sz, Heightmap.Types.WORLD_SURFACE_WG,
+                    context.heightAccessor(), context.randomState());
+            BlockState surfaceState = context.chunkGenerator().getBaseColumn(
+                    sx, sz, context.heightAccessor(), context.randomState())
+                    .getBlock(sampleSurface - 1);
+            if (surfaceState.getFluidState().is(FluidTags.WATER)
+                    || surfaceState.getFluidState().is(FluidTags.LAVA)) {
                 return Optional.empty();
             }
         }

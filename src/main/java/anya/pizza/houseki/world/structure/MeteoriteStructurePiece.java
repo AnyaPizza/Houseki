@@ -210,25 +210,6 @@ public class MeteoriteStructurePiece extends StructurePiece {
         BlockPos meteorCenter = new BlockPos(centerX, meteorCenterY, centerZ);
         BiomeVariant variant = getVariant();
 
-        // Bail out on lava or water for all variants.
-        // Check center and 4 cardinal points at half crater radius to catch
-        // nearby lakes/rivers that the biome check can't detect.
-        int waterCheckDist = craterRadius / 2;
-        int[][] waterChecks = {{0, 0}, {waterCheckDist, 0}, {-waterCheckDist, 0},
-                {0, waterCheckDist}, {0, -waterCheckDist}};
-        for (int[] wc : waterChecks) {
-            int wx = centerX + wc[0];
-            int wz = centerZ + wc[1];
-            int wy = level.getHeight(Heightmap.Types.WORLD_SURFACE, wx, wz) - 1;
-            BlockState wcState = level.getBlockState(new BlockPos(wx, wy, wz));
-            if (wcState.getFluidState().is(FluidTags.LAVA)) {
-                return;
-            }
-            if (wcState.getFluidState().is(FluidTags.WATER)) {
-                return;
-            }
-        }
-
         // Phase 1: Terrain-adaptive crater excavation and vegetation clearing.
         // The bowl depth is computed relative to the local terrain height so the
         // crater blends smoothly into hillsides instead of creating cliff faces.
@@ -242,6 +223,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
+                if (!containsColumn(chunkBox, bx, bz)) continue;
                 int rawSurfaceY = level.getHeight(Heightmap.Types.WORLD_SURFACE, bx, bz);
                 int groundY = getGroundLevel(level, bx, bz, rawSurfaceY);
                 int topClearY = Math.max(rawSurfaceY, surfaceY) + TREE_CLEAR_HEIGHT;
@@ -295,10 +277,8 @@ public class MeteoriteStructurePiece extends StructurePiece {
         // Phase 1.5: Remove ALL floating vegetation left after tree clearing.
         // Not just vines and leaves -- also logs, mushroom blocks, bamboo, and
         // any other vegetation that can end up hovering after the crater carves
-        // away the terrain beneath. Trees from adjacent chunks can place blocks
-        // into already-processed chunks, so this pass does NOT respect chunkBox
-        // boundaries. Setting blocks to air in loaded adjacent chunks is safe
-        // during postProcess.
+        // away the terrain beneath. Each chunk clears its own portion of the
+        // structure; neighboring chunks may still be generating concurrently.
         // Top-to-bottom scan so vine chains collapse correctly in a single pass.
         int floatClearRadius = craterRadius + 15;
         for (int dx = -floatClearRadius; dx <= floatClearRadius; dx++) {
@@ -309,11 +289,13 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
+                if (!containsColumn(chunkBox, bx, bz)) continue;
                 int topY = Math.max(level.getHeight(Heightmap.Types.WORLD_SURFACE, bx, bz), surfaceY) + TREE_CLEAR_HEIGHT;
                 int bottomY = surfaceY - craterDepth - meteorRadius;
 
                 for (int y = topY; y >= bottomY; y--) {
                     BlockPos pos = new BlockPos(bx, y, bz);
+                    if (!chunkBox.isInside(pos)) continue;
                     BlockState state = level.getBlockState(pos);
                     // Remove unsupported vines
                     if (state.is(Blocks.VINE) && !hasVineSupport(level, pos)) {
@@ -345,6 +327,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
+                if (!containsColumn(chunkBox, bx, bz)) continue;
                 int rawSY = level.getHeight(Heightmap.Types.WORLD_SURFACE, bx, bz);
                 int groundY = getGroundLevel(level, bx, bz, rawSY);
 
@@ -470,6 +453,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
                 int bx = centerX + dx;
                 int bz = centerZ + dz;
+                if (!containsColumn(chunkBox, bx, bz)) continue;
                 int actualY = level.getHeight(Heightmap.Types.WORLD_SURFACE, bx, bz);
 
                 // Skip rim on steep terrain to avoid artificial bands on hillsides
@@ -599,6 +583,12 @@ public class MeteoriteStructurePiece extends StructurePiece {
                 level.setBlock(lavaPos, Blocks.LAVA.defaultBlockState(), 2);
             }
         }
+    }
+
+    // Check X/Z before heightmap or ground reads, not only before block writes.
+    private static boolean containsColumn(BoundingBox chunkBox, int x, int z) {
+        return x >= chunkBox.minX() && x <= chunkBox.maxX()
+                && z >= chunkBox.minZ() && z <= chunkBox.maxZ();
     }
 
     // A vine is supported if it has a solid (non-air, non-vine) block on any
