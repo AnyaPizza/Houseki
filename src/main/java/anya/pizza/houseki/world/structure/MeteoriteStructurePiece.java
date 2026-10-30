@@ -817,8 +817,9 @@ public class MeteoriteStructurePiece extends StructurePiece {
                 if (roll < 3) yield Blocks.COBBLED_DEEPSLATE.defaultBlockState();
                 if (roll < 5) yield Blocks.STONE.defaultBlockState();
                 if (roll < 7) yield Blocks.MAGMA_BLOCK.defaultBlockState();
+                if (roll < 8) yield Blocks.COBBLESTONE.defaultBlockState();
                 if (roll < 9) yield Blocks.COAL_BLOCK.defaultBlockState();
-                if (roll < 10) yield Blocks.COBBLESTONE.defaultBlockState();
+                if (roll < 10) yield Blocks.MOSSY_COBBLESTONE.defaultBlockState();
                 yield Blocks.OBSIDIAN.defaultBlockState();
             }
             case BADLANDS -> {
@@ -908,6 +909,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
                 if (roll < 5) yield Blocks.STONE.defaultBlockState();
                 if (roll < 6) yield Blocks.COBBLESTONE.defaultBlockState();
                 if (roll < 8) yield Blocks.GRAVEL.defaultBlockState();
+                if (roll < 9) yield Blocks.MOSSY_COBBLESTONE.defaultBlockState();
                 if (roll < 10) yield Blocks.COAL_BLOCK.defaultBlockState();
                 yield Blocks.OBSIDIAN.defaultBlockState();
             }

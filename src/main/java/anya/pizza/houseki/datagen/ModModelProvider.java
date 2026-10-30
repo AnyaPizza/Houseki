@@ -1,7 +1,6 @@
 package anya.pizza.houseki.datagen;
 
 import anya.pizza.houseki.block.ModBlocks;
-import anya.pizza.houseki.item.ModArmorMaterials;
 import anya.pizza.houseki.item.ModItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;

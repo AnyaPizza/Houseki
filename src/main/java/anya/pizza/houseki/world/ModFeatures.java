@@ -44,7 +44,6 @@ public class ModFeatures {
         RuleTest coalOreReplaceables = new BlockMatchTest(Blocks.COAL_ORE);
         RuleTest copperReplaceables = new BlockMatchTest(Blocks.COPPER_ORE);
         RuleTest deepCopperReplaceables = new BlockMatchTest(Blocks.DEEPSLATE_COPPER_ORE);
-        RuleTest blackstoneReplaceables = new BlockMatchTest(Blocks.BLACKSTONE);
         RuleTest sandstoneReplaceables = new BlockMatchTest(Blocks.SANDSTONE);
         RuleTest bauxiteReplaceables = new BlockMatchTest(ModBlocks.BAUXITE);
         RuleTest limestoneReplaceables = new BlockMatchTest(ModBlocks.LIMESTONE);

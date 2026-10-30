@@ -35,11 +35,8 @@ public class Houseki implements ModInitializer {
 		ModTypes.registerRecipeTypes();
 		ModStructures.register();
 		ModLootTableModifiers.modifyLootTables();
-
 		TrimEffectHandler.registerTrimEffects();
-
 		ModWorldGeneration.generateModWorldGeneration();
-
 		ModEffects.registerEffects();
 
 		PlayerBlockBreakEvents.BEFORE.register(new EDUsageEvent());

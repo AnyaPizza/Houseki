@@ -10,7 +10,6 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.item.Items;
