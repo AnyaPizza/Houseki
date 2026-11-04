@@ -3,6 +3,7 @@ package anya.pizza.houseki.block;
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.custom.CrusherBlock;
 import anya.pizza.houseki.block.custom.FoundryBlock;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
@@ -242,7 +243,7 @@ public class ModBlocks {
             properties -> new FoundryBlock(properties
                     .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(litBlockEmission(13))));
 
-    public static ResourceKey<Block> getRK(Block block) {
+    public static ResourceKey<Block> create(Block block) {
         return BuiltInRegistries.BLOCK.getResourceKey(block).get();
     }
 
@@ -254,7 +255,7 @@ public class ModBlocks {
 
     private static void registerBlockItem(String name, Block block) {
         Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name),
-                new BlockItem(block, new net.minecraft.world.item.Item.Properties().useBlockDescriptionPrefix()
+                new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
                         .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name)))));
     }
 

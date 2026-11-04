@@ -247,7 +247,7 @@ public class ModItems {
     public static final Item MI_HOE_HEAD = registerItem("meteoric_iron_hoe_head", setting -> new Item(setting.stacksTo(1)));
     public static final Item MI_SPEAR_HEAD = registerItem("meteoric_iron_spear_head", setting -> new Item(setting.stacksTo(1)));
 
-    public static ResourceKey<Item> getRK(Item item) {
+    public static ResourceKey<Item> create(Item item) {
         return BuiltInRegistries.ITEM.getResourceKey(item).get();
     }
 
