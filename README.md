@@ -91,9 +91,7 @@ The Foundry melts certain metals and then pours them into casts to produce tools
 
 In 1.21.11, REI is fully compatible with these crafters.
 
-On the 26.3 branch, optional JEI and REI integrations show Crusher, Foundry
-Melting and Foundry Casting recipes. See [integration details](docs/compatibility.md)
-for supported versions and development setup.
+On the 26.3 branch, optional JEI and REI integrations are fully compatible.
 
 ---
 
