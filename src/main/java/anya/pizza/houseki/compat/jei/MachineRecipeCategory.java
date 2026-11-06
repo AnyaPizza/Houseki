@@ -67,7 +67,7 @@ final class MachineRecipeCategory<R extends Recipe<?>> implements IRecipeCategor
                     tooltip.add(Component.translatable("jei.houseki.molten", 100)));
         } else if (recipe instanceof FoundryCastingRecipe casting) {
             // The tank is filled by melting first. Only the cast goes into an inventory slot.
-            builder.addSlot(RecipeIngredientRole.CATALYST, 40, 5).setStandardSlotBackground()
+            builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 40, 5).setStandardSlotBackground()
                     .add(casting.activeMetalType() == FoundryBlockEntity.METAL_STEEL
                             ? ModItems.STEEL : ModItems.METEORIC_IRON_INGOT)
                     .addRichTooltipCallback((view, tooltip) ->
