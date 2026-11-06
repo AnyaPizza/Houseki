@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:pickaxe_head_cast",
+  "result": "houseki:cast_steel_pickaxe_head",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}

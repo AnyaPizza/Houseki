@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:shovel_head_cast",
+  "result": "houseki:cast_steel_shovel_head",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}

@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:chestplate_cast",
+  "result": "houseki:cast_steel_chestplate",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}

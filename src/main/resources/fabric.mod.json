@@ -26,6 +26,9 @@
 		"fabric-datagen": [
 			"anya.pizza.houseki.HousekiDataGenerator"
 		],
+		"jei_mod_plugin": [
+			"anya.pizza.houseki.compat.jei.HousekiJeiPlugin"
+		],
 		"client": [
 			"anya.pizza.houseki.HousekiClient"
 		]
@@ -39,6 +42,7 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
+		"jei": ">=31.17.0",
 		"modmenu": ">=21.0.0"
 	},
 	"custom": {

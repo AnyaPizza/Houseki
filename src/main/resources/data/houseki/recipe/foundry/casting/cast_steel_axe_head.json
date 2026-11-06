@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:axe_head_cast",
+  "result": "houseki:cast_steel_axe_head",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}

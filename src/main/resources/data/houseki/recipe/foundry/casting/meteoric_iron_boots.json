@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:boots_cast",
+  "result": "houseki:meteoric_iron_boots",
+  "activeMetalType": 1,
+  "castTime": 200,
+  "coolingTime": 200
+}

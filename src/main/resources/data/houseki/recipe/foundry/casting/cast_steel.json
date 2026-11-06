@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:ingot_cast",
+  "result": "houseki:cast_steel",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}

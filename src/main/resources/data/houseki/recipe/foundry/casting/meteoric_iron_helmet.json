@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:helmet_cast",
+  "result": "houseki:meteoric_iron_helmet",
+  "activeMetalType": 1,
+  "castTime": 200,
+  "coolingTime": 200
+}

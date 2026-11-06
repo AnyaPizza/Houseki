@@ -1,0 +1,6 @@
+{
+  "type": "houseki:melting",
+  "ingredient": "houseki:meteoric_iron_ingot",
+  "result": "houseki:meteoric_iron_ingot",
+  "meltTime": 200
+}

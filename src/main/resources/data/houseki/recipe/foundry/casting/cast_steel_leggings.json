@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:leggings_cast",
+  "result": "houseki:cast_steel_leggings",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}
