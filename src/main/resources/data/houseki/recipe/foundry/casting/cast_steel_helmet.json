@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:helmet_cast",
+  "result": "houseki:cast_steel_helmet",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}

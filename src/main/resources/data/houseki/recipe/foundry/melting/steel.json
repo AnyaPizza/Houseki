@@ -1,0 +1,6 @@
+{
+  "type": "houseki:melting",
+  "ingredient": "houseki:steel",
+  "result": "houseki:steel",
+  "meltTime": 200
+}

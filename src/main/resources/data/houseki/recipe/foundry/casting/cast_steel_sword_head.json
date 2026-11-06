@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:sword_head_cast",
+  "result": "houseki:cast_steel_sword_head",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}

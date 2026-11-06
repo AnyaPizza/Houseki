@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:ingot_cast",
+  "result": "houseki:meteoric_iron_ingot",
+  "activeMetalType": 1,
+  "castTime": 200,
+  "coolingTime": 200
+}

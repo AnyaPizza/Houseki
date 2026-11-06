@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:hoe_head_cast",
+  "result": "houseki:cast_steel_hoe_head",
+  "activeMetalType": 0,
+  "castTime": 200,
+  "coolingTime": 200
+}

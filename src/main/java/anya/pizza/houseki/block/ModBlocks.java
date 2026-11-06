@@ -249,14 +249,19 @@ public class ModBlocks {
 
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name))));
-        registerBlockItem(name, toRegister);
-        return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name), toRegister);
+        Block block = Registry.register(BuiltInRegistries.BLOCK,
+                Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name), toRegister);
+        registerBlockItem(name, block);
+        return block;
     }
 
-    private static void registerBlockItem(String name, Block block) {
-        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name),
+    private static BlockItem registerBlockItem(String name, Block block) {
+        Identifier id = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name);
+        BlockItem item = Registry.register(BuiltInRegistries.ITEM, id,
                 new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
-                        .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name)))));
+                        .setId(ResourceKey.create(Registries.ITEM, id))));
+        item.registerBlocks(Item.BY_BLOCK, item);
+        return item;
     }
 
     public static void registerModBlocks() {

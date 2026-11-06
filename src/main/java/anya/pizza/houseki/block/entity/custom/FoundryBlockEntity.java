@@ -307,12 +307,14 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
 
         //Melting
         if (isBurning && canMelt()) {
+            var melting = getCurrentMeltingRecipe().orElseThrow().value();
+            maxMeltProgress = Math.max(1, melting.meltTime());
             meltProgress++;
             if (meltProgress >= maxMeltProgress) {
                 ItemStack meltedInput = inventory.get(INPUT_SLOT);
-                if (meltedInput.is(ModItems.STEEL)) {
+                if (melting.output() == ModItems.STEEL) {
                     steelLevel += 100;
-                } else if (meltedInput.is(ModItems.METEORIC_IRON_INGOT)) {
+                } else if (melting.output() == ModItems.METEORIC_IRON_INGOT) {
                     meteoricIronLevel += 100;
                 }
                 meltedInput.shrink(1);
@@ -328,9 +330,10 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
 
         //Casting
         if (isBurning && canCast()) {
+            maxCastProgress = Math.max(1, getCurrentCastingRecipe().orElseThrow().value().castTime());
             castProgress++;
             if (castProgress >= maxCastProgress) {
-                ItemStack result = getResultFromCast(inventory.get(CAST_SLOT));
+                ItemStack result = getResultFromCast();
                 inventory.set(COOLING_SLOT, result.copy());
                 // Drain from the active metal's tank
                 if (activeMetalType == METAL_STEEL) {
@@ -385,27 +388,19 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
 
         if (dirty) setChanged(world, pos, state);
     }
-    /**
-     * Determines whether the foundry can start melting the current input stack.
-     *
-     * @return `true` if the input slot contains `ModItems.STEEL` and increasing `metalLevel` by 90 would not exceed `maxMetalLevel`, `false` otherwise.
-     */
-
     private boolean canMelt() {
-        ItemStack input = inventory.get(INPUT_SLOT);
-        if (input.is(ModItems.STEEL)) {
-            return steelLevel + 100 <= maxMetalLevel;
-        }
-        if (input.is(ModItems.METEORIC_IRON_INGOT)) {
-            return meteoricIronLevel + 100 <= maxMetalLevel;
-        }
-        return false;
+        return getCurrentMeltingRecipe().map(holder -> {
+            var output = holder.value().output();
+            if (output == ModItems.STEEL) return steelLevel + 100 <= maxMetalLevel;
+            if (output == ModItems.METEORIC_IRON_INGOT) return meteoricIronLevel + 100 <= maxMetalLevel;
+            return false;
+        }).orElse(false);
     }
 
     /**
      * Determines whether the foundry can start a casting operation with the current cast, metal level, and available output/cooling space.
      *
-     * The check requires a non-empty cast, at least 90 metal units, a valid cast result, the cooling slot to be empty,
+     * The check requires a non-empty cast, at least 100 metal units, a valid cast result, the cooling slot to be empty,
      * and the output slot to be empty or contain the same item with enough space for the produced stack.
      *
      * @return `true` if casting can proceed, `false` otherwise.
@@ -419,7 +414,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
         int activeLevel = activeMetalType == METAL_STEEL ? steelLevel : meteoricIronLevel;
         if (activeLevel < 100) return false;
 
-        ItemStack expectedOutput = getResultFromCast(cast);
+        ItemStack expectedOutput = getResultFromCast();
         if (expectedOutput.isEmpty()) return false;
 
         return inventory.get(COOLING_SLOT).isEmpty() && (output.isEmpty() || (output.is(expectedOutput.getItem())
@@ -438,59 +433,18 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
                 coolingItem.getCount() <= output.getMaxStackSize());
     }
 
-    /**
-     * Determine the produced output for a given cast item used in the foundry.
-     *
-     * @param cast the cast ItemStack to evaluate
-     * @return the resulting ItemStack for the cast (a pickaxe head) or `ItemStack.EMPTY` if no match
-     */
-    private ItemStack getResultFromCast(ItemStack cast) {
-        // Map cast + active metal type to the correct output
-        if (activeMetalType == METAL_STEEL) {
-            if (cast.is(ModItems.INGOT_CAST)) return new ItemStack(ModItems.CAST_STEEL);
-            // Tool heads
-            if (cast.is(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.CS_PICKAXE_HEAD);
-            if (cast.is(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.CS_AXE_HEAD);
-            if (cast.is(ModItems.SHOVEL_HEAD_CAST)) return new ItemStack(ModItems.CS_SHOVEL_HEAD);
-            if (cast.is(ModItems.SWORD_HEAD_CAST)) return new ItemStack(ModItems.CS_SWORD_HEAD);
-            if (cast.is(ModItems.HOE_HEAD_CAST)) return new ItemStack(ModItems.CS_HOE_HEAD);
-            if (cast.is(ModItems.SPEAR_HEAD_CAST)) return new ItemStack(ModItems.CS_SPEAR_HEAD);
-            // Armor
-            if (cast.is(ModItems.HELMET_CAST)) return new ItemStack(ModItems.CAST_STEEL_HELMET);
-            if (cast.is(ModItems.CHESTPLATE_CAST)) return new ItemStack(ModItems.CAST_STEEL_CHESTPLATE);
-            if (cast.is(ModItems.LEGGINGS_CAST)) return new ItemStack(ModItems.CAST_STEEL_LEGGINGS);
-            if (cast.is(ModItems.BOOTS_CAST)) return new ItemStack(ModItems.CAST_STEEL_BOOTS);
-        } else if (activeMetalType == METAL_METEORIC_IRON) {
-            if (cast.is(ModItems.INGOT_CAST)) return new ItemStack(ModItems.METEORIC_IRON_INGOT);
-            // Tool heads
-            if (cast.is(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.MI_PICKAXE_HEAD);
-            if (cast.is(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.MI_AXE_HEAD);
-            if (cast.is(ModItems.SHOVEL_HEAD_CAST)) return new ItemStack(ModItems.MI_SHOVEL_HEAD);
-            if (cast.is(ModItems.SWORD_HEAD_CAST)) return new ItemStack(ModItems.MI_SWORD_HEAD);
-            if (cast.is(ModItems.HOE_HEAD_CAST)) return new ItemStack(ModItems.MI_HOE_HEAD);
-            if (cast.is(ModItems.SPEAR_HEAD_CAST)) return new ItemStack(ModItems.MI_SPEAR_HEAD);
-            // Armor
-            if (cast.is(ModItems.HELMET_CAST)) return new ItemStack(ModItems.METEORIC_IRON_HELMET);
-            if (cast.is(ModItems.CHESTPLATE_CAST)) return new ItemStack(ModItems.METEORIC_IRON_CHESTPLATE);
-            if (cast.is(ModItems.LEGGINGS_CAST)) return new ItemStack(ModItems.METEORIC_IRON_LEGGINGS);
-            if (cast.is(ModItems.BOOTS_CAST)) return new ItemStack(ModItems.METEORIC_IRON_BOOTS);
-        }
-        return ItemStack.EMPTY;
+    private ItemStack getResultFromCast() {
+        return getCurrentCastingRecipe()
+                .map(holder -> new ItemStack(holder.value().output()))
+                .orElse(ItemStack.EMPTY);
     }
 
     // Cycle through available metal types (called from screen handler on button click)
     public void cycleActiveMetalType() {
+        if (castProgress > 0 || coolingProgress > 0) return;
         activeMetalType = (activeMetalType + 1) % 2;
         setChanged();
     }
-
-    /**
-     * Finds the first foundry recipe that matches the block entity's current input.
-     *
-     * Uses the server world's recipe manager with a FoundryRecipeCastInput constructed from the inventory's first slot.
-     *
-     * @return an Optional containing the first matching RecipeEntry<FoundryRecipe>, or empty if no match is found
-     */
 
     private Optional<RecipeHolder<FoundryMeltingRecipe>> getCurrentMeltingRecipe() {
         Level level = this.getLevel();
@@ -498,7 +452,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
             return Optional.empty();
         }
         return serverLevel.recipeAccess()
-                .getRecipeFor(ModTypes.MELTING_FOUNDRY_TYPE, new FoundryRecipeInput(inventory.getFirst()), level);
+                .getRecipeFor(ModTypes.MELTING_FOUNDRY_TYPE, new FoundryRecipeInput(inventory.get(INPUT_SLOT)), level);
 
     }
 
@@ -507,14 +461,17 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
         if (!(level instanceof ServerLevel serverLevel)) {
             return Optional.empty();
         }
-        return serverLevel.recipeAccess()
-                .getRecipeFor(ModTypes.CASTING_FOUNDRY_TYPE, new FoundryRecipeCastInput(inventory.getFirst()), level);
+        return serverLevel.recipeAccess().getSynchronizedRecipes()
+                .getAllMatches(ModTypes.CASTING_FOUNDRY_TYPE,
+                        new FoundryRecipeCastInput(inventory.get(CAST_SLOT)), level)
+                .filter(holder -> holder.value().activeMetalType() == activeMetalType)
+                .findFirst();
 
     }
 
     @Override
     public int[] getSlotsForFace(Direction side) {
-        return side == Direction.DOWN ? new int[]{OUTPUT_SLOT} : new int[]{INPUT_SLOT, FUEL_SLOT};
+        return side == Direction.DOWN ? new int[]{OUTPUT_SLOT} : new int[]{INPUT_SLOT, FUEL_SLOT, CAST_SLOT};
     }
 
     /**

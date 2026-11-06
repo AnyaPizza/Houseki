@@ -6,7 +6,7 @@ import net.minecraft.world.item.crafting.RecipeInput;
 public record FoundryRecipeCastInput(ItemStack cast) implements RecipeInput {
     @Override
     public ItemStack getItem(int slot) {
-        if (slot !=2) {
+        if (slot != 0) {
             throw new IllegalArgumentException("No item at slot " + slot);
         }
         return cast;

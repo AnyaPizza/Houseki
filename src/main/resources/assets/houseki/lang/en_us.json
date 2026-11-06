@@ -20,7 +20,6 @@
   "item.houseki.nickel_powder": "Nickel Powder",
   "item.houseki.sugilite": "Sugilite",
   "item.houseki.bismuth": "Bismuth",
-
   "item.houseki.meteoric_iron_ingot": "Meteoric Iron Ingot",
   "item.houseki.tungsten_drill_bit": "Tungsten Drill Bit",
   "item.houseki.diamond_drill_bit": "Diamond Drill Bit",
@@ -28,10 +27,8 @@
   "item.houseki.enhanced_drill_head": "Enhanced Drill Head",
   "item.houseki.advanced_drill_head": "Advanced Drill Head",
   "item.houseki.premium_drill_head": "Premium Drill Head",
-
   "item.houseki.pinku_upgrade_smithing_template": "Pinku Upgrade",
   "item.houseki.drill_upgrade_smithing_template": "Drill Upgrade",
-
   "block.houseki.block_of_pinku": "Block of Pinku",
   "block.houseki.pinku_ore": "Pinku Ore",
   "block.houseki.rainbow_pyrite_ore": "Rainbow Pyrite Ore",
@@ -73,7 +70,6 @@
   "block.houseki.sugilite_block": "Sugilite Block",
   "block.houseki.bismuth_ore": "Bismuth Ore",
   "block.houseki.bismuth_block": "Bismuth Block",
-
   "block.houseki.limestone_stairs": "Limestone Stairs",
   "block.houseki.limestone_slab": "Limestone Slab",
   "block.houseki.limestone_wall": "Limestone Wall",
@@ -92,13 +88,10 @@
   "block.houseki.polished_slate_stairs": "Polished Slate Stairs",
   "block.houseki.polished_slate_slab": "Polished Slate Slab",
   "block.houseki.polished_slate_wall": "Polished Slate Wall",
-
   "block.houseki.aluminum_door": "Aluminum Door",
   "block.houseki.aluminum_trapdoor": "Aluminum Trapdoor",
-
   "block.houseki.block_of_tungsten_b": "Block of Tungsten",
   "item.houseki.block_of_tungsten": "Block of Tungsten",
-
   "item.houseki.pinku_pickaxe": "Pinku Pickaxe",
   "item.houseki.pinku_axe": "Pinku Axe",
   "item.houseki.pinku_shovel": "Pinku Shovel",
@@ -167,7 +160,6 @@
   "item.houseki.enhanced_diamond_drill": "Enhanced Diamond Drill",
   "item.houseki.advanced_diamond_drill": "Advanced Diamond Drill",
   "item.houseki.premium_diamond_drill": "Premium Diamond Drill",
-
   "item.houseki.pinku_helmet": "Pinku Helmet",
   "item.houseki.pinku_chestplate": "Pinku Chestplate",
   "item.houseki.pinku_leggings": "Pinku Leggings",
@@ -208,7 +200,6 @@
   "item.houseki.meteoric_iron_chestplate": "Meteoric Iron Chestplate",
   "item.houseki.meteoric_iron_leggings": "Meteoric Iron Leggings",
   "item.houseki.meteoric_iron_boots": "Meteoric Iron Boots",
-
   "item.houseki.pinku_horse_armor": "Pinku Horse Armor",
   "item.houseki.rainbow_pyrite_horse_armor": "Rainbow Pyrite Horse Armor",
   "item.houseki.tungsten_horse_armor": "Tungsten Horse Armor",
@@ -219,7 +210,6 @@
   "item.houseki.nephrite_horse_armor": "Nephrite Horse Armor",
   "item.houseki.jadeite_horse_armor": "Jadeite Horse Armor",
   "item.houseki.meteoric_iron_horse_armor": "Meteoric Iron Horse Armor",
-
   "item.houseki.pinku_nautilus_armor": "Pinku Nautilus Armor",
   "item.houseki.rainbow_pyrite_nautilus_armor": "Rainbow Pyrite Nautilus Armor",
   "item.houseki.tungsten_nautilus_armor": "Tungsten Nautilus Armor",
@@ -230,7 +220,6 @@
   "item.houseki.nephrite_nautilus_armor": "Nephrite Nautilus Armor",
   "item.houseki.jadeite_nautilus_armor": "Jadeite Nautilus Armor",
   "item.houseki.meteoric_iron_nautilus_armor": "Meteoric Iron Nautilus Armor",
-
   "item.houseki.ingot_cast": "Ingot Cast",
   "item.houseki.pickaxe_head_cast": "Pickaxe Head Cast",
   "item.houseki.axe_head_cast": "Axe Head Cast",
@@ -254,7 +243,6 @@
   "item.houseki.meteoric_iron_sword_head": "Meteoric Iron Sword Head",
   "item.houseki.meteoric_iron_hoe_head": "Meteoric Iron Hoe Head",
   "item.houseki.meteoric_iron_spear_head": "Meteoric Iron Spear Head",
-
   "tag.item.houseki.drills": "Drills",
   "tag.item.houseki.drill_bits": "Drill Bits",
   "tag.item.houseki.premium_drill_mineable": "Premium Drill Mineable",
@@ -274,7 +262,6 @@
   "tag.item.houseki.armor": "Houseki Armor",
   "tag.item.houseki.mob_armors": "Mob Armors",
   "tag.item.houseki.casts": "Casts",
-
   "item.houseki.smithing_template.pinku_upgrade.applies_to": "Netherite Equipment",
   "item.houseki.smithing_template.pinku_upgrade.ingredients": "Pinku",
   "item.houseki.smithing_template.pinku_upgrade.base_slot_description": "Add Netherite armor, weapon, or tool",
@@ -285,13 +272,10 @@
   "item.houseki.smithing_template.drill_upgrade.base_slot_description": "Add a Simple, Enhanced, or Advanced Drill or Drill Head",
   "item.houseki.smithing_template.drill_upgrade.additions_slot_description": "Add Block of Cast Steel",
   "upgrade.houseki.drill_upgrade": "Drill Upgrade",
-
   "itemgroup.houseki.housekiitems": "Houseki Items",
   "itemgroup.houseki.housekiblocks": "Houseki Blocks",
-
   "gui.houseki.crusher": "Crusher",
   "gui.houseki.foundry": "Foundry",
-
   "trim_material.houseki.rainbow_pyrite": "Rainbow Pyrite",
   "trim_material.houseki.pinku": "Pinku",
   "trim_material.houseki.sapphire": "Sapphire",
@@ -300,9 +284,7 @@
   "trim_material.houseki.cast_steel": "Cast Steel",
   "trim_material.houseki.sugilite": "Sugilite",
   "trim_material.houseki.bismuth": "Bismuth",
-
   "effect.houseki.sugilite_protection": "Sugilite Protection",
-
   "advancements.armor_sets.root.title": "Houseki Armor Sets",
   "advancements.armor_sets.root.description": "A set of advancements for collecting armor sets in the mod",
   "advancements.houseki.pinku_armor_set.title": "Pink Power!",
@@ -336,5 +318,14 @@
   "advancements.houseki.foundry_crafting.title": "Melting and Casting",
   "advancements.houseki.foundry_crafting.description": "Crafted a Foundry!",
   "advancements.houseki.meteorite.title": "Space Rock",
-  "advancements.houseki.meteorite.description": "Found a Meteorite!"
+  "advancements.houseki.meteorite.description": "Found a Meteorite!",
+  "jei.houseki.crushing": "Crushing",
+  "jei.houseki.melting": "Foundry Melting",
+  "jei.houseki.casting": "Foundry Casting",
+  "jei.houseki.chance": "Chance: %s%%",
+  "jei.houseki.molten": "Molten metal: %s mB",
+  "jei.houseki.tank": "Requires %s mB in the tank",
+  "jei.houseki.time": "Processing: %s s",
+  "jei.houseki.cooling": "Cooling: %s s",
+  "jei.houseki.select_metal": "Select this metal in the tank"
 }

@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:shovel_head_cast",
+  "result": "houseki:meteoric_iron_shovel_head",
+  "activeMetalType": 1,
+  "castTime": 200,
+  "coolingTime": 200
+}

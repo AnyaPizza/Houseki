@@ -1,0 +1,8 @@
+{
+  "type": "houseki:casting",
+  "ingredient": "houseki:spear_head_cast",
+  "result": "houseki:meteoric_iron_spear_head",
+  "activeMetalType": 1,
+  "castTime": 200,
+  "coolingTime": 200
+}
