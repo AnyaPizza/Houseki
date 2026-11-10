@@ -26,6 +26,9 @@ ef32a352b8faa94b89fa6eb35340336ebcb5de7b data/minecraft/tags/item/foot_armor.jso
 fd914a2272463dfc95c31a1ec24de9b3bb008516 data/minecraft/tags/item/pickaxes.json
 24035121ca9fcb498eddfdd934e2e0743e1f4f0f data/minecraft/tags/item/shovels.json
 844749c1784b92f56d0080b2f242e44e7d41bfcf data/minecraft/tags/item/spears.json
+d1d2f08a4ca40eb63251b244d73bdda9c41c0b14 data/minecraft/tags/item/sulfur_cube_archetype/high_resistance.json
+b65d152a757f85750a3a1116272d6751e31af6ba data/minecraft/tags/item/sulfur_cube_archetype/slow_flat.json
+cec53afe773ff8bd57b954a7479624aecf505704 data/minecraft/tags/item/sulfur_cube_swallowable.json
 49dd3dbfabf987cc01d86733adb602f60bb7ac35 data/minecraft/tags/item/swords.json
 aac18166e2695a4908da2ac61d044a6df84da996 data/minecraft/tags/item/trim_materials.json
 06d2ef7fe12cb06f9b4e9504aa900293df00c843 data/minecraft/tags/item/trimmable_armor.json

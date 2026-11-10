@@ -8,6 +8,8 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.references.ItemIds;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -327,6 +329,37 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.create(ModItems.LEGGINGS_CAST))
                 .add(ModItems.create(ModItems.BOOTS_CAST));
 
-        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE);
+        tag(ItemTags.SULFUR_CUBE_SWALLOWABLE)
+                .add(ModItems.create(ModBlocks.BLOCK_OF_PINKU.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_RAINBOW_PYRITE.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_TUNGSTEN_B.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_ALUMINUM.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_SAPPHIRE.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_JADEITE.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_PLATINUM.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_METEORIC_IRON.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_CAST_STEEL.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_STEEL.asItem()))
+                .add(ModItems.create(ModBlocks.BISMUTH_BLOCK.asItem()))
+                .add(ModItems.create(ModBlocks.SUGILITE_BLOCK.asItem()))
+                .add(ModItems.create(ModBlocks.METEORIC_IRON.asItem()));
+
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE)
+                .add(ModItems.create(ModBlocks.BLOCK_OF_PINKU.asItem()));
+
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_FLAT)
+                .add(ModItems.create(ModBlocks.BLOCK_OF_RAINBOW_PYRITE.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_TUNGSTEN_B.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_ALUMINUM.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_SAPPHIRE.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_JADEITE.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_PLATINUM.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_METEORIC_IRON.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_CAST_STEEL.asItem()))
+                .add(ModItems.create(ModBlocks.BLOCK_OF_STEEL.asItem()))
+                .add(ModItems.create(ModBlocks.BISMUTH_BLOCK.asItem()))
+                .add(ModItems.create(ModBlocks.SUGILITE_BLOCK.asItem()))
+                .add(ModItems.create(ModBlocks.METEORIC_IRON.asItem()));
+
     }
 }
