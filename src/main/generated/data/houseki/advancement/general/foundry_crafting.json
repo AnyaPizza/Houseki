@@ -1,0 +1,36 @@
+{
+  "parent": "houseki:general/root",
+  "criteria": {
+    "foundry_crafted": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:foundry"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.foundry_crafting.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "houseki:foundry"
+    },
+    "title": {
+      "translate": "advancements.houseki.foundry_crafting.title"
+    }
+  },
+  "requirements": [
+    [
+      "foundry_crafted"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

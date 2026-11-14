@@ -1,0 +1,113 @@
+{
+  "parent": "houseki:general/root",
+  "criteria": {
+    "advanced_d_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:advanced_tungsten_drill"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "advanced_t_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:advanced_tungsten_drill"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "enhanced_d_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:enhanced_tungsten_drill"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "enhanced_t_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:enhanced_tungsten_drill"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "premium_d_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:premium_tungsten_drill"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "premium_t_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:premium_tungsten_drill"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "simple_d_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:simple_tungsten_drill"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "simple_t_drill": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:simple_tungsten_drill"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.drill.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "houseki:premium_tungsten_drill"
+    },
+    "title": {
+      "translate": "advancements.houseki.drill.title"
+    }
+  },
+  "requirements": [
+    [
+      "simple_t_drill",
+      "enhanced_t_drill",
+      "advanced_t_drill",
+      "premium_t_drill",
+      "simple_d_drill",
+      "enhanced_d_drill",
+      "advanced_d_drill",
+      "premium_d_drill"
+    ]
+  ],
+  "rewards": {
+    "experience": 70
+  },
+  "sends_telemetry_event": true
+}

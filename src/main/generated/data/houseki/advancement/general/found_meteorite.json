@@ -1,7 +1,7 @@
 {
   "parent": "houseki:general/root",
   "criteria": {
-    "meteorite": {
+    "found_meteorite": {
       "conditions": {
         "player": {
           "type": "minecraft:entity_properties",
@@ -20,6 +20,7 @@
     "description": {
       "translate": "advancements.houseki.meteorite.description"
     },
+    "frame": "goal",
     "icon": {
       "id": "houseki:meteoric_iron"
     },
@@ -29,7 +30,7 @@
   },
   "requirements": [
     [
-      "meteorite"
+      "found_meteorite"
     ]
   ],
   "sends_telemetry_event": true

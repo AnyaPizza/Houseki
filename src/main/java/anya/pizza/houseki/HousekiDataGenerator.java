@@ -21,6 +21,7 @@ public class HousekiDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModRegistryDataGenerator::new);
+		pack.addProvider(ModAdvancementsProvider::new);
 	}
 
 	@Override

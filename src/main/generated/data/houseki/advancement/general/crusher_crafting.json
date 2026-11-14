@@ -1,0 +1,36 @@
+{
+  "parent": "houseki:general/root",
+  "criteria": {
+    "crusher_crafted": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:crusher"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.crusher_crafting.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "houseki:crusher"
+    },
+    "title": {
+      "translate": "advancements.houseki.crusher_crafting.title"
+    }
+  },
+  "requirements": [
+    [
+      "crusher_crafted"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,36 @@
+{
+  "parent": "houseki:general/root",
+  "criteria": {
+    "obtainPinku": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:pinku"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.pinku.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "houseki:pinku"
+    },
+    "title": {
+      "translate": "advancements.houseki.pinku.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtainPinku"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

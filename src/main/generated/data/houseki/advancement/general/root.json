@@ -1,0 +1,34 @@
+{
+  "criteria": {
+    "has_crafting_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:crafting_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "houseki:gui/advancements/backgrounds/chiseled_slate",
+    "description": {
+      "translate": "advancements.general.root.description"
+    },
+    "icon": {
+      "id": "houseki:rainbow_pyrite_ore"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.general.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_crafting_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
