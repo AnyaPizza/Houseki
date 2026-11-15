@@ -1,0 +1,75 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "criteria": {
+    "rainbow_pyrite_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:rainbow_pyrite_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "rainbow_pyrite_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:rainbow_pyrite_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "rainbow_pyrite_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:rainbow_pyrite_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "rainbow_pyrite_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:rainbow_pyrite_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.rainbow_pyrite_armor_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "houseki:rainbow_pyrite_chestplate"
+    },
+    "title": {
+      "translate": "advancements.houseki.rainbow_pyrite_armor_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "rainbow_pyrite_helmet"
+    ],
+    [
+      "rainbow_pyrite_chestplate"
+    ],
+    [
+      "rainbow_pyrite_leggings"
+    ],
+    [
+      "rainbow_pyrite_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

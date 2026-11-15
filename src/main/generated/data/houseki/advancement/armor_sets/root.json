@@ -1,0 +1,34 @@
+{
+  "criteria": {
+    "obtain_houseki_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#houseki:armor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "houseki:gui/advancements/backgrounds/rainbow_pyrite",
+    "description": {
+      "translate": "advancements.armor_sets.root.description"
+    },
+    "icon": {
+      "id": "houseki:pinku_chestplate"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.armor_sets.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_houseki_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

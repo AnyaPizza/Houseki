@@ -1,0 +1,75 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "criteria": {
+    "sapphire_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:sapphire_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sapphire_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:sapphire_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sapphire_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:sapphire_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sapphire_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:sapphire_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.sapphire_armor_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "houseki:sapphire_chestplate"
+    },
+    "title": {
+      "translate": "advancements.houseki.sapphire_armor_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "sapphire_helmet"
+    ],
+    [
+      "sapphire_chestplate"
+    ],
+    [
+      "sapphire_leggings"
+    ],
+    [
+      "sapphire_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 80
+  },
+  "sends_telemetry_event": true
+}

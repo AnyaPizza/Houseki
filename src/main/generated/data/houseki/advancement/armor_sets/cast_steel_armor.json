@@ -1,0 +1,75 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "criteria": {
+    "cast_steel_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:cast_steel_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cast_steel_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:cast_steel_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cast_steel_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:cast_steel_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cast_steel_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:cast_steel_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.cast_steel_armor_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "houseki:cast_steel_chestplate"
+    },
+    "title": {
+      "translate": "advancements.houseki.cast_steel_armor_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "cast_steel_helmet"
+    ],
+    [
+      "cast_steel_chestplate"
+    ],
+    [
+      "cast_steel_leggings"
+    ],
+    [
+      "cast_steel_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 70
+  },
+  "sends_telemetry_event": true
+}

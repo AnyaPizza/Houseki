@@ -1,0 +1,75 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "criteria": {
+    "platinum_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:platinum_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "platinum_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:platinum_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "platinum_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:platinum_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "platinum_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:platinum_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.platinum_armor_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "houseki:platinum_chestplate"
+    },
+    "title": {
+      "translate": "advancements.houseki.platinum_armor_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "platinum_helmet"
+    ],
+    [
+      "platinum_chestplate"
+    ],
+    [
+      "platinum_leggings"
+    ],
+    [
+      "platinum_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

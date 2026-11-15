@@ -1,0 +1,75 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "criteria": {
+    "nephrite_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:nephrite_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "nephrite_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:nephrite_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "nephrite_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:nephrite_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "nephrite_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:nephrite_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.nephrite_armor_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "houseki:nephrite_chestplate"
+    },
+    "title": {
+      "translate": "advancements.houseki.nephrite_armor_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "nephrite_helmet"
+    ],
+    [
+      "nephrite_chestplate"
+    ],
+    [
+      "nephrite_leggings"
+    ],
+    [
+      "nephrite_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

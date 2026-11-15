@@ -1,0 +1,75 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "criteria": {
+    "meteoric_iron_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:meteoric_iron_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "meteoric_iron_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:meteoric_iron_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "meteoric_iron_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:meteoric_iron_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "meteoric_iron_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:meteoric_iron_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.meteoric_iron_armor_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "houseki:meteoric_iron_chestplate"
+    },
+    "title": {
+      "translate": "advancements.houseki.meteoric_iron_armor_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "meteoric_iron_helmet"
+    ],
+    [
+      "meteoric_iron_chestplate"
+    ],
+    [
+      "meteoric_iron_leggings"
+    ],
+    [
+      "meteoric_iron_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 80
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,75 @@
+{
+  "parent": "houseki:armor_sets/root",
+  "criteria": {
+    "jadeite_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:jadeite_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "jadeite_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:jadeite_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "jadeite_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:jadeite_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "jadeite_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "houseki:jadeite_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.houseki.jadeite_armor_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "houseki:jadeite_chestplate"
+    },
+    "title": {
+      "translate": "advancements.houseki.jadeite_armor_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "jadeite_helmet"
+    ],
+    [
+      "jadeite_chestplate"
+    ],
+    [
+      "jadeite_leggings"
+    ],
+    [
+      "jadeite_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}
