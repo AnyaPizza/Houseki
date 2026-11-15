@@ -40,6 +40,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_JADEITE);
         blockStateModelGenerator.createTrivialCube(ModBlocks.BLOCK_OF_PLATINUM);
         blockStateModelGenerator.createTrivialCube(ModBlocks.DEEPSLATE_PLATINUM_ORE);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.NETHERRACK_PLATINUM_ORE);
         blockStateModelGenerator.createTrivialCube(ModBlocks.PLATINUM_ORE);
         BlockModelGenerators.BlockFamilyProvider limestoneBrickPool = blockStateModelGenerator.family(ModBlocks.LIMESTONE_BRICKS);
         BlockModelGenerators.BlockFamilyProvider limestonePool = blockStateModelGenerator.family(ModBlocks.LIMESTONE);

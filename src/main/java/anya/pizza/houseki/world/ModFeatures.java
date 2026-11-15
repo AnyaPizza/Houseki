@@ -29,6 +29,7 @@ public class ModFeatures {
     public static final ResourceKey<Feature> NEPHRITE_ORE_KEY = registerKey("nephrite_ore");
     public static final ResourceKey<Feature> JADEITE_ORE_KEY = registerKey("jadeite_ore");
     public static final ResourceKey<Feature> PLATINUM_ORE_KEY = registerKey("platinum_ore");
+    public static final ResourceKey<Feature> NETHERRACK_PLATINUM_ORE_KEY = registerKey("netherrack_platinum_ore");
     public static final ResourceKey<Feature> SUGILITE_ORE_KEY = registerKey("sugilite_ore");
     public static final ResourceKey<Feature> BISMUTH_ORE_KEY = registerKey("bismuth_ore");
 
@@ -73,6 +74,7 @@ public class ModFeatures {
 
         List<BlockReplacement> overworldPlatinumOres = List.of(BlockReplacement.replace(copperReplaceables, ModBlocks.PLATINUM_ORE.defaultBlockState()),
                         BlockReplacement.replace(deepCopperReplaceables, ModBlocks.DEEPSLATE_PLATINUM_ORE.defaultBlockState()));
+        List<BlockReplacement> netherPlatinumOres = List.of(BlockReplacement.replace(netherrackReplaceables, ModBlocks.NETHERRACK_PLATINUM_ORE.defaultBlockState()));
 
         List<BlockReplacement> overworldLimestoneOre = List.of(BlockReplacement.replace(stoneReplaceables,ModBlocks.LIMESTONE.defaultBlockState()),
                         BlockReplacement.replace(deepslateReplaceables,ModBlocks.LIMESTONE.defaultBlockState()));
@@ -94,6 +96,7 @@ public class ModFeatures {
         context.register(NEPHRITE_ORE_KEY, new OreFeature(overworldNephriteOres, 8));
         context.register(JADEITE_ORE_KEY, new OreFeature(overworldJadeiteOres, 8));
         context.register(PLATINUM_ORE_KEY, new OreFeature(overworldPlatinumOres, 3));
+        context.register(NETHERRACK_PLATINUM_ORE_KEY, new OreFeature(netherPlatinumOres, 3));
         context.register(SUGILITE_ORE_KEY, new OreFeature(netherSugiliteOre, 4));
         context.register(BISMUTH_ORE_KEY, new OreFeature(overworldBismuthOre, 4));
 

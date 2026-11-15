@@ -44,6 +44,7 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.create(ModBlocks.BLOCK_OF_PLATINUM))
                 .add(ModBlocks.create(ModBlocks.PLATINUM_ORE))
                 .add(ModBlocks.create(ModBlocks.DEEPSLATE_PLATINUM_ORE))
+                .add(ModBlocks.create(ModBlocks.NETHERRACK_PLATINUM_ORE))
                 .add(ModBlocks.create(ModBlocks.LIMESTONE))
                 .add(ModBlocks.create(ModBlocks.LIMESTONE_SLAB))
                 .add(ModBlocks.create(ModBlocks.LIMESTONE_STAIRS))
@@ -106,6 +107,7 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.create(ModBlocks.BLOCK_OF_PLATINUM))
                 .add(ModBlocks.create(ModBlocks.PLATINUM_ORE))
                 .add(ModBlocks.create(ModBlocks.DEEPSLATE_PLATINUM_ORE))
+                .add(ModBlocks.create(ModBlocks.NETHERRACK_PLATINUM_ORE))
                 .add(ModBlocks.create(ModBlocks.BLOCK_OF_STEEL))
                 .add(ModBlocks.create(ModBlocks.BLOCK_OF_CAST_STEEL))
                 .add(ModBlocks.create(ModBlocks.BISMUTH_BLOCK))
@@ -210,6 +212,7 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.create(ModBlocks.JADEITE_ORE))
                 .add(ModBlocks.create(ModBlocks.PLATINUM_ORE))
                 .add(ModBlocks.create(ModBlocks.DEEPSLATE_PLATINUM_ORE))
+                .add(ModBlocks.create(ModBlocks.NETHERRACK_PLATINUM_ORE))
                 .add(ModBlocks.create(ModBlocks.BISMUTH_ORE))
                 .add(ModBlocks.create(ModBlocks.SUGILITE_ORE));
     }

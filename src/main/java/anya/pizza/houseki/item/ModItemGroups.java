@@ -258,6 +258,7 @@ public class ModItemGroups {
 
                         entries.accept(ModBlocks.PLATINUM_ORE);
                         entries.accept(ModBlocks.DEEPSLATE_PLATINUM_ORE);
+                        entries.accept(ModBlocks.NETHERRACK_PLATINUM_ORE);
                         entries.accept(ModBlocks.BLOCK_OF_PLATINUM);
 
                         entries.accept(ModBlocks.CRUSHER);

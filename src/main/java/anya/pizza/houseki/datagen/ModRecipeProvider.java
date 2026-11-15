@@ -44,7 +44,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 List<ItemLike> SAPPHIRE_SMELTABLES = List.of(ModBlocks.SAPPHIRE_ORE, ModBlocks.DEEPSLATE_SAPPHIRE_ORE);
                 List<ItemLike> NEPHRITE_SMELTABLES = List.of(ModBlocks.NEPHRITE_ORE);
                 List<ItemLike> JADEITE_SMELTABLES = List.of(ModBlocks.JADEITE_ORE);
-                List<ItemLike> PLATINUM_SMELTABLES = List.of(ModBlocks.PLATINUM_ORE, ModBlocks.DEEPSLATE_PLATINUM_ORE);
+                List<ItemLike> PLATINUM_SMELTABLES = List.of(ModBlocks.PLATINUM_ORE, ModBlocks.DEEPSLATE_PLATINUM_ORE, ModBlocks.NETHERRACK_PLATINUM_ORE);
                 List<ItemLike> CRUDE_IRON_SMELTABLES = List.of(Items.IRON_INGOT);
                 List<ItemLike> STEEL_SMELTABLES = List.of(ModItems.CRUDE_IRON);
                 List<ItemLike> METEORIC_IRON_SMELTABLES = List.of(ModBlocks.METEORIC_IRON);

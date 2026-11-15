@@ -26,6 +26,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> NEPHRITE_ORE_PLACED_KEY = registerKey("nephrite_ore_placed");
     public static final ResourceKey<PlacedFeature> JADEITE_ORE_PLACED_KEY = registerKey("jadeite_ore_placed");
     public static final ResourceKey<PlacedFeature> PLATINUM_ORE_PLACED_KEY = registerKey("platinum_ore_placed");
+    public static final ResourceKey<PlacedFeature> NETHERRACK_PLATINUM_ORE_PLACED_KEY = registerKey("netherrack_platinum_ore_placed");
     public static final ResourceKey<PlacedFeature> SUGILITE_ORE_PLACED_KEY = registerKey("sugilite_ore_placed");
     public static final ResourceKey<PlacedFeature> BISMUTH_ORE_PLACED_KEY = registerKey("bismuth_ore_placed");
 
@@ -64,6 +65,8 @@ public class ModPlacedFeatures {
                 ModOrePlacement.modifiersWithCount(30, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
 
         register(context, PLATINUM_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModFeatures.PLATINUM_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(20, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
+        register(context, NETHERRACK_PLATINUM_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModFeatures.NETHERRACK_PLATINUM_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(20, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
 
         register(context, SUGILITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModFeatures.SUGILITE_ORE_KEY),

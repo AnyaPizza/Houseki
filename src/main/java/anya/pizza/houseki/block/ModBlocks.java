@@ -173,6 +173,11 @@ public class ModBlocks {
             properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
                     .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3, 4)));
                         //4.5 Moh Scale
+
+    public static final Block NETHERRACK_PLATINUM_ORE = registerBlock("netherrack_platinum_ore",
+            properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
+                    .mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3, 4)));
+
     public static final Block DEEPSLATE_PLATINUM_ORE = registerBlock("deepslate_platinum_ore",
             properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties
                     .mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3, 4).sound(SoundType.DEEPSLATE)));
