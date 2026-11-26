@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+version = rootProject.mod_version
+group = rootProject.group
+
+base {
+    archivesName = 'houseki-neoforge'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets.main {
+    java.srcDir rootProject.file('src/main/java')
+    resources.srcDir rootProject.file('src/main/resources')
+    resources.srcDir rootProject.file('src/main/generated')
+    resources.exclude '.cache/**'
+    resources.exclude 'fabric.mod.json'
+}
+
+dependencies {
+    compileOnly rootProject.atlasApiClasses
+    compileOnly 'org.jetbrains:annotations:26.0.2'
+}
+
+neoForge {
+    version = rootProject.neoforge_version
+
+    runs {
+        client { client() }
+        server { server() }
+    }
+
+    mods {
+        houseki { sourceSet sourceSets.main }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    def metadata = [modVersion: project.version, minecraftVersion: rootProject.minecraft_version,
+                    neoForgeVersion: rootProject.neoforge_version]
+    inputs.properties metadata
+    filesMatching('META-INF/neoforge.mods.toml') { expand metadata }
+}
+
+tasks.jar {
+    destinationDirectory = rootProject.layout.buildDirectory.dir('libs')
+    archiveVersion = "${project.version}+${rootProject.minecraft_version}"
+    from rootProject.file('LICENSE.md')
+}
+
+tasks.named('downloadAssets') {
+    javaExecutable = javaToolchains.launcherFor(java.toolchain).map { it.executablePath.asFile.absolutePath }
+}

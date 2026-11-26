@@ -3,7 +3,6 @@ package anya.pizza.houseki.screen.custom;
 import anya.pizza.houseki.block.entity.custom.FoundryBlockEntity;
 import anya.pizza.houseki.item.ModItems;
 import anya.pizza.houseki.screen.ModScreenHandlers;
-import com.terraformersmc.modmenu.util.mod.Mod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;

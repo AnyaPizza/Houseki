@@ -1,0 +1,46 @@
+// Atlas 0.3.1 has no published API jar. Compile its API from a pinned source revision.
+def atlasRevision = '86b46fe9f3423fecf3a76bd9fd91ea6d8555496c'
+def atlasSources = configurations.create('atlasSources') {
+    canBeConsumed = false
+    transitive = false
+}
+def atlasCompile = configurations.create('atlasCompile') {
+    canBeConsumed = false
+}
+
+repositories {
+    exclusiveContent {
+        forRepository {
+            ivy {
+                url = 'https://codeload.github.com/shaedy180/Atlas/zip/'
+                patternLayout { artifact '[revision]' }
+                metadataSources { artifact() }
+            }
+        }
+        filter { includeModule 'dev.atlasmod', 'atlas-source' }
+    }
+}
+
+dependencies {
+    add(atlasSources.name, "dev.atlasmod:atlas-source:${atlasRevision}@zip")
+    add(atlasCompile.name, 'org.jetbrains:annotations:26.0.2')
+}
+
+def unpackAtlasApi = tasks.register('unpackAtlasApi', Sync) {
+    from({ zipTree(atlasSources.singleFile) }) {
+        include 'Atlas-*/atlas-api/src/main/java/**/*.java', 'Atlas-*/atlas-core/src/main/java/**/*.java'
+    }
+    into layout.buildDirectory.dir('atlas-api/sources')
+}
+
+def compileAtlasApi = tasks.register('compileAtlasApi', JavaCompile) {
+    source unpackAtlasApi
+    classpath = atlasCompile
+    destinationDirectory = layout.buildDirectory.dir('atlas-api/classes')
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(25) }
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+
+ext.atlasApiClasses = files(compileAtlasApi.flatMap { it.destinationDirectory }).builtBy(compileAtlasApi)
+dependencies { compileOnly atlasApiClasses }
