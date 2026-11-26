@@ -5,8 +5,9 @@ import anya.pizza.houseki.block.entity.ImplementedInventory;
 import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.item.ModItems;
 import anya.pizza.houseki.recipe.*;
+import anya.pizza.houseki.platform.HousekiPlatform;
 import anya.pizza.houseki.screen.custom.FoundryScreenHandler;
-import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
+import anya.pizza.houseki.screen.MachineMenuProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -35,7 +36,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
-public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedInventory {
+public class FoundryBlockEntity extends BlockEntity implements MachineMenuProvider, ImplementedInventory {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(5, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
@@ -461,9 +462,7 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
         if (!(level instanceof ServerLevel serverLevel)) {
             return Optional.empty();
         }
-        return serverLevel.recipeAccess().getSynchronizedRecipes()
-                .getAllMatches(ModTypes.CASTING_FOUNDRY_TYPE,
-                        new FoundryRecipeCastInput(inventory.get(CAST_SLOT)), level)
+        return HousekiPlatform.castingRecipes(serverLevel, new FoundryRecipeCastInput(inventory.get(CAST_SLOT)))
                 .filter(holder -> holder.value().activeMetalType() == activeMetalType)
                 .findFirst();
 

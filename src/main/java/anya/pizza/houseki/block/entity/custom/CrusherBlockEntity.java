@@ -7,7 +7,7 @@ import anya.pizza.houseki.recipe.CrusherRecipe;
 import anya.pizza.houseki.recipe.CrusherRecipeInput;
 import anya.pizza.houseki.recipe.ModTypes;
 import anya.pizza.houseki.screen.custom.CrusherScreenHandler;
-import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
+import anya.pizza.houseki.screen.MachineMenuProvider;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +36,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
-public class CrusherBlockEntity extends BlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedInventory {
+public class CrusherBlockEntity extends BlockEntity implements MachineMenuProvider, ImplementedInventory {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(4, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;

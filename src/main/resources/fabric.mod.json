@@ -20,8 +20,9 @@
 	"icon": "assets/houseki/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"atlas": ["anya.pizza.houseki.compat.atlas.HousekiAtlasPlugin"],
 		"main": [
-			"anya.pizza.houseki.Houseki"
+			"anya.pizza.houseki.HousekiFabric"
 		],
 		"fabric-datagen": [
 			"anya.pizza.houseki.HousekiDataGenerator"
@@ -45,6 +46,7 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
+		"atlas": ">=0.3.1",
 		"roughlyenoughitems": ">=26.3.824",
 		"jei": ">=31.17.0",
 		"modmenu": ">=21.0.0"

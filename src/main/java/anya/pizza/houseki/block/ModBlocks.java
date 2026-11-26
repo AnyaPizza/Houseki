@@ -5,7 +5,6 @@ import anya.pizza.houseki.block.custom.CrusherBlock;
 import anya.pizza.houseki.block.custom.FoundryBlock;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.IronBarsBlock;
@@ -17,6 +16,7 @@ import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -35,11 +35,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.level.BlockGetter;
 import org.jspecify.annotations.NonNull;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.function.Function;
 
-import static net.minecraft.world.level.block.Blocks.litBlockEmission;
 
 public class ModBlocks {
+    private static final Map<Identifier, Block> BLOCK_ITEMS = new LinkedHashMap<>();
     //Adds Block
     public static final Block BLOCK_OF_PINKU = registerBlock("block_of_pinku",
             properties -> new Block(properties.mapColor(MapColor.COLOR_PINK).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresCorrectToolForDrops().strength(5, 1000).sound(SoundType.METAL)));
@@ -55,7 +57,7 @@ public class ModBlocks {
 
     public static final Block ALUMINUM_GLASS = registerBlock("aluminum_glass",
             properties -> new TransparentBlock(properties.instrument(NoteBlockInstrument.HAT).strength(2, 1000).sound(SoundType.GLASS)
-                    .noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never)) {
+                    .noOcclusion().isValidSpawn((_, _, _, _) -> false).isRedstoneConductor((_, _, _) -> false).isSuffocating((_, _, _) -> false)) {
                 @Override
                 public @NonNull VoxelShape getVisualShape(@NonNull BlockState state, @NonNull BlockGetter world, @NonNull BlockPos pos, @NonNull CollisionContext context) {
                     return super.getVisualShape(state, world, pos, context);
@@ -237,36 +239,36 @@ public class ModBlocks {
     public static final Block ALUMINUM_DOOR = registerBlock("aluminum_door",
             properties -> new DoorBlock(BlockSetType.IRON, properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(5).noOcclusion().pushReaction(PushReaction.POPPED)));
     public static final Block ALUMINUM_TRAPDOOR = registerBlock("aluminum_trapdoor",
-            properties -> new TrapDoorBlock(BlockSetType.IRON, properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(5).noOcclusion().isValidSpawn(Blocks::never)));
+            properties -> new TrapDoorBlock(BlockSetType.IRON, properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(5).noOcclusion().isValidSpawn((_, _, _, _) -> false)));
 
     //Entity Blocks
     public static final Block CRUSHER = registerBlock("crusher",
             properties -> new CrusherBlock(properties
-                    .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(litBlockEmission(13))));
+                    .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 13 : 0)));
 
     public static final Block FOUNDRY = registerBlock("foundry",
             properties -> new FoundryBlock(properties
-                    .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(litBlockEmission(13))));
+                    .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 13 : 0)));
 
     public static ResourceKey<Block> create(Block block) {
         return BuiltInRegistries.BLOCK.getResourceKey(block).get();
     }
 
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
-        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name))));
-        Block block = Registry.register(BuiltInRegistries.BLOCK,
-                Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name), toRegister);
-        registerBlockItem(name, block);
+        Identifier id = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name);
+        Block block = Registry.register(BuiltInRegistries.BLOCK, id,
+                function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, id))));
+        BLOCK_ITEMS.put(id, block);
         return block;
     }
 
-    private static BlockItem registerBlockItem(String name, Block block) {
-        Identifier id = Identifier.fromNamespaceAndPath(Houseki.MOD_ID, name);
-        BlockItem item = Registry.register(BuiltInRegistries.ITEM, id,
-                new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
-                        .setId(ResourceKey.create(Registries.ITEM, id))));
-        item.registerBlocks(Item.BY_BLOCK, item);
-        return item;
+    public static void registerBlockItems() {
+        BLOCK_ITEMS.forEach((id, block) -> {
+            BlockItem item = Registry.register(BuiltInRegistries.ITEM, id,
+                    new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
+                            .setId(ResourceKey.create(Registries.ITEM, id))));
+            item.registerBlocks(Item.BY_BLOCK, item);
+        });
     }
 
     public static void registerModBlocks() {

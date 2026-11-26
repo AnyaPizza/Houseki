@@ -1,0 +1,17 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:beach",
+    "minecraft:deep_ocean",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:jungle",
+    "minecraft:savanna",
+    "minecraft:warm_ocean",
+    "minecraft:forest",
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp"
+  ],
+  "features": "houseki:ore_bauxite_placed",
+  "step": "underground_ores"
+}

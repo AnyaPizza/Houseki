@@ -142,6 +142,6 @@ public class MeteoriteStructure extends Structure {
 
     @Override
     public StructureType<?> type() {
-        return ModStructures.METEORITE_TYPE;
+        return ModStructures.meteoriteType();
     }
 }

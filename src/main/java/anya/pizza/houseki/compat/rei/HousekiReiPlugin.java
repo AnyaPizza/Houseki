@@ -16,9 +16,9 @@ import me.shedaniel.rei.api.client.registry.transfer.TransferHandlerRegistry;
 import me.shedaniel.rei.api.client.registry.transfer.simple.SimpleTransferHandler;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import net.minecraft.client.Minecraft;
+import anya.pizza.houseki.platform.ClientMachineRecipes;
 
-public final class HousekiReiPlugin implements REIClientPlugin {
+public class HousekiReiPlugin implements REIClientPlugin {
     static final CategoryIdentifier<MachineDisplay> CRUSHING = CategoryIdentifier.of(Houseki.MOD_ID, "crushing");
     static final CategoryIdentifier<MachineDisplay> MELTING = CategoryIdentifier.of(Houseki.MOD_ID, "melting");
     static final CategoryIdentifier<MachineDisplay> CASTING = CategoryIdentifier.of(Houseki.MOD_ID, "casting");
@@ -35,16 +35,13 @@ public final class HousekiReiPlugin implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        var level = Minecraft.getInstance().level;
-        if (level == null) return;
-        var recipes = level.recipeAccess().getSynchronizedRecipes();
-        for (var holder : recipes.getAllOfType(ModTypes.CRUSHER_TYPE)) {
+        for (var holder : ClientMachineRecipes.get(ModTypes.CRUSHER_TYPE)) {
             registry.add(MachineDisplay.crushing(holder), holder);
         }
-        for (var holder : recipes.getAllOfType(ModTypes.MELTING_FOUNDRY_TYPE)) {
+        for (var holder : ClientMachineRecipes.get(ModTypes.MELTING_FOUNDRY_TYPE)) {
             registry.add(MachineDisplay.melting(holder), holder);
         }
-        for (var holder : recipes.getAllOfType(ModTypes.CASTING_FOUNDRY_TYPE)) {
+        for (var holder : ClientMachineRecipes.get(ModTypes.CASTING_FOUNDRY_TYPE)) {
             registry.add(MachineDisplay.casting(holder), holder);
         }
     }

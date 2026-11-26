@@ -1,7 +1,7 @@
 package anya.pizza.houseki.trim;
 
 import anya.pizza.houseki.effect.ModEffects;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,15 +16,12 @@ public class TrimEffectHandler {
             EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
     };
 
-    public static void registerTrimEffects() {
-        ServerTickEvents.END_SERVER_TICK.register(server -> {
-            //Could cause lag for big servers. May need to rebalance in future if needed.
-            if (server.getTickCount() % 40 == 0) {
-                for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-                    applyEffects(player);
-                }
+    public static void tick(MinecraftServer server) {
+        if (server.getTickCount() % 40 == 0) {
+            for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+                applyEffects(player);
             }
-        });
+        }
     }
 
     private static void applyEffects(ServerPlayer player) {

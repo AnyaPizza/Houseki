@@ -18,7 +18,13 @@ You can also look at the [Development Board](https://trello.com/b/gkn3qGlL/house
 
 To learn more about the mod, you can visit the [Wiki](https://github.com/AnyaPizza/Houseki/wiki)!
 
-This mod requires the [Fabric API](https://modrinth.com/mod/fabric-api) to work!
+## Installation and development
+
+Choose the Houseki jar for your loader and Minecraft 26.3. Fabric requires [Fabric API](https://modrinth.com/mod/fabric-api). The NeoForge jar requires NeoForge 26.3.0.116 or newer for this Minecraft version.
+
+Install [Atlas](https://github.com/shaedy180/Atlas) 0.3.1 or newer for the same Minecraft version and loader to browse Crusher, Foundry Melting, and Foundry Casting recipes. Atlas runs on the client. Houseki syncs machine recipes from the server when you join and after datapack reloads.
+
+With Java 25, run `./gradlew build`. Both jars are in `build/libs/`. For local testing, use `./gradlew :runClient` or `./gradlew :neoforge:runClient`.
 
 ---
 # Content!
