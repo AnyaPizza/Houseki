@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "All Rights Reserved"
+issueTrackerURL = "https://github.com/AnyaPizza/Houseki/issues"
+
+[[mods]]
+modId = "houseki"
+version = "${modVersion}"
+displayName = "Houseki"
+authors = "AnyaPizza"
+credits = "TheCodeMonkey, shdy, Petal"
+displayURL = "https://github.com/AnyaPizza/Houseki"
+iconFile = "assets/houseki/icon.png"
+description = "Adds new ores and items inspired by their real-life counterparts."
+
+[[dependencies.houseki]]
+modId = "minecraft"
+type = "required"
+versionRange = "[${minecraftVersion}]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.houseki]]
+modId = "neoforge"
+type = "required"
+versionRange = "[${neoForgeVersion},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.houseki]]
+modId = "atlas"
+type = "optional"
+versionRange = "[0.3.1,)"
+ordering = "NONE"
+side = "CLIENT"

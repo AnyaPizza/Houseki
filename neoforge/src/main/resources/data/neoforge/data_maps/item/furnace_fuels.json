@@ -1,0 +1,10 @@
+{
+  "values": {
+    "houseki:sulfur": {
+      "burn_time": 1600
+    },
+    "houseki:block_of_sulfur": {
+      "burn_time": 16000
+    }
+  }
+}

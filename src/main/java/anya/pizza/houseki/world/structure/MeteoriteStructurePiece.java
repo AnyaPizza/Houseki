@@ -65,7 +65,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
     public MeteoriteStructurePiece(int centerX, int surfaceY, int centerZ,
                                    int meteorRadius, int craterDepth, long seed,
                                    int biomeVariantId) {
-        super(ModStructures.METEORITE_PIECE_TYPE, 0,
+        super(ModStructures.meteoritePieceType(), 0,
                 makeBounds(centerX, surfaceY, centerZ, meteorRadius, craterDepth));
         this.centerX = centerX;
         this.surfaceY = surfaceY;
@@ -78,7 +78,7 @@ public class MeteoriteStructurePiece extends StructurePiece {
 
     // NBT constructor, used when loading from a saved game. orElse() provides fallback defaults.
     public MeteoriteStructurePiece(StructurePieceSerializationContext context, CompoundTag data) {
-        super(ModStructures.METEORITE_PIECE_TYPE, data);
+        super(ModStructures.meteoritePieceType(), data);
         this.centerX = data.getInt("cx").orElse(0);
         this.surfaceY = data.getInt("sy").orElse(0);
         this.centerZ = data.getInt("cz").orElse(0);

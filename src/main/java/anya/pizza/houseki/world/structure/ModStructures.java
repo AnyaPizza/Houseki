@@ -30,17 +30,33 @@ public class ModStructures {
     public static final ResourceKey<StructureSet> METEORITE_SET_KEY =
             ResourceKey.create(Registries.STRUCTURE_SET, Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"));
 
-    // Registers the structure type with its codec so Minecraft can serialize/deserialize it
-    public static final StructureType<MeteoriteStructure> METEORITE_TYPE =
-            Registry.register(BuiltInRegistries.STRUCTURE_TYPE,
-                    Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"),
-                    () -> MeteoriteStructure.CODEC);
+    public static StructureType<MeteoriteStructure> meteoriteType() {
+        return Types.METEORITE_TYPE;
+    }
 
-    // Registers the piece type. The method reference points to the NBT constructor used for deserialization.
-    public static final StructurePieceType METEORITE_PIECE_TYPE =
-            Registry.register(BuiltInRegistries.STRUCTURE_PIECE,
-                    Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"),
-                    MeteoriteStructurePiece::new);
+    private static class Types {
+        // Registers the structure type with its codec so Minecraft can serialize/deserialize it
+        static final StructureType<MeteoriteStructure> METEORITE_TYPE =
+                Registry.register(BuiltInRegistries.STRUCTURE_TYPE,
+                        Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"),
+                        () -> MeteoriteStructure.CODEC);
+    }
+
+    public static StructurePieceType meteoritePieceType() {
+        return Pieces.METEORITE_PIECE_TYPE;
+    }
+
+    public static void registerPiece() {
+        meteoritePieceType();
+    }
+
+    private static class Pieces {
+        // Registers the piece type. The method reference points to the NBT constructor used for deserialization.
+        static final StructurePieceType METEORITE_PIECE_TYPE =
+                Registry.register(BuiltInRegistries.STRUCTURE_PIECE,
+                        Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "meteorite"),
+                        MeteoriteStructurePiece::new);
+    }
 
     /**
      * Called during datagen. Creates the meteorite structure and restricts it to Overworld biomes.
@@ -79,6 +95,7 @@ public class ModStructures {
 
     // Called from mod initializer to force class loading and trigger all static registrations above
     public static void register() {
+        meteoriteType();
         Houseki.LOGGER.info("Registering Structures for " + Houseki.MOD_ID);
     }
 }
