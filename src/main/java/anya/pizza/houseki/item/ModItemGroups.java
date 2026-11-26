@@ -2,7 +2,7 @@ package anya.pizza.houseki.item;
 
 import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.ModBlocks;
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import anya.pizza.houseki.platform.HousekiPlatform;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,7 +13,7 @@ import net.minecraft.resources.Identifier;
 public class ModItemGroups {
     public static final CreativeModeTab HOUSEKI_ITEMS_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
             Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "houseki_items"),
-            FabricCreativeModeTab.builder().icon(() -> new ItemStack(ModItems.PINKU))
+            HousekiPlatform.creativeTab().icon(() -> new ItemStack(ModItems.PINKU))
                     .title(Component.translatable("itemgroup.houseki.housekiitems"))
                     .displayItems((displayContext, entries) -> {
                         entries.accept(ModItems.PINKU_HELMET);
@@ -222,7 +222,7 @@ public class ModItemGroups {
 
     public static final CreativeModeTab HOUSEKI_BLOCKS_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
             Identifier.fromNamespaceAndPath(Houseki.MOD_ID, "houseki_blocks"),
-            FabricCreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.BLOCK_OF_PINKU))
+            HousekiPlatform.creativeTab().icon(() -> new ItemStack(ModBlocks.BLOCK_OF_PINKU))
                     .title(Component.translatable("itemgroup.houseki.housekiblocks"))
                     .displayItems((displayContext, entries) -> {
                         entries.accept(ModBlocks.PINKU_ORE);

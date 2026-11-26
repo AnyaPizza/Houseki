@@ -6,7 +6,7 @@ import anya.pizza.houseki.block.entity.ModBlockEntities;
 import anya.pizza.houseki.item.ModItems;
 import anya.pizza.houseki.recipe.*;
 import anya.pizza.houseki.screen.custom.FoundryScreenHandler;
-import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
+import anya.pizza.houseki.screen.MachineMenuProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -35,7 +35,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
-public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvider<BlockPos>, ImplementedInventory {
+public class FoundryBlockEntity extends BlockEntity implements MachineMenuProvider, ImplementedInventory {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(5, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
@@ -445,37 +445,13 @@ public class FoundryBlockEntity extends BlockEntity implements ExtendedMenuProvi
      * @return the resulting ItemStack for the cast (a pickaxe head) or `ItemStack.EMPTY` if no match
      */
     private ItemStack getResultFromCast(ItemStack cast) {
-        // Map cast + active metal type to the correct output
-        if (activeMetalType == METAL_STEEL) {
-            if (cast.is(ModItems.INGOT_CAST)) return new ItemStack(ModItems.CAST_STEEL);
-            // Tool heads
-            if (cast.is(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.CS_PICKAXE_HEAD);
-            if (cast.is(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.CS_AXE_HEAD);
-            if (cast.is(ModItems.SHOVEL_HEAD_CAST)) return new ItemStack(ModItems.CS_SHOVEL_HEAD);
-            if (cast.is(ModItems.SWORD_HEAD_CAST)) return new ItemStack(ModItems.CS_SWORD_HEAD);
-            if (cast.is(ModItems.HOE_HEAD_CAST)) return new ItemStack(ModItems.CS_HOE_HEAD);
-            if (cast.is(ModItems.SPEAR_HEAD_CAST)) return new ItemStack(ModItems.CS_SPEAR_HEAD);
-            // Armor
-            if (cast.is(ModItems.HELMET_CAST)) return new ItemStack(ModItems.CAST_STEEL_HELMET);
-            if (cast.is(ModItems.CHESTPLATE_CAST)) return new ItemStack(ModItems.CAST_STEEL_CHESTPLATE);
-            if (cast.is(ModItems.LEGGINGS_CAST)) return new ItemStack(ModItems.CAST_STEEL_LEGGINGS);
-            if (cast.is(ModItems.BOOTS_CAST)) return new ItemStack(ModItems.CAST_STEEL_BOOTS);
-        } else if (activeMetalType == METAL_METEORIC_IRON) {
-            if (cast.is(ModItems.INGOT_CAST)) return new ItemStack(ModItems.METEORIC_IRON_INGOT);
-            // Tool heads
-            if (cast.is(ModItems.PICKAXE_HEAD_CAST)) return new ItemStack(ModItems.MI_PICKAXE_HEAD);
-            if (cast.is(ModItems.AXE_HEAD_CAST)) return new ItemStack(ModItems.MI_AXE_HEAD);
-            if (cast.is(ModItems.SHOVEL_HEAD_CAST)) return new ItemStack(ModItems.MI_SHOVEL_HEAD);
-            if (cast.is(ModItems.SWORD_HEAD_CAST)) return new ItemStack(ModItems.MI_SWORD_HEAD);
-            if (cast.is(ModItems.HOE_HEAD_CAST)) return new ItemStack(ModItems.MI_HOE_HEAD);
-            if (cast.is(ModItems.SPEAR_HEAD_CAST)) return new ItemStack(ModItems.MI_SPEAR_HEAD);
-            // Armor
-            if (cast.is(ModItems.HELMET_CAST)) return new ItemStack(ModItems.METEORIC_IRON_HELMET);
-            if (cast.is(ModItems.CHESTPLATE_CAST)) return new ItemStack(ModItems.METEORIC_IRON_CHESTPLATE);
-            if (cast.is(ModItems.LEGGINGS_CAST)) return new ItemStack(ModItems.METEORIC_IRON_LEGGINGS);
-            if (cast.is(ModItems.BOOTS_CAST)) return new ItemStack(ModItems.METEORIC_IRON_BOOTS);
-        }
-        return ItemStack.EMPTY;
+        var result = FoundryRecipes.CASTS.get(cast.getItem());
+        if (result == null) return ItemStack.EMPTY;
+        return switch (activeMetalType) {
+            case METAL_STEEL -> new ItemStack(result.steel());
+            case METAL_METEORIC_IRON -> new ItemStack(result.meteoricIron());
+            default -> ItemStack.EMPTY;
+        };
     }
 
     // Cycle through available metal types (called from screen handler on button click)

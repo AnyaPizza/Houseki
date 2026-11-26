@@ -1,0 +1,31 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:beach",
+    "minecraft:cold_ocean",
+    "minecraft:deep_cold_ocean",
+    "minecraft:frozen_ocean",
+    "minecraft:frozen_river",
+    "minecraft:deep_frozen_ocean",
+    "minecraft:snowy_beach",
+    "minecraft:ice_spikes",
+    "minecraft:jagged_peaks",
+    "minecraft:deep_ocean",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:dripstone_caves",
+    "minecraft:snowy_plains",
+    "minecraft:lukewarm_ocean",
+    "minecraft:mangrove_swamp",
+    "minecraft:ocean",
+    "minecraft:river",
+    "minecraft:stony_shore",
+    "minecraft:stony_peaks",
+    "minecraft:swamp",
+    "minecraft:warm_ocean",
+    "minecraft:lush_caves",
+    "minecraft:snowy_slopes",
+    "minecraft:snowy_taiga"
+  ],
+  "features": "houseki:nephrite_ore_placed",
+  "step": "underground_ores"
+}

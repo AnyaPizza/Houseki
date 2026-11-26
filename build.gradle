@@ -71,3 +71,11 @@ jar {
 		rename { "${it}_${project.base.archivesName.get()}"}
 	}
 }
+
+sourceSets.main.java.srcDir 'src/fabric/java'
+
+tasks.named('build') {
+    dependsOn ':neoforge:build'
+}
+
+apply from: 'gradle/atlas.gradle'
