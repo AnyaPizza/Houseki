@@ -4,8 +4,6 @@ import anya.pizza.houseki.Houseki;
 import anya.pizza.houseki.block.ModBlocks;
 import anya.pizza.houseki.item.custom.*;
 import anya.pizza.houseki.trim.ModTrimMaterials;
-import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.core.registries.BuiltInRegistries;
