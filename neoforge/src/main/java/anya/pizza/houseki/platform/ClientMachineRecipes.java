@@ -5,6 +5,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.RecipesReceivedEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -17,7 +18,7 @@ public final class ClientMachineRecipes {
     private ClientMachineRecipes() {}
 
     public static void register() {
-        NeoForge.EVENT_BUS.addListener((RecipesReceivedEvent event) -> recipes = event.getRecipeMap());
+        NeoForge.EVENT_BUS.addListener(EventPriority.HIGH, (RecipesReceivedEvent event) -> recipes = event.getRecipeMap());
         NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut event) -> recipes = RecipeMap.EMPTY);
     }
 
