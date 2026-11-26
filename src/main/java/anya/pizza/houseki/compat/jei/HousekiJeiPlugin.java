@@ -9,7 +9,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.types.IRecipeHolderType;
 import mezz.jei.api.registration.*;
-import net.minecraft.client.Minecraft;
+import anya.pizza.houseki.platform.ClientMachineRecipes;
 import net.minecraft.resources.Identifier;
 
 import java.util.List;
@@ -35,12 +35,9 @@ public class HousekiJeiPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        var level = Minecraft.getInstance().level;
-        if (level == null) return;
-        var recipes = level.recipeAccess().getSynchronizedRecipes();
-        registration.addRecipes(CRUSHING, List.copyOf(recipes.getAllOfType(ModTypes.CRUSHER_TYPE)));
-        registration.addRecipes(MELTING, List.copyOf(recipes.getAllOfType(ModTypes.MELTING_FOUNDRY_TYPE)));
-        registration.addRecipes(CASTING, List.copyOf(recipes.getAllOfType(ModTypes.CASTING_FOUNDRY_TYPE)));
+        registration.addRecipes(CRUSHING, List.copyOf(ClientMachineRecipes.get(ModTypes.CRUSHER_TYPE)));
+        registration.addRecipes(MELTING, List.copyOf(ClientMachineRecipes.get(ModTypes.MELTING_FOUNDRY_TYPE)));
+        registration.addRecipes(CASTING, List.copyOf(ClientMachineRecipes.get(ModTypes.CASTING_FOUNDRY_TYPE)));
     }
 
     @Override
